@@ -16,5 +16,3 @@ from crawlora import CrawloraClient
 crawlora = CrawloraClient(api_key="...")
 result = crawlora.bing.search(q="coffee shops", count=10)
 ```
-
-Run `python3 scripts/generate.py` after updating `../webscraping-api/dist/openapi.public.json`.
