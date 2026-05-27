@@ -5,6 +5,12 @@ Git-installable beta SDK for the public Crawlora API.
 ## Install
 
 ```sh
+pip install "git+https://github.com/Crawlora-org/crawlora-python-sdk.git@latest"
+```
+
+For reproducible builds, pin the current beta release tag:
+
+```sh
 pip install "git+https://github.com/Crawlora-org/crawlora-python-sdk.git@v1.2.0-sdk.8"
 ```
 
@@ -63,7 +69,9 @@ variables are not set.
 
 ## Versioning
 
-This SDK is currently released as Git beta tags. Pin an explicit tag in
+This SDK is currently released as Git beta tags. The moving `latest` tag tracks
+the current promoted beta, while explicit tags such as `v1.2.0-sdk.8` remain
+available for reproducible builds. Pin an explicit tag in production
 applications and upgrade intentionally.
 
 ## Registry Readiness
@@ -75,7 +83,7 @@ pip install crawlora
 ```
 
 Registry publication is not enabled yet. Until then, install from an explicit
-Git beta tag as shown above.
+Git beta tag or the moving `latest` tag as shown above.
 
 ## Regeneration
 
