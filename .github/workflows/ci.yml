@@ -1,0 +1,45 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.10", "3.11", "3.12"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Regenerate SDK
+        run: python3 scripts/generate.py
+      - name: Check generated files
+        run: git diff --exit-code
+      - name: Test
+        run: python3 -m unittest discover -s tests
+      - name: Check stub syntax
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import ast
+          ast.parse(Path("crawlora/client.pyi").read_text(), filename="crawlora/client.pyi")
+          PY
+      - name: Build wheel
+        run: python3 -m pip wheel . -w dist
+      - name: Verify typed files in wheel
+        run: |
+          python3 - <<'PY'
+          import zipfile
+          from pathlib import Path
+          wheel = next(Path("dist").glob("*.whl"))
+          with zipfile.ZipFile(wheel) as archive:
+              names = set(archive.namelist())
+          required = {"crawlora/client.pyi", "crawlora/py.typed"}
+          missing = sorted(required - names)
+          if missing:
+              raise SystemExit(f"missing wheel files: {missing}")
+          PY

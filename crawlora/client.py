@@ -15,7 +15,7 @@ from urllib.request import Request, urlopen
 from .operations import GROUPS, OPERATIONS
 
 DEFAULT_BASE_URL = "https://api.crawlora.net/api/v1"
-VERSION = "1.2.0-sdk.3"
+VERSION = "1.2.0-sdk.4"
 DEFAULT_USER_AGENT = f"crawlora-python-sdk/{VERSION}"
 ResponseType = Literal["auto", "json", "text"]
 

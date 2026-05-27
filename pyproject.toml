@@ -4,14 +4,33 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "crawlora"
-version = "1.2.0.dev3"
+version = "1.2.0.dev4"
 description = "Python SDK for the public Crawlora API."
 readme = "README.md"
-requires-python = ">=3.9"
+requires-python = ">=3.10"
 license = { text = "MIT" }
+authors = [
+  { name = "Crawlora" },
+]
+keywords = ["crawlora", "sdk", "web-scraping", "api-client"]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Intended Audience :: Developers",
+  "License :: OSI Approved :: MIT License",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Typing :: Typed",
+]
 dependencies = [
   "typing-extensions>=4.8; python_version < '3.11'",
 ]
+
+[project.urls]
+Homepage = "https://github.com/Crawlora-org/crawlora-python-sdk"
+Repository = "https://github.com/Crawlora-org/crawlora-python-sdk"
+Issues = "https://github.com/Crawlora-org/crawlora-python-sdk/issues"
 
 [tool.setuptools.packages.find]
 include = ["crawlora*"]
