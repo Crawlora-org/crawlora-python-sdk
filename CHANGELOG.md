@@ -1,5 +1,11 @@
 # Changelog
 
+## v1.2.0-sdk.5
+
+- Prepared the SDK metadata and documentation for future PyPI publishing as
+  `crawlora`.
+- Kept the import name unchanged and refreshed beta install references.
+
 ## v1.2.0-sdk.4
 
 - Added release-readiness files, CI, license, fuller README guidance, and Python

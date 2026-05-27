@@ -28,8 +28,10 @@ jobs:
           import ast
           ast.parse(Path("crawlora/client.pyi").read_text(), filename="crawlora/client.pyi")
           PY
-      - name: Build wheel
-        run: python3 -m pip wheel . -w dist
+      - name: Build distributions
+        run: |
+          python3 -m pip install build
+          python3 -m build --sdist --wheel
       - name: Verify typed files in wheel
         run: |
           python3 - <<'PY'

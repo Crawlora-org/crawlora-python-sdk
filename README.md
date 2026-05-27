@@ -5,7 +5,7 @@ Git-installable beta SDK for the public Crawlora API.
 ## Install
 
 ```sh
-pip install "git+https://github.com/Crawlora-org/crawlora-python-sdk.git@v1.2.0-sdk.4"
+pip install "git+https://github.com/Crawlora-org/crawlora-python-sdk.git@v1.2.0-sdk.5"
 ```
 
 ## Usage
@@ -58,6 +58,17 @@ API failures raise `CrawloraError` with `status`, optional API `code`, parsed
 
 This SDK is currently released as Git beta tags. Pin an explicit tag in
 applications and upgrade intentionally.
+
+## Registry Readiness
+
+The future PyPI package target is `crawlora`, matching the import name:
+
+```sh
+pip install crawlora
+```
+
+Registry publication is not enabled yet. Until then, install from an explicit
+Git beta tag as shown above.
 
 ## Regeneration
 
