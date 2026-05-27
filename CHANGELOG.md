@@ -1,5 +1,12 @@
 # Changelog
 
+## v1.2.0-sdk.10
+
+- Generated OpenAPI schema model `TypedDict` definitions and aliases for
+  endpoint responses and body parameters.
+- Updated typed endpoint stubs to return concrete response aliases while
+  keeping runtime call shapes unchanged.
+
 ## v1.2.0-sdk.9
 
 - Added fail-fast enum validation for generated query and form parameters.

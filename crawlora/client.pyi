@@ -21,7 +21,8613 @@ class _RequestOptions(TypedDict, total=False):
     _timeout: float
     _headers: Mapping[str, str]
 
-AirbnbRoomResponse = Any
+ModelAirbnbCalendarMonth = TypedDict('ModelAirbnbCalendarMonth', {
+    'month': NotRequired[str],
+    'year': NotRequired[int],
+}, total=False)
+
+ModelAirbnbCalendarResponse = TypedDict('ModelAirbnbCalendarResponse', {
+    'id': NotRequired[str],
+    'months': NotRequired[list[ModelAirbnbCalendarMonth]],
+}, total=False)
+
+ModelAirbnbListingItem = TypedDict('ModelAirbnbListingItem', {
+    'host': NotRequired[str],
+    'id': NotRequired[str],
+    'image': NotRequired[str],
+    'latitude': NotRequired[float],
+    'location': NotRequired[str],
+    'longitude': NotRequired[float],
+    'price': NotRequired[float],
+    'rating': NotRequired[float],
+    'review_count': NotRequired[int],
+    'title': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelAirbnbReviewItem = TypedDict('ModelAirbnbReviewItem', {
+    'author': NotRequired[str],
+    'date': NotRequired[str],
+    'rating': NotRequired[float],
+    'text': NotRequired[str],
+}, total=False)
+
+ModelAirbnbReviewsResponse = TypedDict('ModelAirbnbReviewsResponse', {
+    'id': NotRequired[str],
+    'page': NotRequired[int],
+    'reviews': NotRequired[list[ModelAirbnbReviewItem]],
+}, total=False)
+
+ModelAirbnbRoomResponse = TypedDict('ModelAirbnbRoomResponse', {
+    'amenities': NotRequired[list[str]],
+    'description': NotRequired[str],
+    'host': NotRequired[str],
+    'id': NotRequired[str],
+    'image': NotRequired[str],
+    'latitude': NotRequired[float],
+    'location': NotRequired[str],
+    'longitude': NotRequired[float],
+    'price': NotRequired[float],
+    'rating': NotRequired[float],
+    'review_count': NotRequired[int],
+    'title': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelAirbnbSearchResponse = TypedDict('ModelAirbnbSearchResponse', {
+    'location': NotRequired[str],
+    'page': NotRequired[int],
+    'results': NotRequired[list[ModelAirbnbListingItem]],
+}, total=False)
+
+ModelAmazonProduct = TypedDict('ModelAmazonProduct', {
+    'about': NotRequired[str],
+    'asin': NotRequired[str],
+    'availability': NotRequired[bool],
+    'brand_link': NotRequired[str],
+    'brand_name': NotRequired[str],
+    'customers_say': NotRequired[str],
+    'description': NotRequired[str],
+    'images': NotRequired[list[str]],
+    'is_free_delivery': NotRequired[bool],
+    'is_free_return': NotRequired[bool],
+    'link': NotRequired[str],
+    'number_of_bought_in_last_month': NotRequired[int],
+    'overview': NotRequired[dict[str, str]],
+    'price': NotRequired[float],
+    'rating': NotRequired[float],
+    'rating_hist': NotRequired[dict[str, float]],
+    'review_count': NotRequired[int],
+    'review_images': NotRequired[list[ModelAmazonReviewImage]],
+    'review_insights': NotRequired[list[ModelAmazonReviewInsight]],
+    'reviews': NotRequired[list[ModelAmazonReview]],
+    'seller_link': NotRequired[str],
+    'seller_name': NotRequired[str],
+    'title': NotRequired[str],
+}, total=False)
+
+ModelAmazonReview = TypedDict('ModelAmazonReview', {
+    'content': NotRequired[str],
+    'country': NotRequired[str],
+    'helpful_count': NotRequired[int],
+    'link': NotRequired[str],
+    'rating': NotRequired[float],
+    'review_date': NotRequired[str],
+    'title': NotRequired[str],
+    'user_link': NotRequired[str],
+    'user_name': NotRequired[str],
+    'verified_purchase': NotRequired[bool],
+}, total=False)
+
+ModelAmazonReviewImage = TypedDict('ModelAmazonReviewImage', {
+    'review_id': NotRequired[str],
+    'thumbnail': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelAmazonReviewInsight = TypedDict('ModelAmazonReviewInsight', {
+    'label': NotRequired[str],
+    'mention_percent': NotRequired[int],
+    'mentions': NotRequired[int],
+    'sentiment': NotRequired[str],
+    'summary': NotRequired[str],
+}, total=False)
+
+ModelAmazonSearchResponseItem = TypedDict('ModelAmazonSearchResponseItem', {
+    'asin': NotRequired[str],
+    'image': NotRequired[str],
+    'is_free_delivery': NotRequired[bool],
+    'is_sponsored': NotRequired[bool],
+    'link': NotRequired[str],
+    'list_price': NotRequired[float],
+    'more_choice': NotRequired[str],
+    'number_of_bought_in_last_month': NotRequired[int],
+    'price': NotRequired[float],
+    'rating': NotRequired[float],
+    'review_count': NotRequired[int],
+    'title': NotRequired[str],
+}, total=False)
+
+ModelAmazonProductResponseDoc = TypedDict('ModelAmazonProductResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelAmazonProduct],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelAmazonSearchResponseDoc = TypedDict('ModelAmazonSearchResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[list[ModelAmazonSearchResponseItem]],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelAmazonSuggestResponseDoc = TypedDict('ModelAmazonSuggestResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[list[str]],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelApiComponentStatus = TypedDict('ModelApiComponentStatus', {
+    'error': NotRequired[str],
+    'ready': NotRequired[bool],
+}, total=False)
+
+ModelApiPingResponseDoc = TypedDict('ModelApiPingResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelBuildinfoInfo],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelApiReadinessResponseDoc = TypedDict('ModelApiReadinessResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelApiReadinessState],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelApiReadinessState = TypedDict('ModelApiReadinessState', {
+    'checked_at': NotRequired[str],
+    'components': NotRequired[dict[str, ModelApiComponentStatus]],
+    'ready': NotRequired[bool],
+}, total=False)
+
+ModelAppResponse = TypedDict('ModelAppResponse', {
+    'code': NotRequired[int],
+    'data': NotRequired[Any],
+    'msg': NotRequired[Any],
+}, total=False)
+
+ModelApplepodcastsGenre = TypedDict('ModelApplepodcastsGenre', {
+    'id': NotRequired[str],
+    'name': NotRequired[str],
+}, total=False)
+
+ModelApplepodcastsPodcastChartItem = TypedDict('ModelApplepodcastsPodcastChartItem', {
+    'artist_name': NotRequired[str],
+    'artist_url': NotRequired[str],
+    'artwork_url': NotRequired[str],
+    'currency': NotRequired[str],
+    'description': NotRequired[str],
+    'free': NotRequired[bool],
+    'genre': NotRequired[str],
+    'genre_id': NotRequired[int],
+    'id': NotRequired[int],
+    'name': NotRequired[str],
+    'price': NotRequired[float],
+    'release_date': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelApplepodcastsPodcastEpisode = TypedDict('ModelApplepodcastsPodcastEpisode', {
+    'artwork_url_160': NotRequired[str],
+    'artwork_url_60': NotRequired[str],
+    'artwork_url_600': NotRequired[str],
+    'closed_captioning': NotRequired[str],
+    'content_advisory_rating': NotRequired[str],
+    'country': NotRequired[str],
+    'description': NotRequired[str],
+    'duration_millis': NotRequired[int],
+    'episode_content_type': NotRequired[str],
+    'episode_file_extension': NotRequired[str],
+    'episode_guid': NotRequired[str],
+    'episode_url': NotRequired[str],
+    'feed_url': NotRequired[str],
+    'genres': NotRequired[list[ModelApplepodcastsGenre]],
+    'id': NotRequired[int],
+    'preview_url': NotRequired[str],
+    'release_date': NotRequired[str],
+    'short_description': NotRequired[str],
+    'show_id': NotRequired[int],
+    'show_name': NotRequired[str],
+    'show_url': NotRequired[str],
+    'title': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelApplepodcastsPodcastShow = TypedDict('ModelApplepodcastsPodcastShow', {
+    'artist_id': NotRequired[int],
+    'artist_name': NotRequired[str],
+    'artist_url': NotRequired[str],
+    'artwork_url_100': NotRequired[str],
+    'artwork_url_30': NotRequired[str],
+    'artwork_url_60': NotRequired[str],
+    'artwork_url_600': NotRequired[str],
+    'collection_explicitness': NotRequired[str],
+    'collection_name': NotRequired[str],
+    'content_advisory_rating': NotRequired[str],
+    'country': NotRequired[str],
+    'currency': NotRequired[str],
+    'feed_url': NotRequired[str],
+    'genre_ids': NotRequired[list[str]],
+    'genres': NotRequired[list[str]],
+    'id': NotRequired[int],
+    'primary_genre_name': NotRequired[str],
+    'release_date': NotRequired[str],
+    'track_count': NotRequired[int],
+    'track_explicitness': NotRequired[str],
+    'track_name': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelApplepodcastsShowEpisodesResult = TypedDict('ModelApplepodcastsShowEpisodesResult', {
+    'episodes': NotRequired[list[ModelApplepodcastsPodcastEpisode]],
+    'show': NotRequired[ModelApplepodcastsPodcastShow],
+}, total=False)
+
+ModelApplepodcastsChartsResponseDoc = TypedDict('ModelApplepodcastsChartsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[list[ModelApplepodcastsPodcastChartItem]],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelApplepodcastsEpisodeSearchResponseDoc = TypedDict('ModelApplepodcastsEpisodeSearchResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[list[ModelApplepodcastsPodcastEpisode]],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelApplepodcastsSearchResponseDoc = TypedDict('ModelApplepodcastsSearchResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[list[ModelApplepodcastsPodcastShow]],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelApplepodcastsShowEpisodesResponseDoc = TypedDict('ModelApplepodcastsShowEpisodesResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelApplepodcastsShowEpisodesResult],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelApplepodcastsShowResponseDoc = TypedDict('ModelApplepodcastsShowResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelApplepodcastsPodcastShow],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelAppstoreApp = TypedDict('ModelAppstoreApp', {
+    'app_id': NotRequired[str],
+    'appletv_screenshots': NotRequired[list[str]],
+    'content_rating': NotRequired[str],
+    'currency': NotRequired[str],
+    'current_version_reviews': NotRequired[int],
+    'current_version_score': NotRequired[float],
+    'description': NotRequired[str],
+    'developer': NotRequired[str],
+    'developer_id': NotRequired[int],
+    'developer_url': NotRequired[str],
+    'developer_website': NotRequired[str],
+    'free': NotRequired[bool],
+    'genre_ids': NotRequired[list[str]],
+    'genres': NotRequired[list[str]],
+    'histogram': NotRequired[dict[str, int]],
+    'icon': NotRequired[str],
+    'id': NotRequired[int],
+    'ipad_screenshots': NotRequired[list[str]],
+    'languages': NotRequired[list[str]],
+    'price': NotRequired[float],
+    'primary_genre': NotRequired[str],
+    'primary_genre_id': NotRequired[int],
+    'ratings': NotRequired[int],
+    'release_notes': NotRequired[str],
+    'released': NotRequired[str],
+    'required_os_version': NotRequired[str],
+    'reviews': NotRequired[int],
+    'score': NotRequired[float],
+    'screenshots': NotRequired[list[str]],
+    'size': NotRequired[str],
+    'supported_devices': NotRequired[list[str]],
+    'title': NotRequired[str],
+    'updated': NotRequired[str],
+    'url': NotRequired[str],
+    'version': NotRequired[str],
+}, total=False)
+
+ModelAppstorePrivacyCategory = TypedDict('ModelAppstorePrivacyCategory', {
+    'data_category': NotRequired[str],
+    'data_types': NotRequired[list[str]],
+    'identifier': NotRequired[str],
+}, total=False)
+
+ModelAppstorePrivacyDetails = TypedDict('ModelAppstorePrivacyDetails', {
+    'manage_privacy_choices_url': NotRequired[str],
+    'privacy_policy_url': NotRequired[str],
+    'privacy_types': NotRequired[list[ModelAppstorePrivacyType]],
+}, total=False)
+
+ModelAppstorePrivacyPurpose = TypedDict('ModelAppstorePrivacyPurpose', {
+    'data_categories': NotRequired[list[ModelAppstorePrivacyCategory]],
+    'identifier': NotRequired[str],
+    'purpose': NotRequired[str],
+}, total=False)
+
+ModelAppstorePrivacyType = TypedDict('ModelAppstorePrivacyType', {
+    'data_categories': NotRequired[list[ModelAppstorePrivacyCategory]],
+    'description': NotRequired[str],
+    'identifier': NotRequired[str],
+    'privacy_type': NotRequired[str],
+    'purposes': NotRequired[list[ModelAppstorePrivacyPurpose]],
+}, total=False)
+
+ModelAppstoreRatingsResult = TypedDict('ModelAppstoreRatingsResult', {
+    'histogram': NotRequired[dict[str, int]],
+    'ratings': NotRequired[int],
+}, total=False)
+
+ModelAppstoreReview = TypedDict('ModelAppstoreReview', {
+    'id': NotRequired[str],
+    'score': NotRequired[int],
+    'text': NotRequired[str],
+    'title': NotRequired[str],
+    'updated': NotRequired[str],
+    'url': NotRequired[str],
+    'user_name': NotRequired[str],
+    'user_url': NotRequired[str],
+    'version': NotRequired[str],
+}, total=False)
+
+ModelAppstoreSuggestion = TypedDict('ModelAppstoreSuggestion', {
+    'term': NotRequired[str],
+}, total=False)
+
+ModelAppstoreVersionHistoryItem = TypedDict('ModelAppstoreVersionHistoryItem', {
+    'release_date': NotRequired[str],
+    'release_notes': NotRequired[str],
+    'release_timestamp': NotRequired[str],
+    'version_display': NotRequired[str],
+}, total=False)
+
+ModelAppstoreAppDetailsResponseDoc = TypedDict('ModelAppstoreAppDetailsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelAppstoreApp],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelAppstoreDeveloperResponseDoc = TypedDict('ModelAppstoreDeveloperResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[list[ModelAppstoreApp]],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelAppstoreListResultsResponseDoc = TypedDict('ModelAppstoreListResultsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[list[Any]],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelAppstorePrivacyResponseDoc = TypedDict('ModelAppstorePrivacyResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelAppstorePrivacyDetails],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelAppstoreRatingsResponseDoc = TypedDict('ModelAppstoreRatingsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelAppstoreRatingsResult],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelAppstoreReviewsResponseDoc = TypedDict('ModelAppstoreReviewsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[list[ModelAppstoreReview]],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelAppstoreSearchResultsResponseDoc = TypedDict('ModelAppstoreSearchResultsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[list[Any]],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelAppstoreSimilarResponseDoc = TypedDict('ModelAppstoreSimilarResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[list[ModelAppstoreApp]],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelAppstoreSuggestResponseDoc = TypedDict('ModelAppstoreSuggestResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[list[ModelAppstoreSuggestion]],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelAppstoreVersionHistoryResponseDoc = TypedDict('ModelAppstoreVersionHistoryResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[list[ModelAppstoreVersionHistoryItem]],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelBillingAdminPlanChangeRequestDoc = TypedDict('ModelBillingAdminPlanChangeRequestDoc', {
+    'currency': NotRequired[str],
+    'monthly_price_cents': NotRequired[int],
+    'plan': Required[str],
+}, total=False)
+
+ModelBillingAdminPlanChangeResponseDoc = TypedDict('ModelBillingAdminPlanChangeResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelBillingBillingSnapshotDoc],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelBillingBillingConsistencyEndpointBreakdownDoc = TypedDict('ModelBillingBillingConsistencyEndpointBreakdownDoc', {
+    'actual_credits': NotRequired[int],
+    'actual_overage': NotRequired[int],
+    'endpoint': NotRequired[str],
+    'expected_credits': NotRequired[int],
+    'expected_overage': NotRequired[int],
+}, total=False)
+
+ModelBillingBillingConsistencyIssueDoc = TypedDict('ModelBillingBillingConsistencyIssueDoc', {
+    'actual_credits': NotRequired[int],
+    'actual_overage': NotRequired[int],
+    'created_at': NotRequired[str],
+    'detail': NotRequired[str],
+    'endpoint_breakdown': NotRequired[list[ModelBillingBillingConsistencyEndpointBreakdownDoc]],
+    'expected_credits': NotRequired[int],
+    'expected_overage': NotRequired[int],
+    'frozen_at': NotRequired[str],
+    'issue_id': NotRequired[str],
+    'issue_type': NotRequired[str],
+    'period_key': NotRequired[str],
+    'repair_method': NotRequired[str],
+    'repair_path': NotRequired[str],
+    'request_id': NotRequired[str],
+    'severity': NotRequired[str],
+    'source_updated_at': NotRequired[str],
+    'statement_id': NotRequired[str],
+    'stripe_invoice_id': NotRequired[str],
+    'suggested_action': NotRequired[str],
+    'user_id': NotRequired[str],
+}, total=False)
+
+ModelBillingBillingConsistencyReportDoc = TypedDict('ModelBillingBillingConsistencyReportDoc', {
+    'checked_from': NotRequired[str],
+    'checked_to': NotRequired[str],
+    'counts_by_severity': NotRequired[dict[str, int]],
+    'counts_by_type': NotRequired[dict[str, int]],
+    'generated_at': NotRequired[str],
+    'issues': NotRequired[list[ModelBillingBillingConsistencyIssueDoc]],
+}, total=False)
+
+ModelBillingBillingConsistencyResponseDoc = TypedDict('ModelBillingBillingConsistencyResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelBillingBillingConsistencyReportDoc],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelBillingBillingEndpointLedgerDoc = TypedDict('ModelBillingBillingEndpointLedgerDoc', {
+    'charged_requests': NotRequired[int],
+    'credits': NotRequired[int],
+    'endpoint': NotRequired[str],
+    'failed_requests': NotRequired[int],
+    'non_billable_requests': NotRequired[int],
+    'overage': NotRequired[int],
+    'requests': NotRequired[int],
+}, total=False)
+
+ModelBillingBillingEventDoc = TypedDict('ModelBillingBillingEventDoc', {
+    'billable': NotRequired[bool],
+    'charged_at': NotRequired[str],
+    'created_at': NotRequired[str],
+    'credit_cost': NotRequired[int],
+    'credits_remaining_after': NotRequired[int],
+    'credits_remaining_before': NotRequired[int],
+    'credits_used_after': NotRequired[int],
+    'credits_used_before': NotRequired[int],
+    'daily_key': NotRequired[str],
+    'endpoint': NotRequired[str],
+    'event_status': NotRequired[str],
+    'failure_reason': NotRequired[str],
+    'finalized_at': NotRequired[str],
+    'idempotency_key': NotRequired[str],
+    'method': NotRequired[str],
+    'non_billable_reason': NotRequired[str],
+    'overage_credits_delta': NotRequired[int],
+    'period_key': NotRequired[str],
+    'plan': NotRequired[str],
+    'principal_type': NotRequired[str],
+    'request_id': NotRequired[str],
+    'route_pattern': NotRequired[str],
+    'status_code': NotRequired[int],
+    'user_id': NotRequired[str],
+}, total=False)
+
+ModelBillingBillingEventsResponseDoc = TypedDict('ModelBillingBillingEventsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[list[ModelBillingBillingEventDoc]],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelBillingBillingFinanceAgingBucketDoc = TypedDict('ModelBillingBillingFinanceAgingBucketDoc', {
+    'amount_remaining_cents': NotRequired[int],
+    'bucket': NotRequired[str],
+    'invoice_count': NotRequired[int],
+}, total=False)
+
+ModelBillingBillingFinanceAgingResponseDoc = TypedDict('ModelBillingBillingFinanceAgingResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[list[ModelBillingBillingFinanceAgingBucketDoc]],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelBillingBillingFinanceOverviewDoc = TypedDict('ModelBillingBillingFinanceOverviewDoc', {
+    'active_customers': NotRequired[int],
+    'at_risk_mrr_cents': NotRequired[int],
+    'booked_expected_total_cents': NotRequired[int],
+    'booked_overage_cents': NotRequired[int],
+    'booked_subscription_cents': NotRequired[int],
+    'cash_collected_cents': NotRequired[int],
+    'currency': NotRequired[str],
+    'current_outstanding_ar_cents': NotRequired[int],
+    'grace_period_customers': NotRequired[int],
+    'invoice_count': NotRequired[int],
+    'invoiced_amount_due_cents': NotRequired[int],
+    'mismatch_invoice_count': NotRequired[int],
+    'mismatch_total_cents': NotRequired[int],
+    'mrr_cents': NotRequired[int],
+    'paid_invoice_count': NotRequired[int],
+    'past_due_customers': NotRequired[int],
+    'payment_failed_invoice_count': NotRequired[int],
+    'plan_breakdown': NotRequired[list[ModelBillingBillingFinancePlanBreakdownDoc]],
+    'stripe_actual_credit_note_cents': NotRequired[int],
+    'stripe_actual_discount_cents': NotRequired[int],
+    'stripe_actual_net_cash_cents': NotRequired[int],
+    'stripe_actual_refund_cents': NotRequired[int],
+    'stripe_actual_tax_cents': NotRequired[int],
+    'stripe_actual_total_cents': NotRequired[int],
+    'uncollectible_invoice_count': NotRequired[int],
+    'voided_invoice_count': NotRequired[int],
+}, total=False)
+
+ModelBillingBillingFinanceOverviewResponseDoc = TypedDict('ModelBillingBillingFinanceOverviewResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelBillingBillingFinanceOverviewDoc],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelBillingBillingFinancePeriodItemDoc = TypedDict('ModelBillingBillingFinancePeriodItemDoc', {
+    'amount_paid_cents': NotRequired[int],
+    'amount_remaining_cents': NotRequired[int],
+    'customers': NotRequired[int],
+    'expected_total_amount_cents': NotRequired[int],
+    'invoice_amount_due_cents': NotRequired[int],
+    'invoice_count': NotRequired[int],
+    'mismatch_invoice_count': NotRequired[int],
+    'mismatch_total_cents': NotRequired[int],
+    'overage_amount_cents': NotRequired[int],
+    'paid_invoice_count': NotRequired[int],
+    'payment_failed_invoice_count': NotRequired[int],
+    'period_key': NotRequired[str],
+    'stripe_actual_credit_note_cents': NotRequired[int],
+    'stripe_actual_discount_cents': NotRequired[int],
+    'stripe_actual_net_cash_cents': NotRequired[int],
+    'stripe_actual_refund_cents': NotRequired[int],
+    'stripe_actual_tax_cents': NotRequired[int],
+    'stripe_actual_total_cents': NotRequired[int],
+    'subscription_amount_cents': NotRequired[int],
+}, total=False)
+
+ModelBillingBillingFinancePeriodsResponseDoc = TypedDict('ModelBillingBillingFinancePeriodsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[list[ModelBillingBillingFinancePeriodItemDoc]],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelBillingBillingFinancePlanBreakdownDoc = TypedDict('ModelBillingBillingFinancePlanBreakdownDoc', {
+    'active_customers': NotRequired[int],
+    'at_risk_mrr_cents': NotRequired[int],
+    'booked_expected_total_cents': NotRequired[int],
+    'booked_overage_cents': NotRequired[int],
+    'booked_subscription_cents': NotRequired[int],
+    'cash_collected_cents': NotRequired[int],
+    'current_outstanding_ar_cents': NotRequired[int],
+    'customers': NotRequired[int],
+    'grace_period_customers': NotRequired[int],
+    'invoice_count': NotRequired[int],
+    'invoiced_amount_due_cents': NotRequired[int],
+    'mismatch_invoice_count': NotRequired[int],
+    'mismatch_total_cents': NotRequired[int],
+    'mrr_cents': NotRequired[int],
+    'paid_invoice_count': NotRequired[int],
+    'past_due_customers': NotRequired[int],
+    'payment_failed_invoice_count': NotRequired[int],
+    'plan': NotRequired[str],
+    'stripe_actual_credit_note_cents': NotRequired[int],
+    'stripe_actual_discount_cents': NotRequired[int],
+    'stripe_actual_net_cash_cents': NotRequired[int],
+    'stripe_actual_refund_cents': NotRequired[int],
+    'stripe_actual_tax_cents': NotRequired[int],
+    'stripe_actual_total_cents': NotRequired[int],
+    'uncollectible_invoice_count': NotRequired[int],
+    'voided_invoice_count': NotRequired[int],
+}, total=False)
+
+ModelBillingBillingPeriodCloseErrorDoc = TypedDict('ModelBillingBillingPeriodCloseErrorDoc', {
+    'error': NotRequired[str],
+    'period_key': NotRequired[str],
+    'user_id': NotRequired[str],
+}, total=False)
+
+ModelBillingBillingPeriodCloseSummaryDoc = TypedDict('ModelBillingBillingPeriodCloseSummaryDoc', {
+    'closed': NotRequired[int],
+    'errors': NotRequired[list[ModelBillingBillingPeriodCloseErrorDoc]],
+    'failed': NotRequired[int],
+    'scanned': NotRequired[int],
+    'skipped': NotRequired[int],
+    'snapshot_skipped': NotRequired[int],
+    'snapshots_created': NotRequired[int],
+}, total=False)
+
+ModelBillingBillingPeriodCloseSummaryResponseDoc = TypedDict('ModelBillingBillingPeriodCloseSummaryResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelBillingBillingPeriodCloseSummaryDoc],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelBillingBillingPeriodLedgerDoc = TypedDict('ModelBillingBillingPeriodLedgerDoc', {
+    'charged_requests': NotRequired[int],
+    'closed_at': NotRequired[str],
+    'credits_used': NotRequired[int],
+    'currency': NotRequired[str],
+    'endpoint_breakdown': NotRequired[list[ModelBillingBillingEndpointLedgerDoc]],
+    'expected_subscription_amount_cents': NotRequired[int],
+    'expected_total_amount_cents': NotRequired[int],
+    'failed_requests': NotRequired[int],
+    'generated_at': NotRequired[str],
+    'included_credits': NotRequired[int],
+    'mismatch_flags': NotRequired[list[str]],
+    'mismatch_total_cents': NotRequired[int],
+    'non_billable_requests': NotRequired[int],
+    'overage_amount_cents': NotRequired[int],
+    'overage_credits': NotRequired[int],
+    'overage_price_per_1000': NotRequired[float],
+    'period_end': NotRequired[str],
+    'period_key': NotRequired[str],
+    'period_start': NotRequired[str],
+    'plan': NotRequired[str],
+    'pricing_source': NotRequired[str],
+    'status': NotRequired[str],
+    'stripe_actual_amount_due_cents': NotRequired[int],
+    'stripe_actual_amount_paid_cents': NotRequired[int],
+    'stripe_actual_amount_remaining_cents': NotRequired[int],
+    'stripe_actual_credit_note_cents': NotRequired[int],
+    'stripe_actual_discount_cents': NotRequired[int],
+    'stripe_actual_net_cash_cents': NotRequired[int],
+    'stripe_actual_one_time_cents': NotRequired[int],
+    'stripe_actual_overage_cents': NotRequired[int],
+    'stripe_actual_proration_cents': NotRequired[int],
+    'stripe_actual_refund_cents': NotRequired[int],
+    'stripe_actual_subscription_cents': NotRequired[int],
+    'stripe_actual_tax_cents': NotRequired[int],
+    'stripe_actual_total_cents': NotRequired[int],
+    'stripe_customer_id': NotRequired[str],
+    'stripe_invoice_amount_due': NotRequired[int],
+    'stripe_invoice_amount_paid': NotRequired[int],
+    'stripe_invoice_amount_remaining': NotRequired[int],
+    'stripe_invoice_currency': NotRequired[str],
+    'stripe_invoice_due_date': NotRequired[str],
+    'stripe_invoice_effective_due_date': NotRequired[str],
+    'stripe_invoice_finalized_at': NotRequired[str],
+    'stripe_invoice_hosted_url': NotRequired[str],
+    'stripe_invoice_id': NotRequired[str],
+    'stripe_invoice_last_event_created': NotRequired[str],
+    'stripe_invoice_last_event_id': NotRequired[str],
+    'stripe_invoice_number': NotRequired[str],
+    'stripe_invoice_paid_at': NotRequired[str],
+    'stripe_invoice_payment_failed_at': NotRequired[str],
+    'stripe_invoice_pdf': NotRequired[str],
+    'stripe_invoice_period_end': NotRequired[str],
+    'stripe_invoice_period_start': NotRequired[str],
+    'stripe_invoice_reconciliation_error': NotRequired[str],
+    'stripe_invoice_reconciliation_status': NotRequired[str],
+    'stripe_invoice_status': NotRequired[str],
+    'stripe_meter_event_identifier': NotRequired[str],
+    'stripe_meter_event_name': NotRequired[str],
+    'stripe_snapshot_updated_at': NotRequired[str],
+    'stripe_sync_attempts': NotRequired[int],
+    'stripe_sync_error': NotRequired[str],
+    'stripe_sync_first_attempt_at': NotRequired[str],
+    'stripe_sync_last_attempt_at': NotRequired[str],
+    'stripe_sync_status': NotRequired[str],
+    'stripe_synced_at': NotRequired[str],
+    'subscription_price_cents': NotRequired[int],
+    'updated_at': NotRequired[str],
+    'user_id': NotRequired[str],
+}, total=False)
+
+ModelBillingBillingPeriodLedgerResponseDoc = TypedDict('ModelBillingBillingPeriodLedgerResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelBillingBillingPeriodLedgerDoc],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelBillingBillingPeriodLedgersResponseDoc = TypedDict('ModelBillingBillingPeriodLedgersResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[list[ModelBillingBillingPeriodLedgerDoc]],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelBillingBillingPeriodStatementDoc = TypedDict('ModelBillingBillingPeriodStatementDoc', {
+    'accounts_receivable': NotRequired[ModelBillingBillingStatementAccountsReceivableDoc],
+    'adjustment_events': NotRequired[list[ModelBillingBillingStatementAdjustmentEvidenceDoc]],
+    'endpoint_breakdown': NotRequired[list[ModelBillingBillingEndpointLedgerDoc]],
+    'events': NotRequired[list[ModelBillingBillingStatementEventItemDoc]],
+    'expected': NotRequired[ModelBillingBillingStatementExpectedRevenueDoc],
+    'generated_at': NotRequired[str],
+    'invoice': NotRequired[ModelBillingBillingStatementInvoiceEvidenceDoc],
+    'invoice_events': NotRequired[list[ModelBillingBillingStatementInvoiceEventEvidenceDoc]],
+    'mismatch': NotRequired[ModelBillingBillingStatementMismatchDoc],
+    'period': NotRequired[ModelBillingBillingStatementPeriodDoc],
+    'plan': NotRequired[str],
+    'repair': NotRequired[ModelBillingBillingStatementRepairDoc],
+    'snapshot': NotRequired[ModelBillingBillingStatementSnapshotMetadataDoc],
+    'stripe_actual': NotRequired[ModelBillingBillingStatementStripeActualDoc],
+    'user': NotRequired[ModelBillingBillingStatementUserDoc],
+}, total=False)
+
+ModelBillingBillingPeriodStatementResponseDoc = TypedDict('ModelBillingBillingPeriodStatementResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelBillingBillingPeriodStatementDoc],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelBillingBillingPeriodStatementSnapshotSummaryDoc = TypedDict('ModelBillingBillingPeriodStatementSnapshotSummaryDoc', {
+    'adjustment_event_count': NotRequired[int],
+    'canonical_json_sha256': NotRequired[str],
+    'event_count': NotRequired[int],
+    'frozen_at': NotRequired[str],
+    'generated_at': NotRequired[str],
+    'generated_by': NotRequired[str],
+    'invoice_event_count': NotRequired[int],
+    'period_key': NotRequired[str],
+    'plan': NotRequired[str],
+    'revision': NotRequired[int],
+    'source_ledger_updated_at': NotRequired[str],
+    'source_snapshot_updated_at': NotRequired[str],
+    'statement_id': NotRequired[str],
+    'statement_version': NotRequired[str],
+    'status': NotRequired[str],
+    'user_id': NotRequired[str],
+}, total=False)
+
+ModelBillingBillingPeriodStatementSnapshotsResponseDoc = TypedDict('ModelBillingBillingPeriodStatementSnapshotsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[list[ModelBillingBillingPeriodStatementSnapshotSummaryDoc]],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelBillingBillingPeriodStatementVerificationDoc = TypedDict('ModelBillingBillingPeriodStatementVerificationDoc', {
+    'canonical_json_byte_count': NotRequired[int],
+    'computed_sha256': NotRequired[str],
+    'frozen_at': NotRequired[str],
+    'period_key': NotRequired[str],
+    'revision': NotRequired[int],
+    'statement_id': NotRequired[str],
+    'statement_version': NotRequired[str],
+    'stored_sha256': NotRequired[str],
+    'user_id': NotRequired[str],
+    'valid': NotRequired[bool],
+}, total=False)
+
+ModelBillingBillingPeriodStatementVerificationResponseDoc = TypedDict('ModelBillingBillingPeriodStatementVerificationResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelBillingBillingPeriodStatementVerificationDoc],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelBillingBillingSnapshotDoc = TypedDict('ModelBillingBillingSnapshotDoc', {
+    'allow_overage': NotRequired[bool],
+    'credits_remaining': NotRequired[int],
+    'credits_used': NotRequired[int],
+    'currency': NotRequired[str],
+    'daily_credit_limit': NotRequired[int],
+    'daily_credits_remaining': NotRequired[int],
+    'daily_credits_used': NotRequired[int],
+    'daily_key': NotRequired[str],
+    'expected_subscription_amount_cents': NotRequired[int],
+    'expected_total_amount_cents': NotRequired[int],
+    'hard_limit': NotRequired[bool],
+    'included_credits': NotRequired[int],
+    'overage_credits': NotRequired[int],
+    'period_end': NotRequired[str],
+    'period_key': NotRequired[str],
+    'period_start': NotRequired[str],
+    'plan': NotRequired[str],
+    'pricing_source': NotRequired[str],
+    'subscription_price_cents': NotRequired[int],
+    'user_id': NotRequired[str],
+}, total=False)
+
+ModelBillingBillingStateDoc = TypedDict('ModelBillingBillingStateDoc', {
+    'allow_overage': NotRequired[bool],
+    'created_at': NotRequired[str],
+    'credits_remaining': NotRequired[int],
+    'credits_used': NotRequired[int],
+    'currency': NotRequired[str],
+    'daily_credit_limit': NotRequired[int],
+    'daily_credits_remaining': NotRequired[int],
+    'daily_credits_used': NotRequired[int],
+    'daily_key': NotRequired[str],
+    'expected_subscription_amount_cents': NotRequired[int],
+    'expected_total_amount_cents': NotRequired[int],
+    'hard_limit': NotRequired[bool],
+    'included_credits': NotRequired[int],
+    'overage_credits': NotRequired[int],
+    'period_end': NotRequired[str],
+    'period_key': NotRequired[str],
+    'period_start': NotRequired[str],
+    'plan': NotRequired[str],
+    'pricing_source': NotRequired[str],
+    'subscription_price_cents': NotRequired[int],
+    'updated_at': NotRequired[str],
+    'user_id': NotRequired[str],
+}, total=False)
+
+ModelBillingBillingStateResponseDoc = TypedDict('ModelBillingBillingStateResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelBillingBillingStateDoc],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelBillingBillingStatementAccountsReceivableDoc = TypedDict('ModelBillingBillingStatementAccountsReceivableDoc', {
+    'amount_due_cents': NotRequired[int],
+    'amount_paid_cents': NotRequired[int],
+    'amount_remaining_cents': NotRequired[int],
+    'due_date': NotRequired[str],
+    'effective_due_date': NotRequired[str],
+    'finalized_at': NotRequired[str],
+    'invoice_status': NotRequired[str],
+    'paid_at': NotRequired[str],
+    'payment_failed_at': NotRequired[str],
+}, total=False)
+
+ModelBillingBillingStatementAdjustmentEvidenceDoc = TypedDict('ModelBillingBillingStatementAdjustmentEvidenceDoc', {
+    'amount_cents': NotRequired[int],
+    'currency': NotRequired[str],
+    'error': NotRequired[str],
+    'event_created': NotRequired[str],
+    'event_id': NotRequired[str],
+    'event_type': NotRequired[str],
+    'kind': NotRequired[str],
+    'match_status': NotRequired[str],
+    'processed_at': NotRequired[str],
+    'reconciliation_status': NotRequired[str],
+    'repair_attempts': NotRequired[int],
+    'repair_last_error': NotRequired[str],
+    'repair_status': NotRequired[str],
+    'resource_id': NotRequired[str],
+    'resource_status': NotRequired[str],
+    'stripe_invoice_id': NotRequired[str],
+}, total=False)
+
+ModelBillingBillingStatementAdminEvidenceDoc = TypedDict('ModelBillingBillingStatementAdminEvidenceDoc', {
+    'adjustment_events': NotRequired[list[ModelBillingBillingStatementAdjustmentEvidenceDoc]],
+    'invoice': NotRequired[ModelBillingBillingStatementInvoiceEvidenceDoc],
+    'invoice_events': NotRequired[list[ModelBillingBillingStatementInvoiceEventEvidenceDoc]],
+    'repair': NotRequired[ModelBillingBillingStatementRepairDoc],
+}, total=False)
+
+ModelBillingBillingStatementEventItemDoc = TypedDict('ModelBillingBillingStatementEventItemDoc', {
+    'billable': NotRequired[bool],
+    'created_at': NotRequired[str],
+    'credit_cost': NotRequired[int],
+    'endpoint': NotRequired[str],
+    'event_status': NotRequired[str],
+    'non_billable_reason': NotRequired[str],
+    'request_id': NotRequired[str],
+    'status_code': NotRequired[int],
+}, total=False)
+
+ModelBillingBillingStatementEvidencePackDoc = TypedDict('ModelBillingBillingStatementEvidencePackDoc', {
+    'admin_evidence': NotRequired[ModelBillingBillingStatementAdminEvidenceDoc],
+    'customer_statement': NotRequired[ModelBillingBillingPeriodStatementDoc],
+    'snapshot': NotRequired[ModelBillingBillingPeriodStatementSnapshotSummaryDoc],
+    'verification': NotRequired[ModelBillingBillingPeriodStatementVerificationDoc],
+}, total=False)
+
+ModelBillingBillingStatementExpectedRevenueDoc = TypedDict('ModelBillingBillingStatementExpectedRevenueDoc', {
+    'credits_used': NotRequired[int],
+    'currency': NotRequired[str],
+    'expected_subscription_amount_cents': NotRequired[int],
+    'expected_total_amount_cents': NotRequired[int],
+    'included_credits': NotRequired[int],
+    'overage_amount_cents': NotRequired[int],
+    'overage_credits': NotRequired[int],
+    'overage_price_per_1000': NotRequired[float],
+    'pricing_source': NotRequired[str],
+    'subscription_price_cents': NotRequired[int],
+}, total=False)
+
+ModelBillingBillingStatementInvoiceEventEvidenceDoc = TypedDict('ModelBillingBillingStatementInvoiceEventEvidenceDoc', {
+    'error': NotRequired[str],
+    'event_created': NotRequired[str],
+    'event_id': NotRequired[str],
+    'event_type': NotRequired[str],
+    'match_status': NotRequired[str],
+    'processed_at': NotRequired[str],
+    'reconciliation_status': NotRequired[str],
+    'repair_attempts': NotRequired[int],
+    'repair_last_error': NotRequired[str],
+    'repair_status': NotRequired[str],
+    'stripe_invoice_id': NotRequired[str],
+    'stripe_invoice_status': NotRequired[str],
+}, total=False)
+
+ModelBillingBillingStatementInvoiceEvidenceDoc = TypedDict('ModelBillingBillingStatementInvoiceEvidenceDoc', {
+    'amount_due_cents': NotRequired[int],
+    'amount_paid_cents': NotRequired[int],
+    'amount_remaining_cents': NotRequired[int],
+    'currency': NotRequired[str],
+    'due_date': NotRequired[str],
+    'effective_due_date': NotRequired[str],
+    'finalized_at': NotRequired[str],
+    'hosted_invoice_url': NotRequired[str],
+    'invoice_pdf': NotRequired[str],
+    'line_items': NotRequired[list[ModelBillingStripeInvoiceLineItemDoc]],
+    'mismatch_flags': NotRequired[list[str]],
+    'mismatch_total_cents': NotRequired[int],
+    'paid_at': NotRequired[str],
+    'period_end': NotRequired[str],
+    'period_start': NotRequired[str],
+    'reconciliation_status': NotRequired[str],
+    'repair_attempts': NotRequired[int],
+    'repair_error': NotRequired[str],
+    'repair_status': NotRequired[str],
+    'stripe_invoice_id': NotRequired[str],
+    'stripe_invoice_number': NotRequired[str],
+    'stripe_invoice_status': NotRequired[str],
+}, total=False)
+
+ModelBillingBillingStatementMismatchDoc = TypedDict('ModelBillingBillingStatementMismatchDoc', {
+    'mismatch_flags': NotRequired[list[str]],
+    'mismatch_total_cents': NotRequired[int],
+}, total=False)
+
+ModelBillingBillingStatementPeriodDoc = TypedDict('ModelBillingBillingStatementPeriodDoc', {
+    'closed_at': NotRequired[str],
+    'period_end': NotRequired[str],
+    'period_key': NotRequired[str],
+    'period_start': NotRequired[str],
+    'status': NotRequired[str],
+}, total=False)
+
+ModelBillingBillingStatementRepairDoc = TypedDict('ModelBillingBillingStatementRepairDoc', {
+    'repair_attempts': NotRequired[int],
+    'repair_last_attempt_at': NotRequired[str],
+    'repair_last_error': NotRequired[str],
+    'repair_status': NotRequired[str],
+    'stripe_sync_attempts': NotRequired[int],
+    'stripe_sync_error': NotRequired[str],
+    'stripe_sync_status': NotRequired[str],
+    'stripe_synced_at': NotRequired[str],
+}, total=False)
+
+ModelBillingBillingStatementSnapshotMetadataDoc = TypedDict('ModelBillingBillingStatementSnapshotMetadataDoc', {
+    'canonical_json_sha256': NotRequired[str],
+    'frozen_at': NotRequired[str],
+    'generated_at': NotRequired[str],
+    'revision': NotRequired[int],
+    'snapshot_status': NotRequired[str],
+    'source_ledger_updated_at': NotRequired[str],
+    'source_snapshot_updated_at': NotRequired[str],
+    'statement_id': NotRequired[str],
+    'statement_version': NotRequired[str],
+}, total=False)
+
+ModelBillingBillingStatementStripeActualDoc = TypedDict('ModelBillingBillingStatementStripeActualDoc', {
+    'amount_due_cents': NotRequired[int],
+    'amount_paid_cents': NotRequired[int],
+    'amount_remaining_cents': NotRequired[int],
+    'credit_note_cents': NotRequired[int],
+    'currency': NotRequired[str],
+    'discount_cents': NotRequired[int],
+    'net_cash_cents': NotRequired[int],
+    'one_time_cents': NotRequired[int],
+    'overage_cents': NotRequired[int],
+    'proration_cents': NotRequired[int],
+    'refund_cents': NotRequired[int],
+    'snapshot_updated_at': NotRequired[str],
+    'subscription_cents': NotRequired[int],
+    'tax_cents': NotRequired[int],
+    'total_cents': NotRequired[int],
+}, total=False)
+
+ModelBillingBillingStatementUserDoc = TypedDict('ModelBillingBillingStatementUserDoc', {
+    'email': NotRequired[str],
+    'plan': NotRequired[str],
+    'stripe_customer_id': NotRequired[str],
+    'user_id': NotRequired[str],
+    'username': NotRequired[str],
+}, total=False)
+
+ModelBillingBillingSummaryItemDoc = TypedDict('ModelBillingBillingSummaryItemDoc', {
+    'billable': NotRequired[bool],
+    'charged_requests': NotRequired[int],
+    'credits': NotRequired[int],
+    'endpoint': NotRequired[str],
+    'failed_requests': NotRequired[int],
+    'non_billable_requests': NotRequired[int],
+    'overage': NotRequired[int],
+    'plan': NotRequired[str],
+    'requests': NotRequired[int],
+}, total=False)
+
+ModelBillingBillingSummaryResponseDoc = TypedDict('ModelBillingBillingSummaryResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[list[ModelBillingBillingSummaryItemDoc]],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelBillingStripeAdjustmentEventDoc = TypedDict('ModelBillingStripeAdjustmentEventDoc', {
+    'amount_cents': NotRequired[int],
+    'charge_id': NotRequired[str],
+    'currency': NotRequired[str],
+    'error': NotRequired[str],
+    'event_created': NotRequired[str],
+    'event_id': NotRequired[str],
+    'event_type': NotRequired[str],
+    'invoice_payment_ids': NotRequired[list[str]],
+    'kind': NotRequired[str],
+    'match_status': NotRequired[str],
+    'matched_period_key': NotRequired[str],
+    'matched_stripe_invoice_id': NotRequired[str],
+    'matched_user_id': NotRequired[str],
+    'payment_intent_id': NotRequired[str],
+    'post_payment_credit_note_cents': NotRequired[int],
+    'pre_payment_credit_note_cents': NotRequired[int],
+    'processed_at': NotRequired[str],
+    'reconciliation_status': NotRequired[str],
+    'refund_cents': NotRequired[int],
+    'repair_attempts': NotRequired[int],
+    'repair_last_attempt_at': NotRequired[str],
+    'repair_last_error': NotRequired[str],
+    'repair_source': NotRequired[str],
+    'repair_status': NotRequired[str],
+    'resource_id': NotRequired[str],
+    'resource_status': NotRequired[str],
+    'stripe_customer_id': NotRequired[str],
+    'stripe_invoice_id': NotRequired[str],
+}, total=False)
+
+ModelBillingStripeAdjustmentEventsResponseDoc = TypedDict('ModelBillingStripeAdjustmentEventsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[list[ModelBillingStripeAdjustmentEventDoc]],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelBillingStripeAdjustmentReconcileErrorDoc = TypedDict('ModelBillingStripeAdjustmentReconcileErrorDoc', {
+    'error': NotRequired[str],
+    'event_id': NotRequired[str],
+    'resource_id': NotRequired[str],
+    'stripe_invoice_id': NotRequired[str],
+}, total=False)
+
+ModelBillingStripeAdjustmentReconcileSummaryDoc = TypedDict('ModelBillingStripeAdjustmentReconcileSummaryDoc', {
+    'errors': NotRequired[list[ModelBillingStripeAdjustmentReconcileErrorDoc]],
+    'failed': NotRequired[int],
+    'matched': NotRequired[int],
+    'scanned': NotRequired[int],
+    'skipped': NotRequired[int],
+    'unmatched': NotRequired[int],
+}, total=False)
+
+ModelBillingStripeAdjustmentReconcileSummaryResponseDoc = TypedDict('ModelBillingStripeAdjustmentReconcileSummaryResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelBillingStripeAdjustmentReconcileSummaryDoc],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelBillingStripeCheckoutRequestDoc = TypedDict('ModelBillingStripeCheckoutRequestDoc', {
+    'cancel_url': NotRequired[str],
+    'plan': NotRequired[str],
+    'success_url': NotRequired[str],
+}, total=False)
+
+ModelBillingStripeInvoiceEventDoc = TypedDict('ModelBillingStripeInvoiceEventDoc', {
+    'amount_due': NotRequired[int],
+    'amount_paid': NotRequired[int],
+    'amount_remaining': NotRequired[int],
+    'charge_id': NotRequired[str],
+    'currency': NotRequired[str],
+    'discount_cents': NotRequired[int],
+    'due_date': NotRequired[str],
+    'error': NotRequired[str],
+    'event_created': NotRequired[str],
+    'event_id': NotRequired[str],
+    'event_type': NotRequired[str],
+    'hosted_invoice_url': NotRequired[str],
+    'invoice_payment_ids': NotRequired[list[str]],
+    'invoice_pdf': NotRequired[str],
+    'line_items': NotRequired[list[ModelBillingStripeInvoiceLineItemDoc]],
+    'match_status': NotRequired[str],
+    'matched_period_key': NotRequired[str],
+    'matched_user_id': NotRequired[str],
+    'payment_intent_id': NotRequired[str],
+    'period_end': NotRequired[str],
+    'period_start': NotRequired[str],
+    'post_payment_credit_note_cents': NotRequired[int],
+    'pre_payment_credit_note_cents': NotRequired[int],
+    'processed_at': NotRequired[str],
+    'reconciliation_status': NotRequired[str],
+    'repair_attempts': NotRequired[int],
+    'repair_last_attempt_at': NotRequired[str],
+    'repair_last_error': NotRequired[str],
+    'repair_source': NotRequired[str],
+    'repair_status': NotRequired[str],
+    'stripe_customer_id': NotRequired[str],
+    'stripe_invoice_id': NotRequired[str],
+    'stripe_invoice_number': NotRequired[str],
+    'stripe_invoice_status': NotRequired[str],
+    'subtotal_cents': NotRequired[int],
+    'subtotal_excluding_tax_cents': NotRequired[int],
+    'tax_cents': NotRequired[int],
+    'total_cents': NotRequired[int],
+    'total_excluding_tax_cents': NotRequired[int],
+}, total=False)
+
+ModelBillingStripeInvoiceEventsResponseDoc = TypedDict('ModelBillingStripeInvoiceEventsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[list[ModelBillingStripeInvoiceEventDoc]],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelBillingStripeInvoiceLineItemDoc = TypedDict('ModelBillingStripeInvoiceLineItemDoc', {
+    'amount_cents': NotRequired[int],
+    'category': NotRequired[str],
+    'currency': NotRequired[str],
+    'description': NotRequired[str],
+    'line_id': NotRequired[str],
+    'period_end': NotRequired[str],
+    'period_start': NotRequired[str],
+    'proration': NotRequired[bool],
+    'source_ref': NotRequired[str],
+    'type': NotRequired[str],
+}, total=False)
+
+ModelBillingStripeInvoiceReconcileErrorDoc = TypedDict('ModelBillingStripeInvoiceReconcileErrorDoc', {
+    'error': NotRequired[str],
+    'event_id': NotRequired[str],
+    'stripe_invoice_id': NotRequired[str],
+}, total=False)
+
+ModelBillingStripeInvoiceReconcileSummaryDoc = TypedDict('ModelBillingStripeInvoiceReconcileSummaryDoc', {
+    'errors': NotRequired[list[ModelBillingStripeInvoiceReconcileErrorDoc]],
+    'failed': NotRequired[int],
+    'matched': NotRequired[int],
+    'scanned': NotRequired[int],
+    'skipped': NotRequired[int],
+    'unmatched': NotRequired[int],
+}, total=False)
+
+ModelBillingStripeInvoiceReconcileSummaryResponseDoc = TypedDict('ModelBillingStripeInvoiceReconcileSummaryResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelBillingStripeInvoiceReconcileSummaryDoc],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelBillingStripeInvoiceSnapshotDetailDoc = TypedDict('ModelBillingStripeInvoiceSnapshotDetailDoc', {
+    'adjustment_events': NotRequired[list[ModelBillingStripeAdjustmentEventDoc]],
+    'invoice_events': NotRequired[list[ModelBillingStripeInvoiceEventDoc]],
+    'ledger': NotRequired[ModelBillingBillingPeriodLedgerDoc],
+    'snapshot': NotRequired[ModelBillingStripeInvoiceSnapshotDoc],
+}, total=False)
+
+ModelBillingStripeInvoiceSnapshotDetailResponseDoc = TypedDict('ModelBillingStripeInvoiceSnapshotDetailResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelBillingStripeInvoiceSnapshotDetailDoc],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelBillingStripeInvoiceSnapshotDoc = TypedDict('ModelBillingStripeInvoiceSnapshotDoc', {
+    'actual_one_time_cents': NotRequired[int],
+    'actual_overage_cents': NotRequired[int],
+    'actual_proration_cents': NotRequired[int],
+    'actual_subscription_cents': NotRequired[int],
+    'amount_due_cents': NotRequired[int],
+    'amount_paid_cents': NotRequired[int],
+    'amount_remaining_cents': NotRequired[int],
+    'charge_id': NotRequired[str],
+    'created_at': NotRequired[str],
+    'currency': NotRequired[str],
+    'discount_cents': NotRequired[int],
+    'due_date': NotRequired[str],
+    'effective_due_date': NotRequired[str],
+    'expected_total_cents': NotRequired[int],
+    'finalized_at': NotRequired[str],
+    'hosted_invoice_url': NotRequired[str],
+    'invoice_payment_ids': NotRequired[list[str]],
+    'invoice_pdf': NotRequired[str],
+    'last_event_created': NotRequired[str],
+    'last_event_id': NotRequired[str],
+    'line_items': NotRequired[list[ModelBillingStripeInvoiceLineItemDoc]],
+    'matched_period_key': NotRequired[str],
+    'matched_user_id': NotRequired[str],
+    'mismatch_flags': NotRequired[list[str]],
+    'mismatch_total_cents': NotRequired[int],
+    'net_cash_cents': NotRequired[int],
+    'paid_at': NotRequired[str],
+    'payment_intent_id': NotRequired[str],
+    'period_end': NotRequired[str],
+    'period_start': NotRequired[str],
+    'plan': NotRequired[str],
+    'post_payment_credit_note_cents': NotRequired[int],
+    'pre_payment_credit_note_cents': NotRequired[int],
+    'reconciliation_status': NotRequired[str],
+    'refund_cents': NotRequired[int],
+    'repair_attempts': NotRequired[int],
+    'repair_error': NotRequired[str],
+    'repair_last_attempt_at': NotRequired[str],
+    'repair_last_success_at': NotRequired[str],
+    'repair_status': NotRequired[str],
+    'stripe_customer_id': NotRequired[str],
+    'stripe_invoice_id': NotRequired[str],
+    'stripe_invoice_number': NotRequired[str],
+    'stripe_invoice_status': NotRequired[str],
+    'subtotal_cents': NotRequired[int],
+    'subtotal_excluding_tax_cents': NotRequired[int],
+    'tax_cents': NotRequired[int],
+    'total_cents': NotRequired[int],
+    'total_excluding_tax_cents': NotRequired[int],
+    'updated_at': NotRequired[str],
+}, total=False)
+
+ModelBillingStripeInvoiceSnapshotsResponseDoc = TypedDict('ModelBillingStripeInvoiceSnapshotsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[list[ModelBillingStripeInvoiceSnapshotDoc]],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelBillingStripeMismatchSummaryDoc = TypedDict('ModelBillingStripeMismatchSummaryDoc', {
+    'auto_repairable': NotRequired[list[ModelBillingStripeMismatchSummaryItemDoc]],
+    'manual_review': NotRequired[list[ModelBillingStripeMismatchSummaryItemDoc]],
+}, total=False)
+
+ModelBillingStripeMismatchSummaryItemDoc = TypedDict('ModelBillingStripeMismatchSummaryItemDoc', {
+    'actual_total_cents': NotRequired[int],
+    'delta_total_cents': NotRequired[int],
+    'expected_total_cents': NotRequired[int],
+    'invoice_count': NotRequired[int],
+    'mismatch_flag': NotRequired[str],
+}, total=False)
+
+ModelBillingStripeMismatchSummaryResponseDoc = TypedDict('ModelBillingStripeMismatchSummaryResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelBillingStripeMismatchSummaryDoc],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelBillingStripeOverageSyncErrorDoc = TypedDict('ModelBillingStripeOverageSyncErrorDoc', {
+    'error': NotRequired[str],
+    'period_key': NotRequired[str],
+    'user_id': NotRequired[str],
+}, total=False)
+
+ModelBillingStripeOverageSyncSummaryDoc = TypedDict('ModelBillingStripeOverageSyncSummaryDoc', {
+    'ambiguous': NotRequired[int],
+    'errors': NotRequired[list[ModelBillingStripeOverageSyncErrorDoc]],
+    'failed': NotRequired[int],
+    'not_required': NotRequired[int],
+    'scanned': NotRequired[int],
+    'skipped': NotRequired[int],
+    'synced': NotRequired[int],
+}, total=False)
+
+ModelBillingStripeOverageSyncSummaryResponseDoc = TypedDict('ModelBillingStripeOverageSyncSummaryResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelBillingStripeOverageSyncSummaryDoc],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelBillingStripePortalRequestDoc = TypedDict('ModelBillingStripePortalRequestDoc', {
+    'return_url': NotRequired[str],
+}, total=False)
+
+ModelBillingStripeRepairBacklogBucketDoc = TypedDict('ModelBillingStripeRepairBacklogBucketDoc', {
+    'by_attempt_bucket': NotRequired[list[ModelBillingStripeRepairStatusCountDoc]],
+    'by_source': NotRequired[list[ModelBillingStripeRepairStatusCountDoc]],
+    'by_status': NotRequired[list[ModelBillingStripeRepairStatusCountDoc]],
+    'total': NotRequired[int],
+}, total=False)
+
+ModelBillingStripeRepairBacklogSummaryDoc = TypedDict('ModelBillingStripeRepairBacklogSummaryDoc', {
+    'adjustment_events': NotRequired[ModelBillingStripeRepairBacklogBucketDoc],
+    'auto_retry_exhausted_count': NotRequired[int],
+    'invoice_events': NotRequired[ModelBillingStripeRepairBacklogBucketDoc],
+    'recent_errors': NotRequired[list[ModelBillingStripeRepairRecentErrorDoc]],
+    'snapshots': NotRequired[ModelBillingStripeRepairBacklogBucketDoc],
+}, total=False)
+
+ModelBillingStripeRepairBacklogSummaryResponseDoc = TypedDict('ModelBillingStripeRepairBacklogSummaryResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelBillingStripeRepairBacklogSummaryDoc],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelBillingStripeRepairErrorDoc = TypedDict('ModelBillingStripeRepairErrorDoc', {
+    'candidate_kind': NotRequired[str],
+    'error': NotRequired[str],
+    'event_id': NotRequired[str],
+    'invoice_id': NotRequired[str],
+    'resource_id': NotRequired[str],
+}, total=False)
+
+ModelBillingStripeRepairRecentErrorDoc = TypedDict('ModelBillingStripeRepairRecentErrorDoc', {
+    'candidate_kind': NotRequired[str],
+    'event_id': NotRequired[str],
+    'invoice_id': NotRequired[str],
+    'repair_attempts': NotRequired[int],
+    'repair_last_attempt_at': NotRequired[str],
+    'repair_last_error': NotRequired[str],
+    'repair_status': NotRequired[str],
+    'resource_id': NotRequired[str],
+}, total=False)
+
+ModelBillingStripeRepairResetDoc = TypedDict('ModelBillingStripeRepairResetDoc', {
+    'candidate_kind': NotRequired[str],
+    'event_id': NotRequired[str],
+    'invoice_id': NotRequired[str],
+    'previous_repair_attempts': NotRequired[int],
+    'previous_repair_status': NotRequired[str],
+    'repair_attempts': NotRequired[int],
+    'repair_source': NotRequired[str],
+    'repair_status': NotRequired[str],
+    'reset_at': NotRequired[str],
+}, total=False)
+
+ModelBillingStripeRepairResetRequestDoc = TypedDict('ModelBillingStripeRepairResetRequestDoc', {
+    'candidate_kind': Required[str],
+    'event_id': NotRequired[str],
+    'invoice_id': NotRequired[str],
+}, total=False)
+
+ModelBillingStripeRepairResetResponseDoc = TypedDict('ModelBillingStripeRepairResetResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelBillingStripeRepairResetDoc],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelBillingStripeRepairStatusCountDoc = TypedDict('ModelBillingStripeRepairStatusCountDoc', {
+    'count': NotRequired[int],
+    'key': NotRequired[str],
+}, total=False)
+
+ModelBillingStripeRepairSummaryDoc = TypedDict('ModelBillingStripeRepairSummaryDoc', {
+    'adjustment_repaired': NotRequired[int],
+    'errors': NotRequired[list[ModelBillingStripeRepairErrorDoc]],
+    'failed': NotRequired[int],
+    'invoice_repaired': NotRequired[int],
+    'scanned': NotRequired[int],
+    'skipped': NotRequired[int],
+    'succeeded': NotRequired[int],
+}, total=False)
+
+ModelBillingStripeRepairSummaryResponseDoc = TypedDict('ModelBillingStripeRepairSummaryResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelBillingStripeRepairSummaryDoc],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelBillingStripeSessionDoc = TypedDict('ModelBillingStripeSessionDoc', {
+    'id': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelBillingStripeSessionResponseDoc = TypedDict('ModelBillingStripeSessionResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelBillingStripeSessionDoc],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelBingContextAttribute = TypedDict('ModelBingContextAttribute', {
+    'label': NotRequired[str],
+    'value': NotRequired[str],
+}, total=False)
+
+ModelBingImageResult = TypedDict('ModelBingImageResult', {
+    'height': NotRequired[int],
+    'image_url': NotRequired[str],
+    'position': NotRequired[int],
+    'source': NotRequired[str],
+    'source_url': NotRequired[str],
+    'thumbnail': NotRequired[str],
+    'title': NotRequired[str],
+    'url': NotRequired[str],
+    'width': NotRequired[int],
+}, total=False)
+
+ModelBingImagesResponse = TypedDict('ModelBingImagesResponse', {
+    'pagination': NotRequired[ModelBingSearchPagination],
+    'results': NotRequired[list[ModelBingImageResult]],
+}, total=False)
+
+ModelBingNewsResponse = TypedDict('ModelBingNewsResponse', {
+    'pagination': NotRequired[ModelBingSearchPagination],
+    'results': NotRequired[list[ModelBingNewsResult]],
+}, total=False)
+
+ModelBingNewsResult = TypedDict('ModelBingNewsResult', {
+    'age': NotRequired[str],
+    'age_timestamp': NotRequired[int],
+    'description': NotRequired[str],
+    'position': NotRequired[int],
+    'related_count': NotRequired[int],
+    'source': NotRequired[str],
+    'thumbnail': NotRequired[str],
+    'title': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelBingSearchContext = TypedDict('ModelBingSearchContext', {
+    'attributes': NotRequired[list[ModelBingContextAttribute]],
+    'description': NotRequired[str],
+    'image': NotRequired[str],
+    'subtitle': NotRequired[str],
+    'title': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelBingSearchPagination = TypedDict('ModelBingSearchPagination', {
+    'count': NotRequired[int],
+    'next_page': NotRequired[int],
+    'page': NotRequired[int],
+    'previous_page': NotRequired[int],
+}, total=False)
+
+ModelBingSearchResponse = TypedDict('ModelBingSearchResponse', {
+    'context': NotRequired[ModelBingSearchContext],
+    'news': NotRequired[list[ModelBingNewsResult]],
+    'pagination': NotRequired[ModelBingSearchPagination],
+    'people_also_ask': NotRequired[list[str]],
+    'related_queries': NotRequired[list[str]],
+    'results': NotRequired[list[ModelBingSearchResult]],
+    'videos': NotRequired[list[ModelBingVideoResult]],
+}, total=False)
+
+ModelBingSearchResult = TypedDict('ModelBingSearchResult', {
+    'age': NotRequired[str],
+    'age_timestamp': NotRequired[int],
+    'description': NotRequired[str],
+    'display_url': NotRequired[str],
+    'favicon': NotRequired[str],
+    'hostname': NotRequired[str],
+    'position': NotRequired[int],
+    'title': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelBingSuggestResponse = TypedDict('ModelBingSuggestResponse', {
+    'query': NotRequired[str],
+    'suggestions': NotRequired[list[ModelBingSuggestionResult]],
+}, total=False)
+
+ModelBingSuggestionResult = TypedDict('ModelBingSuggestionResult', {
+    'position': NotRequired[int],
+    'query': NotRequired[str],
+}, total=False)
+
+ModelBingVideoResult = TypedDict('ModelBingVideoResult', {
+    'age': NotRequired[str],
+    'age_timestamp': NotRequired[int],
+    'creator': NotRequired[str],
+    'duration': NotRequired[str],
+    'platform': NotRequired[str],
+    'position': NotRequired[int],
+    'thumbnail': NotRequired[str],
+    'title': NotRequired[str],
+    'url': NotRequired[str],
+    'views': NotRequired[str],
+}, total=False)
+
+ModelBingVideosResponse = TypedDict('ModelBingVideosResponse', {
+    'pagination': NotRequired[ModelBingSearchPagination],
+    'results': NotRequired[list[ModelBingVideoResult]],
+}, total=False)
+
+ModelBingImagesResponseDoc = TypedDict('ModelBingImagesResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelBingImagesResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelBingNewsResponseDoc = TypedDict('ModelBingNewsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelBingNewsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelBingSearchResponseDoc = TypedDict('ModelBingSearchResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelBingSearchResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelBingSuggestResponseDoc = TypedDict('ModelBingSuggestResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelBingSuggestResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelBingVideosResponseDoc = TypedDict('ModelBingVideosResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelBingVideosResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelBraveDiscussion = TypedDict('ModelBraveDiscussion', {
+    'age': NotRequired[str],
+    'comment_count': NotRequired[int],
+    'description': NotRequired[str],
+    'favicon': NotRequired[str],
+    'forum': NotRequired[str],
+    'hostname': NotRequired[str],
+    'path': NotRequired[str],
+    'position': NotRequired[int],
+    'score': NotRequired[int],
+    'title': NotRequired[str],
+    'top_comment': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelBraveImageResult = TypedDict('ModelBraveImageResult', {
+    'age': NotRequired[str],
+    'height': NotRequired[int],
+    'image_url': NotRequired[str],
+    'position': NotRequired[int],
+    'source': NotRequired[str],
+    'thumbnail': NotRequired[str],
+    'title': NotRequired[str],
+    'url': NotRequired[str],
+    'width': NotRequired[int],
+}, total=False)
+
+ModelBraveImagesResponse = TypedDict('ModelBraveImagesResponse', {
+    'pagination': NotRequired[ModelBraveSearchPagination],
+    'results': NotRequired[list[ModelBraveImageResult]],
+}, total=False)
+
+ModelBraveKnowledgeCard = TypedDict('ModelBraveKnowledgeCard', {
+    'category': NotRequired[str],
+    'description': NotRequired[str],
+    'image': NotRequired[str],
+    'long_description': NotRequired[str],
+    'provider': NotRequired[ModelBraveKnowledgeCardProvider],
+    'title': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelBraveKnowledgeCardProvider = TypedDict('ModelBraveKnowledgeCardProvider', {
+    'icon': NotRequired[str],
+    'name': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelBraveNewsResponse = TypedDict('ModelBraveNewsResponse', {
+    'pagination': NotRequired[ModelBraveSearchPagination],
+    'results': NotRequired[list[ModelBraveNewsResult]],
+}, total=False)
+
+ModelBraveNewsResult = TypedDict('ModelBraveNewsResult', {
+    'age': NotRequired[str],
+    'description': NotRequired[str],
+    'favicon': NotRequired[str],
+    'hostname': NotRequired[str],
+    'path': NotRequired[str],
+    'position': NotRequired[int],
+    'source': NotRequired[str],
+    'thumbnail': NotRequired[str],
+    'title': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelBraveSearchPagination = TypedDict('ModelBraveSearchPagination', {
+    'next_offset': NotRequired[int],
+    'offset': NotRequired[int],
+    'previous_offset': NotRequired[int],
+}, total=False)
+
+ModelBraveSearchResponse = TypedDict('ModelBraveSearchResponse', {
+    'discussions': NotRequired[list[ModelBraveDiscussion]],
+    'knowledge_card': NotRequired[ModelBraveKnowledgeCard],
+    'pagination': NotRequired[ModelBraveSearchPagination],
+    'related_queries': NotRequired[list[str]],
+    'results': NotRequired[list[ModelBraveSearchResult]],
+    'videos': NotRequired[list[ModelBraveVideoResult]],
+}, total=False)
+
+ModelBraveSearchResult = TypedDict('ModelBraveSearchResult', {
+    'age': NotRequired[str],
+    'description': NotRequired[str],
+    'favicon': NotRequired[str],
+    'hostname': NotRequired[str],
+    'path': NotRequired[str],
+    'position': NotRequired[int],
+    'title': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelBraveSuggestResponse = TypedDict('ModelBraveSuggestResponse', {
+    'query': NotRequired[str],
+    'suggestions': NotRequired[list[ModelBraveSuggestionResult]],
+}, total=False)
+
+ModelBraveSuggestionResult = TypedDict('ModelBraveSuggestionResult', {
+    'position': NotRequired[int],
+    'query': NotRequired[str],
+}, total=False)
+
+ModelBraveVideoResult = TypedDict('ModelBraveVideoResult', {
+    'age': NotRequired[str],
+    'creator': NotRequired[str],
+    'description': NotRequired[str],
+    'duration': NotRequired[str],
+    'favicon': NotRequired[str],
+    'hostname': NotRequired[str],
+    'path': NotRequired[str],
+    'platform': NotRequired[str],
+    'position': NotRequired[int],
+    'thumbnail': NotRequired[str],
+    'title': NotRequired[str],
+    'url': NotRequired[str],
+    'views': NotRequired[str],
+}, total=False)
+
+ModelBraveVideosResponse = TypedDict('ModelBraveVideosResponse', {
+    'pagination': NotRequired[ModelBraveSearchPagination],
+    'results': NotRequired[list[ModelBraveVideoResult]],
+}, total=False)
+
+ModelBraveImagesResponseDoc = TypedDict('ModelBraveImagesResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelBraveImagesResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelBraveNewsResponseDoc = TypedDict('ModelBraveNewsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelBraveNewsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelBraveSearchResponseDoc = TypedDict('ModelBraveSearchResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelBraveSearchResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelBraveSuggestResponseDoc = TypedDict('ModelBraveSuggestResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelBraveSuggestResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelBraveVideosResponseDoc = TypedDict('ModelBraveVideosResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelBraveVideosResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelBuildinfoInfo = TypedDict('ModelBuildinfoInfo', {
+    'api': NotRequired[str],
+    'build_time': NotRequired[str],
+    'commit': NotRequired[str],
+    'commit_short': NotRequired[str],
+    'dirty': NotRequired[bool],
+    'service': NotRequired[str],
+    'status': NotRequired[str],
+    'version': NotRequired[str],
+}, total=False)
+
+ModelCoingeckoAnalysisResponse = TypedDict('ModelCoingeckoAnalysisResponse', {
+    'absolute_change': NotRequired[float],
+    'annotations': NotRequired[list[dict[str, Any]]],
+    'annotations_point_count': NotRequired[int],
+    'annotations_source_url': NotRequired[str],
+    'fetched_at': NotRequired[str],
+    'first_price': NotRequired[float],
+    'high_low_range_percent': NotRequired[float],
+    'id': NotRequired[str],
+    'last_price': NotRequired[float],
+    'max_price': NotRequired[float],
+    'min_price': NotRequired[float],
+    'percent_change': NotRequired[float],
+    'points': NotRequired[list[ModelCoingeckoChartPoint]],
+    'points_count': NotRequired[int],
+    'range': NotRequired[str],
+    'source_url': NotRequired[str],
+    'vs_currency': NotRequired[str],
+}, total=False)
+
+ModelCoingeckoCategoriesResponse = TypedDict('ModelCoingeckoCategoriesResponse', {
+    'categories': NotRequired[list[ModelCoingeckoCategoryRow]],
+    'fetched_at': NotRequired[str],
+    'limit': NotRequired[int],
+    'source_url': NotRequired[str],
+    'vs_currency': NotRequired[str],
+}, total=False)
+
+ModelCoingeckoCategoryCoinRow = TypedDict('ModelCoingeckoCategoryCoinRow', {
+    'change_1h_percent': NotRequired[float],
+    'change_24h_percent': NotRequired[float],
+    'change_30d_percent': NotRequired[float],
+    'change_7d_percent': NotRequired[float],
+    'fully_diluted_valuation': NotRequired[float],
+    'id': NotRequired[str],
+    'image_url': NotRequired[str],
+    'market_cap': NotRequired[float],
+    'market_cap_fdv_ratio': NotRequired[float],
+    'name': NotRequired[str],
+    'price': NotRequired[float],
+    'rank': NotRequired[int],
+    'symbol': NotRequired[str],
+    'url': NotRequired[str],
+    'volume_24h': NotRequired[float],
+}, total=False)
+
+ModelCoingeckoCategoryCoinsResponse = TypedDict('ModelCoingeckoCategoryCoinsResponse', {
+    'coins': NotRequired[list[ModelCoingeckoCategoryCoinRow]],
+    'fetched_at': NotRequired[str],
+    'limit': NotRequired[int],
+    'name': NotRequired[str],
+    'page': NotRequired[int],
+    'slug': NotRequired[str],
+    'source_url': NotRequired[str],
+    'vs_currency': NotRequired[str],
+}, total=False)
+
+ModelCoingeckoCategoryRow = TypedDict('ModelCoingeckoCategoryRow', {
+    'change_1h_percent': NotRequired[float],
+    'change_24h_percent': NotRequired[float],
+    'change_7d_percent': NotRequired[float],
+    'coin_count': NotRequired[int],
+    'id': NotRequired[str],
+    'market_cap': NotRequired[float],
+    'name': NotRequired[str],
+    'rank': NotRequired[int],
+    'slug': NotRequired[str],
+    'url': NotRequired[str],
+    'volume_24h': NotRequired[float],
+}, total=False)
+
+ModelCoingeckoChainDetailResponse = TypedDict('ModelCoingeckoChainDetailResponse', {
+    'coins': NotRequired[list[ModelCoingeckoCategoryCoinRow]],
+    'collections': NotRequired[list[ModelCoingeckoNftcollectionRow]],
+    'exchanges': NotRequired[list[ModelCoingeckoChainExchangeRow]],
+    'fetched_at': NotRequired[str],
+    'id': NotRequired[str],
+    'limit': NotRequired[int],
+    'name': NotRequired[str],
+    'source_url': NotRequired[str],
+    'vs_currency': NotRequired[str],
+}, total=False)
+
+ModelCoingeckoChainExchangeRow = TypedDict('ModelCoingeckoChainExchangeRow', {
+    'id': NotRequired[str],
+    'image_url': NotRequired[str],
+    'market_share_percent': NotRequired[float],
+    'name': NotRequired[str],
+    'rank': NotRequired[int],
+    'url': NotRequired[str],
+    'volume_24h': NotRequired[float],
+    'volume_24h_text': NotRequired[str],
+}, total=False)
+
+ModelCoingeckoChainRow = TypedDict('ModelCoingeckoChainRow', {
+    'change_24h_percent': NotRequired[float],
+    'change_30d_percent': NotRequired[float],
+    'change_7d_percent': NotRequired[float],
+    'coin_count': NotRequired[int],
+    'dominance_percent': NotRequired[float],
+    'id': NotRequired[str],
+    'image_url': NotRequired[str],
+    'name': NotRequired[str],
+    'rank': NotRequired[int],
+    'top_gainers': NotRequired[list[str]],
+    'tvl': NotRequired[float],
+    'url': NotRequired[str],
+    'volume_24h': NotRequired[float],
+}, total=False)
+
+ModelCoingeckoChainsResponse = TypedDict('ModelCoingeckoChainsResponse', {
+    'chains': NotRequired[list[ModelCoingeckoChainRow]],
+    'fetched_at': NotRequired[str],
+    'limit': NotRequired[int],
+    'source_url': NotRequired[str],
+    'vs_currency': NotRequired[str],
+}, total=False)
+
+ModelCoingeckoChartPoint = TypedDict('ModelCoingeckoChartPoint', {
+    'datetime': NotRequired[str],
+    'price': NotRequired[float],
+    'timestamp': NotRequired[int],
+}, total=False)
+
+ModelCoingeckoCoinResponse = TypedDict('ModelCoingeckoCoinResponse', {
+    'categories': NotRequired[list[str]],
+    'change_1h_percent': NotRequired[float],
+    'change_24h_percent': NotRequired[float],
+    'change_7d_percent': NotRequired[float],
+    'circulating_supply': NotRequired[float],
+    'fetched_at': NotRequired[str],
+    'fully_diluted_valuation': NotRequired[float],
+    'id': NotRequired[str],
+    'links': NotRequired[dict[str, str]],
+    'market_cap': NotRequired[float],
+    'max_supply': NotRequired[float],
+    'name': NotRequired[str],
+    'price': NotRequired[float],
+    'rank': NotRequired[int],
+    'source_url': NotRequired[str],
+    'symbol': NotRequired[str],
+    'total_supply': NotRequired[float],
+    'volume_24h': NotRequired[float],
+}, total=False)
+
+ModelCoingeckoExchangeDetailResponse = TypedDict('ModelCoingeckoExchangeDetailResponse', {
+    'fetched_at': NotRequired[str],
+    'id': NotRequired[str],
+    'kind': NotRequired[str],
+    'limit': NotRequired[int],
+    'markets': NotRequired[list[ModelCoingeckoExchangeMarketRow]],
+    'name': NotRequired[str],
+    'source_url': NotRequired[str],
+    'trust_score': NotRequired[float],
+    'volume_24h': NotRequired[float],
+    'volume_24h_text': NotRequired[str],
+    'vs_currency': NotRequired[str],
+}, total=False)
+
+ModelCoingeckoExchangeMarketRow = TypedDict('ModelCoingeckoExchangeMarketRow', {
+    'coin_id': NotRequired[str],
+    'coin_name': NotRequired[str],
+    'coin_symbol': NotRequired[str],
+    'coin_url': NotRequired[str],
+    'depth_minus_2_percent': NotRequired[float],
+    'depth_plus_2_percent': NotRequired[float],
+    'last_updated': NotRequired[str],
+    'pair': NotRequired[str],
+    'price': NotRequired[float],
+    'rank': NotRequired[int],
+    'spread_percent': NotRequired[float],
+    'volume_24h': NotRequired[float],
+    'volume_percent': NotRequired[float],
+}, total=False)
+
+ModelCoingeckoExchangeRow = TypedDict('ModelCoingeckoExchangeRow', {
+    'id': NotRequired[str],
+    'image_url': NotRequired[str],
+    'kind': NotRequired[str],
+    'name': NotRequired[str],
+    'rank': NotRequired[int],
+    'trust_score': NotRequired[float],
+    'url': NotRequired[str],
+    'volume_24h': NotRequired[float],
+    'volume_24h_text': NotRequired[str],
+}, total=False)
+
+ModelCoingeckoExchangesResponse = TypedDict('ModelCoingeckoExchangesResponse', {
+    'exchanges': NotRequired[list[ModelCoingeckoExchangeRow]],
+    'fetched_at': NotRequired[str],
+    'kind': NotRequired[str],
+    'limit': NotRequired[int],
+    'page': NotRequired[int],
+    'source_url': NotRequired[str],
+    'vs_currency': NotRequired[str],
+}, total=False)
+
+ModelCoingeckoGainerLoserRow = TypedDict('ModelCoingeckoGainerLoserRow', {
+    'change_24h_percent': NotRequired[float],
+    'id': NotRequired[str],
+    'image_url': NotRequired[str],
+    'name': NotRequired[str],
+    'price': NotRequired[float],
+    'rank': NotRequired[int],
+    'symbol': NotRequired[str],
+    'url': NotRequired[str],
+    'volume_24h': NotRequired[float],
+}, total=False)
+
+ModelCoingeckoGainersLosersResponse = TypedDict('ModelCoingeckoGainersLosersResponse', {
+    'fetched_at': NotRequired[str],
+    'gainers': NotRequired[list[ModelCoingeckoGainerLoserRow]],
+    'limit': NotRequired[int],
+    'losers': NotRequired[list[ModelCoingeckoGainerLoserRow]],
+    'source_url': NotRequired[str],
+    'vs_currency': NotRequired[str],
+}, total=False)
+
+ModelCoingeckoGlobalChartPoint = TypedDict('ModelCoingeckoGlobalChartPoint', {
+    'datetime': NotRequired[str],
+    'timestamp': NotRequired[int],
+    'value': NotRequired[float],
+}, total=False)
+
+ModelCoingeckoGlobalChartSeries = TypedDict('ModelCoingeckoGlobalChartSeries', {
+    'name': NotRequired[str],
+    'points': NotRequired[list[ModelCoingeckoGlobalChartPoint]],
+}, total=False)
+
+ModelCoingeckoGlobalChartsResponse = TypedDict('ModelCoingeckoGlobalChartsResponse', {
+    'fetched_at': NotRequired[str],
+    'kind': NotRequired[str],
+    'limit': NotRequired[int],
+    'range': NotRequired[str],
+    'series': NotRequired[list[ModelCoingeckoGlobalChartSeries]],
+    'source_url': NotRequired[str],
+}, total=False)
+
+ModelCoingeckoGlobalResponse = TypedDict('ModelCoingeckoGlobalResponse', {
+    'bitcoin_dominance_percent': NotRequired[float],
+    'bitcoin_market_cap_usd': NotRequired[float],
+    'categories_tracked': NotRequired[int],
+    'coins_tracked': NotRequired[int],
+    'ethereum_dominance_percent': NotRequired[float],
+    'exchanges_tracked': NotRequired[int],
+    'fetched_at': NotRequired[str],
+    'market_cap_change_1y_percent': NotRequired[float],
+    'market_cap_change_24h_percent': NotRequired[float],
+    'market_cap_usd': NotRequired[float],
+    'source_url': NotRequired[str],
+    'stablecoin_market_cap_usd': NotRequired[float],
+    'stablecoin_share_percent': NotRequired[float],
+}, total=False)
+
+ModelCoingeckoLearnArticle = TypedDict('ModelCoingeckoLearnArticle', {
+    'author': NotRequired[str],
+    'category': NotRequired[str],
+    'excerpt': NotRequired[str],
+    'image_url': NotRequired[str],
+    'published_date': NotRequired[str],
+    'rating_score': NotRequired[float],
+    'rating_text': NotRequired[str],
+    'rating_votes': NotRequired[int],
+    'title': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelCoingeckoLearnArticlesResponse = TypedDict('ModelCoingeckoLearnArticlesResponse', {
+    'articles': NotRequired[list[ModelCoingeckoLearnArticle]],
+    'category': NotRequired[str],
+    'fetched_at': NotRequired[str],
+    'limit': NotRequired[int],
+    'source_url': NotRequired[str],
+}, total=False)
+
+ModelCoingeckoMarketCoin = TypedDict('ModelCoingeckoMarketCoin', {
+    'change_1h_percent': NotRequired[float],
+    'change_24h_percent': NotRequired[float],
+    'change_7d_percent': NotRequired[float],
+    'id': NotRequired[str],
+    'image_url': NotRequired[str],
+    'market_cap': NotRequired[float],
+    'name': NotRequired[str],
+    'price': NotRequired[float],
+    'rank': NotRequired[int],
+    'symbol': NotRequired[str],
+    'url': NotRequired[str],
+    'volume_24h': NotRequired[float],
+}, total=False)
+
+ModelCoingeckoMarketsResponse = TypedDict('ModelCoingeckoMarketsResponse', {
+    'coins': NotRequired[list[ModelCoingeckoMarketCoin]],
+    'fetched_at': NotRequired[str],
+    'limit': NotRequired[int],
+    'page': NotRequired[int],
+    'source_url': NotRequired[str],
+    'vs_currency': NotRequired[str],
+}, total=False)
+
+ModelCoingeckoNftcategoryResponse = TypedDict('ModelCoingeckoNftcategoryResponse', {
+    'collections': NotRequired[list[ModelCoingeckoNftcollectionRow]],
+    'fetched_at': NotRequired[str],
+    'limit': NotRequired[int],
+    'name': NotRequired[str],
+    'page': NotRequired[int],
+    'slug': NotRequired[str],
+    'source_url': NotRequired[str],
+    'vs_currency': NotRequired[str],
+}, total=False)
+
+ModelCoingeckoNftcollectionRow = TypedDict('ModelCoingeckoNftcollectionRow', {
+    'chain': NotRequired[str],
+    'change_24h_percent': NotRequired[float],
+    'change_30d_percent': NotRequired[float],
+    'change_7d_percent': NotRequired[float],
+    'floor_price_native': NotRequired[float],
+    'floor_price_usd': NotRequired[float],
+    'id': NotRequired[str],
+    'image_url': NotRequired[str],
+    'market_cap_native': NotRequired[float],
+    'market_cap_usd': NotRequired[float],
+    'name': NotRequired[str],
+    'rank': NotRequired[int],
+    'sales_24h': NotRequired[int],
+    'url': NotRequired[str],
+    'volume_24h_native': NotRequired[float],
+    'volume_24h_usd': NotRequired[float],
+}, total=False)
+
+ModelCoingeckoNftsResponse = TypedDict('ModelCoingeckoNftsResponse', {
+    'collections': NotRequired[list[ModelCoingeckoNftcollectionRow]],
+    'fetched_at': NotRequired[str],
+    'limit': NotRequired[int],
+    'page': NotRequired[int],
+    'source_url': NotRequired[str],
+    'vs_currency': NotRequired[str],
+}, total=False)
+
+ModelCoingeckoNewCoinRow = TypedDict('ModelCoingeckoNewCoinRow', {
+    'chain': NotRequired[str],
+    'change_1h_percent': NotRequired[float],
+    'change_24h_percent': NotRequired[float],
+    'fully_diluted_valuation': NotRequired[float],
+    'id': NotRequired[str],
+    'image_url': NotRequired[str],
+    'last_added': NotRequired[str],
+    'name': NotRequired[str],
+    'price': NotRequired[float],
+    'rank': NotRequired[int],
+    'symbol': NotRequired[str],
+    'url': NotRequired[str],
+    'volume_24h': NotRequired[float],
+}, total=False)
+
+ModelCoingeckoNewCoinsResponse = TypedDict('ModelCoingeckoNewCoinsResponse', {
+    'coins': NotRequired[list[ModelCoingeckoNewCoinRow]],
+    'fetched_at': NotRequired[str],
+    'limit': NotRequired[int],
+    'page': NotRequired[int],
+    'source_url': NotRequired[str],
+    'vs_currency': NotRequired[str],
+}, total=False)
+
+ModelCoingeckoNewsArticle = TypedDict('ModelCoingeckoNewsArticle', {
+    'coins': NotRequired[list[ModelCoingeckoNewsCoin]],
+    'image_url': NotRequired[str],
+    'published_text': NotRequired[str],
+    'publisher': NotRequired[str],
+    'summary': NotRequired[str],
+    'title': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelCoingeckoNewsCoin = TypedDict('ModelCoingeckoNewsCoin', {
+    'change_percent': NotRequired[float],
+    'id': NotRequired[str],
+    'name': NotRequired[str],
+    'symbol': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelCoingeckoNewsResponse = TypedDict('ModelCoingeckoNewsResponse', {
+    'articles': NotRequired[list[ModelCoingeckoNewsArticle]],
+    'fetched_at': NotRequired[str],
+    'limit': NotRequired[int],
+    'source_url': NotRequired[str],
+}, total=False)
+
+ModelCoingeckoSearchAssetPlatform = TypedDict('ModelCoingeckoSearchAssetPlatform', {
+    'id': NotRequired[str],
+    'name': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelCoingeckoSearchCategory = TypedDict('ModelCoingeckoSearchCategory', {
+    'id': NotRequired[str],
+    'name': NotRequired[str],
+    'slug': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelCoingeckoSearchCoin = TypedDict('ModelCoingeckoSearchCoin', {
+    'id': NotRequired[str],
+    'image_url': NotRequired[str],
+    'market_cap_rank': NotRequired[int],
+    'name': NotRequired[str],
+    'symbol': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelCoingeckoSearchMarket = TypedDict('ModelCoingeckoSearchMarket', {
+    'id': NotRequired[str],
+    'name': NotRequired[str],
+    'type': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelCoingeckoSearchNftcontract = TypedDict('ModelCoingeckoSearchNftcontract', {
+    'address': NotRequired[str],
+    'asset_platform_id': NotRequired[str],
+    'id': NotRequired[str],
+    'name': NotRequired[str],
+    'symbol': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelCoingeckoSearchPost = TypedDict('ModelCoingeckoSearchPost', {
+    'description': NotRequired[str],
+    'id': NotRequired[str],
+    'title': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelCoingeckoSearchResponse = TypedDict('ModelCoingeckoSearchResponse', {
+    'asset_platforms': NotRequired[list[ModelCoingeckoSearchAssetPlatform]],
+    'categories': NotRequired[list[ModelCoingeckoSearchCategory]],
+    'coins': NotRequired[list[ModelCoingeckoSearchCoin]],
+    'fetched_at': NotRequired[str],
+    'limit': NotRequired[int],
+    'markets': NotRequired[list[ModelCoingeckoSearchMarket]],
+    'nft_contracts': NotRequired[list[ModelCoingeckoSearchNftcontract]],
+    'posts': NotRequired[list[ModelCoingeckoSearchPost]],
+    'query': NotRequired[str],
+    'source_url': NotRequired[str],
+}, total=False)
+
+ModelCoingeckoTokenUnlockRow = TypedDict('ModelCoingeckoTokenUnlockRow', {
+    'change_1h_percent': NotRequired[float],
+    'change_24h_percent': NotRequired[float],
+    'change_7d_percent': NotRequired[float],
+    'id': NotRequired[str],
+    'image_url': NotRequired[str],
+    'market_cap': NotRequired[float],
+    'name': NotRequired[str],
+    'next_unlock_amount': NotRequired[float],
+    'next_unlock_percent': NotRequired[float],
+    'next_unlock_symbol': NotRequired[str],
+    'next_unlock_time_left': NotRequired[str],
+    'next_unlock_value_usd': NotRequired[float],
+    'price': NotRequired[float],
+    'rank': NotRequired[int],
+    'released_percent': NotRequired[float],
+    'symbol': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelCoingeckoTokenUnlocksResponse = TypedDict('ModelCoingeckoTokenUnlocksResponse', {
+    'coins': NotRequired[list[ModelCoingeckoTokenUnlockRow]],
+    'fetched_at': NotRequired[str],
+    'limit': NotRequired[int],
+    'source_url': NotRequired[str],
+}, total=False)
+
+ModelCoingeckoTreasuriesResponse = TypedDict('ModelCoingeckoTreasuriesResponse', {
+    'asset': NotRequired[str],
+    'entities': NotRequired[list[ModelCoingeckoTreasuryEntityRow]],
+    'fetched_at': NotRequired[str],
+    'holder_type': NotRequired[str],
+    'limit': NotRequired[int],
+    'source_url': NotRequired[str],
+    'vs_currency': NotRequired[str],
+}, total=False)
+
+ModelCoingeckoTreasuryEntityRow = TypedDict('ModelCoingeckoTreasuryEntityRow', {
+    'activity_30d': NotRequired[str],
+    'country': NotRequired[str],
+    'entity_type': NotRequired[str],
+    'id': NotRequired[str],
+    'mnav': NotRequired[float],
+    'name': NotRequired[str],
+    'rank': NotRequired[int],
+    'ticker': NotRequired[str],
+    'today_value_usd': NotRequired[float],
+    'top_holdings': NotRequired[str],
+    'total_cost_usd': NotRequired[float],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelCoingeckoTrendingCategory = TypedDict('ModelCoingeckoTrendingCategory', {
+    'change_1h_percent': NotRequired[float],
+    'change_24h_percent': NotRequired[float],
+    'change_7d_percent': NotRequired[float],
+    'id': NotRequired[str],
+    'name': NotRequired[str],
+    'slug': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelCoingeckoTrendingCoin = TypedDict('ModelCoingeckoTrendingCoin', {
+    'change_1h_percent': NotRequired[float],
+    'change_24h_percent': NotRequired[float],
+    'change_7d_percent': NotRequired[float],
+    'id': NotRequired[str],
+    'name': NotRequired[str],
+    'price': NotRequired[float],
+    'symbol': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelCoingeckoTrendingResponse = TypedDict('ModelCoingeckoTrendingResponse', {
+    'categories': NotRequired[list[ModelCoingeckoTrendingCategory]],
+    'coins': NotRequired[list[ModelCoingeckoTrendingCoin]],
+    'fetched_at': NotRequired[str],
+    'limit': NotRequired[int],
+    'source_url': NotRequired[str],
+    'vs_currency': NotRequired[str],
+}, total=False)
+
+ModelCoingeckoAnalysisResponseDoc = TypedDict('ModelCoingeckoAnalysisResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelCoingeckoAnalysisResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelCoingeckoCategoriesResponseDoc = TypedDict('ModelCoingeckoCategoriesResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelCoingeckoCategoriesResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelCoingeckoCategoryCoinsResponseDoc = TypedDict('ModelCoingeckoCategoryCoinsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelCoingeckoCategoryCoinsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelCoingeckoChainDetailResponseDoc = TypedDict('ModelCoingeckoChainDetailResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelCoingeckoChainDetailResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelCoingeckoChainsResponseDoc = TypedDict('ModelCoingeckoChainsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelCoingeckoChainsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelCoingeckoCoinResponseDoc = TypedDict('ModelCoingeckoCoinResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelCoingeckoCoinResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelCoingeckoExchangeDetailResponseDoc = TypedDict('ModelCoingeckoExchangeDetailResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelCoingeckoExchangeDetailResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelCoingeckoExchangesResponseDoc = TypedDict('ModelCoingeckoExchangesResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelCoingeckoExchangesResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelCoingeckoGainersLosersResponseDoc = TypedDict('ModelCoingeckoGainersLosersResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelCoingeckoGainersLosersResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelCoingeckoGlobalChartsResponseDoc = TypedDict('ModelCoingeckoGlobalChartsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelCoingeckoGlobalChartsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelCoingeckoGlobalResponseDoc = TypedDict('ModelCoingeckoGlobalResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelCoingeckoGlobalResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelCoingeckoLearnArticlesResponseDoc = TypedDict('ModelCoingeckoLearnArticlesResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelCoingeckoLearnArticlesResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelCoingeckoMarketsResponseDoc = TypedDict('ModelCoingeckoMarketsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelCoingeckoMarketsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelCoingeckoNewCoinsResponseDoc = TypedDict('ModelCoingeckoNewCoinsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelCoingeckoNewCoinsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelCoingeckoNewsResponseDoc = TypedDict('ModelCoingeckoNewsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelCoingeckoNewsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelCoingeckoNftCategoryResponseDoc = TypedDict('ModelCoingeckoNftCategoryResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelCoingeckoNftcategoryResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelCoingeckoNftsResponseDoc = TypedDict('ModelCoingeckoNftsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelCoingeckoNftsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelCoingeckoSearchResponseDoc = TypedDict('ModelCoingeckoSearchResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelCoingeckoSearchResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelCoingeckoTokenUnlocksResponseDoc = TypedDict('ModelCoingeckoTokenUnlocksResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelCoingeckoTokenUnlocksResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelCoingeckoTreasuriesResponseDoc = TypedDict('ModelCoingeckoTreasuriesResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelCoingeckoTreasuriesResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelCoingeckoTrendingResponseDoc = TypedDict('ModelCoingeckoTrendingResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelCoingeckoTrendingResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelContactContact = TypedDict('ModelContactContact', {
+    'emails': NotRequired[list[str]],
+    'socials': NotRequired[dict[str, Any]],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelContactContactOption = TypedDict('ModelContactContactOption', {
+    'url': Required[str],
+}, total=False)
+
+ModelDatasetsDatasetInfo = TypedDict('ModelDatasetsDatasetInfo', {
+    'capabilities': NotRequired[list[str]],
+    'description': NotRequired[str],
+    'id': NotRequired[str],
+    'name': NotRequired[str],
+}, total=False)
+
+ModelDatasetsDatasetListResponse = TypedDict('ModelDatasetsDatasetListResponse', {
+    'items': NotRequired[list[ModelDatasetsDatasetInfo]],
+}, total=False)
+
+ModelDatasetsGoogleBusinessFacetResponse = TypedDict('ModelDatasetsGoogleBusinessFacetResponse', {
+    'dataset': NotRequired[str],
+    'facet': NotRequired[str],
+    'items': NotRequired[list[ModelEsGoogleBusinessDatasetFacetItem]],
+}, total=False)
+
+ModelDatasetsGoogleBusinessSearchResponse = TypedDict('ModelDatasetsGoogleBusinessSearchResponse', {
+    'dataset': NotRequired[str],
+    'items': NotRequired[list[ModelEsGoogleBusinessDatasetItem]],
+    'page': NotRequired[int],
+    'page_size': NotRequired[int],
+    'sort': NotRequired[str],
+    'total': NotRequired[int],
+}, total=False)
+
+ModelDatasetsGoogleMapBusinessResponseDoc = TypedDict('ModelDatasetsGoogleMapBusinessResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelEsGoogleBusiness],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelDatasetsGoogleMapBusinessesFacetResponseDoc = TypedDict('ModelDatasetsGoogleMapBusinessesFacetResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelDatasetsGoogleBusinessFacetResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelDatasetsGoogleMapBusinessesSearchResponseDoc = TypedDict('ModelDatasetsGoogleMapBusinessesSearchResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelDatasetsGoogleBusinessSearchResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelDatasetsListResponseDoc = TypedDict('ModelDatasetsListResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelDatasetsDatasetListResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelEbayItem = TypedDict('ModelEbayItem', {
+    'availability': NotRequired[str],
+    'condition': NotRequired[str],
+    'description': NotRequired[str],
+    'images': NotRequired[list[str]],
+    'item_feedback_count': NotRequired[int],
+    'item_id': NotRequired[str],
+    'item_specifics': NotRequired[dict[str, str]],
+    'link': NotRequired[str],
+    'location': NotRequired[str],
+    'price': NotRequired[float],
+    'price_text': NotRequired[str],
+    'rating': NotRequired[float],
+    'rating_count': NotRequired[int],
+    'sale_status': NotRequired[str],
+    'seller_categories': NotRequired[list[str]],
+    'seller_description': NotRequired[str],
+    'seller_detailed_ratings': NotRequired[dict[str, float]],
+    'seller_feedback_score': NotRequired[int],
+    'seller_followers': NotRequired[int],
+    'seller_items_sold': NotRequired[int],
+    'seller_link': NotRequired[str],
+    'seller_logo_url': NotRequired[str],
+    'seller_member_since': NotRequired[str],
+    'seller_name': NotRequired[str],
+    'seller_positive_feedback': NotRequired[float],
+    'seller_store_name': NotRequired[str],
+    'seller_total_feedback_count': NotRequired[int],
+    'shipping': NotRequired[str],
+    'title': NotRequired[str],
+}, total=False)
+
+ModelEbaySearchItem = TypedDict('ModelEbaySearchItem', {
+    'bid_count': NotRequired[int],
+    'caption': NotRequired[str],
+    'image': NotRequired[str],
+    'is_authenticity_guaranteed': NotRequired[bool],
+    'item_id': NotRequired[str],
+    'link': NotRequired[str],
+    'location': NotRequired[str],
+    'logistic': NotRequired[str],
+    'offer_note': NotRequired[str],
+    'price': NotRequired[float],
+    'price_from': NotRequired[float],
+    'price_to': NotRequired[float],
+    'rating': NotRequired[float],
+    'rating_num': NotRequired[int],
+    'seller': NotRequired[str],
+    'sold_count': NotRequired[int],
+    'sub_title': NotRequired[str],
+    'title': NotRequired[str],
+    'watcher_count': NotRequired[int],
+}, total=False)
+
+ModelEbaySearchOption = TypedDict('ModelEbaySearchOption', {
+    'keyword': Required[str],
+    'limit': NotRequired[Literal['60', '120', '240']],
+    'listing_type': NotRequired[Literal['active', 'sold', 'completed', 'sold_completed']],
+    'page': NotRequired[int],
+}, total=False)
+
+ModelEbaySearchResp = TypedDict('ModelEbaySearchResp', {
+    'has_more': NotRequired[bool],
+    'page': NotRequired[int],
+    'result': NotRequired[list[ModelEbaySearchItem]],
+    'total': NotRequired[int],
+}, total=False)
+
+ModelEbaySeller = TypedDict('ModelEbaySeller', {
+    'description': NotRequired[str],
+    'detailed_seller_ratings': NotRequired[dict[str, float]],
+    'display_name': NotRequired[str],
+    'feedback_count': NotRequired[int],
+    'feedback_summary': NotRequired[dict[str, int]],
+    'followers': NotRequired[int],
+    'items_sold': NotRequired[int],
+    'location': NotRequired[str],
+    'member_since': NotRequired[str],
+    'positive_feedback_percent': NotRequired[float],
+    'profile_url': NotRequired[str],
+    'seller': NotRequired[str],
+    'store_name': NotRequired[str],
+    'store_url': NotRequired[str],
+}, total=False)
+
+ModelEbaySellerAbout = TypedDict('ModelEbaySellerAbout', {
+    'banner_url': NotRequired[str],
+    'categories': NotRequired[list[ModelEbaySellerAboutCategory]],
+    'contact_seller_url': NotRequired[str],
+    'description': NotRequired[str],
+    'followers': NotRequired[int],
+    'items_sold': NotRequired[int],
+    'location': NotRequired[str],
+    'logo_url': NotRequired[str],
+    'member_since': NotRequired[str],
+    'positive_feedback_percent': NotRequired[float],
+    'seller': NotRequired[str],
+    'store_name': NotRequired[str],
+    'store_url': NotRequired[str],
+    'top_rated_seller': NotRequired[bool],
+    'top_rated_seller_summary': NotRequired[str],
+}, total=False)
+
+ModelEbaySellerAboutCategory = TypedDict('ModelEbaySellerAboutCategory', {
+    'name': NotRequired[str],
+    'subcategories': NotRequired[list[ModelEbaySellerAboutSubcategory]],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelEbaySellerAboutSubcategory = TypedDict('ModelEbaySellerAboutSubcategory', {
+    'name': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelEbaySellerFeedback = TypedDict('ModelEbaySellerFeedback', {
+    'description': NotRequired[str],
+    'detailed_seller_ratings': NotRequired[dict[str, float]],
+    'followers': NotRequired[int],
+    'has_more': NotRequired[bool],
+    'items_sold': NotRequired[int],
+    'next_page': NotRequired[int],
+    'overall_rating_summary': NotRequired[dict[str, int]],
+    'page': NotRequired[int],
+    'per_page': NotRequired[int],
+    'positive_feedback_percent': NotRequired[float],
+    'reviews': NotRequired[list[ModelEbaySellerReview]],
+    'seller': NotRequired[str],
+    'store_name': NotRequired[str],
+    'store_url': NotRequired[str],
+    'total_feedback_count': NotRequired[int],
+}, total=False)
+
+ModelEbaySellerReview = TypedDict('ModelEbaySellerReview', {
+    'buyer': NotRequired[str],
+    'buyer_feedback': NotRequired[int],
+    'comment': NotRequired[str],
+    'period': NotRequired[str],
+    'rating': NotRequired[str],
+    'verified_purchase': NotRequired[bool],
+}, total=False)
+
+ModelEbayItemResponseDoc = TypedDict('ModelEbayItemResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelEbayItem],
+    'msg': NotRequired[Any],
+}, total=False)
+
+ModelEbaySearchResponseDoc = TypedDict('ModelEbaySearchResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelEbaySearchResp],
+    'msg': NotRequired[Any],
+}, total=False)
+
+ModelEbaySellerAboutResponseDoc = TypedDict('ModelEbaySellerAboutResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelEbaySellerAbout],
+    'msg': NotRequired[Any],
+}, total=False)
+
+ModelEbaySellerFeedbackResponseDoc = TypedDict('ModelEbaySellerFeedbackResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelEbaySellerFeedback],
+    'msg': NotRequired[Any],
+}, total=False)
+
+ModelEbaySellerResponseDoc = TypedDict('ModelEbaySellerResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelEbaySeller],
+    'msg': NotRequired[Any],
+}, total=False)
+
+ModelEbaySellerShopResponseDoc = TypedDict('ModelEbaySellerShopResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelEbaySearchResp],
+    'msg': NotRequired[Any],
+}, total=False)
+
+ModelEsGeoPoint = TypedDict('ModelEsGeoPoint', {
+    'lat': NotRequired[float],
+    'lon': NotRequired[float],
+}, total=False)
+
+ModelEsGoogleBusiness = TypedDict('ModelEsGoogleBusiness', {
+    'address': NotRequired[str],
+    'amenities': NotRequired[list[str]],
+    'category': NotRequired[list[str]],
+    'city': NotRequired[str],
+    'contact': NotRequired[ModelContactContact],
+    'contact_is_updated': NotRequired[bool],
+    'country': NotRequired[str],
+    'county': NotRequired[str],
+    'created_at': NotRequired[str],
+    'description': NotRequired[str],
+    'geo': NotRequired[ModelEsGeoPoint],
+    'geo_is_updated': NotRequired[bool],
+    'id': NotRequired[str],
+    'image': NotRequired[str],
+    'locations': NotRequired[list[str]],
+    'name': NotRequired[str],
+    'phone': NotRequired[str],
+    'place_id': NotRequired[str],
+    'rating': NotRequired[float],
+    'review_count': NotRequired[int],
+    'similarweb': NotRequired[ModelSimilarwebSimilarWebResp],
+    'state': NotRequired[str],
+    'town': NotRequired[str],
+    'updated_at': NotRequired[str],
+    'url': NotRequired[str],
+    'website': NotRequired[str],
+    'website_status': NotRequired[ModelEsWebsiteStatus],
+}, total=False)
+
+ModelEsGoogleBusinessDatasetFacetItem = TypedDict('ModelEsGoogleBusinessDatasetFacetItem', {
+    'count': NotRequired[int],
+    'value': NotRequired[str],
+}, total=False)
+
+ModelEsGoogleBusinessDatasetItem = TypedDict('ModelEsGoogleBusinessDatasetItem', {
+    'address': NotRequired[str],
+    'amenities': NotRequired[list[str]],
+    'category': NotRequired[list[str]],
+    'city': NotRequired[str],
+    'contact': NotRequired[ModelContactContact],
+    'contact_is_updated': NotRequired[bool],
+    'country': NotRequired[str],
+    'county': NotRequired[str],
+    'created_at': NotRequired[str],
+    'description': NotRequired[str],
+    'distance_m': NotRequired[float],
+    'geo': NotRequired[ModelEsGeoPoint],
+    'geo_is_updated': NotRequired[bool],
+    'id': NotRequired[str],
+    'image': NotRequired[str],
+    'locations': NotRequired[list[str]],
+    'name': NotRequired[str],
+    'phone': NotRequired[str],
+    'place_id': NotRequired[str],
+    'rating': NotRequired[float],
+    'review_count': NotRequired[int],
+    'similarweb': NotRequired[ModelSimilarwebSimilarWebResp],
+    'state': NotRequired[str],
+    'town': NotRequired[str],
+    'updated_at': NotRequired[str],
+    'url': NotRequired[str],
+    'website': NotRequired[str],
+    'website_status': NotRequired[ModelEsWebsiteStatus],
+}, total=False)
+
+ModelEsWebsiteStatus = TypedDict('ModelEsWebsiteStatus', {
+    'checked_at': NotRequired[str],
+    'dns_resolvable': NotRequired[bool],
+    'error': NotRequired[str],
+    'http_reachable': NotRequired[bool],
+    'status_code': NotRequired[int],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelFinanceAbout = TypedDict('ModelFinanceAbout', {
+    'about': NotRequired[str],
+    'ceo': NotRequired[str],
+    'employees': NotRequired[int],
+    'founded': NotRequired[str],
+    'headquarters': NotRequired[str],
+    'website': NotRequired[str],
+}, total=False)
+
+ModelFinanceBalanceSheet = TypedDict('ModelFinanceBalanceSheet', {
+    'cash_and_short_term_change_yy': NotRequired[float],
+    'cash_and_short_term_investments': NotRequired[float],
+    'price_to_book': NotRequired[float],
+    'quarter': NotRequired[int],
+    'return_on_assets': NotRequired[float],
+    'return_on_capital': NotRequired[float],
+    'shares_outstanding': NotRequired[float],
+    'total_assets': NotRequired[float],
+    'total_assets_change_yy': NotRequired[float],
+    'total_equity': NotRequired[float],
+    'total_liabilities': NotRequired[float],
+    'total_liabilities_change_yy': NotRequired[float],
+    'year': NotRequired[int],
+}, total=False)
+
+ModelFinanceCashFlow = TypedDict('ModelFinanceCashFlow', {
+    'cash_from_financing': NotRequired[float],
+    'cash_from_financing_change_yy': NotRequired[float],
+    'cash_from_investing': NotRequired[float],
+    'cash_from_investing_change_yy': NotRequired[float],
+    'cash_from_operations': NotRequired[float],
+    'cash_from_operations_change_yy': NotRequired[float],
+    'free_cash_flow': NotRequired[float],
+    'free_cash_flow_change_yy': NotRequired[float],
+    'net_change_in_cash': NotRequired[float],
+    'net_change_in_cash_change_yy': NotRequired[float],
+    'net_income': NotRequired[float],
+    'net_income_change_yy': NotRequired[float],
+    'quarter': NotRequired[int],
+    'year': NotRequired[int],
+}, total=False)
+
+ModelFinanceCategoryNewsResponse = TypedDict('ModelFinanceCategoryNewsResponse', {
+    'category': NotRequired[str],
+    'items': NotRequired[list[ModelFinanceFinanceArticle]],
+    'offset': NotRequired[int],
+}, total=False)
+
+ModelFinanceCategoryStocksResponse = TypedDict('ModelFinanceCategoryStocksResponse', {
+    'category': NotRequired[str],
+    'items': NotRequired[list[ModelFinanceInstrument]],
+    'offset': NotRequired[int],
+}, total=False)
+
+ModelFinanceChartResponse = TypedDict('ModelFinanceChartResponse', {
+    'instrument': NotRequired[ModelFinanceInstrument],
+    'points': NotRequired[list[ModelFinanceTicker]],
+    'previous_close': NotRequired[float],
+    'window': NotRequired[str],
+}, total=False)
+
+ModelFinanceClassificationResponse = TypedDict('ModelFinanceClassificationResponse', {
+    'categories': NotRequired[list[str]],
+    'instrument': NotRequired[ModelFinanceInstrument],
+}, total=False)
+
+ModelFinanceCompanyInfo = TypedDict('ModelFinanceCompanyInfo', {
+    'ceo': NotRequired[str],
+    'description': NotRequired[str],
+    'employees': NotRequired[int],
+    'fifty_two_week_high': NotRequired[float],
+    'fifty_two_week_low': NotRequired[float],
+    'headquarters': NotRequired[str],
+    'high': NotRequired[float],
+    'low': NotRequired[float],
+    'market_cap': NotRequired[float],
+    'open': NotRequired[float],
+    'pe_ratio': NotRequired[float],
+    'sector': NotRequired[str],
+    'volume': NotRequired[int],
+}, total=False)
+
+ModelFinanceContextResponse = TypedDict('ModelFinanceContextResponse', {
+    'items': NotRequired[list[ModelFinanceInstrument]],
+    'query': NotRequired[str],
+}, total=False)
+
+ModelFinanceEarningsCalendarResponse = TypedDict('ModelFinanceEarningsCalendarResponse', {
+    'items': NotRequired[list[ModelFinanceEarningsEvent]],
+}, total=False)
+
+ModelFinanceEarningsEvent = TypedDict('ModelFinanceEarningsEvent', {
+    'company_name': NotRequired[str],
+    'conference_phone': NotRequired[str],
+    'conference_url': NotRequired[str],
+    'event_time': NotRequired[str],
+    'event_unix': NotRequired[int],
+    'fiscal_period': NotRequired[str],
+    'instrument': NotRequired[ModelFinanceInstrument],
+}, total=False)
+
+ModelFinanceFinanceArticle = TypedDict('ModelFinanceFinanceArticle', {
+    'published_at': NotRequired[str],
+    'published_unix': NotRequired[int],
+    'related': NotRequired[list[ModelFinanceInstrument]],
+    'source': NotRequired[str],
+    'thumbnail_url': NotRequired[str],
+    'title': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelFinanceFinancialPeriod = TypedDict('ModelFinanceFinancialPeriod', {
+    'capital_expenditure': NotRequired[float],
+    'ebitda': NotRequired[float],
+    'eps': NotRequired[float],
+    'eps_diluted': NotRequired[float],
+    'free_cash_flow': NotRequired[float],
+    'net_income': NotRequired[float],
+    'operating_cash_flow': NotRequired[float],
+    'operating_income': NotRequired[float],
+    'operating_margin': NotRequired[float],
+    'pe_ratio': NotRequired[float],
+    'period': NotRequired[str],
+    'period_end': NotRequired[str],
+    'profit_margin': NotRequired[float],
+    'revenue': NotRequired[float],
+    'revenue_growth_yoy': NotRequired[float],
+    'shares_outstanding': NotRequired[float],
+    'total_assets': NotRequired[float],
+    'total_equity': NotRequired[float],
+    'total_liabilities': NotRequired[float],
+}, total=False)
+
+ModelFinanceFinancialsResponse = TypedDict('ModelFinanceFinancialsResponse', {
+    'annual': NotRequired[list[ModelFinanceFinancialPeriod]],
+    'currency': NotRequired[str],
+    'quarterly': NotRequired[list[ModelFinanceFinancialPeriod]],
+}, total=False)
+
+ModelFinanceHeadlineResponse = TypedDict('ModelFinanceHeadlineResponse', {
+    'article': NotRequired[ModelFinanceFinanceArticle],
+}, total=False)
+
+ModelFinanceIncomeStatement = TypedDict('ModelFinanceIncomeStatement', {
+    'earnings_per_share': NotRequired[float],
+    'earnings_per_share_change_yy': NotRequired[float],
+    'ebitda': NotRequired[float],
+    'ebitda_change_yy': NotRequired[float],
+    'effective_tax_rate': NotRequired[float],
+    'net_income': NotRequired[float],
+    'net_income_change_yy': NotRequired[float],
+    'net_profit_margin': NotRequired[float],
+    'net_profit_margin_change_yy': NotRequired[float],
+    'operating_expense': NotRequired[float],
+    'operating_expense_change_yy': NotRequired[float],
+    'quarter': NotRequired[int],
+    'revenue': NotRequired[float],
+    'revenue_change_yy': NotRequired[float],
+    'year': NotRequired[int],
+}, total=False)
+
+ModelFinanceInstrument = TypedDict('ModelFinanceInstrument', {
+    'after_hours': NotRequired[ModelFinancePriceChange],
+    'change': NotRequired[float],
+    'change_percent': NotRequired[float],
+    'country': NotRequired[str],
+    'currency': NotRequired[str],
+    'exchange': NotRequired[str],
+    'google_id': NotRequired[str],
+    'identifier': NotRequired[str],
+    'last_update_unix': NotRequired[int],
+    'name': NotRequired[str],
+    'previous_close': NotRequired[float],
+    'price': NotRequired[float],
+    'ticker': NotRequired[str],
+    'timezone': NotRequired[str],
+    'type': NotRequired[str],
+}, total=False)
+
+ModelFinanceInvestment = TypedDict('ModelFinanceInvestment', {
+    'balance_sheet': NotRequired[list[ModelFinanceBalanceSheet]],
+    'cash_flow': NotRequired[list[ModelFinanceCashFlow]],
+    'income_statement': NotRequired[list[ModelFinanceIncomeStatement]],
+}, total=False)
+
+ModelFinanceKeyStats = TypedDict('ModelFinanceKeyStats', {
+    'avg_volume': NotRequired[int],
+    'climate_change_score': NotRequired[str],
+    'currency': NotRequired[str],
+    'day_range': NotRequired[ModelFinanceRange],
+    'dividend_yield': NotRequired[float],
+    'market_cap': NotRequired[int],
+    'pe_ratio': NotRequired[float],
+    'previous_close': NotRequired[float],
+    'primary_exchange': NotRequired[str],
+    'tags': NotRequired[list[str]],
+    'year_range': NotRequired[ModelFinanceRange],
+}, total=False)
+
+ModelFinanceMarketMoversResponse = TypedDict('ModelFinanceMarketMoversResponse', {
+    'categories': NotRequired[list[int]],
+    'count': NotRequired[int],
+    'items': NotRequired[list[ModelFinanceInstrument]],
+    'offset': NotRequired[int],
+}, total=False)
+
+ModelFinanceNews = TypedDict('ModelFinanceNews', {
+    'source': NotRequired[str],
+    'time': NotRequired[str],
+    'title': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelFinancePriceChange = TypedDict('ModelFinancePriceChange', {
+    'change': NotRequired[float],
+    'change_percent': NotRequired[float],
+    'price': NotRequired[float],
+}, total=False)
+
+ModelFinanceQuoteResp = TypedDict('ModelFinanceQuoteResp', {
+    'about': NotRequired[ModelFinanceAbout],
+    'investment': NotRequired[ModelFinanceInvestment],
+    'key_stats': NotRequired[ModelFinanceKeyStats],
+    'news': NotRequired[list[ModelFinanceNews]],
+    'tickers': NotRequired[list[ModelFinanceTicker]],
+    'title': NotRequired[str],
+}, total=False)
+
+ModelFinanceRange = TypedDict('ModelFinanceRange', {
+    'from': NotRequired[float],
+    'to': NotRequired[float],
+}, total=False)
+
+ModelFinanceRelatedResponse = TypedDict('ModelFinanceRelatedResponse', {
+    'instrument': NotRequired[ModelFinanceInstrument],
+    'items': NotRequired[list[ModelFinanceInstrument]],
+}, total=False)
+
+ModelFinanceStockData = TypedDict('ModelFinanceStockData', {
+    'change': NotRequired[float],
+    'company_name': NotRequired[str],
+    'currency': NotRequired[str],
+    'exchange': NotRequired[str],
+    'percentage': NotRequired[float],
+    'price': NotRequired[float],
+    'ticker': NotRequired[str],
+}, total=False)
+
+ModelFinanceTicker = TypedDict('ModelFinanceTicker', {
+    'price': NotRequired[float],
+    'time': NotRequired[str],
+    'volume': NotRequired[int],
+}, total=False)
+
+ModelFinanceTopStocksResponse = TypedDict('ModelFinanceTopStocksResponse', {
+    'items': NotRequired[list[ModelFinanceInstrument]],
+    'metric': NotRequired[int],
+    'page': NotRequired[int],
+}, total=False)
+
+ModelFinanceArticlesResponseDoc = TypedDict('ModelFinanceArticlesResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[list[ModelFinanceFinanceArticle]],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelFinanceCategoryNewsResponseDoc = TypedDict('ModelFinanceCategoryNewsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelFinanceCategoryNewsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelFinanceCategoryStocksResponseDoc = TypedDict('ModelFinanceCategoryStocksResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelFinanceCategoryStocksResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelFinanceChartResponseDoc = TypedDict('ModelFinanceChartResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelFinanceChartResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelFinanceClassificationResponseDoc = TypedDict('ModelFinanceClassificationResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelFinanceClassificationResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelFinanceCompanyResponseDoc = TypedDict('ModelFinanceCompanyResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelFinanceCompanyInfo],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelFinanceContextResponseDoc = TypedDict('ModelFinanceContextResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelFinanceContextResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelFinanceEarningsResponseDoc = TypedDict('ModelFinanceEarningsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelFinanceEarningsCalendarResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelFinanceFinancialsResponseDoc = TypedDict('ModelFinanceFinancialsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelFinanceFinancialsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelFinanceHeadlineResponseDoc = TypedDict('ModelFinanceHeadlineResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelFinanceHeadlineResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelFinanceInstrumentsResponseDoc = TypedDict('ModelFinanceInstrumentsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[list[ModelFinanceInstrument]],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelFinanceMarketMoversResponseDoc = TypedDict('ModelFinanceMarketMoversResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelFinanceMarketMoversResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelFinanceQuoteResponseDoc = TypedDict('ModelFinanceQuoteResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelFinanceQuoteResp],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelFinanceRelatedResponseDoc = TypedDict('ModelFinanceRelatedResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelFinanceRelatedResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelFinanceSearchResponseDoc = TypedDict('ModelFinanceSearchResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[list[ModelFinanceStockData]],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelFinanceTickerResponseDoc = TypedDict('ModelFinanceTickerResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[list[ModelFinanceTicker]],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelFinanceTopStocksResponseDoc = TypedDict('ModelFinanceTopStocksResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelFinanceTopStocksResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelGeocodingAddress = TypedDict('ModelGeocodingAddress', {
+    'ISO3166-2-lvl4': NotRequired[str],
+    'ISO3166-2-lvl6': NotRequired[str],
+    'city': NotRequired[str],
+    'country': NotRequired[str],
+    'country_code': NotRequired[str],
+    'county': NotRequired[str],
+    'house_number': NotRequired[str],
+    'neighbourhood': NotRequired[str],
+    'office': NotRequired[str],
+    'postcode': NotRequired[str],
+    'road': NotRequired[str],
+    'state': NotRequired[str],
+    'state_district': NotRequired[str],
+    'suburb': NotRequired[str],
+    'town': NotRequired[str],
+    'village': NotRequired[str],
+}, total=False)
+
+ModelGeocodingLookupResponse = TypedDict('ModelGeocodingLookupResponse', {
+    'query': NotRequired[str],
+    'results': NotRequired[list[ModelGeocodingPlace]],
+}, total=False)
+
+ModelGeocodingPlace = TypedDict('ModelGeocodingPlace', {
+    'address': NotRequired[ModelGeocodingAddress],
+    'addresstype': NotRequired[str],
+    'boundingbox': NotRequired[list[str]],
+    'category': NotRequired[str],
+    'display_name': NotRequired[str],
+    'extratags': NotRequired[dict[str, str]],
+    'importance': NotRequired[float],
+    'lat': NotRequired[str],
+    'licence': NotRequired[str],
+    'lon': NotRequired[str],
+    'name': NotRequired[str],
+    'namedetails': NotRequired[dict[str, str]],
+    'osm_id': NotRequired[int],
+    'osm_type': NotRequired[str],
+    'place_id': NotRequired[int],
+    'place_rank': NotRequired[int],
+    'type': NotRequired[str],
+}, total=False)
+
+ModelGeocodingSearchResponse = TypedDict('ModelGeocodingSearchResponse', {
+    'query': NotRequired[str],
+    'results': NotRequired[list[ModelGeocodingPlace]],
+}, total=False)
+
+ModelGeocodingLookupResponseDoc = TypedDict('ModelGeocodingLookupResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelGeocodingLookupResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelGeocodingReverseResponseDoc = TypedDict('ModelGeocodingReverseResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelGeocodingPlace],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelGeocodingSearchResponseDoc = TypedDict('ModelGeocodingSearchResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelGeocodingSearchResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelGoogleJobItem = TypedDict('ModelGoogleJobItem', {
+    'company': NotRequired[str],
+    'employment': NotRequired[str],
+    'location': NotRequired[str],
+    'posted_at': NotRequired[str],
+    'snippet': NotRequired[str],
+    'source': NotRequired[str],
+    'title': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelGoogleJobsOption = TypedDict('ModelGoogleJobsOption', {
+    'location': NotRequired[str],
+    'page': NotRequired[int],
+    'query': Required[str],
+}, total=False)
+
+ModelGoogleJobsResponse = TypedDict('ModelGoogleJobsResponse', {
+    'location': NotRequired[str],
+    'page': NotRequired[int],
+    'query': NotRequired[str],
+    'results': NotRequired[list[ModelGoogleJobItem]],
+}, total=False)
+
+ModelGoogleKgAttrItem = TypedDict('ModelGoogleKgAttrItem', {
+    'id': NotRequired[str],
+    'label': NotRequired[str],
+    'value': NotRequired[str],
+}, total=False)
+
+ModelGoogleKnowledgeGraph = TypedDict('ModelGoogleKnowledgeGraph', {
+    'attributes': NotRequired[list[ModelGoogleKgAttrItem]],
+    'description': NotRequired[str],
+    'sub_title': NotRequired[str],
+    'title': NotRequired[str],
+    'wikipedia_link': NotRequired[str],
+}, total=False)
+
+ModelGoogleMapSearchOption = TypedDict('ModelGoogleMapSearchOption', {
+    'country': NotRequired[str],
+    'keyword': NotRequired[str],
+    'language': NotRequired[str],
+}, total=False)
+
+ModelGooglePeopleAlsoAskItem = TypedDict('ModelGooglePeopleAlsoAskItem', {
+    'answer': NotRequired[str],
+    'date': NotRequired[str],
+    'link': NotRequired[str],
+    'question': NotRequired[str],
+    'title': NotRequired[str],
+}, total=False)
+
+ModelGooglePlace = TypedDict('ModelGooglePlace', {
+    'address': NotRequired[str],
+    'amenities': NotRequired[list[str]],
+    'category': NotRequired[list[str]],
+    'description': NotRequired[str],
+    'image': NotRequired[str],
+    'latitude': NotRequired[float],
+    'locations': NotRequired[list[str]],
+    'longitude': NotRequired[float],
+    'name': NotRequired[str],
+    'phone': NotRequired[str],
+    'place_id': NotRequired[str],
+    'rating': NotRequired[float],
+    'review_count': NotRequired[int],
+    'url': NotRequired[str],
+    'website': NotRequired[str],
+}, total=False)
+
+ModelGoogleSearchItem = TypedDict('ModelGoogleSearchItem', {
+    'Snippet': NotRequired[str],
+    'icon': NotRequired[str],
+    'link': NotRequired[str],
+    'position': NotRequired[int],
+    'time': NotRequired[str],
+    'title': NotRequired[str],
+    'website_name': NotRequired[str],
+}, total=False)
+
+ModelGoogleSearchOption = TypedDict('ModelGoogleSearchOption', {
+    'country': Required[str],
+    'keyword': Required[str],
+    'language': Required[str],
+    'limit': NotRequired[int],
+    'page': NotRequired[int],
+}, total=False)
+
+ModelGoogleSearchResp = TypedDict('ModelGoogleSearchResp', {
+    'knowledge_graph': NotRequired[ModelGoogleKnowledgeGraph],
+    'people_also_ask': NotRequired[list[ModelGooglePeopleAlsoAskItem]],
+    'people_also_search_for': NotRequired[list[str]],
+    'related_searches': NotRequired[list[str]],
+    'result': NotRequired[list[ModelGoogleSearchItem]],
+}, total=False)
+
+ModelGoogleShoppingItemDetailOption = TypedDict('ModelGoogleShoppingItemDetailOption', {
+    'cid': NotRequired[str],
+    'gid': NotRequired[str],
+    'oid': Required[str],
+}, total=False)
+
+ModelGoogleSuggestResponse = TypedDict('ModelGoogleSuggestResponse', {
+    'query': NotRequired[str],
+    'suggestions': NotRequired[list[ModelGoogleSuggestionResult]],
+}, total=False)
+
+ModelGoogleSuggestionResult = TypedDict('ModelGoogleSuggestionResult', {
+    'position': NotRequired[int],
+    'query': NotRequired[str],
+}, total=False)
+
+ModelGoogleMapPlaceResponseDoc = TypedDict('ModelGoogleMapPlaceResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelGooglePlace],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelGoogleMapSearchResponseDoc = TypedDict('ModelGoogleMapSearchResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[list[ModelGooglePlace]],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelGoogleSearchResponseDoc = TypedDict('ModelGoogleSearchResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelGoogleSearchResp],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelGoogleSuggestResponseDoc = TypedDict('ModelGoogleSuggestResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelGoogleSuggestResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelGoogleplayApp = TypedDict('ModelGoogleplayApp', {
+    'ad_supported': NotRequired[bool],
+    'android_max_version': NotRequired[str],
+    'android_version': NotRequired[str],
+    'android_version_text': NotRequired[str],
+    'app_id': NotRequired[str],
+    'available': NotRequired[bool],
+    'categories': NotRequired[list[ModelGoogleplayCategory]],
+    'comments': NotRequired[list[str]],
+    'content_rating': NotRequired[str],
+    'content_rating_description': NotRequired[str],
+    'currency': NotRequired[str],
+    'description': NotRequired[str],
+    'description_html': NotRequired[str],
+    'developer': NotRequired[str],
+    'developer_address': NotRequired[str],
+    'developer_email': NotRequired[str],
+    'developer_id': NotRequired[str],
+    'developer_internal_id': NotRequired[str],
+    'developer_legal_address': NotRequired[str],
+    'developer_legal_email': NotRequired[str],
+    'developer_legal_name': NotRequired[str],
+    'developer_legal_phone_number': NotRequired[str],
+    'developer_website': NotRequired[str],
+    'discount_end_date': NotRequired[str],
+    'early_access_enabled': NotRequired[bool],
+    'features': NotRequired[list[ModelGoogleplayFeature]],
+    'free': NotRequired[bool],
+    'genre': NotRequired[str],
+    'genre_id': NotRequired[str],
+    'header_image': NotRequired[str],
+    'histogram': NotRequired[dict[str, Any]],
+    'iap_range': NotRequired[str],
+    'icon': NotRequired[str],
+    'installs': NotRequired[str],
+    'is_available_in_play_pass': NotRequired[bool],
+    'max_installs': NotRequired[int],
+    'min_installs': NotRequired[int],
+    'offers_iap': NotRequired[bool],
+    'original_price': NotRequired[float],
+    'preregister': NotRequired[bool],
+    'preview_video': NotRequired[str],
+    'price': NotRequired[float],
+    'price_text': NotRequired[str],
+    'privacy_policy': NotRequired[str],
+    'ratings': NotRequired[int],
+    'recent_changes': NotRequired[str],
+    'released': NotRequired[str],
+    'reviews': NotRequired[int],
+    'score': NotRequired[float],
+    'score_text': NotRequired[str],
+    'screenshots': NotRequired[list[str]],
+    'summary': NotRequired[str],
+    'title': NotRequired[str],
+    'updated': NotRequired[int],
+    'url': NotRequired[str],
+    'version': NotRequired[str],
+    'video': NotRequired[str],
+    'video_image': NotRequired[str],
+}, total=False)
+
+ModelGoogleplayAppDetailsResponse = TypedDict('ModelGoogleplayAppDetailsResponse', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelGoogleplayApp],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelGoogleplayCategory = TypedDict('ModelGoogleplayCategory', {
+    'id': NotRequired[str],
+    'name': NotRequired[str],
+}, total=False)
+
+ModelGoogleplayDataSafetyEntry = TypedDict('ModelGoogleplayDataSafetyEntry', {
+    'data': NotRequired[str],
+    'optional': NotRequired[bool],
+    'purpose': NotRequired[str],
+    'type': NotRequired[str],
+}, total=False)
+
+ModelGoogleplayDataSafetyResult = TypedDict('ModelGoogleplayDataSafetyResult', {
+    'collected_data': NotRequired[list[ModelGoogleplayDataSafetyEntry]],
+    'privacy_policy_url': NotRequired[str],
+    'security_practices': NotRequired[list[ModelGoogleplaySecurityPractice]],
+    'shared_data': NotRequired[list[ModelGoogleplayDataSafetyEntry]],
+}, total=False)
+
+ModelGoogleplayFeature = TypedDict('ModelGoogleplayFeature', {
+    'description': NotRequired[str],
+    'title': NotRequired[str],
+}, total=False)
+
+ModelGoogleplayReview = TypedDict('ModelGoogleplayReview', {
+    'criterias': NotRequired[list[ModelGoogleplayReviewCriteria]],
+    'date': NotRequired[str],
+    'id': NotRequired[str],
+    'reply_date': NotRequired[str],
+    'reply_text': NotRequired[str],
+    'score': NotRequired[int],
+    'score_text': NotRequired[str],
+    'text': NotRequired[str],
+    'thumbs_up': NotRequired[int],
+    'title': NotRequired[str],
+    'url': NotRequired[str],
+    'user_image': NotRequired[str],
+    'user_name': NotRequired[str],
+    'version': NotRequired[str],
+}, total=False)
+
+ModelGoogleplayReviewCriteria = TypedDict('ModelGoogleplayReviewCriteria', {
+    'criteria': NotRequired[str],
+    'rating': NotRequired[int],
+}, total=False)
+
+ModelGoogleplayReviewsResult = TypedDict('ModelGoogleplayReviewsResult', {
+    'data': NotRequired[list[ModelGoogleplayReview]],
+    'next_pagination_token': NotRequired[str],
+}, total=False)
+
+ModelGoogleplaySecurityPractice = TypedDict('ModelGoogleplaySecurityPractice', {
+    'description': NotRequired[str],
+    'practice': NotRequired[str],
+}, total=False)
+
+ModelGoogleplaySuggestion = TypedDict('ModelGoogleplaySuggestion', {
+    'term': NotRequired[str],
+}, total=False)
+
+ModelGoogleplayCategoriesResponseDoc = TypedDict('ModelGoogleplayCategoriesResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[list[str]],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelGoogleplayDataSafetyResponseDoc = TypedDict('ModelGoogleplayDataSafetyResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelGoogleplayDataSafetyResult],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelGoogleplayDeveloperResultsResponseDoc = TypedDict('ModelGoogleplayDeveloperResultsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[list[Any]],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelGoogleplayListResultsResponseDoc = TypedDict('ModelGoogleplayListResultsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[list[Any]],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelGoogleplayPermissionsResultsResponseDoc = TypedDict('ModelGoogleplayPermissionsResultsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[list[Any]],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelGoogleplayReviewsResponseDoc = TypedDict('ModelGoogleplayReviewsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelGoogleplayReviewsResult],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelGoogleplaySearchResultsResponseDoc = TypedDict('ModelGoogleplaySearchResultsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[list[Any]],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelGoogleplaySimilarResultsResponseDoc = TypedDict('ModelGoogleplaySimilarResultsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[list[Any]],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelGoogleplaySuggestResponseDoc = TypedDict('ModelGoogleplaySuggestResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[list[ModelGoogleplaySuggestion]],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelInstagramBusinessAddress = TypedDict('ModelInstagramBusinessAddress', {
+    'city_name': NotRequired[str],
+    'latitude': NotRequired[float],
+    'longitude': NotRequired[float],
+    'street_address': NotRequired[str],
+    'zip_code': NotRequired[str],
+}, total=False)
+
+ModelInstagramCaption = TypedDict('ModelInstagramCaption', {
+    'text': NotRequired[str],
+    'user': NotRequired[ModelInstagramUser],
+}, total=False)
+
+ModelInstagramClipsMetadata = TypedDict('ModelInstagramClipsMetadata', {
+    'audio_type': NotRequired[str],
+    'is_shared_to_fb': NotRequired[bool],
+    'original_sound_info': NotRequired[ModelInstagramOriginalSoundInfo],
+}, total=False)
+
+ModelInstagramIgartist = TypedDict('ModelInstagramIgartist', {
+    'id': NotRequired[str],
+    'username': NotRequired[str],
+}, total=False)
+
+ModelInstagramIgcaption = TypedDict('ModelInstagramIgcaption', {
+    'created_at': NotRequired[int],
+    'pk': NotRequired[str],
+    'text': NotRequired[str],
+}, total=False)
+
+ModelInstagramIgowner = TypedDict('ModelInstagramIgowner', {
+    'id': NotRequired[str],
+    'is_private': NotRequired[bool],
+    'pk': NotRequired[str],
+    'profile_pic_url': NotRequired[str],
+    'username': NotRequired[str],
+}, total=False)
+
+ModelInstagramIguser = TypedDict('ModelInstagramIguser', {
+    'full_name': NotRequired[str],
+    'id': NotRequired[str],
+    'is_private': NotRequired[bool],
+    'is_verified': NotRequired[bool],
+    'pk': NotRequired[str],
+    'profile_pic_url': NotRequired[str],
+    'username': NotRequired[str],
+}, total=False)
+
+ModelInstagramImageCandidate = TypedDict('ModelInstagramImageCandidate', {
+    'height': NotRequired[int],
+    'url': NotRequired[str],
+    'width': NotRequired[int],
+}, total=False)
+
+ModelInstagramImageVersions = TypedDict('ModelInstagramImageVersions', {
+    'candidates': NotRequired[list[ModelInstagramImageCandidate]],
+}, total=False)
+
+ModelInstagramImageVersions2 = TypedDict('ModelInstagramImageVersions2', {
+    'candidates': NotRequired[list[ModelInstagramImageCandidate]],
+}, total=False)
+
+ModelInstagramItem = TypedDict('ModelInstagramItem', {
+    'media': NotRequired[ModelInstagramMedia],
+}, total=False)
+
+ModelInstagramMedia = TypedDict('ModelInstagramMedia', {
+    'caption': NotRequired[ModelInstagramCaption],
+    'code': NotRequired[str],
+    'comment_count': NotRequired[int],
+    'display_uri': NotRequired[str],
+    'id': NotRequired[str],
+    'image_versions2': NotRequired[ModelInstagramImageVersions],
+    'like_count': NotRequired[int],
+    'media_type': NotRequired[int],
+    'play_count': NotRequired[int],
+    'taken_at': NotRequired[int],
+}, total=False)
+
+ModelInstagramMediaItem = TypedDict('ModelInstagramMediaItem', {
+    'accessibility_caption': NotRequired[str],
+    'caption': NotRequired[ModelInstagramIgcaption],
+    'clips_metadata': NotRequired[ModelInstagramClipsMetadata],
+    'code': NotRequired[str],
+    'comment_count': NotRequired[int],
+    'display_uri': NotRequired[str],
+    'has_audio': NotRequired[bool],
+    'id': NotRequired[str],
+    'image_versions2': NotRequired[ModelInstagramImageVersions2],
+    'like_count': NotRequired[int],
+    'link': NotRequired[str],
+    'media_type': NotRequired[int],
+    'original_height': NotRequired[int],
+    'original_width': NotRequired[int],
+    'owner': NotRequired[ModelInstagramIgowner],
+    'pk': NotRequired[str],
+    'product_type': NotRequired[str],
+    'taken_at': NotRequired[int],
+    'user': NotRequired[ModelInstagramIguser],
+    'video_versions': NotRequired[list[ModelInstagramVideoVersion]],
+    'view_count': NotRequired[int],
+}, total=False)
+
+ModelInstagramOriginalSoundInfo = TypedDict('ModelInstagramOriginalSoundInfo', {
+    'audio_asset_id': NotRequired[str],
+    'ig_artist': NotRequired[ModelInstagramIgartist],
+    'is_explicit': NotRequired[bool],
+    'original_audio_title': NotRequired[str],
+    'should_mute_audio': NotRequired[bool],
+}, total=False)
+
+ModelInstagramPagingInfo = TypedDict('ModelInstagramPagingInfo', {
+    'max_id': NotRequired[str],
+    'more_available': NotRequired[bool],
+}, total=False)
+
+ModelInstagramPost = TypedDict('ModelInstagramPost', {
+    'caption': NotRequired[str],
+    'children': NotRequired[list[ModelInstagramPost]],
+    'comment_count': NotRequired[int],
+    'height': NotRequired[int],
+    'id': NotRequired[str],
+    'is_video': NotRequired[bool],
+    'like_count': NotRequired[int],
+    'media_url': NotRequired[str],
+    'product_type': NotRequired[str],
+    'shortcode': NotRequired[str],
+    'taken_at': NotRequired[str],
+    'video_url': NotRequired[str],
+    'view_count': NotRequired[int],
+    'width': NotRequired[int],
+}, total=False)
+
+ModelInstagramReelResponse = TypedDict('ModelInstagramReelResponse', {
+    'items': NotRequired[list[ModelInstagramItem]],
+    'paging_info': NotRequired[ModelInstagramPagingInfo],
+}, total=False)
+
+ModelInstagramRelatedProfile = TypedDict('ModelInstagramRelatedProfile', {
+    'full_name': NotRequired[str],
+    'id': NotRequired[str],
+    'is_private': NotRequired[bool],
+    'is_verified': NotRequired[bool],
+    'profile_pic_url': NotRequired[str],
+    'username': NotRequired[str],
+}, total=False)
+
+ModelInstagramUser = TypedDict('ModelInstagramUser', {
+    'full_name': NotRequired[str],
+    'id': NotRequired[str],
+    'username': NotRequired[str],
+}, total=False)
+
+ModelInstagramUserProfile = TypedDict('ModelInstagramUserProfile', {
+    'bio_links': NotRequired[list[str]],
+    'biography': NotRequired[str],
+    'category_name': NotRequired[str],
+    'external_url': NotRequired[str],
+    'fbid': NotRequired[str],
+    'followers_count': NotRequired[int],
+    'following_count': NotRequired[int],
+    'full_name': NotRequired[str],
+    'id': NotRequired[str],
+    'is_private': NotRequired[bool],
+    'is_verified': NotRequired[bool],
+    'location': NotRequired[ModelInstagramBusinessAddress],
+    'posts': NotRequired[list[ModelInstagramPost]],
+    'posts_count': NotRequired[int],
+    'profile_pic_url': NotRequired[str],
+    'related_profiles': NotRequired[list[ModelInstagramRelatedProfile]],
+    'username': NotRequired[str],
+}, total=False)
+
+ModelInstagramVideoVersion = TypedDict('ModelInstagramVideoVersion', {
+    'height': NotRequired[int],
+    'type': NotRequired[int],
+    'url': NotRequired[str],
+    'width': NotRequired[int],
+}, total=False)
+
+ModelInstagramPostResponseDoc = TypedDict('ModelInstagramPostResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelInstagramMediaItem],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelInstagramProfileResponseDoc = TypedDict('ModelInstagramProfileResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelInstagramUserProfile],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelInstagramReelsResponseDoc = TypedDict('ModelInstagramReelsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelInstagramReelResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelJustwatchAgeCertification = TypedDict('ModelJustwatchAgeCertification', {
+    'technical_name': NotRequired[str],
+}, total=False)
+
+ModelJustwatchAgeCertificationsResponse = TypedDict('ModelJustwatchAgeCertificationsResponse', {
+    'age_certifications': NotRequired[list[ModelJustwatchAgeCertification]],
+    'country': NotRequired[str],
+}, total=False)
+
+ModelJustwatchAnalysisResponse = TypedDict('ModelJustwatchAnalysisResponse', {
+    'summary': NotRequired[ModelJustwatchAnalysisSummary],
+    'title': NotRequired[ModelJustwatchTitleResponse],
+}, total=False)
+
+ModelJustwatchAnalysisSummary = TypedDict('ModelJustwatchAnalysisSummary', {
+    'available': NotRequired[bool],
+    'best_buy': NotRequired[ModelJustwatchOffer],
+    'best_free': NotRequired[ModelJustwatchOffer],
+    'best_rent': NotRequired[ModelJustwatchOffer],
+    'best_subscription': NotRequired[ModelJustwatchOffer],
+    'format_counts': NotRequired[dict[str, int]],
+    'monetization_counts': NotRequired[dict[str, int]],
+    'price_ranges': NotRequired[dict[str, ModelJustwatchPriceRange]],
+    'provider_count': NotRequired[int],
+    'total_offers': NotRequired[int],
+}, total=False)
+
+ModelJustwatchBackdrop = TypedDict('ModelJustwatchBackdrop', {
+    'url': NotRequired[str],
+}, total=False)
+
+ModelJustwatchClip = TypedDict('ModelJustwatchClip', {
+    'external_id': NotRequired[str],
+    'provider': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelJustwatchCredit = TypedDict('ModelJustwatchCredit', {
+    'character_name': NotRequired[str],
+    'name': NotRequired[str],
+    'person_id': NotRequired[int],
+    'role': NotRequired[str],
+}, total=False)
+
+ModelJustwatchDiscoverResponse = TypedDict('ModelJustwatchDiscoverResponse', {
+    'country': NotRequired[str],
+    'genres': NotRequired[list[str]],
+    'language': NotRequired[str],
+    'monetization_types': NotRequired[list[str]],
+    'providers': NotRequired[list[str]],
+    'results': NotRequired[list[ModelJustwatchSearchTitle]],
+    'type': NotRequired[str],
+    'year_max': NotRequired[int],
+    'year_min': NotRequired[int],
+}, total=False)
+
+ModelJustwatchEpisodeByIdresponse = TypedDict('ModelJustwatchEpisodeByIdresponse', {
+    'country': NotRequired[str],
+    'episode': NotRequired[ModelJustwatchEpisodeSummary],
+    'language': NotRequired[str],
+}, total=False)
+
+ModelJustwatchEpisodeCountryOffers = TypedDict('ModelJustwatchEpisodeCountryOffers', {
+    'country': NotRequired[str],
+    'episode': NotRequired[ModelJustwatchEpisodeSummary],
+    'offers': NotRequired[list[ModelJustwatchOffer]],
+}, total=False)
+
+ModelJustwatchEpisodeOffersResponse = TypedDict('ModelJustwatchEpisodeOffersResponse', {
+    'countries': NotRequired[list[ModelJustwatchEpisodeCountryOffers]],
+    'id': NotRequired[str],
+    'language': NotRequired[str],
+}, total=False)
+
+ModelJustwatchEpisodeSummary = TypedDict('ModelJustwatchEpisodeSummary', {
+    'description': NotRequired[str],
+    'episode_number': NotRequired[int],
+    'id': NotRequired[str],
+    'object_id': NotRequired[int],
+    'object_type': NotRequired[str],
+    'offers': NotRequired[list[ModelJustwatchOffer]],
+    'path': NotRequired[str],
+    'poster_url': NotRequired[str],
+    'title': NotRequired[str],
+    'url': NotRequired[str],
+    'year': NotRequired[int],
+}, total=False)
+
+ModelJustwatchGenre = TypedDict('ModelJustwatchGenre', {
+    'short_name': NotRequired[str],
+    'translation': NotRequired[str],
+}, total=False)
+
+ModelJustwatchGenreTitlesResponse = TypedDict('ModelJustwatchGenreTitlesResponse', {
+    'country': NotRequired[str],
+    'genre': NotRequired[str],
+    'language': NotRequired[str],
+    'results': NotRequired[list[ModelJustwatchSearchTitle]],
+    'type': NotRequired[str],
+}, total=False)
+
+ModelJustwatchGenresResponse = TypedDict('ModelJustwatchGenresResponse', {
+    'genres': NotRequired[list[ModelJustwatchGenre]],
+    'language': NotRequired[str],
+}, total=False)
+
+ModelJustwatchMonetizationTitlesResponse = TypedDict('ModelJustwatchMonetizationTitlesResponse', {
+    'country': NotRequired[str],
+    'language': NotRequired[str],
+    'monetization_type': NotRequired[str],
+    'results': NotRequired[list[ModelJustwatchSearchTitle]],
+    'type': NotRequired[str],
+}, total=False)
+
+ModelJustwatchNewTitlesResponse = TypedDict('ModelJustwatchNewTitlesResponse', {
+    'country': NotRequired[str],
+    'language': NotRequired[str],
+    'results': NotRequired[list[ModelJustwatchSearchTitle]],
+    'type': NotRequired[str],
+}, total=False)
+
+ModelJustwatchOffer = TypedDict('ModelJustwatchOffer', {
+    'availability': NotRequired[str],
+    'category': NotRequired[str],
+    'currency': NotRequired[str],
+    'monetization_type': NotRequired[str],
+    'presentation_type': NotRequired[str],
+    'price': NotRequired[float],
+    'provider': NotRequired[str],
+    'provider_id': NotRequired[int],
+    'provider_short': NotRequired[str],
+    'provider_technical': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelJustwatchPopularResponse = TypedDict('ModelJustwatchPopularResponse', {
+    'country': NotRequired[str],
+    'language': NotRequired[str],
+    'results': NotRequired[list[ModelJustwatchSearchTitle]],
+    'type': NotRequired[str],
+}, total=False)
+
+ModelJustwatchPriceRange = TypedDict('ModelJustwatchPriceRange', {
+    'currency': NotRequired[str],
+    'max': NotRequired[float],
+    'min': NotRequired[float],
+}, total=False)
+
+ModelJustwatchProvider = TypedDict('ModelJustwatchProvider', {
+    'clear_name': NotRequired[str],
+    'icon_url': NotRequired[str],
+    'id': NotRequired[int],
+    'short_name': NotRequired[str],
+    'technical_name': NotRequired[str],
+}, total=False)
+
+ModelJustwatchProviderTitlesResponse = TypedDict('ModelJustwatchProviderTitlesResponse', {
+    'country': NotRequired[str],
+    'language': NotRequired[str],
+    'provider': NotRequired[str],
+    'results': NotRequired[list[ModelJustwatchSearchTitle]],
+    'type': NotRequired[str],
+}, total=False)
+
+ModelJustwatchProvidersResponse = TypedDict('ModelJustwatchProvidersResponse', {
+    'country': NotRequired[str],
+    'providers': NotRequired[list[ModelJustwatchProvider]],
+}, total=False)
+
+ModelJustwatchScoring = TypedDict('ModelJustwatchScoring', {
+    'best_rating': NotRequired[str],
+    'certified_fresh': NotRequired[bool],
+    'imdb_score': NotRequired[float],
+    'imdb_votes': NotRequired[int],
+    'justwatch_rating': NotRequired[float],
+    'rating_count': NotRequired[int],
+    'tmdb_popularity': NotRequired[float],
+    'tmdb_score': NotRequired[float],
+    'tomato_meter': NotRequired[int],
+}, total=False)
+
+ModelJustwatchSearchResponse = TypedDict('ModelJustwatchSearchResponse', {
+    'country': NotRequired[str],
+    'language': NotRequired[str],
+    'query': NotRequired[str],
+    'results': NotRequired[list[ModelJustwatchSearchTitle]],
+}, total=False)
+
+ModelJustwatchSearchTitle = TypedDict('ModelJustwatchSearchTitle', {
+    'id': NotRequired[str],
+    'object_id': NotRequired[int],
+    'object_type': NotRequired[str],
+    'offers': NotRequired[list[ModelJustwatchOffer]],
+    'path': NotRequired[str],
+    'poster_url': NotRequired[str],
+    'title': NotRequired[str],
+    'url': NotRequired[str],
+    'year': NotRequired[int],
+}, total=False)
+
+ModelJustwatchSeasonByIdresponse = TypedDict('ModelJustwatchSeasonByIdresponse', {
+    'country': NotRequired[str],
+    'language': NotRequired[str],
+    'season': NotRequired[ModelJustwatchSeasonSummary],
+}, total=False)
+
+ModelJustwatchSeasonEpisodesResponse = TypedDict('ModelJustwatchSeasonEpisodesResponse', {
+    'country': NotRequired[str],
+    'episodes': NotRequired[list[ModelJustwatchEpisodeSummary]],
+    'language': NotRequired[str],
+    'season': NotRequired[ModelJustwatchSeasonSummary],
+}, total=False)
+
+ModelJustwatchSeasonSummary = TypedDict('ModelJustwatchSeasonSummary', {
+    'description': NotRequired[str],
+    'id': NotRequired[str],
+    'object_id': NotRequired[int],
+    'object_type': NotRequired[str],
+    'path': NotRequired[str],
+    'poster_url': NotRequired[str],
+    'season_number': NotRequired[int],
+    'title': NotRequired[str],
+    'url': NotRequired[str],
+    'year': NotRequired[int],
+}, total=False)
+
+ModelJustwatchShowSeasonsResponse = TypedDict('ModelJustwatchShowSeasonsResponse', {
+    'country': NotRequired[str],
+    'language': NotRequired[str],
+    'seasons': NotRequired[list[ModelJustwatchSeasonSummary]],
+    'show': NotRequired[ModelJustwatchTitleResponse],
+}, total=False)
+
+ModelJustwatchSimilarTitlesResponse = TypedDict('ModelJustwatchSimilarTitlesResponse', {
+    'country': NotRequired[str],
+    'id': NotRequired[str],
+    'language': NotRequired[str],
+    'results': NotRequired[list[ModelJustwatchSearchTitle]],
+}, total=False)
+
+ModelJustwatchTitleCountryOffers = TypedDict('ModelJustwatchTitleCountryOffers', {
+    'country': NotRequired[str],
+    'offers': NotRequired[list[ModelJustwatchOffer]],
+    'title': NotRequired[ModelJustwatchTitleResponse],
+}, total=False)
+
+ModelJustwatchTitleMediaResponse = TypedDict('ModelJustwatchTitleMediaResponse', {
+    'backdrops': NotRequired[list[ModelJustwatchBackdrop]],
+    'clips': NotRequired[list[ModelJustwatchClip]],
+    'country': NotRequired[str],
+    'credits': NotRequired[list[ModelJustwatchCredit]],
+    'id': NotRequired[str],
+    'language': NotRequired[str],
+    'title': NotRequired[str],
+}, total=False)
+
+ModelJustwatchTitleOffersResponse = TypedDict('ModelJustwatchTitleOffersResponse', {
+    'countries': NotRequired[list[ModelJustwatchTitleCountryOffers]],
+    'id': NotRequired[str],
+    'language': NotRequired[str],
+}, total=False)
+
+ModelJustwatchTitleResponse = TypedDict('ModelJustwatchTitleResponse', {
+    'content_rating': NotRequired[str],
+    'description': NotRequired[str],
+    'genres': NotRequired[list[str]],
+    'id': NotRequired[str],
+    'object_id': NotRequired[int],
+    'object_type': NotRequired[str],
+    'offers': NotRequired[list[ModelJustwatchOffer]],
+    'path': NotRequired[str],
+    'poster_url': NotRequired[str],
+    'release_date': NotRequired[str],
+    'runtime': NotRequired[str],
+    'scoring': NotRequired[ModelJustwatchScoring],
+    'title': NotRequired[str],
+    'url': NotRequired[str],
+    'year': NotRequired[int],
+}, total=False)
+
+ModelJustwatchAgeCertificationsResponseDoc = TypedDict('ModelJustwatchAgeCertificationsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelJustwatchAgeCertificationsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelJustwatchAnalysisResponseDoc = TypedDict('ModelJustwatchAnalysisResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelJustwatchAnalysisResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelJustwatchDiscoverResponseDoc = TypedDict('ModelJustwatchDiscoverResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelJustwatchDiscoverResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelJustwatchEpisodeByIdresponseDoc = TypedDict('ModelJustwatchEpisodeByIdresponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelJustwatchEpisodeByIdresponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelJustwatchEpisodeOffersResponseDoc = TypedDict('ModelJustwatchEpisodeOffersResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelJustwatchEpisodeOffersResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelJustwatchGenreTitlesResponseDoc = TypedDict('ModelJustwatchGenreTitlesResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelJustwatchGenreTitlesResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelJustwatchGenresResponseDoc = TypedDict('ModelJustwatchGenresResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelJustwatchGenresResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelJustwatchMonetizationTitlesResponseDoc = TypedDict('ModelJustwatchMonetizationTitlesResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelJustwatchMonetizationTitlesResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelJustwatchNewTitlesResponseDoc = TypedDict('ModelJustwatchNewTitlesResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelJustwatchNewTitlesResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelJustwatchPopularResponseDoc = TypedDict('ModelJustwatchPopularResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelJustwatchPopularResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelJustwatchProviderTitlesResponseDoc = TypedDict('ModelJustwatchProviderTitlesResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelJustwatchProviderTitlesResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelJustwatchProvidersResponseDoc = TypedDict('ModelJustwatchProvidersResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelJustwatchProvidersResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelJustwatchSearchResponseDoc = TypedDict('ModelJustwatchSearchResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelJustwatchSearchResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelJustwatchSeasonByIdresponseDoc = TypedDict('ModelJustwatchSeasonByIdresponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelJustwatchSeasonByIdresponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelJustwatchSeasonEpisodesResponseDoc = TypedDict('ModelJustwatchSeasonEpisodesResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelJustwatchSeasonEpisodesResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelJustwatchShowSeasonsResponseDoc = TypedDict('ModelJustwatchShowSeasonsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelJustwatchShowSeasonsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelJustwatchSimilarTitlesResponseDoc = TypedDict('ModelJustwatchSimilarTitlesResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelJustwatchSimilarTitlesResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelJustwatchTitleMediaResponseDoc = TypedDict('ModelJustwatchTitleMediaResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelJustwatchTitleMediaResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelJustwatchTitleOffersResponseDoc = TypedDict('ModelJustwatchTitleOffersResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelJustwatchTitleOffersResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelJustwatchTitleResponseDoc = TypedDict('ModelJustwatchTitleResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelJustwatchTitleResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelLinkedinCustomer = TypedDict('ModelLinkedinCustomer', {
+    'follower_count': NotRequired[int],
+    'industry': NotRequired[str],
+    'link': NotRequired[str],
+    'logo': NotRequired[str],
+    'name': NotRequired[str],
+}, total=False)
+
+ModelLinkedinLinkedinCompanyResponse = TypedDict('ModelLinkedinLinkedinCompanyResponse', {
+    'about': NotRequired[str],
+    'affiliated_pages': NotRequired[list[ModelLinkedinPage]],
+    'company_size': NotRequired[str],
+    'follower_count': NotRequired[int],
+    'founded_on': NotRequired[int],
+    'headline': NotRequired[str],
+    'headquarters': NotRequired[str],
+    'industry': NotRequired[str],
+    'link': NotRequired[str],
+    'locations': NotRequired[list[ModelLinkedinLocation]],
+    'logo': NotRequired[str],
+    'name': NotRequired[str],
+    'num_of_employees_on_linkedin': NotRequired[int],
+    'similar_pages': NotRequired[list[ModelLinkedinPage]],
+    'specialties': NotRequired[str],
+    'type': NotRequired[str],
+    'updates': NotRequired[list[ModelLinkedinUpdate]],
+    'website': NotRequired[str],
+}, total=False)
+
+ModelLinkedinLinkedinProductResponse = TypedDict('ModelLinkedinLinkedinProductResponse', {
+    'about': NotRequired[str],
+    'category_link': NotRequired[str],
+    'category_name': NotRequired[str],
+    'cover_image': NotRequired[str],
+    'external_link': NotRequired[str],
+    'featured_customers': NotRequired[list[ModelLinkedinCustomer]],
+    'link': NotRequired[str],
+    'logo': NotRequired[str],
+    'medias': NotRequired[list[ModelLinkedinMedia]],
+    'name': NotRequired[str],
+    'organization_link': NotRequired[str],
+    'organization_name': NotRequired[str],
+    'other_products': NotRequired[list[ModelLinkedinProduct]],
+    'similar_products': NotRequired[list[ModelLinkedinProduct]],
+}, total=False)
+
+ModelLinkedinLocation = TypedDict('ModelLinkedinLocation', {
+    'address': NotRequired[str],
+    'is_primary': NotRequired[bool],
+}, total=False)
+
+ModelLinkedinMedia = TypedDict('ModelLinkedinMedia', {
+    'link': NotRequired[str],
+    'name': NotRequired[str],
+}, total=False)
+
+ModelLinkedinPage = TypedDict('ModelLinkedinPage', {
+    'address': NotRequired[str],
+    'industry': NotRequired[str],
+    'link': NotRequired[str],
+    'name': NotRequired[str],
+}, total=False)
+
+ModelLinkedinProduct = TypedDict('ModelLinkedinProduct', {
+    'category_link': NotRequired[str],
+    'category_name': NotRequired[str],
+    'link': NotRequired[str],
+    'logo': NotRequired[str],
+    'name': NotRequired[str],
+}, total=False)
+
+ModelLinkedinUpdate = TypedDict('ModelLinkedinUpdate', {
+    'author': NotRequired[str],
+    'author_link': NotRequired[str],
+    'images': NotRequired[list[str]],
+    'is_reposted': NotRequired[bool],
+    'logo': NotRequired[str],
+    'num_of_comments': NotRequired[int],
+    'num_of_reactions': NotRequired[int],
+    'post_link': NotRequired[str],
+    'published_at': NotRequired[str],
+    'summary': NotRequired[str],
+    'videos': NotRequired[list[str]],
+}, total=False)
+
+ModelLinkedinCompanyResponseDoc = TypedDict('ModelLinkedinCompanyResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelLinkedinLinkedinCompanyResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelLinkedinProductResponseDoc = TypedDict('ModelLinkedinProductResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelLinkedinLinkedinProductResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelLinkedinShowcaseResponseDoc = TypedDict('ModelLinkedinShowcaseResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelLinkedinLinkedinCompanyResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelPopularTrendCountryIndustryMeta = TypedDict('ModelPopularTrendCountryIndustryMeta', {
+    'country': NotRequired[list[ModelPopularTrendCountryIndustryMetaItem]],
+    'industry': NotRequired[list[ModelPopularTrendCountryIndustryMetaItem]],
+}, total=False)
+
+ModelPopularTrendCountryIndustryMetaItem = TypedDict('ModelPopularTrendCountryIndustryMetaItem', {
+    'id': NotRequired[str],
+    'value': NotRequired[str],
+}, total=False)
+
+ModelPopularTrendCreatorTrendResp = TypedDict('ModelPopularTrendCreatorTrendResp', {
+    'code': NotRequired[int],
+    'data': NotRequired[dict[str, Any]],
+    'msg': NotRequired[str],
+    'request_id': NotRequired[str],
+}, total=False)
+
+ModelPopularTrendTopAdsAnalysisPoint = TypedDict('ModelPopularTrendTopAdsAnalysisPoint', {
+    'second': NotRequired[int],
+    'value': NotRequired[float],
+}, total=False)
+
+ModelPopularTrendTopAdsAnalysisResp = TypedDict('ModelPopularTrendTopAdsAnalysisResp', {
+    'code': NotRequired[int],
+    'data': NotRequired[dict[str, Any]],
+    'msg': NotRequired[str],
+    'request_id': NotRequired[str],
+}, total=False)
+
+ModelPopularTrendTopAdsDetailResp = TypedDict('ModelPopularTrendTopAdsDetailResp', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelPopularTrendTopAdsMaterial],
+    'msg': NotRequired[str],
+    'request_id': NotRequired[str],
+}, total=False)
+
+ModelPopularTrendTopAdsFilterItem = TypedDict('ModelPopularTrendTopAdsFilterItem', {
+    'has_conversion': NotRequired[bool],
+    'id': NotRequired[dict[str, Any]],
+    'label': NotRequired[str],
+    'parent_id': NotRequired[dict[str, Any]],
+    'value': NotRequired[str],
+}, total=False)
+
+ModelPopularTrendTopAdsFiltersResp = TypedDict('ModelPopularTrendTopAdsFiltersResp', {
+    'code': NotRequired[int],
+    'data': NotRequired[dict[str, Any]],
+    'msg': NotRequired[str],
+    'request_id': NotRequired[str],
+}, total=False)
+
+ModelPopularTrendTopAdsListResp = TypedDict('ModelPopularTrendTopAdsListResp', {
+    'code': NotRequired[int],
+    'data': NotRequired[dict[str, Any]],
+    'msg': NotRequired[str],
+    'request_id': NotRequired[str],
+}, total=False)
+
+ModelPopularTrendTopAdsLocationInfoResp = TypedDict('ModelPopularTrendTopAdsLocationInfoResp', {
+    'code': NotRequired[int],
+    'data': NotRequired[dict[str, Any]],
+    'msg': NotRequired[str],
+    'request_id': NotRequired[str],
+}, total=False)
+
+ModelPopularTrendTopAdsLocationsResp = TypedDict('ModelPopularTrendTopAdsLocationsResp', {
+    'code': NotRequired[int],
+    'data': NotRequired[dict[str, Any]],
+    'msg': NotRequired[str],
+    'request_id': NotRequired[str],
+}, total=False)
+
+ModelPopularTrendTopAdsMaterial = TypedDict('ModelPopularTrendTopAdsMaterial', {
+    'ad_title': NotRequired[str],
+    'brand_name': NotRequired[str],
+    'comment': NotRequired[int],
+    'cost': NotRequired[int],
+    'country_code': NotRequired[list[str]],
+    'ctr': NotRequired[float],
+    'favorite': NotRequired[bool],
+    'has_summary': NotRequired[bool],
+    'highlight': NotRequired[str],
+    'highlight_text': NotRequired[str],
+    'id': NotRequired[str],
+    'industry_key': NotRequired[str],
+    'is_search': NotRequired[bool],
+    'keyword_list': NotRequired[list[str]],
+    'landing_page': NotRequired[str],
+    'like': NotRequired[int],
+    'objective_key': NotRequired[str],
+    'objectives': NotRequired[list[ModelPopularTrendTopAdsFilterItem]],
+    'pattern_label': NotRequired[list[ModelPopularTrendTopAdsFilterItem]],
+    'share': NotRequired[int],
+    'source': NotRequired[str],
+    'source_key': NotRequired[int],
+    'video_info': NotRequired[ModelPopularTrendTopAdsVideoInfo],
+    'voice_over': NotRequired[bool],
+}, total=False)
+
+ModelPopularTrendTopAdsPagination = TypedDict('ModelPopularTrendTopAdsPagination', {
+    'has_more': NotRequired[bool],
+    'page': NotRequired[int],
+    'size': NotRequired[int],
+    'total': NotRequired[int],
+    'total_count': NotRequired[int],
+}, total=False)
+
+ModelPopularTrendTopAdsRecommendResp = TypedDict('ModelPopularTrendTopAdsRecommendResp', {
+    'code': NotRequired[int],
+    'data': NotRequired[dict[str, Any]],
+    'msg': NotRequired[str],
+    'request_id': NotRequired[str],
+}, total=False)
+
+ModelPopularTrendTopAdsSafetyResp = TypedDict('ModelPopularTrendTopAdsSafetyResp', {
+    'code': NotRequired[int],
+    'data': NotRequired[dict[str, Any]],
+    'msg': NotRequired[str],
+    'request_id': NotRequired[str],
+}, total=False)
+
+ModelPopularTrendTopAdsSpotlightResp = TypedDict('ModelPopularTrendTopAdsSpotlightResp', {
+    'code': NotRequired[int],
+    'data': NotRequired[dict[str, Any]],
+    'msg': NotRequired[str],
+    'request_id': NotRequired[str],
+}, total=False)
+
+ModelPopularTrendTopAdsSuggestionsResp = TypedDict('ModelPopularTrendTopAdsSuggestionsResp', {
+    'code': NotRequired[int],
+    'data': NotRequired[dict[str, Any]],
+    'msg': NotRequired[str],
+    'request_id': NotRequired[str],
+}, total=False)
+
+ModelPopularTrendTopAdsVideoInfo = TypedDict('ModelPopularTrendTopAdsVideoInfo', {
+    'cover': NotRequired[str],
+    'duration': NotRequired[float],
+    'height': NotRequired[int],
+    'vid': NotRequired[str],
+    'video_url': NotRequired[dict[str, str]],
+    'width': NotRequired[int],
+}, total=False)
+
+ModelPopulartrendCountryIndustryMetaResponseDoc = TypedDict('ModelPopulartrendCountryIndustryMetaResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelPopularTrendCountryIndustryMeta],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelPopulartrendCreatorTrendResponseDoc = TypedDict('ModelPopulartrendCreatorTrendResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelPopularTrendCreatorTrendResp],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelPopulartrendTopAdsAnalysisResponseDoc = TypedDict('ModelPopulartrendTopAdsAnalysisResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelPopularTrendTopAdsAnalysisResp],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelPopulartrendTopAdsDetailResponseDoc = TypedDict('ModelPopulartrendTopAdsDetailResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelPopularTrendTopAdsDetailResp],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelPopulartrendTopAdsFiltersResponseDoc = TypedDict('ModelPopulartrendTopAdsFiltersResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelPopularTrendTopAdsFiltersResp],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelPopulartrendTopAdsListResponseDoc = TypedDict('ModelPopulartrendTopAdsListResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelPopularTrendTopAdsListResp],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelPopulartrendTopAdsLocationInfoResponseDoc = TypedDict('ModelPopulartrendTopAdsLocationInfoResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelPopularTrendTopAdsLocationInfoResp],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelPopulartrendTopAdsLocationsResponseDoc = TypedDict('ModelPopulartrendTopAdsLocationsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelPopularTrendTopAdsLocationsResp],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelPopulartrendTopAdsRecommendResponseDoc = TypedDict('ModelPopulartrendTopAdsRecommendResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelPopularTrendTopAdsRecommendResp],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelPopulartrendTopAdsSafetyResponseDoc = TypedDict('ModelPopulartrendTopAdsSafetyResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelPopularTrendTopAdsSafetyResp],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelPopulartrendTopAdsSpotlightResponseDoc = TypedDict('ModelPopulartrendTopAdsSpotlightResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelPopularTrendTopAdsSpotlightResp],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelPopulartrendTopAdsSuggestionsResponseDoc = TypedDict('ModelPopulartrendTopAdsSuggestionsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelPopularTrendTopAdsSuggestionsResp],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelProducthuntLeaderboardAdItem = TypedDict('ModelProducthuntLeaderboardAdItem', {
+    'channel_kind': NotRequired[str],
+    'id': NotRequired[str],
+    'large_asset_uuid': NotRequired[str],
+    'name': NotRequired[str],
+    'post': NotRequired[ModelProducthuntLeaderboardAdPost],
+    'small_asset_uuid': NotRequired[str],
+    'subject': NotRequired[str],
+    'tagline': NotRequired[str],
+    'thumbnail_uuid': NotRequired[str],
+    'url': NotRequired[str],
+    'variation_id': NotRequired[str],
+}, total=False)
+
+ModelProducthuntLeaderboardAdPost = TypedDict('ModelProducthuntLeaderboardAdPost', {
+    'comments_count': NotRequired[int],
+    'created_at': NotRequired[str],
+    'disabled_when_scheduled': NotRequired[bool],
+    'embargo_preview_at': NotRequired[str],
+    'featured_at': NotRequired[str],
+    'featured_comment': NotRequired[ModelProducthuntProductCategoryAdComment],
+    'has_voted': NotRequired[bool],
+    'hide_votes_count': NotRequired[bool],
+    'id': NotRequired[str],
+    'latest_score': NotRequired[int],
+    'launch_day_score': NotRequired[int],
+    'name': NotRequired[str],
+    'product': NotRequired[ModelProducthuntLeaderboardProductRef],
+    'randomization_status': NotRequired[ModelProducthuntLeaderboardRandomizationStatus],
+    'slug': NotRequired[str],
+    'topics': NotRequired[list[ModelProducthuntLeaderboardTopic]],
+    'updated_at': NotRequired[str],
+}, total=False)
+
+ModelProducthuntLeaderboardGhostItem = TypedDict('ModelProducthuntLeaderboardGhostItem', {
+    'id': NotRequired[str],
+    'subject': NotRequired[str],
+}, total=False)
+
+ModelProducthuntLeaderboardItem = TypedDict('ModelProducthuntLeaderboardItem', {
+    'ad': NotRequired[ModelProducthuntLeaderboardAdItem],
+    'ghost_ad': NotRequired[ModelProducthuntLeaderboardGhostItem],
+    'post': NotRequired[ModelProducthuntLeaderboardPostItem],
+    'type': NotRequired[str],
+}, total=False)
+
+ModelProducthuntLeaderboardPage = TypedDict('ModelProducthuntLeaderboardPage', {
+    'connection': NotRequired[str],
+    'day': NotRequired[int],
+    'end_cursor': NotRequired[str],
+    'featured': NotRequired[bool],
+    'golden_kitty_years': NotRequired[list[int]],
+    'has_next_page': NotRequired[bool],
+    'items': NotRequired[list[ModelProducthuntLeaderboardItem]],
+    'month': NotRequired[int],
+    'order': NotRequired[str],
+    'raw_page_info': NotRequired[dict[str, Any]],
+    'scope': NotRequired[str],
+    'total_count': NotRequired[int],
+    'week': NotRequired[int],
+    'year': NotRequired[int],
+}, total=False)
+
+ModelProducthuntLeaderboardPostItem = TypedDict('ModelProducthuntLeaderboardPostItem', {
+    'comments_count': NotRequired[int],
+    'created_at': NotRequired[str],
+    'daily_rank': NotRequired[int],
+    'disabled_when_scheduled': NotRequired[bool],
+    'embargo_preview_at': NotRequired[str],
+    'featured_at': NotRequired[str],
+    'friend_voters_count': NotRequired[int],
+    'has_voted': NotRequired[bool],
+    'hide_votes_count': NotRequired[bool],
+    'id': NotRequired[str],
+    'is_subscribed': NotRequired[bool],
+    'latest_score': NotRequired[int],
+    'launch_day_score': NotRequired[int],
+    'monthly_rank': NotRequired[int],
+    'name': NotRequired[str],
+    'product': NotRequired[ModelProducthuntLeaderboardProductRef],
+    'product_state': NotRequired[str],
+    'randomization_status': NotRequired[ModelProducthuntLeaderboardRandomizationStatus],
+    'scheduled_at': NotRequired[str],
+    'shortened_url': NotRequired[str],
+    'slug': NotRequired[str],
+    'tagline': NotRequired[str],
+    'thumbnail_image_uuid': NotRequired[str],
+    'topics': NotRequired[list[ModelProducthuntLeaderboardTopic]],
+    'updated_at': NotRequired[str],
+    'weekly_rank': NotRequired[int],
+}, total=False)
+
+ModelProducthuntLeaderboardProductRef = TypedDict('ModelProducthuntLeaderboardProductRef', {
+    'id': NotRequired[str],
+    'is_no_longer_online': NotRequired[bool],
+    'is_subscribed': NotRequired[bool],
+    'is_top_product': NotRequired[bool],
+    'logo_uuid': NotRequired[str],
+    'name': NotRequired[str],
+    'slug': NotRequired[str],
+}, total=False)
+
+ModelProducthuntLeaderboardRandomizationStatus = TypedDict('ModelProducthuntLeaderboardRandomizationStatus', {
+    'active': NotRequired[bool],
+    'next_transition_at': NotRequired[str],
+    'random_day': NotRequired[bool],
+    'randomize_order': NotRequired[bool],
+}, total=False)
+
+ModelProducthuntLeaderboardTopic = TypedDict('ModelProducthuntLeaderboardTopic', {
+    'id': NotRequired[str],
+    'name': NotRequired[str],
+    'slug': NotRequired[str],
+}, total=False)
+
+ModelProducthuntProduct = TypedDict('ModelProducthuntProduct', {
+    'categories': NotRequired[list[str]],
+    'daily_rank': NotRequired[int],
+    'date_published': NotRequired[str],
+    'description': NotRequired[str],
+    'followers_count': NotRequired[int],
+    'id': NotRequired[str],
+    'monthly_rank': NotRequired[int],
+    'name': NotRequired[str],
+    'rating': NotRequired[float],
+    'review_count': NotRequired[int],
+    'similar_products': NotRequired[list[ModelProducthuntSimilarProduct]],
+    'social_links': NotRequired[list[str]],
+    'tagline': NotRequired[str],
+    'website': NotRequired[str],
+    'weekly_rank': NotRequired[int],
+}, total=False)
+
+ModelProducthuntProductAboutAd = TypedDict('ModelProducthuntProductAboutAd', {
+    'channel_kind': NotRequired[str],
+    'id': NotRequired[str],
+    'large_asset_uuid': NotRequired[str],
+    'name': NotRequired[str],
+    'small_asset_uuid': NotRequired[str],
+    'subject': NotRequired[str],
+    'tagline': NotRequired[str],
+    'thumbnail_uuid': NotRequired[str],
+    'url': NotRequired[str],
+    'variation_id': NotRequired[str],
+}, total=False)
+
+ModelProducthuntProductAboutDiscussionForum = TypedDict('ModelProducthuntProductAboutDiscussionForum', {
+    'id': NotRequired[str],
+    'path': NotRequired[str],
+    'threads': NotRequired[list[ModelProducthuntProductAboutDiscussionThread]],
+    'total_count': NotRequired[int],
+}, total=False)
+
+ModelProducthuntProductAboutDiscussionThread = TypedDict('ModelProducthuntProductAboutDiscussionThread', {
+    'commentable_id': NotRequired[str],
+    'comments_count': NotRequired[int],
+    'created_at': NotRequired[str],
+    'description_preview': NotRequired[str],
+    'forum': NotRequired[ModelProducthuntProductAboutForumRef],
+    'has_voted': NotRequired[bool],
+    'id': NotRequired[str],
+    'is_featured': NotRequired[bool],
+    'is_pinned': NotRequired[bool],
+    'path': NotRequired[str],
+    'slug': NotRequired[str],
+    'title': NotRequired[str],
+    'user': NotRequired[ModelProducthuntProductCategoryUser],
+    'votes_count': NotRequired[int],
+}, total=False)
+
+ModelProducthuntProductAboutForumRef = TypedDict('ModelProducthuntProductAboutForumRef', {
+    'id': NotRequired[str],
+    'path': NotRequired[str],
+    'slug': NotRequired[str],
+    'subject': NotRequired[ModelProducthuntProductAboutForumSubject],
+}, total=False)
+
+ModelProducthuntProductAboutForumSubject = TypedDict('ModelProducthuntProductAboutForumSubject', {
+    'id': NotRequired[str],
+    'is_no_longer_online': NotRequired[bool],
+    'logo_uuid': NotRequired[str],
+    'name': NotRequired[str],
+}, total=False)
+
+ModelProducthuntProductAboutGhostAd = TypedDict('ModelProducthuntProductAboutGhostAd', {
+    'id': NotRequired[str],
+    'subject': NotRequired[str],
+}, total=False)
+
+ModelProducthuntProductAboutLatestLaunch = TypedDict('ModelProducthuntProductAboutLatestLaunch', {
+    'id': NotRequired[str],
+    'is_maker': NotRequired[bool],
+    'launch_number': NotRequired[int],
+    'launched_this_week': NotRequired[bool],
+    'launching_today': NotRequired[bool],
+    'name': NotRequired[str],
+    'product_state': NotRequired[str],
+    'scheduled_at': NotRequired[str],
+    'slug': NotRequired[str],
+    'tagline': NotRequired[str],
+    'thumbnail_image_uuid': NotRequired[str],
+}, total=False)
+
+ModelProducthuntProductAboutLaunch = TypedDict('ModelProducthuntProductAboutLaunch', {
+    'ad1': NotRequired[ModelProducthuntProductAboutGhostAd],
+    'ad2': NotRequired[ModelProducthuntProductAboutGhostAd],
+    'badges': NotRequired[list[ModelProducthuntProductCategoryListBadge]],
+    'can_deputy_manage': NotRequired[bool],
+    'can_manage': NotRequired[bool],
+    'comments_count': NotRequired[int],
+    'created_at': NotRequired[str],
+    'daily_rank': NotRequired[int],
+    'description': NotRequired[str],
+    'detailed_reviews': NotRequired[list[ModelProducthuntProductAboutShoutout]],
+    'disabled_when_scheduled': NotRequired[bool],
+    'embargo_preview_at': NotRequired[str],
+    'featured': NotRequired[bool],
+    'featured_at': NotRequired[str],
+    'has_voted': NotRequired[bool],
+    'hide_votes_count': NotRequired[bool],
+    'id': NotRequired[str],
+    'is_archived': NotRequired[bool],
+    'is_available': NotRequired[bool],
+    'is_hunter': NotRequired[bool],
+    'is_maker': NotRequired[bool],
+    'is_top_launch': NotRequired[bool],
+    'latest_score': NotRequired[int],
+    'launch_day_score': NotRequired[int],
+    'launch_number': NotRequired[int],
+    'launch_state': NotRequired[str],
+    'launched_this_week': NotRequired[bool],
+    'launching_today': NotRequired[bool],
+    'links': NotRequired[list[ModelProducthuntProductAboutLink]],
+    'makers': NotRequired[list[ModelProducthuntProductAboutUser]],
+    'media': NotRequired[list[ModelProducthuntProductAboutMedia]],
+    'meta': NotRequired[ModelProducthuntProductAboutMeta],
+    'moderation_reason': NotRequired[str],
+    'name': NotRequired[str],
+    'pricing_type': NotRequired[str],
+    'primary_link': NotRequired[ModelProducthuntProductAboutPrimaryLink],
+    'product': NotRequired[ModelProducthuntProductAboutLaunchProduct],
+    'product_state': NotRequired[str],
+    'promo': NotRequired[dict[str, Any]],
+    'redirect_to_product': NotRequired[ModelProducthuntLeaderboardProductRef],
+    'scheduled_at': NotRequired[str],
+    'slug': NotRequired[str],
+    'tagline': NotRequired[str],
+    'thumbnail_image_uuid': NotRequired[str],
+    'topics': NotRequired[list[ModelProducthuntProductCategoryRef]],
+    'trashed_at': NotRequired[str],
+    'updated_at': NotRequired[str],
+    'url': NotRequired[str],
+    'user': NotRequired[ModelProducthuntProductAboutUser],
+    'weekly_rank': NotRequired[int],
+}, total=False)
+
+ModelProducthuntProductAboutLaunchFlags = TypedDict('ModelProducthuntProductAboutLaunchFlags', {
+    'id': NotRequired[str],
+    'launched_this_week': NotRequired[bool],
+    'launching_today': NotRequired[bool],
+}, total=False)
+
+ModelProducthuntProductAboutLaunchProduct = TypedDict('ModelProducthuntProductAboutLaunchProduct', {
+    'can_claim': NotRequired[bool],
+    'can_edit': NotRequired[bool],
+    'clean_url': NotRequired[str],
+    'detailed_review': NotRequired[dict[str, Any]],
+    'first_launch': NotRequired[bool],
+    'id': NotRequired[str],
+    'is_claimed': NotRequired[bool],
+    'is_no_longer_online': NotRequired[bool],
+    'is_subscribed': NotRequired[bool],
+    'is_top_product': NotRequired[bool],
+    'is_viewer_team_member': NotRequired[dict[str, Any]],
+    'latest_launch': NotRequired[ModelProducthuntProductAboutLaunchFlags],
+    'logo_uuid': NotRequired[str],
+    'name': NotRequired[str],
+    'posts_count': NotRequired[int],
+    'pro_con_tags': NotRequired[list[ModelProducthuntProductDetailedReviewTag]],
+    'review_questions': NotRequired[list[ModelProducthuntProductAboutReviewQuestion]],
+    'reviews_rating': NotRequired[float],
+    'slug': NotRequired[str],
+    'tagline': NotRequired[str],
+    'viewer_pending_team_request': NotRequired[dict[str, Any]],
+    'website_domain': NotRequired[str],
+    'website_url': NotRequired[str],
+}, total=False)
+
+ModelProducthuntProductAboutLink = TypedDict('ModelProducthuntProductAboutLink', {
+    'devices': NotRequired[list[str]],
+    'id': NotRequired[str],
+    'redirect_path': NotRequired[str],
+    'store_name': NotRequired[str],
+    'website_name': NotRequired[str],
+}, total=False)
+
+ModelProducthuntProductAboutMedia = TypedDict('ModelProducthuntProductAboutMedia', {
+    'id': NotRequired[str],
+    'image_uuid': NotRequired[str],
+    'interactive_demo_id': NotRequired[str],
+    'interactive_demo_type': NotRequired[str],
+    'media_type': NotRequired[str],
+    'original_height': NotRequired[int],
+    'original_width': NotRequired[int],
+    'platform': NotRequired[str],
+    'thumbnail_height': NotRequired[int],
+    'thumbnail_width': NotRequired[int],
+    'url': NotRequired[str],
+    'video_id': NotRequired[str],
+}, total=False)
+
+ModelProducthuntProductAboutMentionedProduct = TypedDict('ModelProducthuntProductAboutMentionedProduct', {
+    'id': NotRequired[str],
+    'is_no_longer_online': NotRequired[bool],
+    'logo_uuid': NotRequired[str],
+    'name': NotRequired[str],
+    'path': NotRequired[str],
+    'slug': NotRequired[str],
+    'tagline': NotRequired[str],
+}, total=False)
+
+ModelProducthuntProductAboutMeta = TypedDict('ModelProducthuntProductAboutMeta', {
+    'title': NotRequired[str],
+}, total=False)
+
+ModelProducthuntProductAboutPage = TypedDict('ModelProducthuntProductAboutPage', {
+    'ad': NotRequired[ModelProducthuntProductAboutAd],
+    'launch': NotRequired[ModelProducthuntProductAboutLaunch],
+    'page_variant_typename': NotRequired[str],
+    'product': NotRequired[ModelProducthuntProductAboutProduct],
+    'product_id': NotRequired[str],
+    'viewer': NotRequired[ModelProducthuntProductAboutViewer],
+}, total=False)
+
+ModelProducthuntProductAboutPageVariant = TypedDict('ModelProducthuntProductAboutPageVariant', {
+    'launch_id': NotRequired[str],
+    'typename': NotRequired[str],
+}, total=False)
+
+ModelProducthuntProductAboutPost = TypedDict('ModelProducthuntProductAboutPost', {
+    'badges': NotRequired[list[ModelProducthuntProductCategoryListBadge]],
+    'comments_count': NotRequired[int],
+    'created_at': NotRequired[str],
+    'daily_rank': NotRequired[int],
+    'disabled_when_scheduled': NotRequired[bool],
+    'embargo_preview_at': NotRequired[str],
+    'featured_at': NotRequired[str],
+    'has_voted': NotRequired[bool],
+    'hide_votes_count': NotRequired[bool],
+    'id': NotRequired[str],
+    'latest_score': NotRequired[int],
+    'launch_day_score': NotRequired[int],
+    'monthly_rank': NotRequired[int],
+    'name': NotRequired[str],
+    'product': NotRequired[ModelProducthuntLeaderboardProductRef],
+    'product_state': NotRequired[str],
+    'randomization_status': NotRequired[ModelProducthuntLeaderboardRandomizationStatus],
+    'redirect_to_product': NotRequired[ModelProducthuntLeaderboardProductRef],
+    'shortened_url': NotRequired[str],
+    'slug': NotRequired[str],
+    'tagline': NotRequired[str],
+    'thumbnail_image_uuid': NotRequired[str],
+    'updated_at': NotRequired[str],
+    'weekly_rank': NotRequired[int],
+}, total=False)
+
+ModelProducthuntProductAboutPrimaryLink = TypedDict('ModelProducthuntProductAboutPrimaryLink', {
+    'id': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelProducthuntProductAboutProduct = TypedDict('ModelProducthuntProductAboutProduct', {
+    'badges': NotRequired[list[ModelProducthuntProductCategoryListBadge]],
+    'detailed_review': NotRequired[dict[str, Any]],
+    'discussion_forum': NotRequired[ModelProducthuntProductAboutDiscussionForum],
+    'followers_count': NotRequired[int],
+    'id': NotRequired[str],
+    'is_no_longer_online': NotRequired[bool],
+    'is_subscribed': NotRequired[bool],
+    'latest_launch': NotRequired[ModelProducthuntProductAboutLatestLaunch],
+    'logo_uuid': NotRequired[str],
+    'media': NotRequired[list[ModelProducthuntProductAboutMedia]],
+    'name': NotRequired[str],
+    'page_variant': NotRequired[ModelProducthuntProductAboutPageVariant],
+    'posts': NotRequired[list[ModelProducthuntProductAboutPost]],
+    'posts_count': NotRequired[int],
+    'pro_con_tags': NotRequired[list[ModelProducthuntProductDetailedReviewTag]],
+    'review_questions': NotRequired[list[ModelProducthuntProductAboutReviewQuestion]],
+    'reviews_rating': NotRequired[float],
+    'screenshots': NotRequired[list[ModelProducthuntProductAboutScreenshot]],
+    'slug': NotRequired[str],
+    'tagline': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelProducthuntProductAboutReviewQuestion = TypedDict('ModelProducthuntProductAboutReviewQuestion', {
+    'category': NotRequired[str],
+    'id': NotRequired[str],
+    'question': NotRequired[str],
+}, total=False)
+
+ModelProducthuntProductAboutScreenshot = TypedDict('ModelProducthuntProductAboutScreenshot', {
+    'id': NotRequired[str],
+    'image_uuid': NotRequired[str],
+    'media_type': NotRequired[str],
+    'original_height': NotRequired[int],
+    'original_width': NotRequired[int],
+}, total=False)
+
+ModelProducthuntProductAboutShoutout = TypedDict('ModelProducthuntProductAboutShoutout', {
+    'alternative_products': NotRequired[list[ModelProducthuntProductAboutMentionedProduct]],
+    'id': NotRequired[str],
+    'product': NotRequired[ModelProducthuntProductAboutMentionedProduct],
+    'shoutout_note': NotRequired[str],
+}, total=False)
+
+ModelProducthuntProductAboutUser = TypedDict('ModelProducthuntProductAboutUser', {
+    'avatar_url': NotRequired[str],
+    'headline': NotRequired[str],
+    'id': NotRequired[str],
+    'name': NotRequired[str],
+    'username': NotRequired[str],
+}, total=False)
+
+ModelProducthuntProductAboutViewer = TypedDict('ModelProducthuntProductAboutViewer', {
+    'is_featured_post_maker': NotRequired[bool],
+    'recent_launch': NotRequired[dict[str, Any]],
+}, total=False)
+
+ModelProducthuntProductAlternativeBadge = TypedDict('ModelProducthuntProductAlternativeBadge', {
+    'date': NotRequired[str],
+    'id': NotRequired[str],
+    'period': NotRequired[str],
+    'position': NotRequired[int],
+    'post_name': NotRequired[str],
+    'post_slug': NotRequired[str],
+}, total=False)
+
+ModelProducthuntProductAlternativeDiscussion = TypedDict('ModelProducthuntProductAlternativeDiscussion', {
+    'comments_count': NotRequired[int],
+    'created_at': NotRequired[str],
+    'description_preview': NotRequired[str],
+    'has_voted': NotRequired[bool],
+    'id': NotRequired[str],
+    'path': NotRequired[str],
+    'pinned': NotRequired[bool],
+    'primary_forum': NotRequired[ModelProducthuntProductAlternativeDiscussionForum],
+    'slug': NotRequired[str],
+    'title': NotRequired[str],
+    'user': NotRequired[ModelProducthuntProductAlternativeDiscussionUser],
+    'votes_count': NotRequired[int],
+}, total=False)
+
+ModelProducthuntProductAlternativeDiscussionForum = TypedDict('ModelProducthuntProductAlternativeDiscussionForum', {
+    'id': NotRequired[str],
+    'slug': NotRequired[str],
+    'subject_id': NotRequired[str],
+    'subject_name': NotRequired[str],
+}, total=False)
+
+ModelProducthuntProductAlternativeDiscussionUser = TypedDict('ModelProducthuntProductAlternativeDiscussionUser', {
+    'avatar_url': NotRequired[str],
+    'id': NotRequired[str],
+    'name': NotRequired[str],
+    'username': NotRequired[str],
+}, total=False)
+
+ModelProducthuntProductAlternativeItem = TypedDict('ModelProducthuntProductAlternativeItem', {
+    'category_score': NotRequired[float],
+    'category_weight': NotRequired[float],
+    'combined_score': NotRequired[float],
+    'embedding_score': NotRequired[float],
+    'embedding_weight': NotRequired[float],
+    'id': NotRequired[str],
+    'product': NotRequired[ModelProducthuntProductAlternativeProduct],
+    'rating_score': NotRequired[float],
+    'rating_weight': NotRequired[float],
+}, total=False)
+
+ModelProducthuntProductAlternativeProduct = TypedDict('ModelProducthuntProductAlternativeProduct', {
+    'badges': NotRequired[list[ModelProducthuntProductAlternativeBadge]],
+    'categories': NotRequired[list[str]],
+    'followers_count': NotRequired[int],
+    'id': NotRequired[str],
+    'is_subscribed': NotRequired[bool],
+    'is_top_product': NotRequired[bool],
+    'logo_uuid': NotRequired[str],
+    'name': NotRequired[str],
+    'reviews_count': NotRequired[int],
+    'reviews_rating': NotRequired[float],
+    'slug': NotRequired[str],
+    'structured_data': NotRequired[ModelProducthuntProductAlternativeStructuredData],
+    'tagline': NotRequired[str],
+    'tags': NotRequired[list[str]],
+}, total=False)
+
+ModelProducthuntProductAlternativeStructuredData = TypedDict('ModelProducthuntProductAlternativeStructuredData', {
+    'application_category': NotRequired[str],
+    'context': NotRequired[str],
+    'date_modified': NotRequired[str],
+    'date_published': NotRequired[str],
+    'description': NotRequired[str],
+    'id': NotRequired[str],
+    'image': NotRequired[str],
+    'name': NotRequired[str],
+    'operating_system': NotRequired[str],
+    'screenshot': NotRequired[list[str]],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelProducthuntProductAlternativeTag = TypedDict('ModelProducthuntProductAlternativeTag', {
+    'count': NotRequired[int],
+    'name': NotRequired[str],
+}, total=False)
+
+ModelProducthuntProductAlternativesPage = TypedDict('ModelProducthuntProductAlternativesPage', {
+    'alternative_tags': NotRequired[list[ModelProducthuntProductAlternativeTag]],
+    'alternatives_markdown_description': NotRequired[str],
+    'categories': NotRequired[list[str]],
+    'discussions': NotRequired[list[ModelProducthuntProductAlternativeDiscussion]],
+    'discussions_has_next_page': NotRequired[bool],
+    'end_cursor': NotRequired[str],
+    'followers_count': NotRequired[int],
+    'has_next_page': NotRequired[bool],
+    'items': NotRequired[list[ModelProducthuntProductAlternativeItem]],
+    'name': NotRequired[str],
+    'product_id': NotRequired[str],
+    'slug': NotRequired[str],
+    'total_count': NotRequired[int],
+}, total=False)
+
+ModelProducthuntProductCategoryAd = TypedDict('ModelProducthuntProductCategoryAd', {
+    'channel_kind': NotRequired[str],
+    'id': NotRequired[str],
+    'large_asset_uuid': NotRequired[str],
+    'name': NotRequired[str],
+    'post': NotRequired[ModelProducthuntProductCategoryAdPost],
+    'small_asset_uuid': NotRequired[str],
+    'subject': NotRequired[str],
+    'tagline': NotRequired[str],
+    'thumbnail_uuid': NotRequired[str],
+    'url': NotRequired[str],
+    'variation_id': NotRequired[str],
+}, total=False)
+
+ModelProducthuntProductCategoryAdComment = TypedDict('ModelProducthuntProductCategoryAdComment', {
+    'body_text': NotRequired[str],
+    'id': NotRequired[str],
+    'is_pinned': NotRequired[bool],
+    'path': NotRequired[str],
+    'subject_id': NotRequired[str],
+    'user': NotRequired[ModelProducthuntProductCategoryUser],
+}, total=False)
+
+ModelProducthuntProductCategoryAdPost = TypedDict('ModelProducthuntProductCategoryAdPost', {
+    'comments_count': NotRequired[int],
+    'created_at': NotRequired[str],
+    'disabled_when_scheduled': NotRequired[bool],
+    'embargo_preview_at': NotRequired[str],
+    'featured_at': NotRequired[str],
+    'featured_comment': NotRequired[ModelProducthuntProductCategoryAdComment],
+    'has_voted': NotRequired[bool],
+    'hide_votes_count': NotRequired[bool],
+    'id': NotRequired[str],
+    'latest_score': NotRequired[int],
+    'launch_day_score': NotRequired[int],
+    'name': NotRequired[str],
+    'product_id': NotRequired[str],
+    'product_slug': NotRequired[str],
+    'product_subscribed': NotRequired[bool],
+    'randomization_status': NotRequired[ModelProducthuntProductCategoryRandomizationStatus],
+    'slug': NotRequired[str],
+    'topics': NotRequired[list[ModelProducthuntProductCategoryTopic]],
+    'updated_at': NotRequired[str],
+}, total=False)
+
+ModelProducthuntProductCategoryAnswer = TypedDict('ModelProducthuntProductCategoryAnswer', {
+    'body': NotRequired[ModelProducthuntProductCategoryMarkdown],
+    'id': NotRequired[str],
+    'sources': NotRequired[list[ModelProducthuntProductCategorySource]],
+}, total=False)
+
+ModelProducthuntProductCategoryFounderPost = TypedDict('ModelProducthuntProductCategoryFounderPost', {
+    'badges': NotRequired[list[ModelProducthuntProductCategoryListBadge]],
+    'id': NotRequired[str],
+    'name': NotRequired[str],
+    'product_id': NotRequired[str],
+    'product_slug': NotRequired[str],
+    'product_state': NotRequired[str],
+    'slug': NotRequired[str],
+    'thumbnail_image_uuid': NotRequired[str],
+}, total=False)
+
+ModelProducthuntProductCategoryFounderShoutout = TypedDict('ModelProducthuntProductCategoryFounderShoutout', {
+    'from_post': NotRequired[ModelProducthuntProductCategoryFounderPost],
+    'id': NotRequired[str],
+    'product_id': NotRequired[str],
+}, total=False)
+
+ModelProducthuntProductCategoryHeroProduct = TypedDict('ModelProducthuntProductCategoryHeroProduct', {
+    'id': NotRequired[str],
+    'is_no_longer_online': NotRequired[bool],
+    'logo_uuid': NotRequired[str],
+    'name': NotRequired[str],
+}, total=False)
+
+ModelProducthuntProductCategoryLatestLaunch = TypedDict('ModelProducthuntProductCategoryLatestLaunch', {
+    'id': NotRequired[str],
+    'scheduled_at': NotRequired[str],
+}, total=False)
+
+ModelProducthuntProductCategoryListBadge = TypedDict('ModelProducthuntProductCategoryListBadge', {
+    'category': NotRequired[str],
+    'date': NotRequired[str],
+    'id': NotRequired[str],
+    'period': NotRequired[str],
+    'position': NotRequired[int],
+    'post_id': NotRequired[str],
+    'post_name': NotRequired[str],
+    'post_slug': NotRequired[str],
+    'year': NotRequired[str],
+}, total=False)
+
+ModelProducthuntProductCategoryListProduct = TypedDict('ModelProducthuntProductCategoryListProduct', {
+    'badges': NotRequired[list[ModelProducthuntProductCategoryListBadge]],
+    'categories': NotRequired[list[ModelProducthuntProductCategoryRef]],
+    'detailed_reviews_count': NotRequired[int],
+    'followers_count': NotRequired[int],
+    'founder_reviews_count': NotRequired[int],
+    'founder_shoutouts': NotRequired[list[ModelProducthuntProductCategoryFounderShoutout]],
+    'id': NotRequired[str],
+    'is_no_longer_online': NotRequired[bool],
+    'is_subscribed': NotRequired[bool],
+    'is_top_product': NotRequired[bool],
+    'latest_launch': NotRequired[ModelProducthuntProductCategoryLatestLaunch],
+    'logo_uuid': NotRequired[str],
+    'name': NotRequired[str],
+    'posts_count': NotRequired[int],
+    'reviews_count': NotRequired[int],
+    'reviews_rating': NotRequired[float],
+    'slug': NotRequired[str],
+    'structured_data': NotRequired[ModelProducthuntProductAlternativeStructuredData],
+    'tagline': NotRequired[str],
+    'tags': NotRequired[list[str]],
+}, total=False)
+
+ModelProducthuntProductCategoryMarkdown = TypedDict('ModelProducthuntProductCategoryMarkdown', {
+    'markdown': NotRequired[str],
+    'text': NotRequired[str],
+}, total=False)
+
+ModelProducthuntProductCategoryPage = TypedDict('ModelProducthuntProductCategoryPage', {
+    'description': NotRequired[str],
+    'discussions': NotRequired[list[ModelProducthuntProductAlternativeDiscussion]],
+    'discussions_has_next_page': NotRequired[bool],
+    'expandable_html': NotRequired[str],
+    'hero_products': NotRequired[list[ModelProducthuntProductCategoryHeroProduct]],
+    'hero_products_count': NotRequired[int],
+    'id': NotRequired[str],
+    'last_updated_at': NotRequired[str],
+    'meta_title': NotRequired[str],
+    'name': NotRequired[str],
+    'parent': NotRequired[ModelProducthuntProductCategoryParent],
+    'path': NotRequired[str],
+    'questions': NotRequired[list[ModelProducthuntProductCategoryQuestion]],
+    'raw_relevant_reviews': NotRequired[list[dict[str, Any]]],
+    'recent_launches_count': NotRequired[int],
+    'recent_summary': NotRequired[ModelProducthuntProductCategoryRecentSummary],
+    'reviews_count': NotRequired[int],
+    'slug': NotRequired[str],
+    'sub_categories': NotRequired[list[ModelProducthuntProductCategoryRef]],
+    'targeted_ad': NotRequired[ModelProducthuntProductCategoryAd],
+}, total=False)
+
+ModelProducthuntProductCategoryParent = TypedDict('ModelProducthuntProductCategoryParent', {
+    'id': NotRequired[str],
+    'name': NotRequired[str],
+    'path': NotRequired[str],
+    'sub_categories': NotRequired[list[ModelProducthuntProductCategoryRef]],
+}, total=False)
+
+ModelProducthuntProductCategoryProductsPage = TypedDict('ModelProducthuntProductCategoryProductsPage', {
+    'ai_summary': NotRequired[str],
+    'category_tags': NotRequired[list[ModelProducthuntProductAlternativeTag]],
+    'connection': NotRequired[str],
+    'description': NotRequired[str],
+    'end_cursor': NotRequired[str],
+    'featured_only': NotRequired[bool],
+    'has_next_page': NotRequired[bool],
+    'has_previous_page': NotRequired[bool],
+    'id': NotRequired[str],
+    'items': NotRequired[list[ModelProducthuntProductCategoryListProduct]],
+    'last_updated_at': NotRequired[str],
+    'name': NotRequired[str],
+    'order': NotRequired[str],
+    'page': NotRequired[int],
+    'page_size': NotRequired[int],
+    'path': NotRequired[str],
+    'slug': NotRequired[str],
+    'tags': NotRequired[list[str]],
+    'total_count': NotRequired[int],
+}, total=False)
+
+ModelProducthuntProductCategoryQuestion = TypedDict('ModelProducthuntProductCategoryQuestion', {
+    'body': NotRequired[ModelProducthuntProductCategoryMarkdown],
+    'id': NotRequired[str],
+    'top_answer': NotRequired[ModelProducthuntProductCategoryAnswer],
+}, total=False)
+
+ModelProducthuntProductCategoryRandomizationStatus = TypedDict('ModelProducthuntProductCategoryRandomizationStatus', {
+    'active': NotRequired[bool],
+    'next_transition_at': NotRequired[str],
+    'random_day': NotRequired[bool],
+}, total=False)
+
+ModelProducthuntProductCategoryRecentSummary = TypedDict('ModelProducthuntProductCategoryRecentSummary', {
+    'products': NotRequired[list[ModelProducthuntProductCategorySummaryProduct]],
+    'summary': NotRequired[str],
+}, total=False)
+
+ModelProducthuntProductCategoryRef = TypedDict('ModelProducthuntProductCategoryRef', {
+    'id': NotRequired[str],
+    'name': NotRequired[str],
+    'path': NotRequired[str],
+    'slug': NotRequired[str],
+}, total=False)
+
+ModelProducthuntProductCategorySource = TypedDict('ModelProducthuntProductCategorySource', {
+    'badges': NotRequired[list[str]],
+    'id': NotRequired[str],
+    'path': NotRequired[str],
+    'subject_id': NotRequired[str],
+    'type': NotRequired[str],
+    'user': NotRequired[ModelProducthuntProductCategoryUser],
+    'visible_at': NotRequired[str],
+}, total=False)
+
+ModelProducthuntProductCategorySummaryProduct = TypedDict('ModelProducthuntProductCategorySummaryProduct', {
+    'badges': NotRequired[list[ModelProducthuntProductAlternativeBadge]],
+    'categories': NotRequired[list[ModelProducthuntProductCategoryRef]],
+    'followers_count': NotRequired[int],
+    'id': NotRequired[str],
+    'is_no_longer_online': NotRequired[bool],
+    'is_subscribed': NotRequired[bool],
+    'is_top_product': NotRequired[bool],
+    'latest_launch': NotRequired[ModelProducthuntProductCategoryLatestLaunch],
+    'logo_uuid': NotRequired[str],
+    'name': NotRequired[str],
+    'reviews_count': NotRequired[int],
+    'reviews_rating': NotRequired[float],
+    'slug': NotRequired[str],
+    'tagline': NotRequired[str],
+    'tags': NotRequired[list[str]],
+}, total=False)
+
+ModelProducthuntProductCategoryTopic = TypedDict('ModelProducthuntProductCategoryTopic', {
+    'id': NotRequired[str],
+    'name': NotRequired[str],
+    'slug': NotRequired[str],
+}, total=False)
+
+ModelProducthuntProductCategoryUser = TypedDict('ModelProducthuntProductCategoryUser', {
+    'avatar_url': NotRequired[str],
+    'id': NotRequired[str],
+    'name': NotRequired[str],
+    'username': NotRequired[str],
+}, total=False)
+
+ModelProducthuntProductCustomersPage = TypedDict('ModelProducthuntProductCustomersPage', {
+    'connection': NotRequired[str],
+    'end_cursor': NotRequired[str],
+    'has_next_page': NotRequired[bool],
+    'has_previous_page': NotRequired[bool],
+    'items': NotRequired[list[ModelProducthuntProductCategoryListProduct]],
+    'name': NotRequired[str],
+    'order': NotRequired[str],
+    'page': NotRequired[int],
+    'page_size': NotRequired[int],
+    'pages_count': NotRequired[int],
+    'product_id': NotRequired[str],
+    'raw_page_info': NotRequired[dict[str, Any]],
+    'slug': NotRequired[str],
+    'total_count': NotRequired[int],
+}, total=False)
+
+ModelProducthuntProductDetailedReview = TypedDict('ModelProducthuntProductDetailedReview', {
+    'alternative_products': NotRequired[list[ModelProducthuntProductDetailedReviewProduct]],
+    'alternatives_feedback': NotRequired[str],
+    'can_destroy': NotRequired[bool],
+    'can_moderate': NotRequired[bool],
+    'can_reply': NotRequired[bool],
+    'can_update': NotRequired[bool],
+    'comments_count': NotRequired[int],
+    'created_at': NotRequired[str],
+    'customization_rating': NotRequired[int],
+    'ease_of_use_rating': NotRequired[int],
+    'follow_product': NotRequired[ModelProducthuntProductDetailedReviewFollowProduct],
+    'from_post': NotRequired[ModelProducthuntProductDetailedReviewPost],
+    'has_voted': NotRequired[bool],
+    'id': NotRequired[str],
+    'impression_count': NotRequired[int],
+    'is_hidden': NotRequired[bool],
+    'llm_content_quality_grade': NotRequired[str],
+    'llm_content_quality_reason': NotRequired[str],
+    'negative_feedback': NotRequired[str],
+    'overall_experience': NotRequired[str],
+    'overall_rating': NotRequired[int],
+    'positive_feedback': NotRequired[str],
+    'product': NotRequired[ModelProducthuntProductDetailedReviewProduct],
+    'question_answers': NotRequired[list[ModelProducthuntProductDetailedReviewQuestionAnswer]],
+    'reliability_rating': NotRequired[int],
+    'review_type': NotRequired[str],
+    'selected_cons': NotRequired[list[ModelProducthuntProductDetailedReviewTag]],
+    'selected_pros': NotRequired[list[ModelProducthuntProductDetailedReviewTag]],
+    'status': NotRequired[str],
+    'threads_end_cursor': NotRequired[str],
+    'threads_has_next_page': NotRequired[bool],
+    'threads_total_count': NotRequired[int],
+    'user': NotRequired[ModelProducthuntProductDetailedReviewUser],
+    'value_for_money_rating': NotRequired[int],
+    'votes_count': NotRequired[int],
+}, total=False)
+
+ModelProducthuntProductDetailedReviewFollowProduct = TypedDict('ModelProducthuntProductDetailedReviewFollowProduct', {
+    'id': NotRequired[str],
+    'is_no_longer_online': NotRequired[bool],
+    'is_subscribed': NotRequired[bool],
+    'logo_uuid': NotRequired[str],
+    'name': NotRequired[str],
+    'slug': NotRequired[str],
+}, total=False)
+
+ModelProducthuntProductDetailedReviewPost = TypedDict('ModelProducthuntProductDetailedReviewPost', {
+    'badges': NotRequired[list[ModelProducthuntProductCategoryListBadge]],
+    'id': NotRequired[str],
+    'is_top_launch': NotRequired[bool],
+    'latest_score': NotRequired[int],
+    'name': NotRequired[str],
+    'product_id': NotRequired[str],
+    'product_is_top_product': NotRequired[bool],
+    'product_slug': NotRequired[str],
+    'product_state': NotRequired[str],
+    'slug': NotRequired[str],
+    'thumbnail_image_uuid': NotRequired[str],
+}, total=False)
+
+ModelProducthuntProductDetailedReviewProduct = TypedDict('ModelProducthuntProductDetailedReviewProduct', {
+    'id': NotRequired[str],
+    'is_no_longer_online': NotRequired[bool],
+    'logo_uuid': NotRequired[str],
+    'name': NotRequired[str],
+    'slug': NotRequired[str],
+}, total=False)
+
+ModelProducthuntProductDetailedReviewQuestionAnswer = TypedDict('ModelProducthuntProductDetailedReviewQuestionAnswer', {
+    'answer': NotRequired[str],
+    'id': NotRequired[str],
+    'question': NotRequired[str],
+    'question_id': NotRequired[str],
+}, total=False)
+
+ModelProducthuntProductDetailedReviewTag = TypedDict('ModelProducthuntProductDetailedReviewTag', {
+    'count': NotRequired[int],
+    'id': NotRequired[str],
+    'name': NotRequired[str],
+    'type': NotRequired[str],
+}, total=False)
+
+ModelProducthuntProductDetailedReviewUser = TypedDict('ModelProducthuntProductDetailedReviewUser', {
+    'avatar_url': NotRequired[str],
+    'headline': NotRequired[str],
+    'id': NotRequired[str],
+    'is_account_verified': NotRequired[bool],
+    'is_ambassador': NotRequired[bool],
+    'is_followed': NotRequired[bool],
+    'name': NotRequired[str],
+    'reviews_count': NotRequired[int],
+    'selected_byline_product': NotRequired[ModelProducthuntProductDetailedReviewProduct],
+    'top_hunter_badge': NotRequired[dict[str, Any]],
+    'top_launch_badge': NotRequired[dict[str, Any]],
+    'top_product_badge': NotRequired[dict[str, Any]],
+    'username': NotRequired[str],
+}, total=False)
+
+ModelProducthuntProductDetailedReviewsPage = TypedDict('ModelProducthuntProductDetailedReviewsPage', {
+    'connection': NotRequired[str],
+    'detailed_review': NotRequired[dict[str, Any]],
+    'detailed_reviews_count': NotRequired[int],
+    'end_cursor': NotRequired[str],
+    'founder_detailed_reviews_count': NotRequired[int],
+    'has_next_page': NotRequired[bool],
+    'is_maker': NotRequired[bool],
+    'is_trashed': NotRequired[bool],
+    'items': NotRequired[list[ModelProducthuntProductDetailedReview]],
+    'name': NotRequired[str],
+    'other_detailed_reviews_count': NotRequired[int],
+    'product_id': NotRequired[str],
+    'raw_page_info': NotRequired[dict[str, Any]],
+    'reviews_count': NotRequired[int],
+    'reviews_rating': NotRequired[float],
+    'reviews_recent_rating': NotRequired[float],
+    'slug': NotRequired[str],
+    'total_count': NotRequired[int],
+}, total=False)
+
+ModelProducthuntProductLaunchesPage = TypedDict('ModelProducthuntProductLaunchesPage', {
+    'connection': NotRequired[str],
+    'end_cursor': NotRequired[str],
+    'has_next_page': NotRequired[bool],
+    'items': NotRequired[list[ModelProducthuntProductAboutPost]],
+    'name': NotRequired[str],
+    'order': NotRequired[str],
+    'product_id': NotRequired[str],
+    'raw_page_info': NotRequired[dict[str, Any]],
+    'slug': NotRequired[str],
+    'total_count': NotRequired[int],
+}, total=False)
+
+ModelProducthuntProductMaker = TypedDict('ModelProducthuntProductMaker', {
+    'avatar_url': NotRequired[str],
+    'followers_count': NotRequired[int],
+    'headline': NotRequired[str],
+    'id': NotRequired[str],
+    'is_followed': NotRequired[bool],
+    'made_posts': NotRequired[list[ModelProducthuntProductMakerPost]],
+    'name': NotRequired[str],
+    'username': NotRequired[str],
+}, total=False)
+
+ModelProducthuntProductMakerPost = TypedDict('ModelProducthuntProductMakerPost', {
+    'id': NotRequired[str],
+    'name': NotRequired[str],
+    'product_id': NotRequired[str],
+    'product_slug': NotRequired[str],
+    'product_state': NotRequired[str],
+    'slug': NotRequired[str],
+    'thumbnail_image_uuid': NotRequired[str],
+}, total=False)
+
+ModelProducthuntProductMakersPage = TypedDict('ModelProducthuntProductMakersPage', {
+    'can_claim': NotRequired[bool],
+    'connection': NotRequired[str],
+    'end_cursor': NotRequired[str],
+    'has_next_page': NotRequired[bool],
+    'is_claimed': NotRequired[bool],
+    'is_trashed': NotRequired[bool],
+    'items': NotRequired[list[ModelProducthuntProductMaker]],
+    'name': NotRequired[str],
+    'product_id': NotRequired[str],
+    'raw_page_info': NotRequired[dict[str, Any]],
+    'slug': NotRequired[str],
+    'total_count': NotRequired[int],
+    'viewer_pending_team_request': NotRequired[dict[str, Any]],
+}, total=False)
+
+ModelProducthuntSimilarProduct = TypedDict('ModelProducthuntSimilarProduct', {
+    'categories': NotRequired[list[str]],
+    'id': NotRequired[str],
+    'name': NotRequired[str],
+    'rating': NotRequired[float],
+    'review_count': NotRequired[int],
+}, total=False)
+
+ModelProducthuntAboutResponseDoc = TypedDict('ModelProducthuntAboutResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelProducthuntProductAboutPage],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelProducthuntAlternativesResponseDoc = TypedDict('ModelProducthuntAlternativesResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelProducthuntProductAlternativesPage],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelProducthuntCategoryProductsResponseDoc = TypedDict('ModelProducthuntCategoryProductsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelProducthuntProductCategoryProductsPage],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelProducthuntCategoryResponseDoc = TypedDict('ModelProducthuntCategoryResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelProducthuntProductCategoryPage],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelProducthuntCustomersResponseDoc = TypedDict('ModelProducthuntCustomersResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelProducthuntProductCustomersPage],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelProducthuntLaunchesResponseDoc = TypedDict('ModelProducthuntLaunchesResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelProducthuntProductLaunchesPage],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelProducthuntLeaderboardResponseDoc = TypedDict('ModelProducthuntLeaderboardResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelProducthuntLeaderboardPage],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelProducthuntMakersResponseDoc = TypedDict('ModelProducthuntMakersResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelProducthuntProductMakersPage],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelProducthuntProductResponseDoc = TypedDict('ModelProducthuntProductResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelProducthuntProduct],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelProducthuntReviewsResponseDoc = TypedDict('ModelProducthuntReviewsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelProducthuntProductDetailedReviewsPage],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelProducthuntSearchAggregationsDoc = TypedDict('ModelProducthuntSearchAggregationsDoc', {
+    'topics': NotRequired[list[ModelProducthuntSearchTopicDoc]],
+}, total=False)
+
+ModelProducthuntSearchDataDoc = TypedDict('ModelProducthuntSearchDataDoc', {
+    'aggregations': NotRequired[ModelProducthuntSearchAggregationsDoc],
+    'edges': NotRequired[list[ModelProducthuntSearchEdgeDoc]],
+    'pageInfo': NotRequired[ModelProducthuntSearchPageInfoDoc],
+    'pagesCount': NotRequired[int],
+}, total=False)
+
+ModelProducthuntSearchEdgeDoc = TypedDict('ModelProducthuntSearchEdgeDoc', {
+    'node': NotRequired[dict[str, Any]],
+}, total=False)
+
+ModelProducthuntSearchPageInfoDoc = TypedDict('ModelProducthuntSearchPageInfoDoc', {
+    'hasNextPage': NotRequired[bool],
+    'hasPreviousPage': NotRequired[bool],
+    'page': NotRequired[int],
+}, total=False)
+
+ModelProducthuntSearchResponseDoc = TypedDict('ModelProducthuntSearchResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelProducthuntSearchDataDoc],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelProducthuntSearchTopicDoc = TypedDict('ModelProducthuntSearchTopicDoc', {
+    'count': NotRequired[int],
+    'topic': NotRequired[dict[str, Any]],
+}, total=False)
+
+ModelReferralsAdminReferralAttributionDoc = TypedDict('ModelReferralsAdminReferralAttributionDoc', {
+    'attribution': NotRequired[ModelReferralsAdminReferralAttributionRecordDoc],
+    'rewards': NotRequired[list[ModelReferralsAdminReferralRewardDoc]],
+}, total=False)
+
+ModelReferralsAdminReferralAttributionRecordDoc = TypedDict('ModelReferralsAdminReferralAttributionRecordDoc', {
+    'click_id': NotRequired[str],
+    'code': NotRequired[str],
+    'created_at': NotRequired[str],
+    'error': NotRequired[str],
+    'expires_at': NotRequired[str],
+    'first_paid_invoice_id': NotRequired[str],
+    'id': NotRequired[str],
+    'landing_path': NotRequired[str],
+    'qualified_at': NotRequired[str],
+    'referred_user_id': NotRequired[str],
+    'referrer_user_id': NotRequired[str],
+    'review_reason': NotRequired[str],
+    'reviewed_at': NotRequired[str],
+    'reviewed_by': NotRequired[str],
+    'rewarded_at': NotRequired[str],
+    'risk_flags': NotRequired[list[str]],
+    'skip_reason': NotRequired[str],
+    'status': NotRequired[Literal['attributed', 'qualified', 'review_required', 'rewarded', 'expired', 'capped', 'failed', 'rejected']],
+    'stripe_event_id': NotRequired[str],
+    'stripe_invoice_id': NotRequired[str],
+    'utm_campaign': NotRequired[str],
+    'utm_medium': NotRequired[str],
+    'utm_source': NotRequired[str],
+}, total=False)
+
+ModelReferralsAdminReferralDetailResponseDoc = TypedDict('ModelReferralsAdminReferralDetailResponseDoc', {
+    'attribution': NotRequired[ModelReferralsAdminReferralAttributionRecordDoc],
+    'rewards': NotRequired[list[ModelReferralsAdminReferralRewardDoc]],
+}, total=False)
+
+ModelReferralsAdminReferralRecoveryResponseDoc = TypedDict('ModelReferralsAdminReferralRecoveryResponseDoc', {
+    'attempted': NotRequired[int],
+    'errors': NotRequired[list[str]],
+    'recovered': NotRequired[int],
+}, total=False)
+
+ModelReferralsAdminReferralRejectRequestDoc = TypedDict('ModelReferralsAdminReferralRejectRequestDoc', {
+    'reason': NotRequired[str],
+}, total=False)
+
+ModelReferralsAdminReferralReviewResponseDoc = TypedDict('ModelReferralsAdminReferralReviewResponseDoc', {
+    'attribution': NotRequired[ModelReferralsAdminReferralAttributionRecordDoc],
+    'rewards': NotRequired[list[ModelReferralsAdminReferralRewardDoc]],
+}, total=False)
+
+ModelReferralsAdminReferralRewardDoc = TypedDict('ModelReferralsAdminReferralRewardDoc', {
+    'attribution_id': NotRequired[str],
+    'created_at': NotRequired[str],
+    'credits': NotRequired[int],
+    'credits_grant_error': NotRequired[str],
+    'credits_grant_key': NotRequired[str],
+    'credits_granted_at': NotRequired[str],
+    'id': NotRequired[str],
+    'role': NotRequired[Literal['referrer', 'referred']],
+    'stripe_invoice_id': NotRequired[str],
+    'user_id': NotRequired[str],
+}, total=False)
+
+ModelReferralsAdminReferralStatsResponseDoc = TypedDict('ModelReferralsAdminReferralStatsResponseDoc', {
+    'attributed_signups': NotRequired[int],
+    'capped_referrals': NotRequired[int],
+    'clicks': NotRequired[int],
+    'qualification_rate': NotRequired[float],
+    'qualified_referrals': NotRequired[int],
+    'rejected_referrals': NotRequired[int],
+    'review_required': NotRequired[int],
+    'reward_rate': NotRequired[float],
+    'rewarded_referrals': NotRequired[int],
+    'signup_rate': NotRequired[float],
+}, total=False)
+
+ModelReferralsAdminReferralsListResponseDoc = TypedDict('ModelReferralsAdminReferralsListResponseDoc', {
+    'items': NotRequired[list[ModelReferralsAdminReferralAttributionDoc]],
+}, total=False)
+
+ModelReferralsReferralAttributionDoc = TypedDict('ModelReferralsReferralAttributionDoc', {
+    'campaign': NotRequired[str],
+    'code': NotRequired[str],
+    'created_at': NotRequired[str],
+    'expires_at': NotRequired[str],
+    'id': NotRequired[str],
+    'qualified_at': NotRequired[str],
+    'reward_credits': NotRequired[int],
+    'rewarded_at': NotRequired[str],
+    'role': NotRequired[Literal['referrer', 'referred']],
+    'status': NotRequired[Literal['attributed', 'qualified', 'review_required', 'rewarded', 'expired', 'capped', 'failed', 'rejected']],
+}, total=False)
+
+ModelReferralsReferralClickRequestDoc = TypedDict('ModelReferralsReferralClickRequestDoc', {
+    'click_id': NotRequired[str],
+    'code': NotRequired[str],
+    'landing_path': NotRequired[str],
+    'utm_campaign': NotRequired[str],
+    'utm_medium': NotRequired[str],
+    'utm_source': NotRequired[str],
+}, total=False)
+
+ModelReferralsReferralClickResponseDoc = TypedDict('ModelReferralsReferralClickResponseDoc', {
+    'click_id': NotRequired[str],
+    'code': NotRequired[str],
+}, total=False)
+
+ModelReferralsReferralsEventsResponseDoc = TypedDict('ModelReferralsReferralsEventsResponseDoc', {
+    'items': NotRequired[list[ModelReferralsReferralAttributionDoc]],
+}, total=False)
+
+ModelReferralsReferralsMeResponseDoc = TypedDict('ModelReferralsReferralsMeResponseDoc', {
+    'attribution_window_days': NotRequired[int],
+    'code': NotRequired[str],
+    'items': NotRequired[list[ModelReferralsReferralAttributionDoc]],
+    'monthly_referrer_reward_cap': NotRequired[int],
+    'referred_reward_credits': NotRequired[int],
+    'reward_credits': NotRequired[int],
+    'share_path': NotRequired[str],
+    'stats': NotRequired[ModelReferralsReferralsStatsDoc],
+}, total=False)
+
+ModelReferralsReferralsStatsDoc = TypedDict('ModelReferralsReferralsStatsDoc', {
+    'attributed': NotRequired[int],
+    'capped': NotRequired[int],
+    'expired': NotRequired[int],
+    'qualified': NotRequired[int],
+    'rejected': NotRequired[int],
+    'review_required': NotRequired[int],
+    'rewarded': NotRequired[int],
+}, total=False)
+
+ModelSimilarwebSearchResp = TypedDict('ModelSimilarwebSearchResp', {
+    'apps': NotRequired[dict[str, Any]],
+    'companies': NotRequired[list[dict[str, Any]]],
+    'websites': NotRequired[list[dict[str, Any]]],
+}, total=False)
+
+ModelSimilarwebSimilarWebResp = TypedDict('ModelSimilarwebSimilarWebResp', {
+    'Category': NotRequired[str],
+    'CategoryRank': NotRequired[dict[str, Any]],
+    'Competitors': NotRequired[dict[str, Any]],
+    'Countries': NotRequired[list[dict[str, Any]]],
+    'CountryRank': NotRequired[dict[str, Any]],
+    'Description': NotRequired[str],
+    'Engagments': NotRequired[dict[str, Any]],
+    'EstimatedMonthlyVisits': NotRequired[dict[str, Any]],
+    'GlobalCategoryRank': NotRequired[Any],
+    'GlobalRank': NotRequired[dict[str, Any]],
+    'IsDataFromGa': NotRequired[bool],
+    'IsSmall': NotRequired[bool],
+    'LargeScreenshot': NotRequired[str],
+    'Notification': NotRequired[dict[str, Any]],
+    'Policy': NotRequired[int],
+    'SiteName': NotRequired[str],
+    'SnapshotDate': NotRequired[str],
+    'Title': NotRequired[str],
+    'TopCountryShares': NotRequired[list[dict[str, Any]]],
+    'TopKeywords': NotRequired[list[dict[str, Any]]],
+    'TrafficSources': NotRequired[dict[str, Any]],
+    'Version': NotRequired[int],
+}, total=False)
+
+ModelSimilarwebSearchResponseDoc = TypedDict('ModelSimilarwebSearchResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelSimilarwebSearchResp],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelSimilarwebWebResponseDoc = TypedDict('ModelSimilarwebWebResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelSimilarwebSimilarWebResp],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelSpotifyAlbumMeta = TypedDict('ModelSpotifyAlbumMeta', {
+    'appVersion': NotRequired[str],
+    'fetchedAt': NotRequired[str],
+    'operationName': NotRequired[str],
+    'trackCount': NotRequired[int],
+}, total=False)
+
+ModelSpotifyAlbumResponse = TypedDict('ModelSpotifyAlbumResponse', {
+    'albumType': NotRequired[str],
+    'artists': NotRequired[list[ModelSpotifySearchResultSummary]],
+    'copyrights': NotRequired[list[str]],
+    'durationMs': NotRequired[int],
+    'externalUrl': NotRequired[str],
+    'id': NotRequired[str],
+    'imageUrl': NotRequired[str],
+    'images': NotRequired[list[ModelSpotifyImageAsset]],
+    'isExplicit': NotRequired[bool],
+    'isPlayable': NotRequired[bool],
+    'limit': NotRequired[int],
+    'meta': NotRequired[ModelSpotifyAlbumMeta],
+    'name': NotRequired[str],
+    'offset': NotRequired[int],
+    'releaseDate': NotRequired[str],
+    'shareUrl': NotRequired[str],
+    'totalTracks': NotRequired[int],
+    'tracks': NotRequired[list[ModelSpotifySearchResultSummary]],
+    'type': NotRequired[str],
+    'uri': NotRequired[str],
+}, total=False)
+
+ModelSpotifyArtistAlbumsMeta = TypedDict('ModelSpotifyArtistAlbumsMeta', {
+    'appVersion': NotRequired[str],
+    'count': NotRequired[int],
+    'fetchedAt': NotRequired[str],
+    'operationName': NotRequired[str],
+}, total=False)
+
+ModelSpotifyArtistAlbumsResponse = TypedDict('ModelSpotifyArtistAlbumsResponse', {
+    'id': NotRequired[str],
+    'items': NotRequired[list[ModelSpotifySearchResultSummary]],
+    'limit': NotRequired[int],
+    'meta': NotRequired[ModelSpotifyArtistAlbumsMeta],
+    'offset': NotRequired[int],
+    'order': NotRequired[str],
+    'total': NotRequired[int],
+    'type': NotRequired[str],
+    'uri': NotRequired[str],
+}, total=False)
+
+ModelSpotifyArtistCollectionMeta = TypedDict('ModelSpotifyArtistCollectionMeta', {
+    'appVersion': NotRequired[str],
+    'count': NotRequired[int],
+    'fetchedAt': NotRequired[str],
+    'operationName': NotRequired[str],
+}, total=False)
+
+ModelSpotifyArtistCollectionResponse = TypedDict('ModelSpotifyArtistCollectionResponse', {
+    'id': NotRequired[str],
+    'items': NotRequired[list[ModelSpotifySearchResultSummary]],
+    'meta': NotRequired[ModelSpotifyArtistCollectionMeta],
+    'uri': NotRequired[str],
+}, total=False)
+
+ModelSpotifyArtistMeta = TypedDict('ModelSpotifyArtistMeta', {
+    'appVersion': NotRequired[str],
+    'discographyCount': NotRequired[int],
+    'fetchedAt': NotRequired[str],
+    'operationName': NotRequired[str],
+    'playlistCount': NotRequired[int],
+    'relatedCount': NotRequired[int],
+    'topTrackCount': NotRequired[int],
+}, total=False)
+
+ModelSpotifyArtistResponse = TypedDict('ModelSpotifyArtistResponse', {
+    'biography': NotRequired[str],
+    'discography': NotRequired[list[ModelSpotifySearchResultSummary]],
+    'externalUrl': NotRequired[str],
+    'followers': NotRequired[int],
+    'id': NotRequired[str],
+    'imageUrl': NotRequired[str],
+    'images': NotRequired[list[ModelSpotifyImageAsset]],
+    'meta': NotRequired[ModelSpotifyArtistMeta],
+    'monthlyUsers': NotRequired[int],
+    'name': NotRequired[str],
+    'playlists': NotRequired[list[ModelSpotifySearchResultSummary]],
+    'related': NotRequired[list[ModelSpotifySearchResultSummary]],
+    'shareUrl': NotRequired[str],
+    'topTracks': NotRequired[list[ModelSpotifySearchResultSummary]],
+    'type': NotRequired[str],
+    'uri': NotRequired[str],
+    'verified': NotRequired[bool],
+}, total=False)
+
+ModelSpotifyAudiobookChaptersMeta = TypedDict('ModelSpotifyAudiobookChaptersMeta', {
+    'appVersion': NotRequired[str],
+    'count': NotRequired[int],
+    'fetchedAt': NotRequired[str],
+    'operationName': NotRequired[str],
+}, total=False)
+
+ModelSpotifyAudiobookChaptersResponse = TypedDict('ModelSpotifyAudiobookChaptersResponse', {
+    'chapters': NotRequired[list[ModelSpotifyPodcastEpisodeSummary]],
+    'id': NotRequired[str],
+    'limit': NotRequired[int],
+    'meta': NotRequired[ModelSpotifyAudiobookChaptersMeta],
+    'offset': NotRequired[int],
+    'total': NotRequired[int],
+    'uri': NotRequired[str],
+}, total=False)
+
+ModelSpotifyAudiobookMeta = TypedDict('ModelSpotifyAudiobookMeta', {
+    'appVersion': NotRequired[str],
+    'fetchedAt': NotRequired[str],
+    'operationName': NotRequired[str],
+}, total=False)
+
+ModelSpotifyAudiobookResponse = TypedDict('ModelSpotifyAudiobookResponse', {
+    'authors': NotRequired[list[str]],
+    'description': NotRequired[str],
+    'externalUrl': NotRequired[str],
+    'id': NotRequired[str],
+    'imageUrl': NotRequired[str],
+    'images': NotRequired[list[ModelSpotifyImageAsset]],
+    'isExplicit': NotRequired[bool],
+    'mediaType': NotRequired[str],
+    'meta': NotRequired[ModelSpotifyAudiobookMeta],
+    'name': NotRequired[str],
+    'narrators': NotRequired[list[str]],
+    'publisher': NotRequired[str],
+    'totalChapters': NotRequired[int],
+    'type': NotRequired[str],
+    'uri': NotRequired[str],
+}, total=False)
+
+ModelSpotifyBrowsePageItem = TypedDict('ModelSpotifyBrowsePageItem', {
+    'description': NotRequired[str],
+    'externalUrl': NotRequired[str],
+    'imageUrl': NotRequired[str],
+    'images': NotRequired[list[ModelSpotifyImageAsset]],
+    'publisher': NotRequired[str],
+    'subtitle': NotRequired[str],
+    'title': NotRequired[str],
+    'type': NotRequired[str],
+    'uri': NotRequired[str],
+}, total=False)
+
+ModelSpotifyBrowsePageMeta = TypedDict('ModelSpotifyBrowsePageMeta', {
+    'appVersion': NotRequired[str],
+    'fetchedAt': NotRequired[str],
+    'operationName': NotRequired[str],
+    'sectionCount': NotRequired[int],
+}, total=False)
+
+ModelSpotifyBrowsePageResponse = TypedDict('ModelSpotifyBrowsePageResponse', {
+    'meta': NotRequired[ModelSpotifyBrowsePageMeta],
+    'sections': NotRequired[list[ModelSpotifyBrowsePageSection]],
+    'subtitle': NotRequired[str],
+    'title': NotRequired[str],
+    'type': NotRequired[str],
+    'uri': NotRequired[str],
+}, total=False)
+
+ModelSpotifyBrowsePageSection = TypedDict('ModelSpotifyBrowsePageSection', {
+    'items': NotRequired[list[ModelSpotifyBrowsePageItem]],
+    'subtitle': NotRequired[str],
+    'title': NotRequired[str],
+    'totalCount': NotRequired[int],
+    'type': NotRequired[str],
+    'uri': NotRequired[str],
+}, total=False)
+
+ModelSpotifyBrowseSectionMeta = TypedDict('ModelSpotifyBrowseSectionMeta', {
+    'appVersion': NotRequired[str],
+    'count': NotRequired[int],
+    'fetchedAt': NotRequired[str],
+    'operationName': NotRequired[str],
+}, total=False)
+
+ModelSpotifyBrowseSectionResponse = TypedDict('ModelSpotifyBrowseSectionResponse', {
+    'items': NotRequired[list[ModelSpotifyBrowsePageItem]],
+    'limit': NotRequired[int],
+    'meta': NotRequired[ModelSpotifyBrowseSectionMeta],
+    'offset': NotRequired[int],
+    'subtitle': NotRequired[str],
+    'title': NotRequired[str],
+    'totalCount': NotRequired[int],
+    'type': NotRequired[str],
+    'uri': NotRequired[str],
+}, total=False)
+
+ModelSpotifyChartItem = TypedDict('ModelSpotifyChartItem', {
+    'description': NotRequired[str],
+    'episodeDescription': NotRequired[str],
+    'episodeExternalUrl': NotRequired[str],
+    'episodeImageUrl': NotRequired[str],
+    'episodeName': NotRequired[str],
+    'episodeUri': NotRequired[str],
+    'externalUrl': NotRequired[str],
+    'imageUrl': NotRequired[str],
+    'name': NotRequired[str],
+    'publisher': NotRequired[str],
+    'rank': NotRequired[int],
+    'rankMove': NotRequired[str],
+    'showDescription': NotRequired[str],
+    'showExternalUrl': NotRequired[str],
+    'showImageUrl': NotRequired[str],
+    'showName': NotRequired[str],
+    'showPublisher': NotRequired[str],
+    'showUri': NotRequired[str],
+    'uri': NotRequired[str],
+}, total=False)
+
+ModelSpotifyChartMeta = TypedDict('ModelSpotifyChartMeta', {
+    'count': NotRequired[int],
+    'fetchedAt': NotRequired[str],
+    'sourceUrl': NotRequired[str],
+}, total=False)
+
+ModelSpotifyChartResponse = TypedDict('ModelSpotifyChartResponse', {
+    'chart': NotRequired[str],
+    'chartName': NotRequired[str],
+    'chartType': NotRequired[str],
+    'items': NotRequired[list[ModelSpotifyChartItem]],
+    'limit': NotRequired[int],
+    'meta': NotRequired[ModelSpotifyChartMeta],
+    'region': NotRequired[str],
+    'regionName': NotRequired[str],
+}, total=False)
+
+ModelSpotifyCountryHubContentId = TypedDict('ModelSpotifyCountryHubContentId', {
+    'id': NotRequired[str],
+    'title': NotRequired[str],
+}, total=False)
+
+ModelSpotifyCountryHubContentMeta = TypedDict('ModelSpotifyCountryHubContentMeta', {
+    'appVersion': NotRequired[str],
+    'fetchedAt': NotRequired[str],
+    'itemCount': NotRequired[int],
+    'operationName': NotRequired[str],
+}, total=False)
+
+ModelSpotifyCountryHubContentResponse = TypedDict('ModelSpotifyCountryHubContentResponse', {
+    'contentId': NotRequired[str],
+    'countryCode': NotRequired[str],
+    'countryName': NotRequired[str],
+    'hexColor': NotRequired[str],
+    'items': NotRequired[list[ModelSpotifyCountryHubItem]],
+    'meta': NotRequired[ModelSpotifyCountryHubContentMeta],
+    'supportedContentIds': NotRequired[list[ModelSpotifyCountryHubContentId]],
+    'supportedCountries': NotRequired[list[ModelSpotifyPopularCountry]],
+    'title': NotRequired[str],
+}, total=False)
+
+ModelSpotifyCountryHubItem = TypedDict('ModelSpotifyCountryHubItem', {
+    'album': NotRequired[ModelSpotifySearchResultSummary],
+    'artists': NotRequired[list[ModelSpotifySearchResultSummary]],
+    'attributes': NotRequired[dict[str, str]],
+    'description': NotRequired[str],
+    'externalUrl': NotRequired[str],
+    'imageUrl': NotRequired[str],
+    'images': NotRequired[list[ModelSpotifyImageAsset]],
+    'owner': NotRequired[ModelSpotifySearchResultSummary],
+    'subtitle': NotRequired[str],
+    'title': NotRequired[str],
+    'type': NotRequired[str],
+    'uri': NotRequired[str],
+}, total=False)
+
+ModelSpotifyCountryHubMeta = TypedDict('ModelSpotifyCountryHubMeta', {
+    'appVersion': NotRequired[str],
+    'fetchedAt': NotRequired[str],
+    'itemCount': NotRequired[int],
+    'operationName': NotRequired[str],
+    'sectionCount': NotRequired[int],
+}, total=False)
+
+ModelSpotifyCountryHubResponse = TypedDict('ModelSpotifyCountryHubResponse', {
+    'countryCode': NotRequired[str],
+    'countryName': NotRequired[str],
+    'hexColor': NotRequired[str],
+    'meta': NotRequired[ModelSpotifyCountryHubMeta],
+    'sections': NotRequired[list[ModelSpotifyCountryHubSection]],
+    'supportedCountries': NotRequired[list[ModelSpotifyPopularCountry]],
+}, total=False)
+
+ModelSpotifyCountryHubSection = TypedDict('ModelSpotifyCountryHubSection', {
+    'contentId': NotRequired[str],
+    'items': NotRequired[list[ModelSpotifyCountryHubItem]],
+    'title': NotRequired[str],
+    'totalCount': NotRequired[int],
+}, total=False)
+
+ModelSpotifyHomeMeta = TypedDict('ModelSpotifyHomeMeta', {
+    'appVersion': NotRequired[str],
+    'fetchedAt': NotRequired[str],
+    'operationName': NotRequired[str],
+    'sectionCount': NotRequired[int],
+}, total=False)
+
+ModelSpotifyHomeResponse = TypedDict('ModelSpotifyHomeResponse', {
+    'facet': NotRequired[str],
+    'greeting': NotRequired[str],
+    'meta': NotRequired[ModelSpotifyHomeMeta],
+    'sections': NotRequired[list[ModelSpotifyBrowsePageSection]],
+    'timeZone': NotRequired[str],
+}, total=False)
+
+ModelSpotifyImageAsset = TypedDict('ModelSpotifyImageAsset', {
+    'height': NotRequired[int],
+    'url': NotRequired[str],
+    'width': NotRequired[int],
+}, total=False)
+
+ModelSpotifyPlaylistMeta = TypedDict('ModelSpotifyPlaylistMeta', {
+    'appVersion': NotRequired[str],
+    'episodeCount': NotRequired[int],
+    'fetchedAt': NotRequired[str],
+    'itemCount': NotRequired[int],
+    'operationName': NotRequired[str],
+    'trackCount': NotRequired[int],
+}, total=False)
+
+ModelSpotifyPlaylistResponse = TypedDict('ModelSpotifyPlaylistResponse', {
+    'collaborative': NotRequired[bool],
+    'description': NotRequired[str],
+    'episodes': NotRequired[list[ModelSpotifySearchResultSummary]],
+    'externalUrl': NotRequired[str],
+    'followers': NotRequired[int],
+    'id': NotRequired[str],
+    'imageUrl': NotRequired[str],
+    'images': NotRequired[list[ModelSpotifyImageAsset]],
+    'items': NotRequired[list[ModelSpotifySearchResultSummary]],
+    'limit': NotRequired[int],
+    'meta': NotRequired[ModelSpotifyPlaylistMeta],
+    'name': NotRequired[str],
+    'offset': NotRequired[int],
+    'owner': NotRequired[ModelSpotifySearchResultSummary],
+    'shareUrl': NotRequired[str],
+    'total': NotRequired[int],
+    'tracks': NotRequired[list[ModelSpotifySearchResultSummary]],
+    'type': NotRequired[str],
+    'uri': NotRequired[str],
+}, total=False)
+
+ModelSpotifyPodcastEpisodeMeta = TypedDict('ModelSpotifyPodcastEpisodeMeta', {
+    'appVersion': NotRequired[str],
+    'fetchedAt': NotRequired[str],
+    'operationName': NotRequired[str],
+    'sourceUrl': NotRequired[str],
+}, total=False)
+
+ModelSpotifyPodcastEpisodeResponse = TypedDict('ModelSpotifyPodcastEpisodeResponse', {
+    'description': NotRequired[str],
+    'durationMs': NotRequired[int],
+    'externalUrl': NotRequired[str],
+    'htmlDescription': NotRequired[str],
+    'id': NotRequired[str],
+    'imageUrl': NotRequired[str],
+    'images': NotRequired[list[ModelSpotifyImageAsset]],
+    'isExplicit': NotRequired[bool],
+    'isPaywallContent': NotRequired[bool],
+    'isPlayable': NotRequired[bool],
+    'mediaTypes': NotRequired[list[str]],
+    'meta': NotRequired[ModelSpotifyPodcastEpisodeMeta],
+    'name': NotRequired[str],
+    'playabilityReason': NotRequired[str],
+    'previewAudioUrl': NotRequired[str],
+    'previewAudioUrls': NotRequired[list[str]],
+    'previewVideoUrl': NotRequired[str],
+    'releaseDate': NotRequired[str],
+    'releaseDatePrecision': NotRequired[str],
+    'shareUrl': NotRequired[str],
+    'show': NotRequired[ModelSpotifyPodcastEpisodeShowSummary],
+    'transcriptCount': NotRequired[int],
+    'type': NotRequired[str],
+    'unplayabilityReasons': NotRequired[list[str]],
+    'uri': NotRequired[str],
+    'videoThumbnailUrl': NotRequired[str],
+    'videoThumbnails': NotRequired[list[ModelSpotifyImageAsset]],
+}, total=False)
+
+ModelSpotifyPodcastEpisodeShowSummary = TypedDict('ModelSpotifyPodcastEpisodeShowSummary', {
+    'description': NotRequired[str],
+    'externalUrl': NotRequired[str],
+    'id': NotRequired[str],
+    'imageUrl': NotRequired[str],
+    'images': NotRequired[list[ModelSpotifyImageAsset]],
+    'mediaType': NotRequired[str],
+    'name': NotRequired[str],
+    'publisher': NotRequired[str],
+    'showTypes': NotRequired[list[str]],
+    'type': NotRequired[str],
+    'uri': NotRequired[str],
+}, total=False)
+
+ModelSpotifyPodcastEpisodeSummary = TypedDict('ModelSpotifyPodcastEpisodeSummary', {
+    'description': NotRequired[str],
+    'durationMs': NotRequired[int],
+    'externalUrl': NotRequired[str],
+    'imageUrl': NotRequired[str],
+    'images': NotRequired[list[ModelSpotifyImageAsset]],
+    'isExplicit': NotRequired[bool],
+    'isPlayable': NotRequired[bool],
+    'name': NotRequired[str],
+    'releaseDate': NotRequired[str],
+    'type': NotRequired[str],
+    'uri': NotRequired[str],
+}, total=False)
+
+ModelSpotifyPodcastEpisodesMeta = TypedDict('ModelSpotifyPodcastEpisodesMeta', {
+    'appVersion': NotRequired[str],
+    'fetchedAt': NotRequired[str],
+    'operationName': NotRequired[str],
+}, total=False)
+
+ModelSpotifyPodcastEpisodesResponse = TypedDict('ModelSpotifyPodcastEpisodesResponse', {
+    'episodes': NotRequired[list[ModelSpotifyPodcastEpisodeSummary]],
+    'limit': NotRequired[int],
+    'meta': NotRequired[ModelSpotifyPodcastEpisodesMeta],
+    'offset': NotRequired[int],
+    'total': NotRequired[int],
+    'uri': NotRequired[str],
+}, total=False)
+
+ModelSpotifyPopularCountry = TypedDict('ModelSpotifyPopularCountry', {
+    'code': NotRequired[str],
+    'name': NotRequired[str],
+}, total=False)
+
+ModelSpotifyRecommendationSummary = TypedDict('ModelSpotifyRecommendationSummary', {
+    'description': NotRequired[str],
+    'externalUrl': NotRequired[str],
+    'imageUrl': NotRequired[str],
+    'images': NotRequired[list[ModelSpotifyImageAsset]],
+    'publisher': NotRequired[str],
+    'subtitle': NotRequired[str],
+    'title': NotRequired[str],
+    'type': NotRequired[str],
+    'uri': NotRequired[str],
+}, total=False)
+
+ModelSpotifySearchMeta = TypedDict('ModelSpotifySearchMeta', {
+    'albumCount': NotRequired[int],
+    'appVersion': NotRequired[str],
+    'artistCount': NotRequired[int],
+    'audiobookCount': NotRequired[int],
+    'episodeCount': NotRequired[int],
+    'fetchedAt': NotRequired[str],
+    'operationName': NotRequired[str],
+    'playlistCount': NotRequired[int],
+    'resultCount': NotRequired[int],
+    'showCount': NotRequired[int],
+    'topCount': NotRequired[int],
+    'trackCount': NotRequired[int],
+    'userCount': NotRequired[int],
+}, total=False)
+
+ModelSpotifySearchPodcastsMeta = TypedDict('ModelSpotifySearchPodcastsMeta', {
+    'appVersion': NotRequired[str],
+    'episodeCount': NotRequired[int],
+    'fetchedAt': NotRequired[str],
+    'operationName': NotRequired[str],
+    'showCount': NotRequired[int],
+    'topCount': NotRequired[int],
+}, total=False)
+
+ModelSpotifySearchPodcastsResponse = TypedDict('ModelSpotifySearchPodcastsResponse', {
+    'episodes': NotRequired[list[ModelSpotifyPodcastEpisodeSummary]],
+    'limit': NotRequired[int],
+    'meta': NotRequired[ModelSpotifySearchPodcastsMeta],
+    'offset': NotRequired[int],
+    'searchTerm': NotRequired[str],
+    'shows': NotRequired[list[ModelSpotifyRecommendationSummary]],
+    'topResults': NotRequired[list[ModelSpotifySearchResultSummary]],
+}, total=False)
+
+ModelSpotifySearchResponse = TypedDict('ModelSpotifySearchResponse', {
+    'albums': NotRequired[list[ModelSpotifySearchResultSummary]],
+    'artists': NotRequired[list[ModelSpotifySearchResultSummary]],
+    'audiobooks': NotRequired[list[ModelSpotifySearchResultSummary]],
+    'episodes': NotRequired[list[ModelSpotifySearchResultSummary]],
+    'limit': NotRequired[int],
+    'meta': NotRequired[ModelSpotifySearchMeta],
+    'offset': NotRequired[int],
+    'playlists': NotRequired[list[ModelSpotifySearchResultSummary]],
+    'results': NotRequired[list[ModelSpotifySearchResultSummary]],
+    'searchTerm': NotRequired[str],
+    'shows': NotRequired[list[ModelSpotifySearchResultSummary]],
+    'topResults': NotRequired[list[ModelSpotifySearchResultSummary]],
+    'tracks': NotRequired[list[ModelSpotifySearchResultSummary]],
+    'users': NotRequired[list[ModelSpotifySearchResultSummary]],
+}, total=False)
+
+ModelSpotifySearchResultSummary = TypedDict('ModelSpotifySearchResultSummary', {
+    'description': NotRequired[str],
+    'externalUrl': NotRequired[str],
+    'imageUrl': NotRequired[str],
+    'images': NotRequired[list[ModelSpotifyImageAsset]],
+    'publisher': NotRequired[str],
+    'subtitle': NotRequired[str],
+    'title': NotRequired[str],
+    'type': NotRequired[str],
+    'uri': NotRequired[str],
+}, total=False)
+
+ModelSpotifyShowMetadataMeta = TypedDict('ModelSpotifyShowMetadataMeta', {
+    'appVersion': NotRequired[str],
+    'fetchedAt': NotRequired[str],
+    'operationName': NotRequired[str],
+}, total=False)
+
+ModelSpotifyShowMetadataResponse = TypedDict('ModelSpotifyShowMetadataResponse', {
+    'description': NotRequired[str],
+    'externalUrl': NotRequired[str],
+    'imageUrl': NotRequired[str],
+    'images': NotRequired[list[ModelSpotifyImageAsset]],
+    'isExplicit': NotRequired[bool],
+    'mediaType': NotRequired[str],
+    'meta': NotRequired[ModelSpotifyShowMetadataMeta],
+    'name': NotRequired[str],
+    'publisher': NotRequired[str],
+    'totalEpisodes': NotRequired[int],
+    'type': NotRequired[str],
+    'uri': NotRequired[str],
+}, total=False)
+
+ModelSpotifyShowRecommendationsMeta = TypedDict('ModelSpotifyShowRecommendationsMeta', {
+    'appVersion': NotRequired[str],
+    'count': NotRequired[int],
+    'fetchedAt': NotRequired[str],
+    'operationName': NotRequired[str],
+}, total=False)
+
+ModelSpotifyShowRecommendationsResponse = TypedDict('ModelSpotifyShowRecommendationsResponse', {
+    'meta': NotRequired[ModelSpotifyShowRecommendationsMeta],
+    'recommendations': NotRequired[list[ModelSpotifyRecommendationSummary]],
+    'uri': NotRequired[str],
+}, total=False)
+
+ModelSpotifyTrackMeta = TypedDict('ModelSpotifyTrackMeta', {
+    'appVersion': NotRequired[str],
+    'fetchedAt': NotRequired[str],
+    'operationName': NotRequired[str],
+}, total=False)
+
+ModelSpotifyTrackRecommendedMeta = TypedDict('ModelSpotifyTrackRecommendedMeta', {
+    'appVersion': NotRequired[str],
+    'count': NotRequired[int],
+    'fetchedAt': NotRequired[str],
+    'operationName': NotRequired[str],
+}, total=False)
+
+ModelSpotifyTrackRecommendedResponse = TypedDict('ModelSpotifyTrackRecommendedResponse', {
+    'limit': NotRequired[int],
+    'meta': NotRequired[ModelSpotifyTrackRecommendedMeta],
+    'recommendations': NotRequired[list[ModelSpotifyRecommendationSummary]],
+    'uri': NotRequired[str],
+}, total=False)
+
+ModelSpotifyTrackResponse = TypedDict('ModelSpotifyTrackResponse', {
+    'album': NotRequired[ModelSpotifySearchResultSummary],
+    'artists': NotRequired[list[ModelSpotifySearchResultSummary]],
+    'discNumber': NotRequired[int],
+    'durationMs': NotRequired[int],
+    'externalUrl': NotRequired[str],
+    'id': NotRequired[str],
+    'imageUrl': NotRequired[str],
+    'images': NotRequired[list[ModelSpotifyImageAsset]],
+    'isExplicit': NotRequired[bool],
+    'isPlayable': NotRequired[bool],
+    'meta': NotRequired[ModelSpotifyTrackMeta],
+    'name': NotRequired[str],
+    'playabilityReason': NotRequired[str],
+    'playcount': NotRequired[str],
+    'previewAudioUrl': NotRequired[str],
+    'previewAudioUrls': NotRequired[list[str]],
+    'shareUrl': NotRequired[str],
+    'trackNumber': NotRequired[int],
+    'type': NotRequired[str],
+    'unplayabilityReasons': NotRequired[list[str]],
+    'uri': NotRequired[str],
+}, total=False)
+
+ModelSpotifyTrackSimilarAlbumsMeta = TypedDict('ModelSpotifyTrackSimilarAlbumsMeta', {
+    'appVersion': NotRequired[str],
+    'count': NotRequired[int],
+    'fetchedAt': NotRequired[str],
+    'operationName': NotRequired[str],
+}, total=False)
+
+ModelSpotifyTrackSimilarAlbumsResponse = TypedDict('ModelSpotifyTrackSimilarAlbumsResponse', {
+    'albums': NotRequired[list[ModelSpotifySearchResultSummary]],
+    'albumsOnly': NotRequired[bool],
+    'limit': NotRequired[int],
+    'meta': NotRequired[ModelSpotifyTrackSimilarAlbumsMeta],
+    'uri': NotRequired[str],
+}, total=False)
+
+ModelSpotifyUserProfileFollowersResponse = TypedDict('ModelSpotifyUserProfileFollowersResponse', {
+    'limit': NotRequired[int],
+    'meta': NotRequired[ModelSpotifyUserProfileMeta],
+    'offset': NotRequired[int],
+    'profiles': NotRequired[list[ModelSpotifyUserProfileSummary]],
+    'total': NotRequired[int],
+    'uri': NotRequired[str],
+    'username': NotRequired[str],
+}, total=False)
+
+ModelSpotifyUserProfileMeta = TypedDict('ModelSpotifyUserProfileMeta', {
+    'appVersion': NotRequired[str],
+    'artistCount': NotRequired[int],
+    'fetchedAt': NotRequired[str],
+    'operationName': NotRequired[str],
+    'playlistCount': NotRequired[int],
+    'profileCount': NotRequired[int],
+}, total=False)
+
+ModelSpotifyUserProfilePlaylist = TypedDict('ModelSpotifyUserProfilePlaylist', {
+    'externalUrl': NotRequired[str],
+    'followersCount': NotRequired[int],
+    'id': NotRequired[str],
+    'imageUrl': NotRequired[str],
+    'isFollowing': NotRequired[bool],
+    'name': NotRequired[str],
+    'ownerName': NotRequired[str],
+    'ownerUri': NotRequired[str],
+    'ownerUrl': NotRequired[str],
+    'ownerUsername': NotRequired[str],
+    'uri': NotRequired[str],
+}, total=False)
+
+ModelSpotifyUserProfilePlaylistsResponse = TypedDict('ModelSpotifyUserProfilePlaylistsResponse', {
+    'limit': NotRequired[int],
+    'meta': NotRequired[ModelSpotifyUserProfileMeta],
+    'offset': NotRequired[int],
+    'publicPlaylists': NotRequired[list[ModelSpotifyUserProfilePlaylist]],
+    'totalPublicPlaylistsCount': NotRequired[int],
+    'uri': NotRequired[str],
+    'username': NotRequired[str],
+}, total=False)
+
+ModelSpotifyUserProfileResponse = TypedDict('ModelSpotifyUserProfileResponse', {
+    'allowFollows': NotRequired[bool],
+    'color': NotRequired[int],
+    'externalUrl': NotRequired[str],
+    'followersCount': NotRequired[int],
+    'followingCount': NotRequired[int],
+    'hasSpotifyImage': NotRequired[bool],
+    'hasSpotifyName': NotRequired[bool],
+    'imageUrl': NotRequired[str],
+    'isCurrentUser': NotRequired[bool],
+    'isVerified': NotRequired[bool],
+    'meta': NotRequired[ModelSpotifyUserProfileMeta],
+    'name': NotRequired[str],
+    'publicPlaylists': NotRequired[list[ModelSpotifyUserProfilePlaylist]],
+    'recentlyPlayedArtists': NotRequired[list[ModelSpotifyUserProfileSummary]],
+    'showFollows': NotRequired[bool],
+    'topArtists': NotRequired[ModelSpotifyUserProfileTopArtists],
+    'totalPublicPlaylistsCount': NotRequired[int],
+    'uri': NotRequired[str],
+    'username': NotRequired[str],
+}, total=False)
+
+ModelSpotifyUserProfileSummary = TypedDict('ModelSpotifyUserProfileSummary', {
+    'color': NotRequired[int],
+    'externalUrl': NotRequired[str],
+    'followersCount': NotRequired[int],
+    'imageUrl': NotRequired[str],
+    'isFollowing': NotRequired[bool],
+    'name': NotRequired[str],
+    'uri': NotRequired[str],
+    'username': NotRequired[str],
+}, total=False)
+
+ModelSpotifyUserProfileTopArtists = TypedDict('ModelSpotifyUserProfileTopArtists', {
+    'imageUrl': NotRequired[str],
+    'subtitle': NotRequired[str],
+    'title': NotRequired[str],
+    'topArtistsPageUri': NotRequired[str],
+}, total=False)
+
+ModelSpotifyAlbumResponseDoc = TypedDict('ModelSpotifyAlbumResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelSpotifyAlbumResponse],
+    'msg': NotRequired[Any],
+}, total=False)
+
+ModelSpotifyArtistAlbumsResponseDoc = TypedDict('ModelSpotifyArtistAlbumsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelSpotifyArtistAlbumsResponse],
+    'msg': NotRequired[Any],
+}, total=False)
+
+ModelSpotifyArtistCollectionResponseDoc = TypedDict('ModelSpotifyArtistCollectionResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelSpotifyArtistCollectionResponse],
+    'msg': NotRequired[Any],
+}, total=False)
+
+ModelSpotifyArtistResponseDoc = TypedDict('ModelSpotifyArtistResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelSpotifyArtistResponse],
+    'msg': NotRequired[Any],
+}, total=False)
+
+ModelSpotifyAudiobookChaptersResponseDoc = TypedDict('ModelSpotifyAudiobookChaptersResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelSpotifyAudiobookChaptersResponse],
+    'msg': NotRequired[Any],
+}, total=False)
+
+ModelSpotifyAudiobookResponseDoc = TypedDict('ModelSpotifyAudiobookResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelSpotifyAudiobookResponse],
+    'msg': NotRequired[Any],
+}, total=False)
+
+ModelSpotifyBrowsePageResponseDoc = TypedDict('ModelSpotifyBrowsePageResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelSpotifyBrowsePageResponse],
+    'msg': NotRequired[Any],
+}, total=False)
+
+ModelSpotifyBrowseSectionResponseDoc = TypedDict('ModelSpotifyBrowseSectionResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelSpotifyBrowseSectionResponse],
+    'msg': NotRequired[Any],
+}, total=False)
+
+ModelSpotifyChartsResponseDoc = TypedDict('ModelSpotifyChartsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelSpotifyChartResponse],
+    'msg': NotRequired[Any],
+}, total=False)
+
+ModelSpotifyCountryHubContentResponseDoc = TypedDict('ModelSpotifyCountryHubContentResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelSpotifyCountryHubContentResponse],
+    'msg': NotRequired[Any],
+}, total=False)
+
+ModelSpotifyCountryHubResponseDoc = TypedDict('ModelSpotifyCountryHubResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelSpotifyCountryHubResponse],
+    'msg': NotRequired[Any],
+}, total=False)
+
+ModelSpotifyEpisodeResponseDoc = TypedDict('ModelSpotifyEpisodeResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelSpotifyPodcastEpisodeResponse],
+    'msg': NotRequired[Any],
+}, total=False)
+
+ModelSpotifyHomeResponseDoc = TypedDict('ModelSpotifyHomeResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelSpotifyHomeResponse],
+    'msg': NotRequired[Any],
+}, total=False)
+
+ModelSpotifyPlaylistResponseDoc = TypedDict('ModelSpotifyPlaylistResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelSpotifyPlaylistResponse],
+    'msg': NotRequired[Any],
+}, total=False)
+
+ModelSpotifySearchCatalogResponseDoc = TypedDict('ModelSpotifySearchCatalogResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelSpotifySearchResponse],
+    'msg': NotRequired[Any],
+}, total=False)
+
+ModelSpotifySearchResponseDoc = TypedDict('ModelSpotifySearchResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelSpotifySearchPodcastsResponse],
+    'msg': NotRequired[Any],
+}, total=False)
+
+ModelSpotifyShowEpisodesResponseDoc = TypedDict('ModelSpotifyShowEpisodesResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelSpotifyPodcastEpisodesResponse],
+    'msg': NotRequired[Any],
+}, total=False)
+
+ModelSpotifyShowRecommendationsResponseDoc = TypedDict('ModelSpotifyShowRecommendationsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelSpotifyShowRecommendationsResponse],
+    'msg': NotRequired[Any],
+}, total=False)
+
+ModelSpotifyShowResponseDoc = TypedDict('ModelSpotifyShowResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelSpotifyShowMetadataResponse],
+    'msg': NotRequired[Any],
+}, total=False)
+
+ModelSpotifyTrackRecommendedResponseDoc = TypedDict('ModelSpotifyTrackRecommendedResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelSpotifyTrackRecommendedResponse],
+    'msg': NotRequired[Any],
+}, total=False)
+
+ModelSpotifyTrackResponseDoc = TypedDict('ModelSpotifyTrackResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelSpotifyTrackResponse],
+    'msg': NotRequired[Any],
+}, total=False)
+
+ModelSpotifyTrackSimilarAlbumsResponseDoc = TypedDict('ModelSpotifyTrackSimilarAlbumsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelSpotifyTrackSimilarAlbumsResponse],
+    'msg': NotRequired[Any],
+}, total=False)
+
+ModelSpotifyUserProfileFollowersResponseDoc = TypedDict('ModelSpotifyUserProfileFollowersResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelSpotifyUserProfileFollowersResponse],
+    'msg': NotRequired[Any],
+}, total=False)
+
+ModelSpotifyUserProfilePlaylistsResponseDoc = TypedDict('ModelSpotifyUserProfilePlaylistsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelSpotifyUserProfilePlaylistsResponse],
+    'msg': NotRequired[Any],
+}, total=False)
+
+ModelSpotifyUserProfileResponseDoc = TypedDict('ModelSpotifyUserProfileResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelSpotifyUserProfileResponse],
+    'msg': NotRequired[Any],
+}, total=False)
+
+ModelTiktokCategory = TypedDict('ModelTiktokCategory', {
+    'name': NotRequired[str],
+    'type': NotRequired[str],
+}, total=False)
+
+ModelTiktokChallengeDetailResp = TypedDict('ModelTiktokChallengeDetailResp', {
+    'challengeInfo': NotRequired[Any],
+    'extra': NotRequired[dict[str, Any]],
+    'log_pb': NotRequired[dict[str, Any]],
+    'shareMeta': NotRequired[dict[str, Any]],
+    'statusCode': NotRequired[int],
+    'status_code': NotRequired[int],
+    'status_msg': NotRequired[str],
+}, total=False)
+
+ModelTiktokChallengeListResp = TypedDict('ModelTiktokChallengeListResp', {
+    'cursor': NotRequired[str],
+    'extra': NotRequired[dict[str, Any]],
+    'hasMore': NotRequired[bool],
+    'itemList': NotRequired[list[Any]],
+    'log_pb': NotRequired[dict[str, Any]],
+    'statusCode': NotRequired[int],
+    'status_code': NotRequired[int],
+    'status_msg': NotRequired[str],
+}, total=False)
+
+ModelTiktokCommentResp = TypedDict('ModelTiktokCommentResp', {
+    'alias_comment_deleted': NotRequired[bool],
+    'comments': NotRequired[list[Any]],
+    'cursor': NotRequired[int],
+    'extra': NotRequired[dict[str, Any]],
+    'has_filtered_comments': NotRequired[int],
+    'has_more': NotRequired[int],
+    'log_pb': NotRequired[dict[str, Any]],
+    'reply_style': NotRequired[int],
+    'status_code': NotRequired[int],
+    'status_msg': NotRequired[str],
+    'top_gifts': NotRequired[Any],
+    'total': NotRequired[int],
+}, total=False)
+
+ModelTiktokExploreResp = TypedDict('ModelTiktokExploreResp', {
+    'cursor': NotRequired[str],
+    'extra': NotRequired[dict[str, Any]],
+    'hasMore': NotRequired[bool],
+    'itemList': NotRequired[list[Any]],
+    'log_pb': NotRequired[dict[str, Any]],
+    'statusCode': NotRequired[int],
+    'status_code': NotRequired[int],
+    'status_msg': NotRequired[str],
+}, total=False)
+
+ModelTiktokProfile = TypedDict('ModelTiktokProfile', {
+    'stats': NotRequired[ModelTiktokProfileStats],
+    'user': NotRequired[ModelTiktokUser],
+}, total=False)
+
+ModelTiktokProfileStats = TypedDict('ModelTiktokProfileStats', {
+    'diggCount': NotRequired[int],
+    'followerCount': NotRequired[int],
+    'followingCount': NotRequired[int],
+    'friendCount': NotRequired[int],
+    'heart': NotRequired[int],
+    'heartCount': NotRequired[int],
+    'videoCount': NotRequired[int],
+}, total=False)
+
+ModelTiktokSearchHashtagResp = TypedDict('ModelTiktokSearchHashtagResp', {
+    'challenge_list': NotRequired[list[Any]],
+    'cursor': NotRequired[int],
+    'extra': NotRequired[Any],
+    'has_more': NotRequired[int],
+    'input_keyword': NotRequired[str],
+    'log_pb': NotRequired[dict[str, Any]],
+    'music_list': NotRequired[Any],
+    'qc': NotRequired[str],
+    'rid': NotRequired[str],
+    'status_code': NotRequired[int],
+    'status_msg': NotRequired[str],
+    'type': NotRequired[int],
+    'user_list': NotRequired[Any],
+}, total=False)
+
+ModelTiktokSearchResp = TypedDict('ModelTiktokSearchResp', {
+    'cursor': NotRequired[int],
+    'data': NotRequired[list[Any]],
+    'extra': NotRequired[Any],
+    'feedback_type': NotRequired[str],
+    'has_more': NotRequired[int],
+    'input_keyword': NotRequired[str],
+    'itemList': NotRequired[list[Any]],
+    'log_pb': NotRequired[dict[str, Any]],
+    'qc': NotRequired[str],
+    'rid': NotRequired[str],
+    'status_code': NotRequired[int],
+    'status_msg': NotRequired[str],
+    'type': NotRequired[int],
+}, total=False)
+
+ModelTiktokSearchUserResp = TypedDict('ModelTiktokSearchUserResp', {
+    'challenge_list': NotRequired[Any],
+    'cursor': NotRequired[int],
+    'extra': NotRequired[Any],
+    'feedback_type': NotRequired[str],
+    'global_doodle_config': NotRequired[Any],
+    'has_more': NotRequired[int],
+    'input_keyword': NotRequired[str],
+    'log_pb': NotRequired[dict[str, Any]],
+    'music_list': NotRequired[Any],
+    'qc': NotRequired[str],
+    'rid': NotRequired[str],
+    'status_code': NotRequired[int],
+    'status_msg': NotRequired[str],
+    'type': NotRequired[int],
+    'user_list': NotRequired[list[Any]],
+}, total=False)
+
+ModelTiktokTrendingResp = TypedDict('ModelTiktokTrendingResp', {
+    'cursor': NotRequired[str],
+    'extra': NotRequired[dict[str, Any]],
+    'hasMore': NotRequired[bool],
+    'itemList': NotRequired[list[Any]],
+    'log_pb': NotRequired[dict[str, Any]],
+    'statusCode': NotRequired[int],
+    'statusMsg': NotRequired[str],
+    'status_code': NotRequired[int],
+    'status_msg': NotRequired[str],
+    'trendingTopics': NotRequired[list[Any]],
+}, total=False)
+
+ModelTiktokUser = TypedDict('ModelTiktokUser', {
+    'avatarLarger': NotRequired[str],
+    'bioLink': NotRequired[dict[str, Any]],
+    'commerceUserInfo': NotRequired[dict[str, Any]],
+    'createTime': NotRequired[int],
+    'id': NotRequired[str],
+    'isOrganization': NotRequired[int],
+    'language': NotRequired[str],
+    'nickname': NotRequired[str],
+    'privateAccount': NotRequired[bool],
+    'region': NotRequired[str],
+    'secUid': NotRequired[str],
+    'secret': NotRequired[bool],
+    'signature': NotRequired[str],
+    'ttSeller': NotRequired[bool],
+    'uniqueId': NotRequired[str],
+    'verified': NotRequired[bool],
+}, total=False)
+
+ModelTiktokUserPostLinkResp = TypedDict('ModelTiktokUserPostLinkResp', {
+    'cursor': NotRequired[str],
+    'extra': NotRequired[dict[str, Any]],
+    'hasMore': NotRequired[bool],
+    'itemList': NotRequired[list[Any]],
+    'log_pb': NotRequired[dict[str, Any]],
+    'status_code': NotRequired[int],
+    'status_msg': NotRequired[str],
+}, total=False)
+
+ModelTiktokVideoDetailResp = TypedDict('ModelTiktokVideoDetailResp', {
+    'extra': NotRequired[dict[str, Any]],
+    'itemInfo': NotRequired[Any],
+    'log_pb': NotRequired[dict[str, Any]],
+    'shareMeta': NotRequired[dict[str, Any]],
+    'status_code': NotRequired[int],
+    'status_msg': NotRequired[str],
+}, total=False)
+
+ModelTiktokCategoryResponseDoc = TypedDict('ModelTiktokCategoryResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[list[ModelTiktokCategory]],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelTiktokChallengeListResponseDoc = TypedDict('ModelTiktokChallengeListResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelTiktokChallengeListResp],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelTiktokChallengeResponseDoc = TypedDict('ModelTiktokChallengeResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelTiktokChallengeDetailResp],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelTiktokCommentsResponseDoc = TypedDict('ModelTiktokCommentsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelTiktokCommentResp],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelTiktokExploreResponseDoc = TypedDict('ModelTiktokExploreResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelTiktokExploreResp],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelTiktokPostResponseDoc = TypedDict('ModelTiktokPostResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelTiktokVideoDetailResp],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelTiktokProfilePostResponseDoc = TypedDict('ModelTiktokProfilePostResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelTiktokUserPostLinkResp],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelTiktokProfileResponseDoc = TypedDict('ModelTiktokProfileResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelTiktokProfile],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelTiktokSearchHashtagResponseDoc = TypedDict('ModelTiktokSearchHashtagResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelTiktokSearchHashtagResp],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelTiktokSearchResponseDoc = TypedDict('ModelTiktokSearchResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelTiktokSearchResp],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelTiktokSearchUserResponseDoc = TypedDict('ModelTiktokSearchUserResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelTiktokSearchUserResp],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelTiktokTrendingResponseDoc = TypedDict('ModelTiktokTrendingResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelTiktokTrendingResp],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelTrendsExploreQueriesResponse = TypedDict('ModelTrendsExploreQueriesResponse', {
+    'category': NotRequired[int],
+    'geo': NotRequired[str],
+    'hl': NotRequired[str],
+    'keywords': NotRequired[list[str]],
+    'property': NotRequired[str],
+    'queries': NotRequired[list[ModelTrendsRelatedGroup]],
+    'query_type': NotRequired[str],
+    'time_range': NotRequired[str],
+    'type': NotRequired[str],
+    'tz': NotRequired[int],
+}, total=False)
+
+ModelTrendsExploreRequest = TypedDict('ModelTrendsExploreRequest', {
+    'category': NotRequired[int],
+    'geo': NotRequired[Literal['WORLDWIDE', 'AF', 'AX', 'AL', 'DZ', 'AS', 'AD', 'AO', 'AI', 'AQ', 'AG', 'AR', 'AM', 'AW', 'AU', 'AT', 'AZ', 'BS', 'BH', 'BD', 'BB', 'BY', 'BE', 'BZ', 'BJ', 'BM', 'BT', 'BO', 'BA', 'BW', 'BV', 'BR', 'IO', 'VG', 'BN', 'BG', 'BF', 'BI', 'KH', 'CM', 'CA', 'CV', 'BQ', 'KY', 'CF', 'TD', 'CL', 'CN', 'CX', 'CC', 'CO', 'KM', 'CG', 'CD', 'CK', 'CR', 'CI', 'HR', 'CU', 'CW', 'CY', 'CZ', 'DK', 'DJ', 'DM', 'DO', 'EC', 'EG', 'SV', 'GQ', 'ER', 'EE', 'SZ', 'ET', 'FK', 'FO', 'FJ', 'FI', 'FR', 'GF', 'PF', 'TF', 'GA', 'GM', 'GE', 'DE', 'GH', 'GI', 'GR', 'GL', 'GD', 'GP', 'GU', 'GT', 'GG', 'GN', 'GW', 'GY', 'HT', 'HM', 'HN', 'HK', 'HU', 'IS', 'IN', 'ID', 'IR', 'IQ', 'IE', 'IM', 'IL', 'IT', 'JM', 'JP', 'JE', 'JO', 'KZ', 'KE', 'KI', 'XK', 'KW', 'KG', 'LA', 'LV', 'LB', 'LS', 'LR', 'LY', 'LI', 'LT', 'LU', 'MO', 'MG', 'MW', 'MY', 'MV', 'ML', 'MT', 'MH', 'MQ', 'MR', 'MU', 'YT', 'MX', 'FM', 'MD', 'MC', 'MN', 'ME', 'MS', 'MA', 'MZ', 'MM', 'NA', 'NR', 'NP', 'NL', 'NC', 'NZ', 'NI', 'NE', 'NG', 'NU', 'NF', 'KP', 'MK', 'MP', 'NO', 'OM', 'PK', 'PW', 'PS', 'PA', 'PG', 'PY', 'PE', 'PH', 'PN', 'PL', 'PT', 'PR', 'QA', 'RE', 'RO', 'RU', 'RW', 'WS', 'SM', 'ST', 'SA', 'SN', 'RS', 'SC', 'SL', 'SG', 'SX', 'SK', 'SI', 'SB', 'SO', 'ZA', 'GS', 'KR', 'SS', 'ES', 'LK', 'BL', 'SH', 'KN', 'LC', 'MF', 'PM', 'VC', 'SD', 'SR', 'SJ', 'SE', 'CH', 'SY', 'TW', 'TJ', 'TZ', 'TH', 'TL', 'TG', 'TK', 'TO', 'TT', 'TN', 'TR', 'TM', 'TC', 'TV', 'UM', 'VI', 'UG', 'UA', 'AE', 'GB', 'US', 'UY', 'UZ', 'VU', 'VA', 'VE', 'VN', 'WF', 'EH', 'YE', 'ZM', 'ZW']],
+    'hl': NotRequired[str],
+    'keywords': NotRequired[list[str]],
+    'property': NotRequired[str],
+    'time_range': NotRequired[Literal['now 1-H', 'now 4-H', 'now 1-d', 'now 7-d', 'today 1-m', 'today 3-m', 'today 12-m', 'today 5-y', 'all']],
+    'type': NotRequired[Literal['web', 'image', 'news', 'youtube', 'shopping']],
+    'tz': NotRequired[int],
+}, total=False)
+
+ModelTrendsExploreResponse = TypedDict('ModelTrendsExploreResponse', {
+    'category': NotRequired[int],
+    'geo': NotRequired[str],
+    'hl': NotRequired[str],
+    'interest_by_region': NotRequired[list[ModelTrendsRegionInterest]],
+    'interest_over_time': NotRequired[list[ModelTrendsInterestPoint]],
+    'keywords': NotRequired[list[str]],
+    'property': NotRequired[str],
+    'related_queries': NotRequired[list[ModelTrendsRelatedGroup]],
+    'related_topics': NotRequired[list[ModelTrendsRelatedGroup]],
+    'rising_queries': NotRequired[list[ModelTrendsRelatedGroup]],
+    'time_range': NotRequired[str],
+    'top_queries': NotRequired[list[ModelTrendsRelatedGroup]],
+    'type': NotRequired[str],
+    'tz': NotRequired[int],
+}, total=False)
+
+ModelTrendsInterestByRegionResponse = TypedDict('ModelTrendsInterestByRegionResponse', {
+    'category': NotRequired[int],
+    'geo': NotRequired[str],
+    'hl': NotRequired[str],
+    'interest_by_region': NotRequired[list[ModelTrendsRegionInterest]],
+    'keywords': NotRequired[list[str]],
+    'property': NotRequired[str],
+    'time_range': NotRequired[str],
+    'type': NotRequired[str],
+    'tz': NotRequired[int],
+}, total=False)
+
+ModelTrendsInterestOverTimeResponse = TypedDict('ModelTrendsInterestOverTimeResponse', {
+    'category': NotRequired[int],
+    'geo': NotRequired[str],
+    'hl': NotRequired[str],
+    'interest_over_time': NotRequired[list[ModelTrendsInterestPoint]],
+    'keywords': NotRequired[list[str]],
+    'property': NotRequired[str],
+    'time_range': NotRequired[str],
+    'type': NotRequired[str],
+    'tz': NotRequired[int],
+}, total=False)
+
+ModelTrendsInterestPoint = TypedDict('ModelTrendsInterestPoint', {
+    'formatted_axis_time': NotRequired[str],
+    'formatted_time': NotRequired[str],
+    'time': NotRequired[str],
+    'values': NotRequired[list[ModelTrendsTrendValue]],
+}, total=False)
+
+ModelTrendsRegionInterest = TypedDict('ModelTrendsRegionInterest', {
+    'geo_code': NotRequired[str],
+    'geo_name': NotRequired[str],
+    'values': NotRequired[list[ModelTrendsTrendValue]],
+}, total=False)
+
+ModelTrendsRelatedGroup = TypedDict('ModelTrendsRelatedGroup', {
+    'items': NotRequired[list[ModelTrendsRelatedItem]],
+    'keyword': NotRequired[str],
+}, total=False)
+
+ModelTrendsRelatedItem = TypedDict('ModelTrendsRelatedItem', {
+    'formatted_value': NotRequired[str],
+    'link': NotRequired[str],
+    'query': NotRequired[str],
+    'topic_mid': NotRequired[str],
+    'topic_title': NotRequired[str],
+    'topic_type': NotRequired[str],
+    'value': NotRequired[int],
+}, total=False)
+
+ModelTrendsRelatedTopicsResponse = TypedDict('ModelTrendsRelatedTopicsResponse', {
+    'category': NotRequired[int],
+    'geo': NotRequired[str],
+    'hl': NotRequired[str],
+    'keywords': NotRequired[list[str]],
+    'property': NotRequired[str],
+    'related_topics': NotRequired[list[ModelTrendsRelatedGroup]],
+    'time_range': NotRequired[str],
+    'type': NotRequired[str],
+    'tz': NotRequired[int],
+}, total=False)
+
+ModelTrendsTrendCategory = TypedDict('ModelTrendsTrendCategory', {
+    'id': NotRequired[int],
+    'name': NotRequired[str],
+}, total=False)
+
+ModelTrendsTrendValue = TypedDict('ModelTrendsTrendValue', {
+    'formatted_value': NotRequired[str],
+    'has_data': NotRequired[bool],
+    'keyword': NotRequired[str],
+    'value': NotRequired[int],
+}, total=False)
+
+ModelTrendsTrendingArticle = TypedDict('ModelTrendsTrendingArticle', {
+    'source': NotRequired[str],
+    'time': NotRequired[str],
+    'title': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelTrendsTrendingDetailRequest = TypedDict('ModelTrendsTrendingDetailRequest', {
+    'category': NotRequired[int],
+    'geo': NotRequired[Literal['WORLDWIDE', 'AF', 'AX', 'AL', 'DZ', 'AS', 'AD', 'AO', 'AI', 'AQ', 'AG', 'AR', 'AM', 'AW', 'AU', 'AT', 'AZ', 'BS', 'BH', 'BD', 'BB', 'BY', 'BE', 'BZ', 'BJ', 'BM', 'BT', 'BO', 'BA', 'BW', 'BV', 'BR', 'IO', 'VG', 'BN', 'BG', 'BF', 'BI', 'KH', 'CM', 'CV', 'CA', 'BQ', 'KY', 'CF', 'TD', 'CL', 'CN', 'CX', 'CC', 'CO', 'KM', 'CG', 'CD', 'CK', 'CR', 'CI', 'HR', 'CU', 'CW', 'CY', 'CZ', 'DK', 'DJ', 'DM', 'DO', 'EC', 'EG', 'SV', 'GQ', 'ER', 'EE', 'SZ', 'ET', 'FK', 'FO', 'FJ', 'FI', 'FR', 'GF', 'PF', 'TF', 'GA', 'GM', 'GE', 'DE', 'GH', 'GI', 'GR', 'GL', 'GD', 'GP', 'GU', 'GT', 'GG', 'GN', 'GW', 'GY', 'HT', 'HM', 'HN', 'HK', 'HU', 'IS', 'IN', 'ID', 'IR', 'IQ', 'IE', 'IM', 'IL', 'IT', 'JM', 'JP', 'JE', 'JO', 'KZ', 'KE', 'KI', 'XK', 'KW', 'KG', 'LA', 'LV', 'LB', 'LS', 'LR', 'LY', 'LI', 'LT', 'LU', 'MO', 'MG', 'MW', 'MY', 'MV', 'ML', 'MT', 'MH', 'MQ', 'MR', 'MU', 'YT', 'MX', 'FM', 'MD', 'MC', 'MN', 'ME', 'MS', 'MA', 'MZ', 'MM', 'NA', 'NR', 'NP', 'NL', 'NC', 'NZ', 'NI', 'NE', 'NG', 'NU', 'NF', 'KP', 'MK', 'MP', 'NO', 'OM', 'PK', 'PW', 'PS', 'PA', 'PG', 'PY', 'PE', 'PH', 'PN', 'PL', 'PT', 'PR', 'QA', 'RE', 'RO', 'RU', 'RW', 'WS', 'SM', 'ST', 'SA', 'SN', 'RS', 'SC', 'SL', 'SG', 'SX', 'SK', 'SI', 'SB', 'SO', 'ZA', 'GS', 'KR', 'SS', 'ES', 'LK', 'BL', 'SH', 'KN', 'LC', 'MF', 'PM', 'VC', 'SD', 'SR', 'SJ', 'SE', 'CH', 'SY', 'TW', 'TJ', 'TZ', 'TH', 'TL', 'TG', 'TK', 'TO', 'TT', 'TN', 'TR', 'TM', 'TC', 'TV', 'UM', 'VI', 'UG', 'UA', 'AE', 'GB', 'US', 'UY', 'UZ', 'VU', 'VA', 'VE', 'VN', 'WF', 'EH', 'YE', 'ZM', 'ZW']],
+    'hl': NotRequired[str],
+    'property': NotRequired[str],
+    'query': NotRequired[str],
+    'time_range': NotRequired[Literal['now 1-H', 'now 4-H', 'now 1-d', 'now 7-d', 'today 1-m', 'today 3-m', 'today 12-m', 'today 5-y', 'all']],
+    'type': NotRequired[Literal['web', 'image', 'news', 'youtube', 'shopping']],
+    'tz': NotRequired[int],
+}, total=False)
+
+ModelTrendsTrendingItem = TypedDict('ModelTrendsTrendingItem', {
+    'articles': NotRequired[list[ModelTrendsTrendingArticle]],
+    'explore_url': NotRequired[str],
+    'query': NotRequired[str],
+    'rank': NotRequired[int],
+    'related_terms': NotRequired[list[str]],
+    'share_url': NotRequired[str],
+    'started_unix': NotRequired[int],
+    'status': NotRequired[str],
+    'title': NotRequired[str],
+    'traffic': NotRequired[str],
+    'updated_unix': NotRequired[int],
+}, total=False)
+
+ModelTrendsTrendingResponse = TypedDict('ModelTrendsTrendingResponse', {
+    'category': NotRequired[int],
+    'geo': NotRequired[str],
+    'hl': NotRequired[str],
+    'items': NotRequired[list[ModelTrendsTrendingItem]],
+    'sort_by': NotRequired[str],
+    'status': NotRequired[str],
+    'time_range': NotRequired[str],
+    'tz': NotRequired[int],
+    'window': NotRequired[str],
+}, total=False)
+
+ModelTrendsTrendsCategoriesResponse = TypedDict('ModelTrendsTrendsCategoriesResponse', {
+    'categories': NotRequired[list[ModelTrendsTrendCategory]],
+}, total=False)
+
+ModelTrendsTrendsEnumsResponse = TypedDict('ModelTrendsTrendsEnumsResponse', {
+    'explore_time_ranges': NotRequired[list[str]],
+    'locations': NotRequired[list[str]],
+    'search_types': NotRequired[list[str]],
+    'trend_statuses': NotRequired[list[str]],
+    'trending_categories': NotRequired[list[ModelTrendsTrendCategory]],
+    'trending_sort_bys': NotRequired[list[str]],
+    'trending_time_ranges': NotRequired[list[str]],
+}, total=False)
+
+ModelTrendsTrendsLocationsResponse = TypedDict('ModelTrendsTrendsLocationsResponse', {
+    'locations': NotRequired[list[str]],
+}, total=False)
+
+ModelTrendsExploreQueriesResponseDoc = TypedDict('ModelTrendsExploreQueriesResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelTrendsExploreQueriesResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelTrendsExploreResponseDoc = TypedDict('ModelTrendsExploreResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelTrendsExploreResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelTrendsInterestByRegionResponseDoc = TypedDict('ModelTrendsInterestByRegionResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelTrendsInterestByRegionResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelTrendsInterestOverTimeResponseDoc = TypedDict('ModelTrendsInterestOverTimeResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelTrendsInterestOverTimeResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelTrendsRelatedTopicsResponseDoc = TypedDict('ModelTrendsRelatedTopicsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelTrendsRelatedTopicsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelTrendsTrendingResponseDoc = TypedDict('ModelTrendsTrendingResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelTrendsTrendingResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelTrendsTrendsCategoriesResponseDoc = TypedDict('ModelTrendsTrendsCategoriesResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelTrendsTrendsCategoriesResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelTrendsTrendsEnumsResponseDoc = TypedDict('ModelTrendsTrendsEnumsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelTrendsTrendsEnumsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelTrendsTrendsLocationsResponseDoc = TypedDict('ModelTrendsTrendsLocationsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelTrendsTrendsLocationsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelTripadvisorAutocompleteResponse = TypedDict('ModelTripadvisorAutocompleteResponse', {
+    'locale': NotRequired[str],
+    'query': NotRequired[str],
+    'results': NotRequired[list[ModelTripadvisorSearchItem]],
+    'scope_geo_id': NotRequired[int],
+}, total=False)
+
+ModelTripadvisorEnumsResponse = TypedDict('ModelTripadvisorEnumsResponse', {
+    'attraction_categories': NotRequired[list[str]],
+    'attraction_category_ids': NotRequired[dict[str, str]],
+    'currencies': NotRequired[list[str]],
+    'filter_ids': NotRequired[list[str]],
+    'hotel_amenities': NotRequired[list[int]],
+    'hotel_classes': NotRequired[list[int]],
+    'languages': NotRequired[list[str]],
+    'listing_types': NotRequired[list[str]],
+    'locales': NotRequired[list[str]],
+    'pricing_modes': NotRequired[list[str]],
+    'restaurant_options': NotRequired[list[int]],
+    'restaurant_types': NotRequired[list[int]],
+    'sorts': NotRequired[list[str]],
+    'unsupported_entity_types': NotRequired[list[str]],
+}, total=False)
+
+ModelTripadvisorHotelItem = TypedDict('ModelTripadvisorHotelItem', {
+    'address': NotRequired[str],
+    'currency': NotRequired[str],
+    'id': NotRequired[str],
+    'image': NotRequired[str],
+    'latitude': NotRequired[float],
+    'longitude': NotRequired[float],
+    'parent': NotRequired[str],
+    'phone': NotRequired[str],
+    'price': NotRequired[str],
+    'provider': NotRequired[str],
+    'rank': NotRequired[int],
+    'rank_label': NotRequired[str],
+    'rating': NotRequired[float],
+    'review_count': NotRequired[int],
+    'review_rating': NotRequired[float],
+    'review_snippet': NotRequired[str],
+    'review_title': NotRequired[str],
+    'star_rating': NotRequired[float],
+    'tags': NotRequired[list[str]],
+    'title': NotRequired[str],
+    'type': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelTripadvisorHotelListResponse = TypedDict('ModelTripadvisorHotelListResponse', {
+    'currency': NotRequired[str],
+    'full_matches': NotRequired[int],
+    'geo_id': NotRequired[int],
+    'limit': NotRequired[int],
+    'offset': NotRequired[int],
+    'results': NotRequired[list[ModelTripadvisorHotelItem]],
+    'sort': NotRequired[str],
+    'total': NotRequired[int],
+}, total=False)
+
+ModelTripadvisorNestedSearchItem = TypedDict('ModelTripadvisorNestedSearchItem', {
+    'query': NotRequired[str],
+    'title': NotRequired[str],
+    'type': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelTripadvisorPlaceAddressParts = TypedDict('ModelTripadvisorPlaceAddressParts', {
+    'country': NotRequired[str],
+    'locality': NotRequired[str],
+    'postal_code': NotRequired[str],
+    'region': NotRequired[str],
+    'street': NotRequired[str],
+}, total=False)
+
+ModelTripadvisorPlaceImage = TypedDict('ModelTripadvisorPlaceImage', {
+    'caption': NotRequired[str],
+    'height': NotRequired[int],
+    'url': NotRequired[str],
+    'width': NotRequired[int],
+}, total=False)
+
+ModelTripadvisorPlaceItem = TypedDict('ModelTripadvisorPlaceItem', {
+    'address': NotRequired[str],
+    'booking_url': NotRequired[str],
+    'categories': NotRequired[list[str]],
+    'cuisines': NotRequired[list[str]],
+    'currency': NotRequired[str],
+    'id': NotRequired[str],
+    'image': NotRequired[str],
+    'latitude': NotRequired[float],
+    'longitude': NotRequired[float],
+    'parent': NotRequired[str],
+    'phone': NotRequired[str],
+    'price': NotRequired[str],
+    'price_level': NotRequired[str],
+    'provider': NotRequired[str],
+    'rank': NotRequired[int],
+    'rank_label': NotRequired[str],
+    'rating': NotRequired[float],
+    'review_count': NotRequired[int],
+    'review_rating': NotRequired[float],
+    'review_snippet': NotRequired[str],
+    'review_title': NotRequired[str],
+    'star_rating': NotRequired[float],
+    'tags': NotRequired[list[str]],
+    'title': NotRequired[str],
+    'type': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelTripadvisorPlaceLink = TypedDict('ModelTripadvisorPlaceLink', {
+    'label': NotRequired[str],
+    'type': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelTripadvisorPlaceResponse = TypedDict('ModelTripadvisorPlaceResponse', {
+    'address': NotRequired[str],
+    'address_parts': NotRequired[ModelTripadvisorPlaceAddressParts],
+    'amenities': NotRequired[list[str]],
+    'awards': NotRequired[list[str]],
+    'breadcrumbs': NotRequired[list[str]],
+    'canonical_url': NotRequired[str],
+    'categories': NotRequired[list[str]],
+    'cuisines': NotRequired[list[str]],
+    'description': NotRequired[str],
+    'features': NotRequired[list[str]],
+    'geo_id': NotRequired[str],
+    'id': NotRequired[str],
+    'image': NotRequired[str],
+    'images': NotRequired[list[ModelTripadvisorPlaceImage]],
+    'latitude': NotRequired[float],
+    'links': NotRequired[list[ModelTripadvisorPlaceLink]],
+    'longitude': NotRequired[float],
+    'opening_hours': NotRequired[list[str]],
+    'phone': NotRequired[str],
+    'price_level': NotRequired[str],
+    'price_range': NotRequired[str],
+    'rank': NotRequired[int],
+    'rank_label': NotRequired[str],
+    'rating': NotRequired[float],
+    'reviews': NotRequired[int],
+    'summary': NotRequired[str],
+    'tags': NotRequired[list[str]],
+    'title': NotRequired[str],
+    'type': NotRequired[str],
+    'url': NotRequired[str],
+    'website_url': NotRequired[str],
+}, total=False)
+
+ModelTripadvisorReviewItem = TypedDict('ModelTripadvisorReviewItem', {
+    'author': NotRequired[str],
+    'author_avatar': NotRequired[str],
+    'author_hometown': NotRequired[str],
+    'author_id': NotRequired[str],
+    'author_url': NotRequired[str],
+    'created_date': NotRequired[str],
+    'date': NotRequired[str],
+    'helpful': NotRequired[int],
+    'id': NotRequired[str],
+    'language': NotRequired[str],
+    'original_language': NotRequired[str],
+    'photos': NotRequired[list[str]],
+    'rating': NotRequired[float],
+    'stay_date': NotRequired[str],
+    'text': NotRequired[str],
+    'title': NotRequired[str],
+    'trip_type': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelTripadvisorReviewsResponse = TypedDict('ModelTripadvisorReviewsResponse', {
+    'id': NotRequired[str],
+    'language': NotRequired[str],
+    'limit': NotRequired[int],
+    'page': NotRequired[int],
+    'reviews': NotRequired[list[ModelTripadvisorReviewItem]],
+    'total': NotRequired[int],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelTripadvisorSearchItem = TypedDict('ModelTripadvisorSearchItem', {
+    'document_id': NotRequired[str],
+    'id': NotRequired[str],
+    'image': NotRequired[str],
+    'latitude': NotRequired[float],
+    'longitude': NotRequired[float],
+    'nested_results': NotRequired[list[ModelTripadvisorNestedSearchItem]],
+    'parent': NotRequired[str],
+    'title': NotRequired[str],
+    'type': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelTripadvisorSearchResponse = TypedDict('ModelTripadvisorSearchResponse', {
+    'currency': NotRequired[str],
+    'geo_id': NotRequired[int],
+    'limit': NotRequired[int],
+    'locale': NotRequired[str],
+    'offset': NotRequired[int],
+    'results': NotRequired[list[ModelTripadvisorPlaceItem]],
+    'sort': NotRequired[str],
+    'source': NotRequired[str],
+    'type': NotRequired[str],
+    'unsupported_types': NotRequired[list[str]],
+}, total=False)
+
+ModelTripadvisorTripadvisorAutocompleteResponseDoc = TypedDict('ModelTripadvisorTripadvisorAutocompleteResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelTripadvisorAutocompleteResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelTripadvisorTripadvisorEnumsResponseDoc = TypedDict('ModelTripadvisorTripadvisorEnumsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelTripadvisorEnumsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelTripadvisorTripadvisorHotelsResponseDoc = TypedDict('ModelTripadvisorTripadvisorHotelsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelTripadvisorHotelListResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelTripadvisorTripadvisorReviewsResponseDoc = TypedDict('ModelTripadvisorTripadvisorReviewsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelTripadvisorReviewsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelTripadvisorTripadvisorSearchResponseDoc = TypedDict('ModelTripadvisorTripadvisorSearchResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelTripadvisorSearchResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelTrustpilotBusinessAbout = TypedDict('ModelTrustpilotBusinessAbout', {
+    'business_country_code': NotRequired[str],
+    'contact': NotRequired[ModelTrustpilotBusinessContact],
+    'description_html': NotRequired[str],
+    'description_text': NotRequired[str],
+    'facebook_url': NotRequired[str],
+    'has_company_elements': NotRequired[bool],
+    'information_source': NotRequired[str],
+    'promotion_points': NotRequired[list[str]],
+    'promotion_title': NotRequired[str],
+}, total=False)
+
+ModelTrustpilotBusinessActivity = TypedDict('ModelTrustpilotBusinessActivity', {
+    'claimed_date': NotRequired[str],
+    'has_business_unit_merge_history': NotRequired[bool],
+    'has_subscription': NotRequired[bool],
+    'is_asking_for_reviews': NotRequired[bool],
+    'is_claimed': NotRequired[bool],
+    'is_using_ai_responses': NotRequired[bool],
+    'is_using_paid_features': NotRequired[bool],
+    'previously_claimed': NotRequired[bool],
+    'verification': NotRequired[ModelTrustpilotBusinessVerification],
+}, total=False)
+
+ModelTrustpilotBusinessBreadcrumb = TypedDict('ModelTrustpilotBusinessBreadcrumb', {
+    'id': NotRequired[str],
+    'level': NotRequired[str],
+    'name': NotRequired[str],
+}, total=False)
+
+ModelTrustpilotBusinessCategory = TypedDict('ModelTrustpilotBusinessCategory', {
+    'cardinality': NotRequired[int],
+    'id': NotRequired[str],
+    'is_primary': NotRequired[bool],
+    'name': NotRequired[str],
+    'rank': NotRequired[int],
+}, total=False)
+
+ModelTrustpilotBusinessCompanyReply = TypedDict('ModelTrustpilotBusinessCompanyReply', {
+    'message': NotRequired[str],
+    'published_at_text': NotRequired[str],
+    'updated_at_text': NotRequired[str],
+}, total=False)
+
+ModelTrustpilotBusinessContact = TypedDict('ModelTrustpilotBusinessContact', {
+    'address': NotRequired[str],
+    'city': NotRequired[str],
+    'country': NotRequired[str],
+    'email': NotRequired[str],
+    'phone': NotRequired[str],
+    'zip_code': NotRequired[str],
+}, total=False)
+
+ModelTrustpilotBusinessPageLanguage = TypedDict('ModelTrustpilotBusinessPageLanguage', {
+    'iso_language': NotRequired[str],
+    'language_code': NotRequired[str],
+    'locale': NotRequired[str],
+    'uri': NotRequired[str],
+}, total=False)
+
+ModelTrustpilotBusinessPageMeta = TypedDict('ModelTrustpilotBusinessPageMeta', {
+    'canonical_url': NotRequired[str],
+    'domain': NotRequired[str],
+    'languages': NotRequired[list[ModelTrustpilotBusinessPageLanguage]],
+    'locale': NotRequired[str],
+}, total=False)
+
+ModelTrustpilotBusinessRatingHistogram = TypedDict('ModelTrustpilotBusinessRatingHistogram', {
+    'five': NotRequired[int],
+    'four': NotRequired[int],
+    'one': NotRequired[int],
+    'three': NotRequired[int],
+    'total': NotRequired[int],
+    'two': NotRequired[int],
+}, total=False)
+
+ModelTrustpilotBusinessRelatedResponse = TypedDict('ModelTrustpilotBusinessRelatedResponse', {
+    'business': NotRequired[ModelTrustpilotBusinessHeader],
+    'items': NotRequired[list[ModelTrustpilotRelatedBusiness]],
+}, total=False)
+
+ModelTrustpilotBusinessReplyMetrics = TypedDict('ModelTrustpilotBusinessReplyMetrics', {
+    'average_days_to_reply': NotRequired[float],
+    'last_reply_to_negative_review': NotRequired[str],
+    'negative_reviews_with_replies': NotRequired[int],
+    'reply_percentage': NotRequired[float],
+    'total_negative_reviews': NotRequired[int],
+}, total=False)
+
+ModelTrustpilotBusinessResponse = TypedDict('ModelTrustpilotBusinessResponse', {
+    'about': NotRequired[ModelTrustpilotBusinessAbout],
+    'breadcrumbs': NotRequired[list[ModelTrustpilotBusinessBreadcrumb]],
+    'categories': NotRequired[list[ModelTrustpilotBusinessCategory]],
+    'claimed': NotRequired[bool],
+    'company_activity': NotRequired[ModelTrustpilotBusinessActivity],
+    'name': NotRequired[str],
+    'page_meta': NotRequired[ModelTrustpilotBusinessPageMeta],
+    'paid_subscription': NotRequired[bool],
+    'rating': NotRequired[float],
+    'rating_histogram': NotRequired[ModelTrustpilotBusinessRatingHistogram],
+    'reply_metrics': NotRequired[ModelTrustpilotBusinessReplyMetrics],
+    'review_count': NotRequired[int],
+    'review_summary': NotRequired[ModelTrustpilotBusinessReviewSummary],
+    'review_topics': NotRequired[list[ModelTrustpilotBusinessReviewTopic]],
+    'slug': NotRequired[str],
+    'trust_score': NotRequired[float],
+    'trustpilot_url': NotRequired[str],
+    'website_url': NotRequired[str],
+}, total=False)
+
+ModelTrustpilotBusinessReviewItem = TypedDict('ModelTrustpilotBusinessReviewItem', {
+    'author_country': NotRequired[str],
+    'author_name': NotRequired[str],
+    'author_review_count': NotRequired[int],
+    'body': NotRequired[str],
+    'company_reply': NotRequired[ModelTrustpilotBusinessCompanyReply],
+    'experienced_at_text': NotRequired[str],
+    'id': NotRequired[str],
+    'invited': NotRequired[bool],
+    'labels': NotRequired[ModelTrustpilotBusinessReviewLabels],
+    'published_at_text': NotRequired[str],
+    'rating': NotRequired[int],
+    'title': NotRequired[str],
+    'updated_at_text': NotRequired[str],
+    'verified': NotRequired[bool],
+}, total=False)
+
+ModelTrustpilotBusinessReviewLabels = TypedDict('ModelTrustpilotBusinessReviewLabels', {
+    'filtered': NotRequired[bool],
+    'merged': NotRequired[str],
+    'pending': NotRequired[bool],
+    'review_source': NotRequired[str],
+    'verification_level': NotRequired[str],
+    'verification_source': NotRequired[str],
+}, total=False)
+
+ModelTrustpilotBusinessReviewSummary = TypedDict('ModelTrustpilotBusinessReviewSummary', {
+    'model_version': NotRequired[str],
+    'status': NotRequired[str],
+    'summary': NotRequired[str],
+    'updated_at': NotRequired[str],
+}, total=False)
+
+ModelTrustpilotBusinessReviewTopic = TypedDict('ModelTrustpilotBusinessReviewTopic', {
+    'model_version': NotRequired[str],
+    'order': NotRequired[int],
+    'summary': NotRequired[str],
+    'topic': NotRequired[str],
+    'updated_at': NotRequired[str],
+}, total=False)
+
+ModelTrustpilotBusinessReviewsAppliedFilters = TypedDict('ModelTrustpilotBusinessReviewsAppliedFilters', {
+    'language': NotRequired[str],
+    'query': NotRequired[str],
+    'replied': NotRequired[bool],
+    'stars': NotRequired[int],
+    'verified': NotRequired[bool],
+}, total=False)
+
+ModelTrustpilotBusinessReviewsPagination = TypedDict('ModelTrustpilotBusinessReviewsPagination', {
+    'has_next_page': NotRequired[bool],
+    'next_page': NotRequired[int],
+    'page': NotRequired[int],
+    'per_page': NotRequired[int],
+    'total_pages': NotRequired[int],
+    'total_reviews': NotRequired[int],
+}, total=False)
+
+ModelTrustpilotBusinessReviewsResponse = TypedDict('ModelTrustpilotBusinessReviewsResponse', {
+    'applied_filters': NotRequired[ModelTrustpilotBusinessReviewsAppliedFilters],
+    'business': NotRequired[ModelTrustpilotBusinessHeader],
+    'items': NotRequired[list[ModelTrustpilotBusinessReviewItem]],
+    'pagination': NotRequired[ModelTrustpilotBusinessReviewsPagination],
+}, total=False)
+
+ModelTrustpilotBusinessVerification = TypedDict('ModelTrustpilotBusinessVerification', {
+    'verified_by_google': NotRequired[bool],
+    'verified_payment_method': NotRequired[bool],
+    'verified_user_identity': NotRequired[bool],
+}, total=False)
+
+ModelTrustpilotCategoriesResponse = TypedDict('ModelTrustpilotCategoriesResponse', {
+    'groups': NotRequired[list[ModelTrustpilotCategoryGroup]],
+}, total=False)
+
+ModelTrustpilotCategoryBusiness = TypedDict('ModelTrustpilotCategoryBusiness', {
+    'business_unit_id': NotRequired[str],
+    'categories': NotRequired[list[ModelTrustpilotCategoryBusinessTag]],
+    'display_name': NotRequired[str],
+    'email': NotRequired[str],
+    'identifying_name': NotRequired[str],
+    'location': NotRequired[ModelTrustpilotCategoryBusinessLocation],
+    'logo_url': NotRequired[str],
+    'phone': NotRequired[str],
+    'recommended': NotRequired[bool],
+    'review_count': NotRequired[int],
+    'stars': NotRequired[float],
+    'trust_score': NotRequired[float],
+    'trustpilot_url': NotRequired[str],
+    'website_url': NotRequired[str],
+}, total=False)
+
+ModelTrustpilotCategoryBusinessLocation = TypedDict('ModelTrustpilotCategoryBusinessLocation', {
+    'address': NotRequired[str],
+    'city': NotRequired[str],
+    'country': NotRequired[str],
+    'zip_code': NotRequired[str],
+}, total=False)
+
+ModelTrustpilotCategoryBusinessTag = TypedDict('ModelTrustpilotCategoryBusinessTag', {
+    'category_id': NotRequired[str],
+    'display_name': NotRequired[str],
+    'is_predicted': NotRequired[bool],
+    'is_primary': NotRequired[bool],
+}, total=False)
+
+ModelTrustpilotCategoryGroup = TypedDict('ModelTrustpilotCategoryGroup', {
+    'items': NotRequired[list[ModelTrustpilotCategoryLink]],
+    'name': NotRequired[str],
+    'slug': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelTrustpilotCategoryLink = TypedDict('ModelTrustpilotCategoryLink', {
+    'name': NotRequired[str],
+    'slug': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelTrustpilotCategoryPagination = TypedDict('ModelTrustpilotCategoryPagination', {
+    'has_next_page': NotRequired[bool],
+    'next_page': NotRequired[int],
+    'page': NotRequired[int],
+    'per_page': NotRequired[int],
+    'total_hits': NotRequired[int],
+    'total_pages': NotRequired[int],
+}, total=False)
+
+ModelTrustpilotCategoryResponse = TypedDict('ModelTrustpilotCategoryResponse', {
+    'breadcrumbs': NotRequired[list[ModelTrustpilotCategoryLink]],
+    'country': NotRequired[str],
+    'items': NotRequired[list[ModelTrustpilotCategoryBusiness]],
+    'name': NotRequired[str],
+    'newest_companies': NotRequired[list[ModelTrustpilotCategoryBusiness]],
+    'page': NotRequired[int],
+    'pagination': NotRequired[ModelTrustpilotCategoryPagination],
+    'recently_reviewed_companies': NotRequired[list[ModelTrustpilotCategoryBusiness]],
+    'related_categories': NotRequired[list[ModelTrustpilotCategoryLink]],
+    'slug': NotRequired[str],
+    'sort': NotRequired[str],
+    'trustpilot_url': NotRequired[str],
+}, total=False)
+
+ModelTrustpilotCategorySearchResponse = TypedDict('ModelTrustpilotCategorySearchResponse', {
+    'categories': NotRequired[list[ModelTrustpilotCategorySearchResult]],
+    'country': NotRequired[str],
+    'locale': NotRequired[str],
+    'query': NotRequired[str],
+    'size': NotRequired[int],
+}, total=False)
+
+ModelTrustpilotCategorySearchResult = TypedDict('ModelTrustpilotCategorySearchResult', {
+    'category_id': NotRequired[str],
+    'display_name': NotRequired[str],
+    'top_level_category_id': NotRequired[str],
+}, total=False)
+
+ModelTrustpilotRelatedBusiness = TypedDict('ModelTrustpilotRelatedBusiness', {
+    'business_unit_id': NotRequired[str],
+    'display_name': NotRequired[str],
+    'identifying_name': NotRequired[str],
+    'logo_url': NotRequired[str],
+    'review_count': NotRequired[int],
+    'source': NotRequired[str],
+    'stars': NotRequired[float],
+    'trust_score': NotRequired[float],
+    'trustpilot_url': NotRequired[str],
+}, total=False)
+
+ModelTrustpilotSearchAddress = TypedDict('ModelTrustpilotSearchAddress', {
+    'approximate_area': NotRequired[ModelTrustpilotSearchAreaBounds],
+    'city': NotRequired[str],
+    'coordinates': NotRequired[ModelTrustpilotSearchCoordinates],
+    'country': NotRequired[str],
+    'country_code': NotRequired[str],
+    'postcode': NotRequired[str],
+    'street': NotRequired[str],
+}, total=False)
+
+ModelTrustpilotSearchAreaBounds = TypedDict('ModelTrustpilotSearchAreaBounds', {
+    'north_west': NotRequired[ModelTrustpilotSearchCoordinates],
+    'south_east': NotRequired[ModelTrustpilotSearchCoordinates],
+}, total=False)
+
+ModelTrustpilotSearchCategory = TypedDict('ModelTrustpilotSearchCategory', {
+    'id': NotRequired[str],
+    'name': NotRequired[str],
+    'primary': NotRequired[bool],
+}, total=False)
+
+ModelTrustpilotSearchCoordinates = TypedDict('ModelTrustpilotSearchCoordinates', {
+    'lat': NotRequired[float],
+    'lon': NotRequired[float],
+}, total=False)
+
+ModelTrustpilotSearchResponse = TypedDict('ModelTrustpilotSearchResponse', {
+    'country': NotRequired[str],
+    'items': NotRequired[list[ModelTrustpilotSearchResult]],
+    'page': NotRequired[int],
+    'page_size': NotRequired[int],
+    'query': NotRequired[str],
+    'search_mode': NotRequired[str],
+    'total_hits': NotRequired[int],
+    'total_pages': NotRequired[int],
+}, total=False)
+
+ModelTrustpilotSearchResult = TypedDict('ModelTrustpilotSearchResult', {
+    'address': NotRequired[ModelTrustpilotSearchAddress],
+    'business_unit_id': NotRequired[str],
+    'categories': NotRequired[list[ModelTrustpilotSearchCategory]],
+    'country_code': NotRequired[str],
+    'display_name': NotRequired[str],
+    'email': NotRequired[str],
+    'identifying_name': NotRequired[str],
+    'logo_url': NotRequired[str],
+    'phone': NotRequired[str],
+    'predicted_top_category': NotRequired[ModelTrustpilotSearchCategory],
+    'review_count': NotRequired[int],
+    'stars': NotRequired[float],
+    'trust_score': NotRequired[float],
+    'trustpilot_url': NotRequired[str],
+    'verified': NotRequired[bool],
+    'website_url': NotRequired[str],
+}, total=False)
+
+ModelTrustpilotBusinessHeader = TypedDict('ModelTrustpilotBusinessHeader', {
+    'claimed': NotRequired[bool],
+    'name': NotRequired[str],
+    'rating': NotRequired[float],
+    'review_count': NotRequired[int],
+    'slug': NotRequired[str],
+    'trust_score': NotRequired[float],
+    'trustpilot_url': NotRequired[str],
+    'website_url': NotRequired[str],
+}, total=False)
+
+ModelTrustpilotBusinessProfileResponseDoc = TypedDict('ModelTrustpilotBusinessProfileResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelTrustpilotBusinessResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelTrustpilotBusinessRelatedResponseDoc = TypedDict('ModelTrustpilotBusinessRelatedResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelTrustpilotBusinessRelatedResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelTrustpilotBusinessReviewsResponseDoc = TypedDict('ModelTrustpilotBusinessReviewsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelTrustpilotBusinessReviewsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelTrustpilotBusinessSearchResponseDoc = TypedDict('ModelTrustpilotBusinessSearchResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelTrustpilotSearchResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelTrustpilotCategoriesResponseDoc = TypedDict('ModelTrustpilotCategoriesResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelTrustpilotCategoriesResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelTrustpilotCategoryResponseDoc = TypedDict('ModelTrustpilotCategoryResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelTrustpilotCategoryResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelTrustpilotCategorySearchResponseDoc = TypedDict('ModelTrustpilotCategorySearchResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelTrustpilotCategorySearchResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelUsageUsageBillingStateDoc = TypedDict('ModelUsageUsageBillingStateDoc', {
+    'allow_overage': NotRequired[bool],
+    'created_at': NotRequired[str],
+    'credits_remaining': NotRequired[int],
+    'credits_used': NotRequired[int],
+    'currency': NotRequired[str],
+    'daily_credit_limit': NotRequired[int],
+    'daily_credits_remaining': NotRequired[int],
+    'daily_credits_used': NotRequired[int],
+    'daily_key': NotRequired[str],
+    'expected_subscription_amount_cents': NotRequired[int],
+    'expected_total_amount_cents': NotRequired[int],
+    'hard_limit': NotRequired[bool],
+    'included_credits': NotRequired[int],
+    'overage_credits': NotRequired[int],
+    'period_end': NotRequired[str],
+    'period_key': NotRequired[str],
+    'period_start': NotRequired[str],
+    'plan': NotRequired[str],
+    'pricing_source': NotRequired[str],
+    'subscription_price_cents': NotRequired[int],
+    'updated_at': NotRequired[str],
+    'user_id': NotRequired[str],
+}, total=False)
+
+ModelUsageUsageEndpointItemDoc = TypedDict('ModelUsageUsageEndpointItemDoc', {
+    'charged_requests': NotRequired[int],
+    'credits': NotRequired[int],
+    'endpoint': NotRequired[str],
+    'failed_requests': NotRequired[int],
+    'non_billable_requests': NotRequired[int],
+    'overage': NotRequired[int],
+    'requests': NotRequired[int],
+}, total=False)
+
+ModelUsageUsageEndpointsDoc = TypedDict('ModelUsageUsageEndpointsDoc', {
+    'from': NotRequired[str],
+    'items': NotRequired[list[ModelUsageUsageEndpointItemDoc]],
+    'range': NotRequired[str],
+    'to': NotRequired[str],
+}, total=False)
+
+ModelUsageUsageEndpointsResponseDoc = TypedDict('ModelUsageUsageEndpointsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelUsageUsageEndpointsDoc],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelUsageUsageOverviewDoc = TypedDict('ModelUsageUsageOverviewDoc', {
+    'billing': NotRequired[ModelUsageUsageBillingStateDoc],
+    'from': NotRequired[str],
+    'range': NotRequired[str],
+    'requests': NotRequired[ModelUsageUsageRequestSummaryDoc],
+    'to': NotRequired[str],
+    'usage': NotRequired[ModelUsageUsageWindowSummaryDoc],
+}, total=False)
+
+ModelUsageUsageOverviewResponseDoc = TypedDict('ModelUsageUsageOverviewResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelUsageUsageOverviewDoc],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelUsageUsageRecentIpitemDoc = TypedDict('ModelUsageUsageRecentIpitemDoc', {
+    'error_count': NotRequired[int],
+    'ip': NotRequired[str],
+    'last_seen_at': NotRequired[str],
+    'last_user_agent': NotRequired[str],
+    'request_count': NotRequired[int],
+    'success_count': NotRequired[int],
+}, total=False)
+
+ModelUsageUsageRecentIpsDoc = TypedDict('ModelUsageUsageRecentIpsDoc', {
+    'from': NotRequired[str],
+    'items': NotRequired[list[ModelUsageUsageRecentIpitemDoc]],
+    'range': NotRequired[str],
+    'to': NotRequired[str],
+}, total=False)
+
+ModelUsageUsageRecentIpsResponseDoc = TypedDict('ModelUsageUsageRecentIpsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelUsageUsageRecentIpsDoc],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelUsageUsageRequestSummaryDoc = TypedDict('ModelUsageUsageRequestSummaryDoc', {
+    'avg_latency_ms': NotRequired[float],
+    'distinct_ip_count': NotRequired[int],
+    'error_requests': NotRequired[int],
+    'last_request_at': NotRequired[str],
+    'requests': NotRequired[int],
+    'success_requests': NotRequired[int],
+}, total=False)
+
+ModelUsageUsageTimeseriesDoc = TypedDict('ModelUsageUsageTimeseriesDoc', {
+    'bucket': NotRequired[str],
+    'from': NotRequired[str],
+    'items': NotRequired[list[ModelUsageUsageTimeseriesItemDoc]],
+    'range': NotRequired[str],
+    'to': NotRequired[str],
+}, total=False)
+
+ModelUsageUsageTimeseriesItemDoc = TypedDict('ModelUsageUsageTimeseriesItemDoc', {
+    'bucket_end': NotRequired[str],
+    'bucket_start': NotRequired[str],
+    'charged_requests': NotRequired[int],
+    'credits': NotRequired[int],
+    'failed_requests': NotRequired[int],
+    'non_billable_requests': NotRequired[int],
+    'overage': NotRequired[int],
+    'requests': NotRequired[int],
+}, total=False)
+
+ModelUsageUsageTimeseriesResponseDoc = TypedDict('ModelUsageUsageTimeseriesResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelUsageUsageTimeseriesDoc],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelUsageUsageWindowSummaryDoc = TypedDict('ModelUsageUsageWindowSummaryDoc', {
+    'charged_requests': NotRequired[int],
+    'credits': NotRequired[int],
+    'failed_requests': NotRequired[int],
+    'non_billable_requests': NotRequired[int],
+    'overage': NotRequired[int],
+    'requests': NotRequired[int],
+}, total=False)
+
+ModelUserUserApikeyItemDoc = TypedDict('ModelUserUserApikeyItemDoc', {
+    'created_at': NotRequired[str],
+    'expires_at': NotRequired[str],
+    'id': NotRequired[str],
+    'key_prefix': NotRequired[str],
+    'key_suffix': NotRequired[str],
+    'last_used_at': NotRequired[str],
+    'last_used_ip': NotRequired[str],
+    'masked_key': NotRequired[str],
+    'rotated_at': NotRequired[str],
+    'source': NotRequired[str],
+    'status': NotRequired[str],
+    'updated_at': NotRequired[str],
+}, total=False)
+
+ModelUserUserApikeysDoc = TypedDict('ModelUserUserApikeysDoc', {
+    'items': NotRequired[list[ModelUserUserApikeyItemDoc]],
+}, total=False)
+
+ModelUserUserApikeysResponseDoc = TypedDict('ModelUserUserApikeysResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelUserUserApikeysDoc],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelUserUserMeDoc = TypedDict('ModelUserUserMeDoc', {
+    'email': NotRequired[str],
+    'id': NotRequired[str],
+    'plan': NotRequired[str],
+    'username': NotRequired[str],
+}, total=False)
+
+ModelUserUserMeResponseDoc = TypedDict('ModelUserUserMeResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelUserUserMeDoc],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelUserUserRevealApikeyDoc = TypedDict('ModelUserUserRevealApikeyDoc', {
+    'api_key': NotRequired[str],
+    'key': NotRequired[ModelUserUserApikeyItemDoc],
+}, total=False)
+
+ModelUserUserRevealApikeyResponseDoc = TypedDict('ModelUserUserRevealApikeyResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelUserUserRevealApikeyDoc],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelUserUserRotateApikeyDoc = TypedDict('ModelUserUserRotateApikeyDoc', {
+    'active_key': NotRequired[ModelUserUserApikeyItemDoc],
+    'grace_period_seconds': NotRequired[int],
+    'new_api_key': NotRequired[str],
+    'previous_key': NotRequired[ModelUserUserApikeyItemDoc],
+}, total=False)
+
+ModelUserUserRotateApikeyResponseDoc = TypedDict('ModelUserUserRotateApikeyResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelUserUserRotateApikeyDoc],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelWebParseWebOption = TypedDict('ModelWebParseWebOption', {
+    'enablejs': NotRequired[bool],
+    'format': NotRequired[Literal['html', 'markdown']],
+    'url': Required[str],
+}, total=False)
+
+ModelYahoofinanceActionEvents = TypedDict('ModelYahoofinanceActionEvents', {
+    'capital_gains': NotRequired[list[dict[str, Any]]],
+    'dividends': NotRequired[list[dict[str, Any]]],
+    'splits': NotRequired[list[dict[str, Any]]],
+}, total=False)
+
+ModelYahoofinanceCalendarResponse = TypedDict('ModelYahoofinanceCalendarResponse', {
+    'end': NotRequired[str],
+    'limit': NotRequired[int],
+    'offset': NotRequired[int],
+    'rows': NotRequired[list[dict[str, Any]]],
+    'start': NotRequired[str],
+    'type': NotRequired[str],
+}, total=False)
+
+ModelYahoofinanceCalendarsResponse = TypedDict('ModelYahoofinanceCalendarsResponse', {
+    'calendars': NotRequired[list[str]],
+}, total=False)
+
+ModelYahoofinanceDomainListResponse = TypedDict('ModelYahoofinanceDomainListResponse', {
+    'items': NotRequired[list[ModelYahoofinanceDomainRef]],
+}, total=False)
+
+ModelYahoofinanceDomainRef = TypedDict('ModelYahoofinanceDomainRef', {
+    'key': NotRequired[str],
+    'name': NotRequired[str],
+}, total=False)
+
+ModelYahoofinanceDownloadRequest = TypedDict('ModelYahoofinanceDownloadRequest', {
+    'auto_adjust': NotRequired[bool],
+    'back_adjust': NotRequired[bool],
+    'end': NotRequired[str],
+    'include_actions': NotRequired[bool],
+    'include_prepost': NotRequired[bool],
+    'interval': NotRequired[str],
+    'keepna': NotRequired[bool],
+    'period': NotRequired[str],
+    'rounding': NotRequired[bool],
+    'start': NotRequired[str],
+    'symbols': Required[list[str]],
+}, total=False)
+
+ModelYahoofinanceDownloadResponse = TypedDict('ModelYahoofinanceDownloadResponse', {
+    'results': NotRequired[list[ModelYahoofinanceDownloadResult]],
+}, total=False)
+
+ModelYahoofinanceDownloadResult = TypedDict('ModelYahoofinanceDownloadResult', {
+    'error': NotRequired[str],
+    'history': NotRequired[ModelYahoofinanceHistoryResponse],
+    'symbol': NotRequired[str],
+}, total=False)
+
+ModelYahoofinanceEarningsDatesResponse = TypedDict('ModelYahoofinanceEarningsDatesResponse', {
+    'limit': NotRequired[int],
+    'offset': NotRequired[int],
+    'rows': NotRequired[list[dict[str, Any]]],
+    'symbol': NotRequired[str],
+}, total=False)
+
+ModelYahoofinanceFinancialsResponse = TypedDict('ModelYahoofinanceFinancialsResponse', {
+    'modules': NotRequired[dict[str, Any]],
+    'period': NotRequired[str],
+    'statement': NotRequired[str],
+    'symbol': NotRequired[str],
+}, total=False)
+
+ModelYahoofinanceHistoryMetadataResponse = TypedDict('ModelYahoofinanceHistoryMetadataResponse', {
+    'meta': NotRequired[dict[str, Any]],
+    'symbol': NotRequired[str],
+}, total=False)
+
+ModelYahoofinanceHistoryResponse = TypedDict('ModelYahoofinanceHistoryResponse', {
+    'events': NotRequired[ModelYahoofinanceActionEvents],
+    'meta': NotRequired[dict[str, Any]],
+    'points': NotRequired[list[ModelYahoofinancePricePoint]],
+    'symbol': NotRequired[str],
+}, total=False)
+
+ModelYahoofinanceIsinresponse = TypedDict('ModelYahoofinanceIsinresponse', {
+    'isin': NotRequired[str],
+    'symbol': NotRequired[str],
+}, total=False)
+
+ModelYahoofinanceIndustryResponse = TypedDict('ModelYahoofinanceIndustryResponse', {
+    'key': NotRequired[str],
+    'name': NotRequired[str],
+    'overview': NotRequired[dict[str, Any]],
+    'research_reports': NotRequired[list[dict[str, Any]]],
+    'sector_key': NotRequired[str],
+    'sector_name': NotRequired[str],
+    'symbol': NotRequired[str],
+    'top_companies': NotRequired[list[dict[str, Any]]],
+    'top_growth_companies': NotRequired[list[dict[str, Any]]],
+    'top_performing_companies': NotRequired[list[dict[str, Any]]],
+}, total=False)
+
+ModelYahoofinanceInfoResponse = TypedDict('ModelYahoofinanceInfoResponse', {
+    'modules': NotRequired[dict[str, Any]],
+    'symbol': NotRequired[str],
+}, total=False)
+
+ModelYahoofinanceMarketStatusResponse = TypedDict('ModelYahoofinanceMarketStatusResponse', {
+    'market': NotRequired[str],
+    'status': NotRequired[dict[str, Any]],
+}, total=False)
+
+ModelYahoofinanceMarketSummaryResponse = TypedDict('ModelYahoofinanceMarketSummaryResponse', {
+    'market': NotRequired[str],
+    'summary': NotRequired[list[dict[str, Any]]],
+}, total=False)
+
+ModelYahoofinanceModuleResponse = TypedDict('ModelYahoofinanceModuleResponse', {
+    'modules': NotRequired[dict[str, Any]],
+    'symbol': NotRequired[str],
+}, total=False)
+
+ModelYahoofinanceOptionExpiration = TypedDict('ModelYahoofinanceOptionExpiration', {
+    'calls': NotRequired[list[dict[str, Any]]],
+    'expiration_date': NotRequired[int],
+    'puts': NotRequired[list[dict[str, Any]]],
+}, total=False)
+
+ModelYahoofinanceOptionsResponse = TypedDict('ModelYahoofinanceOptionsResponse', {
+    'expiration_dates': NotRequired[list[int]],
+    'options': NotRequired[list[ModelYahoofinanceOptionExpiration]],
+    'symbol': NotRequired[str],
+    'underlying': NotRequired[dict[str, Any]],
+}, total=False)
+
+ModelYahoofinancePricePoint = TypedDict('ModelYahoofinancePricePoint', {
+    'adj_close': NotRequired[float],
+    'close': NotRequired[float],
+    'datetime': NotRequired[str],
+    'high': NotRequired[float],
+    'low': NotRequired[float],
+    'open': NotRequired[float],
+    'timestamp': NotRequired[int],
+    'volume': NotRequired[int],
+}, total=False)
+
+ModelYahoofinanceQuoteResponse = TypedDict('ModelYahoofinanceQuoteResponse', {
+    'quotes': NotRequired[list[dict[str, Any]]],
+    'symbols': NotRequired[list[str]],
+}, total=False)
+
+ModelYahoofinanceScreenerRequest = TypedDict('ModelYahoofinanceScreenerRequest', {
+    'count': NotRequired[int],
+    'offset': NotRequired[int],
+    'query': Required[dict[str, Any]],
+    'quote_type': NotRequired[str],
+    'sort_asc': NotRequired[bool],
+    'sort_field': NotRequired[str],
+}, total=False)
+
+ModelYahoofinanceScreenerResponse = TypedDict('ModelYahoofinanceScreenerResponse', {
+    'description': NotRequired[str],
+    'id': NotRequired[str],
+    'meta': NotRequired[dict[str, Any]],
+    'quotes': NotRequired[list[dict[str, Any]]],
+    'title': NotRequired[str],
+    'total': NotRequired[int],
+}, total=False)
+
+ModelYahoofinanceScreenersResponse = TypedDict('ModelYahoofinanceScreenersResponse', {
+    'screeners': NotRequired[list[str]],
+}, total=False)
+
+ModelYahoofinanceSearchResponse = TypedDict('ModelYahoofinanceSearchResponse', {
+    'lists': NotRequired[list[dict[str, Any]]],
+    'news': NotRequired[list[dict[str, Any]]],
+    'query': NotRequired[str],
+    'quotes': NotRequired[list[dict[str, Any]]],
+    'research': NotRequired[list[dict[str, Any]]],
+}, total=False)
+
+ModelYahoofinanceSectorResponse = TypedDict('ModelYahoofinanceSectorResponse', {
+    'industries': NotRequired[list[dict[str, Any]]],
+    'key': NotRequired[str],
+    'name': NotRequired[str],
+    'overview': NotRequired[dict[str, Any]],
+    'research_reports': NotRequired[list[dict[str, Any]]],
+    'symbol': NotRequired[str],
+    'top_companies': NotRequired[list[dict[str, Any]]],
+    'top_etfs': NotRequired[dict[str, str]],
+    'top_mutual_funds': NotRequired[dict[str, str]],
+}, total=False)
+
+ModelYahoofinanceSharesFullResponse = TypedDict('ModelYahoofinanceSharesFullResponse', {
+    'end': NotRequired[str],
+    'points': NotRequired[list[dict[str, Any]]],
+    'start': NotRequired[str],
+    'symbol': NotRequired[str],
+}, total=False)
+
+ModelYahoofinanceSharesResponse = TypedDict('ModelYahoofinanceSharesResponse', {
+    'shares': NotRequired[dict[str, Any]],
+    'symbol': NotRequired[str],
+}, total=False)
+
+ModelYahoofinanceTrendingResponse = TypedDict('ModelYahoofinanceTrendingResponse', {
+    'count': NotRequired[int],
+    'job_timestamp': NotRequired[int],
+    'region': NotRequired[str],
+    'start_interval': NotRequired[int],
+    'symbols': NotRequired[list[str]],
+}, total=False)
+
+ModelYahoofinanceValuationResponse = TypedDict('ModelYahoofinanceValuationResponse', {
+    'headers': NotRequired[list[str]],
+    'rows': NotRequired[list[dict[str, Any]]],
+    'symbol': NotRequired[str],
+}, total=False)
+
+ModelYahoofinanceActionsResponseDoc = TypedDict('ModelYahoofinanceActionsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelYahoofinanceActionEvents],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelYahoofinanceCalendarResponseDoc = TypedDict('ModelYahoofinanceCalendarResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelYahoofinanceCalendarResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelYahoofinanceCalendarsResponseDoc = TypedDict('ModelYahoofinanceCalendarsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelYahoofinanceCalendarsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelYahoofinanceDomainListResponseDoc = TypedDict('ModelYahoofinanceDomainListResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelYahoofinanceDomainListResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelYahoofinanceDownloadResponseDoc = TypedDict('ModelYahoofinanceDownloadResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelYahoofinanceDownloadResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelYahoofinanceEarningsDatesResponseDoc = TypedDict('ModelYahoofinanceEarningsDatesResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelYahoofinanceEarningsDatesResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelYahoofinanceFinancialsResponseDoc = TypedDict('ModelYahoofinanceFinancialsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelYahoofinanceFinancialsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelYahoofinanceHistoryMetadataResponseDoc = TypedDict('ModelYahoofinanceHistoryMetadataResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelYahoofinanceHistoryMetadataResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelYahoofinanceHistoryResponseDoc = TypedDict('ModelYahoofinanceHistoryResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelYahoofinanceHistoryResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelYahoofinanceIndustryResponseDoc = TypedDict('ModelYahoofinanceIndustryResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelYahoofinanceIndustryResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelYahoofinanceInfoResponseDoc = TypedDict('ModelYahoofinanceInfoResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelYahoofinanceInfoResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelYahoofinanceIsinResponseDoc = TypedDict('ModelYahoofinanceIsinResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelYahoofinanceIsinresponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelYahoofinanceMarketStatusResponseDoc = TypedDict('ModelYahoofinanceMarketStatusResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelYahoofinanceMarketStatusResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelYahoofinanceMarketSummaryResponseDoc = TypedDict('ModelYahoofinanceMarketSummaryResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelYahoofinanceMarketSummaryResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelYahoofinanceModuleResponseDoc = TypedDict('ModelYahoofinanceModuleResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelYahoofinanceModuleResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelYahoofinanceOptionsResponseDoc = TypedDict('ModelYahoofinanceOptionsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelYahoofinanceOptionsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelYahoofinanceQuoteResponseDoc = TypedDict('ModelYahoofinanceQuoteResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelYahoofinanceQuoteResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelYahoofinanceScreenerResponseDoc = TypedDict('ModelYahoofinanceScreenerResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelYahoofinanceScreenerResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelYahoofinanceScreenersResponseDoc = TypedDict('ModelYahoofinanceScreenersResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelYahoofinanceScreenersResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelYahoofinanceSearchResponseDoc = TypedDict('ModelYahoofinanceSearchResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelYahoofinanceSearchResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelYahoofinanceSectorResponseDoc = TypedDict('ModelYahoofinanceSectorResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelYahoofinanceSectorResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelYahoofinanceSharesFullResponseDoc = TypedDict('ModelYahoofinanceSharesFullResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelYahoofinanceSharesFullResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelYahoofinanceSharesResponseDoc = TypedDict('ModelYahoofinanceSharesResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelYahoofinanceSharesResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelYahoofinanceTrendingResponseDoc = TypedDict('ModelYahoofinanceTrendingResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelYahoofinanceTrendingResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelYahoofinanceValuationResponseDoc = TypedDict('ModelYahoofinanceValuationResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelYahoofinanceValuationResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelYoutubeCaption = TypedDict('ModelYoutubeCaption', {
+    'duration': NotRequired[float],
+    'start': NotRequired[float],
+    'text': NotRequired[str],
+}, total=False)
+
+ModelYoutubeChannelFeedResponse = TypedDict('ModelYoutubeChannelFeedResponse', {
+    'channel_id': NotRequired[str],
+    'channel_title': NotRequired[str],
+    'channel_url': NotRequired[str],
+    'continuation_token': NotRequired[str],
+    'handle': NotRequired[str],
+    'items': NotRequired[list[ModelYoutubeSearchItem]],
+    'query': NotRequired[str],
+    'thumbnail': NotRequired[str],
+}, total=False)
+
+ModelYoutubeChannelShort = TypedDict('ModelYoutubeChannelShort', {
+    'position': NotRequired[int],
+    'thumbnail': NotRequired[str],
+    'title': NotRequired[str],
+    'url': NotRequired[str],
+    'video_id': NotRequired[str],
+    'view_count': NotRequired[str],
+}, total=False)
+
+ModelYoutubeChannelShortsResponse = TypedDict('ModelYoutubeChannelShortsResponse', {
+    'channel_id': NotRequired[str],
+    'channel_title': NotRequired[str],
+    'channel_url': NotRequired[str],
+    'handle': NotRequired[str],
+    'shorts': NotRequired[list[ModelYoutubeChannelShort]],
+    'thumbnail': NotRequired[str],
+}, total=False)
+
+ModelYoutubeComment = TypedDict('ModelYoutubeComment', {
+    'channel_id': NotRequired[str],
+    'comment_id': NotRequired[str],
+    'content': NotRequired[str],
+    'continuation_token': NotRequired[str],
+    'likes_count': NotRequired[int],
+    'published_time': NotRequired[str],
+    'reply_count': NotRequired[int],
+    'user_name': NotRequired[str],
+}, total=False)
+
+ModelYoutubeCommentResponse = TypedDict('ModelYoutubeCommentResponse', {
+    'comments': NotRequired[list[ModelYoutubeComment]],
+    'continuation_token': NotRequired[str],
+}, total=False)
+
+ModelYoutubePlaylistResponse = TypedDict('ModelYoutubePlaylistResponse', {
+    'channel_id': NotRequired[str],
+    'channel_title': NotRequired[str],
+    'continuation_token': NotRequired[str],
+    'items': NotRequired[list[ModelYoutubeSearchItem]],
+    'playlist_id': NotRequired[str],
+    'thumbnail': NotRequired[str],
+    'title': NotRequired[str],
+    'url': NotRequired[str],
+    'video_count': NotRequired[str],
+}, total=False)
+
+ModelYoutubeProfile = TypedDict('ModelYoutubeProfile', {
+    'bio': NotRequired[str],
+    'channel_id': NotRequired[str],
+    'channel_name': NotRequired[str],
+    'channel_url': NotRequired[str],
+    'created_at': NotRequired[str],
+    'id': NotRequired[str],
+    'joined_date': NotRequired[str],
+    'links': NotRequired[list[str]],
+    'profile_pic': NotRequired[str],
+    'region': NotRequired[str],
+    'stats': NotRequired[ModelYoutubeProfileStats],
+    'updated_at': NotRequired[str],
+}, total=False)
+
+ModelYoutubeProfileStats = TypedDict('ModelYoutubeProfileStats', {
+    'followers_count': NotRequired[int],
+    'videos_count': NotRequired[int],
+    'views_count': NotRequired[int],
+}, total=False)
+
+ModelYoutubeSearchItem = TypedDict('ModelYoutubeSearchItem', {
+    'badges': NotRequired[list[str]],
+    'channel_id': NotRequired[str],
+    'channel_thumbnail': NotRequired[str],
+    'channel_title': NotRequired[str],
+    'description_snippet': NotRequired[str],
+    'duration': NotRequired[str],
+    'duration_seconds': NotRequired[int],
+    'handle': NotRequired[str],
+    'is_live': NotRequired[bool],
+    'is_short': NotRequired[bool],
+    'is_verified': NotRequired[bool],
+    'playlist_id': NotRequired[str],
+    'position': NotRequired[int],
+    'published_text': NotRequired[str],
+    'short_view_count': NotRequired[str],
+    'subscriber_count': NotRequired[str],
+    'thumbnail': NotRequired[str],
+    'title': NotRequired[str],
+    'type': NotRequired[str],
+    'url': NotRequired[str],
+    'video_count': NotRequired[str],
+    'video_id': NotRequired[str],
+    'view_count': NotRequired[str],
+}, total=False)
+
+ModelYoutubeSearchResponse = TypedDict('ModelYoutubeSearchResponse', {
+    'continuation_token': NotRequired[str],
+    'estimated_results': NotRequired[int],
+    'items': NotRequired[list[ModelYoutubeSearchItem]],
+    'query': NotRequired[str],
+}, total=False)
+
+ModelYoutubeTagResp = TypedDict('ModelYoutubeTagResp', {
+    'continuation_token': NotRequired[str],
+    'meta': NotRequired[ModelYoutubeTagMeta],
+    'videos': NotRequired[list[ModelYoutubeVideoDetail]],
+}, total=False)
+
+ModelYoutubeTranscriptLanguage = TypedDict('ModelYoutubeTranscriptLanguage', {
+    'is_generated': NotRequired[bool],
+    'is_translatable': NotRequired[bool],
+    'language': NotRequired[str],
+    'language_code': NotRequired[str],
+}, total=False)
+
+ModelYoutubeTranscriptResponse = TypedDict('ModelYoutubeTranscriptResponse', {
+    'is_generated': NotRequired[bool],
+    'language': NotRequired[str],
+    'language_code': NotRequired[str],
+    'segments': NotRequired[list[ModelYoutubeTranscriptSegment]],
+    'text': NotRequired[str],
+    'translation_language': NotRequired[str],
+    'video_id': NotRequired[str],
+}, total=False)
+
+ModelYoutubeTranscriptSegment = TypedDict('ModelYoutubeTranscriptSegment', {
+    'duration': NotRequired[float],
+    'start': NotRequired[float],
+    'text': NotRequired[str],
+}, total=False)
+
+ModelYoutubeVideoDetail = TypedDict('ModelYoutubeVideoDetail', {
+    'channel_id': NotRequired[str],
+    'channel_title': NotRequired[str],
+    'comments_count': NotRequired[int],
+    'description': NotRequired[str],
+    'dislikes_count': NotRequired[int],
+    'duration_seconds': NotRequired[float],
+    'id': NotRequired[str],
+    'likes_count': NotRequired[int],
+    'published_at': NotRequired[str],
+    'title': NotRequired[str],
+    'views_count': NotRequired[int],
+}, total=False)
+
+ModelYoutubeCaptionsResponseDoc = TypedDict('ModelYoutubeCaptionsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[list[ModelYoutubeCaption]],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelYoutubeChannelFeedResponseDoc = TypedDict('ModelYoutubeChannelFeedResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelYoutubeChannelFeedResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelYoutubeChannelSearchResponseDataDoc = TypedDict('ModelYoutubeChannelSearchResponseDataDoc', {
+    'channel_id': NotRequired[str],
+    'channel_title': NotRequired[str],
+    'channel_url': NotRequired[str],
+    'continuation_token': NotRequired[str],
+    'handle': NotRequired[str],
+    'items': NotRequired[list[ModelYoutubeSearchItem]],
+    'query': NotRequired[str],
+    'thumbnail': NotRequired[str],
+}, total=False)
+
+ModelYoutubeChannelSearchResponseDoc = TypedDict('ModelYoutubeChannelSearchResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelYoutubeChannelSearchResponseDataDoc],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelYoutubeChannelShortsResponseDoc = TypedDict('ModelYoutubeChannelShortsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelYoutubeChannelShortsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelYoutubeCommentsResponseDoc = TypedDict('ModelYoutubeCommentsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelYoutubeCommentResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelYoutubePlaylistResponseDoc = TypedDict('ModelYoutubePlaylistResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelYoutubePlaylistResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelYoutubeProfileResponseDoc = TypedDict('ModelYoutubeProfileResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelYoutubeProfile],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelYoutubeSearchResponseDoc = TypedDict('ModelYoutubeSearchResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelYoutubeSearchResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelYoutubeTagMeta = TypedDict('ModelYoutubeTagMeta', {
+    'channelsCount': NotRequired[int],
+    'videosCount': NotRequired[int],
+}, total=False)
+
+ModelYoutubeTagResponseDoc = TypedDict('ModelYoutubeTagResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelYoutubeTagResp],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelYoutubeTranscriptLanguagesResponseDoc = TypedDict('ModelYoutubeTranscriptLanguagesResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[list[ModelYoutubeTranscriptLanguage]],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelYoutubeTranscriptResponseDoc = TypedDict('ModelYoutubeTranscriptResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelYoutubeTranscriptResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelYoutubeVideoResponseDoc = TypedDict('ModelYoutubeVideoResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelYoutubeVideoDetail],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelZillowAutocompleteItem = TypedDict('ModelZillowAutocompleteItem', {
+    'city': NotRequired[str],
+    'county': NotRequired[str],
+    'id': NotRequired[str],
+    'latitude': NotRequired[float],
+    'longitude': NotRequired[float],
+    'near_me': NotRequired[bool],
+    'plid': NotRequired[str],
+    'region_display_ids': NotRequired[list[str]],
+    'region_id': NotRequired[int],
+    'region_ids': NotRequired[list[int]],
+    'region_type': NotRequired[int],
+    'region_types': NotRequired[list[int]],
+    'school_district_ids': NotRequired[list[int]],
+    'school_ids': NotRequired[list[int]],
+    'state': NotRequired[str],
+    'sub_type': NotRequired[str],
+    'view_latitude_delta': NotRequired[float],
+}, total=False)
+
+ModelZillowAutocompleteResponse = TypedDict('ModelZillowAutocompleteResponse', {
+    'query': NotRequired[str],
+    'request_id': NotRequired[str],
+    'results': NotRequired[list[ModelZillowAutocompleteItem]],
+}, total=False)
+
+ModelZillowPropertyAddressParts = TypedDict('ModelZillowPropertyAddressParts', {
+    'city': NotRequired[str],
+    'county': NotRequired[str],
+    'neighborhood': NotRequired[str],
+    'state': NotRequired[str],
+    'street': NotRequired[str],
+    'subdivision': NotRequired[str],
+    'zipcode': NotRequired[str],
+}, total=False)
+
+ModelZillowPropertyAgent = TypedDict('ModelZillowPropertyAgent', {
+    'email': NotRequired[str],
+    'name': NotRequired[str],
+    'phone': NotRequired[str],
+    'type': NotRequired[str],
+}, total=False)
+
+ModelZillowPropertyArea = TypedDict('ModelZillowPropertyArea', {
+    'text': NotRequired[str],
+    'unit': NotRequired[str],
+    'value': NotRequired[float],
+}, total=False)
+
+ModelZillowPropertyFact = TypedDict('ModelZillowPropertyFact', {
+    'key': NotRequired[str],
+    'label': NotRequired[str],
+    'value': NotRequired[str],
+}, total=False)
+
+ModelZillowPropertyFacts = TypedDict('ModelZillowPropertyFacts', {
+    'accessibility_features': NotRequired[list[str]],
+    'additional': NotRequired[list[ModelZillowPropertyFact]],
+    'appliances': NotRequired[list[str]],
+    'architectural_style': NotRequired[str],
+    'basement': NotRequired[str],
+    'bathrooms': NotRequired[float],
+    'bathrooms_full': NotRequired[int],
+    'bathrooms_half': NotRequired[int],
+    'bathrooms_one_quarter': NotRequired[int],
+    'bathrooms_three_quarter': NotRequired[int],
+    'bedrooms': NotRequired[float],
+    'builder_model': NotRequired[str],
+    'builder_name': NotRequired[str],
+    'community_features': NotRequired[list[str]],
+    'construction_materials': NotRequired[list[str]],
+    'cooling': NotRequired[list[str]],
+    'exterior_features': NotRequired[list[str]],
+    'fireplace_features': NotRequired[list[str]],
+    'flooring': NotRequired[list[str]],
+    'foundation_details': NotRequired[list[str]],
+    'garage_spaces': NotRequired[float],
+    'has_fireplace': NotRequired[bool],
+    'heating': NotRequired[list[str]],
+    'hoa_fee': NotRequired[str],
+    'home_type': NotRequired[str],
+    'laundry_features': NotRequired[list[str]],
+    'levels': NotRequired[list[str]],
+    'living_area': NotRequired[ModelZillowPropertyArea],
+    'lot_size': NotRequired[ModelZillowPropertyArea],
+    'lot_size_dimensions': NotRequired[str],
+    'parcel_number': NotRequired[str],
+    'parking_capacity': NotRequired[int],
+    'parking_features': NotRequired[list[str]],
+    'patio_and_porch_features': NotRequired[list[str]],
+    'pool_features': NotRequired[list[str]],
+    'property_sub_type': NotRequired[list[str]],
+    'roof': NotRequired[str],
+    'rooms': NotRequired[list[str]],
+    'security_features': NotRequired[list[str]],
+    'sewer': NotRequired[list[str]],
+    'spa_features': NotRequired[list[str]],
+    'stories': NotRequired[float],
+    'structure_type': NotRequired[str],
+    'tax_annual_amount': NotRequired[float],
+    'tax_assessed_value': NotRequired[float],
+    'utilities': NotRequired[list[str]],
+    'view': NotRequired[list[str]],
+    'water_source': NotRequired[list[str]],
+    'waterfront_features': NotRequired[list[str]],
+    'year_built': NotRequired[int],
+    'zoning': NotRequired[str],
+}, total=False)
+
+ModelZillowPropertyHistory = TypedDict('ModelZillowPropertyHistory', {
+    'price': NotRequired[list[ModelZillowPropertyPriceHistoryEntry]],
+    'tax': NotRequired[list[ModelZillowPropertyTaxHistoryEntry]],
+}, total=False)
+
+ModelZillowPropertyItem = TypedDict('ModelZillowPropertyItem', {
+    'address': NotRequired[str],
+    'baths': NotRequired[float],
+    'beds': NotRequired[float],
+    'broker_name': NotRequired[str],
+    'currency': NotRequired[str],
+    'days_on_zillow': NotRequired[int],
+    'detail_text': NotRequired[str],
+    'has_3d_model': NotRequired[bool],
+    'has_video': NotRequired[bool],
+    'home_status': NotRequired[str],
+    'home_type': NotRequired[str],
+    'image': NotRequired[str],
+    'is_showcase': NotRequired[bool],
+    'latitude': NotRequired[float],
+    'listing_sub_type': NotRequired[list[str]],
+    'living_area': NotRequired[float],
+    'longitude': NotRequired[float],
+    'lot_area': NotRequired[float],
+    'lot_area_unit': NotRequired[str],
+    'photos': NotRequired[list[str]],
+    'price': NotRequired[float],
+    'price_text': NotRequired[str],
+    'rent_zestimate': NotRequired[float],
+    'status_text': NotRequired[str],
+    'url': NotRequired[str],
+    'zestimate': NotRequired[float],
+    'zpid': NotRequired[str],
+}, total=False)
+
+ModelZillowPropertyListing = TypedDict('ModelZillowPropertyListing', {
+    'agent_name': NotRequired[str],
+    'agents': NotRequired[list[ModelZillowPropertyAgent]],
+    'attribution_text': NotRequired[str],
+    'broker_name': NotRequired[str],
+    'broker_phone': NotRequired[str],
+    'date_posted': NotRequired[str],
+    'date_updated': NotRequired[str],
+    'days_on_zillow': NotRequired[int],
+    'listing_id': NotRequired[str],
+    'mls_id': NotRequired[str],
+    'open_houses': NotRequired[list[ModelZillowPropertyOpenHouse]],
+    'provider': NotRequired[str],
+    'provider_listing_id': NotRequired[str],
+    'source': NotRequired[str],
+    'status': NotRequired[str],
+    'sub_types': NotRequired[list[str]],
+    'time_on_zillow': NotRequired[str],
+    'type': NotRequired[str],
+}, total=False)
+
+ModelZillowPropertyMedia = TypedDict('ModelZillowPropertyMedia', {
+    'has_3d_model': NotRequired[bool],
+    'has_video': NotRequired[bool],
+    'photo_count': NotRequired[int],
+    'photos': NotRequired[list[ModelZillowPropertyPhoto]],
+    'primary_image': NotRequired[str],
+    'video_url': NotRequired[str],
+    'virtual_tour_url': NotRequired[str],
+}, total=False)
+
+ModelZillowPropertyNearby = TypedDict('ModelZillowPropertyNearby', {
+    'address': NotRequired[str],
+    'baths': NotRequired[float],
+    'beds': NotRequired[float],
+    'home_status': NotRequired[str],
+    'living_area': NotRequired[float],
+    'price': NotRequired[float],
+    'price_text': NotRequired[str],
+    'url': NotRequired[str],
+    'zpid': NotRequired[str],
+}, total=False)
+
+ModelZillowPropertyOpenHouse = TypedDict('ModelZillowPropertyOpenHouse', {
+    'end_time': NotRequired[str],
+    'start_time': NotRequired[str],
+    'text': NotRequired[str],
+}, total=False)
+
+ModelZillowPropertyPhoto = TypedDict('ModelZillowPropertyPhoto', {
+    'height': NotRequired[int],
+    'source': NotRequired[str],
+    'url': NotRequired[str],
+    'width': NotRequired[int],
+}, total=False)
+
+ModelZillowPropertyPriceHistoryEntry = TypedDict('ModelZillowPropertyPriceHistoryEntry', {
+    'buyer_agent': NotRequired[str],
+    'change': NotRequired[float],
+    'date': NotRequired[str],
+    'event': NotRequired[str],
+    'price': NotRequired[float],
+    'price_text': NotRequired[str],
+    'seller_agent': NotRequired[str],
+    'source': NotRequired[str],
+    'time': NotRequired[int],
+}, total=False)
+
+ModelZillowPropertyPricing = TypedDict('ModelZillowPropertyPricing', {
+    'currency': NotRequired[str],
+    'estimated_monthly_payment': NotRequired[float],
+    'monthly_hoa_fee': NotRequired[float],
+    'price': NotRequired[float],
+    'price_per_square_foot': NotRequired[float],
+    'price_text': NotRequired[str],
+    'property_tax_rate': NotRequired[float],
+    'rent_zestimate': NotRequired[float],
+    'zestimate': NotRequired[float],
+}, total=False)
+
+ModelZillowPropertyResponse = TypedDict('ModelZillowPropertyResponse', {
+    'address': NotRequired[str],
+    'address_parts': NotRequired[ModelZillowPropertyAddressParts],
+    'baths': NotRequired[float],
+    'beds': NotRequired[float],
+    'broker_name': NotRequired[str],
+    'currency': NotRequired[str],
+    'days_on_zillow': NotRequired[int],
+    'description': NotRequired[str],
+    'detail_text': NotRequired[str],
+    'facts': NotRequired[ModelZillowPropertyFacts],
+    'has_3d_model': NotRequired[bool],
+    'has_video': NotRequired[bool],
+    'history': NotRequired[ModelZillowPropertyHistory],
+    'home_status': NotRequired[str],
+    'home_type': NotRequired[str],
+    'image': NotRequired[str],
+    'is_showcase': NotRequired[bool],
+    'latitude': NotRequired[float],
+    'listing': NotRequired[ModelZillowPropertyListing],
+    'listing_sub_type': NotRequired[list[str]],
+    'living_area': NotRequired[float],
+    'longitude': NotRequired[float],
+    'lot_area': NotRequired[float],
+    'lot_area_unit': NotRequired[str],
+    'media': NotRequired[ModelZillowPropertyMedia],
+    'nearby': NotRequired[list[ModelZillowPropertyNearby]],
+    'photos': NotRequired[list[str]],
+    'price': NotRequired[float],
+    'price_text': NotRequired[str],
+    'pricing': NotRequired[ModelZillowPropertyPricing],
+    'rent_zestimate': NotRequired[float],
+    'schools': NotRequired[list[ModelZillowPropertySchool]],
+    'status_text': NotRequired[str],
+    'url': NotRequired[str],
+    'zestimate': NotRequired[float],
+    'zpid': NotRequired[str],
+}, total=False)
+
+ModelZillowPropertySchool = TypedDict('ModelZillowPropertySchool', {
+    'assigned': NotRequired[bool],
+    'distance': NotRequired[float],
+    'district': NotRequired[str],
+    'grades': NotRequired[str],
+    'id': NotRequired[str],
+    'level': NotRequired[str],
+    'link': NotRequired[str],
+    'name': NotRequired[str],
+    'rating': NotRequired[float],
+    'type': NotRequired[str],
+}, total=False)
+
+ModelZillowPropertyTaxHistoryEntry = TypedDict('ModelZillowPropertyTaxHistoryEntry', {
+    'tax_increase': NotRequired[float],
+    'tax_paid': NotRequired[float],
+    'time': NotRequired[int],
+    'value': NotRequired[float],
+    'value_increase': NotRequired[float],
+    'year': NotRequired[int],
+}, total=False)
+
+ModelZillowSearchResponse = TypedDict('ModelZillowSearchResponse', {
+    'location': NotRequired[str],
+    'page': NotRequired[int],
+    'results': NotRequired[list[ModelZillowPropertyItem]],
+}, total=False)
+
+AirbnbRoomResponse = ModelAirbnbRoomResponse
 AirbnbRoomParams = TypedDict('AirbnbRoomParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -29,7 +8635,7 @@ AirbnbRoomParams = TypedDict('AirbnbRoomParams', {
     'id': Required[str],
 }, total=False)
 
-AirbnbRoomCalendarResponse = Any
+AirbnbRoomCalendarResponse = ModelAirbnbCalendarResponse
 AirbnbRoomCalendarParams = TypedDict('AirbnbRoomCalendarParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -37,7 +8643,7 @@ AirbnbRoomCalendarParams = TypedDict('AirbnbRoomCalendarParams', {
     'id': Required[str],
 }, total=False)
 
-AirbnbRoomReviewsResponse = Any
+AirbnbRoomReviewsResponse = ModelAirbnbReviewsResponse
 AirbnbRoomReviewsParams = TypedDict('AirbnbRoomReviewsParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -46,7 +8652,7 @@ AirbnbRoomReviewsParams = TypedDict('AirbnbRoomReviewsParams', {
     'page': NotRequired[int],
 }, total=False)
 
-AirbnbSearchResponse = Any
+AirbnbSearchResponse = ModelAirbnbSearchResponse
 AirbnbSearchParams = TypedDict('AirbnbSearchParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -64,7 +8670,7 @@ AirbnbSearchParams = TypedDict('AirbnbSearchParams', {
     'zoom': NotRequired[int],
 }, total=False)
 
-AmazonProductResponse = Any
+AmazonProductResponse = ModelAmazonProductResponseDoc
 AmazonProductParams = TypedDict('AmazonProductParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -74,7 +8680,7 @@ AmazonProductParams = TypedDict('AmazonProductParams', {
     'currency': NotRequired[Literal['USD']],
 }, total=False)
 
-AmazonSearchResponse = Any
+AmazonSearchResponse = ModelAmazonSearchResponseDoc
 AmazonSearchParams = TypedDict('AmazonSearchParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -84,7 +8690,7 @@ AmazonSearchParams = TypedDict('AmazonSearchParams', {
     'page': NotRequired[int],
 }, total=False)
 
-AmazonSuggestResponse = Any
+AmazonSuggestResponse = ModelAmazonSuggestResponseDoc
 AmazonSuggestParams = TypedDict('AmazonSuggestParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -92,7 +8698,7 @@ AmazonSuggestParams = TypedDict('AmazonSuggestParams', {
     'keyword': Required[str],
 }, total=False)
 
-ApplePodcastsChartsResponse = Any
+ApplePodcastsChartsResponse = ModelApplepodcastsChartsResponseDoc
 ApplePodcastsChartsParams = TypedDict('ApplePodcastsChartsParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -103,7 +8709,7 @@ ApplePodcastsChartsParams = TypedDict('ApplePodcastsChartsParams', {
     'limit': NotRequired[int],
 }, total=False)
 
-ApplePodcastsEpisodesSearchResponse = Any
+ApplePodcastsEpisodesSearchResponse = ModelApplepodcastsEpisodeSearchResponseDoc
 ApplePodcastsEpisodesSearchParams = TypedDict('ApplePodcastsEpisodesSearchParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -115,7 +8721,7 @@ ApplePodcastsEpisodesSearchParams = TypedDict('ApplePodcastsEpisodesSearchParams
     'page': NotRequired[int],
 }, total=False)
 
-ApplePodcastsSearchResponse = Any
+ApplePodcastsSearchResponse = ModelApplepodcastsSearchResponseDoc
 ApplePodcastsSearchParams = TypedDict('ApplePodcastsSearchParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -127,7 +8733,7 @@ ApplePodcastsSearchParams = TypedDict('ApplePodcastsSearchParams', {
     'page': NotRequired[int],
 }, total=False)
 
-ApplePodcastsShowResponse = Any
+ApplePodcastsShowResponse = ModelApplepodcastsShowResponseDoc
 ApplePodcastsShowParams = TypedDict('ApplePodcastsShowParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -137,7 +8743,7 @@ ApplePodcastsShowParams = TypedDict('ApplePodcastsShowParams', {
     'lang': NotRequired[str],
 }, total=False)
 
-ApplePodcastsShowEpisodesResponse = Any
+ApplePodcastsShowEpisodesResponse = ModelApplepodcastsShowEpisodesResponseDoc
 ApplePodcastsShowEpisodesParams = TypedDict('ApplePodcastsShowEpisodesParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -148,7 +8754,7 @@ ApplePodcastsShowEpisodesParams = TypedDict('ApplePodcastsShowEpisodesParams', {
     'limit': NotRequired[int],
 }, total=False)
 
-AppStoreAppResponse = Any
+AppStoreAppResponse = ModelAppstoreAppDetailsResponseDoc
 AppStoreAppParams = TypedDict('AppStoreAppParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -160,7 +8766,7 @@ AppStoreAppParams = TypedDict('AppStoreAppParams', {
     'ratings': NotRequired[bool],
 }, total=False)
 
-AppStoreDeveloperResponse = Any
+AppStoreDeveloperResponse = ModelAppstoreDeveloperResponseDoc
 AppStoreDeveloperParams = TypedDict('AppStoreDeveloperParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -170,7 +8776,7 @@ AppStoreDeveloperParams = TypedDict('AppStoreDeveloperParams', {
     'lang': NotRequired[str],
 }, total=False)
 
-AppStoreListResponse = Any
+AppStoreListResponse = ModelAppstoreListResultsResponseDoc
 AppStoreListParams = TypedDict('AppStoreListParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -183,7 +8789,7 @@ AppStoreListParams = TypedDict('AppStoreListParams', {
     'full_detail': NotRequired[bool],
 }, total=False)
 
-AppStorePrivacyResponse = Any
+AppStorePrivacyResponse = ModelAppstorePrivacyResponseDoc
 AppStorePrivacyParams = TypedDict('AppStorePrivacyParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -193,7 +8799,7 @@ AppStorePrivacyParams = TypedDict('AppStorePrivacyParams', {
     'lang': NotRequired[str],
 }, total=False)
 
-AppStoreRatingsResponse = Any
+AppStoreRatingsResponse = ModelAppstoreRatingsResponseDoc
 AppStoreRatingsParams = TypedDict('AppStoreRatingsParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -204,7 +8810,7 @@ AppStoreRatingsParams = TypedDict('AppStoreRatingsParams', {
     'lang': NotRequired[str],
 }, total=False)
 
-AppStoreReviewsResponse = Any
+AppStoreReviewsResponse = ModelAppstoreReviewsResponseDoc
 AppStoreReviewsParams = TypedDict('AppStoreReviewsParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -217,7 +8823,7 @@ AppStoreReviewsParams = TypedDict('AppStoreReviewsParams', {
     'lang': NotRequired[str],
 }, total=False)
 
-AppStoreSearchResponse = Any
+AppStoreSearchResponse = ModelAppstoreSearchResultsResponseDoc
 AppStoreSearchParams = TypedDict('AppStoreSearchParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -230,7 +8836,7 @@ AppStoreSearchParams = TypedDict('AppStoreSearchParams', {
     'ids_only': NotRequired[bool],
 }, total=False)
 
-AppStoreSimilarResponse = Any
+AppStoreSimilarResponse = ModelAppstoreSimilarResponseDoc
 AppStoreSimilarParams = TypedDict('AppStoreSimilarParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -241,7 +8847,7 @@ AppStoreSimilarParams = TypedDict('AppStoreSimilarParams', {
     'lang': NotRequired[str],
 }, total=False)
 
-AppStoreSuggestResponse = Any
+AppStoreSuggestResponse = ModelAppstoreSuggestResponseDoc
 AppStoreSuggestParams = TypedDict('AppStoreSuggestParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -250,7 +8856,7 @@ AppStoreSuggestParams = TypedDict('AppStoreSuggestParams', {
     'country': NotRequired[str],
 }, total=False)
 
-AppStoreVersionHistoryResponse = Any
+AppStoreVersionHistoryResponse = ModelAppstoreVersionHistoryResponseDoc
 AppStoreVersionHistoryParams = TypedDict('AppStoreVersionHistoryParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -260,15 +8866,15 @@ AppStoreVersionHistoryParams = TypedDict('AppStoreVersionHistoryParams', {
     'lang': NotRequired[str],
 }, total=False)
 
-BillingMeResponse = Any
+BillingMeResponse = ModelBillingBillingStateResponseDoc
 BillingMeParams = TypedDict('BillingMeParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
     '_headers': NotRequired[Mapping[str, str]],
 }, total=False)
 
-BillingMeCheckoutBody = dict[str, Any]
-BillingMeCheckoutResponse = Any
+BillingMeCheckoutBody = ModelBillingStripeCheckoutRequestDoc
+BillingMeCheckoutResponse = ModelBillingStripeSessionResponseDoc
 BillingMeCheckoutParams = TypedDict('BillingMeCheckoutParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -276,7 +8882,7 @@ BillingMeCheckoutParams = TypedDict('BillingMeCheckoutParams', {
     'request': Required[BillingMeCheckoutBody],
 }, total=False)
 
-BillingMeEventsResponse = Any
+BillingMeEventsResponse = ModelBillingBillingEventsResponseDoc
 BillingMeEventsParams = TypedDict('BillingMeEventsParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -290,7 +8896,7 @@ BillingMeEventsParams = TypedDict('BillingMeEventsParams', {
     'billable': NotRequired[bool],
 }, total=False)
 
-BillingMePeriodsResponse = Any
+BillingMePeriodsResponse = ModelBillingBillingPeriodLedgersResponseDoc
 BillingMePeriodsParams = TypedDict('BillingMePeriodsParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -298,7 +8904,7 @@ BillingMePeriodsParams = TypedDict('BillingMePeriodsParams', {
     'limit': NotRequired[int],
 }, total=False)
 
-BillingMePeriodResponse = Any
+BillingMePeriodResponse = ModelBillingBillingPeriodLedgerResponseDoc
 BillingMePeriodParams = TypedDict('BillingMePeriodParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -306,7 +8912,7 @@ BillingMePeriodParams = TypedDict('BillingMePeriodParams', {
     'period_key': Required[str],
 }, total=False)
 
-BillingMePeriodStatementResponse = Any
+BillingMePeriodStatementResponse = ModelBillingBillingPeriodStatementResponseDoc
 BillingMePeriodStatementParams = TypedDict('BillingMePeriodStatementParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -316,7 +8922,7 @@ BillingMePeriodStatementParams = TypedDict('BillingMePeriodStatementParams', {
     'event_limit': NotRequired[int],
 }, total=False)
 
-BillingMePeriodStatementDownloadResponse = Any
+BillingMePeriodStatementDownloadResponse = str
 BillingMePeriodStatementDownloadParams = TypedDict('BillingMePeriodStatementDownloadParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -324,8 +8930,8 @@ BillingMePeriodStatementDownloadParams = TypedDict('BillingMePeriodStatementDown
     'period_key': Required[str],
 }, total=False)
 
-BillingMePortalBody = dict[str, Any]
-BillingMePortalResponse = Any
+BillingMePortalBody = ModelBillingStripePortalRequestDoc
+BillingMePortalResponse = ModelBillingStripeSessionResponseDoc
 BillingMePortalParams = TypedDict('BillingMePortalParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -333,7 +8939,7 @@ BillingMePortalParams = TypedDict('BillingMePortalParams', {
     'request': Required[BillingMePortalBody],
 }, total=False)
 
-BingImagesResponse = Any
+BingImagesResponse = ModelBingImagesResponseDoc
 BingImagesParams = TypedDict('BingImagesParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -345,7 +8951,7 @@ BingImagesParams = TypedDict('BingImagesParams', {
     'lang': NotRequired[str],
 }, total=False)
 
-BingNewsResponse = Any
+BingNewsResponse = ModelBingNewsResponseDoc
 BingNewsParams = TypedDict('BingNewsParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -357,7 +8963,7 @@ BingNewsParams = TypedDict('BingNewsParams', {
     'lang': NotRequired[str],
 }, total=False)
 
-BingSearchResponse = Any
+BingSearchResponse = ModelBingSearchResponseDoc
 BingSearchParams = TypedDict('BingSearchParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -369,7 +8975,7 @@ BingSearchParams = TypedDict('BingSearchParams', {
     'lang': NotRequired[str],
 }, total=False)
 
-BingSuggestResponse = Any
+BingSuggestResponse = ModelBingSuggestResponseDoc
 BingSuggestParams = TypedDict('BingSuggestParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -380,7 +8986,7 @@ BingSuggestParams = TypedDict('BingSuggestParams', {
     'lang': NotRequired[str],
 }, total=False)
 
-BingVideosResponse = Any
+BingVideosResponse = ModelBingVideosResponseDoc
 BingVideosParams = TypedDict('BingVideosParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -392,7 +8998,7 @@ BingVideosParams = TypedDict('BingVideosParams', {
     'lang': NotRequired[str],
 }, total=False)
 
-BraveImagesResponse = Any
+BraveImagesResponse = ModelBraveImagesResponseDoc
 BraveImagesParams = TypedDict('BraveImagesParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -404,7 +9010,7 @@ BraveImagesParams = TypedDict('BraveImagesParams', {
     'lang': NotRequired[Literal['de-de', 'en-ca', 'en-gb', 'en-in', 'en-us', 'fi-fi', 'fr-ca', 'fr-fr', 'ja-jp', 'pt-br', 'sq-al', 'sw-ke', 'zh-tw']],
 }, total=False)
 
-BraveNewsResponse = Any
+BraveNewsResponse = ModelBraveNewsResponseDoc
 BraveNewsParams = TypedDict('BraveNewsParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -419,7 +9025,7 @@ BraveNewsParams = TypedDict('BraveNewsParams', {
     'date_to': NotRequired[str],
 }, total=False)
 
-BraveSearchResponse = Any
+BraveSearchResponse = ModelBraveSearchResponseDoc
 BraveSearchParams = TypedDict('BraveSearchParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -433,7 +9039,7 @@ BraveSearchParams = TypedDict('BraveSearchParams', {
     'date_to': NotRequired[str],
 }, total=False)
 
-BraveSuggestResponse = Any
+BraveSuggestResponse = ModelBraveSuggestResponseDoc
 BraveSuggestParams = TypedDict('BraveSuggestParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -444,7 +9050,7 @@ BraveSuggestParams = TypedDict('BraveSuggestParams', {
     'lang': NotRequired[Literal['de-de', 'en-ca', 'en-gb', 'en-in', 'en-us', 'fi-fi', 'fr-ca', 'fr-fr', 'ja-jp', 'pt-br', 'sq-al', 'sw-ke', 'zh-tw']],
 }, total=False)
 
-BraveVideosResponse = Any
+BraveVideosResponse = ModelBraveVideosResponseDoc
 BraveVideosParams = TypedDict('BraveVideosParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -459,7 +9065,7 @@ BraveVideosParams = TypedDict('BraveVideosParams', {
     'date_to': NotRequired[str],
 }, total=False)
 
-CoinGeckoCategoriesResponse = Any
+CoinGeckoCategoriesResponse = ModelCoingeckoCategoriesResponseDoc
 CoinGeckoCategoriesParams = TypedDict('CoinGeckoCategoriesParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -468,7 +9074,7 @@ CoinGeckoCategoriesParams = TypedDict('CoinGeckoCategoriesParams', {
     'vs_currency': NotRequired[Literal['btc', 'eth', 'ltc', 'bch', 'bnb', 'eos', 'xrp', 'xlm', 'link', 'dot', 'yfi', 'sol', 'usd', 'aed', 'ars', 'aud', 'bdt', 'bhd', 'bmd', 'brl', 'cad', 'chf', 'clp', 'cny', 'czk', 'dkk', 'eur', 'gbp', 'gel', 'hkd', 'huf', 'idr', 'ils', 'inr', 'jpy', 'krw', 'kwd', 'lkr', 'mmk', 'mxn', 'myr', 'ngn', 'nok', 'nzd', 'php', 'pkr', 'pln', 'rub', 'sar', 'sek', 'sgd', 'thb', 'try', 'twd', 'uah', 'vef', 'vnd', 'zar', 'xdr', 'xag', 'xau', 'bits', 'sats']],
 }, total=False)
 
-CoinGeckoCategoryCoinsResponse = Any
+CoinGeckoCategoryCoinsResponse = ModelCoingeckoCategoryCoinsResponseDoc
 CoinGeckoCategoryCoinsParams = TypedDict('CoinGeckoCategoryCoinsParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -479,7 +9085,7 @@ CoinGeckoCategoryCoinsParams = TypedDict('CoinGeckoCategoryCoinsParams', {
     'vs_currency': NotRequired[Literal['btc', 'eth', 'ltc', 'bch', 'bnb', 'eos', 'xrp', 'xlm', 'link', 'dot', 'yfi', 'sol', 'usd', 'aed', 'ars', 'aud', 'bdt', 'bhd', 'bmd', 'brl', 'cad', 'chf', 'clp', 'cny', 'czk', 'dkk', 'eur', 'gbp', 'gel', 'hkd', 'huf', 'idr', 'ils', 'inr', 'jpy', 'krw', 'kwd', 'lkr', 'mmk', 'mxn', 'myr', 'ngn', 'nok', 'nzd', 'php', 'pkr', 'pln', 'rub', 'sar', 'sek', 'sgd', 'thb', 'try', 'twd', 'uah', 'vef', 'vnd', 'zar', 'xdr', 'xag', 'xau', 'bits', 'sats']],
 }, total=False)
 
-CoinGeckoChainsResponse = Any
+CoinGeckoChainsResponse = ModelCoingeckoChainsResponseDoc
 CoinGeckoChainsParams = TypedDict('CoinGeckoChainsParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -488,7 +9094,7 @@ CoinGeckoChainsParams = TypedDict('CoinGeckoChainsParams', {
     'vs_currency': NotRequired[Literal['btc', 'eth', 'ltc', 'bch', 'bnb', 'eos', 'xrp', 'xlm', 'link', 'dot', 'yfi', 'sol', 'usd', 'aed', 'ars', 'aud', 'bdt', 'bhd', 'bmd', 'brl', 'cad', 'chf', 'clp', 'cny', 'czk', 'dkk', 'eur', 'gbp', 'gel', 'hkd', 'huf', 'idr', 'ils', 'inr', 'jpy', 'krw', 'kwd', 'lkr', 'mmk', 'mxn', 'myr', 'ngn', 'nok', 'nzd', 'php', 'pkr', 'pln', 'rub', 'sar', 'sek', 'sgd', 'thb', 'try', 'twd', 'uah', 'vef', 'vnd', 'zar', 'xdr', 'xag', 'xau', 'bits', 'sats']],
 }, total=False)
 
-CoinGeckoChainResponse = Any
+CoinGeckoChainResponse = ModelCoingeckoChainDetailResponseDoc
 CoinGeckoChainParams = TypedDict('CoinGeckoChainParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -498,7 +9104,7 @@ CoinGeckoChainParams = TypedDict('CoinGeckoChainParams', {
     'vs_currency': NotRequired[Literal['btc', 'eth', 'ltc', 'bch', 'bnb', 'eos', 'xrp', 'xlm', 'link', 'dot', 'yfi', 'sol', 'usd', 'aed', 'ars', 'aud', 'bdt', 'bhd', 'bmd', 'brl', 'cad', 'chf', 'clp', 'cny', 'czk', 'dkk', 'eur', 'gbp', 'gel', 'hkd', 'huf', 'idr', 'ils', 'inr', 'jpy', 'krw', 'kwd', 'lkr', 'mmk', 'mxn', 'myr', 'ngn', 'nok', 'nzd', 'php', 'pkr', 'pln', 'rub', 'sar', 'sek', 'sgd', 'thb', 'try', 'twd', 'uah', 'vef', 'vnd', 'zar', 'xdr', 'xag', 'xau', 'bits', 'sats']],
 }, total=False)
 
-CoinGeckoCoinResponse = Any
+CoinGeckoCoinResponse = ModelCoingeckoCoinResponseDoc
 CoinGeckoCoinParams = TypedDict('CoinGeckoCoinParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -507,7 +9113,7 @@ CoinGeckoCoinParams = TypedDict('CoinGeckoCoinParams', {
     'vs_currency': NotRequired[Literal['btc', 'eth', 'ltc', 'bch', 'bnb', 'eos', 'xrp', 'xlm', 'link', 'dot', 'yfi', 'sol', 'usd', 'aed', 'ars', 'aud', 'bdt', 'bhd', 'bmd', 'brl', 'cad', 'chf', 'clp', 'cny', 'czk', 'dkk', 'eur', 'gbp', 'gel', 'hkd', 'huf', 'idr', 'ils', 'inr', 'jpy', 'krw', 'kwd', 'lkr', 'mmk', 'mxn', 'myr', 'ngn', 'nok', 'nzd', 'php', 'pkr', 'pln', 'rub', 'sar', 'sek', 'sgd', 'thb', 'try', 'twd', 'uah', 'vef', 'vnd', 'zar', 'xdr', 'xag', 'xau', 'bits', 'sats']],
 }, total=False)
 
-CoinGeckoCoinAnalysisResponse = Any
+CoinGeckoCoinAnalysisResponse = ModelCoingeckoAnalysisResponseDoc
 CoinGeckoCoinAnalysisParams = TypedDict('CoinGeckoCoinAnalysisParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -518,7 +9124,7 @@ CoinGeckoCoinAnalysisParams = TypedDict('CoinGeckoCoinAnalysisParams', {
     'include_annotations': NotRequired[bool],
 }, total=False)
 
-CoinGeckoExchangeResponse = Any
+CoinGeckoExchangeResponse = ModelCoingeckoExchangeDetailResponseDoc
 CoinGeckoExchangeParams = TypedDict('CoinGeckoExchangeParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -528,7 +9134,7 @@ CoinGeckoExchangeParams = TypedDict('CoinGeckoExchangeParams', {
     'vs_currency': NotRequired[Literal['btc', 'eth', 'ltc', 'bch', 'bnb', 'eos', 'xrp', 'xlm', 'link', 'dot', 'yfi', 'sol', 'usd', 'aed', 'ars', 'aud', 'bdt', 'bhd', 'bmd', 'brl', 'cad', 'chf', 'clp', 'cny', 'czk', 'dkk', 'eur', 'gbp', 'gel', 'hkd', 'huf', 'idr', 'ils', 'inr', 'jpy', 'krw', 'kwd', 'lkr', 'mmk', 'mxn', 'myr', 'ngn', 'nok', 'nzd', 'php', 'pkr', 'pln', 'rub', 'sar', 'sek', 'sgd', 'thb', 'try', 'twd', 'uah', 'vef', 'vnd', 'zar', 'xdr', 'xag', 'xau', 'bits', 'sats']],
 }, total=False)
 
-CoinGeckoExchangesResponse = Any
+CoinGeckoExchangesResponse = ModelCoingeckoExchangesResponseDoc
 CoinGeckoExchangesParams = TypedDict('CoinGeckoExchangesParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -539,7 +9145,7 @@ CoinGeckoExchangesParams = TypedDict('CoinGeckoExchangesParams', {
     'vs_currency': NotRequired[Literal['btc', 'eth', 'ltc', 'bch', 'bnb', 'eos', 'xrp', 'xlm', 'link', 'dot', 'yfi', 'sol', 'usd', 'aed', 'ars', 'aud', 'bdt', 'bhd', 'bmd', 'brl', 'cad', 'chf', 'clp', 'cny', 'czk', 'dkk', 'eur', 'gbp', 'gel', 'hkd', 'huf', 'idr', 'ils', 'inr', 'jpy', 'krw', 'kwd', 'lkr', 'mmk', 'mxn', 'myr', 'ngn', 'nok', 'nzd', 'php', 'pkr', 'pln', 'rub', 'sar', 'sek', 'sgd', 'thb', 'try', 'twd', 'uah', 'vef', 'vnd', 'zar', 'xdr', 'xag', 'xau', 'bits', 'sats']],
 }, total=False)
 
-CoinGeckoGainersLosersResponse = Any
+CoinGeckoGainersLosersResponse = ModelCoingeckoGainersLosersResponseDoc
 CoinGeckoGainersLosersParams = TypedDict('CoinGeckoGainersLosersParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -548,14 +9154,14 @@ CoinGeckoGainersLosersParams = TypedDict('CoinGeckoGainersLosersParams', {
     'vs_currency': NotRequired[Literal['btc', 'eth', 'ltc', 'bch', 'bnb', 'eos', 'xrp', 'xlm', 'link', 'dot', 'yfi', 'sol', 'usd', 'aed', 'ars', 'aud', 'bdt', 'bhd', 'bmd', 'brl', 'cad', 'chf', 'clp', 'cny', 'czk', 'dkk', 'eur', 'gbp', 'gel', 'hkd', 'huf', 'idr', 'ils', 'inr', 'jpy', 'krw', 'kwd', 'lkr', 'mmk', 'mxn', 'myr', 'ngn', 'nok', 'nzd', 'php', 'pkr', 'pln', 'rub', 'sar', 'sek', 'sgd', 'thb', 'try', 'twd', 'uah', 'vef', 'vnd', 'zar', 'xdr', 'xag', 'xau', 'bits', 'sats']],
 }, total=False)
 
-CoinGeckoGlobalResponse = Any
+CoinGeckoGlobalResponse = ModelCoingeckoGlobalResponseDoc
 CoinGeckoGlobalParams = TypedDict('CoinGeckoGlobalParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
     '_headers': NotRequired[Mapping[str, str]],
 }, total=False)
 
-CoinGeckoGlobalChartsResponse = Any
+CoinGeckoGlobalChartsResponse = ModelCoingeckoGlobalChartsResponseDoc
 CoinGeckoGlobalChartsParams = TypedDict('CoinGeckoGlobalChartsParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -565,7 +9171,7 @@ CoinGeckoGlobalChartsParams = TypedDict('CoinGeckoGlobalChartsParams', {
     'limit': NotRequired[int],
 }, total=False)
 
-CoinGeckoLearnArticlesResponse = Any
+CoinGeckoLearnArticlesResponse = ModelCoingeckoLearnArticlesResponseDoc
 CoinGeckoLearnArticlesParams = TypedDict('CoinGeckoLearnArticlesParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -574,7 +9180,7 @@ CoinGeckoLearnArticlesParams = TypedDict('CoinGeckoLearnArticlesParams', {
     'limit': NotRequired[int],
 }, total=False)
 
-CoinGeckoMarketsResponse = Any
+CoinGeckoMarketsResponse = ModelCoingeckoMarketsResponseDoc
 CoinGeckoMarketsParams = TypedDict('CoinGeckoMarketsParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -584,7 +9190,7 @@ CoinGeckoMarketsParams = TypedDict('CoinGeckoMarketsParams', {
     'vs_currency': NotRequired[Literal['btc', 'eth', 'ltc', 'bch', 'bnb', 'eos', 'xrp', 'xlm', 'link', 'dot', 'yfi', 'sol', 'usd', 'aed', 'ars', 'aud', 'bdt', 'bhd', 'bmd', 'brl', 'cad', 'chf', 'clp', 'cny', 'czk', 'dkk', 'eur', 'gbp', 'gel', 'hkd', 'huf', 'idr', 'ils', 'inr', 'jpy', 'krw', 'kwd', 'lkr', 'mmk', 'mxn', 'myr', 'ngn', 'nok', 'nzd', 'php', 'pkr', 'pln', 'rub', 'sar', 'sek', 'sgd', 'thb', 'try', 'twd', 'uah', 'vef', 'vnd', 'zar', 'xdr', 'xag', 'xau', 'bits', 'sats']],
 }, total=False)
 
-CoinGeckoNewCoinsResponse = Any
+CoinGeckoNewCoinsResponse = ModelCoingeckoNewCoinsResponseDoc
 CoinGeckoNewCoinsParams = TypedDict('CoinGeckoNewCoinsParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -594,7 +9200,7 @@ CoinGeckoNewCoinsParams = TypedDict('CoinGeckoNewCoinsParams', {
     'vs_currency': NotRequired[Literal['btc', 'eth', 'ltc', 'bch', 'bnb', 'eos', 'xrp', 'xlm', 'link', 'dot', 'yfi', 'sol', 'usd', 'aed', 'ars', 'aud', 'bdt', 'bhd', 'bmd', 'brl', 'cad', 'chf', 'clp', 'cny', 'czk', 'dkk', 'eur', 'gbp', 'gel', 'hkd', 'huf', 'idr', 'ils', 'inr', 'jpy', 'krw', 'kwd', 'lkr', 'mmk', 'mxn', 'myr', 'ngn', 'nok', 'nzd', 'php', 'pkr', 'pln', 'rub', 'sar', 'sek', 'sgd', 'thb', 'try', 'twd', 'uah', 'vef', 'vnd', 'zar', 'xdr', 'xag', 'xau', 'bits', 'sats']],
 }, total=False)
 
-CoinGeckoNewsResponse = Any
+CoinGeckoNewsResponse = ModelCoingeckoNewsResponseDoc
 CoinGeckoNewsParams = TypedDict('CoinGeckoNewsParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -602,7 +9208,7 @@ CoinGeckoNewsParams = TypedDict('CoinGeckoNewsParams', {
     'limit': NotRequired[int],
 }, total=False)
 
-CoinGeckoNftCategoryResponse = Any
+CoinGeckoNftCategoryResponse = ModelCoingeckoNftCategoryResponseDoc
 CoinGeckoNftCategoryParams = TypedDict('CoinGeckoNftCategoryParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -613,7 +9219,7 @@ CoinGeckoNftCategoryParams = TypedDict('CoinGeckoNftCategoryParams', {
     'vs_currency': NotRequired[Literal['btc', 'eth', 'ltc', 'bch', 'bnb', 'eos', 'xrp', 'xlm', 'link', 'dot', 'yfi', 'sol', 'usd', 'aed', 'ars', 'aud', 'bdt', 'bhd', 'bmd', 'brl', 'cad', 'chf', 'clp', 'cny', 'czk', 'dkk', 'eur', 'gbp', 'gel', 'hkd', 'huf', 'idr', 'ils', 'inr', 'jpy', 'krw', 'kwd', 'lkr', 'mmk', 'mxn', 'myr', 'ngn', 'nok', 'nzd', 'php', 'pkr', 'pln', 'rub', 'sar', 'sek', 'sgd', 'thb', 'try', 'twd', 'uah', 'vef', 'vnd', 'zar', 'xdr', 'xag', 'xau', 'bits', 'sats']],
 }, total=False)
 
-CoinGeckoNftsResponse = Any
+CoinGeckoNftsResponse = ModelCoingeckoNftsResponseDoc
 CoinGeckoNftsParams = TypedDict('CoinGeckoNftsParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -623,7 +9229,7 @@ CoinGeckoNftsParams = TypedDict('CoinGeckoNftsParams', {
     'vs_currency': NotRequired[Literal['btc', 'eth', 'ltc', 'bch', 'bnb', 'eos', 'xrp', 'xlm', 'link', 'dot', 'yfi', 'sol', 'usd', 'aed', 'ars', 'aud', 'bdt', 'bhd', 'bmd', 'brl', 'cad', 'chf', 'clp', 'cny', 'czk', 'dkk', 'eur', 'gbp', 'gel', 'hkd', 'huf', 'idr', 'ils', 'inr', 'jpy', 'krw', 'kwd', 'lkr', 'mmk', 'mxn', 'myr', 'ngn', 'nok', 'nzd', 'php', 'pkr', 'pln', 'rub', 'sar', 'sek', 'sgd', 'thb', 'try', 'twd', 'uah', 'vef', 'vnd', 'zar', 'xdr', 'xag', 'xau', 'bits', 'sats']],
 }, total=False)
 
-CoinGeckoSearchResponse = Any
+CoinGeckoSearchResponse = ModelCoingeckoSearchResponseDoc
 CoinGeckoSearchParams = TypedDict('CoinGeckoSearchParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -632,7 +9238,7 @@ CoinGeckoSearchParams = TypedDict('CoinGeckoSearchParams', {
     'limit': NotRequired[int],
 }, total=False)
 
-CoinGeckoTokenUnlocksResponse = Any
+CoinGeckoTokenUnlocksResponse = ModelCoingeckoTokenUnlocksResponseDoc
 CoinGeckoTokenUnlocksParams = TypedDict('CoinGeckoTokenUnlocksParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -640,7 +9246,7 @@ CoinGeckoTokenUnlocksParams = TypedDict('CoinGeckoTokenUnlocksParams', {
     'limit': NotRequired[int],
 }, total=False)
 
-CoinGeckoTreasuriesResponse = Any
+CoinGeckoTreasuriesResponse = ModelCoingeckoTreasuriesResponseDoc
 CoinGeckoTreasuriesParams = TypedDict('CoinGeckoTreasuriesParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -651,7 +9257,7 @@ CoinGeckoTreasuriesParams = TypedDict('CoinGeckoTreasuriesParams', {
     'vs_currency': NotRequired[Literal['btc', 'eth', 'ltc', 'bch', 'bnb', 'eos', 'xrp', 'xlm', 'link', 'dot', 'yfi', 'sol', 'usd', 'aed', 'ars', 'aud', 'bdt', 'bhd', 'bmd', 'brl', 'cad', 'chf', 'clp', 'cny', 'czk', 'dkk', 'eur', 'gbp', 'gel', 'hkd', 'huf', 'idr', 'ils', 'inr', 'jpy', 'krw', 'kwd', 'lkr', 'mmk', 'mxn', 'myr', 'ngn', 'nok', 'nzd', 'php', 'pkr', 'pln', 'rub', 'sar', 'sek', 'sgd', 'thb', 'try', 'twd', 'uah', 'vef', 'vnd', 'zar', 'xdr', 'xag', 'xau', 'bits', 'sats']],
 }, total=False)
 
-CoinGeckoTrendingResponse = Any
+CoinGeckoTrendingResponse = ModelCoingeckoTrendingResponseDoc
 CoinGeckoTrendingParams = TypedDict('CoinGeckoTrendingParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -660,14 +9266,14 @@ CoinGeckoTrendingParams = TypedDict('CoinGeckoTrendingParams', {
     'vs_currency': NotRequired[Literal['btc', 'eth', 'ltc', 'bch', 'bnb', 'eos', 'xrp', 'xlm', 'link', 'dot', 'yfi', 'sol', 'usd', 'aed', 'ars', 'aud', 'bdt', 'bhd', 'bmd', 'brl', 'cad', 'chf', 'clp', 'cny', 'czk', 'dkk', 'eur', 'gbp', 'gel', 'hkd', 'huf', 'idr', 'ils', 'inr', 'jpy', 'krw', 'kwd', 'lkr', 'mmk', 'mxn', 'myr', 'ngn', 'nok', 'nzd', 'php', 'pkr', 'pln', 'rub', 'sar', 'sek', 'sgd', 'thb', 'try', 'twd', 'uah', 'vef', 'vnd', 'zar', 'xdr', 'xag', 'xau', 'bits', 'sats']],
 }, total=False)
 
-DatasetsListResponse = Any
+DatasetsListResponse = ModelDatasetsListResponseDoc
 DatasetsListParams = TypedDict('DatasetsListParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
     '_headers': NotRequired[Mapping[str, str]],
 }, total=False)
 
-DatasetsGoogleMapBusinessesFacetsResponse = Any
+DatasetsGoogleMapBusinessesFacetsResponse = ModelDatasetsGoogleMapBusinessesFacetResponseDoc
 DatasetsGoogleMapBusinessesFacetsParams = TypedDict('DatasetsGoogleMapBusinessesFacetsParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -690,7 +9296,7 @@ DatasetsGoogleMapBusinessesFacetsParams = TypedDict('DatasetsGoogleMapBusinesses
     'sort': NotRequired[str],
 }, total=False)
 
-DatasetsGoogleMapBusinessesItemResponse = Any
+DatasetsGoogleMapBusinessesItemResponse = ModelDatasetsGoogleMapBusinessResponseDoc
 DatasetsGoogleMapBusinessesItemParams = TypedDict('DatasetsGoogleMapBusinessesItemParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -698,7 +9304,7 @@ DatasetsGoogleMapBusinessesItemParams = TypedDict('DatasetsGoogleMapBusinessesIt
     'place_id': Required[str],
 }, total=False)
 
-DatasetsGoogleMapBusinessesNearbyResponse = Any
+DatasetsGoogleMapBusinessesNearbyResponse = ModelDatasetsGoogleMapBusinessesSearchResponseDoc
 DatasetsGoogleMapBusinessesNearbyParams = TypedDict('DatasetsGoogleMapBusinessesNearbyParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -713,7 +9319,7 @@ DatasetsGoogleMapBusinessesNearbyParams = TypedDict('DatasetsGoogleMapBusinesses
     'page_size': NotRequired[int],
 }, total=False)
 
-DatasetsGoogleMapBusinessesSearchResponse = Any
+DatasetsGoogleMapBusinessesSearchResponse = ModelDatasetsGoogleMapBusinessesSearchResponseDoc
 DatasetsGoogleMapBusinessesSearchParams = TypedDict('DatasetsGoogleMapBusinessesSearchParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -737,7 +9343,7 @@ DatasetsGoogleMapBusinessesSearchParams = TypedDict('DatasetsGoogleMapBusinesses
     'page_size': NotRequired[int],
 }, total=False)
 
-EBayEbayItemResponse = Any
+EBayEbayItemResponse = ModelEbayItemResponseDoc
 EBayEbayItemParams = TypedDict('EBayEbayItemParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -745,8 +9351,8 @@ EBayEbayItemParams = TypedDict('EBayEbayItemParams', {
     'item_id': Required[str],
 }, total=False)
 
-EBayEbaySearchBody = dict[str, Any]
-EBayEbaySearchResponse = Any
+EBayEbaySearchBody = ModelEbaySearchOption
+EBayEbaySearchResponse = ModelEbaySearchResponseDoc
 EBayEbaySearchParams = TypedDict('EBayEbaySearchParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -754,7 +9360,7 @@ EBayEbaySearchParams = TypedDict('EBayEbaySearchParams', {
     'option': Required[EBayEbaySearchBody],
 }, total=False)
 
-EBayEbaySellerResponse = Any
+EBayEbaySellerResponse = ModelEbaySellerResponseDoc
 EBayEbaySellerParams = TypedDict('EBayEbaySellerParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -762,7 +9368,7 @@ EBayEbaySellerParams = TypedDict('EBayEbaySellerParams', {
     'seller': Required[str],
 }, total=False)
 
-EBayEbaySellerAboutResponse = Any
+EBayEbaySellerAboutResponse = ModelEbaySellerAboutResponseDoc
 EBayEbaySellerAboutParams = TypedDict('EBayEbaySellerAboutParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -770,7 +9376,7 @@ EBayEbaySellerAboutParams = TypedDict('EBayEbaySellerAboutParams', {
     'seller': Required[str],
 }, total=False)
 
-EBayEbaySellerFeedbackResponse = Any
+EBayEbaySellerFeedbackResponse = ModelEbaySellerFeedbackResponseDoc
 EBayEbaySellerFeedbackParams = TypedDict('EBayEbaySellerFeedbackParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -780,7 +9386,7 @@ EBayEbaySellerFeedbackParams = TypedDict('EBayEbaySellerFeedbackParams', {
     'per_page': NotRequired[Literal['24', '48', '72']],
 }, total=False)
 
-EBayEbaySellerShopResponse = Any
+EBayEbaySellerShopResponse = ModelEbaySellerShopResponseDoc
 EBayEbaySellerShopParams = TypedDict('EBayEbaySellerShopParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -789,7 +9395,7 @@ EBayEbaySellerShopParams = TypedDict('EBayEbaySellerShopParams', {
     'page': NotRequired[int],
 }, total=False)
 
-GeocodingLookupResponse = Any
+GeocodingLookupResponse = ModelGeocodingLookupResponseDoc
 GeocodingLookupParams = TypedDict('GeocodingLookupParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -801,7 +9407,7 @@ GeocodingLookupParams = TypedDict('GeocodingLookupParams', {
     'namedetails': NotRequired[bool],
 }, total=False)
 
-GeocodingReverseResponse = Any
+GeocodingReverseResponse = ModelGeocodingReverseResponseDoc
 GeocodingReverseParams = TypedDict('GeocodingReverseParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -815,7 +9421,7 @@ GeocodingReverseParams = TypedDict('GeocodingReverseParams', {
     'namedetails': NotRequired[bool],
 }, total=False)
 
-GeocodingSearchResponse = Any
+GeocodingSearchResponse = ModelGeocodingSearchResponseDoc
 GeocodingSearchParams = TypedDict('GeocodingSearchParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -835,7 +9441,7 @@ GeocodingSearchParams = TypedDict('GeocodingSearchParams', {
     'namedetails': NotRequired[bool],
 }, total=False)
 
-GoogleFinanceAnalystArticlesResponse = Any
+GoogleFinanceAnalystArticlesResponse = ModelFinanceArticlesResponseDoc
 GoogleFinanceAnalystArticlesParams = TypedDict('GoogleFinanceAnalystArticlesParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -843,7 +9449,7 @@ GoogleFinanceAnalystArticlesParams = TypedDict('GoogleFinanceAnalystArticlesPara
     'quote': Required[str],
 }, total=False)
 
-GoogleFinanceChartResponse = Any
+GoogleFinanceChartResponse = ModelFinanceChartResponseDoc
 GoogleFinanceChartParams = TypedDict('GoogleFinanceChartParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -852,7 +9458,7 @@ GoogleFinanceChartParams = TypedDict('GoogleFinanceChartParams', {
     'window': NotRequired[str],
 }, total=False)
 
-GoogleFinanceClassificationResponse = Any
+GoogleFinanceClassificationResponse = ModelFinanceClassificationResponseDoc
 GoogleFinanceClassificationParams = TypedDict('GoogleFinanceClassificationParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -860,7 +9466,7 @@ GoogleFinanceClassificationParams = TypedDict('GoogleFinanceClassificationParams
     'quote': Required[str],
 }, total=False)
 
-GoogleFinanceCompanyResponse = Any
+GoogleFinanceCompanyResponse = ModelFinanceCompanyResponseDoc
 GoogleFinanceCompanyParams = TypedDict('GoogleFinanceCompanyParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -868,7 +9474,7 @@ GoogleFinanceCompanyParams = TypedDict('GoogleFinanceCompanyParams', {
     'quote': Required[str],
 }, total=False)
 
-GoogleFinanceContextResponse = Any
+GoogleFinanceContextResponse = ModelFinanceContextResponseDoc
 GoogleFinanceContextParams = TypedDict('GoogleFinanceContextParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -876,7 +9482,7 @@ GoogleFinanceContextParams = TypedDict('GoogleFinanceContextParams', {
     'q': Required[str],
 }, total=False)
 
-GoogleFinanceFinancialsResponse = Any
+GoogleFinanceFinancialsResponse = ModelFinanceFinancialsResponseDoc
 GoogleFinanceFinancialsParams = TypedDict('GoogleFinanceFinancialsParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -884,7 +9490,7 @@ GoogleFinanceFinancialsParams = TypedDict('GoogleFinanceFinancialsParams', {
     'quote': Required[str],
 }, total=False)
 
-GoogleFinanceMarketsCategoryNewsResponse = Any
+GoogleFinanceMarketsCategoryNewsResponse = ModelFinanceCategoryNewsResponseDoc
 GoogleFinanceMarketsCategoryNewsParams = TypedDict('GoogleFinanceMarketsCategoryNewsParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -893,7 +9499,7 @@ GoogleFinanceMarketsCategoryNewsParams = TypedDict('GoogleFinanceMarketsCategory
     'offset': NotRequired[int],
 }, total=False)
 
-GoogleFinanceMarketsCategoryStocksResponse = Any
+GoogleFinanceMarketsCategoryStocksResponse = ModelFinanceCategoryStocksResponseDoc
 GoogleFinanceMarketsCategoryStocksParams = TypedDict('GoogleFinanceMarketsCategoryStocksParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -902,35 +9508,35 @@ GoogleFinanceMarketsCategoryStocksParams = TypedDict('GoogleFinanceMarketsCatego
     'offset': NotRequired[int],
 }, total=False)
 
-GoogleFinanceMarketsEarningsResponse = Any
+GoogleFinanceMarketsEarningsResponse = ModelFinanceEarningsResponseDoc
 GoogleFinanceMarketsEarningsParams = TypedDict('GoogleFinanceMarketsEarningsParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
     '_headers': NotRequired[Mapping[str, str]],
 }, total=False)
 
-GoogleFinanceMarketsFeaturedResponse = Any
+GoogleFinanceMarketsFeaturedResponse = ModelFinanceInstrumentsResponseDoc
 GoogleFinanceMarketsFeaturedParams = TypedDict('GoogleFinanceMarketsFeaturedParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
     '_headers': NotRequired[Mapping[str, str]],
 }, total=False)
 
-GoogleFinanceMarketsHeadlineResponse = Any
+GoogleFinanceMarketsHeadlineResponse = ModelFinanceHeadlineResponseDoc
 GoogleFinanceMarketsHeadlineParams = TypedDict('GoogleFinanceMarketsHeadlineParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
     '_headers': NotRequired[Mapping[str, str]],
 }, total=False)
 
-GoogleFinanceMarketsIndicesResponse = Any
+GoogleFinanceMarketsIndicesResponse = ModelFinanceInstrumentsResponseDoc
 GoogleFinanceMarketsIndicesParams = TypedDict('GoogleFinanceMarketsIndicesParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
     '_headers': NotRequired[Mapping[str, str]],
 }, total=False)
 
-GoogleFinanceMarketsMoversResponse = Any
+GoogleFinanceMarketsMoversResponse = ModelFinanceMarketMoversResponseDoc
 GoogleFinanceMarketsMoversParams = TypedDict('GoogleFinanceMarketsMoversParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -940,7 +9546,7 @@ GoogleFinanceMarketsMoversParams = TypedDict('GoogleFinanceMarketsMoversParams',
     'offset': NotRequired[int],
 }, total=False)
 
-GoogleFinanceMarketsTopResponse = Any
+GoogleFinanceMarketsTopResponse = ModelFinanceTopStocksResponseDoc
 GoogleFinanceMarketsTopParams = TypedDict('GoogleFinanceMarketsTopParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -949,7 +9555,7 @@ GoogleFinanceMarketsTopParams = TypedDict('GoogleFinanceMarketsTopParams', {
     'page': NotRequired[int],
 }, total=False)
 
-GoogleFinanceMarketsTrendingResponse = Any
+GoogleFinanceMarketsTrendingResponse = ModelFinanceInstrumentsResponseDoc
 GoogleFinanceMarketsTrendingParams = TypedDict('GoogleFinanceMarketsTrendingParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -957,7 +9563,7 @@ GoogleFinanceMarketsTrendingParams = TypedDict('GoogleFinanceMarketsTrendingPara
     'limit': NotRequired[int],
 }, total=False)
 
-GoogleFinanceNewsResponse = Any
+GoogleFinanceNewsResponse = ModelFinanceArticlesResponseDoc
 GoogleFinanceNewsParams = TypedDict('GoogleFinanceNewsParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -966,7 +9572,7 @@ GoogleFinanceNewsParams = TypedDict('GoogleFinanceNewsParams', {
     'limit': NotRequired[int],
 }, total=False)
 
-GoogleFinanceQuoteResponse = Any
+GoogleFinanceQuoteResponse = ModelFinanceQuoteResponseDoc
 GoogleFinanceQuoteParams = TypedDict('GoogleFinanceQuoteParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -974,7 +9580,7 @@ GoogleFinanceQuoteParams = TypedDict('GoogleFinanceQuoteParams', {
     'quote': Required[str],
 }, total=False)
 
-GoogleFinanceRelatedResponse = Any
+GoogleFinanceRelatedResponse = ModelFinanceRelatedResponseDoc
 GoogleFinanceRelatedParams = TypedDict('GoogleFinanceRelatedParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -982,7 +9588,7 @@ GoogleFinanceRelatedParams = TypedDict('GoogleFinanceRelatedParams', {
     'quote': Required[str],
 }, total=False)
 
-GoogleFinanceSearchResponse = Any
+GoogleFinanceSearchResponse = ModelFinanceSearchResponseDoc
 GoogleFinanceSearchParams = TypedDict('GoogleFinanceSearchParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -990,7 +9596,7 @@ GoogleFinanceSearchParams = TypedDict('GoogleFinanceSearchParams', {
     'q': Required[str],
 }, total=False)
 
-GoogleFinanceTickerResponse = Any
+GoogleFinanceTickerResponse = ModelFinanceTickerResponseDoc
 GoogleFinanceTickerParams = TypedDict('GoogleFinanceTickerParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -999,8 +9605,8 @@ GoogleFinanceTickerParams = TypedDict('GoogleFinanceTickerParams', {
     'window': NotRequired[str],
 }, total=False)
 
-GoogleJobsBody = dict[str, Any]
-GoogleJobsResponse = Any
+GoogleJobsBody = ModelGoogleJobsOption
+GoogleJobsResponse = ModelGoogleJobsResponse
 GoogleJobsParams = TypedDict('GoogleJobsParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -1008,7 +9614,7 @@ GoogleJobsParams = TypedDict('GoogleJobsParams', {
     'option': Required[GoogleJobsBody],
 }, total=False)
 
-GoogleMapPlaceResponse = Any
+GoogleMapPlaceResponse = ModelGoogleMapPlaceResponseDoc
 GoogleMapPlaceParams = TypedDict('GoogleMapPlaceParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -1016,8 +9622,8 @@ GoogleMapPlaceParams = TypedDict('GoogleMapPlaceParams', {
     'place_id': Required[str],
 }, total=False)
 
-GoogleMapSearchBody = dict[str, Any]
-GoogleMapSearchResponse = Any
+GoogleMapSearchBody = ModelGoogleMapSearchOption
+GoogleMapSearchResponse = ModelGoogleMapSearchResponseDoc
 GoogleMapSearchParams = TypedDict('GoogleMapSearchParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -1025,8 +9631,8 @@ GoogleMapSearchParams = TypedDict('GoogleMapSearchParams', {
     'mapSearchOption': Required[GoogleMapSearchBody],
 }, total=False)
 
-GoogleSearchBody = dict[str, Any]
-GoogleSearchResponse = Any
+GoogleSearchBody = ModelGoogleSearchOption
+GoogleSearchResponse = ModelGoogleSearchResponseDoc
 GoogleSearchParams = TypedDict('GoogleSearchParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -1034,7 +9640,7 @@ GoogleSearchParams = TypedDict('GoogleSearchParams', {
     'searchOption': Required[GoogleSearchBody],
 }, total=False)
 
-GoogleSuggestResponse = Any
+GoogleSuggestResponse = ModelGoogleSuggestResponseDoc
 GoogleSuggestParams = TypedDict('GoogleSuggestParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -1045,22 +9651,22 @@ GoogleSuggestParams = TypedDict('GoogleSuggestParams', {
     'lang': NotRequired[str],
 }, total=False)
 
-GoogleTrendsCategoriesResponse = Any
+GoogleTrendsCategoriesResponse = ModelTrendsTrendsCategoriesResponseDoc
 GoogleTrendsCategoriesParams = TypedDict('GoogleTrendsCategoriesParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
     '_headers': NotRequired[Mapping[str, str]],
 }, total=False)
 
-GoogleTrendsEnumsResponse = Any
+GoogleTrendsEnumsResponse = ModelTrendsTrendsEnumsResponseDoc
 GoogleTrendsEnumsParams = TypedDict('GoogleTrendsEnumsParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
     '_headers': NotRequired[Mapping[str, str]],
 }, total=False)
 
-GoogleTrendsExploreBody = dict[str, Any]
-GoogleTrendsExploreResponse = Any
+GoogleTrendsExploreBody = ModelTrendsExploreRequest
+GoogleTrendsExploreResponse = ModelTrendsExploreResponseDoc
 GoogleTrendsExploreParams = TypedDict('GoogleTrendsExploreParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -1068,8 +9674,8 @@ GoogleTrendsExploreParams = TypedDict('GoogleTrendsExploreParams', {
     'request': Required[GoogleTrendsExploreBody],
 }, total=False)
 
-GoogleTrendsExploreInterestByRegionBody = dict[str, Any]
-GoogleTrendsExploreInterestByRegionResponse = Any
+GoogleTrendsExploreInterestByRegionBody = ModelTrendsExploreRequest
+GoogleTrendsExploreInterestByRegionResponse = ModelTrendsInterestByRegionResponseDoc
 GoogleTrendsExploreInterestByRegionParams = TypedDict('GoogleTrendsExploreInterestByRegionParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -1077,8 +9683,8 @@ GoogleTrendsExploreInterestByRegionParams = TypedDict('GoogleTrendsExploreIntere
     'request': Required[GoogleTrendsExploreInterestByRegionBody],
 }, total=False)
 
-GoogleTrendsExploreInterestOverTimeBody = dict[str, Any]
-GoogleTrendsExploreInterestOverTimeResponse = Any
+GoogleTrendsExploreInterestOverTimeBody = ModelTrendsExploreRequest
+GoogleTrendsExploreInterestOverTimeResponse = ModelTrendsInterestOverTimeResponseDoc
 GoogleTrendsExploreInterestOverTimeParams = TypedDict('GoogleTrendsExploreInterestOverTimeParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -1086,8 +9692,8 @@ GoogleTrendsExploreInterestOverTimeParams = TypedDict('GoogleTrendsExploreIntere
     'request': Required[GoogleTrendsExploreInterestOverTimeBody],
 }, total=False)
 
-GoogleTrendsExploreRelatedTopicsBody = dict[str, Any]
-GoogleTrendsExploreRelatedTopicsResponse = Any
+GoogleTrendsExploreRelatedTopicsBody = ModelTrendsExploreRequest
+GoogleTrendsExploreRelatedTopicsResponse = ModelTrendsRelatedTopicsResponseDoc
 GoogleTrendsExploreRelatedTopicsParams = TypedDict('GoogleTrendsExploreRelatedTopicsParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -1095,8 +9701,8 @@ GoogleTrendsExploreRelatedTopicsParams = TypedDict('GoogleTrendsExploreRelatedTo
     'request': Required[GoogleTrendsExploreRelatedTopicsBody],
 }, total=False)
 
-GoogleTrendsExploreRisingQueriesBody = dict[str, Any]
-GoogleTrendsExploreRisingQueriesResponse = Any
+GoogleTrendsExploreRisingQueriesBody = ModelTrendsExploreRequest
+GoogleTrendsExploreRisingQueriesResponse = ModelTrendsExploreQueriesResponseDoc
 GoogleTrendsExploreRisingQueriesParams = TypedDict('GoogleTrendsExploreRisingQueriesParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -1104,8 +9710,8 @@ GoogleTrendsExploreRisingQueriesParams = TypedDict('GoogleTrendsExploreRisingQue
     'request': Required[GoogleTrendsExploreRisingQueriesBody],
 }, total=False)
 
-GoogleTrendsExploreTopQueriesBody = dict[str, Any]
-GoogleTrendsExploreTopQueriesResponse = Any
+GoogleTrendsExploreTopQueriesBody = ModelTrendsExploreRequest
+GoogleTrendsExploreTopQueriesResponse = ModelTrendsExploreQueriesResponseDoc
 GoogleTrendsExploreTopQueriesParams = TypedDict('GoogleTrendsExploreTopQueriesParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -1113,14 +9719,14 @@ GoogleTrendsExploreTopQueriesParams = TypedDict('GoogleTrendsExploreTopQueriesPa
     'request': Required[GoogleTrendsExploreTopQueriesBody],
 }, total=False)
 
-GoogleTrendsLocationsResponse = Any
+GoogleTrendsLocationsResponse = ModelTrendsTrendsLocationsResponseDoc
 GoogleTrendsLocationsParams = TypedDict('GoogleTrendsLocationsParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
     '_headers': NotRequired[Mapping[str, str]],
 }, total=False)
 
-GoogleTrendsTrendingResponse = Any
+GoogleTrendsTrendingResponse = ModelTrendsTrendingResponseDoc
 GoogleTrendsTrendingParams = TypedDict('GoogleTrendsTrendingParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -1136,8 +9742,8 @@ GoogleTrendsTrendingParams = TypedDict('GoogleTrendsTrendingParams', {
     'limit': NotRequired[int],
 }, total=False)
 
-GoogleTrendsTrendingDetailBody = dict[str, Any]
-GoogleTrendsTrendingDetailResponse = Any
+GoogleTrendsTrendingDetailBody = ModelTrendsTrendingDetailRequest
+GoogleTrendsTrendingDetailResponse = ModelTrendsExploreResponseDoc
 GoogleTrendsTrendingDetailParams = TypedDict('GoogleTrendsTrendingDetailParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -1145,7 +9751,7 @@ GoogleTrendsTrendingDetailParams = TypedDict('GoogleTrendsTrendingDetailParams',
     'request': Required[GoogleTrendsTrendingDetailBody],
 }, total=False)
 
-GooglePlayAppResponse = Any
+GooglePlayAppResponse = ModelGoogleplayAppDetailsResponse
 GooglePlayAppParams = TypedDict('GooglePlayAppParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -1155,7 +9761,7 @@ GooglePlayAppParams = TypedDict('GooglePlayAppParams', {
     'lang': NotRequired[str],
 }, total=False)
 
-GooglePlayCategoriesResponse = Any
+GooglePlayCategoriesResponse = ModelGoogleplayCategoriesResponseDoc
 GooglePlayCategoriesParams = TypedDict('GooglePlayCategoriesParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -1164,7 +9770,7 @@ GooglePlayCategoriesParams = TypedDict('GooglePlayCategoriesParams', {
     'lang': NotRequired[str],
 }, total=False)
 
-GooglePlayDatasafetyResponse = Any
+GooglePlayDatasafetyResponse = ModelGoogleplayDataSafetyResponseDoc
 GooglePlayDatasafetyParams = TypedDict('GooglePlayDatasafetyParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -1173,7 +9779,7 @@ GooglePlayDatasafetyParams = TypedDict('GooglePlayDatasafetyParams', {
     'lang': NotRequired[str],
 }, total=False)
 
-GooglePlayDeveloperResponse = Any
+GooglePlayDeveloperResponse = ModelGoogleplayDeveloperResultsResponseDoc
 GooglePlayDeveloperParams = TypedDict('GooglePlayDeveloperParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -1185,7 +9791,7 @@ GooglePlayDeveloperParams = TypedDict('GooglePlayDeveloperParams', {
     'full_detail': NotRequired[bool],
 }, total=False)
 
-GooglePlayListResponse = Any
+GooglePlayListResponse = ModelGoogleplayListResultsResponseDoc
 GooglePlayListParams = TypedDict('GooglePlayListParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -1199,7 +9805,7 @@ GooglePlayListParams = TypedDict('GooglePlayListParams', {
     'full_detail': NotRequired[bool],
 }, total=False)
 
-GooglePlayPermissionsResponse = Any
+GooglePlayPermissionsResponse = ModelGoogleplayPermissionsResultsResponseDoc
 GooglePlayPermissionsParams = TypedDict('GooglePlayPermissionsParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -1210,7 +9816,7 @@ GooglePlayPermissionsParams = TypedDict('GooglePlayPermissionsParams', {
     'short': NotRequired[bool],
 }, total=False)
 
-GooglePlayReviewsResponse = Any
+GooglePlayReviewsResponse = ModelGoogleplayReviewsResponseDoc
 GooglePlayReviewsParams = TypedDict('GooglePlayReviewsParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -1224,7 +9830,7 @@ GooglePlayReviewsParams = TypedDict('GooglePlayReviewsParams', {
     'next_pagination_token': NotRequired[str],
 }, total=False)
 
-GooglePlaySearchResponse = Any
+GooglePlaySearchResponse = ModelGoogleplaySearchResultsResponseDoc
 GooglePlaySearchParams = TypedDict('GooglePlaySearchParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -1237,7 +9843,7 @@ GooglePlaySearchParams = TypedDict('GooglePlaySearchParams', {
     'price': NotRequired[str],
 }, total=False)
 
-GooglePlaySimilarResponse = Any
+GooglePlaySimilarResponse = ModelGoogleplaySimilarResultsResponseDoc
 GooglePlaySimilarParams = TypedDict('GooglePlaySimilarParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -1249,7 +9855,7 @@ GooglePlaySimilarParams = TypedDict('GooglePlaySimilarParams', {
     'full_detail': NotRequired[bool],
 }, total=False)
 
-GooglePlaySuggestResponse = Any
+GooglePlaySuggestResponse = ModelGoogleplaySuggestResponseDoc
 GooglePlaySuggestParams = TypedDict('GooglePlaySuggestParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -1259,7 +9865,7 @@ GooglePlaySuggestParams = TypedDict('GooglePlaySuggestParams', {
     'lang': NotRequired[str],
 }, total=False)
 
-InstagramPostResponse = Any
+InstagramPostResponse = ModelInstagramPostResponseDoc
 InstagramPostParams = TypedDict('InstagramPostParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -1268,7 +9874,7 @@ InstagramPostParams = TypedDict('InstagramPostParams', {
     'post_id': Required[str],
 }, total=False)
 
-InstagramProfileResponse = Any
+InstagramProfileResponse = ModelInstagramProfileResponseDoc
 InstagramProfileParams = TypedDict('InstagramProfileParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -1276,7 +9882,7 @@ InstagramProfileParams = TypedDict('InstagramProfileParams', {
     'username': Required[str],
 }, total=False)
 
-InstagramReelsResponse = Any
+InstagramReelsResponse = ModelInstagramReelsResponseDoc
 InstagramReelsParams = TypedDict('InstagramReelsParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -1285,7 +9891,7 @@ InstagramReelsParams = TypedDict('InstagramReelsParams', {
     'max_id': NotRequired[str],
 }, total=False)
 
-JustWatchJustwatchAgeCertificationsResponse = Any
+JustWatchJustwatchAgeCertificationsResponse = ModelJustwatchAgeCertificationsResponseDoc
 JustWatchJustwatchAgeCertificationsParams = TypedDict('JustWatchJustwatchAgeCertificationsParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -1293,7 +9899,7 @@ JustWatchJustwatchAgeCertificationsParams = TypedDict('JustWatchJustwatchAgeCert
     'country': NotRequired[str],
 }, total=False)
 
-JustWatchJustwatchDiscoverResponse = Any
+JustWatchJustwatchDiscoverResponse = ModelJustwatchDiscoverResponseDoc
 JustWatchJustwatchDiscoverParams = TypedDict('JustWatchJustwatchDiscoverParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -1309,7 +9915,7 @@ JustWatchJustwatchDiscoverParams = TypedDict('JustWatchJustwatchDiscoverParams',
     'year_max': NotRequired[int],
 }, total=False)
 
-JustWatchJustwatchEpisodeByIdResponse = Any
+JustWatchJustwatchEpisodeByIdResponse = ModelJustwatchEpisodeByIdresponseDoc
 JustWatchJustwatchEpisodeByIdParams = TypedDict('JustWatchJustwatchEpisodeByIdParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -1319,7 +9925,7 @@ JustWatchJustwatchEpisodeByIdParams = TypedDict('JustWatchJustwatchEpisodeByIdPa
     'language': NotRequired[str],
 }, total=False)
 
-JustWatchJustwatchEpisodeOffersResponse = Any
+JustWatchJustwatchEpisodeOffersResponse = ModelJustwatchEpisodeOffersResponseDoc
 JustWatchJustwatchEpisodeOffersParams = TypedDict('JustWatchJustwatchEpisodeOffersParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -1329,7 +9935,7 @@ JustWatchJustwatchEpisodeOffersParams = TypedDict('JustWatchJustwatchEpisodeOffe
     'language': NotRequired[str],
 }, total=False)
 
-JustWatchJustwatchGenreTitlesResponse = Any
+JustWatchJustwatchGenreTitlesResponse = ModelJustwatchGenreTitlesResponseDoc
 JustWatchJustwatchGenreTitlesParams = TypedDict('JustWatchJustwatchGenreTitlesParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -1341,7 +9947,7 @@ JustWatchJustwatchGenreTitlesParams = TypedDict('JustWatchJustwatchGenreTitlesPa
     'type': NotRequired[Literal['all', 'movie', 'show']],
 }, total=False)
 
-JustWatchJustwatchGenresResponse = Any
+JustWatchJustwatchGenresResponse = ModelJustwatchGenresResponseDoc
 JustWatchJustwatchGenresParams = TypedDict('JustWatchJustwatchGenresParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -1349,7 +9955,7 @@ JustWatchJustwatchGenresParams = TypedDict('JustWatchJustwatchGenresParams', {
     'language': NotRequired[str],
 }, total=False)
 
-JustWatchJustwatchMonetizationTitlesResponse = Any
+JustWatchJustwatchMonetizationTitlesResponse = ModelJustwatchMonetizationTitlesResponseDoc
 JustWatchJustwatchMonetizationTitlesParams = TypedDict('JustWatchJustwatchMonetizationTitlesParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -1361,7 +9967,7 @@ JustWatchJustwatchMonetizationTitlesParams = TypedDict('JustWatchJustwatchMoneti
     'type': NotRequired[Literal['all', 'movie', 'show']],
 }, total=False)
 
-JustWatchJustwatchNewResponse = Any
+JustWatchJustwatchNewResponse = ModelJustwatchNewTitlesResponseDoc
 JustWatchJustwatchNewParams = TypedDict('JustWatchJustwatchNewParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -1372,7 +9978,7 @@ JustWatchJustwatchNewParams = TypedDict('JustWatchJustwatchNewParams', {
     'type': NotRequired[Literal['all', 'movie', 'show']],
 }, total=False)
 
-JustWatchJustwatchPopularResponse = Any
+JustWatchJustwatchPopularResponse = ModelJustwatchPopularResponseDoc
 JustWatchJustwatchPopularParams = TypedDict('JustWatchJustwatchPopularParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -1383,7 +9989,7 @@ JustWatchJustwatchPopularParams = TypedDict('JustWatchJustwatchPopularParams', {
     'type': NotRequired[Literal['all', 'movie', 'show']],
 }, total=False)
 
-JustWatchJustwatchProviderTitlesResponse = Any
+JustWatchJustwatchProviderTitlesResponse = ModelJustwatchProviderTitlesResponseDoc
 JustWatchJustwatchProviderTitlesParams = TypedDict('JustWatchJustwatchProviderTitlesParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -1395,7 +10001,7 @@ JustWatchJustwatchProviderTitlesParams = TypedDict('JustWatchJustwatchProviderTi
     'type': NotRequired[Literal['all', 'movie', 'show']],
 }, total=False)
 
-JustWatchJustwatchProvidersResponse = Any
+JustWatchJustwatchProvidersResponse = ModelJustwatchProvidersResponseDoc
 JustWatchJustwatchProvidersParams = TypedDict('JustWatchJustwatchProvidersParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -1403,7 +10009,7 @@ JustWatchJustwatchProvidersParams = TypedDict('JustWatchJustwatchProvidersParams
     'country': NotRequired[str],
 }, total=False)
 
-JustWatchJustwatchSearchResponse = Any
+JustWatchJustwatchSearchResponse = ModelJustwatchSearchResponseDoc
 JustWatchJustwatchSearchParams = TypedDict('JustWatchJustwatchSearchParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -1414,7 +10020,7 @@ JustWatchJustwatchSearchParams = TypedDict('JustWatchJustwatchSearchParams', {
     'limit': NotRequired[int],
 }, total=False)
 
-JustWatchJustwatchSeasonByIdResponse = Any
+JustWatchJustwatchSeasonByIdResponse = ModelJustwatchSeasonByIdresponseDoc
 JustWatchJustwatchSeasonByIdParams = TypedDict('JustWatchJustwatchSeasonByIdParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -1424,7 +10030,7 @@ JustWatchJustwatchSeasonByIdParams = TypedDict('JustWatchJustwatchSeasonByIdPara
     'language': NotRequired[str],
 }, total=False)
 
-JustWatchJustwatchSeasonEpisodesResponse = Any
+JustWatchJustwatchSeasonEpisodesResponse = ModelJustwatchSeasonEpisodesResponseDoc
 JustWatchJustwatchSeasonEpisodesParams = TypedDict('JustWatchJustwatchSeasonEpisodesParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -1434,7 +10040,7 @@ JustWatchJustwatchSeasonEpisodesParams = TypedDict('JustWatchJustwatchSeasonEpis
     'language': NotRequired[str],
 }, total=False)
 
-JustWatchJustwatchShowSeasonsResponse = Any
+JustWatchJustwatchShowSeasonsResponse = ModelJustwatchShowSeasonsResponseDoc
 JustWatchJustwatchShowSeasonsParams = TypedDict('JustWatchJustwatchShowSeasonsParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -1444,7 +10050,7 @@ JustWatchJustwatchShowSeasonsParams = TypedDict('JustWatchJustwatchShowSeasonsPa
     'language': NotRequired[str],
 }, total=False)
 
-JustWatchJustwatchTitleResponse = Any
+JustWatchJustwatchTitleResponse = ModelJustwatchTitleResponseDoc
 JustWatchJustwatchTitleParams = TypedDict('JustWatchJustwatchTitleParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -1453,7 +10059,7 @@ JustWatchJustwatchTitleParams = TypedDict('JustWatchJustwatchTitleParams', {
     'url': NotRequired[str],
 }, total=False)
 
-JustWatchJustwatchTitleAnalysisResponse = Any
+JustWatchJustwatchTitleAnalysisResponse = ModelJustwatchAnalysisResponseDoc
 JustWatchJustwatchTitleAnalysisParams = TypedDict('JustWatchJustwatchTitleAnalysisParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -1462,7 +10068,7 @@ JustWatchJustwatchTitleAnalysisParams = TypedDict('JustWatchJustwatchTitleAnalys
     'url': NotRequired[str],
 }, total=False)
 
-JustWatchJustwatchTitleByIdResponse = Any
+JustWatchJustwatchTitleByIdResponse = ModelJustwatchTitleResponseDoc
 JustWatchJustwatchTitleByIdParams = TypedDict('JustWatchJustwatchTitleByIdParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -1472,7 +10078,7 @@ JustWatchJustwatchTitleByIdParams = TypedDict('JustWatchJustwatchTitleByIdParams
     'language': NotRequired[str],
 }, total=False)
 
-JustWatchJustwatchTitleMediaResponse = Any
+JustWatchJustwatchTitleMediaResponse = ModelJustwatchTitleMediaResponseDoc
 JustWatchJustwatchTitleMediaParams = TypedDict('JustWatchJustwatchTitleMediaParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -1482,7 +10088,7 @@ JustWatchJustwatchTitleMediaParams = TypedDict('JustWatchJustwatchTitleMediaPara
     'language': NotRequired[str],
 }, total=False)
 
-JustWatchJustwatchTitleOffersResponse = Any
+JustWatchJustwatchTitleOffersResponse = ModelJustwatchTitleOffersResponseDoc
 JustWatchJustwatchTitleOffersParams = TypedDict('JustWatchJustwatchTitleOffersParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -1492,7 +10098,7 @@ JustWatchJustwatchTitleOffersParams = TypedDict('JustWatchJustwatchTitleOffersPa
     'language': NotRequired[str],
 }, total=False)
 
-JustWatchJustwatchTitleSimilarResponse = Any
+JustWatchJustwatchTitleSimilarResponse = ModelJustwatchSimilarTitlesResponseDoc
 JustWatchJustwatchTitleSimilarParams = TypedDict('JustWatchJustwatchTitleSimilarParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -1503,7 +10109,7 @@ JustWatchJustwatchTitleSimilarParams = TypedDict('JustWatchJustwatchTitleSimilar
     'limit': NotRequired[int],
 }, total=False)
 
-LinkedInLinkedinCompanyResponse = Any
+LinkedInLinkedinCompanyResponse = ModelLinkedinCompanyResponseDoc
 LinkedInLinkedinCompanyParams = TypedDict('LinkedInLinkedinCompanyParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -1511,7 +10117,7 @@ LinkedInLinkedinCompanyParams = TypedDict('LinkedInLinkedinCompanyParams', {
     'id': Required[str],
 }, total=False)
 
-LinkedInLinkedinProductResponse = Any
+LinkedInLinkedinProductResponse = ModelLinkedinProductResponseDoc
 LinkedInLinkedinProductParams = TypedDict('LinkedInLinkedinProductParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -1519,7 +10125,7 @@ LinkedInLinkedinProductParams = TypedDict('LinkedInLinkedinProductParams', {
     'id': Required[str],
 }, total=False)
 
-LinkedInLinkedinShowcaseResponse = Any
+LinkedInLinkedinShowcaseResponse = ModelLinkedinShowcaseResponseDoc
 LinkedInLinkedinShowcaseParams = TypedDict('LinkedInLinkedinShowcaseParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -1527,14 +10133,14 @@ LinkedInLinkedinShowcaseParams = TypedDict('LinkedInLinkedinShowcaseParams', {
     'id': Required[str],
 }, total=False)
 
-MetaPingResponse = Any
+MetaPingResponse = ModelApiPingResponseDoc
 MetaPingParams = TypedDict('MetaPingParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
     '_headers': NotRequired[Mapping[str, str]],
 }, total=False)
 
-ProductHuntCategoryResponse = Any
+ProductHuntCategoryResponse = ModelProducthuntCategoryResponseDoc
 ProductHuntCategoryParams = TypedDict('ProductHuntCategoryParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -1542,7 +10148,7 @@ ProductHuntCategoryParams = TypedDict('ProductHuntCategoryParams', {
     'slug': Required[str],
 }, total=False)
 
-ProductHuntCategoryProductsResponse = Any
+ProductHuntCategoryProductsResponse = ModelProducthuntCategoryProductsResponseDoc
 ProductHuntCategoryProductsParams = TypedDict('ProductHuntCategoryProductsParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -1555,7 +10161,7 @@ ProductHuntCategoryProductsParams = TypedDict('ProductHuntCategoryProductsParams
     'tags': NotRequired[str],
 }, total=False)
 
-ProductHuntLeaderboardResponse = Any
+ProductHuntLeaderboardResponse = ModelProducthuntLeaderboardResponseDoc
 ProductHuntLeaderboardParams = TypedDict('ProductHuntLeaderboardParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -1571,7 +10177,7 @@ ProductHuntLeaderboardParams = TypedDict('ProductHuntLeaderboardParams', {
     'cursor': NotRequired[str],
 }, total=False)
 
-ProductHuntProductResponse = Any
+ProductHuntProductResponse = ModelProducthuntProductResponseDoc
 ProductHuntProductParams = TypedDict('ProductHuntProductParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -1579,7 +10185,7 @@ ProductHuntProductParams = TypedDict('ProductHuntProductParams', {
     'id': Required[str],
 }, total=False)
 
-ProductHuntAboutResponse = Any
+ProductHuntAboutResponse = ModelProducthuntAboutResponseDoc
 ProductHuntAboutParams = TypedDict('ProductHuntAboutParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -1587,7 +10193,7 @@ ProductHuntAboutParams = TypedDict('ProductHuntAboutParams', {
     'id': Required[str],
 }, total=False)
 
-ProductHuntAlternativesResponse = Any
+ProductHuntAlternativesResponse = ModelProducthuntAlternativesResponseDoc
 ProductHuntAlternativesParams = TypedDict('ProductHuntAlternativesParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -1599,7 +10205,7 @@ ProductHuntAlternativesParams = TypedDict('ProductHuntAlternativesParams', {
     'tags': NotRequired[str],
 }, total=False)
 
-ProductHuntCustomersResponse = Any
+ProductHuntCustomersResponse = ModelProducthuntCustomersResponseDoc
 ProductHuntCustomersParams = TypedDict('ProductHuntCustomersParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -1610,7 +10216,7 @@ ProductHuntCustomersParams = TypedDict('ProductHuntCustomersParams', {
     'page_size': NotRequired[int],
 }, total=False)
 
-ProductHuntLaunchesResponse = Any
+ProductHuntLaunchesResponse = ModelProducthuntLaunchesResponseDoc
 ProductHuntLaunchesParams = TypedDict('ProductHuntLaunchesParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -1620,7 +10226,7 @@ ProductHuntLaunchesParams = TypedDict('ProductHuntLaunchesParams', {
     'order': NotRequired[str],
 }, total=False)
 
-ProductHuntMakersResponse = Any
+ProductHuntMakersResponse = ModelProducthuntMakersResponseDoc
 ProductHuntMakersParams = TypedDict('ProductHuntMakersParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -1629,7 +10235,7 @@ ProductHuntMakersParams = TypedDict('ProductHuntMakersParams', {
     'cursor': NotRequired[str],
 }, total=False)
 
-ProductHuntReviewsResponse = Any
+ProductHuntReviewsResponse = ModelProducthuntReviewsResponseDoc
 ProductHuntReviewsParams = TypedDict('ProductHuntReviewsParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -1637,7 +10243,7 @@ ProductHuntReviewsParams = TypedDict('ProductHuntReviewsParams', {
     'id': Required[str],
 }, total=False)
 
-ProductHuntSearchResponse = Any
+ProductHuntSearchResponse = ModelProducthuntSearchResponseDoc
 ProductHuntSearchParams = TypedDict('ProductHuntSearchParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -1649,15 +10255,15 @@ ProductHuntSearchParams = TypedDict('ProductHuntSearchParams', {
     'topics': NotRequired[str],
 }, total=False)
 
-MetaReadyResponse = Any
+MetaReadyResponse = ModelApiReadinessResponseDoc
 MetaReadyParams = TypedDict('MetaReadyParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
     '_headers': NotRequired[Mapping[str, str]],
 }, total=False)
 
-ReferralsClickBody = dict[str, Any]
-ReferralsClickResponse = Any
+ReferralsClickBody = ModelReferralsReferralClickRequestDoc
+ReferralsClickResponse = ModelReferralsReferralClickResponseDoc
 ReferralsClickParams = TypedDict('ReferralsClickParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -1665,14 +10271,14 @@ ReferralsClickParams = TypedDict('ReferralsClickParams', {
     'request': Required[ReferralsClickBody],
 }, total=False)
 
-ReferralsMeResponse = Any
+ReferralsMeResponse = ModelReferralsReferralsMeResponseDoc
 ReferralsMeParams = TypedDict('ReferralsMeParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
     '_headers': NotRequired[Mapping[str, str]],
 }, total=False)
 
-ReferralsMeEventsResponse = Any
+ReferralsMeEventsResponse = ModelReferralsReferralsEventsResponseDoc
 ReferralsMeEventsParams = TypedDict('ReferralsMeEventsParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -1680,7 +10286,7 @@ ReferralsMeEventsParams = TypedDict('ReferralsMeEventsParams', {
     'limit': NotRequired[int],
 }, total=False)
 
-SimilarWebSearchResponse = Any
+SimilarWebSearchResponse = ModelSimilarwebSearchResponseDoc
 SimilarWebSearchParams = TypedDict('SimilarWebSearchParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -1688,7 +10294,7 @@ SimilarWebSearchParams = TypedDict('SimilarWebSearchParams', {
     'q': Required[str],
 }, total=False)
 
-SimilarWebWebResponse = Any
+SimilarWebWebResponse = ModelSimilarwebWebResponseDoc
 SimilarWebWebParams = TypedDict('SimilarWebWebParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -1696,7 +10302,7 @@ SimilarWebWebParams = TypedDict('SimilarWebWebParams', {
     'domain': Required[str],
 }, total=False)
 
-SpotifyPodcastsCategoriesResponse = Any
+SpotifyPodcastsCategoriesResponse = ModelSpotifyBrowsePageResponseDoc
 SpotifyPodcastsCategoriesParams = TypedDict('SpotifyPodcastsCategoriesParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -1709,7 +10315,7 @@ SpotifyPodcastsCategoriesParams = TypedDict('SpotifyPodcastsCategoriesParams', {
     'include_episode_content_ratings_v2': NotRequired[bool],
 }, total=False)
 
-SpotifyPodcastsChartsResponse = Any
+SpotifyPodcastsChartsResponse = ModelSpotifyChartsResponseDoc
 SpotifyPodcastsChartsParams = TypedDict('SpotifyPodcastsChartsParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -1719,7 +10325,7 @@ SpotifyPodcastsChartsParams = TypedDict('SpotifyPodcastsChartsParams', {
     'limit': NotRequired[int],
 }, total=False)
 
-SpotifyPodcastsEpisodeResponse = Any
+SpotifyPodcastsEpisodeResponse = ModelSpotifyEpisodeResponseDoc
 SpotifyPodcastsEpisodeParams = TypedDict('SpotifyPodcastsEpisodeParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -1728,7 +10334,7 @@ SpotifyPodcastsEpisodeParams = TypedDict('SpotifyPodcastsEpisodeParams', {
     'id': NotRequired[str],
 }, total=False)
 
-SpotifyPodcastsHomeResponse = Any
+SpotifyPodcastsHomeResponse = ModelSpotifyBrowsePageResponseDoc
 SpotifyPodcastsHomeParams = TypedDict('SpotifyPodcastsHomeParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -1741,7 +10347,7 @@ SpotifyPodcastsHomeParams = TypedDict('SpotifyPodcastsHomeParams', {
     'include_episode_content_ratings_v2': NotRequired[bool],
 }, total=False)
 
-SpotifyPodcastsSearchResponse = Any
+SpotifyPodcastsSearchResponse = ModelSpotifySearchResponseDoc
 SpotifyPodcastsSearchParams = TypedDict('SpotifyPodcastsSearchParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -1757,7 +10363,7 @@ SpotifyPodcastsSearchParams = TypedDict('SpotifyPodcastsSearchParams', {
     'include_episode_content_ratings_v2': NotRequired[bool],
 }, total=False)
 
-SpotifyPodcastsShowResponse = Any
+SpotifyPodcastsShowResponse = ModelSpotifyShowResponseDoc
 SpotifyPodcastsShowParams = TypedDict('SpotifyPodcastsShowParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -1767,7 +10373,7 @@ SpotifyPodcastsShowParams = TypedDict('SpotifyPodcastsShowParams', {
     'include_episode_content_ratings_v2': NotRequired[bool],
 }, total=False)
 
-SpotifyPodcastsShowEpisodesResponse = Any
+SpotifyPodcastsShowEpisodesResponse = ModelSpotifyShowEpisodesResponseDoc
 SpotifyPodcastsShowEpisodesParams = TypedDict('SpotifyPodcastsShowEpisodesParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -1778,7 +10384,7 @@ SpotifyPodcastsShowEpisodesParams = TypedDict('SpotifyPodcastsShowEpisodesParams
     'include_episode_content_ratings_v2': NotRequired[bool],
 }, total=False)
 
-SpotifyPodcastsShowRecommendationsResponse = Any
+SpotifyPodcastsShowRecommendationsResponse = ModelSpotifyShowRecommendationsResponseDoc
 SpotifyPodcastsShowRecommendationsParams = TypedDict('SpotifyPodcastsShowRecommendationsParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -1786,7 +10392,7 @@ SpotifyPodcastsShowRecommendationsParams = TypedDict('SpotifyPodcastsShowRecomme
     'uri': NotRequired[str],
 }, total=False)
 
-SpotifyAlbumResponse = Any
+SpotifyAlbumResponse = ModelSpotifyAlbumResponseDoc
 SpotifyAlbumParams = TypedDict('SpotifyAlbumParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -1797,7 +10403,7 @@ SpotifyAlbumParams = TypedDict('SpotifyAlbumParams', {
     'limit': NotRequired[int],
 }, total=False)
 
-SpotifyAlbumTracksResponse = Any
+SpotifyAlbumTracksResponse = ModelSpotifyAlbumResponseDoc
 SpotifyAlbumTracksParams = TypedDict('SpotifyAlbumTracksParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -1808,7 +10414,7 @@ SpotifyAlbumTracksParams = TypedDict('SpotifyAlbumTracksParams', {
     'limit': NotRequired[int],
 }, total=False)
 
-SpotifyAlbumsSearchResponse = Any
+SpotifyAlbumsSearchResponse = ModelSpotifySearchCatalogResponseDoc
 SpotifyAlbumsSearchParams = TypedDict('SpotifyAlbumsSearchParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -1824,7 +10430,7 @@ SpotifyAlbumsSearchParams = TypedDict('SpotifyAlbumsSearchParams', {
     'include_episode_content_ratings_v2': NotRequired[bool],
 }, total=False)
 
-SpotifyArtistResponse = Any
+SpotifyArtistResponse = ModelSpotifyArtistResponseDoc
 SpotifyArtistParams = TypedDict('SpotifyArtistParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -1833,7 +10439,7 @@ SpotifyArtistParams = TypedDict('SpotifyArtistParams', {
     'id': NotRequired[str],
 }, total=False)
 
-SpotifyArtistAlbumsResponse = Any
+SpotifyArtistAlbumsResponse = ModelSpotifyArtistAlbumsResponseDoc
 SpotifyArtistAlbumsParams = TypedDict('SpotifyArtistAlbumsParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -1846,7 +10452,7 @@ SpotifyArtistAlbumsParams = TypedDict('SpotifyArtistAlbumsParams', {
     'limit': NotRequired[int],
 }, total=False)
 
-SpotifyArtistPlaylistsResponse = Any
+SpotifyArtistPlaylistsResponse = ModelSpotifyArtistCollectionResponseDoc
 SpotifyArtistPlaylistsParams = TypedDict('SpotifyArtistPlaylistsParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -1855,7 +10461,7 @@ SpotifyArtistPlaylistsParams = TypedDict('SpotifyArtistPlaylistsParams', {
     'id': NotRequired[str],
 }, total=False)
 
-SpotifyArtistRelatedResponse = Any
+SpotifyArtistRelatedResponse = ModelSpotifyArtistCollectionResponseDoc
 SpotifyArtistRelatedParams = TypedDict('SpotifyArtistRelatedParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -1864,7 +10470,7 @@ SpotifyArtistRelatedParams = TypedDict('SpotifyArtistRelatedParams', {
     'id': NotRequired[str],
 }, total=False)
 
-SpotifyArtistsSearchResponse = Any
+SpotifyArtistsSearchResponse = ModelSpotifySearchCatalogResponseDoc
 SpotifyArtistsSearchParams = TypedDict('SpotifyArtistsSearchParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -1874,7 +10480,7 @@ SpotifyArtistsSearchParams = TypedDict('SpotifyArtistsSearchParams', {
     'limit': NotRequired[int],
 }, total=False)
 
-SpotifyAudiobookResponse = Any
+SpotifyAudiobookResponse = ModelSpotifyAudiobookResponseDoc
 SpotifyAudiobookParams = TypedDict('SpotifyAudiobookParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -1883,7 +10489,7 @@ SpotifyAudiobookParams = TypedDict('SpotifyAudiobookParams', {
     'id': NotRequired[str],
 }, total=False)
 
-SpotifyAudiobookChaptersResponse = Any
+SpotifyAudiobookChaptersResponse = ModelSpotifyAudiobookChaptersResponseDoc
 SpotifyAudiobookChaptersParams = TypedDict('SpotifyAudiobookChaptersParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -1894,7 +10500,7 @@ SpotifyAudiobookChaptersParams = TypedDict('SpotifyAudiobookChaptersParams', {
     'limit': NotRequired[int],
 }, total=False)
 
-SpotifyAudiobooksSearchResponse = Any
+SpotifyAudiobooksSearchResponse = ModelSpotifySearchCatalogResponseDoc
 SpotifyAudiobooksSearchParams = TypedDict('SpotifyAudiobooksSearchParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -1910,7 +10516,7 @@ SpotifyAudiobooksSearchParams = TypedDict('SpotifyAudiobooksSearchParams', {
     'include_episode_content_ratings_v2': NotRequired[bool],
 }, total=False)
 
-SpotifyChapterResponse = Any
+SpotifyChapterResponse = ModelSpotifyEpisodeResponseDoc
 SpotifyChapterParams = TypedDict('SpotifyChapterParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -1919,7 +10525,7 @@ SpotifyChapterParams = TypedDict('SpotifyChapterParams', {
     'id': NotRequired[str],
 }, total=False)
 
-SpotifyEpisodesSearchResponse = Any
+SpotifyEpisodesSearchResponse = ModelSpotifySearchCatalogResponseDoc
 SpotifyEpisodesSearchParams = TypedDict('SpotifyEpisodesSearchParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -1929,7 +10535,7 @@ SpotifyEpisodesSearchParams = TypedDict('SpotifyEpisodesSearchParams', {
     'limit': NotRequired[int],
 }, total=False)
 
-SpotifyFeaturedChartsByCountryResponse = Any
+SpotifyFeaturedChartsByCountryResponse = ModelSpotifyCountryHubContentResponseDoc
 SpotifyFeaturedChartsByCountryParams = TypedDict('SpotifyFeaturedChartsByCountryParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -1938,7 +10544,7 @@ SpotifyFeaturedChartsByCountryParams = TypedDict('SpotifyFeaturedChartsByCountry
     'content_id': NotRequired[str],
 }, total=False)
 
-SpotifyGenreResponse = Any
+SpotifyGenreResponse = ModelSpotifyBrowsePageResponseDoc
 SpotifyGenreParams = TypedDict('SpotifyGenreParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -1951,7 +10557,7 @@ SpotifyGenreParams = TypedDict('SpotifyGenreParams', {
     'include_episode_content_ratings_v2': NotRequired[bool],
 }, total=False)
 
-SpotifyHomeResponse = Any
+SpotifyHomeResponse = ModelSpotifyHomeResponseDoc
 SpotifyHomeParams = TypedDict('SpotifyHomeParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -1963,7 +10569,7 @@ SpotifyHomeParams = TypedDict('SpotifyHomeParams', {
     'include_episode_content_ratings_v2': NotRequired[bool],
 }, total=False)
 
-SpotifyPlaylistResponse = Any
+SpotifyPlaylistResponse = ModelSpotifyPlaylistResponseDoc
 SpotifyPlaylistParams = TypedDict('SpotifyPlaylistParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -1976,7 +10582,7 @@ SpotifyPlaylistParams = TypedDict('SpotifyPlaylistParams', {
     'include_episode_content_ratings_v2': NotRequired[bool],
 }, total=False)
 
-SpotifyPlaylistsSearchResponse = Any
+SpotifyPlaylistsSearchResponse = ModelSpotifySearchCatalogResponseDoc
 SpotifyPlaylistsSearchParams = TypedDict('SpotifyPlaylistsSearchParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -1992,7 +10598,7 @@ SpotifyPlaylistsSearchParams = TypedDict('SpotifyPlaylistsSearchParams', {
     'include_episode_content_ratings_v2': NotRequired[bool],
 }, total=False)
 
-SpotifyPopularByCountryResponse = Any
+SpotifyPopularByCountryResponse = ModelSpotifyCountryHubResponseDoc
 SpotifyPopularByCountryParams = TypedDict('SpotifyPopularByCountryParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -2000,7 +10606,7 @@ SpotifyPopularByCountryParams = TypedDict('SpotifyPopularByCountryParams', {
     'country_code': NotRequired[str],
 }, total=False)
 
-SpotifyProfileResponse = Any
+SpotifyProfileResponse = ModelSpotifyUserProfileResponseDoc
 SpotifyProfileParams = TypedDict('SpotifyProfileParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -2013,7 +10619,7 @@ SpotifyProfileParams = TypedDict('SpotifyProfileParams', {
     'episode_limit': NotRequired[int],
 }, total=False)
 
-SpotifyProfileFollowersResponse = Any
+SpotifyProfileFollowersResponse = ModelSpotifyUserProfileFollowersResponseDoc
 SpotifyProfileFollowersParams = TypedDict('SpotifyProfileFollowersParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -2025,7 +10631,7 @@ SpotifyProfileFollowersParams = TypedDict('SpotifyProfileFollowersParams', {
     'limit': NotRequired[int],
 }, total=False)
 
-SpotifyProfilePlaylistsResponse = Any
+SpotifyProfilePlaylistsResponse = ModelSpotifyUserProfilePlaylistsResponseDoc
 SpotifyProfilePlaylistsParams = TypedDict('SpotifyProfilePlaylistsParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -2037,7 +10643,7 @@ SpotifyProfilePlaylistsParams = TypedDict('SpotifyProfilePlaylistsParams', {
     'limit': NotRequired[int],
 }, total=False)
 
-SpotifyProfilesSearchResponse = Any
+SpotifyProfilesSearchResponse = ModelSpotifySearchCatalogResponseDoc
 SpotifyProfilesSearchParams = TypedDict('SpotifyProfilesSearchParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -2053,7 +10659,7 @@ SpotifyProfilesSearchParams = TypedDict('SpotifyProfilesSearchParams', {
     'include_episode_content_ratings_v2': NotRequired[bool],
 }, total=False)
 
-SpotifySearchResponse = Any
+SpotifySearchResponse = ModelSpotifySearchCatalogResponseDoc
 SpotifySearchParams = TypedDict('SpotifySearchParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -2071,7 +10677,7 @@ SpotifySearchParams = TypedDict('SpotifySearchParams', {
     'is_prefix': NotRequired[bool],
 }, total=False)
 
-SpotifySectionResponse = Any
+SpotifySectionResponse = ModelSpotifyBrowseSectionResponseDoc
 SpotifySectionParams = TypedDict('SpotifySectionParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -2082,7 +10688,7 @@ SpotifySectionParams = TypedDict('SpotifySectionParams', {
     'include_episode_content_ratings_v2': NotRequired[bool],
 }, total=False)
 
-SpotifyShowsSearchResponse = Any
+SpotifyShowsSearchResponse = ModelSpotifySearchCatalogResponseDoc
 SpotifyShowsSearchParams = TypedDict('SpotifyShowsSearchParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -2092,7 +10698,7 @@ SpotifyShowsSearchParams = TypedDict('SpotifyShowsSearchParams', {
     'limit': NotRequired[int],
 }, total=False)
 
-SpotifyTrackResponse = Any
+SpotifyTrackResponse = ModelSpotifyTrackResponseDoc
 SpotifyTrackParams = TypedDict('SpotifyTrackParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -2101,7 +10707,7 @@ SpotifyTrackParams = TypedDict('SpotifyTrackParams', {
     'id': NotRequired[str],
 }, total=False)
 
-SpotifyTrackRecommendedResponse = Any
+SpotifyTrackRecommendedResponse = ModelSpotifyTrackRecommendedResponseDoc
 SpotifyTrackRecommendedParams = TypedDict('SpotifyTrackRecommendedParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -2111,7 +10717,7 @@ SpotifyTrackRecommendedParams = TypedDict('SpotifyTrackRecommendedParams', {
     'limit': NotRequired[int],
 }, total=False)
 
-SpotifyTrackSimilarAlbumsResponse = Any
+SpotifyTrackSimilarAlbumsResponse = ModelSpotifyTrackSimilarAlbumsResponseDoc
 SpotifyTrackSimilarAlbumsParams = TypedDict('SpotifyTrackSimilarAlbumsParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -2122,7 +10728,7 @@ SpotifyTrackSimilarAlbumsParams = TypedDict('SpotifyTrackSimilarAlbumsParams', {
     'albums_only': NotRequired[bool],
 }, total=False)
 
-SpotifyTracksSearchResponse = Any
+SpotifyTracksSearchResponse = ModelSpotifySearchCatalogResponseDoc
 SpotifyTracksSearchParams = TypedDict('SpotifyTracksSearchParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -2138,14 +10744,14 @@ SpotifyTracksSearchParams = TypedDict('SpotifyTracksSearchParams', {
     'include_episode_content_ratings_v2': NotRequired[bool],
 }, total=False)
 
-TiktokCategoryResponse = Any
+TiktokCategoryResponse = ModelTiktokCategoryResponseDoc
 TiktokCategoryParams = TypedDict('TiktokCategoryParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
     '_headers': NotRequired[Mapping[str, str]],
 }, total=False)
 
-TiktokVideoCommentsResponse = Any
+TiktokVideoCommentsResponse = ModelTiktokCommentsResponseDoc
 TiktokVideoCommentsParams = TypedDict('TiktokVideoCommentsParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -2154,7 +10760,7 @@ TiktokVideoCommentsParams = TypedDict('TiktokVideoCommentsParams', {
     'cursor': NotRequired[int],
 }, total=False)
 
-TiktokExploreResponse = Any
+TiktokExploreResponse = ModelTiktokExploreResponseDoc
 TiktokExploreParams = TypedDict('TiktokExploreParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -2162,7 +10768,7 @@ TiktokExploreParams = TypedDict('TiktokExploreParams', {
     'id': Required[int],
 }, total=False)
 
-TiktokChallengeResponse = Any
+TiktokChallengeResponse = ModelTiktokChallengeResponseDoc
 TiktokChallengeParams = TypedDict('TiktokChallengeParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -2170,7 +10776,7 @@ TiktokChallengeParams = TypedDict('TiktokChallengeParams', {
     'name': Required[str],
 }, total=False)
 
-TiktokChallengeListResponse = Any
+TiktokChallengeListResponse = ModelTiktokChallengeListResponseDoc
 TiktokChallengeListParams = TypedDict('TiktokChallengeListParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -2179,14 +10785,14 @@ TiktokChallengeListParams = TypedDict('TiktokChallengeListParams', {
     'cursor': NotRequired[int],
 }, total=False)
 
-TiktokPopularTrendCountryIndustryMetaResponse = Any
+TiktokPopularTrendCountryIndustryMetaResponse = ModelPopulartrendCountryIndustryMetaResponseDoc
 TiktokPopularTrendCountryIndustryMetaParams = TypedDict('TiktokPopularTrendCountryIndustryMetaParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
     '_headers': NotRequired[Mapping[str, str]],
 }, total=False)
 
-TiktokPopularTrendCreatorResponse = Any
+TiktokPopularTrendCreatorResponse = ModelPopulartrendCreatorTrendResponseDoc
 TiktokPopularTrendCreatorParams = TypedDict('TiktokPopularTrendCreatorParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -2198,7 +10804,7 @@ TiktokPopularTrendCreatorParams = TypedDict('TiktokPopularTrendCreatorParams', {
     'audience_count': NotRequired[Literal['1', '2', '3', '4']],
 }, total=False)
 
-TiktokPostResponse = Any
+TiktokPostResponse = ModelTiktokPostResponseDoc
 TiktokPostParams = TypedDict('TiktokPostParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -2206,7 +10812,7 @@ TiktokPostParams = TypedDict('TiktokPostParams', {
     'id': Required[str],
 }, total=False)
 
-TiktokProfilePostResponse = Any
+TiktokProfilePostResponse = ModelTiktokProfilePostResponseDoc
 TiktokProfilePostParams = TypedDict('TiktokProfilePostParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -2216,7 +10822,7 @@ TiktokProfilePostParams = TypedDict('TiktokProfilePostParams', {
     'sort_type': NotRequired[Literal['0', '1', '2']],
 }, total=False)
 
-TiktokProfileResponse = Any
+TiktokProfileResponse = ModelTiktokProfileResponseDoc
 TiktokProfileParams = TypedDict('TiktokProfileParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -2224,7 +10830,7 @@ TiktokProfileParams = TypedDict('TiktokProfileParams', {
     'handler': Required[str],
 }, total=False)
 
-TiktokSearchResponse = Any
+TiktokSearchResponse = ModelTiktokSearchResponseDoc
 TiktokSearchParams = TypedDict('TiktokSearchParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -2234,7 +10840,7 @@ TiktokSearchParams = TypedDict('TiktokSearchParams', {
     'count': NotRequired[int],
 }, total=False)
 
-TiktokSearchHashtagResponse = Any
+TiktokSearchHashtagResponse = ModelTiktokSearchHashtagResponseDoc
 TiktokSearchHashtagParams = TypedDict('TiktokSearchHashtagParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -2244,7 +10850,7 @@ TiktokSearchHashtagParams = TypedDict('TiktokSearchHashtagParams', {
     'count': NotRequired[int],
 }, total=False)
 
-TiktokSearchUserResponse = Any
+TiktokSearchUserResponse = ModelTiktokSearchUserResponseDoc
 TiktokSearchUserParams = TypedDict('TiktokSearchUserParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -2253,7 +10859,7 @@ TiktokSearchUserParams = TypedDict('TiktokSearchUserParams', {
     'cursor': NotRequired[int],
 }, total=False)
 
-TiktokTopAdsAnalysisResponse = Any
+TiktokTopAdsAnalysisResponse = ModelPopulartrendTopAdsAnalysisResponseDoc
 TiktokTopAdsAnalysisParams = TypedDict('TiktokTopAdsAnalysisParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -2263,7 +10869,7 @@ TiktokTopAdsAnalysisParams = TypedDict('TiktokTopAdsAnalysisParams', {
     'period_type': NotRequired[Literal['7', '30', '180']],
 }, total=False)
 
-TiktokTopAdsDetailResponse = Any
+TiktokTopAdsDetailResponse = ModelPopulartrendTopAdsDetailResponseDoc
 TiktokTopAdsDetailParams = TypedDict('TiktokTopAdsDetailParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -2271,14 +10877,14 @@ TiktokTopAdsDetailParams = TypedDict('TiktokTopAdsDetailParams', {
     'material_id': Required[str],
 }, total=False)
 
-TiktokTopAdsFiltersResponse = Any
+TiktokTopAdsFiltersResponse = ModelPopulartrendTopAdsFiltersResponseDoc
 TiktokTopAdsFiltersParams = TypedDict('TiktokTopAdsFiltersParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
     '_headers': NotRequired[Mapping[str, str]],
 }, total=False)
 
-TiktokTopAdsListResponse = Any
+TiktokTopAdsListResponse = ModelPopulartrendTopAdsListResponseDoc
 TiktokTopAdsListParams = TypedDict('TiktokTopAdsListParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -2298,7 +10904,7 @@ TiktokTopAdsListParams = TypedDict('TiktokTopAdsListParams', {
     'ad_format': NotRequired[Literal['1', '2']],
 }, total=False)
 
-TiktokTopAdsLocationInfoResponse = Any
+TiktokTopAdsLocationInfoResponse = ModelPopulartrendTopAdsLocationInfoResponseDoc
 TiktokTopAdsLocationInfoParams = TypedDict('TiktokTopAdsLocationInfoParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -2306,14 +10912,14 @@ TiktokTopAdsLocationInfoParams = TypedDict('TiktokTopAdsLocationInfoParams', {
     'module': NotRequired[int],
 }, total=False)
 
-TiktokTopAdsLocationsResponse = Any
+TiktokTopAdsLocationsResponse = ModelPopulartrendTopAdsLocationsResponseDoc
 TiktokTopAdsLocationsParams = TypedDict('TiktokTopAdsLocationsParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
     '_headers': NotRequired[Mapping[str, str]],
 }, total=False)
 
-TiktokTopAdsRecommendResponse = Any
+TiktokTopAdsRecommendResponse = ModelPopulartrendTopAdsRecommendResponseDoc
 TiktokTopAdsRecommendParams = TypedDict('TiktokTopAdsRecommendParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -2323,14 +10929,14 @@ TiktokTopAdsRecommendParams = TypedDict('TiktokTopAdsRecommendParams', {
     'limit': NotRequired[int],
 }, total=False)
 
-TiktokTopAdsSafetyResponse = Any
+TiktokTopAdsSafetyResponse = ModelPopulartrendTopAdsSafetyResponseDoc
 TiktokTopAdsSafetyParams = TypedDict('TiktokTopAdsSafetyParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
     '_headers': NotRequired[Mapping[str, str]],
 }, total=False)
 
-TiktokTopAdsSpotlightResponse = Any
+TiktokTopAdsSpotlightResponse = ModelPopulartrendTopAdsSpotlightResponseDoc
 TiktokTopAdsSpotlightParams = TypedDict('TiktokTopAdsSpotlightParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -2339,7 +10945,7 @@ TiktokTopAdsSpotlightParams = TypedDict('TiktokTopAdsSpotlightParams', {
     'limit': NotRequired[int],
 }, total=False)
 
-TiktokTopAdsSuggestionsResponse = Any
+TiktokTopAdsSuggestionsResponse = ModelPopulartrendTopAdsSuggestionsResponseDoc
 TiktokTopAdsSuggestionsParams = TypedDict('TiktokTopAdsSuggestionsParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -2348,14 +10954,14 @@ TiktokTopAdsSuggestionsParams = TypedDict('TiktokTopAdsSuggestionsParams', {
     'scenario': NotRequired[int],
 }, total=False)
 
-TiktokTrendingResponse = Any
+TiktokTrendingResponse = ModelTiktokTrendingResponseDoc
 TiktokTrendingParams = TypedDict('TiktokTrendingParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
     '_headers': NotRequired[Mapping[str, str]],
 }, total=False)
 
-TripAdvisorTripadvisorAutocompleteResponse = Any
+TripAdvisorTripadvisorAutocompleteResponse = ModelTripadvisorTripadvisorAutocompleteResponseDoc
 TripAdvisorTripadvisorAutocompleteParams = TypedDict('TripAdvisorTripadvisorAutocompleteParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -2370,14 +10976,14 @@ TripAdvisorTripadvisorAutocompleteParams = TypedDict('TripAdvisorTripadvisorAuto
     'route_uid': NotRequired[str],
 }, total=False)
 
-TripAdvisorTripadvisorEnumsResponse = Any
+TripAdvisorTripadvisorEnumsResponse = ModelTripadvisorTripadvisorEnumsResponseDoc
 TripAdvisorTripadvisorEnumsParams = TypedDict('TripAdvisorTripadvisorEnumsParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
     '_headers': NotRequired[Mapping[str, str]],
 }, total=False)
 
-TripAdvisorTripadvisorHotelsResponse = Any
+TripAdvisorTripadvisorHotelsResponse = ModelTripadvisorTripadvisorHotelsResponseDoc
 TripAdvisorTripadvisorHotelsParams = TypedDict('TripAdvisorTripadvisorHotelsParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -2397,7 +11003,7 @@ TripAdvisorTripadvisorHotelsParams = TypedDict('TripAdvisorTripadvisorHotelsPara
     'sort': NotRequired[str],
 }, total=False)
 
-TripAdvisorTripadvisorPlaceResponse = Any
+TripAdvisorTripadvisorPlaceResponse = ModelTripadvisorPlaceResponse
 TripAdvisorTripadvisorPlaceParams = TypedDict('TripAdvisorTripadvisorPlaceParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -2406,7 +11012,7 @@ TripAdvisorTripadvisorPlaceParams = TypedDict('TripAdvisorTripadvisorPlaceParams
     'id': NotRequired[str],
 }, total=False)
 
-TripAdvisorTripadvisorReviewsResponse = Any
+TripAdvisorTripadvisorReviewsResponse = ModelTripadvisorTripadvisorReviewsResponseDoc
 TripAdvisorTripadvisorReviewsParams = TypedDict('TripAdvisorTripadvisorReviewsParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -2423,7 +11029,7 @@ TripAdvisorTripadvisorReviewsParams = TypedDict('TripAdvisorTripadvisorReviewsPa
     'photos_per_review_limit': NotRequired[int],
 }, total=False)
 
-TripAdvisorTripadvisorSearchResponse = Any
+TripAdvisorTripadvisorSearchResponse = ModelTripadvisorTripadvisorSearchResponseDoc
 TripAdvisorTripadvisorSearchParams = TypedDict('TripAdvisorTripadvisorSearchParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -2450,7 +11056,7 @@ TripAdvisorTripadvisorSearchParams = TypedDict('TripAdvisorTripadvisorSearchPara
     'sort': NotRequired[str],
 }, total=False)
 
-TrustpilotBusinessSearchResponse = Any
+TrustpilotBusinessSearchResponse = ModelTrustpilotBusinessSearchResponseDoc
 TrustpilotBusinessSearchParams = TypedDict('TrustpilotBusinessSearchParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -2461,7 +11067,7 @@ TrustpilotBusinessSearchParams = TypedDict('TrustpilotBusinessSearchParams', {
     'page_size': NotRequired[int],
 }, total=False)
 
-TrustpilotBusinessResponse = Any
+TrustpilotBusinessResponse = ModelTrustpilotBusinessProfileResponseDoc
 TrustpilotBusinessParams = TypedDict('TrustpilotBusinessParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -2469,7 +11075,7 @@ TrustpilotBusinessParams = TypedDict('TrustpilotBusinessParams', {
     'slug': Required[str],
 }, total=False)
 
-TrustpilotBusinessRelatedResponse = Any
+TrustpilotBusinessRelatedResponse = ModelTrustpilotBusinessRelatedResponseDoc
 TrustpilotBusinessRelatedParams = TypedDict('TrustpilotBusinessRelatedParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -2477,7 +11083,7 @@ TrustpilotBusinessRelatedParams = TypedDict('TrustpilotBusinessRelatedParams', {
     'slug': Required[str],
 }, total=False)
 
-TrustpilotBusinessReviewsResponse = Any
+TrustpilotBusinessReviewsResponse = ModelTrustpilotBusinessReviewsResponseDoc
 TrustpilotBusinessReviewsParams = TypedDict('TrustpilotBusinessReviewsParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -2493,14 +11099,14 @@ TrustpilotBusinessReviewsParams = TypedDict('TrustpilotBusinessReviewsParams', {
     'date_to': NotRequired[str],
 }, total=False)
 
-TrustpilotCategoriesResponse = Any
+TrustpilotCategoriesResponse = ModelTrustpilotCategoriesResponseDoc
 TrustpilotCategoriesParams = TypedDict('TrustpilotCategoriesParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
     '_headers': NotRequired[Mapping[str, str]],
 }, total=False)
 
-TrustpilotCategorySearchResponse = Any
+TrustpilotCategorySearchResponse = ModelTrustpilotCategorySearchResponseDoc
 TrustpilotCategorySearchParams = TypedDict('TrustpilotCategorySearchParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -2511,7 +11117,7 @@ TrustpilotCategorySearchParams = TypedDict('TrustpilotCategorySearchParams', {
     'size': NotRequired[int],
 }, total=False)
 
-TrustpilotCategoryResponse = Any
+TrustpilotCategoryResponse = ModelTrustpilotCategoryResponseDoc
 TrustpilotCategoryParams = TypedDict('TrustpilotCategoryParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -2520,7 +11126,7 @@ TrustpilotCategoryParams = TypedDict('TrustpilotCategoryParams', {
     'page': NotRequired[int],
 }, total=False)
 
-UsageMeEndpointsResponse = Any
+UsageMeEndpointsResponse = ModelUsageUsageEndpointsResponseDoc
 UsageMeEndpointsParams = TypedDict('UsageMeEndpointsParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -2531,7 +11137,7 @@ UsageMeEndpointsParams = TypedDict('UsageMeEndpointsParams', {
     'to': NotRequired[str],
 }, total=False)
 
-UsageMeOverviewResponse = Any
+UsageMeOverviewResponse = ModelUsageUsageOverviewResponseDoc
 UsageMeOverviewParams = TypedDict('UsageMeOverviewParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -2541,7 +11147,7 @@ UsageMeOverviewParams = TypedDict('UsageMeOverviewParams', {
     'to': NotRequired[str],
 }, total=False)
 
-UsageMeRecentIpsResponse = Any
+UsageMeRecentIpsResponse = ModelUsageUsageRecentIpsResponseDoc
 UsageMeRecentIpsParams = TypedDict('UsageMeRecentIpsParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -2552,7 +11158,7 @@ UsageMeRecentIpsParams = TypedDict('UsageMeRecentIpsParams', {
     'to': NotRequired[str],
 }, total=False)
 
-UsageMeTimeseriesResponse = Any
+UsageMeTimeseriesResponse = ModelUsageUsageTimeseriesResponseDoc
 UsageMeTimeseriesParams = TypedDict('UsageMeTimeseriesParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -2564,28 +11170,28 @@ UsageMeTimeseriesParams = TypedDict('UsageMeTimeseriesParams', {
     'to': NotRequired[str],
 }, total=False)
 
-UserMeResponse = Any
+UserMeResponse = ModelUserUserMeResponseDoc
 UserMeParams = TypedDict('UserMeParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
     '_headers': NotRequired[Mapping[str, str]],
 }, total=False)
 
-UserMeApiKeysResponse = Any
+UserMeApiKeysResponse = ModelUserUserApikeysResponseDoc
 UserMeApiKeysParams = TypedDict('UserMeApiKeysParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
     '_headers': NotRequired[Mapping[str, str]],
 }, total=False)
 
-UserMeApiKeysRotateResponse = Any
+UserMeApiKeysRotateResponse = ModelUserUserRotateApikeyResponseDoc
 UserMeApiKeysRotateParams = TypedDict('UserMeApiKeysRotateParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
     '_headers': NotRequired[Mapping[str, str]],
 }, total=False)
 
-UserMeApiKeysRevealResponse = Any
+UserMeApiKeysRevealResponse = ModelUserUserRevealApikeyResponseDoc
 UserMeApiKeysRevealParams = TypedDict('UserMeApiKeysRevealParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -2593,14 +11199,14 @@ UserMeApiKeysRevealParams = TypedDict('UserMeApiKeysRevealParams', {
     'id': Required[str],
 }, total=False)
 
-YahooFinanceCalendarsResponse = Any
+YahooFinanceCalendarsResponse = ModelYahoofinanceCalendarsResponseDoc
 YahooFinanceCalendarsParams = TypedDict('YahooFinanceCalendarsParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
     '_headers': NotRequired[Mapping[str, str]],
 }, total=False)
 
-YahooFinanceCalendarResponse = Any
+YahooFinanceCalendarResponse = ModelYahoofinanceCalendarResponseDoc
 YahooFinanceCalendarParams = TypedDict('YahooFinanceCalendarParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -2614,8 +11220,8 @@ YahooFinanceCalendarParams = TypedDict('YahooFinanceCalendarParams', {
     'filter_most_active': NotRequired[bool],
 }, total=False)
 
-YahooFinanceDownloadBody = dict[str, Any]
-YahooFinanceDownloadResponse = Any
+YahooFinanceDownloadBody = ModelYahoofinanceDownloadRequest
+YahooFinanceDownloadResponse = ModelYahoofinanceDownloadResponseDoc
 YahooFinanceDownloadParams = TypedDict('YahooFinanceDownloadParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -2623,14 +11229,14 @@ YahooFinanceDownloadParams = TypedDict('YahooFinanceDownloadParams', {
     'request': Required[YahooFinanceDownloadBody],
 }, total=False)
 
-YahooFinanceIndustriesResponse = Any
+YahooFinanceIndustriesResponse = ModelYahoofinanceDomainListResponseDoc
 YahooFinanceIndustriesParams = TypedDict('YahooFinanceIndustriesParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
     '_headers': NotRequired[Mapping[str, str]],
 }, total=False)
 
-YahooFinanceIndustryResponse = Any
+YahooFinanceIndustryResponse = ModelYahoofinanceIndustryResponseDoc
 YahooFinanceIndustryParams = TypedDict('YahooFinanceIndustryParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -2638,7 +11244,7 @@ YahooFinanceIndustryParams = TypedDict('YahooFinanceIndustryParams', {
     'key': Required[str],
 }, total=False)
 
-YahooFinanceMarketStatusResponse = Any
+YahooFinanceMarketStatusResponse = ModelYahoofinanceMarketStatusResponseDoc
 YahooFinanceMarketStatusParams = TypedDict('YahooFinanceMarketStatusParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -2646,7 +11252,7 @@ YahooFinanceMarketStatusParams = TypedDict('YahooFinanceMarketStatusParams', {
     'market': Required[str],
 }, total=False)
 
-YahooFinanceMarketSummaryResponse = Any
+YahooFinanceMarketSummaryResponse = ModelYahoofinanceMarketSummaryResponseDoc
 YahooFinanceMarketSummaryParams = TypedDict('YahooFinanceMarketSummaryParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -2654,8 +11260,8 @@ YahooFinanceMarketSummaryParams = TypedDict('YahooFinanceMarketSummaryParams', {
     'market': Required[str],
 }, total=False)
 
-YahooFinanceScreenerCustomBody = dict[str, Any]
-YahooFinanceScreenerCustomResponse = Any
+YahooFinanceScreenerCustomBody = ModelYahoofinanceScreenerRequest
+YahooFinanceScreenerCustomResponse = ModelYahoofinanceScreenerResponseDoc
 YahooFinanceScreenerCustomParams = TypedDict('YahooFinanceScreenerCustomParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -2663,7 +11269,7 @@ YahooFinanceScreenerCustomParams = TypedDict('YahooFinanceScreenerCustomParams',
     'request': Required[YahooFinanceScreenerCustomBody],
 }, total=False)
 
-YahooFinanceScreenerResponse = Any
+YahooFinanceScreenerResponse = ModelYahoofinanceScreenerResponseDoc
 YahooFinanceScreenerParams = TypedDict('YahooFinanceScreenerParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -2675,14 +11281,14 @@ YahooFinanceScreenerParams = TypedDict('YahooFinanceScreenerParams', {
     'sort_asc': NotRequired[bool],
 }, total=False)
 
-YahooFinanceScreenersResponse = Any
+YahooFinanceScreenersResponse = ModelYahoofinanceScreenersResponseDoc
 YahooFinanceScreenersParams = TypedDict('YahooFinanceScreenersParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
     '_headers': NotRequired[Mapping[str, str]],
 }, total=False)
 
-YahooFinanceSearchResponse = Any
+YahooFinanceSearchResponse = ModelYahoofinanceSearchResponseDoc
 YahooFinanceSearchParams = TypedDict('YahooFinanceSearchParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -2695,14 +11301,14 @@ YahooFinanceSearchParams = TypedDict('YahooFinanceSearchParams', {
     'enable_fuzzy_query': NotRequired[bool],
 }, total=False)
 
-YahooFinanceSectorsResponse = Any
+YahooFinanceSectorsResponse = ModelYahoofinanceDomainListResponseDoc
 YahooFinanceSectorsParams = TypedDict('YahooFinanceSectorsParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
     '_headers': NotRequired[Mapping[str, str]],
 }, total=False)
 
-YahooFinanceSectorResponse = Any
+YahooFinanceSectorResponse = ModelYahoofinanceSectorResponseDoc
 YahooFinanceSectorParams = TypedDict('YahooFinanceSectorParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -2710,7 +11316,7 @@ YahooFinanceSectorParams = TypedDict('YahooFinanceSectorParams', {
     'key': Required[str],
 }, total=False)
 
-YahooFinanceTickerActionsResponse = Any
+YahooFinanceTickerActionsResponse = ModelYahoofinanceActionsResponseDoc
 YahooFinanceTickerActionsParams = TypedDict('YahooFinanceTickerActionsParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -2718,7 +11324,7 @@ YahooFinanceTickerActionsParams = TypedDict('YahooFinanceTickerActionsParams', {
     'symbol': Required[str],
 }, total=False)
 
-YahooFinanceTickerAnalystsResponse = Any
+YahooFinanceTickerAnalystsResponse = ModelYahoofinanceModuleResponseDoc
 YahooFinanceTickerAnalystsParams = TypedDict('YahooFinanceTickerAnalystsParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -2726,7 +11332,7 @@ YahooFinanceTickerAnalystsParams = TypedDict('YahooFinanceTickerAnalystsParams',
     'symbol': Required[str],
 }, total=False)
 
-YahooFinanceTickerCalendarResponse = Any
+YahooFinanceTickerCalendarResponse = ModelYahoofinanceModuleResponseDoc
 YahooFinanceTickerCalendarParams = TypedDict('YahooFinanceTickerCalendarParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -2734,7 +11340,7 @@ YahooFinanceTickerCalendarParams = TypedDict('YahooFinanceTickerCalendarParams',
     'symbol': Required[str],
 }, total=False)
 
-YahooFinanceTickerCapitalGainsResponse = Any
+YahooFinanceTickerCapitalGainsResponse = ModelYahoofinanceActionsResponseDoc
 YahooFinanceTickerCapitalGainsParams = TypedDict('YahooFinanceTickerCapitalGainsParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -2742,7 +11348,7 @@ YahooFinanceTickerCapitalGainsParams = TypedDict('YahooFinanceTickerCapitalGains
     'symbol': Required[str],
 }, total=False)
 
-YahooFinanceTickerDividendsResponse = Any
+YahooFinanceTickerDividendsResponse = ModelYahoofinanceActionsResponseDoc
 YahooFinanceTickerDividendsParams = TypedDict('YahooFinanceTickerDividendsParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -2750,7 +11356,7 @@ YahooFinanceTickerDividendsParams = TypedDict('YahooFinanceTickerDividendsParams
     'symbol': Required[str],
 }, total=False)
 
-YahooFinanceTickerEarningsResponse = Any
+YahooFinanceTickerEarningsResponse = ModelYahoofinanceModuleResponseDoc
 YahooFinanceTickerEarningsParams = TypedDict('YahooFinanceTickerEarningsParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -2758,7 +11364,7 @@ YahooFinanceTickerEarningsParams = TypedDict('YahooFinanceTickerEarningsParams',
     'symbol': Required[str],
 }, total=False)
 
-YahooFinanceTickerEarningsDatesResponse = Any
+YahooFinanceTickerEarningsDatesResponse = ModelYahoofinanceEarningsDatesResponseDoc
 YahooFinanceTickerEarningsDatesParams = TypedDict('YahooFinanceTickerEarningsDatesParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -2768,7 +11374,7 @@ YahooFinanceTickerEarningsDatesParams = TypedDict('YahooFinanceTickerEarningsDat
     'offset': NotRequired[int],
 }, total=False)
 
-YahooFinanceTickerFinancialsResponse = Any
+YahooFinanceTickerFinancialsResponse = ModelYahoofinanceFinancialsResponseDoc
 YahooFinanceTickerFinancialsParams = TypedDict('YahooFinanceTickerFinancialsParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -2778,7 +11384,7 @@ YahooFinanceTickerFinancialsParams = TypedDict('YahooFinanceTickerFinancialsPara
     'period': NotRequired[str],
 }, total=False)
 
-YahooFinanceTickerFundsResponse = Any
+YahooFinanceTickerFundsResponse = ModelYahoofinanceModuleResponseDoc
 YahooFinanceTickerFundsParams = TypedDict('YahooFinanceTickerFundsParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -2786,7 +11392,7 @@ YahooFinanceTickerFundsParams = TypedDict('YahooFinanceTickerFundsParams', {
     'symbol': Required[str],
 }, total=False)
 
-YahooFinanceTickerHistoryResponse = Any
+YahooFinanceTickerHistoryResponse = ModelYahoofinanceHistoryResponseDoc
 YahooFinanceTickerHistoryParams = TypedDict('YahooFinanceTickerHistoryParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -2804,7 +11410,7 @@ YahooFinanceTickerHistoryParams = TypedDict('YahooFinanceTickerHistoryParams', {
     'rounding': NotRequired[bool],
 }, total=False)
 
-YahooFinanceTickerHistoryMetadataResponse = Any
+YahooFinanceTickerHistoryMetadataResponse = ModelYahoofinanceHistoryMetadataResponseDoc
 YahooFinanceTickerHistoryMetadataParams = TypedDict('YahooFinanceTickerHistoryMetadataParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -2812,7 +11418,7 @@ YahooFinanceTickerHistoryMetadataParams = TypedDict('YahooFinanceTickerHistoryMe
     'symbol': Required[str],
 }, total=False)
 
-YahooFinanceTickerHoldersResponse = Any
+YahooFinanceTickerHoldersResponse = ModelYahoofinanceModuleResponseDoc
 YahooFinanceTickerHoldersParams = TypedDict('YahooFinanceTickerHoldersParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -2820,7 +11426,7 @@ YahooFinanceTickerHoldersParams = TypedDict('YahooFinanceTickerHoldersParams', {
     'symbol': Required[str],
 }, total=False)
 
-YahooFinanceTickerInfoResponse = Any
+YahooFinanceTickerInfoResponse = ModelYahoofinanceInfoResponseDoc
 YahooFinanceTickerInfoParams = TypedDict('YahooFinanceTickerInfoParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -2828,7 +11434,7 @@ YahooFinanceTickerInfoParams = TypedDict('YahooFinanceTickerInfoParams', {
     'symbol': Required[str],
 }, total=False)
 
-YahooFinanceTickerIsinResponse = Any
+YahooFinanceTickerIsinResponse = ModelYahoofinanceIsinResponseDoc
 YahooFinanceTickerIsinParams = TypedDict('YahooFinanceTickerIsinParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -2836,7 +11442,7 @@ YahooFinanceTickerIsinParams = TypedDict('YahooFinanceTickerIsinParams', {
     'symbol': Required[str],
 }, total=False)
 
-YahooFinanceTickerNewsResponse = Any
+YahooFinanceTickerNewsResponse = ModelYahoofinanceSearchResponseDoc
 YahooFinanceTickerNewsParams = TypedDict('YahooFinanceTickerNewsParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -2846,7 +11452,7 @@ YahooFinanceTickerNewsParams = TypedDict('YahooFinanceTickerNewsParams', {
     'tab': NotRequired[str],
 }, total=False)
 
-YahooFinanceTickerOptionsResponse = Any
+YahooFinanceTickerOptionsResponse = ModelYahoofinanceOptionsResponseDoc
 YahooFinanceTickerOptionsParams = TypedDict('YahooFinanceTickerOptionsParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -2854,7 +11460,7 @@ YahooFinanceTickerOptionsParams = TypedDict('YahooFinanceTickerOptionsParams', {
     'symbol': Required[str],
 }, total=False)
 
-YahooFinanceTickerOptionsExpirationResponse = Any
+YahooFinanceTickerOptionsExpirationResponse = ModelYahoofinanceOptionsResponseDoc
 YahooFinanceTickerOptionsExpirationParams = TypedDict('YahooFinanceTickerOptionsExpirationParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -2863,7 +11469,7 @@ YahooFinanceTickerOptionsExpirationParams = TypedDict('YahooFinanceTickerOptions
     'expiration': Required[str],
 }, total=False)
 
-YahooFinanceTickerQuoteResponse = Any
+YahooFinanceTickerQuoteResponse = ModelYahoofinanceQuoteResponseDoc
 YahooFinanceTickerQuoteParams = TypedDict('YahooFinanceTickerQuoteParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -2871,7 +11477,7 @@ YahooFinanceTickerQuoteParams = TypedDict('YahooFinanceTickerQuoteParams', {
     'symbol': Required[str],
 }, total=False)
 
-YahooFinanceTickerSecFilingsResponse = Any
+YahooFinanceTickerSecFilingsResponse = ModelYahoofinanceModuleResponseDoc
 YahooFinanceTickerSecFilingsParams = TypedDict('YahooFinanceTickerSecFilingsParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -2879,7 +11485,7 @@ YahooFinanceTickerSecFilingsParams = TypedDict('YahooFinanceTickerSecFilingsPara
     'symbol': Required[str],
 }, total=False)
 
-YahooFinanceTickerSharesResponse = Any
+YahooFinanceTickerSharesResponse = ModelYahoofinanceSharesResponseDoc
 YahooFinanceTickerSharesParams = TypedDict('YahooFinanceTickerSharesParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -2887,7 +11493,7 @@ YahooFinanceTickerSharesParams = TypedDict('YahooFinanceTickerSharesParams', {
     'symbol': Required[str],
 }, total=False)
 
-YahooFinanceTickerSharesFullResponse = Any
+YahooFinanceTickerSharesFullResponse = ModelYahoofinanceSharesFullResponseDoc
 YahooFinanceTickerSharesFullParams = TypedDict('YahooFinanceTickerSharesFullParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -2897,7 +11503,7 @@ YahooFinanceTickerSharesFullParams = TypedDict('YahooFinanceTickerSharesFullPara
     'end': NotRequired[str],
 }, total=False)
 
-YahooFinanceTickerSplitsResponse = Any
+YahooFinanceTickerSplitsResponse = ModelYahoofinanceActionsResponseDoc
 YahooFinanceTickerSplitsParams = TypedDict('YahooFinanceTickerSplitsParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -2905,7 +11511,7 @@ YahooFinanceTickerSplitsParams = TypedDict('YahooFinanceTickerSplitsParams', {
     'symbol': Required[str],
 }, total=False)
 
-YahooFinanceTickerSustainabilityResponse = Any
+YahooFinanceTickerSustainabilityResponse = ModelYahoofinanceModuleResponseDoc
 YahooFinanceTickerSustainabilityParams = TypedDict('YahooFinanceTickerSustainabilityParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -2913,7 +11519,7 @@ YahooFinanceTickerSustainabilityParams = TypedDict('YahooFinanceTickerSustainabi
     'symbol': Required[str],
 }, total=False)
 
-YahooFinanceTickerValuationResponse = Any
+YahooFinanceTickerValuationResponse = ModelYahoofinanceValuationResponseDoc
 YahooFinanceTickerValuationParams = TypedDict('YahooFinanceTickerValuationParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -2921,7 +11527,7 @@ YahooFinanceTickerValuationParams = TypedDict('YahooFinanceTickerValuationParams
     'symbol': Required[str],
 }, total=False)
 
-YahooFinanceTrendingResponse = Any
+YahooFinanceTrendingResponse = ModelYahoofinanceTrendingResponseDoc
 YahooFinanceTrendingParams = TypedDict('YahooFinanceTrendingParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -2930,7 +11536,7 @@ YahooFinanceTrendingParams = TypedDict('YahooFinanceTrendingParams', {
     'count': NotRequired[int],
 }, total=False)
 
-YoutubeCaptionsResponse = Any
+YoutubeCaptionsResponse = ModelYoutubeCaptionsResponseDoc
 YoutubeCaptionsParams = TypedDict('YoutubeCaptionsParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -2939,7 +11545,7 @@ YoutubeCaptionsParams = TypedDict('YoutubeCaptionsParams', {
     'lang': NotRequired[str],
 }, total=False)
 
-YoutubeChannelPlaylistsResponse = Any
+YoutubeChannelPlaylistsResponse = ModelYoutubeChannelFeedResponseDoc
 YoutubeChannelPlaylistsParams = TypedDict('YoutubeChannelPlaylistsParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -2948,7 +11554,7 @@ YoutubeChannelPlaylistsParams = TypedDict('YoutubeChannelPlaylistsParams', {
     'continuation_token': NotRequired[str],
 }, total=False)
 
-YoutubeChannelSearchResponse = Any
+YoutubeChannelSearchResponse = ModelYoutubeChannelSearchResponseDoc
 YoutubeChannelSearchParams = TypedDict('YoutubeChannelSearchParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -2958,7 +11564,7 @@ YoutubeChannelSearchParams = TypedDict('YoutubeChannelSearchParams', {
     'continuation_token': NotRequired[str],
 }, total=False)
 
-YoutubeChannelShortsResponse = Any
+YoutubeChannelShortsResponse = ModelYoutubeChannelShortsResponseDoc
 YoutubeChannelShortsParams = TypedDict('YoutubeChannelShortsParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -2966,7 +11572,7 @@ YoutubeChannelShortsParams = TypedDict('YoutubeChannelShortsParams', {
     'id': Required[str],
 }, total=False)
 
-YoutubeChannelVideosResponse = Any
+YoutubeChannelVideosResponse = ModelYoutubeChannelFeedResponseDoc
 YoutubeChannelVideosParams = TypedDict('YoutubeChannelVideosParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -2975,7 +11581,7 @@ YoutubeChannelVideosParams = TypedDict('YoutubeChannelVideosParams', {
     'continuation_token': NotRequired[str],
 }, total=False)
 
-YoutubeCommentsResponse = Any
+YoutubeCommentsResponse = ModelYoutubeCommentsResponseDoc
 YoutubeCommentsParams = TypedDict('YoutubeCommentsParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -2984,7 +11590,7 @@ YoutubeCommentsParams = TypedDict('YoutubeCommentsParams', {
     'continuation_token': NotRequired[str],
 }, total=False)
 
-YoutubePlaylistResponse = Any
+YoutubePlaylistResponse = ModelYoutubePlaylistResponseDoc
 YoutubePlaylistParams = TypedDict('YoutubePlaylistParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -2993,7 +11599,7 @@ YoutubePlaylistParams = TypedDict('YoutubePlaylistParams', {
     'continuation_token': NotRequired[str],
 }, total=False)
 
-YoutubeProfileResponse = Any
+YoutubeProfileResponse = ModelYoutubeProfileResponseDoc
 YoutubeProfileParams = TypedDict('YoutubeProfileParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -3001,7 +11607,7 @@ YoutubeProfileParams = TypedDict('YoutubeProfileParams', {
     'id': Required[str],
 }, total=False)
 
-YoutubeSearchResponse = Any
+YoutubeSearchResponse = ModelYoutubeSearchResponseDoc
 YoutubeSearchParams = TypedDict('YoutubeSearchParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -3017,7 +11623,7 @@ YoutubeSearchParams = TypedDict('YoutubeSearchParams', {
     'params': NotRequired[str],
 }, total=False)
 
-YoutubeTagResponse = Any
+YoutubeTagResponse = ModelYoutubeTagResponseDoc
 YoutubeTagParams = TypedDict('YoutubeTagParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -3027,7 +11633,7 @@ YoutubeTagParams = TypedDict('YoutubeTagParams', {
     'continuation_token': NotRequired[str],
 }, total=False)
 
-YoutubeTranscriptResponse = Any
+YoutubeTranscriptResponse = ModelYoutubeTranscriptResponseDoc
 YoutubeTranscriptParams = TypedDict('YoutubeTranscriptParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -3039,7 +11645,7 @@ YoutubeTranscriptParams = TypedDict('YoutubeTranscriptParams', {
     'timestamps': NotRequired[bool],
 }, total=False)
 
-YoutubeTranscriptLanguagesResponse = Any
+YoutubeTranscriptLanguagesResponse = ModelYoutubeTranscriptLanguagesResponseDoc
 YoutubeTranscriptLanguagesParams = TypedDict('YoutubeTranscriptLanguagesParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -3047,7 +11653,7 @@ YoutubeTranscriptLanguagesParams = TypedDict('YoutubeTranscriptLanguagesParams',
     'id': Required[str],
 }, total=False)
 
-YoutubeVideoResponse = Any
+YoutubeVideoResponse = ModelYoutubeVideoResponseDoc
 YoutubeVideoParams = TypedDict('YoutubeVideoParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -3055,7 +11661,7 @@ YoutubeVideoParams = TypedDict('YoutubeVideoParams', {
     'id': Required[str],
 }, total=False)
 
-ZillowAutocompleteResponse = Any
+ZillowAutocompleteResponse = ModelZillowAutocompleteResponse
 ZillowAutocompleteParams = TypedDict('ZillowAutocompleteParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -3065,7 +11671,7 @@ ZillowAutocompleteParams = TypedDict('ZillowAutocompleteParams', {
     'status': NotRequired[str],
 }, total=False)
 
-ZillowPropertyResponse = Any
+ZillowPropertyResponse = ModelZillowPropertyResponse
 ZillowPropertyParams = TypedDict('ZillowPropertyParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -3073,7 +11679,7 @@ ZillowPropertyParams = TypedDict('ZillowPropertyParams', {
     'zpid': Required[str],
 }, total=False)
 
-ZillowSearchResponse = Any
+ZillowSearchResponse = ModelZillowSearchResponse
 ZillowSearchParams = TypedDict('ZillowSearchParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],

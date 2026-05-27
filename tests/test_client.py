@@ -210,10 +210,15 @@ class CrawloraClientTest(unittest.TestCase):
 
     def test_generated_stub_includes_typed_endpoint_groups(self):
         stub = Path(__file__).resolve().parents[1].joinpath("crawlora", "client.pyi").read_text()
+        self.assertIn("ModelBingSearchResponse = TypedDict", stub)
+        self.assertIn("'results': NotRequired[list[ModelBingSearchResult]]", stub)
+        self.assertIn("ModelBingSearchResponseDoc = TypedDict", stub)
+        self.assertIn("'data': NotRequired[ModelBingSearchResponse]", stub)
+        self.assertIn("BingSearchResponse = ModelBingSearchResponseDoc", stub)
         self.assertIn("BingSearchParams = TypedDict", stub)
         self.assertIn("'q': Required[str]", stub)
         self.assertIn("'count': NotRequired[int]", stub)
-        self.assertIn("GoogleSearchBody = dict[str, Any]", stub)
+        self.assertIn("GoogleSearchBody = ModelGoogleSearchOption", stub)
         self.assertIn("def search(self, **params: Unpack[BingSearchParams]) -> BingSearchResponse: ...", stub)
         self.assertIn("class CrawloraClient:", stub)
 
