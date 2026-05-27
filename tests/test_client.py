@@ -72,6 +72,27 @@ class CrawloraClientTest(unittest.TestCase):
 
         self.assertEqual(Handler.calls[0]["headers"]["Authorization"], "Token jwt_test")
 
+    def test_jwt_auth_scheme_is_case_insensitive(self):
+        client = CrawloraClient(jwt_token="bearer jwt_test", base_url=self.base_url)
+        client.user.me()
+
+        self.assertEqual(Handler.calls[0]["headers"]["Authorization"], "bearer jwt_test")
+
+    def test_missing_required_params_fail_before_request(self):
+        client = CrawloraClient(api_key="api_test", base_url=self.base_url)
+
+        with self.assertRaisesRegex(ValueError, "missing required query parameter: q"):
+            client.bing.search()
+        with self.assertRaisesRegex(ValueError, "missing required body parameter: searchOption"):
+            client.google.search()
+        self.assertEqual(Handler.calls, [])
+
+    def test_negative_retry_options_are_normalized(self):
+        client = CrawloraClient(api_key="api_test", base_url=self.base_url, retries=-3, retry_delay=-0.5)
+
+        self.assertEqual(client.retries, 0)
+        self.assertEqual(client.retry_delay, 0.0)
+
     def test_text_response(self):
         Handler.response_body = "hello"
         Handler.content_type = "text/plain"
@@ -91,7 +112,10 @@ class CrawloraClientTest(unittest.TestCase):
         self.assertIn("has_website=false", Handler.calls[0]["path"])
         self.assertEqual(Handler.calls[0]["headers"]["X-Test"], "yes")
 
-        client.request("tripadvisor-search", {"q": "hotel", "amenities": [1, 2], "online_options": ["3", "4"]})
+        client.request(
+            "tripadvisor-search",
+            {"q": "hotel", "geo_id": "293919", "type": "hotel", "amenities": [1, 2], "online_options": ["3", "4"]},
+        )
         self.assertIn("amenities=1", Handler.calls[1]["path"])
         self.assertIn("amenities=2", Handler.calls[1]["path"])
         self.assertIn("online_options=3", Handler.calls[1]["path"])

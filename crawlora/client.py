@@ -15,7 +15,7 @@ from urllib.request import Request, urlopen
 from .operations import GROUPS, OPERATIONS
 
 DEFAULT_BASE_URL = "https://api.crawlora.net/api/v1"
-VERSION = "1.2.0-sdk.6"
+VERSION = "1.2.0-sdk.7"
 DEFAULT_USER_AGENT = f"crawlora-python-sdk/{VERSION}"
 ResponseType = Literal["auto", "json", "text"]
 
@@ -64,8 +64,8 @@ class CrawloraClient:
         self.jwt_token = jwt_token or ""
         self.base_url = base_url.rstrip("/")
         self.timeout = timeout
-        self.retries = retries
-        self.retry_delay = retry_delay
+        self.retries = max(0, int(retries))
+        self.retry_delay = max(0.0, float(retry_delay))
         self.headers = dict(headers or {})
         self.user_agent = user_agent or ""
         self._transport = transport or self._urlopen_transport
@@ -169,6 +169,7 @@ class _OperationGroup:
 
 
 def _build_request(base_url: str, operation: Mapping[str, Any], params: dict[str, Any]) -> tuple[str, bytes | None, dict[str, str]]:
+    _validate_required_params(operation, params)
     path = operation["path"]
     for name in operation.get("pathParams", []):
         value = params.get(name)
@@ -200,6 +201,25 @@ def _build_request(base_url: str, operation: Mapping[str, Any], params: dict[str
             return url, json.dumps(value).encode(), {"content-type": "application/json"}
 
     return url, None, {}
+
+
+def _validate_required_params(operation: Mapping[str, Any], params: Mapping[str, Any]) -> None:
+    for name in operation.get("pathParams", []):
+        if _is_missing(params.get(name)):
+            raise ValueError(f"missing required path parameter: {name}")
+    for location in ("queryParams", "formParams"):
+        for parameter in operation.get(location, []):
+            if parameter.get("required") and _is_missing(params.get(parameter["name"])):
+                param_location = parameter.get("in", "request")
+                raise ValueError(f"missing required {param_location} parameter: {parameter['name']}")
+    if operation.get("bodyRequired"):
+        body_param = operation.get("bodyParam")
+        if _is_missing(params.get(body_param)) and _is_missing(params.get("body")):
+            raise ValueError(f"missing required body parameter: {body_param}")
+
+
+def _is_missing(value: Any) -> bool:
+    return value is None or value == "" or (isinstance(value, (list, tuple)) and len(value) == 0)
 
 
 def _multipart_body(form_params: list[Mapping[str, Any]], params: Mapping[str, Any]) -> tuple[bytes, dict[str, str]]:
@@ -242,7 +262,7 @@ def _auth_headers(security: list[str], api_key: str, jwt_token: str) -> dict[str
     if "ApiKeyAuth" in security and api_key:
         headers["x-api-key"] = api_key
     if "JWTAuth" in security and jwt_token:
-        headers["Authorization"] = jwt_token if jwt_token.startswith(("Token ", "Bearer ")) else f"Token {jwt_token}"
+        headers["Authorization"] = jwt_token if jwt_token.lower().startswith(("token ", "bearer ")) else f"Token {jwt_token}"
     return headers
 
 
