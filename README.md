@@ -5,7 +5,7 @@ Git-installable beta SDK for the public Crawlora API.
 ## Install
 
 ```sh
-pip install "git+https://github.com/Crawlora-org/crawlora-python-sdk.git@v1.2.0-sdk.5"
+pip install "git+https://github.com/Crawlora-org/crawlora-python-sdk.git@v1.2.0-sdk.6"
 ```
 
 ## Usage
@@ -54,6 +54,20 @@ result = crawlora.google.lens(image=b"image-bytes")
 API failures raise `CrawloraError` with `status`, optional API `code`, parsed
 `body`, `raw_body`, and the underlying transport exception as `__cause__`.
 
+## Examples
+
+Runnable examples live under `examples/`:
+
+```sh
+CRAWLORA_API_KEY=... python3 examples/bing_search.py
+CRAWLORA_API_KEY=... CRAWLORA_YOUTUBE_VIDEO_ID=... python3 examples/youtube_transcript.py
+CRAWLORA_API_KEY=... CRAWLORA_LENS_IMAGE=./image.jpg python3 examples/google_lens_upload.py
+```
+
+Each example also accepts `CRAWLORA_BASE_URL` for staging or local API testing.
+The examples exit without making a request when the required live environment
+variables are not set.
+
 ## Versioning
 
 This SDK is currently released as Git beta tags. Pin an explicit tag in
@@ -82,6 +96,6 @@ python3 -m unittest discover -s tests
 
 ## Optional Live Smoke Test
 
-Default tests use a local mock server. For live API checks, set
-`CRAWLORA_API_KEY` in your own environment and call a low-cost endpoint
-manually. Live calls are not part of default CI.
+Default tests use a local mock server. The programs under `examples/` can be
+used as optional live smoke tests when `CRAWLORA_API_KEY` is available. Live
+calls are not part of default CI.
