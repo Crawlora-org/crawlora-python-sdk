@@ -660,31 +660,6 @@ CoinGeckoTrendingParams = TypedDict('CoinGeckoTrendingParams', {
     'vs_currency': NotRequired[Literal['btc', 'eth', 'ltc', 'bch', 'bnb', 'eos', 'xrp', 'xlm', 'link', 'dot', 'yfi', 'sol', 'usd', 'aed', 'ars', 'aud', 'bdt', 'bhd', 'bmd', 'brl', 'cad', 'chf', 'clp', 'cny', 'czk', 'dkk', 'eur', 'gbp', 'gel', 'hkd', 'huf', 'idr', 'ils', 'inr', 'jpy', 'krw', 'kwd', 'lkr', 'mmk', 'mxn', 'myr', 'ngn', 'nok', 'nzd', 'php', 'pkr', 'pln', 'rub', 'sar', 'sek', 'sgd', 'thb', 'try', 'twd', 'uah', 'vef', 'vnd', 'zar', 'xdr', 'xag', 'xau', 'bits', 'sats']],
 }, total=False)
 
-WebContactBody = dict[str, Any]
-WebContactResponse = Any
-WebContactParams = TypedDict('WebContactParams', {
-    '_response_type': NotRequired[ResponseType],
-    '_timeout': NotRequired[float],
-    '_headers': NotRequired[Mapping[str, str]],
-    'option': Required[WebContactBody],
-}, total=False)
-
-CrunchbaseOrganizationResponse = Any
-CrunchbaseOrganizationParams = TypedDict('CrunchbaseOrganizationParams', {
-    '_response_type': NotRequired[ResponseType],
-    '_timeout': NotRequired[float],
-    '_headers': NotRequired[Mapping[str, str]],
-    'id': Required[str],
-}, total=False)
-
-CrunchbasePersonResponse = Any
-CrunchbasePersonParams = TypedDict('CrunchbasePersonParams', {
-    '_response_type': NotRequired[ResponseType],
-    '_timeout': NotRequired[float],
-    '_headers': NotRequired[Mapping[str, str]],
-    'id': Required[str],
-}, total=False)
-
 DatasetsListResponse = Any
 DatasetsListParams = TypedDict('DatasetsListParams', {
     '_response_type': NotRequired[ResponseType],
@@ -812,39 +787,6 @@ EBayEbaySellerShopParams = TypedDict('EBayEbaySellerShopParams', {
     '_headers': NotRequired[Mapping[str, str]],
     'seller': Required[str],
     'page': NotRequired[int],
-}, total=False)
-
-EtsyListingResponse = Any
-EtsyListingParams = TypedDict('EtsyListingParams', {
-    '_response_type': NotRequired[ResponseType],
-    '_timeout': NotRequired[float],
-    '_headers': NotRequired[Mapping[str, str]],
-    'id': Required[str],
-}, total=False)
-
-EtsySearchResponse = Any
-EtsySearchParams = TypedDict('EtsySearchParams', {
-    '_response_type': NotRequired[ResponseType],
-    '_timeout': NotRequired[float],
-    '_headers': NotRequired[Mapping[str, str]],
-    'q': Required[str],
-    'page': NotRequired[int],
-}, total=False)
-
-EtsyShopResponse = Any
-EtsyShopParams = TypedDict('EtsyShopParams', {
-    '_response_type': NotRequired[ResponseType],
-    '_timeout': NotRequired[float],
-    '_headers': NotRequired[Mapping[str, str]],
-    'id': Required[str],
-}, total=False)
-
-FacebookPageResponse = Any
-FacebookPageParams = TypedDict('FacebookPageParams', {
-    '_response_type': NotRequired[ResponseType],
-    '_timeout': NotRequired[float],
-    '_headers': NotRequired[Mapping[str, str]],
-    'page': Required[str],
 }, total=False)
 
 GeocodingLookupResponse = Any
@@ -1057,15 +999,6 @@ GoogleFinanceTickerParams = TypedDict('GoogleFinanceTickerParams', {
     'window': NotRequired[str],
 }, total=False)
 
-GoogleImageBody = dict[str, Any]
-GoogleImageResponse = Any
-GoogleImageParams = TypedDict('GoogleImageParams', {
-    '_response_type': NotRequired[ResponseType],
-    '_timeout': NotRequired[float],
-    '_headers': NotRequired[Mapping[str, str]],
-    'searchOption': Required[GoogleImageBody],
-}, total=False)
-
 GoogleJobsBody = dict[str, Any]
 GoogleJobsResponse = Any
 GoogleJobsParams = TypedDict('GoogleJobsParams', {
@@ -1073,14 +1006,6 @@ GoogleJobsParams = TypedDict('GoogleJobsParams', {
     '_timeout': NotRequired[float],
     '_headers': NotRequired[Mapping[str, str]],
     'option': Required[GoogleJobsBody],
-}, total=False)
-
-GoogleLensResponse = Any
-GoogleLensParams = TypedDict('GoogleLensParams', {
-    '_response_type': NotRequired[ResponseType],
-    '_timeout': NotRequired[float],
-    '_headers': NotRequired[Mapping[str, str]],
-    'image': Required[Any],
 }, total=False)
 
 GoogleMapPlaceResponse = Any
@@ -1100,15 +1025,6 @@ GoogleMapSearchParams = TypedDict('GoogleMapSearchParams', {
     'mapSearchOption': Required[GoogleMapSearchBody],
 }, total=False)
 
-GoogleNewsDeprecatedBody = dict[str, Any]
-GoogleNewsDeprecatedResponse = Any
-GoogleNewsDeprecatedParams = TypedDict('GoogleNewsDeprecatedParams', {
-    '_response_type': NotRequired[ResponseType],
-    '_timeout': NotRequired[float],
-    '_headers': NotRequired[Mapping[str, str]],
-    'searchOption': Required[GoogleNewsDeprecatedBody],
-}, total=False)
-
 GoogleSearchBody = dict[str, Any]
 GoogleSearchResponse = Any
 GoogleSearchParams = TypedDict('GoogleSearchParams', {
@@ -1116,24 +1032,6 @@ GoogleSearchParams = TypedDict('GoogleSearchParams', {
     '_timeout': NotRequired[float],
     '_headers': NotRequired[Mapping[str, str]],
     'searchOption': Required[GoogleSearchBody],
-}, total=False)
-
-GoogleShoppingBody = dict[str, Any]
-GoogleShoppingResponse = Any
-GoogleShoppingParams = TypedDict('GoogleShoppingParams', {
-    '_response_type': NotRequired[ResponseType],
-    '_timeout': NotRequired[float],
-    '_headers': NotRequired[Mapping[str, str]],
-    'searchOption': Required[GoogleShoppingBody],
-}, total=False)
-
-GoogleShoppingDetailBody = dict[str, Any]
-GoogleShoppingDetailResponse = Any
-GoogleShoppingDetailParams = TypedDict('GoogleShoppingDetailParams', {
-    '_response_type': NotRequired[ResponseType],
-    '_timeout': NotRequired[float],
-    '_headers': NotRequired[Mapping[str, str]],
-    'ShoppingItemDetailOption': Required[GoogleShoppingDetailBody],
 }, total=False)
 
 GoogleSuggestResponse = Any
@@ -1699,22 +1597,6 @@ ProductHuntAlternativesParams = TypedDict('ProductHuntAlternativesParams', {
     'cursor': NotRequired[str],
     'order': NotRequired[str],
     'tags': NotRequired[str],
-}, total=False)
-
-ProductHuntCommentsResponse = Any
-ProductHuntCommentsParams = TypedDict('ProductHuntCommentsParams', {
-    '_response_type': NotRequired[ResponseType],
-    '_timeout': NotRequired[float],
-    '_headers': NotRequired[Mapping[str, str]],
-    'id': Required[str],
-    'page': NotRequired[int],
-    'limit': NotRequired[int],
-    'order': NotRequired[str],
-    'filter': NotRequired[str],
-    'threads_cursor': NotRequired[str],
-    'replies_cursor': NotRequired[str],
-    'include_thread_for_comment_id': NotRequired[str],
-    'exclude_thread_for_comment_id': NotRequired[str],
 }, total=False)
 
 ProductHuntCustomersResponse = Any
@@ -2316,18 +2198,6 @@ TiktokPopularTrendCreatorParams = TypedDict('TiktokPopularTrendCreatorParams', {
     'audience_count': NotRequired[Literal['1', '2', '3', '4']],
 }, total=False)
 
-TiktokPopularTrendVideoResponse = Any
-TiktokPopularTrendVideoParams = TypedDict('TiktokPopularTrendVideoParams', {
-    '_response_type': NotRequired[ResponseType],
-    '_timeout': NotRequired[float],
-    '_headers': NotRequired[Mapping[str, str]],
-    'page': NotRequired[int],
-    'limit': NotRequired[int],
-    'country_code': NotRequired[str],
-    'order_by': NotRequired[Literal['vv', 'like', 'comment', 'repost']],
-    'period': NotRequired[Literal['7', '30']],
-}, total=False)
-
 TiktokPostResponse = Any
 TiktokPostParams = TypedDict('TiktokPostParams', {
     '_response_type': NotRequired[ResponseType],
@@ -2721,15 +2591,6 @@ UserMeApiKeysRevealParams = TypedDict('UserMeApiKeysRevealParams', {
     '_timeout': NotRequired[float],
     '_headers': NotRequired[Mapping[str, str]],
     'id': Required[str],
-}, total=False)
-
-WebParseBody = dict[str, Any]
-WebParseResponse = Any
-WebParseParams = TypedDict('WebParseParams', {
-    '_response_type': NotRequired[ResponseType],
-    '_timeout': NotRequired[float],
-    '_headers': NotRequired[Mapping[str, str]],
-    'parseWebOption': Required[WebParseBody],
 }, total=False)
 
 YahooFinanceCalendarsResponse = Any
@@ -3305,14 +3166,6 @@ class CoinGeckoGroup:
     def treasuries(self, **params: Unpack[CoinGeckoTreasuriesParams]) -> CoinGeckoTreasuriesResponse: ...
     def trending(self, **params: Unpack[CoinGeckoTrendingParams]) -> CoinGeckoTrendingResponse: ...
 
-class WebGroup:
-    def contact(self, **params: Unpack[WebContactParams]) -> WebContactResponse: ...
-    def parse(self, **params: Unpack[WebParseParams]) -> WebParseResponse: ...
-
-class CrunchbaseGroup:
-    def organization(self, **params: Unpack[CrunchbaseOrganizationParams]) -> CrunchbaseOrganizationResponse: ...
-    def person(self, **params: Unpack[CrunchbasePersonParams]) -> CrunchbasePersonResponse: ...
-
 class DatasetsGroup:
     def list(self, **params: Unpack[DatasetsListParams]) -> DatasetsListResponse: ...
     def google_map_businesses_facets(self, **params: Unpack[DatasetsGoogleMapBusinessesFacetsParams]) -> DatasetsGoogleMapBusinessesFacetsResponse: ...
@@ -3327,14 +3180,6 @@ class EBayGroup:
     def ebay_seller_about(self, **params: Unpack[EBayEbaySellerAboutParams]) -> EBayEbaySellerAboutResponse: ...
     def ebay_seller_feedback(self, **params: Unpack[EBayEbaySellerFeedbackParams]) -> EBayEbaySellerFeedbackResponse: ...
     def ebay_seller_shop(self, **params: Unpack[EBayEbaySellerShopParams]) -> EBayEbaySellerShopResponse: ...
-
-class EtsyGroup:
-    def listing(self, **params: Unpack[EtsyListingParams]) -> EtsyListingResponse: ...
-    def search(self, **params: Unpack[EtsySearchParams]) -> EtsySearchResponse: ...
-    def shop(self, **params: Unpack[EtsyShopParams]) -> EtsyShopResponse: ...
-
-class FacebookGroup:
-    def page(self, **params: Unpack[FacebookPageParams]) -> FacebookPageResponse: ...
 
 class GeocodingGroup:
     def lookup(self, **params: Unpack[GeocodingLookupParams]) -> GeocodingLookupResponse: ...
@@ -3362,15 +3207,10 @@ class GoogleGroup:
     def finance_related(self, **params: Unpack[GoogleFinanceRelatedParams]) -> GoogleFinanceRelatedResponse: ...
     def finance_search(self, **params: Unpack[GoogleFinanceSearchParams]) -> GoogleFinanceSearchResponse: ...
     def finance_ticker(self, **params: Unpack[GoogleFinanceTickerParams]) -> GoogleFinanceTickerResponse: ...
-    def image(self, **params: Unpack[GoogleImageParams]) -> GoogleImageResponse: ...
     def jobs(self, **params: Unpack[GoogleJobsParams]) -> GoogleJobsResponse: ...
-    def lens(self, **params: Unpack[GoogleLensParams]) -> GoogleLensResponse: ...
     def map_place(self, **params: Unpack[GoogleMapPlaceParams]) -> GoogleMapPlaceResponse: ...
     def map_search(self, **params: Unpack[GoogleMapSearchParams]) -> GoogleMapSearchResponse: ...
-    def news_deprecated(self, **params: Unpack[GoogleNewsDeprecatedParams]) -> GoogleNewsDeprecatedResponse: ...
     def search(self, **params: Unpack[GoogleSearchParams]) -> GoogleSearchResponse: ...
-    def shopping(self, **params: Unpack[GoogleShoppingParams]) -> GoogleShoppingResponse: ...
-    def shopping_detail(self, **params: Unpack[GoogleShoppingDetailParams]) -> GoogleShoppingDetailResponse: ...
     def suggest(self, **params: Unpack[GoogleSuggestParams]) -> GoogleSuggestResponse: ...
     def trends_categories(self, **params: Unpack[GoogleTrendsCategoriesParams]) -> GoogleTrendsCategoriesResponse: ...
     def trends_enums(self, **params: Unpack[GoogleTrendsEnumsParams]) -> GoogleTrendsEnumsResponse: ...
@@ -3440,7 +3280,6 @@ class ProductHuntGroup:
     def product(self, **params: Unpack[ProductHuntProductParams]) -> ProductHuntProductResponse: ...
     def about(self, **params: Unpack[ProductHuntAboutParams]) -> ProductHuntAboutResponse: ...
     def alternatives(self, **params: Unpack[ProductHuntAlternativesParams]) -> ProductHuntAlternativesResponse: ...
-    def comments(self, **params: Unpack[ProductHuntCommentsParams]) -> ProductHuntCommentsResponse: ...
     def customers(self, **params: Unpack[ProductHuntCustomersParams]) -> ProductHuntCustomersResponse: ...
     def launches(self, **params: Unpack[ProductHuntLaunchesParams]) -> ProductHuntLaunchesResponse: ...
     def makers(self, **params: Unpack[ProductHuntMakersParams]) -> ProductHuntMakersResponse: ...
@@ -3506,7 +3345,6 @@ class TiktokGroup:
     def challenge_list(self, **params: Unpack[TiktokChallengeListParams]) -> TiktokChallengeListResponse: ...
     def popular_trend_country_industry_meta(self, **params: Unpack[TiktokPopularTrendCountryIndustryMetaParams]) -> TiktokPopularTrendCountryIndustryMetaResponse: ...
     def popular_trend_creator(self, **params: Unpack[TiktokPopularTrendCreatorParams]) -> TiktokPopularTrendCreatorResponse: ...
-    def popular_trend_video(self, **params: Unpack[TiktokPopularTrendVideoParams]) -> TiktokPopularTrendVideoResponse: ...
     def post(self, **params: Unpack[TiktokPostParams]) -> TiktokPostResponse: ...
     def profile_post(self, **params: Unpack[TiktokProfilePostParams]) -> TiktokProfilePostResponse: ...
     def profile(self, **params: Unpack[TiktokProfileParams]) -> TiktokProfileResponse: ...
@@ -3623,12 +3461,8 @@ class CrawloraClient:
     bing: BingGroup
     brave: BraveGroup
     coin_gecko: CoinGeckoGroup
-    web: WebGroup
-    crunchbase: CrunchbaseGroup
     datasets: DatasetsGroup
     e_bay: EBayGroup
-    etsy: EtsyGroup
-    facebook: FacebookGroup
     geocoding: GeocodingGroup
     google: GoogleGroup
     google_play: GooglePlayGroup

@@ -128,13 +128,6 @@ class CrawloraClientTest(unittest.TestCase):
         self.assertEqual(Handler.calls[0]["body"], b'{"q": "coffee"}')
         self.assertEqual(Handler.calls[0]["headers"]["Content-Type"], "application/json")
 
-    def test_multipart_upload(self):
-        client = CrawloraClient(api_key="api_test", base_url=self.base_url)
-        client.google.lens(image=b"image-bytes")
-
-        self.assertIn("multipart/form-data", Handler.calls[0]["headers"]["Content-Type"])
-        self.assertIn(b"image-bytes", Handler.calls[0]["body"])
-
     def test_api_error(self):
         Handler.response_status = 429
         Handler.response_body = {"code": 429, "msg": "rate limited"}
@@ -184,7 +177,10 @@ class CrawloraClientTest(unittest.TestCase):
         self.assertIs(raised.exception.__cause__, cause)
 
     def test_operation_metadata_count(self):
-        self.assertEqual(OPERATION_COUNT, 318)
+        self.assertEqual(OPERATION_COUNT, 303)
+
+    def test_deprecated_endpoints_are_not_generated(self):
+        self.assertFalse(hasattr(CrawloraClient(api_key="api_test", base_url=self.base_url).google, "lens"))
 
     def test_generated_stub_includes_typed_endpoint_groups(self):
         stub = Path(__file__).resolve().parents[1].joinpath("crawlora", "client.pyi").read_text()

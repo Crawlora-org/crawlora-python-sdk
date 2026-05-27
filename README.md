@@ -5,7 +5,7 @@ Git-installable beta SDK for the public Crawlora API.
 ## Install
 
 ```sh
-pip install "git+https://github.com/Crawlora-org/crawlora-python-sdk.git@v1.2.0-sdk.7"
+pip install "git+https://github.com/Crawlora-org/crawlora-python-sdk.git@v1.2.0-sdk.8"
 ```
 
 ## Usage
@@ -45,12 +45,6 @@ text = crawlora.youtube.transcript(
 )
 ```
 
-Multipart upload endpoints accept bytes, file paths, or file-like objects:
-
-```python
-result = crawlora.google.lens(image=b"image-bytes")
-```
-
 API failures raise `CrawloraError` with `status`, optional API `code`, parsed
 `body`, `raw_body`, and the underlying transport exception as `__cause__`.
 
@@ -61,7 +55,6 @@ Runnable examples live under `examples/`:
 ```sh
 CRAWLORA_API_KEY=... python3 examples/bing_search.py
 CRAWLORA_API_KEY=... CRAWLORA_YOUTUBE_VIDEO_ID=... python3 examples/youtube_transcript.py
-CRAWLORA_API_KEY=... CRAWLORA_LENS_IMAGE=./image.jpg python3 examples/google_lens_upload.py
 ```
 
 Each example also accepts `CRAWLORA_BASE_URL` for staging or local API testing.

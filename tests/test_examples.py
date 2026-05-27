@@ -10,7 +10,6 @@ class ExamplesTest(unittest.TestCase):
         root = Path(__file__).resolve().parents[1]
         for example in [
             "examples/bing_search.py",
-            "examples/google_lens_upload.py",
             "examples/youtube_transcript.py",
         ]:
             with self.subTest(example=example):
@@ -32,7 +31,6 @@ def scrub_live_env():
     for key in (
         "CRAWLORA_API_KEY",
         "CRAWLORA_BASE_URL",
-        "CRAWLORA_LENS_IMAGE",
         "CRAWLORA_YOUTUBE_VIDEO_ID",
     ):
         env.pop(key, None)
