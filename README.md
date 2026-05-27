@@ -5,7 +5,7 @@ Git-only beta SDK for the public Crawlora API.
 ## Install
 
 ```sh
-pip install "git+https://github.com/Crawlora-org/crawlora-python-sdk.git@v1.2.0-sdk.2"
+pip install "git+https://github.com/Crawlora-org/crawlora-python-sdk.git@v1.2.0-sdk.3"
 ```
 
 ## Usage
@@ -16,6 +16,9 @@ from crawlora import CrawloraClient
 crawlora = CrawloraClient(api_key="...")
 result = crawlora.bing.search(q="coffee shops", count=10)
 ```
+
+Generated type stubs cover endpoint groups, keyword parameters, enum values,
+request options, and response aliases for editors and type checkers.
 
 ## Configuration
 
