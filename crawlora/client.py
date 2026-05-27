@@ -3,24 +3,40 @@ from __future__ import annotations
 import json
 import mimetypes
 import os
+import random
+import time
 import uuid
 from dataclasses import dataclass
-from typing import Any, Callable, Mapping
-from urllib.error import HTTPError
+from typing import Any, Callable, Mapping, Literal
+from urllib.error import HTTPError, URLError
 from urllib.parse import urlencode, quote
 from urllib.request import Request, urlopen
 
 from .operations import GROUPS, OPERATIONS
 
 DEFAULT_BASE_URL = "https://api.crawlora.net/api/v1"
+VERSION = "1.2.0-sdk.2"
+DEFAULT_USER_AGENT = f"crawlora-python-sdk/{VERSION}"
+ResponseType = Literal["auto", "json", "text"]
 
 
 class CrawloraError(Exception):
-    def __init__(self, message: str, *, status: int, code: int | None = None, body: Any = None):
+    def __init__(
+        self,
+        message: str,
+        *,
+        status: int = 0,
+        code: int | None = None,
+        body: Any = None,
+        raw_body: str = "",
+        cause: BaseException | None = None,
+    ):
         super().__init__(message)
         self.status = status
         self.code = code
         self.body = body
+        self.raw_body = raw_body
+        self.__cause__ = cause
 
 
 @dataclass(frozen=True)
@@ -39,7 +55,9 @@ class CrawloraClient:
         base_url: str = DEFAULT_BASE_URL,
         timeout: float = 30,
         retries: int = 0,
+        retry_delay: float = 0.25,
         headers: Mapping[str, str] | None = None,
+        user_agent: str | None = DEFAULT_USER_AGENT,
         transport: Callable[[Request, float], _Response] | None = None,
     ) -> None:
         self.api_key = api_key or ""
@@ -47,7 +65,9 @@ class CrawloraClient:
         self.base_url = base_url.rstrip("/")
         self.timeout = timeout
         self.retries = retries
+        self.retry_delay = retry_delay
         self.headers = dict(headers or {})
+        self.user_agent = user_agent or ""
         self._transport = transport or self._urlopen_transport
 
         for group_name, operations in GROUPS.items():
@@ -58,17 +78,19 @@ class CrawloraClient:
         operation_id: str,
         params: Mapping[str, Any] | None = None,
         *,
-        response_type: str = "auto",
+        response_type: ResponseType = "auto",
+        timeout: float | None = None,
         headers: Mapping[str, str] | None = None,
     ) -> Any:
-        return self.request(operation_id, params, response_type=response_type, headers=headers)
+        return self.request(operation_id, params, response_type=response_type, timeout=timeout, headers=headers)
 
     def request(
         self,
         operation_id: str,
         params: Mapping[str, Any] | None = None,
         *,
-        response_type: str = "auto",
+        response_type: ResponseType = "auto",
+        timeout: float | None = None,
         headers: Mapping[str, str] | None = None,
     ) -> Any:
         operation = OPERATIONS.get(operation_id)
@@ -78,18 +100,20 @@ class CrawloraClient:
         attempt = 0
         while True:
             try:
-                return self._send(operation, dict(params or {}), response_type=response_type, headers=headers)
+                return self._send(operation, dict(params or {}), response_type=response_type, timeout=timeout, headers=headers)
             except CrawloraError as exc:
                 if attempt >= self.retries or not _should_retry(exc.status):
                     raise
                 attempt += 1
+                _sleep_before_retry(self.retry_delay, attempt)
 
     def _send(
         self,
         operation: Mapping[str, Any],
         params: dict[str, Any],
         *,
-        response_type: str,
+        response_type: ResponseType,
+        timeout: float | None,
         headers: Mapping[str, str] | None,
     ) -> Any:
         url, body, body_headers = _build_request(self.base_url, operation, params)
@@ -99,13 +123,19 @@ class CrawloraClient:
             **body_headers,
             **dict(headers or {}),
         }
+        if self.user_agent and "User-Agent" not in request_headers:
+            request_headers["User-Agent"] = self.user_agent
         request = Request(url, data=body, headers=request_headers, method=operation["method"])
-        response = self._transport(request, self.timeout)
-        parsed = _parse_response(response.body, response.headers.get("content-type", ""), response_type)
+        try:
+            response = self._transport(request, timeout if timeout is not None else self.timeout)
+        except Exception as exc:
+            raise CrawloraError("Crawlora transport error", cause=exc) from exc
+        raw_body = response.body.decode(errors="replace")
+        parsed = _parse_response(response.body, _header_value(response.headers, "content-type"), response_type)
         if response.status < 200 or response.status >= 300:
             code = parsed.get("code") if isinstance(parsed, dict) else None
             message = parsed.get("msg") if isinstance(parsed, dict) and parsed.get("msg") else f"HTTP {response.status}"
-            raise CrawloraError(message, status=response.status, code=code, body=parsed)
+            raise CrawloraError(message, status=response.status, code=code, body=parsed, raw_body=raw_body)
         return parsed
 
     @staticmethod
@@ -115,6 +145,8 @@ class CrawloraClient:
                 return _Response(response.status, dict(response.headers.items()), response.read())
         except HTTPError as exc:
             return _Response(exc.code, dict(exc.headers.items()), exc.read())
+        except URLError:
+            raise
 
 
 class _OperationGroup:
@@ -129,8 +161,9 @@ class _OperationGroup:
 
         def call(**params: Any) -> Any:
             response_type = params.pop("_response_type", "auto")
+            timeout = params.pop("_timeout", None)
             headers = params.pop("_headers", None)
-            return self._client.request(operation_id, params, response_type=response_type, headers=headers)
+            return self._client.request(operation_id, params, response_type=response_type, timeout=timeout, headers=headers)
 
         return call
 
@@ -150,9 +183,9 @@ def _build_request(base_url: str, operation: Mapping[str, Any], params: dict[str
         if value in (None, ""):
             continue
         if isinstance(value, (list, tuple)):
-            query.extend((name, item) for item in value)
+            query.extend((name, _stringify_param(item)) for item in value)
         else:
-            query.append((name, value))
+            query.append((name, _stringify_param(value)))
     url = base_url + path
     if query:
         url += "?" + urlencode(query, doseq=True)
@@ -216,10 +249,31 @@ def _auth_headers(security: list[str], api_key: str, jwt_token: str) -> dict[str
 def _parse_response(body: bytes, content_type: str, response_type: str) -> Any:
     if response_type == "text":
         return body.decode()
-    if response_type == "json" or "application/json" in content_type:
+    if response_type == "json" or "application/json" in content_type.lower():
         return json.loads(body.decode()) if body else None
     return body.decode()
 
 
+def _stringify_param(value: Any) -> str:
+    if isinstance(value, bool):
+        return "true" if value else "false"
+    return str(value)
+
+
 def _should_retry(status: int) -> bool:
-    return status in {408, 409, 425, 429} or status >= 500
+    return status == 0 or status in {408, 409, 425, 429} or status >= 500
+
+
+def _sleep_before_retry(base_delay: float, attempt: int) -> None:
+    if base_delay <= 0:
+        return
+    delay = base_delay * (2 ** max(0, attempt - 1))
+    jitter = random.uniform(0, base_delay / 2)
+    time.sleep(delay + jitter)
+
+
+def _header_value(headers: Mapping[str, str], name: str) -> str:
+    for key, value in headers.items():
+        if key.lower() == name.lower():
+            return value
+    return ""
