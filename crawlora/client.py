@@ -15,7 +15,7 @@ from urllib.request import Request, urlopen
 from .operations import GROUPS, OPERATIONS
 
 DEFAULT_BASE_URL = "https://api.crawlora.net/api/v1"
-VERSION = "1.2.0-sdk.8"
+VERSION = "1.2.0-sdk.9"
 DEFAULT_USER_AGENT = f"crawlora-python-sdk/{VERSION}"
 ResponseType = Literal["auto", "json", "text"]
 
@@ -131,7 +131,15 @@ class CrawloraClient:
         except Exception as exc:
             raise CrawloraError("Crawlora transport error", cause=exc) from exc
         raw_body = response.body.decode(errors="replace")
-        parsed = _parse_response(response.body, _header_value(response.headers, "content-type"), response_type)
+        try:
+            parsed = _parse_response(response.body, _header_value(response.headers, "content-type"), response_type)
+        except json.JSONDecodeError as exc:
+            raise CrawloraError(
+                "Crawlora JSON parse error",
+                status=response.status,
+                raw_body=raw_body,
+                cause=exc,
+            ) from exc
         if response.status < 200 or response.status >= 300:
             code = parsed.get("code") if isinstance(parsed, dict) else None
             message = parsed.get("msg") if isinstance(parsed, dict) and parsed.get("msg") else f"HTTP {response.status}"
@@ -170,6 +178,7 @@ class _OperationGroup:
 
 def _build_request(base_url: str, operation: Mapping[str, Any], params: dict[str, Any]) -> tuple[str, bytes | None, dict[str, str]]:
     _validate_required_params(operation, params)
+    _validate_enum_params(operation, params)
     path = operation["path"]
     for name in operation.get("pathParams", []):
         value = params.get(name)
@@ -216,6 +225,21 @@ def _validate_required_params(operation: Mapping[str, Any], params: Mapping[str,
         body_param = operation.get("bodyParam")
         if _is_missing(params.get(body_param)) and _is_missing(params.get("body")):
             raise ValueError(f"missing required body parameter: {body_param}")
+
+
+def _validate_enum_params(operation: Mapping[str, Any], params: Mapping[str, Any]) -> None:
+    for location in ("queryParams", "formParams"):
+        for parameter in operation.get(location, []):
+            enum_values = parameter.get("enum") or []
+            value = params.get(parameter["name"])
+            if not enum_values or _is_missing(value):
+                continue
+            values = value if isinstance(value, (list, tuple)) else [value]
+            for item in values:
+                if _stringify_param(item) not in enum_values:
+                    param_location = parameter.get("in", "request")
+                    expected = ", ".join(enum_values)
+                    raise ValueError(f"invalid {param_location} parameter {parameter['name']}: expected one of {expected}")
 
 
 def _is_missing(value: Any) -> bool:

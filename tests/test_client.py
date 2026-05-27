@@ -87,6 +87,13 @@ class CrawloraClientTest(unittest.TestCase):
             client.google.search()
         self.assertEqual(Handler.calls, [])
 
+    def test_invalid_enum_params_fail_before_request(self):
+        client = CrawloraClient(api_key="api_test", base_url=self.base_url)
+
+        with self.assertRaisesRegex(ValueError, "invalid query parameter language: expected one of en_US"):
+            client.request("amazon-product", {"asin": "B000000000", "language": "fr_FR"})
+        self.assertEqual(Handler.calls, [])
+
     def test_negative_retry_options_are_normalized(self):
         client = CrawloraClient(api_key="api_test", base_url=self.base_url, retries=-3, retry_delay=-0.5)
 
@@ -121,6 +128,12 @@ class CrawloraClientTest(unittest.TestCase):
         self.assertIn("online_options=3", Handler.calls[1]["path"])
         self.assertIn("online_options=4", Handler.calls[1]["path"])
 
+    def test_valid_enum_param_serializes(self):
+        client = CrawloraClient(api_key="api_test", base_url=self.base_url)
+        client.request("amazon-product", {"asin": "B000000000", "language": "en_US"})
+
+        self.assertIn("language=en_US", Handler.calls[0]["path"])
+
     def test_json_body(self):
         client = CrawloraClient(api_key="api_test", base_url=self.base_url)
         client.google.search(searchOption={"q": "coffee"})
@@ -140,6 +153,19 @@ class CrawloraClientTest(unittest.TestCase):
         self.assertEqual(raised.exception.code, 429)
         self.assertEqual(str(raised.exception), "rate limited")
         self.assertIn("rate limited", raised.exception.raw_body)
+
+    def test_invalid_json_response_is_wrapped(self):
+        Handler.response_body = "{not-json"
+        Handler.content_type = "application/json"
+        client = CrawloraClient(api_key="api_test", base_url=self.base_url)
+
+        with self.assertRaises(CrawloraError) as raised:
+            client.bing.search(q="coffee")
+
+        self.assertEqual(raised.exception.status, 200)
+        self.assertEqual(str(raised.exception), "Crawlora JSON parse error")
+        self.assertEqual(raised.exception.raw_body, "{not-json")
+        self.assertIsInstance(raised.exception.__cause__, json.JSONDecodeError)
 
     def test_retries_retryable_status(self):
         calls = {"count": 0}
