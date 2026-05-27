@@ -85,16 +85,6 @@ pip install crawlora
 Registry publication is not enabled yet. Until then, install from an explicit
 Git beta tag or the moving `latest` tag as shown above.
 
-## Regeneration
-
-The committed `openapi/public.json` is the SDK contract source. Regenerate after
-updating that file:
-
-```sh
-python3 scripts/generate.py
-python3 -m unittest discover -s tests
-```
-
 ## Optional Live Smoke Test
 
 Default tests use a local mock server. The programs under `examples/` can be
