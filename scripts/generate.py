@@ -173,7 +173,7 @@ def stub_declarations(groups, operation_meta):
         "from __future__ import annotations",
         "",
         "import sys",
-        "from typing import Any, Callable, Literal, Mapping",
+        "from typing import Any, Callable, Literal, Mapping, overload",
         "",
         "if sys.version_info >= (3, 11):",
         "    from typing import NotRequired, Required, TypedDict, Unpack",
@@ -236,6 +236,12 @@ def stub_declarations(groups, operation_meta):
             base = operation_meta[operation_id]["typeBase"]
             lines.append(f"    def {method_name}(self, **params: Unpack[{base}Params]) -> {base}Response: ...")
         lines.append("")
+    operation_ids = [operation_id for operation_id in operation_meta if operation_id != "definitions"]
+    lines.append("OperationId = Literal[")
+    for operation_id in operation_ids:
+        lines.append(f"    {operation_id!r},")
+    lines.append("]")
+    lines.append("")
     lines.append("class CrawloraClient:")
     for group_name in groups:
         lines.append(f"    {group_name}: {type_name(group_name, 'group')}")
@@ -254,24 +260,42 @@ def stub_declarations(groups, operation_meta):
             "        user_agent: str | None = ...,",
             "        transport: Callable[..., Any] | None = ...,",
             "    ) -> None: ...",
-            "    def operation(",
-            "        self,",
-            "        operation_id: str,",
-            "        params: Mapping[str, Any] | None = ...,",
-            "        *,",
-            "        response_type: ResponseType = ...,",
-            "        timeout: float | None = ...,",
-            "        headers: Mapping[str, str] | None = ...,",
-            "    ) -> Any: ...",
-            "    def request(",
-            "        self,",
-            "        operation_id: str,",
-            "        params: Mapping[str, Any] | None = ...,",
-            "        *,",
-            "        response_type: ResponseType = ...,",
-            "        timeout: float | None = ...,",
-            "        headers: Mapping[str, str] | None = ...,",
-            "    ) -> Any: ...",
+        ]
+    )
+    for method_name in ("operation", "request"):
+        for operation_id in operation_ids:
+            base = operation_meta[operation_id]["typeBase"]
+            params_default = " = ..." if not operation_meta[operation_id].get("hasRequiredParams") else ""
+            lines.extend(
+                [
+                    "    @overload",
+                    f"    def {method_name}(",
+                    "        self,",
+                    f"        operation_id: Literal[{operation_id!r}],",
+                    f"        params: {base}Params{params_default},",
+                    "        *,",
+                    "        response_type: ResponseType = ...,",
+                    "        timeout: float | None = ...,",
+                    "        headers: Mapping[str, str] | None = ...,",
+                    f"    ) -> {base}Response: ...",
+                ]
+            )
+        lines.extend(
+            [
+                "    @overload",
+                f"    def {method_name}(",
+                "        self,",
+                "        operation_id: str,",
+                "        params: Mapping[str, Any] | None = ...,",
+                "        *,",
+                "        response_type: ResponseType = ...,",
+                "        timeout: float | None = ...,",
+                "        headers: Mapping[str, str] | None = ...,",
+                "    ) -> Any: ...",
+            ]
+        )
+    lines.extend(
+        [
             "",
             "VERSION: str",
         ]
@@ -310,6 +334,7 @@ def main():
                 "params": [p for p in params if p.get("in") in {"path", "query", "formData", "body"}],
                 "bodyType": py_schema_type(body_schema),
                 "responseType": py_schema_type(response_schema),
+                "hasRequiredParams": any(p.get("required") for p in params if p.get("in") in {"path", "query", "formData", "body"}),
             }
     operation_meta["definitions"] = spec.get("definitions", {})
 

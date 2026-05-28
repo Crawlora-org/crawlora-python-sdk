@@ -220,6 +220,10 @@ class CrawloraClientTest(unittest.TestCase):
         self.assertIn("'count': NotRequired[int]", stub)
         self.assertIn("GoogleSearchBody = ModelGoogleSearchOption", stub)
         self.assertIn("def search(self, **params: Unpack[BingSearchParams]) -> BingSearchResponse: ...", stub)
+        self.assertIn("OperationId = Literal[", stub)
+        self.assertIn("operation_id: Literal['bing-search']", stub)
+        self.assertIn("params: BingSearchParams,", stub)
+        self.assertIn(") -> BingSearchResponse: ...", stub)
         self.assertIn("class CrawloraClient:", stub)
 
 

@@ -1,5 +1,11 @@
 # Changelog
 
+## v1.2.0-sdk.11
+
+- Added generated `OperationId` literals and overloads so type checkers infer
+  dynamic `request` and `operation` responses from literal operation ids.
+- Added mypy-backed type-usage coverage for typed dynamic calls.
+
 ## v1.2.0-sdk.10
 
 - Generated OpenAPI schema model `TypedDict` definitions and aliases for

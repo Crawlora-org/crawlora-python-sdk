@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 import sys
-from typing import Any, Callable, Literal, Mapping
+from typing import Any, Callable, Literal, Mapping, overload
 
 if sys.version_info >= (3, 11):
     from typing import NotRequired, Required, TypedDict, Unpack
@@ -12058,6 +12058,312 @@ class ZillowGroup:
     def property(self, **params: Unpack[ZillowPropertyParams]) -> ZillowPropertyResponse: ...
     def search(self, **params: Unpack[ZillowSearchParams]) -> ZillowSearchResponse: ...
 
+OperationId = Literal[
+    'airbnb-room',
+    'airbnb-room-calendar',
+    'airbnb-room-reviews',
+    'airbnb-search',
+    'amazon-product',
+    'amazon-search',
+    'amazon-suggest',
+    'apple-podcasts-charts',
+    'apple-podcasts-episodes-search',
+    'apple-podcasts-search',
+    'apple-podcasts-show',
+    'apple-podcasts-show-episodes',
+    'appstore-app',
+    'appstore-developer',
+    'appstore-list',
+    'appstore-privacy',
+    'appstore-ratings',
+    'appstore-reviews',
+    'appstore-search',
+    'appstore-similar',
+    'appstore-suggest',
+    'appstore-version-history',
+    'billing-me',
+    'billing-me-checkout',
+    'billing-me-events',
+    'billing-me-periods',
+    'billing-me-period',
+    'billing-me-period-statement',
+    'billing-me-period-statement-download',
+    'billing-me-portal',
+    'bing-images',
+    'bing-news',
+    'bing-search',
+    'bing-suggest',
+    'bing-videos',
+    'brave-images',
+    'brave-news',
+    'brave-search',
+    'brave-suggest',
+    'brave-videos',
+    'coingecko-categories',
+    'coingecko-category-coins',
+    'coingecko-chains',
+    'coingecko-chain',
+    'coingecko-coin',
+    'coingecko-coin-analysis',
+    'coingecko-exchange',
+    'coingecko-exchanges',
+    'coingecko-gainers-losers',
+    'coingecko-global',
+    'coingecko-global-charts',
+    'coingecko-learn-articles',
+    'coingecko-markets',
+    'coingecko-new-coins',
+    'coingecko-news',
+    'coingecko-nft-category',
+    'coingecko-nfts',
+    'coingecko-search',
+    'coingecko-token-unlocks',
+    'coingecko-treasuries',
+    'coingecko-trending',
+    'datasets-list',
+    'datasets-google-map-businesses-facets',
+    'datasets-google-map-businesses-item',
+    'datasets-google-map-businesses-nearby',
+    'datasets-google-map-businesses-search',
+    'ebay-item',
+    'ebay-search',
+    'ebay-seller',
+    'ebay-seller-about',
+    'ebay-seller-feedback',
+    'ebay-seller-shop',
+    'geocoding-lookup',
+    'geocoding-reverse',
+    'geocoding-search',
+    'google-finance-analyst-articles',
+    'google-finance-chart',
+    'google-finance-classification',
+    'google-finance-company',
+    'google-finance-context',
+    'google-finance-financials',
+    'google-finance-markets-category-news',
+    'google-finance-markets-category-stocks',
+    'google-finance-markets-earnings',
+    'google-finance-markets-featured',
+    'google-finance-markets-headline',
+    'google-finance-markets-indices',
+    'google-finance-markets-movers',
+    'google-finance-markets-top',
+    'google-finance-markets-trending',
+    'google-finance-news',
+    'google-finance-quote',
+    'google-finance-related',
+    'google-finance-search',
+    'google-finance-ticker',
+    'google-jobs',
+    'google-map-place',
+    'google-map-search',
+    'google-search',
+    'google-suggest',
+    'google-trends-categories',
+    'google-trends-enums',
+    'google-trends-explore',
+    'google-trends-explore-interest-by-region',
+    'google-trends-explore-interest-over-time',
+    'google-trends-explore-related-topics',
+    'google-trends-explore-rising-queries',
+    'google-trends-explore-top-queries',
+    'google-trends-locations',
+    'google-trends-trending',
+    'google-trends-trending-detail',
+    'googleplay-app',
+    'googleplay-categories',
+    'googleplay-datasafety',
+    'googleplay-developer',
+    'googleplay-list',
+    'googleplay-permissions',
+    'googleplay-reviews',
+    'googleplay-search',
+    'googleplay-similar',
+    'googleplay-suggest',
+    'instagram-post',
+    'instagram-profile',
+    'instagram-reels',
+    'justwatch-age-certifications',
+    'justwatch-discover',
+    'justwatch-episode-by-id',
+    'justwatch-episode-offers',
+    'justwatch-genre-titles',
+    'justwatch-genres',
+    'justwatch-monetization-titles',
+    'justwatch-new',
+    'justwatch-popular',
+    'justwatch-provider-titles',
+    'justwatch-providers',
+    'justwatch-search',
+    'justwatch-season-by-id',
+    'justwatch-season-episodes',
+    'justwatch-show-seasons',
+    'justwatch-title',
+    'justwatch-title-analysis',
+    'justwatch-title-by-id',
+    'justwatch-title-media',
+    'justwatch-title-offers',
+    'justwatch-title-similar',
+    'linkedin-company',
+    'linkedin-product',
+    'linkedin-showcase',
+    'ping',
+    'producthunt-category',
+    'producthunt-category-products',
+    'producthunt-leaderboard',
+    'producthunt-product',
+    'producthunt-about',
+    'producthunt-alternatives',
+    'producthunt-customers',
+    'producthunt-launches',
+    'producthunt-makers',
+    'producthunt-reviews',
+    'producthunt-search',
+    'ready',
+    'referrals-click',
+    'referrals-me',
+    'referrals-me-events',
+    'similarweb-search',
+    'similarweb-web',
+    'spotify-podcasts-categories',
+    'spotify-podcasts-charts',
+    'spotify-podcasts-episode',
+    'spotify-podcasts-home',
+    'spotify-podcasts-search',
+    'spotify-podcasts-show',
+    'spotify-podcasts-show-episodes',
+    'spotify-podcasts-show-recommendations',
+    'spotify-album',
+    'spotify-album-tracks',
+    'spotify-albums-search',
+    'spotify-artist',
+    'spotify-artist-albums',
+    'spotify-artist-playlists',
+    'spotify-artist-related',
+    'spotify-artists-search',
+    'spotify-audiobook',
+    'spotify-audiobook-chapters',
+    'spotify-audiobooks-search',
+    'spotify-chapter',
+    'spotify-episodes-search',
+    'spotify-featured-charts-by-country',
+    'spotify-genre',
+    'spotify-home',
+    'spotify-playlist',
+    'spotify-playlists-search',
+    'spotify-popular-by-country',
+    'spotify-profile',
+    'spotify-profile-followers',
+    'spotify-profile-playlists',
+    'spotify-profiles-search',
+    'spotify-search',
+    'spotify-section',
+    'spotify-shows-search',
+    'spotify-track',
+    'spotify-track-recommended',
+    'spotify-track-similar-albums',
+    'spotify-tracks-search',
+    'tiktok-category',
+    'tiktok-video-comments',
+    'tiktok-explore',
+    'tiktok-challenge',
+    'tiktok-challenge-list',
+    'tiktok-popular-trend-country-industry-meta',
+    'tiktok-popular-trend-creator',
+    'tiktok-post',
+    'tiktok-profile-post',
+    'tiktok-profile',
+    'tiktok-search',
+    'tiktok-search-hashtag',
+    'tiktok-search-user',
+    'tiktok-top-ads-analysis',
+    'tiktok-top-ads-detail',
+    'tiktok-top-ads-filters',
+    'tiktok-top-ads-list',
+    'tiktok-top-ads-location-info',
+    'tiktok-top-ads-locations',
+    'tiktok-top-ads-recommend',
+    'tiktok-top-ads-safety',
+    'tiktok-top-ads-spotlight',
+    'tiktok-top-ads-suggestions',
+    'tiktok-trending',
+    'tripadvisor-autocomplete',
+    'tripadvisor-enums',
+    'tripadvisor-hotels',
+    'tripadvisor-place',
+    'tripadvisor-reviews',
+    'tripadvisor-search',
+    'trustpilot-business-search',
+    'trustpilot-business',
+    'trustpilot-business-related',
+    'trustpilot-business-reviews',
+    'trustpilot-categories',
+    'trustpilot-category-search',
+    'trustpilot-category',
+    'usage-me-endpoints',
+    'usage-me-overview',
+    'usage-me-recent-ips',
+    'usage-me-timeseries',
+    'user-me',
+    'user-me-api-keys',
+    'user-me-api-keys-rotate',
+    'user-me-api-keys-reveal',
+    'yahoo-finance-calendars',
+    'yahoo-finance-calendar',
+    'yahoo-finance-download',
+    'yahoo-finance-industries',
+    'yahoo-finance-industry',
+    'yahoo-finance-market-status',
+    'yahoo-finance-market-summary',
+    'yahoo-finance-screener-custom',
+    'yahoo-finance-screener',
+    'yahoo-finance-screeners',
+    'yahoo-finance-search',
+    'yahoo-finance-sectors',
+    'yahoo-finance-sector',
+    'yahoo-finance-ticker-actions',
+    'yahoo-finance-ticker-analysts',
+    'yahoo-finance-ticker-calendar',
+    'yahoo-finance-ticker-capital-gains',
+    'yahoo-finance-ticker-dividends',
+    'yahoo-finance-ticker-earnings',
+    'yahoo-finance-ticker-earnings-dates',
+    'yahoo-finance-ticker-financials',
+    'yahoo-finance-ticker-funds',
+    'yahoo-finance-ticker-history',
+    'yahoo-finance-ticker-history-metadata',
+    'yahoo-finance-ticker-holders',
+    'yahoo-finance-ticker-info',
+    'yahoo-finance-ticker-isin',
+    'yahoo-finance-ticker-news',
+    'yahoo-finance-ticker-options',
+    'yahoo-finance-ticker-options-expiration',
+    'yahoo-finance-ticker-quote',
+    'yahoo-finance-ticker-sec-filings',
+    'yahoo-finance-ticker-shares',
+    'yahoo-finance-ticker-shares-full',
+    'yahoo-finance-ticker-splits',
+    'yahoo-finance-ticker-sustainability',
+    'yahoo-finance-ticker-valuation',
+    'yahoo-finance-trending',
+    'youtube-captions',
+    'youtube-channel-playlists',
+    'youtube-channel-search',
+    'youtube-channel-shorts',
+    'youtube-channel-videos',
+    'youtube-comments',
+    'youtube-playlist',
+    'youtube-profile',
+    'youtube-search',
+    'youtube-tag',
+    'youtube-transcript',
+    'youtube-transcript-languages',
+    'youtube-video',
+    'zillow-autocomplete',
+    'zillow-property',
+    'zillow-search',
+]
+
 class CrawloraClient:
     airbnb: AirbnbGroup
     amazon: AmazonGroup
@@ -12102,6 +12408,3037 @@ class CrawloraClient:
         user_agent: str | None = ...,
         transport: Callable[..., Any] | None = ...,
     ) -> None: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['airbnb-room'],
+        params: AirbnbRoomParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> AirbnbRoomResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['airbnb-room-calendar'],
+        params: AirbnbRoomCalendarParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> AirbnbRoomCalendarResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['airbnb-room-reviews'],
+        params: AirbnbRoomReviewsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> AirbnbRoomReviewsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['airbnb-search'],
+        params: AirbnbSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> AirbnbSearchResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['amazon-product'],
+        params: AmazonProductParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> AmazonProductResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['amazon-search'],
+        params: AmazonSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> AmazonSearchResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['amazon-suggest'],
+        params: AmazonSuggestParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> AmazonSuggestResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['apple-podcasts-charts'],
+        params: ApplePodcastsChartsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> ApplePodcastsChartsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['apple-podcasts-episodes-search'],
+        params: ApplePodcastsEpisodesSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> ApplePodcastsEpisodesSearchResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['apple-podcasts-search'],
+        params: ApplePodcastsSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> ApplePodcastsSearchResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['apple-podcasts-show'],
+        params: ApplePodcastsShowParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> ApplePodcastsShowResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['apple-podcasts-show-episodes'],
+        params: ApplePodcastsShowEpisodesParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> ApplePodcastsShowEpisodesResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['appstore-app'],
+        params: AppStoreAppParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> AppStoreAppResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['appstore-developer'],
+        params: AppStoreDeveloperParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> AppStoreDeveloperResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['appstore-list'],
+        params: AppStoreListParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> AppStoreListResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['appstore-privacy'],
+        params: AppStorePrivacyParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> AppStorePrivacyResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['appstore-ratings'],
+        params: AppStoreRatingsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> AppStoreRatingsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['appstore-reviews'],
+        params: AppStoreReviewsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> AppStoreReviewsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['appstore-search'],
+        params: AppStoreSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> AppStoreSearchResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['appstore-similar'],
+        params: AppStoreSimilarParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> AppStoreSimilarResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['appstore-suggest'],
+        params: AppStoreSuggestParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> AppStoreSuggestResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['appstore-version-history'],
+        params: AppStoreVersionHistoryParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> AppStoreVersionHistoryResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['billing-me'],
+        params: BillingMeParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> BillingMeResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['billing-me-checkout'],
+        params: BillingMeCheckoutParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> BillingMeCheckoutResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['billing-me-events'],
+        params: BillingMeEventsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> BillingMeEventsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['billing-me-periods'],
+        params: BillingMePeriodsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> BillingMePeriodsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['billing-me-period'],
+        params: BillingMePeriodParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> BillingMePeriodResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['billing-me-period-statement'],
+        params: BillingMePeriodStatementParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> BillingMePeriodStatementResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['billing-me-period-statement-download'],
+        params: BillingMePeriodStatementDownloadParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> BillingMePeriodStatementDownloadResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['billing-me-portal'],
+        params: BillingMePortalParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> BillingMePortalResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['bing-images'],
+        params: BingImagesParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> BingImagesResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['bing-news'],
+        params: BingNewsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> BingNewsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['bing-search'],
+        params: BingSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> BingSearchResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['bing-suggest'],
+        params: BingSuggestParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> BingSuggestResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['bing-videos'],
+        params: BingVideosParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> BingVideosResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['brave-images'],
+        params: BraveImagesParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> BraveImagesResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['brave-news'],
+        params: BraveNewsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> BraveNewsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['brave-search'],
+        params: BraveSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> BraveSearchResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['brave-suggest'],
+        params: BraveSuggestParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> BraveSuggestResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['brave-videos'],
+        params: BraveVideosParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> BraveVideosResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['coingecko-categories'],
+        params: CoinGeckoCategoriesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> CoinGeckoCategoriesResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['coingecko-category-coins'],
+        params: CoinGeckoCategoryCoinsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> CoinGeckoCategoryCoinsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['coingecko-chains'],
+        params: CoinGeckoChainsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> CoinGeckoChainsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['coingecko-chain'],
+        params: CoinGeckoChainParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> CoinGeckoChainResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['coingecko-coin'],
+        params: CoinGeckoCoinParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> CoinGeckoCoinResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['coingecko-coin-analysis'],
+        params: CoinGeckoCoinAnalysisParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> CoinGeckoCoinAnalysisResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['coingecko-exchange'],
+        params: CoinGeckoExchangeParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> CoinGeckoExchangeResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['coingecko-exchanges'],
+        params: CoinGeckoExchangesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> CoinGeckoExchangesResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['coingecko-gainers-losers'],
+        params: CoinGeckoGainersLosersParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> CoinGeckoGainersLosersResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['coingecko-global'],
+        params: CoinGeckoGlobalParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> CoinGeckoGlobalResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['coingecko-global-charts'],
+        params: CoinGeckoGlobalChartsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> CoinGeckoGlobalChartsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['coingecko-learn-articles'],
+        params: CoinGeckoLearnArticlesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> CoinGeckoLearnArticlesResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['coingecko-markets'],
+        params: CoinGeckoMarketsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> CoinGeckoMarketsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['coingecko-new-coins'],
+        params: CoinGeckoNewCoinsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> CoinGeckoNewCoinsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['coingecko-news'],
+        params: CoinGeckoNewsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> CoinGeckoNewsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['coingecko-nft-category'],
+        params: CoinGeckoNftCategoryParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> CoinGeckoNftCategoryResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['coingecko-nfts'],
+        params: CoinGeckoNftsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> CoinGeckoNftsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['coingecko-search'],
+        params: CoinGeckoSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> CoinGeckoSearchResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['coingecko-token-unlocks'],
+        params: CoinGeckoTokenUnlocksParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> CoinGeckoTokenUnlocksResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['coingecko-treasuries'],
+        params: CoinGeckoTreasuriesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> CoinGeckoTreasuriesResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['coingecko-trending'],
+        params: CoinGeckoTrendingParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> CoinGeckoTrendingResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['datasets-list'],
+        params: DatasetsListParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> DatasetsListResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['datasets-google-map-businesses-facets'],
+        params: DatasetsGoogleMapBusinessesFacetsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> DatasetsGoogleMapBusinessesFacetsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['datasets-google-map-businesses-item'],
+        params: DatasetsGoogleMapBusinessesItemParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> DatasetsGoogleMapBusinessesItemResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['datasets-google-map-businesses-nearby'],
+        params: DatasetsGoogleMapBusinessesNearbyParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> DatasetsGoogleMapBusinessesNearbyResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['datasets-google-map-businesses-search'],
+        params: DatasetsGoogleMapBusinessesSearchParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> DatasetsGoogleMapBusinessesSearchResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['ebay-item'],
+        params: EBayEbayItemParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> EBayEbayItemResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['ebay-search'],
+        params: EBayEbaySearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> EBayEbaySearchResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['ebay-seller'],
+        params: EBayEbaySellerParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> EBayEbaySellerResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['ebay-seller-about'],
+        params: EBayEbaySellerAboutParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> EBayEbaySellerAboutResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['ebay-seller-feedback'],
+        params: EBayEbaySellerFeedbackParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> EBayEbaySellerFeedbackResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['ebay-seller-shop'],
+        params: EBayEbaySellerShopParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> EBayEbaySellerShopResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['geocoding-lookup'],
+        params: GeocodingLookupParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> GeocodingLookupResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['geocoding-reverse'],
+        params: GeocodingReverseParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> GeocodingReverseResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['geocoding-search'],
+        params: GeocodingSearchParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> GeocodingSearchResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['google-finance-analyst-articles'],
+        params: GoogleFinanceAnalystArticlesParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> GoogleFinanceAnalystArticlesResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['google-finance-chart'],
+        params: GoogleFinanceChartParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> GoogleFinanceChartResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['google-finance-classification'],
+        params: GoogleFinanceClassificationParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> GoogleFinanceClassificationResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['google-finance-company'],
+        params: GoogleFinanceCompanyParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> GoogleFinanceCompanyResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['google-finance-context'],
+        params: GoogleFinanceContextParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> GoogleFinanceContextResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['google-finance-financials'],
+        params: GoogleFinanceFinancialsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> GoogleFinanceFinancialsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['google-finance-markets-category-news'],
+        params: GoogleFinanceMarketsCategoryNewsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> GoogleFinanceMarketsCategoryNewsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['google-finance-markets-category-stocks'],
+        params: GoogleFinanceMarketsCategoryStocksParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> GoogleFinanceMarketsCategoryStocksResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['google-finance-markets-earnings'],
+        params: GoogleFinanceMarketsEarningsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> GoogleFinanceMarketsEarningsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['google-finance-markets-featured'],
+        params: GoogleFinanceMarketsFeaturedParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> GoogleFinanceMarketsFeaturedResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['google-finance-markets-headline'],
+        params: GoogleFinanceMarketsHeadlineParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> GoogleFinanceMarketsHeadlineResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['google-finance-markets-indices'],
+        params: GoogleFinanceMarketsIndicesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> GoogleFinanceMarketsIndicesResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['google-finance-markets-movers'],
+        params: GoogleFinanceMarketsMoversParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> GoogleFinanceMarketsMoversResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['google-finance-markets-top'],
+        params: GoogleFinanceMarketsTopParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> GoogleFinanceMarketsTopResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['google-finance-markets-trending'],
+        params: GoogleFinanceMarketsTrendingParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> GoogleFinanceMarketsTrendingResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['google-finance-news'],
+        params: GoogleFinanceNewsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> GoogleFinanceNewsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['google-finance-quote'],
+        params: GoogleFinanceQuoteParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> GoogleFinanceQuoteResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['google-finance-related'],
+        params: GoogleFinanceRelatedParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> GoogleFinanceRelatedResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['google-finance-search'],
+        params: GoogleFinanceSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> GoogleFinanceSearchResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['google-finance-ticker'],
+        params: GoogleFinanceTickerParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> GoogleFinanceTickerResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['google-jobs'],
+        params: GoogleJobsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> GoogleJobsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['google-map-place'],
+        params: GoogleMapPlaceParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> GoogleMapPlaceResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['google-map-search'],
+        params: GoogleMapSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> GoogleMapSearchResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['google-search'],
+        params: GoogleSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> GoogleSearchResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['google-suggest'],
+        params: GoogleSuggestParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> GoogleSuggestResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['google-trends-categories'],
+        params: GoogleTrendsCategoriesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> GoogleTrendsCategoriesResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['google-trends-enums'],
+        params: GoogleTrendsEnumsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> GoogleTrendsEnumsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['google-trends-explore'],
+        params: GoogleTrendsExploreParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> GoogleTrendsExploreResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['google-trends-explore-interest-by-region'],
+        params: GoogleTrendsExploreInterestByRegionParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> GoogleTrendsExploreInterestByRegionResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['google-trends-explore-interest-over-time'],
+        params: GoogleTrendsExploreInterestOverTimeParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> GoogleTrendsExploreInterestOverTimeResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['google-trends-explore-related-topics'],
+        params: GoogleTrendsExploreRelatedTopicsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> GoogleTrendsExploreRelatedTopicsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['google-trends-explore-rising-queries'],
+        params: GoogleTrendsExploreRisingQueriesParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> GoogleTrendsExploreRisingQueriesResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['google-trends-explore-top-queries'],
+        params: GoogleTrendsExploreTopQueriesParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> GoogleTrendsExploreTopQueriesResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['google-trends-locations'],
+        params: GoogleTrendsLocationsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> GoogleTrendsLocationsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['google-trends-trending'],
+        params: GoogleTrendsTrendingParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> GoogleTrendsTrendingResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['google-trends-trending-detail'],
+        params: GoogleTrendsTrendingDetailParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> GoogleTrendsTrendingDetailResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['googleplay-app'],
+        params: GooglePlayAppParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> GooglePlayAppResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['googleplay-categories'],
+        params: GooglePlayCategoriesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> GooglePlayCategoriesResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['googleplay-datasafety'],
+        params: GooglePlayDatasafetyParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> GooglePlayDatasafetyResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['googleplay-developer'],
+        params: GooglePlayDeveloperParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> GooglePlayDeveloperResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['googleplay-list'],
+        params: GooglePlayListParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> GooglePlayListResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['googleplay-permissions'],
+        params: GooglePlayPermissionsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> GooglePlayPermissionsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['googleplay-reviews'],
+        params: GooglePlayReviewsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> GooglePlayReviewsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['googleplay-search'],
+        params: GooglePlaySearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> GooglePlaySearchResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['googleplay-similar'],
+        params: GooglePlaySimilarParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> GooglePlaySimilarResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['googleplay-suggest'],
+        params: GooglePlaySuggestParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> GooglePlaySuggestResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['instagram-post'],
+        params: InstagramPostParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> InstagramPostResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['instagram-profile'],
+        params: InstagramProfileParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> InstagramProfileResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['instagram-reels'],
+        params: InstagramReelsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> InstagramReelsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['justwatch-age-certifications'],
+        params: JustWatchJustwatchAgeCertificationsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> JustWatchJustwatchAgeCertificationsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['justwatch-discover'],
+        params: JustWatchJustwatchDiscoverParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> JustWatchJustwatchDiscoverResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['justwatch-episode-by-id'],
+        params: JustWatchJustwatchEpisodeByIdParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> JustWatchJustwatchEpisodeByIdResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['justwatch-episode-offers'],
+        params: JustWatchJustwatchEpisodeOffersParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> JustWatchJustwatchEpisodeOffersResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['justwatch-genre-titles'],
+        params: JustWatchJustwatchGenreTitlesParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> JustWatchJustwatchGenreTitlesResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['justwatch-genres'],
+        params: JustWatchJustwatchGenresParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> JustWatchJustwatchGenresResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['justwatch-monetization-titles'],
+        params: JustWatchJustwatchMonetizationTitlesParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> JustWatchJustwatchMonetizationTitlesResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['justwatch-new'],
+        params: JustWatchJustwatchNewParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> JustWatchJustwatchNewResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['justwatch-popular'],
+        params: JustWatchJustwatchPopularParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> JustWatchJustwatchPopularResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['justwatch-provider-titles'],
+        params: JustWatchJustwatchProviderTitlesParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> JustWatchJustwatchProviderTitlesResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['justwatch-providers'],
+        params: JustWatchJustwatchProvidersParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> JustWatchJustwatchProvidersResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['justwatch-search'],
+        params: JustWatchJustwatchSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> JustWatchJustwatchSearchResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['justwatch-season-by-id'],
+        params: JustWatchJustwatchSeasonByIdParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> JustWatchJustwatchSeasonByIdResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['justwatch-season-episodes'],
+        params: JustWatchJustwatchSeasonEpisodesParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> JustWatchJustwatchSeasonEpisodesResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['justwatch-show-seasons'],
+        params: JustWatchJustwatchShowSeasonsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> JustWatchJustwatchShowSeasonsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['justwatch-title'],
+        params: JustWatchJustwatchTitleParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> JustWatchJustwatchTitleResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['justwatch-title-analysis'],
+        params: JustWatchJustwatchTitleAnalysisParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> JustWatchJustwatchTitleAnalysisResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['justwatch-title-by-id'],
+        params: JustWatchJustwatchTitleByIdParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> JustWatchJustwatchTitleByIdResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['justwatch-title-media'],
+        params: JustWatchJustwatchTitleMediaParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> JustWatchJustwatchTitleMediaResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['justwatch-title-offers'],
+        params: JustWatchJustwatchTitleOffersParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> JustWatchJustwatchTitleOffersResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['justwatch-title-similar'],
+        params: JustWatchJustwatchTitleSimilarParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> JustWatchJustwatchTitleSimilarResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['linkedin-company'],
+        params: LinkedInLinkedinCompanyParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> LinkedInLinkedinCompanyResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['linkedin-product'],
+        params: LinkedInLinkedinProductParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> LinkedInLinkedinProductResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['linkedin-showcase'],
+        params: LinkedInLinkedinShowcaseParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> LinkedInLinkedinShowcaseResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['ping'],
+        params: MetaPingParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> MetaPingResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['producthunt-category'],
+        params: ProductHuntCategoryParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> ProductHuntCategoryResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['producthunt-category-products'],
+        params: ProductHuntCategoryProductsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> ProductHuntCategoryProductsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['producthunt-leaderboard'],
+        params: ProductHuntLeaderboardParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> ProductHuntLeaderboardResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['producthunt-product'],
+        params: ProductHuntProductParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> ProductHuntProductResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['producthunt-about'],
+        params: ProductHuntAboutParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> ProductHuntAboutResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['producthunt-alternatives'],
+        params: ProductHuntAlternativesParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> ProductHuntAlternativesResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['producthunt-customers'],
+        params: ProductHuntCustomersParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> ProductHuntCustomersResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['producthunt-launches'],
+        params: ProductHuntLaunchesParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> ProductHuntLaunchesResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['producthunt-makers'],
+        params: ProductHuntMakersParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> ProductHuntMakersResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['producthunt-reviews'],
+        params: ProductHuntReviewsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> ProductHuntReviewsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['producthunt-search'],
+        params: ProductHuntSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> ProductHuntSearchResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['ready'],
+        params: MetaReadyParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> MetaReadyResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['referrals-click'],
+        params: ReferralsClickParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> ReferralsClickResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['referrals-me'],
+        params: ReferralsMeParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> ReferralsMeResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['referrals-me-events'],
+        params: ReferralsMeEventsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> ReferralsMeEventsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['similarweb-search'],
+        params: SimilarWebSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> SimilarWebSearchResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['similarweb-web'],
+        params: SimilarWebWebParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> SimilarWebWebResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['spotify-podcasts-categories'],
+        params: SpotifyPodcastsCategoriesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> SpotifyPodcastsCategoriesResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['spotify-podcasts-charts'],
+        params: SpotifyPodcastsChartsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> SpotifyPodcastsChartsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['spotify-podcasts-episode'],
+        params: SpotifyPodcastsEpisodeParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> SpotifyPodcastsEpisodeResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['spotify-podcasts-home'],
+        params: SpotifyPodcastsHomeParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> SpotifyPodcastsHomeResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['spotify-podcasts-search'],
+        params: SpotifyPodcastsSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> SpotifyPodcastsSearchResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['spotify-podcasts-show'],
+        params: SpotifyPodcastsShowParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> SpotifyPodcastsShowResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['spotify-podcasts-show-episodes'],
+        params: SpotifyPodcastsShowEpisodesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> SpotifyPodcastsShowEpisodesResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['spotify-podcasts-show-recommendations'],
+        params: SpotifyPodcastsShowRecommendationsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> SpotifyPodcastsShowRecommendationsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['spotify-album'],
+        params: SpotifyAlbumParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> SpotifyAlbumResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['spotify-album-tracks'],
+        params: SpotifyAlbumTracksParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> SpotifyAlbumTracksResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['spotify-albums-search'],
+        params: SpotifyAlbumsSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> SpotifyAlbumsSearchResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['spotify-artist'],
+        params: SpotifyArtistParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> SpotifyArtistResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['spotify-artist-albums'],
+        params: SpotifyArtistAlbumsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> SpotifyArtistAlbumsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['spotify-artist-playlists'],
+        params: SpotifyArtistPlaylistsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> SpotifyArtistPlaylistsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['spotify-artist-related'],
+        params: SpotifyArtistRelatedParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> SpotifyArtistRelatedResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['spotify-artists-search'],
+        params: SpotifyArtistsSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> SpotifyArtistsSearchResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['spotify-audiobook'],
+        params: SpotifyAudiobookParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> SpotifyAudiobookResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['spotify-audiobook-chapters'],
+        params: SpotifyAudiobookChaptersParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> SpotifyAudiobookChaptersResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['spotify-audiobooks-search'],
+        params: SpotifyAudiobooksSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> SpotifyAudiobooksSearchResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['spotify-chapter'],
+        params: SpotifyChapterParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> SpotifyChapterResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['spotify-episodes-search'],
+        params: SpotifyEpisodesSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> SpotifyEpisodesSearchResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['spotify-featured-charts-by-country'],
+        params: SpotifyFeaturedChartsByCountryParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> SpotifyFeaturedChartsByCountryResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['spotify-genre'],
+        params: SpotifyGenreParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> SpotifyGenreResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['spotify-home'],
+        params: SpotifyHomeParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> SpotifyHomeResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['spotify-playlist'],
+        params: SpotifyPlaylistParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> SpotifyPlaylistResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['spotify-playlists-search'],
+        params: SpotifyPlaylistsSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> SpotifyPlaylistsSearchResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['spotify-popular-by-country'],
+        params: SpotifyPopularByCountryParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> SpotifyPopularByCountryResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['spotify-profile'],
+        params: SpotifyProfileParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> SpotifyProfileResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['spotify-profile-followers'],
+        params: SpotifyProfileFollowersParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> SpotifyProfileFollowersResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['spotify-profile-playlists'],
+        params: SpotifyProfilePlaylistsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> SpotifyProfilePlaylistsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['spotify-profiles-search'],
+        params: SpotifyProfilesSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> SpotifyProfilesSearchResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['spotify-search'],
+        params: SpotifySearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> SpotifySearchResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['spotify-section'],
+        params: SpotifySectionParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> SpotifySectionResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['spotify-shows-search'],
+        params: SpotifyShowsSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> SpotifyShowsSearchResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['spotify-track'],
+        params: SpotifyTrackParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> SpotifyTrackResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['spotify-track-recommended'],
+        params: SpotifyTrackRecommendedParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> SpotifyTrackRecommendedResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['spotify-track-similar-albums'],
+        params: SpotifyTrackSimilarAlbumsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> SpotifyTrackSimilarAlbumsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['spotify-tracks-search'],
+        params: SpotifyTracksSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> SpotifyTracksSearchResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['tiktok-category'],
+        params: TiktokCategoryParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> TiktokCategoryResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['tiktok-video-comments'],
+        params: TiktokVideoCommentsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> TiktokVideoCommentsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['tiktok-explore'],
+        params: TiktokExploreParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> TiktokExploreResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['tiktok-challenge'],
+        params: TiktokChallengeParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> TiktokChallengeResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['tiktok-challenge-list'],
+        params: TiktokChallengeListParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> TiktokChallengeListResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['tiktok-popular-trend-country-industry-meta'],
+        params: TiktokPopularTrendCountryIndustryMetaParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> TiktokPopularTrendCountryIndustryMetaResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['tiktok-popular-trend-creator'],
+        params: TiktokPopularTrendCreatorParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> TiktokPopularTrendCreatorResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['tiktok-post'],
+        params: TiktokPostParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> TiktokPostResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['tiktok-profile-post'],
+        params: TiktokProfilePostParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> TiktokProfilePostResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['tiktok-profile'],
+        params: TiktokProfileParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> TiktokProfileResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['tiktok-search'],
+        params: TiktokSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> TiktokSearchResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['tiktok-search-hashtag'],
+        params: TiktokSearchHashtagParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> TiktokSearchHashtagResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['tiktok-search-user'],
+        params: TiktokSearchUserParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> TiktokSearchUserResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['tiktok-top-ads-analysis'],
+        params: TiktokTopAdsAnalysisParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> TiktokTopAdsAnalysisResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['tiktok-top-ads-detail'],
+        params: TiktokTopAdsDetailParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> TiktokTopAdsDetailResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['tiktok-top-ads-filters'],
+        params: TiktokTopAdsFiltersParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> TiktokTopAdsFiltersResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['tiktok-top-ads-list'],
+        params: TiktokTopAdsListParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> TiktokTopAdsListResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['tiktok-top-ads-location-info'],
+        params: TiktokTopAdsLocationInfoParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> TiktokTopAdsLocationInfoResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['tiktok-top-ads-locations'],
+        params: TiktokTopAdsLocationsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> TiktokTopAdsLocationsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['tiktok-top-ads-recommend'],
+        params: TiktokTopAdsRecommendParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> TiktokTopAdsRecommendResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['tiktok-top-ads-safety'],
+        params: TiktokTopAdsSafetyParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> TiktokTopAdsSafetyResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['tiktok-top-ads-spotlight'],
+        params: TiktokTopAdsSpotlightParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> TiktokTopAdsSpotlightResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['tiktok-top-ads-suggestions'],
+        params: TiktokTopAdsSuggestionsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> TiktokTopAdsSuggestionsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['tiktok-trending'],
+        params: TiktokTrendingParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> TiktokTrendingResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['tripadvisor-autocomplete'],
+        params: TripAdvisorTripadvisorAutocompleteParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> TripAdvisorTripadvisorAutocompleteResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['tripadvisor-enums'],
+        params: TripAdvisorTripadvisorEnumsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> TripAdvisorTripadvisorEnumsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['tripadvisor-hotels'],
+        params: TripAdvisorTripadvisorHotelsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> TripAdvisorTripadvisorHotelsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['tripadvisor-place'],
+        params: TripAdvisorTripadvisorPlaceParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> TripAdvisorTripadvisorPlaceResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['tripadvisor-reviews'],
+        params: TripAdvisorTripadvisorReviewsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> TripAdvisorTripadvisorReviewsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['tripadvisor-search'],
+        params: TripAdvisorTripadvisorSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> TripAdvisorTripadvisorSearchResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['trustpilot-business-search'],
+        params: TrustpilotBusinessSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> TrustpilotBusinessSearchResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['trustpilot-business'],
+        params: TrustpilotBusinessParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> TrustpilotBusinessResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['trustpilot-business-related'],
+        params: TrustpilotBusinessRelatedParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> TrustpilotBusinessRelatedResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['trustpilot-business-reviews'],
+        params: TrustpilotBusinessReviewsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> TrustpilotBusinessReviewsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['trustpilot-categories'],
+        params: TrustpilotCategoriesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> TrustpilotCategoriesResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['trustpilot-category-search'],
+        params: TrustpilotCategorySearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> TrustpilotCategorySearchResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['trustpilot-category'],
+        params: TrustpilotCategoryParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> TrustpilotCategoryResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['usage-me-endpoints'],
+        params: UsageMeEndpointsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> UsageMeEndpointsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['usage-me-overview'],
+        params: UsageMeOverviewParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> UsageMeOverviewResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['usage-me-recent-ips'],
+        params: UsageMeRecentIpsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> UsageMeRecentIpsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['usage-me-timeseries'],
+        params: UsageMeTimeseriesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> UsageMeTimeseriesResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['user-me'],
+        params: UserMeParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> UserMeResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['user-me-api-keys'],
+        params: UserMeApiKeysParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> UserMeApiKeysResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['user-me-api-keys-rotate'],
+        params: UserMeApiKeysRotateParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> UserMeApiKeysRotateResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['user-me-api-keys-reveal'],
+        params: UserMeApiKeysRevealParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> UserMeApiKeysRevealResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['yahoo-finance-calendars'],
+        params: YahooFinanceCalendarsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> YahooFinanceCalendarsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['yahoo-finance-calendar'],
+        params: YahooFinanceCalendarParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> YahooFinanceCalendarResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['yahoo-finance-download'],
+        params: YahooFinanceDownloadParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> YahooFinanceDownloadResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['yahoo-finance-industries'],
+        params: YahooFinanceIndustriesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> YahooFinanceIndustriesResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['yahoo-finance-industry'],
+        params: YahooFinanceIndustryParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> YahooFinanceIndustryResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['yahoo-finance-market-status'],
+        params: YahooFinanceMarketStatusParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> YahooFinanceMarketStatusResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['yahoo-finance-market-summary'],
+        params: YahooFinanceMarketSummaryParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> YahooFinanceMarketSummaryResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['yahoo-finance-screener-custom'],
+        params: YahooFinanceScreenerCustomParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> YahooFinanceScreenerCustomResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['yahoo-finance-screener'],
+        params: YahooFinanceScreenerParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> YahooFinanceScreenerResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['yahoo-finance-screeners'],
+        params: YahooFinanceScreenersParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> YahooFinanceScreenersResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['yahoo-finance-search'],
+        params: YahooFinanceSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> YahooFinanceSearchResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['yahoo-finance-sectors'],
+        params: YahooFinanceSectorsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> YahooFinanceSectorsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['yahoo-finance-sector'],
+        params: YahooFinanceSectorParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> YahooFinanceSectorResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['yahoo-finance-ticker-actions'],
+        params: YahooFinanceTickerActionsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> YahooFinanceTickerActionsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['yahoo-finance-ticker-analysts'],
+        params: YahooFinanceTickerAnalystsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> YahooFinanceTickerAnalystsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['yahoo-finance-ticker-calendar'],
+        params: YahooFinanceTickerCalendarParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> YahooFinanceTickerCalendarResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['yahoo-finance-ticker-capital-gains'],
+        params: YahooFinanceTickerCapitalGainsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> YahooFinanceTickerCapitalGainsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['yahoo-finance-ticker-dividends'],
+        params: YahooFinanceTickerDividendsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> YahooFinanceTickerDividendsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['yahoo-finance-ticker-earnings'],
+        params: YahooFinanceTickerEarningsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> YahooFinanceTickerEarningsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['yahoo-finance-ticker-earnings-dates'],
+        params: YahooFinanceTickerEarningsDatesParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> YahooFinanceTickerEarningsDatesResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['yahoo-finance-ticker-financials'],
+        params: YahooFinanceTickerFinancialsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> YahooFinanceTickerFinancialsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['yahoo-finance-ticker-funds'],
+        params: YahooFinanceTickerFundsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> YahooFinanceTickerFundsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['yahoo-finance-ticker-history'],
+        params: YahooFinanceTickerHistoryParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> YahooFinanceTickerHistoryResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['yahoo-finance-ticker-history-metadata'],
+        params: YahooFinanceTickerHistoryMetadataParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> YahooFinanceTickerHistoryMetadataResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['yahoo-finance-ticker-holders'],
+        params: YahooFinanceTickerHoldersParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> YahooFinanceTickerHoldersResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['yahoo-finance-ticker-info'],
+        params: YahooFinanceTickerInfoParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> YahooFinanceTickerInfoResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['yahoo-finance-ticker-isin'],
+        params: YahooFinanceTickerIsinParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> YahooFinanceTickerIsinResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['yahoo-finance-ticker-news'],
+        params: YahooFinanceTickerNewsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> YahooFinanceTickerNewsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['yahoo-finance-ticker-options'],
+        params: YahooFinanceTickerOptionsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> YahooFinanceTickerOptionsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['yahoo-finance-ticker-options-expiration'],
+        params: YahooFinanceTickerOptionsExpirationParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> YahooFinanceTickerOptionsExpirationResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['yahoo-finance-ticker-quote'],
+        params: YahooFinanceTickerQuoteParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> YahooFinanceTickerQuoteResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['yahoo-finance-ticker-sec-filings'],
+        params: YahooFinanceTickerSecFilingsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> YahooFinanceTickerSecFilingsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['yahoo-finance-ticker-shares'],
+        params: YahooFinanceTickerSharesParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> YahooFinanceTickerSharesResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['yahoo-finance-ticker-shares-full'],
+        params: YahooFinanceTickerSharesFullParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> YahooFinanceTickerSharesFullResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['yahoo-finance-ticker-splits'],
+        params: YahooFinanceTickerSplitsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> YahooFinanceTickerSplitsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['yahoo-finance-ticker-sustainability'],
+        params: YahooFinanceTickerSustainabilityParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> YahooFinanceTickerSustainabilityResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['yahoo-finance-ticker-valuation'],
+        params: YahooFinanceTickerValuationParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> YahooFinanceTickerValuationResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['yahoo-finance-trending'],
+        params: YahooFinanceTrendingParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> YahooFinanceTrendingResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['youtube-captions'],
+        params: YoutubeCaptionsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> YoutubeCaptionsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['youtube-channel-playlists'],
+        params: YoutubeChannelPlaylistsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> YoutubeChannelPlaylistsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['youtube-channel-search'],
+        params: YoutubeChannelSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> YoutubeChannelSearchResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['youtube-channel-shorts'],
+        params: YoutubeChannelShortsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> YoutubeChannelShortsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['youtube-channel-videos'],
+        params: YoutubeChannelVideosParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> YoutubeChannelVideosResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['youtube-comments'],
+        params: YoutubeCommentsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> YoutubeCommentsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['youtube-playlist'],
+        params: YoutubePlaylistParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> YoutubePlaylistResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['youtube-profile'],
+        params: YoutubeProfileParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> YoutubeProfileResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['youtube-search'],
+        params: YoutubeSearchParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> YoutubeSearchResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['youtube-tag'],
+        params: YoutubeTagParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> YoutubeTagResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['youtube-transcript'],
+        params: YoutubeTranscriptParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> YoutubeTranscriptResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['youtube-transcript-languages'],
+        params: YoutubeTranscriptLanguagesParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> YoutubeTranscriptLanguagesResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['youtube-video'],
+        params: YoutubeVideoParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> YoutubeVideoResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['zillow-autocomplete'],
+        params: ZillowAutocompleteParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> ZillowAutocompleteResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['zillow-property'],
+        params: ZillowPropertyParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> ZillowPropertyResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['zillow-search'],
+        params: ZillowSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> ZillowSearchResponse: ...
+    @overload
     def operation(
         self,
         operation_id: str,
@@ -12111,6 +15448,3037 @@ class CrawloraClient:
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
     ) -> Any: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['airbnb-room'],
+        params: AirbnbRoomParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> AirbnbRoomResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['airbnb-room-calendar'],
+        params: AirbnbRoomCalendarParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> AirbnbRoomCalendarResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['airbnb-room-reviews'],
+        params: AirbnbRoomReviewsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> AirbnbRoomReviewsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['airbnb-search'],
+        params: AirbnbSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> AirbnbSearchResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['amazon-product'],
+        params: AmazonProductParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> AmazonProductResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['amazon-search'],
+        params: AmazonSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> AmazonSearchResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['amazon-suggest'],
+        params: AmazonSuggestParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> AmazonSuggestResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['apple-podcasts-charts'],
+        params: ApplePodcastsChartsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> ApplePodcastsChartsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['apple-podcasts-episodes-search'],
+        params: ApplePodcastsEpisodesSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> ApplePodcastsEpisodesSearchResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['apple-podcasts-search'],
+        params: ApplePodcastsSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> ApplePodcastsSearchResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['apple-podcasts-show'],
+        params: ApplePodcastsShowParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> ApplePodcastsShowResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['apple-podcasts-show-episodes'],
+        params: ApplePodcastsShowEpisodesParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> ApplePodcastsShowEpisodesResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['appstore-app'],
+        params: AppStoreAppParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> AppStoreAppResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['appstore-developer'],
+        params: AppStoreDeveloperParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> AppStoreDeveloperResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['appstore-list'],
+        params: AppStoreListParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> AppStoreListResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['appstore-privacy'],
+        params: AppStorePrivacyParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> AppStorePrivacyResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['appstore-ratings'],
+        params: AppStoreRatingsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> AppStoreRatingsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['appstore-reviews'],
+        params: AppStoreReviewsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> AppStoreReviewsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['appstore-search'],
+        params: AppStoreSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> AppStoreSearchResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['appstore-similar'],
+        params: AppStoreSimilarParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> AppStoreSimilarResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['appstore-suggest'],
+        params: AppStoreSuggestParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> AppStoreSuggestResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['appstore-version-history'],
+        params: AppStoreVersionHistoryParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> AppStoreVersionHistoryResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['billing-me'],
+        params: BillingMeParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> BillingMeResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['billing-me-checkout'],
+        params: BillingMeCheckoutParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> BillingMeCheckoutResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['billing-me-events'],
+        params: BillingMeEventsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> BillingMeEventsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['billing-me-periods'],
+        params: BillingMePeriodsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> BillingMePeriodsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['billing-me-period'],
+        params: BillingMePeriodParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> BillingMePeriodResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['billing-me-period-statement'],
+        params: BillingMePeriodStatementParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> BillingMePeriodStatementResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['billing-me-period-statement-download'],
+        params: BillingMePeriodStatementDownloadParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> BillingMePeriodStatementDownloadResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['billing-me-portal'],
+        params: BillingMePortalParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> BillingMePortalResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['bing-images'],
+        params: BingImagesParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> BingImagesResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['bing-news'],
+        params: BingNewsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> BingNewsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['bing-search'],
+        params: BingSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> BingSearchResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['bing-suggest'],
+        params: BingSuggestParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> BingSuggestResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['bing-videos'],
+        params: BingVideosParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> BingVideosResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['brave-images'],
+        params: BraveImagesParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> BraveImagesResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['brave-news'],
+        params: BraveNewsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> BraveNewsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['brave-search'],
+        params: BraveSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> BraveSearchResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['brave-suggest'],
+        params: BraveSuggestParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> BraveSuggestResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['brave-videos'],
+        params: BraveVideosParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> BraveVideosResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['coingecko-categories'],
+        params: CoinGeckoCategoriesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> CoinGeckoCategoriesResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['coingecko-category-coins'],
+        params: CoinGeckoCategoryCoinsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> CoinGeckoCategoryCoinsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['coingecko-chains'],
+        params: CoinGeckoChainsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> CoinGeckoChainsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['coingecko-chain'],
+        params: CoinGeckoChainParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> CoinGeckoChainResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['coingecko-coin'],
+        params: CoinGeckoCoinParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> CoinGeckoCoinResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['coingecko-coin-analysis'],
+        params: CoinGeckoCoinAnalysisParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> CoinGeckoCoinAnalysisResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['coingecko-exchange'],
+        params: CoinGeckoExchangeParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> CoinGeckoExchangeResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['coingecko-exchanges'],
+        params: CoinGeckoExchangesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> CoinGeckoExchangesResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['coingecko-gainers-losers'],
+        params: CoinGeckoGainersLosersParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> CoinGeckoGainersLosersResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['coingecko-global'],
+        params: CoinGeckoGlobalParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> CoinGeckoGlobalResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['coingecko-global-charts'],
+        params: CoinGeckoGlobalChartsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> CoinGeckoGlobalChartsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['coingecko-learn-articles'],
+        params: CoinGeckoLearnArticlesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> CoinGeckoLearnArticlesResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['coingecko-markets'],
+        params: CoinGeckoMarketsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> CoinGeckoMarketsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['coingecko-new-coins'],
+        params: CoinGeckoNewCoinsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> CoinGeckoNewCoinsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['coingecko-news'],
+        params: CoinGeckoNewsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> CoinGeckoNewsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['coingecko-nft-category'],
+        params: CoinGeckoNftCategoryParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> CoinGeckoNftCategoryResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['coingecko-nfts'],
+        params: CoinGeckoNftsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> CoinGeckoNftsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['coingecko-search'],
+        params: CoinGeckoSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> CoinGeckoSearchResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['coingecko-token-unlocks'],
+        params: CoinGeckoTokenUnlocksParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> CoinGeckoTokenUnlocksResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['coingecko-treasuries'],
+        params: CoinGeckoTreasuriesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> CoinGeckoTreasuriesResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['coingecko-trending'],
+        params: CoinGeckoTrendingParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> CoinGeckoTrendingResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['datasets-list'],
+        params: DatasetsListParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> DatasetsListResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['datasets-google-map-businesses-facets'],
+        params: DatasetsGoogleMapBusinessesFacetsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> DatasetsGoogleMapBusinessesFacetsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['datasets-google-map-businesses-item'],
+        params: DatasetsGoogleMapBusinessesItemParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> DatasetsGoogleMapBusinessesItemResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['datasets-google-map-businesses-nearby'],
+        params: DatasetsGoogleMapBusinessesNearbyParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> DatasetsGoogleMapBusinessesNearbyResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['datasets-google-map-businesses-search'],
+        params: DatasetsGoogleMapBusinessesSearchParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> DatasetsGoogleMapBusinessesSearchResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['ebay-item'],
+        params: EBayEbayItemParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> EBayEbayItemResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['ebay-search'],
+        params: EBayEbaySearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> EBayEbaySearchResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['ebay-seller'],
+        params: EBayEbaySellerParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> EBayEbaySellerResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['ebay-seller-about'],
+        params: EBayEbaySellerAboutParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> EBayEbaySellerAboutResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['ebay-seller-feedback'],
+        params: EBayEbaySellerFeedbackParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> EBayEbaySellerFeedbackResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['ebay-seller-shop'],
+        params: EBayEbaySellerShopParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> EBayEbaySellerShopResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['geocoding-lookup'],
+        params: GeocodingLookupParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> GeocodingLookupResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['geocoding-reverse'],
+        params: GeocodingReverseParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> GeocodingReverseResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['geocoding-search'],
+        params: GeocodingSearchParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> GeocodingSearchResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['google-finance-analyst-articles'],
+        params: GoogleFinanceAnalystArticlesParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> GoogleFinanceAnalystArticlesResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['google-finance-chart'],
+        params: GoogleFinanceChartParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> GoogleFinanceChartResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['google-finance-classification'],
+        params: GoogleFinanceClassificationParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> GoogleFinanceClassificationResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['google-finance-company'],
+        params: GoogleFinanceCompanyParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> GoogleFinanceCompanyResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['google-finance-context'],
+        params: GoogleFinanceContextParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> GoogleFinanceContextResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['google-finance-financials'],
+        params: GoogleFinanceFinancialsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> GoogleFinanceFinancialsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['google-finance-markets-category-news'],
+        params: GoogleFinanceMarketsCategoryNewsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> GoogleFinanceMarketsCategoryNewsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['google-finance-markets-category-stocks'],
+        params: GoogleFinanceMarketsCategoryStocksParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> GoogleFinanceMarketsCategoryStocksResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['google-finance-markets-earnings'],
+        params: GoogleFinanceMarketsEarningsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> GoogleFinanceMarketsEarningsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['google-finance-markets-featured'],
+        params: GoogleFinanceMarketsFeaturedParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> GoogleFinanceMarketsFeaturedResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['google-finance-markets-headline'],
+        params: GoogleFinanceMarketsHeadlineParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> GoogleFinanceMarketsHeadlineResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['google-finance-markets-indices'],
+        params: GoogleFinanceMarketsIndicesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> GoogleFinanceMarketsIndicesResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['google-finance-markets-movers'],
+        params: GoogleFinanceMarketsMoversParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> GoogleFinanceMarketsMoversResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['google-finance-markets-top'],
+        params: GoogleFinanceMarketsTopParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> GoogleFinanceMarketsTopResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['google-finance-markets-trending'],
+        params: GoogleFinanceMarketsTrendingParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> GoogleFinanceMarketsTrendingResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['google-finance-news'],
+        params: GoogleFinanceNewsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> GoogleFinanceNewsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['google-finance-quote'],
+        params: GoogleFinanceQuoteParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> GoogleFinanceQuoteResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['google-finance-related'],
+        params: GoogleFinanceRelatedParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> GoogleFinanceRelatedResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['google-finance-search'],
+        params: GoogleFinanceSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> GoogleFinanceSearchResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['google-finance-ticker'],
+        params: GoogleFinanceTickerParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> GoogleFinanceTickerResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['google-jobs'],
+        params: GoogleJobsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> GoogleJobsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['google-map-place'],
+        params: GoogleMapPlaceParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> GoogleMapPlaceResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['google-map-search'],
+        params: GoogleMapSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> GoogleMapSearchResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['google-search'],
+        params: GoogleSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> GoogleSearchResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['google-suggest'],
+        params: GoogleSuggestParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> GoogleSuggestResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['google-trends-categories'],
+        params: GoogleTrendsCategoriesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> GoogleTrendsCategoriesResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['google-trends-enums'],
+        params: GoogleTrendsEnumsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> GoogleTrendsEnumsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['google-trends-explore'],
+        params: GoogleTrendsExploreParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> GoogleTrendsExploreResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['google-trends-explore-interest-by-region'],
+        params: GoogleTrendsExploreInterestByRegionParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> GoogleTrendsExploreInterestByRegionResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['google-trends-explore-interest-over-time'],
+        params: GoogleTrendsExploreInterestOverTimeParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> GoogleTrendsExploreInterestOverTimeResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['google-trends-explore-related-topics'],
+        params: GoogleTrendsExploreRelatedTopicsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> GoogleTrendsExploreRelatedTopicsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['google-trends-explore-rising-queries'],
+        params: GoogleTrendsExploreRisingQueriesParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> GoogleTrendsExploreRisingQueriesResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['google-trends-explore-top-queries'],
+        params: GoogleTrendsExploreTopQueriesParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> GoogleTrendsExploreTopQueriesResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['google-trends-locations'],
+        params: GoogleTrendsLocationsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> GoogleTrendsLocationsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['google-trends-trending'],
+        params: GoogleTrendsTrendingParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> GoogleTrendsTrendingResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['google-trends-trending-detail'],
+        params: GoogleTrendsTrendingDetailParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> GoogleTrendsTrendingDetailResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['googleplay-app'],
+        params: GooglePlayAppParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> GooglePlayAppResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['googleplay-categories'],
+        params: GooglePlayCategoriesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> GooglePlayCategoriesResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['googleplay-datasafety'],
+        params: GooglePlayDatasafetyParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> GooglePlayDatasafetyResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['googleplay-developer'],
+        params: GooglePlayDeveloperParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> GooglePlayDeveloperResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['googleplay-list'],
+        params: GooglePlayListParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> GooglePlayListResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['googleplay-permissions'],
+        params: GooglePlayPermissionsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> GooglePlayPermissionsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['googleplay-reviews'],
+        params: GooglePlayReviewsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> GooglePlayReviewsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['googleplay-search'],
+        params: GooglePlaySearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> GooglePlaySearchResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['googleplay-similar'],
+        params: GooglePlaySimilarParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> GooglePlaySimilarResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['googleplay-suggest'],
+        params: GooglePlaySuggestParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> GooglePlaySuggestResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['instagram-post'],
+        params: InstagramPostParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> InstagramPostResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['instagram-profile'],
+        params: InstagramProfileParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> InstagramProfileResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['instagram-reels'],
+        params: InstagramReelsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> InstagramReelsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['justwatch-age-certifications'],
+        params: JustWatchJustwatchAgeCertificationsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> JustWatchJustwatchAgeCertificationsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['justwatch-discover'],
+        params: JustWatchJustwatchDiscoverParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> JustWatchJustwatchDiscoverResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['justwatch-episode-by-id'],
+        params: JustWatchJustwatchEpisodeByIdParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> JustWatchJustwatchEpisodeByIdResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['justwatch-episode-offers'],
+        params: JustWatchJustwatchEpisodeOffersParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> JustWatchJustwatchEpisodeOffersResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['justwatch-genre-titles'],
+        params: JustWatchJustwatchGenreTitlesParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> JustWatchJustwatchGenreTitlesResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['justwatch-genres'],
+        params: JustWatchJustwatchGenresParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> JustWatchJustwatchGenresResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['justwatch-monetization-titles'],
+        params: JustWatchJustwatchMonetizationTitlesParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> JustWatchJustwatchMonetizationTitlesResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['justwatch-new'],
+        params: JustWatchJustwatchNewParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> JustWatchJustwatchNewResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['justwatch-popular'],
+        params: JustWatchJustwatchPopularParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> JustWatchJustwatchPopularResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['justwatch-provider-titles'],
+        params: JustWatchJustwatchProviderTitlesParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> JustWatchJustwatchProviderTitlesResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['justwatch-providers'],
+        params: JustWatchJustwatchProvidersParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> JustWatchJustwatchProvidersResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['justwatch-search'],
+        params: JustWatchJustwatchSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> JustWatchJustwatchSearchResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['justwatch-season-by-id'],
+        params: JustWatchJustwatchSeasonByIdParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> JustWatchJustwatchSeasonByIdResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['justwatch-season-episodes'],
+        params: JustWatchJustwatchSeasonEpisodesParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> JustWatchJustwatchSeasonEpisodesResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['justwatch-show-seasons'],
+        params: JustWatchJustwatchShowSeasonsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> JustWatchJustwatchShowSeasonsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['justwatch-title'],
+        params: JustWatchJustwatchTitleParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> JustWatchJustwatchTitleResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['justwatch-title-analysis'],
+        params: JustWatchJustwatchTitleAnalysisParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> JustWatchJustwatchTitleAnalysisResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['justwatch-title-by-id'],
+        params: JustWatchJustwatchTitleByIdParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> JustWatchJustwatchTitleByIdResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['justwatch-title-media'],
+        params: JustWatchJustwatchTitleMediaParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> JustWatchJustwatchTitleMediaResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['justwatch-title-offers'],
+        params: JustWatchJustwatchTitleOffersParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> JustWatchJustwatchTitleOffersResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['justwatch-title-similar'],
+        params: JustWatchJustwatchTitleSimilarParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> JustWatchJustwatchTitleSimilarResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['linkedin-company'],
+        params: LinkedInLinkedinCompanyParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> LinkedInLinkedinCompanyResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['linkedin-product'],
+        params: LinkedInLinkedinProductParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> LinkedInLinkedinProductResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['linkedin-showcase'],
+        params: LinkedInLinkedinShowcaseParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> LinkedInLinkedinShowcaseResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['ping'],
+        params: MetaPingParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> MetaPingResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['producthunt-category'],
+        params: ProductHuntCategoryParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> ProductHuntCategoryResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['producthunt-category-products'],
+        params: ProductHuntCategoryProductsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> ProductHuntCategoryProductsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['producthunt-leaderboard'],
+        params: ProductHuntLeaderboardParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> ProductHuntLeaderboardResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['producthunt-product'],
+        params: ProductHuntProductParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> ProductHuntProductResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['producthunt-about'],
+        params: ProductHuntAboutParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> ProductHuntAboutResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['producthunt-alternatives'],
+        params: ProductHuntAlternativesParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> ProductHuntAlternativesResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['producthunt-customers'],
+        params: ProductHuntCustomersParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> ProductHuntCustomersResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['producthunt-launches'],
+        params: ProductHuntLaunchesParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> ProductHuntLaunchesResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['producthunt-makers'],
+        params: ProductHuntMakersParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> ProductHuntMakersResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['producthunt-reviews'],
+        params: ProductHuntReviewsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> ProductHuntReviewsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['producthunt-search'],
+        params: ProductHuntSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> ProductHuntSearchResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['ready'],
+        params: MetaReadyParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> MetaReadyResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['referrals-click'],
+        params: ReferralsClickParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> ReferralsClickResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['referrals-me'],
+        params: ReferralsMeParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> ReferralsMeResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['referrals-me-events'],
+        params: ReferralsMeEventsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> ReferralsMeEventsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['similarweb-search'],
+        params: SimilarWebSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> SimilarWebSearchResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['similarweb-web'],
+        params: SimilarWebWebParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> SimilarWebWebResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['spotify-podcasts-categories'],
+        params: SpotifyPodcastsCategoriesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> SpotifyPodcastsCategoriesResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['spotify-podcasts-charts'],
+        params: SpotifyPodcastsChartsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> SpotifyPodcastsChartsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['spotify-podcasts-episode'],
+        params: SpotifyPodcastsEpisodeParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> SpotifyPodcastsEpisodeResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['spotify-podcasts-home'],
+        params: SpotifyPodcastsHomeParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> SpotifyPodcastsHomeResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['spotify-podcasts-search'],
+        params: SpotifyPodcastsSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> SpotifyPodcastsSearchResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['spotify-podcasts-show'],
+        params: SpotifyPodcastsShowParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> SpotifyPodcastsShowResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['spotify-podcasts-show-episodes'],
+        params: SpotifyPodcastsShowEpisodesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> SpotifyPodcastsShowEpisodesResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['spotify-podcasts-show-recommendations'],
+        params: SpotifyPodcastsShowRecommendationsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> SpotifyPodcastsShowRecommendationsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['spotify-album'],
+        params: SpotifyAlbumParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> SpotifyAlbumResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['spotify-album-tracks'],
+        params: SpotifyAlbumTracksParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> SpotifyAlbumTracksResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['spotify-albums-search'],
+        params: SpotifyAlbumsSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> SpotifyAlbumsSearchResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['spotify-artist'],
+        params: SpotifyArtistParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> SpotifyArtistResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['spotify-artist-albums'],
+        params: SpotifyArtistAlbumsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> SpotifyArtistAlbumsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['spotify-artist-playlists'],
+        params: SpotifyArtistPlaylistsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> SpotifyArtistPlaylistsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['spotify-artist-related'],
+        params: SpotifyArtistRelatedParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> SpotifyArtistRelatedResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['spotify-artists-search'],
+        params: SpotifyArtistsSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> SpotifyArtistsSearchResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['spotify-audiobook'],
+        params: SpotifyAudiobookParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> SpotifyAudiobookResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['spotify-audiobook-chapters'],
+        params: SpotifyAudiobookChaptersParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> SpotifyAudiobookChaptersResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['spotify-audiobooks-search'],
+        params: SpotifyAudiobooksSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> SpotifyAudiobooksSearchResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['spotify-chapter'],
+        params: SpotifyChapterParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> SpotifyChapterResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['spotify-episodes-search'],
+        params: SpotifyEpisodesSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> SpotifyEpisodesSearchResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['spotify-featured-charts-by-country'],
+        params: SpotifyFeaturedChartsByCountryParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> SpotifyFeaturedChartsByCountryResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['spotify-genre'],
+        params: SpotifyGenreParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> SpotifyGenreResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['spotify-home'],
+        params: SpotifyHomeParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> SpotifyHomeResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['spotify-playlist'],
+        params: SpotifyPlaylistParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> SpotifyPlaylistResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['spotify-playlists-search'],
+        params: SpotifyPlaylistsSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> SpotifyPlaylistsSearchResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['spotify-popular-by-country'],
+        params: SpotifyPopularByCountryParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> SpotifyPopularByCountryResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['spotify-profile'],
+        params: SpotifyProfileParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> SpotifyProfileResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['spotify-profile-followers'],
+        params: SpotifyProfileFollowersParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> SpotifyProfileFollowersResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['spotify-profile-playlists'],
+        params: SpotifyProfilePlaylistsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> SpotifyProfilePlaylistsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['spotify-profiles-search'],
+        params: SpotifyProfilesSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> SpotifyProfilesSearchResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['spotify-search'],
+        params: SpotifySearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> SpotifySearchResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['spotify-section'],
+        params: SpotifySectionParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> SpotifySectionResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['spotify-shows-search'],
+        params: SpotifyShowsSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> SpotifyShowsSearchResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['spotify-track'],
+        params: SpotifyTrackParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> SpotifyTrackResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['spotify-track-recommended'],
+        params: SpotifyTrackRecommendedParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> SpotifyTrackRecommendedResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['spotify-track-similar-albums'],
+        params: SpotifyTrackSimilarAlbumsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> SpotifyTrackSimilarAlbumsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['spotify-tracks-search'],
+        params: SpotifyTracksSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> SpotifyTracksSearchResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['tiktok-category'],
+        params: TiktokCategoryParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> TiktokCategoryResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['tiktok-video-comments'],
+        params: TiktokVideoCommentsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> TiktokVideoCommentsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['tiktok-explore'],
+        params: TiktokExploreParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> TiktokExploreResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['tiktok-challenge'],
+        params: TiktokChallengeParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> TiktokChallengeResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['tiktok-challenge-list'],
+        params: TiktokChallengeListParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> TiktokChallengeListResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['tiktok-popular-trend-country-industry-meta'],
+        params: TiktokPopularTrendCountryIndustryMetaParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> TiktokPopularTrendCountryIndustryMetaResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['tiktok-popular-trend-creator'],
+        params: TiktokPopularTrendCreatorParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> TiktokPopularTrendCreatorResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['tiktok-post'],
+        params: TiktokPostParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> TiktokPostResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['tiktok-profile-post'],
+        params: TiktokProfilePostParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> TiktokProfilePostResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['tiktok-profile'],
+        params: TiktokProfileParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> TiktokProfileResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['tiktok-search'],
+        params: TiktokSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> TiktokSearchResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['tiktok-search-hashtag'],
+        params: TiktokSearchHashtagParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> TiktokSearchHashtagResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['tiktok-search-user'],
+        params: TiktokSearchUserParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> TiktokSearchUserResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['tiktok-top-ads-analysis'],
+        params: TiktokTopAdsAnalysisParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> TiktokTopAdsAnalysisResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['tiktok-top-ads-detail'],
+        params: TiktokTopAdsDetailParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> TiktokTopAdsDetailResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['tiktok-top-ads-filters'],
+        params: TiktokTopAdsFiltersParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> TiktokTopAdsFiltersResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['tiktok-top-ads-list'],
+        params: TiktokTopAdsListParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> TiktokTopAdsListResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['tiktok-top-ads-location-info'],
+        params: TiktokTopAdsLocationInfoParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> TiktokTopAdsLocationInfoResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['tiktok-top-ads-locations'],
+        params: TiktokTopAdsLocationsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> TiktokTopAdsLocationsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['tiktok-top-ads-recommend'],
+        params: TiktokTopAdsRecommendParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> TiktokTopAdsRecommendResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['tiktok-top-ads-safety'],
+        params: TiktokTopAdsSafetyParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> TiktokTopAdsSafetyResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['tiktok-top-ads-spotlight'],
+        params: TiktokTopAdsSpotlightParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> TiktokTopAdsSpotlightResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['tiktok-top-ads-suggestions'],
+        params: TiktokTopAdsSuggestionsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> TiktokTopAdsSuggestionsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['tiktok-trending'],
+        params: TiktokTrendingParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> TiktokTrendingResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['tripadvisor-autocomplete'],
+        params: TripAdvisorTripadvisorAutocompleteParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> TripAdvisorTripadvisorAutocompleteResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['tripadvisor-enums'],
+        params: TripAdvisorTripadvisorEnumsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> TripAdvisorTripadvisorEnumsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['tripadvisor-hotels'],
+        params: TripAdvisorTripadvisorHotelsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> TripAdvisorTripadvisorHotelsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['tripadvisor-place'],
+        params: TripAdvisorTripadvisorPlaceParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> TripAdvisorTripadvisorPlaceResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['tripadvisor-reviews'],
+        params: TripAdvisorTripadvisorReviewsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> TripAdvisorTripadvisorReviewsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['tripadvisor-search'],
+        params: TripAdvisorTripadvisorSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> TripAdvisorTripadvisorSearchResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['trustpilot-business-search'],
+        params: TrustpilotBusinessSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> TrustpilotBusinessSearchResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['trustpilot-business'],
+        params: TrustpilotBusinessParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> TrustpilotBusinessResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['trustpilot-business-related'],
+        params: TrustpilotBusinessRelatedParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> TrustpilotBusinessRelatedResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['trustpilot-business-reviews'],
+        params: TrustpilotBusinessReviewsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> TrustpilotBusinessReviewsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['trustpilot-categories'],
+        params: TrustpilotCategoriesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> TrustpilotCategoriesResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['trustpilot-category-search'],
+        params: TrustpilotCategorySearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> TrustpilotCategorySearchResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['trustpilot-category'],
+        params: TrustpilotCategoryParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> TrustpilotCategoryResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['usage-me-endpoints'],
+        params: UsageMeEndpointsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> UsageMeEndpointsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['usage-me-overview'],
+        params: UsageMeOverviewParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> UsageMeOverviewResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['usage-me-recent-ips'],
+        params: UsageMeRecentIpsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> UsageMeRecentIpsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['usage-me-timeseries'],
+        params: UsageMeTimeseriesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> UsageMeTimeseriesResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['user-me'],
+        params: UserMeParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> UserMeResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['user-me-api-keys'],
+        params: UserMeApiKeysParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> UserMeApiKeysResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['user-me-api-keys-rotate'],
+        params: UserMeApiKeysRotateParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> UserMeApiKeysRotateResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['user-me-api-keys-reveal'],
+        params: UserMeApiKeysRevealParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> UserMeApiKeysRevealResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['yahoo-finance-calendars'],
+        params: YahooFinanceCalendarsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> YahooFinanceCalendarsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['yahoo-finance-calendar'],
+        params: YahooFinanceCalendarParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> YahooFinanceCalendarResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['yahoo-finance-download'],
+        params: YahooFinanceDownloadParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> YahooFinanceDownloadResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['yahoo-finance-industries'],
+        params: YahooFinanceIndustriesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> YahooFinanceIndustriesResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['yahoo-finance-industry'],
+        params: YahooFinanceIndustryParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> YahooFinanceIndustryResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['yahoo-finance-market-status'],
+        params: YahooFinanceMarketStatusParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> YahooFinanceMarketStatusResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['yahoo-finance-market-summary'],
+        params: YahooFinanceMarketSummaryParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> YahooFinanceMarketSummaryResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['yahoo-finance-screener-custom'],
+        params: YahooFinanceScreenerCustomParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> YahooFinanceScreenerCustomResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['yahoo-finance-screener'],
+        params: YahooFinanceScreenerParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> YahooFinanceScreenerResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['yahoo-finance-screeners'],
+        params: YahooFinanceScreenersParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> YahooFinanceScreenersResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['yahoo-finance-search'],
+        params: YahooFinanceSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> YahooFinanceSearchResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['yahoo-finance-sectors'],
+        params: YahooFinanceSectorsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> YahooFinanceSectorsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['yahoo-finance-sector'],
+        params: YahooFinanceSectorParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> YahooFinanceSectorResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['yahoo-finance-ticker-actions'],
+        params: YahooFinanceTickerActionsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> YahooFinanceTickerActionsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['yahoo-finance-ticker-analysts'],
+        params: YahooFinanceTickerAnalystsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> YahooFinanceTickerAnalystsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['yahoo-finance-ticker-calendar'],
+        params: YahooFinanceTickerCalendarParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> YahooFinanceTickerCalendarResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['yahoo-finance-ticker-capital-gains'],
+        params: YahooFinanceTickerCapitalGainsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> YahooFinanceTickerCapitalGainsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['yahoo-finance-ticker-dividends'],
+        params: YahooFinanceTickerDividendsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> YahooFinanceTickerDividendsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['yahoo-finance-ticker-earnings'],
+        params: YahooFinanceTickerEarningsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> YahooFinanceTickerEarningsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['yahoo-finance-ticker-earnings-dates'],
+        params: YahooFinanceTickerEarningsDatesParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> YahooFinanceTickerEarningsDatesResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['yahoo-finance-ticker-financials'],
+        params: YahooFinanceTickerFinancialsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> YahooFinanceTickerFinancialsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['yahoo-finance-ticker-funds'],
+        params: YahooFinanceTickerFundsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> YahooFinanceTickerFundsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['yahoo-finance-ticker-history'],
+        params: YahooFinanceTickerHistoryParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> YahooFinanceTickerHistoryResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['yahoo-finance-ticker-history-metadata'],
+        params: YahooFinanceTickerHistoryMetadataParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> YahooFinanceTickerHistoryMetadataResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['yahoo-finance-ticker-holders'],
+        params: YahooFinanceTickerHoldersParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> YahooFinanceTickerHoldersResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['yahoo-finance-ticker-info'],
+        params: YahooFinanceTickerInfoParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> YahooFinanceTickerInfoResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['yahoo-finance-ticker-isin'],
+        params: YahooFinanceTickerIsinParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> YahooFinanceTickerIsinResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['yahoo-finance-ticker-news'],
+        params: YahooFinanceTickerNewsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> YahooFinanceTickerNewsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['yahoo-finance-ticker-options'],
+        params: YahooFinanceTickerOptionsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> YahooFinanceTickerOptionsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['yahoo-finance-ticker-options-expiration'],
+        params: YahooFinanceTickerOptionsExpirationParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> YahooFinanceTickerOptionsExpirationResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['yahoo-finance-ticker-quote'],
+        params: YahooFinanceTickerQuoteParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> YahooFinanceTickerQuoteResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['yahoo-finance-ticker-sec-filings'],
+        params: YahooFinanceTickerSecFilingsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> YahooFinanceTickerSecFilingsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['yahoo-finance-ticker-shares'],
+        params: YahooFinanceTickerSharesParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> YahooFinanceTickerSharesResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['yahoo-finance-ticker-shares-full'],
+        params: YahooFinanceTickerSharesFullParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> YahooFinanceTickerSharesFullResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['yahoo-finance-ticker-splits'],
+        params: YahooFinanceTickerSplitsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> YahooFinanceTickerSplitsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['yahoo-finance-ticker-sustainability'],
+        params: YahooFinanceTickerSustainabilityParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> YahooFinanceTickerSustainabilityResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['yahoo-finance-ticker-valuation'],
+        params: YahooFinanceTickerValuationParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> YahooFinanceTickerValuationResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['yahoo-finance-trending'],
+        params: YahooFinanceTrendingParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> YahooFinanceTrendingResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['youtube-captions'],
+        params: YoutubeCaptionsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> YoutubeCaptionsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['youtube-channel-playlists'],
+        params: YoutubeChannelPlaylistsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> YoutubeChannelPlaylistsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['youtube-channel-search'],
+        params: YoutubeChannelSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> YoutubeChannelSearchResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['youtube-channel-shorts'],
+        params: YoutubeChannelShortsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> YoutubeChannelShortsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['youtube-channel-videos'],
+        params: YoutubeChannelVideosParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> YoutubeChannelVideosResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['youtube-comments'],
+        params: YoutubeCommentsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> YoutubeCommentsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['youtube-playlist'],
+        params: YoutubePlaylistParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> YoutubePlaylistResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['youtube-profile'],
+        params: YoutubeProfileParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> YoutubeProfileResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['youtube-search'],
+        params: YoutubeSearchParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> YoutubeSearchResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['youtube-tag'],
+        params: YoutubeTagParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> YoutubeTagResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['youtube-transcript'],
+        params: YoutubeTranscriptParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> YoutubeTranscriptResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['youtube-transcript-languages'],
+        params: YoutubeTranscriptLanguagesParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> YoutubeTranscriptLanguagesResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['youtube-video'],
+        params: YoutubeVideoParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> YoutubeVideoResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['zillow-autocomplete'],
+        params: ZillowAutocompleteParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> ZillowAutocompleteResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['zillow-property'],
+        params: ZillowPropertyParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> ZillowPropertyResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['zillow-search'],
+        params: ZillowSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> ZillowSearchResponse: ...
+    @overload
     def request(
         self,
         operation_id: str,
