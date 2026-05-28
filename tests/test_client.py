@@ -299,7 +299,7 @@ class CrawloraClientTest(unittest.TestCase):
             self.assertIn(expected, operations_doc)
         self.assertNotIn("google-lens", operations_doc)
 
-        for expected in ["Typed Dynamic Operations", 'crawlora.request("bing-search"', '_response_type="text"']:
+        for expected in ["Typed Dynamic Operations", 'crawlora.request("bing-search"', '_response_type="text"', "Retry-After", "error.headers"]:
             self.assertIn(expected, recipes_doc)
 
 

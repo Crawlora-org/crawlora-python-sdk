@@ -43,7 +43,13 @@ crawlora = CrawloraClient(
 result = crawlora.bing.search(q="coffee shops", _timeout=10)
 ```
 
+Request headers override default auth, user-agent, and content headers
+case-insensitively. Retryable API responses honor positive `Retry-After`
+headers, capped at 30 seconds.
+
 ## Text Responses
+
+`_response_type` must be `auto`, `json`, or `text`.
 
 ```python
 text = crawlora.youtube.transcript(
@@ -59,7 +65,7 @@ text = crawlora.youtube.transcript(
 try:
     crawlora.bing.search(q="coffee shops")
 except CrawloraError as error:
-    print(error.status, error.code, error.raw_body)
+    print(error.status, error.code, error.raw_body, error.headers)
 ```
 
 ## Optional Live Smoke Tests

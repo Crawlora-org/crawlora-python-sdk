@@ -82,7 +82,10 @@ crawlora = CrawloraClient(
 )
 ```
 
-Per-request options are available through reserved keyword arguments:
+Per-request options are available through reserved keyword arguments. Header
+names are matched case-insensitively, so request headers can override default
+auth, user-agent, and content headers without duplicating variants such as
+`x-api-key` and `X-API-KEY`:
 
 ```python
 response = crawlora.bing.search(
@@ -94,8 +97,9 @@ response = crawlora.bing.search(
 
 ## Text Responses
 
-Most endpoints return JSON. Endpoints that support alternate text output, such
-as YouTube transcripts, can opt into text mode:
+Most endpoints return JSON. `_response_type` must be `auto`, `json`, or
+`text`. Endpoints that support alternate text output, such as YouTube
+transcripts, can opt into text mode:
 
 ```python
 transcript = crawlora.youtube.transcript(
@@ -121,8 +125,11 @@ except CrawloraError as error:
     raise
 ```
 
-The error includes `status`, optional API `code`, parsed `body`, `raw_body`, and
-the underlying parser or transport exception as `__cause__` when available.
+The error includes `status`, optional API `code`, parsed `body`, `raw_body`,
+response `headers`, and the underlying parser or transport exception as
+`__cause__` when available. Retryable responses honor positive `Retry-After`
+headers, capped at 30 seconds. Timeout-like transport failures use the
+`Crawlora request timed out` SDK message.
 
 ## Examples
 
