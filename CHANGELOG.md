@@ -1,5 +1,14 @@
 # Changelog
 
+## v1.2.0-sdk.15
+
+- Added case-insensitive request header overrides across auth, user-agent, and
+  content headers.
+- Added strict response mode validation, response headers on SDK errors, and
+  `Retry-After` aware retry delays capped at 30 seconds.
+- Clarified timeout transport wrapping while preserving retry behavior for
+  transport failures.
+
 ## v1.2.0-sdk.14
 
 - Aligned the promoted SDK beta tag with the JavaScript and Go SDKs.

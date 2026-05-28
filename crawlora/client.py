@@ -4,6 +4,7 @@ import json
 import mimetypes
 import os
 import random
+import socket
 import time
 import uuid
 from dataclasses import dataclass
@@ -15,7 +16,7 @@ from urllib.request import Request, urlopen
 from .operations import GROUPS, OPERATIONS
 
 DEFAULT_BASE_URL = "https://api.crawlora.net/api/v1"
-VERSION = "1.2.0-sdk.14"
+VERSION = "1.2.0-sdk.15"
 DEFAULT_USER_AGENT = f"crawlora-python-sdk/{VERSION}"
 ResponseType = Literal["auto", "json", "text"]
 
@@ -29,6 +30,7 @@ class CrawloraError(Exception):
         code: int | None = None,
         body: Any = None,
         raw_body: str = "",
+        headers: Mapping[str, str] | None = None,
         cause: BaseException | None = None,
     ):
         super().__init__(message)
@@ -36,6 +38,7 @@ class CrawloraError(Exception):
         self.code = code
         self.body = body
         self.raw_body = raw_body
+        self.headers = dict(headers or {})
         self.__cause__ = cause
 
 
@@ -96,6 +99,7 @@ class CrawloraClient:
         operation = OPERATIONS.get(operation_id)
         if operation is None:
             raise ValueError(f"unknown Crawlora operation: {operation_id}")
+        response_type = _validate_response_type(response_type)
 
         attempt = 0
         while True:
@@ -105,7 +109,7 @@ class CrawloraClient:
                 if attempt >= self.retries or not _should_retry(exc.status):
                     raise
                 attempt += 1
-                _sleep_before_retry(self.retry_delay, attempt)
+                _sleep_before_retry(self.retry_delay, attempt, exc.headers)
 
     def _send(
         self,
@@ -117,19 +121,19 @@ class CrawloraClient:
         headers: Mapping[str, str] | None,
     ) -> Any:
         url, body, body_headers = _build_request(self.base_url, operation, params)
-        request_headers = {
-            **self.headers,
-            **_auth_headers(operation.get("security", []), self.api_key, self.jwt_token),
-            **body_headers,
-            **dict(headers or {}),
-        }
-        if self.user_agent and "User-Agent" not in request_headers:
-            request_headers["User-Agent"] = self.user_agent
+        request_headers = _merge_headers(
+            self.headers,
+            _auth_headers(operation.get("security", []), self.api_key, self.jwt_token),
+            {"User-Agent": self.user_agent} if self.user_agent else {},
+            body_headers,
+            headers or {},
+        )
         request = Request(url, data=body, headers=request_headers, method=operation["method"])
         try:
             response = self._transport(request, timeout if timeout is not None else self.timeout)
         except Exception as exc:
-            raise CrawloraError("Crawlora transport error", cause=exc) from exc
+            message = "Crawlora request timed out" if _is_timeout_error(exc) else "Crawlora transport error"
+            raise CrawloraError(message, cause=exc) from exc
         raw_body = response.body.decode(errors="replace")
         try:
             parsed = _parse_response(response.body, _header_value(response.headers, "content-type"), response_type)
@@ -138,12 +142,13 @@ class CrawloraClient:
                 "Crawlora JSON parse error",
                 status=response.status,
                 raw_body=raw_body,
+                headers=response.headers,
                 cause=exc,
             ) from exc
         if response.status < 200 or response.status >= 300:
             code = parsed.get("code") if isinstance(parsed, dict) else None
             message = parsed.get("msg") if isinstance(parsed, dict) and parsed.get("msg") else f"HTTP {response.status}"
-            raise CrawloraError(message, status=response.status, code=code, body=parsed, raw_body=raw_body)
+            raise CrawloraError(message, status=response.status, code=code, body=parsed, raw_body=raw_body, headers=response.headers)
         return parsed
 
     @staticmethod
@@ -290,6 +295,26 @@ def _auth_headers(security: list[str], api_key: str, jwt_token: str) -> dict[str
     return headers
 
 
+def _merge_headers(*sources: Mapping[str, str]) -> dict[str, str]:
+    headers: dict[str, str] = {}
+    names: dict[str, str] = {}
+    for source in sources:
+        for name, value in source.items():
+            lower = name.lower()
+            existing = names.get(lower)
+            if existing and existing != name:
+                headers.pop(existing, None)
+            headers[name] = str(value)
+            names[lower] = name
+    return headers
+
+
+def _validate_response_type(response_type: str) -> ResponseType:
+    if response_type in ("auto", "json", "text"):
+        return response_type  # type: ignore[return-value]
+    raise ValueError("invalid response_type: expected one of auto, json, text")
+
+
 def _parse_response(body: bytes, content_type: str, response_type: str) -> Any:
     if response_type == "text":
         return body.decode()
@@ -308,7 +333,11 @@ def _should_retry(status: int) -> bool:
     return status == 0 or status in {408, 409, 425, 429} or status >= 500
 
 
-def _sleep_before_retry(base_delay: float, attempt: int) -> None:
+def _sleep_before_retry(base_delay: float, attempt: int, headers: Mapping[str, str]) -> None:
+    retry_after = _retry_after_delay(headers)
+    if retry_after is not None:
+        time.sleep(retry_after)
+        return
     if base_delay <= 0:
         return
     delay = base_delay * (2 ** max(0, attempt - 1))
@@ -316,8 +345,41 @@ def _sleep_before_retry(base_delay: float, attempt: int) -> None:
     time.sleep(delay + jitter)
 
 
+def _retry_after_delay(headers: Mapping[str, str]) -> float | None:
+    value = _header_value(headers, "retry-after")
+    if not value:
+        return None
+    try:
+        seconds = float(value)
+    except ValueError:
+        seconds = None
+    if seconds is not None and seconds > 0:
+        return min(seconds, 30.0)
+    try:
+        from email.utils import parsedate_to_datetime
+
+        target = parsedate_to_datetime(value)
+        delay = target.timestamp() - time.time()
+    except (TypeError, ValueError, OverflowError):
+        return None
+    if delay > 0:
+        return min(delay, 30.0)
+    return None
+
+
 def _header_value(headers: Mapping[str, str], name: str) -> str:
     for key, value in headers.items():
         if key.lower() == name.lower():
             return value
     return ""
+
+
+def _is_timeout_error(exc: BaseException) -> bool:
+    if isinstance(exc, (TimeoutError, socket.timeout)):
+        return True
+    if isinstance(exc, URLError):
+        reason = exc.reason
+        if isinstance(reason, (TimeoutError, socket.timeout)):
+            return True
+        return "timed out" in str(reason).lower()
+    return "timed out" in str(exc).lower()

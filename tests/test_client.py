@@ -1,5 +1,6 @@
 import json
 import threading
+import time
 import unittest
 from pathlib import Path
 from urllib.error import URLError
@@ -132,11 +133,20 @@ class CrawloraClientTest(unittest.TestCase):
         client = CrawloraClient(api_key="api_default", base_url=self.base_url)
         client.google.search(
             searchOption={"q": "coffee"},
-            _headers={"x-api-key": "api_request", "content-type": "application/custom+json"},
+            _headers={"X-API-KEY": "api_request", "Content-Type": "application/custom+json"},
         )
 
         self.assertEqual(Handler.calls[0]["headers"]["X-Api-Key"], "api_request")
         self.assertEqual(Handler.calls[0]["headers"]["Content-Type"], "application/custom+json")
+        self.assertEqual(sum(1 for key in Handler.calls[0]["headers"] if key.lower() == "x-api-key"), 1)
+        self.assertEqual(sum(1 for key in Handler.calls[0]["headers"] if key.lower() == "content-type"), 1)
+
+    def test_invalid_response_type_fails_before_request(self):
+        client = CrawloraClient(api_key="api_test", base_url=self.base_url)
+
+        with self.assertRaisesRegex(ValueError, "invalid response_type: expected one of auto, json, text"):
+            client.bing.search(q="coffee", _response_type="xml")
+        self.assertEqual(Handler.calls, [])
 
     def test_valid_enum_param_serializes(self):
         client = CrawloraClient(api_key="api_test", base_url=self.base_url)
@@ -163,6 +173,7 @@ class CrawloraClientTest(unittest.TestCase):
         self.assertEqual(raised.exception.code, 429)
         self.assertEqual(str(raised.exception), "rate limited")
         self.assertIn("rate limited", raised.exception.raw_body)
+        self.assertEqual(raised.exception.headers["content-type"], "application/json")
 
     def test_invalid_json_response_is_wrapped(self):
         Handler.response_body = "{not-json"
@@ -175,6 +186,7 @@ class CrawloraClientTest(unittest.TestCase):
         self.assertEqual(raised.exception.status, 200)
         self.assertEqual(str(raised.exception), "Crawlora JSON parse error")
         self.assertEqual(raised.exception.raw_body, "{not-json")
+        self.assertEqual(raised.exception.headers["content-type"], "application/json")
         self.assertIsInstance(raised.exception.__cause__, json.JSONDecodeError)
 
     def test_retries_retryable_status(self):
@@ -198,6 +210,34 @@ class CrawloraClientTest(unittest.TestCase):
         self.assertTrue(client.bing.search(q="coffee")["data"]["ok"])
         self.assertEqual(calls["count"], 2)
 
+    def test_retry_delay_honors_retry_after_header(self):
+        calls = {"count": 0}
+        sleeps = []
+
+        def transport(request, timeout):
+            calls["count"] += 1
+            if calls["count"] == 1:
+                return type("Response", (), {
+                    "status": 429,
+                    "headers": {"content-type": "application/json", "Retry-After": "0.001"},
+                    "body": b'{"code":429,"msg":"slow down"}',
+                })()
+            return type("Response", (), {
+                "status": 200,
+                "headers": {"content-type": "application/json"},
+                "body": b'{"code":200,"msg":"OK","data":{"ok":true}}',
+            })()
+
+        client = CrawloraClient(api_key="api_test", base_url=self.base_url, retries=1, retry_delay=0, transport=transport)
+        original_sleep = time.sleep
+        try:
+            time.sleep = sleeps.append
+            self.assertTrue(client.bing.search(q="coffee")["data"]["ok"])
+        finally:
+            time.sleep = original_sleep
+        self.assertEqual(calls["count"], 2)
+        self.assertEqual(sleeps, [0.001])
+
     def test_transport_error_is_wrapped(self):
         cause = URLError("socket closed")
 
@@ -210,6 +250,20 @@ class CrawloraClientTest(unittest.TestCase):
             client.bing.search(q="coffee")
 
         self.assertEqual(raised.exception.status, 0)
+        self.assertIs(raised.exception.__cause__, cause)
+
+    def test_timeout_error_is_wrapped_with_timeout_message(self):
+        cause = TimeoutError("timed out")
+
+        def transport(_request, _timeout):
+            raise cause
+
+        client = CrawloraClient(api_key="api_test", base_url=self.base_url, transport=transport)
+
+        with self.assertRaises(CrawloraError) as raised:
+            client.bing.search(q="coffee")
+
+        self.assertEqual(str(raised.exception), "Crawlora request timed out")
         self.assertIs(raised.exception.__cause__, cause)
 
     def test_operation_metadata_count(self):

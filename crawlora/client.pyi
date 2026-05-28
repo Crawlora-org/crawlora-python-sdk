@@ -15,6 +15,7 @@ class CrawloraError(Exception):
     code: int | None
     body: Any
     raw_body: str
+    headers: Mapping[str, str]
 
 class _RequestOptions(TypedDict, total=False):
     _response_type: ResponseType
