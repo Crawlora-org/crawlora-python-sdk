@@ -128,6 +128,16 @@ class CrawloraClientTest(unittest.TestCase):
         self.assertIn("online_options=3", Handler.calls[1]["path"])
         self.assertIn("online_options=4", Handler.calls[1]["path"])
 
+    def test_request_headers_override_default_auth_and_content_headers(self):
+        client = CrawloraClient(api_key="api_default", base_url=self.base_url)
+        client.google.search(
+            searchOption={"q": "coffee"},
+            _headers={"x-api-key": "api_request", "content-type": "application/custom+json"},
+        )
+
+        self.assertEqual(Handler.calls[0]["headers"]["X-Api-Key"], "api_request")
+        self.assertEqual(Handler.calls[0]["headers"]["Content-Type"], "application/custom+json")
+
     def test_valid_enum_param_serializes(self):
         client = CrawloraClient(api_key="api_test", base_url=self.base_url)
         client.request("amazon-product", {"asin": "B000000000", "language": "en_US"})

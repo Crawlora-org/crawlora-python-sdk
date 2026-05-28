@@ -1,5 +1,10 @@
 # Changelog
 
+## v1.2.0-sdk.14
+
+- Aligned the promoted SDK beta tag with the JavaScript and Go SDKs.
+- Added explicit coverage for request-level header overrides.
+
 ## v1.2.0-sdk.12
 
 - Added generated public operation reference docs and usage recipes.

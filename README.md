@@ -19,7 +19,7 @@ pip install "git+https://github.com/Crawlora-org/crawlora-python-sdk.git@latest"
 For reproducible builds, pin the current beta release tag:
 
 ```sh
-pip install "git+https://github.com/Crawlora-org/crawlora-python-sdk.git@v1.2.0-sdk.12"
+pip install "git+https://github.com/Crawlora-org/crawlora-python-sdk.git@v1.2.0-sdk.14"
 ```
 
 ## Usage
@@ -89,7 +89,7 @@ variables are not set.
 ## Versioning
 
 This SDK is currently released as Git beta tags. The moving `latest` tag tracks
-the current promoted beta, while explicit tags such as `v1.2.0-sdk.12` remain
+the current promoted beta, while explicit tags such as `v1.2.0-sdk.14` remain
 available for reproducible builds. Pin an explicit tag in production
 applications and upgrade intentionally.
 
