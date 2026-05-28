@@ -1,46 +1,73 @@
 # Crawlora Python SDK
 
-Git-installable beta SDK for the public Crawlora API.
+Python client for the public Crawlora API. Use it to call Crawlora scraping,
+search, marketplace, media, maps, finance, and usage endpoints with generated
+type stubs for editor and type-checker support.
 
-Website: [crawlora.net](https://crawlora.net)
-
-## Get an API Key
-
-Create or sign in to your Crawlora account at [crawlora.net](https://crawlora.net),
-then open the dashboard and create an API key. Set it as `CRAWLORA_API_KEY` in
-your environment before running the examples or using the SDK.
+- Runtime: Python 3.10+
+- Auth: `x-api-key`
+- Default API base URL: `https://api.crawlora.net/api/v1`
+- Reference: [operations](docs/operations.md) and [recipes](docs/recipes.md)
 
 ## Install
+
+The Python SDK is currently distributed from Git beta tags:
 
 ```sh
 pip install "git+https://github.com/Crawlora-org/crawlora-python-sdk.git@latest"
 ```
 
-For reproducible builds, pin the current beta release tag:
+For reproducible builds, pin a released tag:
 
 ```sh
-pip install "git+https://github.com/Crawlora-org/crawlora-python-sdk.git@v1.2.0-sdk.14"
+pip install "git+https://github.com/Crawlora-org/crawlora-python-sdk.git@TAG"
 ```
 
-## Usage
+## API Key
+
+Create or sign in to your Crawlora account at [crawlora.net](https://crawlora.net),
+then create an API key in the dashboard.
+
+```sh
+read -r CRAWLORA_API_KEY
+export CRAWLORA_API_KEY
+```
+
+## First Request
 
 ```python
 import os
 from crawlora import CrawloraClient
 
 crawlora = CrawloraClient(api_key=os.environ["CRAWLORA_API_KEY"])
-result = crawlora.bing.search(q="coffee shops", count=10)
-print(result)
+
+response = crawlora.bing.search(
+    q="coffee shops",
+    count=10,
+)
+
+print(response["data"]["results"][0])
 ```
 
-Generated type stubs cover endpoint groups, keyword parameters, enum values,
-request options, and response aliases for editors and type checkers.
-Dynamic `request` and `operation` calls infer response aliases from literal
-operation ids in type checkers:
+Endpoint groups are generated from the public API contract, so common calls are
+available as methods such as `crawlora.bing.search(...)`,
+`crawlora.youtube.transcript(...)`, and `crawlora.google.map_search(...)`.
+
+## Typed Dynamic Calls
+
+You can also call by operation id. Literal operation ids are covered by the
+generated `.pyi` stubs, so type checkers can infer the matching parameter and
+response aliases:
 
 ```python
-result = crawlora.request("bing-search", {"q": "coffee shops"})
+response = crawlora.request("bing-search", {
+    "q": "coffee shops",
+    "count": 10,
+})
 ```
+
+Generated stubs include operation ids, endpoint groups, keyword parameters,
+enum values, response aliases, and reserved request options.
 
 ## Configuration
 
@@ -48,64 +75,75 @@ result = crawlora.request("bing-search", {"q": "coffee shops"})
 crawlora = CrawloraClient(
     api_key=os.environ["CRAWLORA_API_KEY"],
     base_url="https://api.crawlora.net/api/v1",
+    timeout=30,
     retries=2,
     retry_delay=0.25,
-    headers={"x-client": "example"},
+    headers={"x-client": "my-app"},
 )
 ```
 
 Per-request options are available through reserved keyword arguments:
 
 ```python
-text = crawlora.youtube.transcript(
-    id="VIDEO_ID",
-    format="text",
-    _response_type="text",
+response = crawlora.bing.search(
+    q="coffee shops",
     _timeout=10,
+    _headers={"x-request-id": "search-001"},
 )
 ```
 
-API failures raise `CrawloraError` with `status`, optional API `code`, parsed
-`body`, `raw_body`, and the underlying transport exception as `__cause__`.
+## Text Responses
 
-## Reference
+Most endpoints return JSON. Endpoints that support alternate text output, such
+as YouTube transcripts, can opt into text mode:
 
-- [Operation reference](docs/operations.md)
-- [Usage recipes](docs/recipes.md)
+```python
+transcript = crawlora.youtube.transcript(
+    id="VIDEO_ID",
+    format="text",
+    _response_type="text",
+)
+
+print(transcript)
+```
+
+## Errors
+
+Failed API calls raise `CrawloraError`:
+
+```python
+from crawlora import CrawloraError
+
+try:
+    crawlora.bing.search(q="coffee shops")
+except CrawloraError as error:
+    print(error.status, error.code, error.body)
+    raise
+```
+
+The error includes `status`, optional API `code`, parsed `body`, `raw_body`, and
+the underlying parser or transport exception as `__cause__` when available.
 
 ## Examples
 
-Runnable examples live under `examples/`:
+Runnable examples live under `examples/` and skip cleanly when required
+environment variables are missing:
 
 ```sh
-CRAWLORA_API_KEY=... python3 examples/bing_search.py
-CRAWLORA_API_KEY=... CRAWLORA_YOUTUBE_VIDEO_ID=... python3 examples/youtube_transcript.py
+python3 examples/bing_search.py
+python3 examples/youtube_transcript.py
 ```
 
-Each example also accepts `CRAWLORA_BASE_URL` for staging or local API testing.
-The examples exit without making a request when the required live environment
-variables are not set.
+Set `CRAWLORA_BASE_URL` to point examples at a staging or local API.
 
-## Versioning
+## Package Notes
 
-This SDK is currently released as Git beta tags. The moving `latest` tag tracks
-the current promoted beta, while explicit tags such as `v1.2.0-sdk.14` remain
-available for reproducible builds. Pin an explicit tag in production
-applications and upgrade intentionally.
+The import name is `crawlora`:
 
-## Registry Readiness
-
-The future PyPI package target is `crawlora`, matching the import name:
-
-```sh
-pip install crawlora
+```python
+from crawlora import CrawloraClient
 ```
 
-Registry publication is not enabled yet. Until then, install from an explicit
-Git beta tag or the moving `latest` tag as shown above.
-
-## Optional Live Smoke Test
-
-Default tests use a local mock server. The programs under `examples/` can be
-used as optional live smoke tests when `CRAWLORA_API_KEY` is available. Live
-calls are not part of default CI.
+The future PyPI package target is also `crawlora`, but registry publication is
+not enabled yet. Until then, install from an explicit Git beta tag or the
+moving `latest` tag as shown above.
