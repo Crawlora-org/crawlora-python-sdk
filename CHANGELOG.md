@@ -1,5 +1,10 @@
 # Changelog
 
+## v1.2.0-sdk.12
+
+- Added generated public operation reference docs and usage recipes.
+- Included docs in source distributions for easier offline reference.
+
 ## v1.2.0-sdk.11
 
 - Added generated `OperationId` literals and overloads so type checkers infer

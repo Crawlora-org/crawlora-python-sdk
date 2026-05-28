@@ -60,6 +60,14 @@ def alias(operation_id, tag, used):
     return name
 
 
+def md_escape(value):
+    return str(value).replace("|", "\\|").replace("\n", " ")
+
+
+def md_code(value):
+    return f"`{md_escape(value)}`"
+
+
 def definition(operation_id, method, path, operation):
     params = operation.get("parameters", [])
     security = []
@@ -107,6 +115,62 @@ def enum_values(param):
 
 def type_name(*parts):
     return "".join(part[:1].upper() + part[1:] for part in words("-".join(parts))) or "Operation"
+
+
+def param_doc(params):
+    if not params:
+        return "none"
+    entries = []
+    for param in params:
+        required = " required" if param.get("required") else ""
+        location = param.get("in", "param")
+        entries.append(f"{md_code(param['name'])} ({location} {py_type(param)}{required})")
+    return "<br>".join(entries)
+
+
+def auth_doc(security):
+    return ", ".join(md_code(item) for item in security) if security else "none"
+
+
+def operation_note(operation_id, operation):
+    produces = [str(item).lower() for item in operation.get("produces", [])]
+    if "text/plain" in produces or operation_id == "youtube-transcript":
+        return "Supports text response mode."
+    return ""
+
+
+def operation_docs(groups, operation_meta, operation_count):
+    lines = [
+        "# Crawlora Python SDK Operations",
+        "",
+        "Generated from `openapi/public.json`. Deprecated, admin, and internal operations are excluded from this SDK contract.",
+        "",
+        f"Total operations: `{operation_count}`",
+        "",
+        "| Group | SDK method | Operation ID | HTTP | Params | Auth | Response | Notes |",
+        "| --- | --- | --- | --- | --- | --- | --- | --- |",
+    ]
+    for group_name, methods in groups.items():
+        for method_name, operation_id in methods.items():
+            meta = operation_meta[operation_id]
+            lines.append(
+                "| "
+                + " | ".join(
+                    [
+                        md_escape(group_name),
+                        md_code(f"{group_name}.{method_name}"),
+                        md_code(operation_id),
+                        md_code(f"{meta['method']} {meta['path']}"),
+                        param_doc(meta["params"]),
+                        auth_doc(meta["security"]),
+                        md_code(meta["typeBase"] + "Response"),
+                        md_escape(meta["note"]),
+                    ]
+                )
+                + " |"
+            )
+    lines.append("")
+    return "\n".join(lines)
 
 
 def schema_type_name(value):
@@ -331,10 +395,14 @@ def main():
             response_schema = operation.get("responses", {}).get("200", {}).get("schema")
             operation_meta[operation_id] = {
                 "typeBase": type_name(group_name, method_name),
+                "method": method.upper(),
+                "path": path,
                 "params": [p for p in params if p.get("in") in {"path", "query", "formData", "body"}],
                 "bodyType": py_schema_type(body_schema),
                 "responseType": py_schema_type(response_schema),
                 "hasRequiredParams": any(p.get("required") for p in params if p.get("in") in {"path", "query", "formData", "body"}),
+                "security": [key for req in operation.get("security", []) for key in req.keys()],
+                "note": operation_note(operation_id, operation),
             }
     operation_meta["definitions"] = spec.get("definitions", {})
 
@@ -346,6 +414,10 @@ def main():
     )
     (ROOT / "crawlora" / "operations.py").write_text(content)
     (ROOT / "crawlora" / "client.pyi").write_text(stub_declarations(groups, operation_meta))
+    (ROOT / "docs").mkdir(exist_ok=True)
+    (ROOT / "docs" / "operations.md").write_text(
+        operation_docs(groups, operation_meta, sum(len(methods) for methods in spec["paths"].values()))
+    )
 
 
 if __name__ == "__main__":

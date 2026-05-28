@@ -226,6 +226,18 @@ class CrawloraClientTest(unittest.TestCase):
         self.assertIn(") -> BingSearchResponse: ...", stub)
         self.assertIn("class CrawloraClient:", stub)
 
+    def test_docs_cover_operations_and_recipes(self):
+        root = Path(__file__).resolve().parents[1]
+        operations_doc = root.joinpath("docs", "operations.md").read_text()
+        recipes_doc = root.joinpath("docs", "recipes.md").read_text()
+
+        for expected in ["Total operations: `303`", "`bing-search`", "`GET /bing/search`", "`bing.search`", "`BingSearchResponse`"]:
+            self.assertIn(expected, operations_doc)
+        self.assertNotIn("google-lens", operations_doc)
+
+        for expected in ["Typed Dynamic Operations", 'crawlora.request("bing-search"', '_response_type="text"']:
+            self.assertIn(expected, recipes_doc)
+
 
 if __name__ == "__main__":
     unittest.main()
