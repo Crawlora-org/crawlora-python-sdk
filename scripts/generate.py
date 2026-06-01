@@ -1,180 +1,44 @@
 #!/usr/bin/env python3
+"""Python SDK emitter.
+
+Language-neutral spec parsing, grouping, aliasing, and the operations docs table
+live in the vendored `scripts/_sdkgen/core.py` (synced from the API repo). This
+file only maps OpenAPI schemas to Python types and writes the Python artifacts:
+`crawlora/operations.py` (runtime metadata) and `crawlora/client.pyi` (stubs).
+"""
 import json
-import keyword
 import os
 import pprint
-import re
 import shutil
+import sys
 from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from _sdkgen import core  # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_SPEC = ROOT / "openapi" / "public.json"
 SPEC_PATH = Path(os.environ.get("CRAWLORA_OPENAPI_SPEC", DEFAULT_SPEC))
-TAG_GROUP_OVERRIDES = {
-    "AppStore": "app_store",
-    "CoinGecko": "coin_gecko",
-    "GooglePlay": "google_play",
-    "ProductHunt": "product_hunt",
-    "SimilarWeb": "similar_web",
-    "SpotifyPodcasts": "spotify_podcasts",
-    "TikTok": "tiktok",
-    "YouTube": "youtube",
-}
-TAG_PREFIX_OVERRIDES = {
-    "AppStore": "appstore",
-    "CoinGecko": "coingecko",
-    "GooglePlay": "googleplay",
-    "ProductHunt": "producthunt",
-    "SimilarWeb": "similarweb",
-    "SpotifyPodcasts": "spotify-podcasts",
-    "TikTok": "tiktok",
-    "YouTube": "youtube",
-}
 
-
-def words(value):
-    value = re.sub(r"([a-z0-9])([A-Z])", r"\1-\2", value)
-    return [part for part in re.split(r"[^A-Za-z0-9]+", value.lower()) if part]
-
-
-def snake(parts):
-    return "_".join(parts) or "call"
-
-
-def alias(operation_id, tag, used):
-    op_words = words(operation_id)
-    tag_words = words(TAG_PREFIX_OVERRIDES.get(tag, tag))
-    if op_words[: len(tag_words)] == tag_words:
-        op_words = op_words[len(tag_words) :]
-    name = snake(op_words)
-    if not name or name in used:
-        name = snake(words(operation_id))
-    if keyword.iskeyword(name):
-        name += "_"
-    base = name
-    i = 2
-    while name in used:
-        name = f"{base}_{i}"
-        i += 1
-    used.add(name)
-    return name
-
-
-def md_escape(value):
-    return str(value).replace("|", "\\|").replace("\n", " ")
-
-
-def md_code(value):
-    return f"`{md_escape(value)}`"
-
-
-def definition(operation_id, method, path, operation):
-    params = operation.get("parameters", [])
-    security = []
-    for requirement in operation.get("security", []):
-        security.extend(requirement.keys())
-    return {
-        "id": operation_id,
-        "method": method.upper(),
-        "path": path,
-        "pathParams": [p["name"] for p in params if p.get("in") == "path"],
-        "queryParams": [
-            {
-                "name": p["name"],
-                "in": "query",
-                **({"collectionFormat": p["collectionFormat"]} if "collectionFormat" in p else {}),
-                **({"type": p["type"]} if "type" in p else {}),
-                **({"required": True} if p.get("required") else {}),
-                **({"enum": enum_values(p)} if enum_values(p) else {}),
-            }
-            for p in params
-            if p.get("in") == "query"
-        ],
-        "formParams": [
-            {
-                "name": p["name"],
-                "in": "formData",
-                **({"type": p["type"]} if "type" in p else {}),
-                **({"required": True} if p.get("required") else {}),
-                **({"enum": enum_values(p)} if enum_values(p) else {}),
-            }
-            for p in params
-            if p.get("in") == "formData"
-        ],
-        "bodyParam": next((p["name"] for p in params if p.get("in") == "body"), None),
-        "bodyRequired": any(p.get("in") == "body" and p.get("required") for p in params),
-        "consumes": operation.get("consumes", []),
-        "produces": operation.get("produces", []),
-        "security": security,
-    }
-
-
-def enum_values(param):
-    return [str(value) for value in (param.get("enum") or param.get("items", {}).get("enum") or [])]
-
-
-def type_name(*parts):
-    return "".join(part[:1].upper() + part[1:] for part in words("-".join(parts))) or "Operation"
-
-
-def param_doc(params):
-    if not params:
-        return "none"
-    entries = []
-    for param in params:
-        required = " required" if param.get("required") else ""
-        location = param.get("in", "param")
-        entries.append(f"{md_code(param['name'])} ({location} {py_type(param)}{required})")
-    return "<br>".join(entries)
-
-
-def auth_doc(security):
-    return ", ".join(md_code(item) for item in security) if security else "none"
-
-
-def operation_note(operation_id, operation):
-    produces = [str(item).lower() for item in operation.get("produces", [])]
-    if "text/plain" in produces or operation_id == "youtube-transcript":
-        return "Supports text response mode."
-    return ""
-
-
-def operation_docs(groups, operation_meta, operation_count):
-    lines = [
-        "# Crawlora Python SDK Operations",
-        "",
-        "Generated from `openapi/public.json`. Deprecated, admin, and internal operations are excluded from this SDK contract.",
-        "",
-        f"Total operations: `{operation_count}`",
-        "",
-        "| Group | SDK method | Operation ID | HTTP | Params | Auth | Response | Notes |",
-        "| --- | --- | --- | --- | --- | --- | --- | --- |",
-    ]
-    for group_name, methods in groups.items():
-        for method_name, operation_id in methods.items():
-            meta = operation_meta[operation_id]
-            lines.append(
-                "| "
-                + " | ".join(
-                    [
-                        md_escape(group_name),
-                        md_code(f"{group_name}.{method_name}"),
-                        md_code(operation_id),
-                        md_code(f"{meta['method']} {meta['path']}"),
-                        param_doc(meta["params"]),
-                        auth_doc(meta["security"]),
-                        md_code(meta["typeBase"] + "Response"),
-                        md_escape(meta["note"]),
-                    ]
-                )
-                + " |"
-            )
-    lines.append("")
-    return "\n".join(lines)
+POLICY = core.NamingPolicy(
+    case_fn=lambda parts: "_".join(parts) or "call",
+    dedup_sep="_",
+    sanitize_keywords=True,
+    tag_group_overrides={
+        "AppStore": "app_store",
+        "CoinGecko": "coin_gecko",
+        "GooglePlay": "google_play",
+        "ProductHunt": "product_hunt",
+        "SimilarWeb": "similar_web",
+        "SpotifyPodcasts": "spotify_podcasts",
+        "TikTok": "tiktok",
+        "YouTube": "youtube",
+    },
+)
 
 
 def schema_type_name(value):
-    return "Model" + type_name(value)
+    return "Model" + core.type_name(value)
 
 
 def schema_ref_name(schema):
@@ -232,12 +96,12 @@ def py_type(param):
     return "str"
 
 
-def stub_declarations(groups, operation_meta):
+def stub_declarations(model):
     lines = [
         "from __future__ import annotations",
         "",
         "import sys",
-        "from typing import Any, Callable, Literal, Mapping, overload",
+        "from typing import Any, Callable, Iterator, Literal, Mapping, overload",
         "",
         "if sys.version_info >= (3, 11):",
         "    from typing import NotRequired, Required, TypedDict, Unpack",
@@ -253,13 +117,17 @@ def stub_declarations(groups, operation_meta):
         "    raw_body: str",
         "    headers: Mapping[str, str]",
         "",
+        "class CrawloraClientError(CrawloraError): ...",
+        "class CrawloraServerError(CrawloraError): ...",
+        "class CrawloraNetworkError(CrawloraError): ...",
+        "",
         "class _RequestOptions(TypedDict, total=False):",
         "    _response_type: ResponseType",
         "    _timeout: float",
         "    _headers: Mapping[str, str]",
         "",
     ]
-    for schema_name, schema in operation_meta["definitions"].items():
+    for schema_name, schema in model.definitions.items():
         model_name = schema_type_name(schema_name)
         if schema.get("type") == "object" and schema.get("properties"):
             required = set(schema.get("required") or [])
@@ -272,13 +140,12 @@ def stub_declarations(groups, operation_meta):
             continue
         lines.append(f"{model_name} = {py_schema_type(schema)}")
         lines.append("")
-    for operation_id, meta in operation_meta.items():
-        if operation_id == "definitions":
-            continue
-        base = meta["typeBase"]
-        if meta["bodyType"] != "Any":
-            lines.append(f"{base}Body = {meta['bodyType']}")
-        lines.append(f"{base}Response = {meta['responseType']}")
+    for operation_id, meta in model.meta.items():
+        base = meta["type_base"]
+        body_type = py_schema_type(meta["body_schema"])
+        if body_type != "Any":
+            lines.append(f"{base}Body = {body_type}")
+        lines.append(f"{base}Response = {py_schema_type(meta['response_schema'])}")
         fields = {
             "_response_type": "NotRequired[ResponseType]",
             "_timeout": "NotRequired[float]",
@@ -293,23 +160,23 @@ def stub_declarations(groups, operation_meta):
             lines.append(f"    {key!r}: {typ},")
         lines.append("}, total=False)")
         lines.append("")
-    for group_name, methods in groups.items():
-        lines.append(f"class {type_name(group_name, 'group')}:")
+    for group_name, methods in model.groups.items():
+        lines.append(f"class {core.type_name(group_name, 'group')}:")
         if not methods:
             lines.append("    pass")
         for method_name, operation_id in methods.items():
-            base = operation_meta[operation_id]["typeBase"]
+            base = model.meta[operation_id]["type_base"]
             lines.append(f"    def {method_name}(self, **params: Unpack[{base}Params]) -> {base}Response: ...")
         lines.append("")
-    operation_ids = [operation_id for operation_id in operation_meta if operation_id != "definitions"]
+    operation_ids = list(model.meta.keys())
     lines.append("OperationId = Literal[")
     for operation_id in operation_ids:
         lines.append(f"    {operation_id!r},")
     lines.append("]")
     lines.append("")
     lines.append("class CrawloraClient:")
-    for group_name in groups:
-        lines.append(f"    {group_name}: {type_name(group_name, 'group')}")
+    for group_name in model.groups:
+        lines.append(f"    {group_name}: {core.type_name(group_name, 'group')}")
     lines.extend(
         [
             "    def __init__(",
@@ -325,12 +192,25 @@ def stub_declarations(groups, operation_meta):
             "        user_agent: str | None = ...,",
             "        transport: Callable[..., Any] | None = ...,",
             "    ) -> None: ...",
+            "    def paginate(",
+            "        self,",
+            "        operation_id: str,",
+            "        params: Mapping[str, Any] | None = ...,",
+            "        *,",
+            "        page_param: str | None = ...,",
+            "        start: int | None = ...,",
+            "        step: int = ...,",
+            "        max_pages: int | None = ...,",
+            "        response_type: ResponseType = ...,",
+            "        timeout: float | None = ...,",
+            "        headers: Mapping[str, str] | None = ...,",
+            "    ) -> Iterator[Any]: ...",
         ]
     )
     for method_name in ("operation", "request"):
         for operation_id in operation_ids:
-            base = operation_meta[operation_id]["typeBase"]
-            params_default = " = ..." if not operation_meta[operation_id].get("hasRequiredParams") else ""
+            base = model.meta[operation_id]["type_base"]
+            params_default = " = ..." if not model.meta[operation_id]["has_required_params"] else ""
             lines.extend(
                 [
                     "    @overload",
@@ -377,47 +257,34 @@ def main():
     if SPEC_PATH.resolve() != target_spec.resolve():
         shutil.copyfile(SPEC_PATH, target_spec)
 
-    operations = {}
-    groups = {}
-    operation_meta = {}
-    used_by_group = {}
-    for path, methods in sorted(spec["paths"].items()):
-        for method, operation in sorted(methods.items()):
-            operation_id = operation["operationId"]
-            tag = (operation.get("tags") or ["default"])[0]
-            group_name = TAG_GROUP_OVERRIDES.get(tag, snake(words(tag)))
-            groups.setdefault(group_name, {})
-            used_by_group.setdefault(group_name, set())
-            method_name = alias(operation_id, tag, used_by_group[group_name])
-            groups[group_name][method_name] = operation_id
-            operations[operation_id] = definition(operation_id, method, path, operation)
-            params = operation.get("parameters", [])
-            body_schema = next((p.get("schema") for p in params if p.get("in") == "body"), None)
-            response_schema = operation.get("responses", {}).get("200", {}).get("schema")
-            operation_meta[operation_id] = {
-                "typeBase": type_name(group_name, method_name),
-                "method": method.upper(),
-                "path": path,
-                "params": [p for p in params if p.get("in") in {"path", "query", "formData", "body"}],
-                "bodyType": py_schema_type(body_schema),
-                "responseType": py_schema_type(response_schema),
-                "hasRequiredParams": any(p.get("required") for p in params if p.get("in") in {"path", "query", "formData", "body"}),
-                "security": [key for req in operation.get("security", []) for key in req.keys()],
-                "note": operation_note(operation_id, operation),
-            }
-    operation_meta["definitions"] = spec.get("definitions", {})
+    model = core.build_model(spec, POLICY)
 
+    # SCREAMING_SNAKE_CASE aliases for every operation id, exposed as a class so
+    # editors autocomplete them: client.request(OperationId.BING_SEARCH, {...}).
+    const_lines = ["class OperationId:"]
+    used_consts = set()
+    for operation_id, meta in sorted(model.meta.items(), key=lambda item: item[1]["type_base"]):
+        const = "_".join(core.words(meta["type_base"])).upper() or "OPERATION"
+        base = const
+        i = 2
+        while const in used_consts:
+            const = f"{base}_{i}"
+            i += 1
+        used_consts.add(const)
+        const_lines.append(f"    {const} = {operation_id!r}")
     content = (
         "# Generated by scripts/generate.py. Do not edit manually.\n"
-        f"OPERATIONS = {pprint.pformat(operations, sort_dicts=True, width=120)}\n\n"
-        f"GROUPS = {pprint.pformat(groups, sort_dicts=True, width=120)}\n\n"
-        f"OPERATION_COUNT = {sum(len(methods) for methods in spec['paths'].values())}\n"
+        f"OPERATIONS = {pprint.pformat(model.operations, sort_dicts=True, width=120)}\n\n"
+        f"GROUPS = {pprint.pformat(model.groups, sort_dicts=True, width=120)}\n\n"
+        f"OPERATION_COUNT = {model.operation_count}\n\n"
+        + "\n".join(const_lines)
+        + "\n"
     )
     (ROOT / "crawlora" / "operations.py").write_text(content)
-    (ROOT / "crawlora" / "client.pyi").write_text(stub_declarations(groups, operation_meta))
+    (ROOT / "crawlora" / "client.pyi").write_text(stub_declarations(model))
     (ROOT / "docs").mkdir(exist_ok=True)
     (ROOT / "docs" / "operations.md").write_text(
-        operation_docs(groups, operation_meta, sum(len(methods) for methods in spec["paths"].values()))
+        core.operation_docs(model, title="Crawlora Python SDK Operations", type_render=py_type)
     )
 
 

@@ -1,5 +1,20 @@
 # Changelog
 
+## v1.3.0-sdk.1
+
+- Added `AsyncCrawloraClient` for asyncio applications: `await
+  client.bing.search(q="coffee")`. It reuses the synchronous client's validation,
+  retries, and `Retry-After` handling, running each request in a worker thread so
+  the package stays dependency-free.
+- Added `CrawloraClientError`, `CrawloraServerError`, and `CrawloraNetworkError`
+  subclasses of `CrawloraError` for branching on 4xx vs 5xx vs transport failures.
+- Added `client.paginate(operation_id, params)` (and the async equivalent) to
+  iterate page/offset endpoints, stopping on an empty page.
+- Added the generated `OperationId` constants for typo-safe dynamic operation ids,
+  e.g. `client.request(OperationId.BING_SEARCH, {"q": "coffee"})`.
+- The generator now shares a single language-neutral core with the Go and
+  TypeScript SDKs; generated output is unchanged.
+
 ## v1.2.0-sdk.19
 
 - Regenerated the public SDK contract with the promoted Shopify endpoint family.

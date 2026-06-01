@@ -13,10 +13,11 @@ from urllib.error import HTTPError, URLError
 from urllib.parse import urlencode, quote
 from urllib.request import Request, urlopen
 
+from ._pagination import default_start, detect_page_param, page_is_empty
 from .operations import GROUPS, OPERATIONS
 
 DEFAULT_BASE_URL = "https://api.crawlora.net/api/v1"
-VERSION = "1.2.0-sdk.19"
+VERSION = "1.3.0-sdk.1"
 DEFAULT_USER_AGENT = f"crawlora-python-sdk/{VERSION}"
 ResponseType = Literal["auto", "json", "text"]
 
@@ -40,6 +41,26 @@ class CrawloraError(Exception):
         self.raw_body = raw_body
         self.headers = dict(headers or {})
         self.__cause__ = cause
+
+
+class CrawloraClientError(CrawloraError):
+    """Raised for 4xx API responses: the request was rejected by the API."""
+
+
+class CrawloraServerError(CrawloraError):
+    """Raised for 5xx API responses: the API failed to handle a valid request."""
+
+
+class CrawloraNetworkError(CrawloraError):
+    """Raised for transport failures and timeouts before a response arrived."""
+
+
+def _api_error_class(status: int) -> type[CrawloraError]:
+    if 400 <= status < 500:
+        return CrawloraClientError
+    if status >= 500:
+        return CrawloraServerError
+    return CrawloraError
 
 
 @dataclass(frozen=True)
@@ -133,7 +154,7 @@ class CrawloraClient:
             response = self._transport(request, timeout if timeout is not None else self.timeout)
         except Exception as exc:
             message = "Crawlora request timed out" if _is_timeout_error(exc) else "Crawlora transport error"
-            raise CrawloraError(message, cause=exc) from exc
+            raise CrawloraNetworkError(message, cause=exc) from exc
         raw_body = response.body.decode(errors="replace")
         try:
             parsed = _parse_response(response.body, _header_value(response.headers, "content-type"), response_type)
@@ -148,8 +169,48 @@ class CrawloraClient:
         if response.status < 200 or response.status >= 300:
             code = parsed.get("code") if isinstance(parsed, dict) else None
             message = parsed.get("msg") if isinstance(parsed, dict) and parsed.get("msg") else f"HTTP {response.status}"
-            raise CrawloraError(message, status=response.status, code=code, body=parsed, raw_body=raw_body, headers=response.headers)
+            error_class = _api_error_class(response.status)
+            raise error_class(message, status=response.status, code=code, body=parsed, raw_body=raw_body, headers=response.headers)
         return parsed
+
+    def paginate(
+        self,
+        operation_id: str,
+        params: Mapping[str, Any] | None = None,
+        *,
+        page_param: str | None = None,
+        start: int | None = None,
+        step: int = 1,
+        max_pages: int | None = None,
+        response_type: ResponseType = "auto",
+        timeout: float | None = None,
+        headers: Mapping[str, str] | None = None,
+    ):
+        """Yield successive pages of a paginated operation.
+
+        Advances the numeric page/offset query parameter and stops when a page
+        returns no data. The page parameter is auto-detected as ``page`` or
+        ``offset`` unless ``page_param`` is given.
+        """
+        operation = OPERATIONS.get(operation_id)
+        if operation is None:
+            raise ValueError(f"unknown Crawlora operation: {operation_id}")
+        page_param = page_param or detect_page_param(operation)
+        if not page_param:
+            raise ValueError(f"operation {operation_id} has no page or offset query parameter to paginate")
+        if start is None:
+            start = default_start(page_param)
+        base_params = dict(params or {})
+        page_value = start
+        fetched = 0
+        while max_pages is None or fetched < max_pages:
+            page_params = {**base_params, page_param: page_value}
+            response = self.request(operation_id, page_params, response_type=response_type, timeout=timeout, headers=headers)
+            yield response
+            fetched += 1
+            if page_is_empty(response):
+                break
+            page_value += step
 
     @staticmethod
     def _urlopen_transport(request: Request, timeout: float) -> _Response:

@@ -131,6 +131,38 @@ response `headers`, and the underlying parser or transport exception as
 headers, capped at 30 seconds. Timeout-like transport failures use the
 `Crawlora request timed out` SDK message.
 
+`CrawloraError` has three subclasses for branching on the failure kind:
+`CrawloraClientError` (4xx, request rejected), `CrawloraServerError` (5xx), and
+`CrawloraNetworkError` (transport failure or timeout before a response).
+
+## Async
+
+`AsyncCrawloraClient` mirrors the synchronous client for asyncio applications:
+
+```python
+from crawlora import AsyncCrawloraClient
+
+crawlora = AsyncCrawloraClient(api_key="YOUR_API_KEY")
+result = await crawlora.bing.search(q="coffee shops")
+```
+
+It reuses the same validation, retries, and `Retry-After` handling, running each
+request in a worker thread so the package stays dependency-free.
+
+## Pagination
+
+`client.paginate` yields successive pages, advancing the page/offset query
+parameter and stopping when a page returns no data:
+
+```python
+for page in crawlora.paginate("ebay-seller-feedback", {"seller": "acme"}):
+    for review in page["data"]:
+        print(review)
+```
+
+`AsyncCrawloraClient.paginate` is the `async for` equivalent. Override detection
+with `page_param`, `start`, `step`, and `max_pages`.
+
 ## Examples
 
 Runnable examples live under `examples/` and skip cleanly when required

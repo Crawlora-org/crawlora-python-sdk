@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 import sys
-from typing import Any, Callable, Literal, Mapping, overload
+from typing import Any, Callable, Iterator, Literal, Mapping, overload
 
 if sys.version_info >= (3, 11):
     from typing import NotRequired, Required, TypedDict, Unpack
@@ -16,6 +16,10 @@ class CrawloraError(Exception):
     body: Any
     raw_body: str
     headers: Mapping[str, str]
+
+class CrawloraClientError(CrawloraError): ...
+class CrawloraServerError(CrawloraError): ...
+class CrawloraNetworkError(CrawloraError): ...
 
 class _RequestOptions(TypedDict, total=False):
     _response_type: ResponseType
@@ -12676,6 +12680,19 @@ class CrawloraClient:
         user_agent: str | None = ...,
         transport: Callable[..., Any] | None = ...,
     ) -> None: ...
+    def paginate(
+        self,
+        operation_id: str,
+        params: Mapping[str, Any] | None = ...,
+        *,
+        page_param: str | None = ...,
+        start: int | None = ...,
+        step: int = ...,
+        max_pages: int | None = ...,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> Iterator[Any]: ...
     @overload
     def operation(
         self,
