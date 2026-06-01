@@ -5240,6 +5240,276 @@ ModelShopappVariantsResponseDoc = TypedDict('ModelShopappVariantsResponseDoc', {
     'msg': NotRequired[str],
 }, total=False)
 
+ModelShopifyCollectionItem = TypedDict('ModelShopifyCollectionItem', {
+    'created_at': NotRequired[str],
+    'description': NotRequired[str],
+    'handle': NotRequired[str],
+    'id': NotRequired[str],
+    'products_count': NotRequired[int],
+    'published_at': NotRequired[str],
+    'title': NotRequired[str],
+    'updated_at': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelShopifyCollectionProductsResponse = TypedDict('ModelShopifyCollectionProductsResponse', {
+    'collection': NotRequired[str],
+    'limit': NotRequired[int],
+    'page': NotRequired[int],
+    'products': NotRequired[list[ModelShopifyProductItem]],
+    'source_url': NotRequired[str],
+    'store_url': NotRequired[str],
+}, total=False)
+
+ModelShopifyCollectionsResponse = TypedDict('ModelShopifyCollectionsResponse', {
+    'collections': NotRequired[list[ModelShopifyCollectionItem]],
+    'limit': NotRequired[int],
+    'page': NotRequired[int],
+    'source_url': NotRequired[str],
+    'store_url': NotRequired[str],
+}, total=False)
+
+ModelShopifyImageItem = TypedDict('ModelShopifyImageItem', {
+    'alt': NotRequired[str],
+    'created_at': NotRequired[str],
+    'height': NotRequired[int],
+    'id': NotRequired[str],
+    'position': NotRequired[int],
+    'updated_at': NotRequired[str],
+    'url': NotRequired[str],
+    'variant_ids': NotRequired[list[str]],
+    'width': NotRequired[int],
+}, total=False)
+
+ModelShopifyOptionItem = TypedDict('ModelShopifyOptionItem', {
+    'name': NotRequired[str],
+    'position': NotRequired[int],
+    'values': NotRequired[list[str]],
+}, total=False)
+
+ModelShopifyPageItem = TypedDict('ModelShopifyPageItem', {
+    'content': NotRequired[str],
+    'created_at': NotRequired[str],
+    'handle': NotRequired[str],
+    'id': NotRequired[str],
+    'published_at': NotRequired[str],
+    'title': NotRequired[str],
+    'updated_at': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelShopifyPageResponse = TypedDict('ModelShopifyPageResponse', {
+    'page': NotRequired[ModelShopifyPageItem],
+    'source_url': NotRequired[str],
+    'store_url': NotRequired[str],
+}, total=False)
+
+ModelShopifyPagesResponse = TypedDict('ModelShopifyPagesResponse', {
+    'limit': NotRequired[int],
+    'page': NotRequired[int],
+    'pages': NotRequired[list[ModelShopifyPageItem]],
+    'source_url': NotRequired[str],
+    'store_url': NotRequired[str],
+}, total=False)
+
+ModelShopifyProductItem = TypedDict('ModelShopifyProductItem', {
+    'available': NotRequired[bool],
+    'compare_at_price': NotRequired[float],
+    'created_at': NotRequired[str],
+    'description': NotRequired[str],
+    'featured_image': NotRequired[str],
+    'handle': NotRequired[str],
+    'id': NotRequired[str],
+    'images': NotRequired[list[ModelShopifyImageItem]],
+    'options': NotRequired[list[ModelShopifyOptionItem]],
+    'price': NotRequired[float],
+    'product_type': NotRequired[str],
+    'published_at': NotRequired[str],
+    'tags': NotRequired[list[str]],
+    'title': NotRequired[str],
+    'updated_at': NotRequired[str],
+    'url': NotRequired[str],
+    'variants': NotRequired[list[ModelShopifyVariantItem]],
+    'vendor': NotRequired[str],
+}, total=False)
+
+ModelShopifyProductRecommendationsResponse = TypedDict('ModelShopifyProductRecommendationsResponse', {
+    'handle': NotRequired[str],
+    'intent': NotRequired[str],
+    'limit': NotRequired[int],
+    'product_id': NotRequired[str],
+    'products': NotRequired[list[ModelShopifyProductItem]],
+    'source_url': NotRequired[str],
+    'store_url': NotRequired[str],
+}, total=False)
+
+ModelShopifyProductResponse = TypedDict('ModelShopifyProductResponse', {
+    'product': NotRequired[ModelShopifyProductItem],
+    'source_url': NotRequired[str],
+    'store_url': NotRequired[str],
+}, total=False)
+
+ModelShopifyProductsResponse = TypedDict('ModelShopifyProductsResponse', {
+    'limit': NotRequired[int],
+    'page': NotRequired[int],
+    'products': NotRequired[list[ModelShopifyProductItem]],
+    'source_url': NotRequired[str],
+    'store_url': NotRequired[str],
+}, total=False)
+
+ModelShopifySearchQueryItem = TypedDict('ModelShopifySearchQueryItem', {
+    'text': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelShopifySearchSuggestResponse = TypedDict('ModelShopifySearchSuggestResponse', {
+    'collections': NotRequired[list[ModelShopifyCollectionItem]],
+    'limit': NotRequired[int],
+    'products': NotRequired[list[ModelShopifyProductItem]],
+    'queries': NotRequired[list[ModelShopifySearchQueryItem]],
+    'query': NotRequired[str],
+    'source_url': NotRequired[str],
+    'store_url': NotRequired[str],
+    'types': NotRequired[list[str]],
+}, total=False)
+
+ModelShopifySitemapImage = TypedDict('ModelShopifySitemapImage', {
+    'caption': NotRequired[str],
+    'title': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelShopifySitemapIndexResponse = TypedDict('ModelShopifySitemapIndexResponse', {
+    'sitemaps': NotRequired[list[ModelShopifySitemapItem]],
+    'source_url': NotRequired[str],
+    'store_url': NotRequired[str],
+}, total=False)
+
+ModelShopifySitemapItem = TypedDict('ModelShopifySitemapItem', {
+    'loc': NotRequired[str],
+    'type': NotRequired[str],
+}, total=False)
+
+ModelShopifySitemapUrlitem = TypedDict('ModelShopifySitemapUrlitem', {
+    'changefreq': NotRequired[str],
+    'handle': NotRequired[str],
+    'images': NotRequired[list[ModelShopifySitemapImage]],
+    'lastmod': NotRequired[str],
+    'loc': NotRequired[str],
+    'type': NotRequired[str],
+}, total=False)
+
+ModelShopifySitemapUrlsResponse = TypedDict('ModelShopifySitemapUrlsResponse', {
+    'limit': NotRequired[int],
+    'source_url': NotRequired[str],
+    'store_url': NotRequired[str],
+    'type': NotRequired[str],
+    'urls': NotRequired[list[ModelShopifySitemapUrlitem]],
+}, total=False)
+
+ModelShopifyStoreResponse = TypedDict('ModelShopifyStoreResponse', {
+    'city': NotRequired[str],
+    'country': NotRequired[str],
+    'currency': NotRequired[str],
+    'description': NotRequired[str],
+    'domain': NotRequired[str],
+    'myshopify_domain': NotRequired[str],
+    'name': NotRequired[str],
+    'province': NotRequired[str],
+    'published_collections_count': NotRequired[int],
+    'published_products_count': NotRequired[int],
+    'requested_url': NotRequired[str],
+    'source_domain': NotRequired[str],
+    'source_url': NotRequired[str],
+}, total=False)
+
+ModelShopifyVariantItem = TypedDict('ModelShopifyVariantItem', {
+    'available': NotRequired[bool],
+    'barcode': NotRequired[str],
+    'compare_at_price': NotRequired[float],
+    'created_at': NotRequired[str],
+    'featured_image': NotRequired[str],
+    'grams': NotRequired[int],
+    'id': NotRequired[str],
+    'option1': NotRequired[str],
+    'option2': NotRequired[str],
+    'option3': NotRequired[str],
+    'position': NotRequired[int],
+    'price': NotRequired[float],
+    'product_id': NotRequired[str],
+    'requires_shipping': NotRequired[bool],
+    'sku': NotRequired[str],
+    'taxable': NotRequired[bool],
+    'title': NotRequired[str],
+    'updated_at': NotRequired[str],
+}, total=False)
+
+ModelShopifyCollectionProductsResponseDoc = TypedDict('ModelShopifyCollectionProductsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelShopifyCollectionProductsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelShopifyCollectionsResponseDoc = TypedDict('ModelShopifyCollectionsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelShopifyCollectionsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelShopifyPageResponseDoc = TypedDict('ModelShopifyPageResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelShopifyPageResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelShopifyPagesResponseDoc = TypedDict('ModelShopifyPagesResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelShopifyPagesResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelShopifyProductRecommendationsResponseDoc = TypedDict('ModelShopifyProductRecommendationsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelShopifyProductRecommendationsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelShopifyProductResponseDoc = TypedDict('ModelShopifyProductResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelShopifyProductResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelShopifyProductsResponseDoc = TypedDict('ModelShopifyProductsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelShopifyProductsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelShopifySearchSuggestResponseDoc = TypedDict('ModelShopifySearchSuggestResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelShopifySearchSuggestResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelShopifySitemapIndexResponseDoc = TypedDict('ModelShopifySitemapIndexResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelShopifySitemapIndexResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelShopifySitemapUrlsResponseDoc = TypedDict('ModelShopifySitemapUrlsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelShopifySitemapUrlsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelShopifyStoreResponseDoc = TypedDict('ModelShopifyStoreResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelShopifyStoreResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
 ModelSimilarwebSearchResp = TypedDict('ModelSimilarwebSearchResp', {
     'apps': NotRequired[dict[str, Any]],
     'companies': NotRequired[list[dict[str, Any]]],
@@ -10117,6 +10387,113 @@ ShopAppSuggestionsParams = TypedDict('ShopAppSuggestionsParams', {
     'limit': NotRequired[int],
 }, total=False)
 
+ShopifyCollectionsResponse = ModelShopifyCollectionsResponseDoc
+ShopifyCollectionsParams = TypedDict('ShopifyCollectionsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'url': Required[str],
+    'page': NotRequired[int],
+    'limit': NotRequired[int],
+}, total=False)
+
+ShopifyCollectionProductsResponse = ModelShopifyCollectionProductsResponseDoc
+ShopifyCollectionProductsParams = TypedDict('ShopifyCollectionProductsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'handle': Required[str],
+    'url': Required[str],
+    'page': NotRequired[int],
+    'limit': NotRequired[int],
+}, total=False)
+
+ShopifyPagesResponse = ModelShopifyPagesResponseDoc
+ShopifyPagesParams = TypedDict('ShopifyPagesParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'url': Required[str],
+    'page': NotRequired[int],
+    'limit': NotRequired[int],
+}, total=False)
+
+ShopifyPageResponse = ModelShopifyPageResponseDoc
+ShopifyPageParams = TypedDict('ShopifyPageParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'handle': Required[str],
+    'url': Required[str],
+}, total=False)
+
+ShopifyProductsResponse = ModelShopifyProductsResponseDoc
+ShopifyProductsParams = TypedDict('ShopifyProductsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'url': Required[str],
+    'page': NotRequired[int],
+    'limit': NotRequired[int],
+}, total=False)
+
+ShopifyProductResponse = ModelShopifyProductResponseDoc
+ShopifyProductParams = TypedDict('ShopifyProductParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'handle': Required[str],
+    'url': Required[str],
+}, total=False)
+
+ShopifyProductRecommendationsResponse = ModelShopifyProductRecommendationsResponseDoc
+ShopifyProductRecommendationsParams = TypedDict('ShopifyProductRecommendationsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'handle': Required[str],
+    'url': Required[str],
+    'limit': NotRequired[int],
+    'intent': NotRequired[Literal['related', 'complementary']],
+}, total=False)
+
+ShopifySearchSuggestResponse = ModelShopifySearchSuggestResponseDoc
+ShopifySearchSuggestParams = TypedDict('ShopifySearchSuggestParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'url': Required[str],
+    'q': Required[str],
+    'types': NotRequired[str],
+    'limit': NotRequired[int],
+}, total=False)
+
+ShopifySitemapUrlsResponse = ModelShopifySitemapUrlsResponseDoc
+ShopifySitemapUrlsParams = TypedDict('ShopifySitemapUrlsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'url': Required[str],
+    'type': NotRequired[Literal['all', 'products', 'collections', 'pages', 'blogs', 'agentic_discovery', 'other']],
+    'limit': NotRequired[int],
+}, total=False)
+
+ShopifySitemapsResponse = ModelShopifySitemapIndexResponseDoc
+ShopifySitemapsParams = TypedDict('ShopifySitemapsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'url': Required[str],
+}, total=False)
+
+ShopifyStoreResponse = ModelShopifyStoreResponseDoc
+ShopifyStoreParams = TypedDict('ShopifyStoreParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'url': Required[str],
+}, total=False)
+
 SimilarWebSearchResponse = ModelSimilarwebSearchResponseDoc
 SimilarWebSearchParams = TypedDict('SimilarWebSearchParams', {
     '_response_type': NotRequired[ResponseType],
@@ -11746,6 +12123,19 @@ class ShopAppGroup:
     def shop_typeahead(self, **params: Unpack[ShopAppShopTypeaheadParams]) -> ShopAppShopTypeaheadResponse: ...
     def suggestions(self, **params: Unpack[ShopAppSuggestionsParams]) -> ShopAppSuggestionsResponse: ...
 
+class ShopifyGroup:
+    def collections(self, **params: Unpack[ShopifyCollectionsParams]) -> ShopifyCollectionsResponse: ...
+    def collection_products(self, **params: Unpack[ShopifyCollectionProductsParams]) -> ShopifyCollectionProductsResponse: ...
+    def pages(self, **params: Unpack[ShopifyPagesParams]) -> ShopifyPagesResponse: ...
+    def page(self, **params: Unpack[ShopifyPageParams]) -> ShopifyPageResponse: ...
+    def products(self, **params: Unpack[ShopifyProductsParams]) -> ShopifyProductsResponse: ...
+    def product(self, **params: Unpack[ShopifyProductParams]) -> ShopifyProductResponse: ...
+    def product_recommendations(self, **params: Unpack[ShopifyProductRecommendationsParams]) -> ShopifyProductRecommendationsResponse: ...
+    def search_suggest(self, **params: Unpack[ShopifySearchSuggestParams]) -> ShopifySearchSuggestResponse: ...
+    def sitemap_urls(self, **params: Unpack[ShopifySitemapUrlsParams]) -> ShopifySitemapUrlsResponse: ...
+    def sitemaps(self, **params: Unpack[ShopifySitemapsParams]) -> ShopifySitemapsResponse: ...
+    def store(self, **params: Unpack[ShopifyStoreParams]) -> ShopifyStoreResponse: ...
+
 class SimilarWebGroup:
     def search(self, **params: Unpack[SimilarWebSearchParams]) -> SimilarWebSearchResponse: ...
     def web(self, **params: Unpack[SimilarWebWebParams]) -> SimilarWebWebResponse: ...
@@ -12088,6 +12478,17 @@ OperationId = Literal[
     'shop-app-shop-reviews',
     'shop-app-shop-typeahead',
     'shop-app-suggestions',
+    'shopify-collections',
+    'shopify-collection-products',
+    'shopify-pages',
+    'shopify-page',
+    'shopify-products',
+    'shopify-product',
+    'shopify-product-recommendations',
+    'shopify-search-suggest',
+    'shopify-sitemap-urls',
+    'shopify-sitemaps',
+    'shopify-store',
     'similarweb-search',
     'similarweb-web',
     'spotify-podcasts-categories',
@@ -12250,6 +12651,7 @@ class CrawloraClient:
     product_hunt: ProductHuntGroup
     referrals: ReferralsGroup
     shop_app: ShopAppGroup
+    shopify: ShopifyGroup
     similar_web: SimilarWebGroup
     spotify_podcasts: SpotifyPodcastsGroup
     spotify: SpotifyGroup
@@ -14074,6 +14476,116 @@ class CrawloraClient:
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
     ) -> ShopAppSuggestionsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['shopify-collections'],
+        params: ShopifyCollectionsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> ShopifyCollectionsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['shopify-collection-products'],
+        params: ShopifyCollectionProductsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> ShopifyCollectionProductsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['shopify-pages'],
+        params: ShopifyPagesParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> ShopifyPagesResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['shopify-page'],
+        params: ShopifyPageParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> ShopifyPageResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['shopify-products'],
+        params: ShopifyProductsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> ShopifyProductsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['shopify-product'],
+        params: ShopifyProductParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> ShopifyProductResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['shopify-product-recommendations'],
+        params: ShopifyProductRecommendationsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> ShopifyProductRecommendationsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['shopify-search-suggest'],
+        params: ShopifySearchSuggestParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> ShopifySearchSuggestResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['shopify-sitemap-urls'],
+        params: ShopifySitemapUrlsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> ShopifySitemapUrlsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['shopify-sitemaps'],
+        params: ShopifySitemapsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> ShopifySitemapsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['shopify-store'],
+        params: ShopifyStoreParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> ShopifyStoreResponse: ...
     @overload
     def operation(
         self,
@@ -17274,6 +17786,116 @@ class CrawloraClient:
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
     ) -> ShopAppSuggestionsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['shopify-collections'],
+        params: ShopifyCollectionsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> ShopifyCollectionsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['shopify-collection-products'],
+        params: ShopifyCollectionProductsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> ShopifyCollectionProductsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['shopify-pages'],
+        params: ShopifyPagesParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> ShopifyPagesResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['shopify-page'],
+        params: ShopifyPageParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> ShopifyPageResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['shopify-products'],
+        params: ShopifyProductsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> ShopifyProductsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['shopify-product'],
+        params: ShopifyProductParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> ShopifyProductResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['shopify-product-recommendations'],
+        params: ShopifyProductRecommendationsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> ShopifyProductRecommendationsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['shopify-search-suggest'],
+        params: ShopifySearchSuggestParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> ShopifySearchSuggestResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['shopify-sitemap-urls'],
+        params: ShopifySitemapUrlsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> ShopifySitemapUrlsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['shopify-sitemaps'],
+        params: ShopifySitemapsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> ShopifySitemapsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['shopify-store'],
+        params: ShopifyStoreParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> ShopifyStoreResponse: ...
     @overload
     def request(
         self,

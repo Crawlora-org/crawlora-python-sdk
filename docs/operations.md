@@ -2,7 +2,7 @@
 
 Generated from `openapi/public.json`. Deprecated, admin, and internal operations are excluded from this SDK contract.
 
-Total operations: `319`
+Total operations: `330`
 
 | Group | SDK method | Operation ID | HTTP | Params | Auth | Response | Notes |
 | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -186,6 +186,17 @@ Total operations: `319`
 | shop_app | `shop_app.shop_reviews` | `shop-app-shop-reviews` | `GET /shop-app/shops/{handle}/reviews` | `handle` (path str required)<br>`limit` (query int) | `ApiKeyAuth` | `ShopAppShopReviewsResponse` |  |
 | shop_app | `shop_app.shop_typeahead` | `shop-app-shop-typeahead` | `GET /shop-app/shops/{handle}/typeahead` | `handle` (path str required)<br>`query` (query str required)<br>`limit` (query int) | `ApiKeyAuth` | `ShopAppShopTypeaheadResponse` |  |
 | shop_app | `shop_app.suggestions` | `shop-app-suggestions` | `GET /shop-app/suggestions` | `query` (query str required)<br>`limit` (query int) | `ApiKeyAuth` | `ShopAppSuggestionsResponse` |  |
+| shopify | `shopify.collections` | `shopify-collections` | `GET /shopify/collections` | `url` (query str required)<br>`page` (query int)<br>`limit` (query int) | `ApiKeyAuth` | `ShopifyCollectionsResponse` |  |
+| shopify | `shopify.collection_products` | `shopify-collection-products` | `GET /shopify/collections/{handle}/products` | `handle` (path str required)<br>`url` (query str required)<br>`page` (query int)<br>`limit` (query int) | `ApiKeyAuth` | `ShopifyCollectionProductsResponse` |  |
+| shopify | `shopify.pages` | `shopify-pages` | `GET /shopify/pages` | `url` (query str required)<br>`page` (query int)<br>`limit` (query int) | `ApiKeyAuth` | `ShopifyPagesResponse` |  |
+| shopify | `shopify.page` | `shopify-page` | `GET /shopify/pages/{handle}` | `handle` (path str required)<br>`url` (query str required) | `ApiKeyAuth` | `ShopifyPageResponse` |  |
+| shopify | `shopify.products` | `shopify-products` | `GET /shopify/products` | `url` (query str required)<br>`page` (query int)<br>`limit` (query int) | `ApiKeyAuth` | `ShopifyProductsResponse` |  |
+| shopify | `shopify.product` | `shopify-product` | `GET /shopify/products/{handle}` | `handle` (path str required)<br>`url` (query str required) | `ApiKeyAuth` | `ShopifyProductResponse` |  |
+| shopify | `shopify.product_recommendations` | `shopify-product-recommendations` | `GET /shopify/products/{handle}/recommendations` | `handle` (path str required)<br>`url` (query str required)<br>`limit` (query int)<br>`intent` (query Literal['related', 'complementary']) | `ApiKeyAuth` | `ShopifyProductRecommendationsResponse` |  |
+| shopify | `shopify.search_suggest` | `shopify-search-suggest` | `GET /shopify/search/suggest` | `url` (query str required)<br>`q` (query str required)<br>`types` (query str)<br>`limit` (query int) | `ApiKeyAuth` | `ShopifySearchSuggestResponse` |  |
+| shopify | `shopify.sitemap_urls` | `shopify-sitemap-urls` | `GET /shopify/sitemap/urls` | `url` (query str required)<br>`type` (query Literal['all', 'products', 'collections', 'pages', 'blogs', 'agentic_discovery', 'other'])<br>`limit` (query int) | `ApiKeyAuth` | `ShopifySitemapUrlsResponse` |  |
+| shopify | `shopify.sitemaps` | `shopify-sitemaps` | `GET /shopify/sitemaps` | `url` (query str required) | `ApiKeyAuth` | `ShopifySitemapsResponse` |  |
+| shopify | `shopify.store` | `shopify-store` | `GET /shopify/store` | `url` (query str required) | `ApiKeyAuth` | `ShopifyStoreResponse` |  |
 | similar_web | `similar_web.search` | `similarweb-search` | `GET /similarweb/search` | `q` (query str required) | `ApiKeyAuth` | `SimilarWebSearchResponse` |  |
 | similar_web | `similar_web.web` | `similarweb-web` | `GET /similarweb/web/{domain}` | `domain` (path str required) | `ApiKeyAuth` | `SimilarWebWebResponse` |  |
 | spotify_podcasts | `spotify_podcasts.categories` | `spotify-podcasts-categories` | `GET /spotify-podcasts/categories` | `uri` (query str)<br>`page_offset` (query int)<br>`page_limit` (query int)<br>`section_offset` (query int)<br>`section_limit` (query int)<br>`include_episode_content_ratings_v2` (query bool) | `ApiKeyAuth` | `SpotifyPodcastsCategoriesResponse` |  |
