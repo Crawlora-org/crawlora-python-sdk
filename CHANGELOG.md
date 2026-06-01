@@ -1,5 +1,19 @@
 # Changelog
 
+## v1.4.0-sdk.1
+
+- True async transport: `pip install crawlora[async]` makes `AsyncCrawloraClient`
+  use `httpx.AsyncClient`; without it, it falls back to the thread-based path.
+  Added `aclose()` and async context-manager support.
+- Configurable retries: `max_retry_delay`, `retry_statuses`, and a
+  `retry_predicate`; added an `on_retry` hook, opt-in `request_id` (x-request-id,
+  also on `error.request_id`), and a `logger` event sink.
+- Pagination: cursor/token mode (`cursor_param` + `next_cursor`) and a
+  `paginate_items` per-item iterator (sync + async); operation metadata now
+  exposes `paginatable` and `cursorParams`.
+- Streaming: `response_type="stream"` returns a file-like body.
+- Config: `CRAWLORA_API_KEY` / `CRAWLORA_BASE_URL` environment fallback.
+
 ## v1.3.0-sdk.1
 
 - Added `AsyncCrawloraClient` for asyncio applications: `await

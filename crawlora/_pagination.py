@@ -32,3 +32,13 @@ def page_is_empty(response: Any) -> bool:
 
 def default_start(page_param: str) -> int:
     return 0 if page_param == "offset" else 1
+
+
+def default_items(response: Any) -> list[Any]:
+    """Default item extractor: the response's ``data`` list (Crawlora envelope),
+    or the response itself when it is already a list."""
+    if isinstance(response, Mapping) and isinstance(response.get("data"), list):
+        return list(response["data"])
+    if isinstance(response, list):
+        return list(response)
+    return []

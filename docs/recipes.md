@@ -68,6 +68,62 @@ except CrawloraError as error:
     print(error.status, error.code, error.raw_body, error.headers)
 ```
 
+## Custom Retries And Observability
+
+```python
+crawlora = CrawloraClient(
+    retries=3,
+    max_retry_delay=10.0,
+    retry_statuses=[429, 503],                          # or:
+    retry_predicate=lambda status, error: status >= 500,
+    on_retry=lambda attempt, error, delay: print("retry", attempt, error.status),
+    request_id=True,                                    # sets x-request-id; available as error.request_id
+    logger=lambda event: print(event),
+)
+```
+
+Branch on `CrawloraClientError` (4xx), `CrawloraServerError` (5xx), and
+`CrawloraNetworkError` (transport).
+
+## Async
+
+```python
+from crawlora import AsyncCrawloraClient  # pip install crawlora[async] for true async
+
+async with AsyncCrawloraClient(api_key="...") as crawlora:
+    result = await crawlora.bing.search(q="coffee")
+    async for item in crawlora.paginate_items("ebay-seller-feedback", {"seller": "acme"}):
+        ...
+```
+
+## Pagination
+
+```python
+# page/offset (auto-detected)
+for page in crawlora.paginate("ebay-seller-feedback", {"seller": "acme"}):
+    ...
+
+# per-item iteration
+for item in crawlora.paginate_items("ebay-seller-feedback", {"seller": "acme"}):
+    ...
+
+# cursor/token pagination
+for page in crawlora.paginate("producthunt-leaderboard", cursor_param="cursor", next_cursor=lambda p: p.get("next_cursor")):
+    ...
+```
+
+## Streaming Responses
+
+```python
+stream = crawlora.request("bing-search", {"q": "coffee"}, response_type="stream")
+data = stream.read()  # file-like; AsyncCrawloraClient with httpx streams incrementally
+```
+
+## Environment Variables
+
+`CRAWLORA_API_KEY` and `CRAWLORA_BASE_URL` are used when not set explicitly
+(precedence: argument > env > default).
+
 ## Optional Live Smoke Tests
 
 ```sh

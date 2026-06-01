@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import io
 import json
 import mimetypes
 import os
@@ -8,18 +9,23 @@ import socket
 import time
 import uuid
 from dataclasses import dataclass
-from typing import Any, Callable, Mapping, Literal
+from typing import Any, Callable, Iterable, Mapping, Literal
 from urllib.error import HTTPError, URLError
 from urllib.parse import urlencode, quote
 from urllib.request import Request, urlopen
 
-from ._pagination import default_start, detect_page_param, page_is_empty
+from ._pagination import default_items, default_start, detect_page_param, page_is_empty
 from .operations import GROUPS, OPERATIONS
 
 DEFAULT_BASE_URL = "https://api.crawlora.net/api/v1"
-VERSION = "1.3.0-sdk.1"
+VERSION = "1.4.0-sdk.1"
 DEFAULT_USER_AGENT = f"crawlora-python-sdk/{VERSION}"
-ResponseType = Literal["auto", "json", "text"]
+DEFAULT_MAX_RETRY_DELAY = 30.0
+DEFAULT_RETRY_STATUSES = (408, 409, 425, 429)
+ResponseType = Literal["auto", "json", "text", "stream"]
+RetryPredicate = Callable[[int, "BaseException | None"], bool]
+RetryHook = Callable[[int, "BaseException", float], None]
+Logger = Callable[[Mapping[str, Any]], None]
 
 
 class CrawloraError(Exception):
@@ -32,6 +38,7 @@ class CrawloraError(Exception):
         body: Any = None,
         raw_body: str = "",
         headers: Mapping[str, str] | None = None,
+        request_id: str | None = None,
         cause: BaseException | None = None,
     ):
         super().__init__(message)
@@ -40,6 +47,7 @@ class CrawloraError(Exception):
         self.body = body
         self.raw_body = raw_body
         self.headers = dict(headers or {})
+        self.request_id = request_id
         self.__cause__ = cause
 
 
@@ -76,26 +84,61 @@ class CrawloraClient:
         *,
         api_key: str | None = None,
         jwt_token: str | None = None,
-        base_url: str = DEFAULT_BASE_URL,
+        base_url: str | None = None,
         timeout: float = 30,
         retries: int = 0,
         retry_delay: float = 0.25,
+        max_retry_delay: float = DEFAULT_MAX_RETRY_DELAY,
+        retry_statuses: Iterable[int] | None = None,
+        retry_predicate: RetryPredicate | None = None,
+        on_retry: RetryHook | None = None,
+        request_id: bool = False,
+        logger: Logger | None = None,
         headers: Mapping[str, str] | None = None,
         user_agent: str | None = DEFAULT_USER_AGENT,
         transport: Callable[[Request, float], _Response] | None = None,
     ) -> None:
-        self.api_key = api_key or ""
+        # Precedence: explicit argument > environment variable > default.
+        self.api_key = api_key or os.environ.get("CRAWLORA_API_KEY", "")
         self.jwt_token = jwt_token or ""
-        self.base_url = base_url.rstrip("/")
+        self.base_url = (base_url or os.environ.get("CRAWLORA_BASE_URL") or DEFAULT_BASE_URL).rstrip("/")
         self.timeout = timeout
         self.retries = max(0, int(retries))
         self.retry_delay = max(0.0, float(retry_delay))
+        self.max_retry_delay = max(0.0, float(max_retry_delay))
+        self.retry_statuses = frozenset(retry_statuses) if retry_statuses is not None else None
+        self.retry_predicate = retry_predicate
+        self.on_retry = on_retry
+        self.request_id = request_id
+        self.logger = logger
         self.headers = dict(headers or {})
         self.user_agent = user_agent or ""
         self._transport = transport or self._urlopen_transport
 
         for group_name, operations in GROUPS.items():
             setattr(self, group_name, _OperationGroup(self, operations))
+
+    def _is_retryable(self, status: int, exc: BaseException | None) -> bool:
+        if self.retry_predicate is not None:
+            return bool(self.retry_predicate(status, exc))
+        if self.retry_statuses is not None:
+            # Network failures (status 0) stay retryable unless a predicate decides.
+            return status == 0 or status in self.retry_statuses
+        return _should_retry(status)
+
+    def _compute_retry_delay(self, attempt: int, headers: Mapping[str, str]) -> float:
+        retry_after = _retry_after_delay(headers, self.max_retry_delay)
+        if retry_after is not None:
+            return retry_after
+        if self.retry_delay <= 0:
+            return 0.0
+        delay = self.retry_delay * (2 ** max(0, attempt - 1))
+        jitter = random.uniform(0, self.retry_delay / 2)
+        return delay + jitter
+
+    def _log(self, event: Mapping[str, Any]) -> None:
+        if self.logger is not None:
+            self.logger(event)
 
     def operation(
         self,
@@ -121,16 +164,22 @@ class CrawloraClient:
         if operation is None:
             raise ValueError(f"unknown Crawlora operation: {operation_id}")
         response_type = _validate_response_type(response_type)
+        self._log({"event": "request", "operation": operation_id})
 
         attempt = 0
         while True:
             try:
                 return self._send(operation, dict(params or {}), response_type=response_type, timeout=timeout, headers=headers)
             except CrawloraError as exc:
-                if attempt >= self.retries or not _should_retry(exc.status):
+                if attempt >= self.retries or not self._is_retryable(exc.status, exc):
                     raise
                 attempt += 1
-                _sleep_before_retry(self.retry_delay, attempt, exc.headers)
+                delay = self._compute_retry_delay(attempt, exc.headers)
+                self._log({"event": "retry", "operation": operation_id, "attempt": attempt, "status": exc.status, "delay": delay})
+                if self.on_retry is not None:
+                    self.on_retry(attempt, exc, delay)
+                if delay > 0:
+                    time.sleep(delay)
 
     def _send(
         self,
@@ -149,28 +198,36 @@ class CrawloraClient:
             body_headers,
             headers or {},
         )
+        req_id = _ensure_request_id(request_headers) if self.request_id else _header_value(request_headers, "x-request-id") or None
         request = Request(url, data=body, headers=request_headers, method=operation["method"])
         try:
             response = self._transport(request, timeout if timeout is not None else self.timeout)
         except Exception as exc:
             message = "Crawlora request timed out" if _is_timeout_error(exc) else "Crawlora transport error"
-            raise CrawloraNetworkError(message, cause=exc) from exc
+            raise CrawloraNetworkError(message, request_id=req_id, cause=exc) from exc
         raw_body = response.body.decode(errors="replace")
+        is_error = response.status < 200 or response.status >= 300
+        if response_type == "stream" and not is_error:
+            # Caller reads the file-like body; truly incremental streaming is
+            # available on AsyncCrawloraClient (httpx).
+            return io.BytesIO(response.body)
+        parse_mode = "auto" if response_type == "stream" else response_type
         try:
-            parsed = _parse_response(response.body, _header_value(response.headers, "content-type"), response_type)
+            parsed = _parse_response(response.body, _header_value(response.headers, "content-type"), parse_mode)
         except json.JSONDecodeError as exc:
             raise CrawloraError(
                 "Crawlora JSON parse error",
                 status=response.status,
                 raw_body=raw_body,
                 headers=response.headers,
+                request_id=req_id,
                 cause=exc,
             ) from exc
         if response.status < 200 or response.status >= 300:
             code = parsed.get("code") if isinstance(parsed, dict) else None
             message = parsed.get("msg") if isinstance(parsed, dict) and parsed.get("msg") else f"HTTP {response.status}"
             error_class = _api_error_class(response.status)
-            raise error_class(message, status=response.status, code=code, body=parsed, raw_body=raw_body, headers=response.headers)
+            raise error_class(message, status=response.status, code=code, body=parsed, raw_body=raw_body, headers=response.headers, request_id=req_id)
         return parsed
 
     def paginate(
@@ -179,7 +236,9 @@ class CrawloraClient:
         params: Mapping[str, Any] | None = None,
         *,
         page_param: str | None = None,
-        start: int | None = None,
+        cursor_param: str | None = None,
+        next_cursor: Callable[[Any], Any] | None = None,
+        start: Any = None,
         step: int = 1,
         max_pages: int | None = None,
         response_type: ResponseType = "auto",
@@ -188,20 +247,39 @@ class CrawloraClient:
     ):
         """Yield successive pages of a paginated operation.
 
-        Advances the numeric page/offset query parameter and stops when a page
-        returns no data. The page parameter is auto-detected as ``page`` or
-        ``offset`` unless ``page_param`` is given.
+        Numeric mode (default) advances the ``page``/``offset`` query parameter
+        and stops on an empty page. Cursor mode (pass both ``cursor_param`` and a
+        ``next_cursor`` extractor) sends the cursor parameter and stops when
+        ``next_cursor`` returns a falsy value.
         """
         operation = OPERATIONS.get(operation_id)
         if operation is None:
             raise ValueError(f"unknown Crawlora operation: {operation_id}")
+        base_params = dict(params or {})
+
+        if cursor_param or next_cursor:
+            if not (cursor_param and next_cursor):
+                raise ValueError("cursor pagination requires both cursor_param and next_cursor")
+            if cursor_param not in {p["name"] for p in operation.get("queryParams", [])}:
+                raise ValueError(f"cursor_param {cursor_param!r} is not a query parameter of operation {operation_id}")
+            cursor = start
+            fetched = 0
+            while max_pages is None or fetched < max_pages:
+                page_params = dict(base_params)
+                if cursor is not None:
+                    page_params[cursor_param] = cursor
+                response = self.request(operation_id, page_params, response_type=response_type, timeout=timeout, headers=headers)
+                yield response
+                fetched += 1
+                cursor = next_cursor(response)
+                if not cursor:
+                    break
+            return
+
         page_param = page_param or detect_page_param(operation)
         if not page_param:
             raise ValueError(f"operation {operation_id} has no page or offset query parameter to paginate")
-        if start is None:
-            start = default_start(page_param)
-        base_params = dict(params or {})
-        page_value = start
+        page_value = default_start(page_param) if start is None else start
         fetched = 0
         while max_pages is None or fetched < max_pages:
             page_params = {**base_params, page_param: page_value}
@@ -211,6 +289,21 @@ class CrawloraClient:
             if page_is_empty(response):
                 break
             page_value += step
+
+    def paginate_items(
+        self,
+        operation_id: str,
+        params: Mapping[str, Any] | None = None,
+        *,
+        items: Callable[[Any], Any] | None = None,
+        **kwargs: Any,
+    ):
+        """Yield individual items across pages. ``items`` extracts the list from
+        a page (default: the Crawlora ``data`` array)."""
+        extract = items or default_items
+        for page in self.paginate(operation_id, params, **kwargs):
+            for item in extract(page):
+                yield item
 
     @staticmethod
     def _urlopen_transport(request: Request, timeout: float) -> _Response:
@@ -371,9 +464,9 @@ def _merge_headers(*sources: Mapping[str, str]) -> dict[str, str]:
 
 
 def _validate_response_type(response_type: str) -> ResponseType:
-    if response_type in ("auto", "json", "text"):
+    if response_type in ("auto", "json", "text", "stream"):
         return response_type  # type: ignore[return-value]
-    raise ValueError("invalid response_type: expected one of auto, json, text")
+    raise ValueError("invalid response_type: expected one of auto, json, text, stream")
 
 
 def _parse_response(body: bytes, content_type: str, response_type: str) -> Any:
@@ -391,22 +484,19 @@ def _stringify_param(value: Any) -> str:
 
 
 def _should_retry(status: int) -> bool:
-    return status == 0 or status in {408, 409, 425, 429} or status >= 500
+    return status == 0 or status in DEFAULT_RETRY_STATUSES or status >= 500
 
 
-def _sleep_before_retry(base_delay: float, attempt: int, headers: Mapping[str, str]) -> None:
-    retry_after = _retry_after_delay(headers)
-    if retry_after is not None:
-        time.sleep(retry_after)
-        return
-    if base_delay <= 0:
-        return
-    delay = base_delay * (2 ** max(0, attempt - 1))
-    jitter = random.uniform(0, base_delay / 2)
-    time.sleep(delay + jitter)
+def _ensure_request_id(headers: dict[str, str]) -> str:
+    existing = _header_value(headers, "x-request-id")
+    if existing:
+        return existing
+    request_id = uuid.uuid4().hex
+    headers["x-request-id"] = request_id
+    return request_id
 
 
-def _retry_after_delay(headers: Mapping[str, str]) -> float | None:
+def _retry_after_delay(headers: Mapping[str, str], cap: float) -> float | None:
     value = _header_value(headers, "retry-after")
     if not value:
         return None
@@ -415,7 +505,7 @@ def _retry_after_delay(headers: Mapping[str, str]) -> float | None:
     except ValueError:
         seconds = None
     if seconds is not None and seconds > 0:
-        return min(seconds, 30.0)
+        return min(seconds, cap)
     try:
         from email.utils import parsedate_to_datetime
 
@@ -424,7 +514,7 @@ def _retry_after_delay(headers: Mapping[str, str]) -> float | None:
     except (TypeError, ValueError, OverflowError):
         return None
     if delay > 0:
-        return min(delay, 30.0)
+        return min(delay, cap)
     return None
 
 

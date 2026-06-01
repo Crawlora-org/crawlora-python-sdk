@@ -1,14 +1,14 @@
 from __future__ import annotations
 
 import sys
-from typing import Any, Callable, Iterator, Literal, Mapping, overload
+from typing import Any, Callable, Iterable, Iterator, Literal, Mapping, overload
 
 if sys.version_info >= (3, 11):
     from typing import NotRequired, Required, TypedDict, Unpack
 else:
     from typing_extensions import NotRequired, Required, TypedDict, Unpack
 
-ResponseType = Literal["auto", "json", "text"]
+ResponseType = Literal["auto", "json", "text", "stream"]
 
 class CrawloraError(Exception):
     status: int
@@ -16,6 +16,8 @@ class CrawloraError(Exception):
     body: Any
     raw_body: str
     headers: Mapping[str, str]
+    request_id: str | None
+    def __init__(self, message: str, *, status: int = ..., code: int | None = ..., body: Any = ..., raw_body: str = ..., headers: Mapping[str, str] | None = ..., request_id: str | None = ..., cause: BaseException | None = ...) -> None: ...
 
 class CrawloraClientError(CrawloraError): ...
 class CrawloraServerError(CrawloraError): ...
@@ -12672,10 +12674,16 @@ class CrawloraClient:
         *,
         api_key: str | None = ...,
         jwt_token: str | None = ...,
-        base_url: str = ...,
+        base_url: str | None = ...,
         timeout: float = ...,
         retries: int = ...,
         retry_delay: float = ...,
+        max_retry_delay: float = ...,
+        retry_statuses: Iterable[int] | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+        on_retry: Callable[[int, BaseException, float], None] | None = ...,
+        request_id: bool = ...,
+        logger: Callable[[Mapping[str, Any]], None] | None = ...,
         headers: Mapping[str, str] | None = ...,
         user_agent: str | None = ...,
         transport: Callable[..., Any] | None = ...,
@@ -12686,7 +12694,25 @@ class CrawloraClient:
         params: Mapping[str, Any] | None = ...,
         *,
         page_param: str | None = ...,
-        start: int | None = ...,
+        cursor_param: str | None = ...,
+        next_cursor: Callable[[Any], Any] | None = ...,
+        start: Any = ...,
+        step: int = ...,
+        max_pages: int | None = ...,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> Iterator[Any]: ...
+    def paginate_items(
+        self,
+        operation_id: str,
+        params: Mapping[str, Any] | None = ...,
+        *,
+        items: Callable[[Any], Any] | None = ...,
+        page_param: str | None = ...,
+        cursor_param: str | None = ...,
+        next_cursor: Callable[[Any], Any] | None = ...,
+        start: Any = ...,
         step: int = ...,
         max_pages: int | None = ...,
         response_type: ResponseType = ...,
@@ -19315,3 +19341,13 @@ class CrawloraClient:
     ) -> Any: ...
 
 VERSION: str
+
+# Internal helpers reused by the async client; not part of the public API.
+def _build_request(base_url: str, operation: Mapping[str, Any], params: dict[str, Any]) -> tuple[Any, Any, dict[str, str]]: ...
+def _merge_headers(*sources: Mapping[str, str]) -> dict[str, str]: ...
+def _auth_headers(security: list[str], api_key: str, jwt_token: str) -> dict[str, str]: ...
+def _ensure_request_id(headers: dict[str, str]) -> str: ...
+def _header_value(headers: Mapping[str, str], name: str) -> str: ...
+def _parse_response(body: bytes, content_type: str, response_type: str) -> Any: ...
+def _validate_response_type(response_type: str) -> ResponseType: ...
+def _api_error_class(status: int) -> type[CrawloraError]: ...

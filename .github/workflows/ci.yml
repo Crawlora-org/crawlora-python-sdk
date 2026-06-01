@@ -21,6 +21,10 @@ jobs:
         run: git diff --exit-code
       - name: Test
         run: python3 -m unittest discover -s tests
+      - name: Test async extra (httpx)
+        run: |
+          python3 -m pip install -e ".[async]"
+          python3 -m unittest discover -s tests
       - name: Check stub syntax
         run: |
           python3 - <<'PY'
