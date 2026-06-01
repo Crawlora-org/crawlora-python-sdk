@@ -43,7 +43,7 @@ from .operations import GROUPS, OPERATIONS
 try:  # optional dependency: pip install crawlora[async]
     import httpx
 except ImportError:  # pragma: no cover - exercised only without httpx
-    httpx = None
+    httpx = None  # type: ignore[assignment]
 
 
 class AsyncCrawloraClient:
@@ -98,7 +98,7 @@ class AsyncCrawloraClient:
                 response_type=response_type, timeout=timeout, headers=headers,
             )
 
-        operation = OPERATIONS.get(operation_id)
+        operation: Any = OPERATIONS.get(operation_id)
         if operation is None:
             raise ValueError(f"unknown Crawlora operation: {operation_id}")
         response_type = _validate_response_type(response_type)
@@ -168,7 +168,8 @@ class AsyncCrawloraClient:
             raise CrawloraError("Crawlora JSON parse error", status=status, raw_body=raw_body, headers=resp_headers, request_id=req_id, cause=exc) from exc
         if is_error:
             code = parsed.get("code") if isinstance(parsed, dict) else None
-            message = parsed.get("msg") if isinstance(parsed, dict) and parsed.get("msg") else f"HTTP {status}"
+            raw_msg = parsed.get("msg") if isinstance(parsed, dict) else None
+            message = str(raw_msg) if raw_msg else f"HTTP {status}"
             error_class = _api_error_class(status)
             raise error_class(message, status=status, code=code, body=parsed, raw_body=raw_body, headers=resp_headers, request_id=req_id)
         return parsed

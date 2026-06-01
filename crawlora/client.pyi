@@ -12669,6 +12669,23 @@ class CrawloraClient:
     yahoo_finance: YahooFinanceGroup
     youtube: YoutubeGroup
     zillow: ZillowGroup
+    api_key: str
+    jwt_token: str
+    base_url: str
+    timeout: float
+    retries: int
+    retry_delay: float
+    max_retry_delay: float
+    retry_statuses: frozenset[int] | None
+    retry_predicate: Callable[[int, BaseException | None], bool] | None
+    on_retry: Callable[[int, BaseException, float], None] | None
+    request_id: bool
+    logger: Callable[[Mapping[str, Any]], None] | None
+    headers: dict[str, str]
+    user_agent: str
+    def _is_retryable(self, status: int, exc: BaseException | None) -> bool: ...
+    def _compute_retry_delay(self, attempt: int, headers: Mapping[str, str]) -> float: ...
+    def _log(self, event: Mapping[str, Any]) -> None: ...
     def __init__(
         self,
         *,
