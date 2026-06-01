@@ -455,64 +455,6 @@ ModelAppstoreVersionHistoryResponseDoc = TypedDict('ModelAppstoreVersionHistoryR
     'msg': NotRequired[str],
 }, total=False)
 
-ModelBillingAdminPlanChangeRequestDoc = TypedDict('ModelBillingAdminPlanChangeRequestDoc', {
-    'currency': NotRequired[str],
-    'monthly_price_cents': NotRequired[int],
-    'plan': Required[str],
-}, total=False)
-
-ModelBillingAdminPlanChangeResponseDoc = TypedDict('ModelBillingAdminPlanChangeResponseDoc', {
-    'code': NotRequired[int],
-    'data': NotRequired[ModelBillingBillingSnapshotDoc],
-    'msg': NotRequired[str],
-}, total=False)
-
-ModelBillingBillingConsistencyEndpointBreakdownDoc = TypedDict('ModelBillingBillingConsistencyEndpointBreakdownDoc', {
-    'actual_credits': NotRequired[int],
-    'actual_overage': NotRequired[int],
-    'endpoint': NotRequired[str],
-    'expected_credits': NotRequired[int],
-    'expected_overage': NotRequired[int],
-}, total=False)
-
-ModelBillingBillingConsistencyIssueDoc = TypedDict('ModelBillingBillingConsistencyIssueDoc', {
-    'actual_credits': NotRequired[int],
-    'actual_overage': NotRequired[int],
-    'created_at': NotRequired[str],
-    'detail': NotRequired[str],
-    'endpoint_breakdown': NotRequired[list[ModelBillingBillingConsistencyEndpointBreakdownDoc]],
-    'expected_credits': NotRequired[int],
-    'expected_overage': NotRequired[int],
-    'frozen_at': NotRequired[str],
-    'issue_id': NotRequired[str],
-    'issue_type': NotRequired[str],
-    'period_key': NotRequired[str],
-    'repair_method': NotRequired[str],
-    'repair_path': NotRequired[str],
-    'request_id': NotRequired[str],
-    'severity': NotRequired[str],
-    'source_updated_at': NotRequired[str],
-    'statement_id': NotRequired[str],
-    'stripe_invoice_id': NotRequired[str],
-    'suggested_action': NotRequired[str],
-    'user_id': NotRequired[str],
-}, total=False)
-
-ModelBillingBillingConsistencyReportDoc = TypedDict('ModelBillingBillingConsistencyReportDoc', {
-    'checked_from': NotRequired[str],
-    'checked_to': NotRequired[str],
-    'counts_by_severity': NotRequired[dict[str, int]],
-    'counts_by_type': NotRequired[dict[str, int]],
-    'generated_at': NotRequired[str],
-    'issues': NotRequired[list[ModelBillingBillingConsistencyIssueDoc]],
-}, total=False)
-
-ModelBillingBillingConsistencyResponseDoc = TypedDict('ModelBillingBillingConsistencyResponseDoc', {
-    'code': NotRequired[int],
-    'data': NotRequired[ModelBillingBillingConsistencyReportDoc],
-    'msg': NotRequired[str],
-}, total=False)
-
 ModelBillingBillingEndpointLedgerDoc = TypedDict('ModelBillingBillingEndpointLedgerDoc', {
     'charged_requests': NotRequired[int],
     'credits': NotRequired[int],
@@ -553,132 +495,6 @@ ModelBillingBillingEventDoc = TypedDict('ModelBillingBillingEventDoc', {
 ModelBillingBillingEventsResponseDoc = TypedDict('ModelBillingBillingEventsResponseDoc', {
     'code': NotRequired[int],
     'data': NotRequired[list[ModelBillingBillingEventDoc]],
-    'msg': NotRequired[str],
-}, total=False)
-
-ModelBillingBillingFinanceAgingBucketDoc = TypedDict('ModelBillingBillingFinanceAgingBucketDoc', {
-    'amount_remaining_cents': NotRequired[int],
-    'bucket': NotRequired[str],
-    'invoice_count': NotRequired[int],
-}, total=False)
-
-ModelBillingBillingFinanceAgingResponseDoc = TypedDict('ModelBillingBillingFinanceAgingResponseDoc', {
-    'code': NotRequired[int],
-    'data': NotRequired[list[ModelBillingBillingFinanceAgingBucketDoc]],
-    'msg': NotRequired[str],
-}, total=False)
-
-ModelBillingBillingFinanceOverviewDoc = TypedDict('ModelBillingBillingFinanceOverviewDoc', {
-    'active_customers': NotRequired[int],
-    'at_risk_mrr_cents': NotRequired[int],
-    'booked_expected_total_cents': NotRequired[int],
-    'booked_overage_cents': NotRequired[int],
-    'booked_subscription_cents': NotRequired[int],
-    'cash_collected_cents': NotRequired[int],
-    'currency': NotRequired[str],
-    'current_outstanding_ar_cents': NotRequired[int],
-    'grace_period_customers': NotRequired[int],
-    'invoice_count': NotRequired[int],
-    'invoiced_amount_due_cents': NotRequired[int],
-    'mismatch_invoice_count': NotRequired[int],
-    'mismatch_total_cents': NotRequired[int],
-    'mrr_cents': NotRequired[int],
-    'paid_invoice_count': NotRequired[int],
-    'past_due_customers': NotRequired[int],
-    'payment_failed_invoice_count': NotRequired[int],
-    'plan_breakdown': NotRequired[list[ModelBillingBillingFinancePlanBreakdownDoc]],
-    'stripe_actual_credit_note_cents': NotRequired[int],
-    'stripe_actual_discount_cents': NotRequired[int],
-    'stripe_actual_net_cash_cents': NotRequired[int],
-    'stripe_actual_refund_cents': NotRequired[int],
-    'stripe_actual_tax_cents': NotRequired[int],
-    'stripe_actual_total_cents': NotRequired[int],
-    'uncollectible_invoice_count': NotRequired[int],
-    'voided_invoice_count': NotRequired[int],
-}, total=False)
-
-ModelBillingBillingFinanceOverviewResponseDoc = TypedDict('ModelBillingBillingFinanceOverviewResponseDoc', {
-    'code': NotRequired[int],
-    'data': NotRequired[ModelBillingBillingFinanceOverviewDoc],
-    'msg': NotRequired[str],
-}, total=False)
-
-ModelBillingBillingFinancePeriodItemDoc = TypedDict('ModelBillingBillingFinancePeriodItemDoc', {
-    'amount_paid_cents': NotRequired[int],
-    'amount_remaining_cents': NotRequired[int],
-    'customers': NotRequired[int],
-    'expected_total_amount_cents': NotRequired[int],
-    'invoice_amount_due_cents': NotRequired[int],
-    'invoice_count': NotRequired[int],
-    'mismatch_invoice_count': NotRequired[int],
-    'mismatch_total_cents': NotRequired[int],
-    'overage_amount_cents': NotRequired[int],
-    'paid_invoice_count': NotRequired[int],
-    'payment_failed_invoice_count': NotRequired[int],
-    'period_key': NotRequired[str],
-    'stripe_actual_credit_note_cents': NotRequired[int],
-    'stripe_actual_discount_cents': NotRequired[int],
-    'stripe_actual_net_cash_cents': NotRequired[int],
-    'stripe_actual_refund_cents': NotRequired[int],
-    'stripe_actual_tax_cents': NotRequired[int],
-    'stripe_actual_total_cents': NotRequired[int],
-    'subscription_amount_cents': NotRequired[int],
-}, total=False)
-
-ModelBillingBillingFinancePeriodsResponseDoc = TypedDict('ModelBillingBillingFinancePeriodsResponseDoc', {
-    'code': NotRequired[int],
-    'data': NotRequired[list[ModelBillingBillingFinancePeriodItemDoc]],
-    'msg': NotRequired[str],
-}, total=False)
-
-ModelBillingBillingFinancePlanBreakdownDoc = TypedDict('ModelBillingBillingFinancePlanBreakdownDoc', {
-    'active_customers': NotRequired[int],
-    'at_risk_mrr_cents': NotRequired[int],
-    'booked_expected_total_cents': NotRequired[int],
-    'booked_overage_cents': NotRequired[int],
-    'booked_subscription_cents': NotRequired[int],
-    'cash_collected_cents': NotRequired[int],
-    'current_outstanding_ar_cents': NotRequired[int],
-    'customers': NotRequired[int],
-    'grace_period_customers': NotRequired[int],
-    'invoice_count': NotRequired[int],
-    'invoiced_amount_due_cents': NotRequired[int],
-    'mismatch_invoice_count': NotRequired[int],
-    'mismatch_total_cents': NotRequired[int],
-    'mrr_cents': NotRequired[int],
-    'paid_invoice_count': NotRequired[int],
-    'past_due_customers': NotRequired[int],
-    'payment_failed_invoice_count': NotRequired[int],
-    'plan': NotRequired[str],
-    'stripe_actual_credit_note_cents': NotRequired[int],
-    'stripe_actual_discount_cents': NotRequired[int],
-    'stripe_actual_net_cash_cents': NotRequired[int],
-    'stripe_actual_refund_cents': NotRequired[int],
-    'stripe_actual_tax_cents': NotRequired[int],
-    'stripe_actual_total_cents': NotRequired[int],
-    'uncollectible_invoice_count': NotRequired[int],
-    'voided_invoice_count': NotRequired[int],
-}, total=False)
-
-ModelBillingBillingPeriodCloseErrorDoc = TypedDict('ModelBillingBillingPeriodCloseErrorDoc', {
-    'error': NotRequired[str],
-    'period_key': NotRequired[str],
-    'user_id': NotRequired[str],
-}, total=False)
-
-ModelBillingBillingPeriodCloseSummaryDoc = TypedDict('ModelBillingBillingPeriodCloseSummaryDoc', {
-    'closed': NotRequired[int],
-    'errors': NotRequired[list[ModelBillingBillingPeriodCloseErrorDoc]],
-    'failed': NotRequired[int],
-    'scanned': NotRequired[int],
-    'skipped': NotRequired[int],
-    'snapshot_skipped': NotRequired[int],
-    'snapshots_created': NotRequired[int],
-}, total=False)
-
-ModelBillingBillingPeriodCloseSummaryResponseDoc = TypedDict('ModelBillingBillingPeriodCloseSummaryResponseDoc', {
-    'code': NotRequired[int],
-    'data': NotRequired[ModelBillingBillingPeriodCloseSummaryDoc],
     'msg': NotRequired[str],
 }, total=False)
 
@@ -789,73 +605,6 @@ ModelBillingBillingPeriodStatementResponseDoc = TypedDict('ModelBillingBillingPe
     'msg': NotRequired[str],
 }, total=False)
 
-ModelBillingBillingPeriodStatementSnapshotSummaryDoc = TypedDict('ModelBillingBillingPeriodStatementSnapshotSummaryDoc', {
-    'adjustment_event_count': NotRequired[int],
-    'canonical_json_sha256': NotRequired[str],
-    'event_count': NotRequired[int],
-    'frozen_at': NotRequired[str],
-    'generated_at': NotRequired[str],
-    'generated_by': NotRequired[str],
-    'invoice_event_count': NotRequired[int],
-    'period_key': NotRequired[str],
-    'plan': NotRequired[str],
-    'revision': NotRequired[int],
-    'source_ledger_updated_at': NotRequired[str],
-    'source_snapshot_updated_at': NotRequired[str],
-    'statement_id': NotRequired[str],
-    'statement_version': NotRequired[str],
-    'status': NotRequired[str],
-    'user_id': NotRequired[str],
-}, total=False)
-
-ModelBillingBillingPeriodStatementSnapshotsResponseDoc = TypedDict('ModelBillingBillingPeriodStatementSnapshotsResponseDoc', {
-    'code': NotRequired[int],
-    'data': NotRequired[list[ModelBillingBillingPeriodStatementSnapshotSummaryDoc]],
-    'msg': NotRequired[str],
-}, total=False)
-
-ModelBillingBillingPeriodStatementVerificationDoc = TypedDict('ModelBillingBillingPeriodStatementVerificationDoc', {
-    'canonical_json_byte_count': NotRequired[int],
-    'computed_sha256': NotRequired[str],
-    'frozen_at': NotRequired[str],
-    'period_key': NotRequired[str],
-    'revision': NotRequired[int],
-    'statement_id': NotRequired[str],
-    'statement_version': NotRequired[str],
-    'stored_sha256': NotRequired[str],
-    'user_id': NotRequired[str],
-    'valid': NotRequired[bool],
-}, total=False)
-
-ModelBillingBillingPeriodStatementVerificationResponseDoc = TypedDict('ModelBillingBillingPeriodStatementVerificationResponseDoc', {
-    'code': NotRequired[int],
-    'data': NotRequired[ModelBillingBillingPeriodStatementVerificationDoc],
-    'msg': NotRequired[str],
-}, total=False)
-
-ModelBillingBillingSnapshotDoc = TypedDict('ModelBillingBillingSnapshotDoc', {
-    'allow_overage': NotRequired[bool],
-    'credits_remaining': NotRequired[int],
-    'credits_used': NotRequired[int],
-    'currency': NotRequired[str],
-    'daily_credit_limit': NotRequired[int],
-    'daily_credits_remaining': NotRequired[int],
-    'daily_credits_used': NotRequired[int],
-    'daily_key': NotRequired[str],
-    'expected_subscription_amount_cents': NotRequired[int],
-    'expected_total_amount_cents': NotRequired[int],
-    'hard_limit': NotRequired[bool],
-    'included_credits': NotRequired[int],
-    'overage_credits': NotRequired[int],
-    'period_end': NotRequired[str],
-    'period_key': NotRequired[str],
-    'period_start': NotRequired[str],
-    'plan': NotRequired[str],
-    'pricing_source': NotRequired[str],
-    'subscription_price_cents': NotRequired[int],
-    'user_id': NotRequired[str],
-}, total=False)
-
 ModelBillingBillingStateDoc = TypedDict('ModelBillingBillingStateDoc', {
     'allow_overage': NotRequired[bool],
     'created_at': NotRequired[str],
@@ -918,13 +667,6 @@ ModelBillingBillingStatementAdjustmentEvidenceDoc = TypedDict('ModelBillingBilli
     'stripe_invoice_id': NotRequired[str],
 }, total=False)
 
-ModelBillingBillingStatementAdminEvidenceDoc = TypedDict('ModelBillingBillingStatementAdminEvidenceDoc', {
-    'adjustment_events': NotRequired[list[ModelBillingBillingStatementAdjustmentEvidenceDoc]],
-    'invoice': NotRequired[ModelBillingBillingStatementInvoiceEvidenceDoc],
-    'invoice_events': NotRequired[list[ModelBillingBillingStatementInvoiceEventEvidenceDoc]],
-    'repair': NotRequired[ModelBillingBillingStatementRepairDoc],
-}, total=False)
-
 ModelBillingBillingStatementEventItemDoc = TypedDict('ModelBillingBillingStatementEventItemDoc', {
     'billable': NotRequired[bool],
     'created_at': NotRequired[str],
@@ -934,13 +676,6 @@ ModelBillingBillingStatementEventItemDoc = TypedDict('ModelBillingBillingStateme
     'non_billable_reason': NotRequired[str],
     'request_id': NotRequired[str],
     'status_code': NotRequired[int],
-}, total=False)
-
-ModelBillingBillingStatementEvidencePackDoc = TypedDict('ModelBillingBillingStatementEvidencePackDoc', {
-    'admin_evidence': NotRequired[ModelBillingBillingStatementAdminEvidenceDoc],
-    'customer_statement': NotRequired[ModelBillingBillingPeriodStatementDoc],
-    'snapshot': NotRequired[ModelBillingBillingPeriodStatementSnapshotSummaryDoc],
-    'verification': NotRequired[ModelBillingBillingPeriodStatementVerificationDoc],
 }, total=False)
 
 ModelBillingBillingStatementExpectedRevenueDoc = TypedDict('ModelBillingBillingStatementExpectedRevenueDoc', {
@@ -1058,135 +793,10 @@ ModelBillingBillingStatementUserDoc = TypedDict('ModelBillingBillingStatementUse
     'username': NotRequired[str],
 }, total=False)
 
-ModelBillingBillingSummaryItemDoc = TypedDict('ModelBillingBillingSummaryItemDoc', {
-    'billable': NotRequired[bool],
-    'charged_requests': NotRequired[int],
-    'credits': NotRequired[int],
-    'endpoint': NotRequired[str],
-    'failed_requests': NotRequired[int],
-    'non_billable_requests': NotRequired[int],
-    'overage': NotRequired[int],
-    'plan': NotRequired[str],
-    'requests': NotRequired[int],
-}, total=False)
-
-ModelBillingBillingSummaryResponseDoc = TypedDict('ModelBillingBillingSummaryResponseDoc', {
-    'code': NotRequired[int],
-    'data': NotRequired[list[ModelBillingBillingSummaryItemDoc]],
-    'msg': NotRequired[str],
-}, total=False)
-
-ModelBillingStripeAdjustmentEventDoc = TypedDict('ModelBillingStripeAdjustmentEventDoc', {
-    'amount_cents': NotRequired[int],
-    'charge_id': NotRequired[str],
-    'currency': NotRequired[str],
-    'error': NotRequired[str],
-    'event_created': NotRequired[str],
-    'event_id': NotRequired[str],
-    'event_type': NotRequired[str],
-    'invoice_payment_ids': NotRequired[list[str]],
-    'kind': NotRequired[str],
-    'match_status': NotRequired[str],
-    'matched_period_key': NotRequired[str],
-    'matched_stripe_invoice_id': NotRequired[str],
-    'matched_user_id': NotRequired[str],
-    'payment_intent_id': NotRequired[str],
-    'post_payment_credit_note_cents': NotRequired[int],
-    'pre_payment_credit_note_cents': NotRequired[int],
-    'processed_at': NotRequired[str],
-    'reconciliation_status': NotRequired[str],
-    'refund_cents': NotRequired[int],
-    'repair_attempts': NotRequired[int],
-    'repair_last_attempt_at': NotRequired[str],
-    'repair_last_error': NotRequired[str],
-    'repair_source': NotRequired[str],
-    'repair_status': NotRequired[str],
-    'resource_id': NotRequired[str],
-    'resource_status': NotRequired[str],
-    'stripe_customer_id': NotRequired[str],
-    'stripe_invoice_id': NotRequired[str],
-}, total=False)
-
-ModelBillingStripeAdjustmentEventsResponseDoc = TypedDict('ModelBillingStripeAdjustmentEventsResponseDoc', {
-    'code': NotRequired[int],
-    'data': NotRequired[list[ModelBillingStripeAdjustmentEventDoc]],
-    'msg': NotRequired[str],
-}, total=False)
-
-ModelBillingStripeAdjustmentReconcileErrorDoc = TypedDict('ModelBillingStripeAdjustmentReconcileErrorDoc', {
-    'error': NotRequired[str],
-    'event_id': NotRequired[str],
-    'resource_id': NotRequired[str],
-    'stripe_invoice_id': NotRequired[str],
-}, total=False)
-
-ModelBillingStripeAdjustmentReconcileSummaryDoc = TypedDict('ModelBillingStripeAdjustmentReconcileSummaryDoc', {
-    'errors': NotRequired[list[ModelBillingStripeAdjustmentReconcileErrorDoc]],
-    'failed': NotRequired[int],
-    'matched': NotRequired[int],
-    'scanned': NotRequired[int],
-    'skipped': NotRequired[int],
-    'unmatched': NotRequired[int],
-}, total=False)
-
-ModelBillingStripeAdjustmentReconcileSummaryResponseDoc = TypedDict('ModelBillingStripeAdjustmentReconcileSummaryResponseDoc', {
-    'code': NotRequired[int],
-    'data': NotRequired[ModelBillingStripeAdjustmentReconcileSummaryDoc],
-    'msg': NotRequired[str],
-}, total=False)
-
 ModelBillingStripeCheckoutRequestDoc = TypedDict('ModelBillingStripeCheckoutRequestDoc', {
     'cancel_url': NotRequired[str],
     'plan': NotRequired[str],
     'success_url': NotRequired[str],
-}, total=False)
-
-ModelBillingStripeInvoiceEventDoc = TypedDict('ModelBillingStripeInvoiceEventDoc', {
-    'amount_due': NotRequired[int],
-    'amount_paid': NotRequired[int],
-    'amount_remaining': NotRequired[int],
-    'charge_id': NotRequired[str],
-    'currency': NotRequired[str],
-    'discount_cents': NotRequired[int],
-    'due_date': NotRequired[str],
-    'error': NotRequired[str],
-    'event_created': NotRequired[str],
-    'event_id': NotRequired[str],
-    'event_type': NotRequired[str],
-    'hosted_invoice_url': NotRequired[str],
-    'invoice_payment_ids': NotRequired[list[str]],
-    'invoice_pdf': NotRequired[str],
-    'line_items': NotRequired[list[ModelBillingStripeInvoiceLineItemDoc]],
-    'match_status': NotRequired[str],
-    'matched_period_key': NotRequired[str],
-    'matched_user_id': NotRequired[str],
-    'payment_intent_id': NotRequired[str],
-    'period_end': NotRequired[str],
-    'period_start': NotRequired[str],
-    'post_payment_credit_note_cents': NotRequired[int],
-    'pre_payment_credit_note_cents': NotRequired[int],
-    'processed_at': NotRequired[str],
-    'reconciliation_status': NotRequired[str],
-    'repair_attempts': NotRequired[int],
-    'repair_last_attempt_at': NotRequired[str],
-    'repair_last_error': NotRequired[str],
-    'repair_source': NotRequired[str],
-    'repair_status': NotRequired[str],
-    'stripe_customer_id': NotRequired[str],
-    'stripe_invoice_id': NotRequired[str],
-    'stripe_invoice_number': NotRequired[str],
-    'stripe_invoice_status': NotRequired[str],
-    'subtotal_cents': NotRequired[int],
-    'subtotal_excluding_tax_cents': NotRequired[int],
-    'tax_cents': NotRequired[int],
-    'total_cents': NotRequired[int],
-    'total_excluding_tax_cents': NotRequired[int],
-}, total=False)
-
-ModelBillingStripeInvoiceEventsResponseDoc = TypedDict('ModelBillingStripeInvoiceEventsResponseDoc', {
-    'code': NotRequired[int],
-    'data': NotRequired[list[ModelBillingStripeInvoiceEventDoc]],
-    'msg': NotRequired[str],
 }, total=False)
 
 ModelBillingStripeInvoiceLineItemDoc = TypedDict('ModelBillingStripeInvoiceLineItemDoc', {
@@ -1202,227 +812,8 @@ ModelBillingStripeInvoiceLineItemDoc = TypedDict('ModelBillingStripeInvoiceLineI
     'type': NotRequired[str],
 }, total=False)
 
-ModelBillingStripeInvoiceReconcileErrorDoc = TypedDict('ModelBillingStripeInvoiceReconcileErrorDoc', {
-    'error': NotRequired[str],
-    'event_id': NotRequired[str],
-    'stripe_invoice_id': NotRequired[str],
-}, total=False)
-
-ModelBillingStripeInvoiceReconcileSummaryDoc = TypedDict('ModelBillingStripeInvoiceReconcileSummaryDoc', {
-    'errors': NotRequired[list[ModelBillingStripeInvoiceReconcileErrorDoc]],
-    'failed': NotRequired[int],
-    'matched': NotRequired[int],
-    'scanned': NotRequired[int],
-    'skipped': NotRequired[int],
-    'unmatched': NotRequired[int],
-}, total=False)
-
-ModelBillingStripeInvoiceReconcileSummaryResponseDoc = TypedDict('ModelBillingStripeInvoiceReconcileSummaryResponseDoc', {
-    'code': NotRequired[int],
-    'data': NotRequired[ModelBillingStripeInvoiceReconcileSummaryDoc],
-    'msg': NotRequired[str],
-}, total=False)
-
-ModelBillingStripeInvoiceSnapshotDetailDoc = TypedDict('ModelBillingStripeInvoiceSnapshotDetailDoc', {
-    'adjustment_events': NotRequired[list[ModelBillingStripeAdjustmentEventDoc]],
-    'invoice_events': NotRequired[list[ModelBillingStripeInvoiceEventDoc]],
-    'ledger': NotRequired[ModelBillingBillingPeriodLedgerDoc],
-    'snapshot': NotRequired[ModelBillingStripeInvoiceSnapshotDoc],
-}, total=False)
-
-ModelBillingStripeInvoiceSnapshotDetailResponseDoc = TypedDict('ModelBillingStripeInvoiceSnapshotDetailResponseDoc', {
-    'code': NotRequired[int],
-    'data': NotRequired[ModelBillingStripeInvoiceSnapshotDetailDoc],
-    'msg': NotRequired[str],
-}, total=False)
-
-ModelBillingStripeInvoiceSnapshotDoc = TypedDict('ModelBillingStripeInvoiceSnapshotDoc', {
-    'actual_one_time_cents': NotRequired[int],
-    'actual_overage_cents': NotRequired[int],
-    'actual_proration_cents': NotRequired[int],
-    'actual_subscription_cents': NotRequired[int],
-    'amount_due_cents': NotRequired[int],
-    'amount_paid_cents': NotRequired[int],
-    'amount_remaining_cents': NotRequired[int],
-    'charge_id': NotRequired[str],
-    'created_at': NotRequired[str],
-    'currency': NotRequired[str],
-    'discount_cents': NotRequired[int],
-    'due_date': NotRequired[str],
-    'effective_due_date': NotRequired[str],
-    'expected_total_cents': NotRequired[int],
-    'finalized_at': NotRequired[str],
-    'hosted_invoice_url': NotRequired[str],
-    'invoice_payment_ids': NotRequired[list[str]],
-    'invoice_pdf': NotRequired[str],
-    'last_event_created': NotRequired[str],
-    'last_event_id': NotRequired[str],
-    'line_items': NotRequired[list[ModelBillingStripeInvoiceLineItemDoc]],
-    'matched_period_key': NotRequired[str],
-    'matched_user_id': NotRequired[str],
-    'mismatch_flags': NotRequired[list[str]],
-    'mismatch_total_cents': NotRequired[int],
-    'net_cash_cents': NotRequired[int],
-    'paid_at': NotRequired[str],
-    'payment_intent_id': NotRequired[str],
-    'period_end': NotRequired[str],
-    'period_start': NotRequired[str],
-    'plan': NotRequired[str],
-    'post_payment_credit_note_cents': NotRequired[int],
-    'pre_payment_credit_note_cents': NotRequired[int],
-    'reconciliation_status': NotRequired[str],
-    'refund_cents': NotRequired[int],
-    'repair_attempts': NotRequired[int],
-    'repair_error': NotRequired[str],
-    'repair_last_attempt_at': NotRequired[str],
-    'repair_last_success_at': NotRequired[str],
-    'repair_status': NotRequired[str],
-    'stripe_customer_id': NotRequired[str],
-    'stripe_invoice_id': NotRequired[str],
-    'stripe_invoice_number': NotRequired[str],
-    'stripe_invoice_status': NotRequired[str],
-    'subtotal_cents': NotRequired[int],
-    'subtotal_excluding_tax_cents': NotRequired[int],
-    'tax_cents': NotRequired[int],
-    'total_cents': NotRequired[int],
-    'total_excluding_tax_cents': NotRequired[int],
-    'updated_at': NotRequired[str],
-}, total=False)
-
-ModelBillingStripeInvoiceSnapshotsResponseDoc = TypedDict('ModelBillingStripeInvoiceSnapshotsResponseDoc', {
-    'code': NotRequired[int],
-    'data': NotRequired[list[ModelBillingStripeInvoiceSnapshotDoc]],
-    'msg': NotRequired[str],
-}, total=False)
-
-ModelBillingStripeMismatchSummaryDoc = TypedDict('ModelBillingStripeMismatchSummaryDoc', {
-    'auto_repairable': NotRequired[list[ModelBillingStripeMismatchSummaryItemDoc]],
-    'manual_review': NotRequired[list[ModelBillingStripeMismatchSummaryItemDoc]],
-}, total=False)
-
-ModelBillingStripeMismatchSummaryItemDoc = TypedDict('ModelBillingStripeMismatchSummaryItemDoc', {
-    'actual_total_cents': NotRequired[int],
-    'delta_total_cents': NotRequired[int],
-    'expected_total_cents': NotRequired[int],
-    'invoice_count': NotRequired[int],
-    'mismatch_flag': NotRequired[str],
-}, total=False)
-
-ModelBillingStripeMismatchSummaryResponseDoc = TypedDict('ModelBillingStripeMismatchSummaryResponseDoc', {
-    'code': NotRequired[int],
-    'data': NotRequired[ModelBillingStripeMismatchSummaryDoc],
-    'msg': NotRequired[str],
-}, total=False)
-
-ModelBillingStripeOverageSyncErrorDoc = TypedDict('ModelBillingStripeOverageSyncErrorDoc', {
-    'error': NotRequired[str],
-    'period_key': NotRequired[str],
-    'user_id': NotRequired[str],
-}, total=False)
-
-ModelBillingStripeOverageSyncSummaryDoc = TypedDict('ModelBillingStripeOverageSyncSummaryDoc', {
-    'ambiguous': NotRequired[int],
-    'errors': NotRequired[list[ModelBillingStripeOverageSyncErrorDoc]],
-    'failed': NotRequired[int],
-    'not_required': NotRequired[int],
-    'scanned': NotRequired[int],
-    'skipped': NotRequired[int],
-    'synced': NotRequired[int],
-}, total=False)
-
-ModelBillingStripeOverageSyncSummaryResponseDoc = TypedDict('ModelBillingStripeOverageSyncSummaryResponseDoc', {
-    'code': NotRequired[int],
-    'data': NotRequired[ModelBillingStripeOverageSyncSummaryDoc],
-    'msg': NotRequired[str],
-}, total=False)
-
 ModelBillingStripePortalRequestDoc = TypedDict('ModelBillingStripePortalRequestDoc', {
     'return_url': NotRequired[str],
-}, total=False)
-
-ModelBillingStripeRepairBacklogBucketDoc = TypedDict('ModelBillingStripeRepairBacklogBucketDoc', {
-    'by_attempt_bucket': NotRequired[list[ModelBillingStripeRepairStatusCountDoc]],
-    'by_source': NotRequired[list[ModelBillingStripeRepairStatusCountDoc]],
-    'by_status': NotRequired[list[ModelBillingStripeRepairStatusCountDoc]],
-    'total': NotRequired[int],
-}, total=False)
-
-ModelBillingStripeRepairBacklogSummaryDoc = TypedDict('ModelBillingStripeRepairBacklogSummaryDoc', {
-    'adjustment_events': NotRequired[ModelBillingStripeRepairBacklogBucketDoc],
-    'auto_retry_exhausted_count': NotRequired[int],
-    'invoice_events': NotRequired[ModelBillingStripeRepairBacklogBucketDoc],
-    'recent_errors': NotRequired[list[ModelBillingStripeRepairRecentErrorDoc]],
-    'snapshots': NotRequired[ModelBillingStripeRepairBacklogBucketDoc],
-}, total=False)
-
-ModelBillingStripeRepairBacklogSummaryResponseDoc = TypedDict('ModelBillingStripeRepairBacklogSummaryResponseDoc', {
-    'code': NotRequired[int],
-    'data': NotRequired[ModelBillingStripeRepairBacklogSummaryDoc],
-    'msg': NotRequired[str],
-}, total=False)
-
-ModelBillingStripeRepairErrorDoc = TypedDict('ModelBillingStripeRepairErrorDoc', {
-    'candidate_kind': NotRequired[str],
-    'error': NotRequired[str],
-    'event_id': NotRequired[str],
-    'invoice_id': NotRequired[str],
-    'resource_id': NotRequired[str],
-}, total=False)
-
-ModelBillingStripeRepairRecentErrorDoc = TypedDict('ModelBillingStripeRepairRecentErrorDoc', {
-    'candidate_kind': NotRequired[str],
-    'event_id': NotRequired[str],
-    'invoice_id': NotRequired[str],
-    'repair_attempts': NotRequired[int],
-    'repair_last_attempt_at': NotRequired[str],
-    'repair_last_error': NotRequired[str],
-    'repair_status': NotRequired[str],
-    'resource_id': NotRequired[str],
-}, total=False)
-
-ModelBillingStripeRepairResetDoc = TypedDict('ModelBillingStripeRepairResetDoc', {
-    'candidate_kind': NotRequired[str],
-    'event_id': NotRequired[str],
-    'invoice_id': NotRequired[str],
-    'previous_repair_attempts': NotRequired[int],
-    'previous_repair_status': NotRequired[str],
-    'repair_attempts': NotRequired[int],
-    'repair_source': NotRequired[str],
-    'repair_status': NotRequired[str],
-    'reset_at': NotRequired[str],
-}, total=False)
-
-ModelBillingStripeRepairResetRequestDoc = TypedDict('ModelBillingStripeRepairResetRequestDoc', {
-    'candidate_kind': Required[str],
-    'event_id': NotRequired[str],
-    'invoice_id': NotRequired[str],
-}, total=False)
-
-ModelBillingStripeRepairResetResponseDoc = TypedDict('ModelBillingStripeRepairResetResponseDoc', {
-    'code': NotRequired[int],
-    'data': NotRequired[ModelBillingStripeRepairResetDoc],
-    'msg': NotRequired[str],
-}, total=False)
-
-ModelBillingStripeRepairStatusCountDoc = TypedDict('ModelBillingStripeRepairStatusCountDoc', {
-    'count': NotRequired[int],
-    'key': NotRequired[str],
-}, total=False)
-
-ModelBillingStripeRepairSummaryDoc = TypedDict('ModelBillingStripeRepairSummaryDoc', {
-    'adjustment_repaired': NotRequired[int],
-    'errors': NotRequired[list[ModelBillingStripeRepairErrorDoc]],
-    'failed': NotRequired[int],
-    'invoice_repaired': NotRequired[int],
-    'scanned': NotRequired[int],
-    'skipped': NotRequired[int],
-    'succeeded': NotRequired[int],
-}, total=False)
-
-ModelBillingStripeRepairSummaryResponseDoc = TypedDict('ModelBillingStripeRepairSummaryResponseDoc', {
-    'code': NotRequired[int],
-    'data': NotRequired[ModelBillingStripeRepairSummaryDoc],
-    'msg': NotRequired[str],
 }, total=False)
 
 ModelBillingStripeSessionDoc = TypedDict('ModelBillingStripeSessionDoc', {
@@ -2395,10 +1786,6 @@ ModelContactContact = TypedDict('ModelContactContact', {
     'url': NotRequired[str],
 }, total=False)
 
-ModelContactContactOption = TypedDict('ModelContactContactOption', {
-    'url': Required[str],
-}, total=False)
-
 ModelDatasetsDatasetInfo = TypedDict('ModelDatasetsDatasetInfo', {
     'capabilities': NotRequired[list[str]],
     'description': NotRequired[str],
@@ -3229,12 +2616,6 @@ ModelGoogleSearchResp = TypedDict('ModelGoogleSearchResp', {
     'people_also_search_for': NotRequired[list[str]],
     'related_searches': NotRequired[list[str]],
     'result': NotRequired[list[ModelGoogleSearchItem]],
-}, total=False)
-
-ModelGoogleShoppingItemDetailOption = TypedDict('ModelGoogleShoppingItemDetailOption', {
-    'cid': NotRequired[str],
-    'gid': NotRequired[str],
-    'oid': Required[str],
 }, total=False)
 
 ModelGoogleSuggestResponse = TypedDict('ModelGoogleSuggestResponse', {
@@ -5424,87 +4805,6 @@ ModelProducthuntSearchTopicDoc = TypedDict('ModelProducthuntSearchTopicDoc', {
     'topic': NotRequired[dict[str, Any]],
 }, total=False)
 
-ModelReferralsAdminReferralAttributionDoc = TypedDict('ModelReferralsAdminReferralAttributionDoc', {
-    'attribution': NotRequired[ModelReferralsAdminReferralAttributionRecordDoc],
-    'rewards': NotRequired[list[ModelReferralsAdminReferralRewardDoc]],
-}, total=False)
-
-ModelReferralsAdminReferralAttributionRecordDoc = TypedDict('ModelReferralsAdminReferralAttributionRecordDoc', {
-    'click_id': NotRequired[str],
-    'code': NotRequired[str],
-    'created_at': NotRequired[str],
-    'error': NotRequired[str],
-    'expires_at': NotRequired[str],
-    'first_paid_invoice_id': NotRequired[str],
-    'id': NotRequired[str],
-    'landing_path': NotRequired[str],
-    'qualified_at': NotRequired[str],
-    'referred_user_id': NotRequired[str],
-    'referrer_user_id': NotRequired[str],
-    'review_reason': NotRequired[str],
-    'reviewed_at': NotRequired[str],
-    'reviewed_by': NotRequired[str],
-    'rewarded_at': NotRequired[str],
-    'risk_flags': NotRequired[list[str]],
-    'skip_reason': NotRequired[str],
-    'status': NotRequired[Literal['attributed', 'qualified', 'review_required', 'rewarded', 'expired', 'capped', 'failed', 'rejected']],
-    'stripe_event_id': NotRequired[str],
-    'stripe_invoice_id': NotRequired[str],
-    'utm_campaign': NotRequired[str],
-    'utm_medium': NotRequired[str],
-    'utm_source': NotRequired[str],
-}, total=False)
-
-ModelReferralsAdminReferralDetailResponseDoc = TypedDict('ModelReferralsAdminReferralDetailResponseDoc', {
-    'attribution': NotRequired[ModelReferralsAdminReferralAttributionRecordDoc],
-    'rewards': NotRequired[list[ModelReferralsAdminReferralRewardDoc]],
-}, total=False)
-
-ModelReferralsAdminReferralRecoveryResponseDoc = TypedDict('ModelReferralsAdminReferralRecoveryResponseDoc', {
-    'attempted': NotRequired[int],
-    'errors': NotRequired[list[str]],
-    'recovered': NotRequired[int],
-}, total=False)
-
-ModelReferralsAdminReferralRejectRequestDoc = TypedDict('ModelReferralsAdminReferralRejectRequestDoc', {
-    'reason': NotRequired[str],
-}, total=False)
-
-ModelReferralsAdminReferralReviewResponseDoc = TypedDict('ModelReferralsAdminReferralReviewResponseDoc', {
-    'attribution': NotRequired[ModelReferralsAdminReferralAttributionRecordDoc],
-    'rewards': NotRequired[list[ModelReferralsAdminReferralRewardDoc]],
-}, total=False)
-
-ModelReferralsAdminReferralRewardDoc = TypedDict('ModelReferralsAdminReferralRewardDoc', {
-    'attribution_id': NotRequired[str],
-    'created_at': NotRequired[str],
-    'credits': NotRequired[int],
-    'credits_grant_error': NotRequired[str],
-    'credits_grant_key': NotRequired[str],
-    'credits_granted_at': NotRequired[str],
-    'id': NotRequired[str],
-    'role': NotRequired[Literal['referrer', 'referred']],
-    'stripe_invoice_id': NotRequired[str],
-    'user_id': NotRequired[str],
-}, total=False)
-
-ModelReferralsAdminReferralStatsResponseDoc = TypedDict('ModelReferralsAdminReferralStatsResponseDoc', {
-    'attributed_signups': NotRequired[int],
-    'capped_referrals': NotRequired[int],
-    'clicks': NotRequired[int],
-    'qualification_rate': NotRequired[float],
-    'qualified_referrals': NotRequired[int],
-    'rejected_referrals': NotRequired[int],
-    'review_required': NotRequired[int],
-    'reward_rate': NotRequired[float],
-    'rewarded_referrals': NotRequired[int],
-    'signup_rate': NotRequired[float],
-}, total=False)
-
-ModelReferralsAdminReferralsListResponseDoc = TypedDict('ModelReferralsAdminReferralsListResponseDoc', {
-    'items': NotRequired[list[ModelReferralsAdminReferralAttributionDoc]],
-}, total=False)
-
 ModelReferralsReferralAttributionDoc = TypedDict('ModelReferralsReferralAttributionDoc', {
     'campaign': NotRequired[str],
     'code': NotRequired[str],
@@ -5555,6 +4855,389 @@ ModelReferralsReferralsStatsDoc = TypedDict('ModelReferralsReferralsStatsDoc', {
     'rejected': NotRequired[int],
     'review_required': NotRequired[int],
     'rewarded': NotRequired[int],
+}, total=False)
+
+ModelShopappAnalysisResponse = TypedDict('ModelShopappAnalysisResponse', {
+    'currencies': NotRequired[list[str]],
+    'discounts': NotRequired[ModelShopappDiscountSummary],
+    'groups_count': NotRequired[int],
+    'prices_by_currency': NotRequired[list[ModelShopappCurrencyPriceSummary]],
+    'products_count': NotRequired[int],
+    'query': NotRequired[str],
+    'sale_count': NotRequired[int],
+    'sampled_product_ids': NotRequired[list[str]],
+    'shops_count': NotRequired[int],
+    'top_shops': NotRequired[list[ModelShopappShopSummary]],
+}, total=False)
+
+ModelShopappCategoriesResponse = TypedDict('ModelShopappCategoriesResponse', {
+    'categories': NotRequired[list[ModelShopappCategoryItem]],
+}, total=False)
+
+ModelShopappCategoryItem = TypedDict('ModelShopappCategoryItem', {
+    'children': NotRequired[list[ModelShopappCategoryItem]],
+    'gid': NotRequired[str],
+    'has_children': NotRequired[bool],
+    'id': NotRequired[str],
+    'image': NotRequired[str],
+    'name': NotRequired[str],
+    'path': NotRequired[list[ModelShopappCategoryPath]],
+    'slug': NotRequired[str],
+}, total=False)
+
+ModelShopappCategoryPath = TypedDict('ModelShopappCategoryPath', {
+    'gid': NotRequired[str],
+    'id': NotRequired[str],
+    'name': NotRequired[str],
+}, total=False)
+
+ModelShopappCurrencyPriceSummary = TypedDict('ModelShopappCurrencyPriceSummary', {
+    'average': NotRequired[float],
+    'count': NotRequired[int],
+    'currency': NotRequired[str],
+    'max': NotRequired[float],
+    'min': NotRequired[float],
+}, total=False)
+
+ModelShopappDiscountSummary = TypedDict('ModelShopappDiscountSummary', {
+    'average_percent': NotRequired[float],
+    'max_percent': NotRequired[float],
+    'min_percent': NotRequired[float],
+}, total=False)
+
+ModelShopappImageItem = TypedDict('ModelShopappImageItem', {
+    'alt': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelShopappLocationAddress = TypedDict('ModelShopappLocationAddress', {
+    'address1': NotRequired[str],
+    'address2': NotRequired[str],
+    'city': NotRequired[str],
+    'country': NotRequired[str],
+    'postal_code': NotRequired[str],
+    'zone_code': NotRequired[str],
+}, total=False)
+
+ModelShopappOptionGroup = TypedDict('ModelShopappOptionGroup', {
+    'name': NotRequired[str],
+    'values': NotRequired[list[str]],
+}, total=False)
+
+ModelShopappProductDetail = TypedDict('ModelShopappProductDetail', {
+    'available': NotRequired[bool],
+    'currency': NotRequired[str],
+    'description': NotRequired[str],
+    'external_url': NotRequired[str],
+    'id': NotRequired[str],
+    'images': NotRequired[list[ModelShopappImageItem]],
+    'option_groups': NotRequired[list[ModelShopappOptionGroup]],
+    'original_price': NotRequired[float],
+    'price': NotRequired[float],
+    'rating': NotRequired[float],
+    'related_products': NotRequired[list[ModelShopappProductItem]],
+    'reviews': NotRequired[list[ModelShopappReviewItem]],
+    'reviews_count': NotRequired[int],
+    'shop_handle': NotRequired[str],
+    'shop_id': NotRequired[str],
+    'shop_name': NotRequired[str],
+    'slug': NotRequired[str],
+    'title': NotRequired[str],
+    'url': NotRequired[str],
+    'variant_id': NotRequired[str],
+}, total=False)
+
+ModelShopappProductDetailResponse = TypedDict('ModelShopappProductDetailResponse', {
+    'product': NotRequired[ModelShopappProductDetail],
+}, total=False)
+
+ModelShopappProductItem = TypedDict('ModelShopappProductItem', {
+    'currency': NotRequired[str],
+    'group_query': NotRequired[str],
+    'group_title': NotRequired[str],
+    'id': NotRequired[str],
+    'image': NotRequired[str],
+    'image_alt': NotRequired[str],
+    'on_sale': NotRequired[bool],
+    'original_price': NotRequired[float],
+    'position': NotRequired[int],
+    'price': NotRequired[float],
+    'shop_id': NotRequired[str],
+    'shop_name': NotRequired[str],
+    'title': NotRequired[str],
+    'url': NotRequired[str],
+    'variant_id': NotRequired[str],
+}, total=False)
+
+ModelShopappProductShopResponse = TypedDict('ModelShopappProductShopResponse', {
+    'product_id': NotRequired[str],
+    'shop': NotRequired[ModelShopappShopDetail],
+}, total=False)
+
+ModelShopappProductVariantResponse = TypedDict('ModelShopappProductVariantResponse', {
+    'product_id': NotRequired[str],
+    'variant': NotRequired[ModelShopappVariantItem],
+}, total=False)
+
+ModelShopappRelatedResponse = TypedDict('ModelShopappRelatedResponse', {
+    'limit': NotRequired[int],
+    'product_id': NotRequired[str],
+    'products': NotRequired[list[ModelShopappProductItem]],
+}, total=False)
+
+ModelShopappReviewItem = TypedDict('ModelShopappReviewItem', {
+    'author': NotRequired[str],
+    'body': NotRequired[str],
+    'date': NotRequired[str],
+    'helpful_count': NotRequired[int],
+    'id': NotRequired[str],
+    'product': NotRequired[ModelShopappReviewProduct],
+    'rating': NotRequired[float],
+    'title': NotRequired[str],
+    'variant_label': NotRequired[str],
+}, total=False)
+
+ModelShopappReviewProduct = TypedDict('ModelShopappReviewProduct', {
+    'id': NotRequired[str],
+    'image': NotRequired[str],
+    'image_alt': NotRequired[str],
+    'slug': NotRequired[str],
+    'title': NotRequired[str],
+    'url': NotRequired[str],
+    'variant': NotRequired[str],
+}, total=False)
+
+ModelShopappReviewsResponse = TypedDict('ModelShopappReviewsResponse', {
+    'limit': NotRequired[int],
+    'product_id': NotRequired[str],
+    'reviews': NotRequired[list[ModelShopappReviewItem]],
+}, total=False)
+
+ModelShopappSearchGroup = TypedDict('ModelShopappSearchGroup', {
+    'product_ids': NotRequired[list[str]],
+    'products_seen': NotRequired[int],
+    'query': NotRequired[str],
+    'title': NotRequired[str],
+}, total=False)
+
+ModelShopappSearchResponse = TypedDict('ModelShopappSearchResponse', {
+    'groups': NotRequired[list[ModelShopappSearchGroup]],
+    'limit': NotRequired[int],
+    'products': NotRequired[list[ModelShopappProductItem]],
+    'query': NotRequired[str],
+}, total=False)
+
+ModelShopappShopCollection = TypedDict('ModelShopappShopCollection', {
+    'id': NotRequired[str],
+    'slug': NotRequired[str],
+    'title': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelShopappShopDetail = TypedDict('ModelShopappShopDetail', {
+    'banner': NotRequired[str],
+    'collections': NotRequired[list[ModelShopappShopCollection]],
+    'description': NotRequired[str],
+    'handle': NotRequired[str],
+    'id': NotRequired[str],
+    'logo': NotRequired[str],
+    'name': NotRequired[str],
+    'rating': NotRequired[float],
+    'reviews_count': NotRequired[int],
+    'shopify_id': NotRequired[str],
+    'storefront': NotRequired[str],
+    'url': NotRequired[str],
+    'uuid': NotRequired[str],
+}, total=False)
+
+ModelShopappShopLocationItem = TypedDict('ModelShopappShopLocationItem', {
+    'address': NotRequired[ModelShopappLocationAddress],
+    'id': NotRequired[str],
+    'latitude': NotRequired[float],
+    'longitude': NotRequired[float],
+    'name': NotRequired[str],
+}, total=False)
+
+ModelShopappShopLocationsResponse = TypedDict('ModelShopappShopLocationsResponse', {
+    'limit': NotRequired[int],
+    'locations': NotRequired[list[ModelShopappShopLocationItem]],
+    'next_cursor': NotRequired[str],
+    'shop_handle': NotRequired[str],
+    'shop_id': NotRequired[str],
+    'total_count': NotRequired[int],
+}, total=False)
+
+ModelShopappShopProductsResponse = TypedDict('ModelShopappShopProductsResponse', {
+    'collection': NotRequired[ModelShopappShopCollection],
+    'collection_id': NotRequired[str],
+    'limit': NotRequired[int],
+    'next_cursor': NotRequired[str],
+    'products': NotRequired[list[ModelShopappProductItem]],
+    'shop_handle': NotRequired[str],
+    'sort_by': NotRequired[str],
+}, total=False)
+
+ModelShopappShopResponse = TypedDict('ModelShopappShopResponse', {
+    'shop': NotRequired[ModelShopappShopDetail],
+}, total=False)
+
+ModelShopappShopReviewsResponse = TypedDict('ModelShopappShopReviewsResponse', {
+    'limit': NotRequired[int],
+    'next_cursor': NotRequired[str],
+    'reviews': NotRequired[list[ModelShopappReviewItem]],
+    'shop_handle': NotRequired[str],
+    'shop_id': NotRequired[str],
+    'total_count': NotRequired[int],
+}, total=False)
+
+ModelShopappShopSummary = TypedDict('ModelShopappShopSummary', {
+    'count': NotRequired[int],
+    'shop_id': NotRequired[str],
+    'shop_name': NotRequired[str],
+}, total=False)
+
+ModelShopappShopTypeaheadItem = TypedDict('ModelShopappShopTypeaheadItem', {
+    'collection': NotRequired[ModelShopappShopCollection],
+    'id': NotRequired[str],
+    'position': NotRequired[int],
+    'product': NotRequired[ModelShopappProductItem],
+    'text': NotRequired[str],
+    'type': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelShopappShopTypeaheadResponse = TypedDict('ModelShopappShopTypeaheadResponse', {
+    'limit': NotRequired[int],
+    'query': NotRequired[str],
+    'shop_handle': NotRequired[str],
+    'shop_id': NotRequired[str],
+    'suggestions': NotRequired[list[ModelShopappShopTypeaheadItem]],
+}, total=False)
+
+ModelShopappSuggestResponse = TypedDict('ModelShopappSuggestResponse', {
+    'limit': NotRequired[int],
+    'query': NotRequired[str],
+    'suggestions': NotRequired[list[ModelShopappSuggestionItem]],
+}, total=False)
+
+ModelShopappSuggestionItem = TypedDict('ModelShopappSuggestionItem', {
+    'image': NotRequired[str],
+    'rating': NotRequired[float],
+    'shop_handle': NotRequired[str],
+    'shop_id': NotRequired[str],
+    'shop_name': NotRequired[str],
+    'text': NotRequired[str],
+    'type': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelShopappVariantItem = TypedDict('ModelShopappVariantItem', {
+    'available_for_sale': NotRequired[bool],
+    'currency': NotRequired[str],
+    'gid': NotRequired[str],
+    'id': NotRequired[str],
+    'image': NotRequired[ModelShopappImageItem],
+    'options': NotRequired[dict[str, str]],
+    'original_price': NotRequired[float],
+    'price': NotRequired[float],
+    'requires_shipping': NotRequired[bool],
+    'title': NotRequired[str],
+}, total=False)
+
+ModelShopappVariantsResponse = TypedDict('ModelShopappVariantsResponse', {
+    'limit': NotRequired[int],
+    'product_id': NotRequired[str],
+    'variants': NotRequired[list[ModelShopappVariantItem]],
+}, total=False)
+
+ModelShopappAnalysisResponseDoc = TypedDict('ModelShopappAnalysisResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelShopappAnalysisResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelShopappCategoriesResponseDoc = TypedDict('ModelShopappCategoriesResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelShopappCategoriesResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelShopappProductResponseDoc = TypedDict('ModelShopappProductResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelShopappProductDetailResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelShopappProductShopResponseDoc = TypedDict('ModelShopappProductShopResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelShopappProductShopResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelShopappProductVariantResponseDoc = TypedDict('ModelShopappProductVariantResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelShopappProductVariantResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelShopappRelatedResponseDoc = TypedDict('ModelShopappRelatedResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelShopappRelatedResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelShopappReviewsResponseDoc = TypedDict('ModelShopappReviewsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelShopappReviewsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelShopappSearchResponseDoc = TypedDict('ModelShopappSearchResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelShopappSearchResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelShopappShopLocationsResponseDoc = TypedDict('ModelShopappShopLocationsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelShopappShopLocationsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelShopappShopProductsResponseDoc = TypedDict('ModelShopappShopProductsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelShopappShopProductsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelShopappShopResponseDoc = TypedDict('ModelShopappShopResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelShopappShopResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelShopappShopReviewsResponseDoc = TypedDict('ModelShopappShopReviewsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelShopappShopReviewsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelShopappShopTypeaheadResponseDoc = TypedDict('ModelShopappShopTypeaheadResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelShopappShopTypeaheadResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelShopappSuggestionsResponseDoc = TypedDict('ModelShopappSuggestionsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelShopappSuggestResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelShopappVariantsResponseDoc = TypedDict('ModelShopappVariantsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelShopappVariantsResponse],
+    'msg': NotRequired[str],
 }, total=False)
 
 ModelSimilarwebSearchResp = TypedDict('ModelSimilarwebSearchResp', {
@@ -7718,12 +7401,6 @@ ModelUserUserRotateApikeyResponseDoc = TypedDict('ModelUserUserRotateApikeyRespo
     'code': NotRequired[int],
     'data': NotRequired[ModelUserUserRotateApikeyDoc],
     'msg': NotRequired[str],
-}, total=False)
-
-ModelWebParseWebOption = TypedDict('ModelWebParseWebOption', {
-    'enablejs': NotRequired[bool],
-    'format': NotRequired[Literal['html', 'markdown']],
-    'url': Required[str],
 }, total=False)
 
 ModelYahoofinanceActionEvents = TypedDict('ModelYahoofinanceActionEvents', {
@@ -10287,6 +9964,159 @@ ReferralsMeEventsParams = TypedDict('ReferralsMeEventsParams', {
     'limit': NotRequired[int],
 }, total=False)
 
+ShopAppAnalysisResponse = ModelShopappAnalysisResponseDoc
+ShopAppAnalysisParams = TypedDict('ShopAppAnalysisParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'query': Required[str],
+    'limit': NotRequired[int],
+    'in_stock': NotRequired[bool],
+    'on_sale': NotRequired[bool],
+    'deep_search': NotRequired[bool],
+}, total=False)
+
+ShopAppCategoriesResponse = ModelShopappCategoriesResponseDoc
+ShopAppCategoriesParams = TypedDict('ShopAppCategoriesParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+}, total=False)
+
+ShopAppProductResponse = ModelShopappProductResponseDoc
+ShopAppProductParams = TypedDict('ShopAppProductParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': Required[str],
+    'variant_id': NotRequired[str],
+}, total=False)
+
+ShopAppProductRelatedResponse = ModelShopappRelatedResponseDoc
+ShopAppProductRelatedParams = TypedDict('ShopAppProductRelatedParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': Required[str],
+    'limit': NotRequired[int],
+}, total=False)
+
+ShopAppProductReviewsResponse = ModelShopappReviewsResponseDoc
+ShopAppProductReviewsParams = TypedDict('ShopAppProductReviewsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': Required[str],
+    'limit': NotRequired[int],
+}, total=False)
+
+ShopAppProductShopResponse = ModelShopappProductShopResponseDoc
+ShopAppProductShopParams = TypedDict('ShopAppProductShopParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': Required[str],
+}, total=False)
+
+ShopAppProductVariantResponse = ModelShopappProductVariantResponseDoc
+ShopAppProductVariantParams = TypedDict('ShopAppProductVariantParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': Required[str],
+    'selected_options': NotRequired[str],
+}, total=False)
+
+ShopAppProductVariantsResponse = ModelShopappVariantsResponseDoc
+ShopAppProductVariantsParams = TypedDict('ShopAppProductVariantsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': Required[str],
+    'selected_options': NotRequired[str],
+    'limit': NotRequired[int],
+}, total=False)
+
+ShopAppSearchResponse = ModelShopappSearchResponseDoc
+ShopAppSearchParams = TypedDict('ShopAppSearchParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'query': Required[str],
+    'limit': NotRequired[int],
+    'in_stock': NotRequired[bool],
+    'on_sale': NotRequired[bool],
+    'deep_search': NotRequired[bool],
+}, total=False)
+
+ShopAppShopResponse = ModelShopappShopResponseDoc
+ShopAppShopParams = TypedDict('ShopAppShopParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'handle': Required[str],
+}, total=False)
+
+ShopAppCollectionProductsResponse = ModelShopappShopProductsResponseDoc
+ShopAppCollectionProductsParams = TypedDict('ShopAppCollectionProductsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'handle': Required[str],
+    'collection_id': Required[str],
+    'limit': NotRequired[int],
+    'sort_by': NotRequired[Literal['MOST_SALES', 'PRICE_LOW_TO_HIGH', 'PRICE_HIGH_TO_LOW', 'RELEVANCE']],
+    'in_stock': NotRequired[bool],
+}, total=False)
+
+ShopAppShopLocationsResponse = ModelShopappShopLocationsResponseDoc
+ShopAppShopLocationsParams = TypedDict('ShopAppShopLocationsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'handle': Required[str],
+    'limit': NotRequired[int],
+}, total=False)
+
+ShopAppShopProductsResponse = ModelShopappShopProductsResponseDoc
+ShopAppShopProductsParams = TypedDict('ShopAppShopProductsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'handle': Required[str],
+    'limit': NotRequired[int],
+    'sort_by': NotRequired[Literal['MOST_SALES', 'PRICE_LOW_TO_HIGH', 'PRICE_HIGH_TO_LOW', 'RELEVANCE']],
+    'in_stock': NotRequired[bool],
+}, total=False)
+
+ShopAppShopReviewsResponse = ModelShopappShopReviewsResponseDoc
+ShopAppShopReviewsParams = TypedDict('ShopAppShopReviewsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'handle': Required[str],
+    'limit': NotRequired[int],
+}, total=False)
+
+ShopAppShopTypeaheadResponse = ModelShopappShopTypeaheadResponseDoc
+ShopAppShopTypeaheadParams = TypedDict('ShopAppShopTypeaheadParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'handle': Required[str],
+    'query': Required[str],
+    'limit': NotRequired[int],
+}, total=False)
+
+ShopAppSuggestionsResponse = ModelShopappSuggestionsResponseDoc
+ShopAppSuggestionsParams = TypedDict('ShopAppSuggestionsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'query': Required[str],
+    'limit': NotRequired[int],
+}, total=False)
+
 SimilarWebSearchResponse = ModelSimilarwebSearchResponseDoc
 SimilarWebSearchParams = TypedDict('SimilarWebSearchParams', {
     '_response_type': NotRequired[ResponseType],
@@ -11898,6 +11728,24 @@ class ReferralsGroup:
     def me(self, **params: Unpack[ReferralsMeParams]) -> ReferralsMeResponse: ...
     def me_events(self, **params: Unpack[ReferralsMeEventsParams]) -> ReferralsMeEventsResponse: ...
 
+class ShopAppGroup:
+    def analysis(self, **params: Unpack[ShopAppAnalysisParams]) -> ShopAppAnalysisResponse: ...
+    def categories(self, **params: Unpack[ShopAppCategoriesParams]) -> ShopAppCategoriesResponse: ...
+    def product(self, **params: Unpack[ShopAppProductParams]) -> ShopAppProductResponse: ...
+    def product_related(self, **params: Unpack[ShopAppProductRelatedParams]) -> ShopAppProductRelatedResponse: ...
+    def product_reviews(self, **params: Unpack[ShopAppProductReviewsParams]) -> ShopAppProductReviewsResponse: ...
+    def product_shop(self, **params: Unpack[ShopAppProductShopParams]) -> ShopAppProductShopResponse: ...
+    def product_variant(self, **params: Unpack[ShopAppProductVariantParams]) -> ShopAppProductVariantResponse: ...
+    def product_variants(self, **params: Unpack[ShopAppProductVariantsParams]) -> ShopAppProductVariantsResponse: ...
+    def search(self, **params: Unpack[ShopAppSearchParams]) -> ShopAppSearchResponse: ...
+    def shop(self, **params: Unpack[ShopAppShopParams]) -> ShopAppShopResponse: ...
+    def collection_products(self, **params: Unpack[ShopAppCollectionProductsParams]) -> ShopAppCollectionProductsResponse: ...
+    def shop_locations(self, **params: Unpack[ShopAppShopLocationsParams]) -> ShopAppShopLocationsResponse: ...
+    def shop_products(self, **params: Unpack[ShopAppShopProductsParams]) -> ShopAppShopProductsResponse: ...
+    def shop_reviews(self, **params: Unpack[ShopAppShopReviewsParams]) -> ShopAppShopReviewsResponse: ...
+    def shop_typeahead(self, **params: Unpack[ShopAppShopTypeaheadParams]) -> ShopAppShopTypeaheadResponse: ...
+    def suggestions(self, **params: Unpack[ShopAppSuggestionsParams]) -> ShopAppSuggestionsResponse: ...
+
 class SimilarWebGroup:
     def search(self, **params: Unpack[SimilarWebSearchParams]) -> SimilarWebSearchResponse: ...
     def web(self, **params: Unpack[SimilarWebWebParams]) -> SimilarWebWebResponse: ...
@@ -12224,6 +12072,22 @@ OperationId = Literal[
     'referrals-click',
     'referrals-me',
     'referrals-me-events',
+    'shop-app-analysis',
+    'shop-app-categories',
+    'shop-app-product',
+    'shop-app-product-related',
+    'shop-app-product-reviews',
+    'shop-app-product-shop',
+    'shop-app-product-variant',
+    'shop-app-product-variants',
+    'shop-app-search',
+    'shop-app-shop',
+    'shop-app-collection-products',
+    'shop-app-shop-locations',
+    'shop-app-shop-products',
+    'shop-app-shop-reviews',
+    'shop-app-shop-typeahead',
+    'shop-app-suggestions',
     'similarweb-search',
     'similarweb-web',
     'spotify-podcasts-categories',
@@ -12385,6 +12249,7 @@ class CrawloraClient:
     meta: MetaGroup
     product_hunt: ProductHuntGroup
     referrals: ReferralsGroup
+    shop_app: ShopAppGroup
     similar_web: SimilarWebGroup
     spotify_podcasts: SpotifyPodcastsGroup
     spotify: SpotifyGroup
@@ -14049,6 +13914,166 @@ class CrawloraClient:
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
     ) -> ReferralsMeEventsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['shop-app-analysis'],
+        params: ShopAppAnalysisParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> ShopAppAnalysisResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['shop-app-categories'],
+        params: ShopAppCategoriesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> ShopAppCategoriesResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['shop-app-product'],
+        params: ShopAppProductParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> ShopAppProductResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['shop-app-product-related'],
+        params: ShopAppProductRelatedParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> ShopAppProductRelatedResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['shop-app-product-reviews'],
+        params: ShopAppProductReviewsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> ShopAppProductReviewsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['shop-app-product-shop'],
+        params: ShopAppProductShopParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> ShopAppProductShopResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['shop-app-product-variant'],
+        params: ShopAppProductVariantParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> ShopAppProductVariantResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['shop-app-product-variants'],
+        params: ShopAppProductVariantsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> ShopAppProductVariantsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['shop-app-search'],
+        params: ShopAppSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> ShopAppSearchResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['shop-app-shop'],
+        params: ShopAppShopParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> ShopAppShopResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['shop-app-collection-products'],
+        params: ShopAppCollectionProductsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> ShopAppCollectionProductsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['shop-app-shop-locations'],
+        params: ShopAppShopLocationsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> ShopAppShopLocationsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['shop-app-shop-products'],
+        params: ShopAppShopProductsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> ShopAppShopProductsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['shop-app-shop-reviews'],
+        params: ShopAppShopReviewsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> ShopAppShopReviewsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['shop-app-shop-typeahead'],
+        params: ShopAppShopTypeaheadParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> ShopAppShopTypeaheadResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['shop-app-suggestions'],
+        params: ShopAppSuggestionsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> ShopAppSuggestionsResponse: ...
     @overload
     def operation(
         self,
@@ -17089,6 +17114,166 @@ class CrawloraClient:
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
     ) -> ReferralsMeEventsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['shop-app-analysis'],
+        params: ShopAppAnalysisParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> ShopAppAnalysisResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['shop-app-categories'],
+        params: ShopAppCategoriesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> ShopAppCategoriesResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['shop-app-product'],
+        params: ShopAppProductParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> ShopAppProductResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['shop-app-product-related'],
+        params: ShopAppProductRelatedParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> ShopAppProductRelatedResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['shop-app-product-reviews'],
+        params: ShopAppProductReviewsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> ShopAppProductReviewsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['shop-app-product-shop'],
+        params: ShopAppProductShopParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> ShopAppProductShopResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['shop-app-product-variant'],
+        params: ShopAppProductVariantParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> ShopAppProductVariantResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['shop-app-product-variants'],
+        params: ShopAppProductVariantsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> ShopAppProductVariantsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['shop-app-search'],
+        params: ShopAppSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> ShopAppSearchResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['shop-app-shop'],
+        params: ShopAppShopParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> ShopAppShopResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['shop-app-collection-products'],
+        params: ShopAppCollectionProductsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> ShopAppCollectionProductsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['shop-app-shop-locations'],
+        params: ShopAppShopLocationsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> ShopAppShopLocationsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['shop-app-shop-products'],
+        params: ShopAppShopProductsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> ShopAppShopProductsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['shop-app-shop-reviews'],
+        params: ShopAppShopReviewsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> ShopAppShopReviewsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['shop-app-shop-typeahead'],
+        params: ShopAppShopTypeaheadParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> ShopAppShopTypeaheadResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['shop-app-suggestions'],
+        params: ShopAppSuggestionsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+    ) -> ShopAppSuggestionsResponse: ...
     @overload
     def request(
         self,
