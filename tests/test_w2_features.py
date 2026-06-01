@@ -104,27 +104,15 @@ class W2FeaturesTest(unittest.TestCase):
             list(self.client().paginate("user-me"))
 
     def test_async_client_request(self):
+        # Works on both transports (real server); close the client so the optional
+        # httpx.AsyncClient is shut down within the loop. Deeper async coverage
+        # (retry, pagination, errors) lives in test_async_httpx.py.
         async def run():
-            client = AsyncCrawloraClient(api_key="api_test", base_url=self.base_url)
-            result = await client.bing.search(q="coffee")
-            self.assertTrue(result["data"]["ok"])
-            via_request = await client.request("bing-search", {"q": "tea"})
-            self.assertTrue(via_request["data"]["ok"])
-
-        asyncio.run(run())
-
-    def test_async_paginate(self):
-        def transport(request, _timeout):
-            from urllib.parse import urlparse, parse_qs
-
-            page = int(parse_qs(urlparse(request.full_url).query).get("page", ["1"])[0])
-            data = [{"id": page}] if page < 2 else []
-            return type("R", (), {"status": 200, "headers": {"content-type": "application/json"}, "body": json.dumps({"code": 200, "msg": "OK", "data": data}).encode()})()
-
-        async def run():
-            client = AsyncCrawloraClient(api_key="api_test", base_url=self.base_url, transport=transport)
-            pages = [page async for page in client.paginate("ebay-seller-feedback", {"seller": "acme"})]
-            self.assertEqual(len(pages), 2)
+            async with AsyncCrawloraClient(api_key="api_test", base_url=self.base_url) as client:
+                result = await client.bing.search(q="coffee")
+                self.assertTrue(result["data"]["ok"])
+                via_request = await client.request("bing-search", {"q": "tea"})
+                self.assertTrue(via_request["data"]["ok"])
 
         asyncio.run(run())
 
