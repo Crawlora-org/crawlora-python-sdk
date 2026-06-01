@@ -124,6 +124,31 @@ data = stream.read()  # file-like; AsyncCrawloraClient with httpx streams increm
 `CRAWLORA_API_KEY` and `CRAWLORA_BASE_URL` are used when not set explicitly
 (precedence: argument > env > default).
 
+## Middleware
+
+```python
+crawlora = CrawloraClient(
+    before_request=lambda ctx: ctx["headers"].__setitem__("x-signature", sign(ctx)),
+    after_response=lambda op, status, headers, body: body,  # return a value to transform
+)
+```
+
+## Idempotency And Per-Request Retries
+
+```python
+crawlora = CrawloraClient(idempotency_keys=True)  # stable key on POST/PATCH retries
+
+crawlora.request("bing-search", {"q": "coffee"}, retries=5, retry_predicate=lambda status, err: status >= 500)
+```
+
+## Rate Limiting And Pooling
+
+```python
+# <= 10 requests/sec, <= 4 in flight; keep-alive pool by default
+with CrawloraClient(rate_limit=10, max_concurrency=4) as crawlora:
+    crawlora.bing.search(q="coffee")
+```
+
 ## Optional Live Smoke Tests
 
 ```sh

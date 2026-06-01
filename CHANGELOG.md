@@ -1,5 +1,17 @@
 # Changelog
 
+## v1.5.0-sdk.1
+
+- Added `before_request`/`after_response` middleware hooks (sync + async).
+- Added opt-in `idempotency_keys` (stable `Idempotency-Key` on POST/PATCH, reused
+  across retries) and per-request `retries`/`retry_predicate` overrides.
+- Added client-side `rate_limit` (requests/sec) and `max_concurrency` throttling
+  (sync + async).
+- The sync client now uses a keep-alive connection pool by default and is a
+  context manager (`with CrawloraClient(...) as client:` / `close()`).
+- Grouped operation calls (`client.bing.search(...)`) now raise `TypeError` on
+  unknown keyword arguments instead of silently dropping them.
+
 ## v1.4.0-sdk.1
 
 - True async transport: `pip install crawlora[async]` makes `AsyncCrawloraClient`

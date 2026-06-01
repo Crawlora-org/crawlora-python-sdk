@@ -11,6 +11,8 @@ class ExamplesTest(unittest.TestCase):
         for example in [
             "examples/bing_search.py",
             "examples/youtube_transcript.py",
+            "examples/paginate.py",
+            "examples/async_search.py",
         ]:
             with self.subTest(example=example):
                 result = subprocess.run(

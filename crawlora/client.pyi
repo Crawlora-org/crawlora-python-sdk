@@ -12680,7 +12680,12 @@ class CrawloraClient:
     retry_predicate: Callable[[int, BaseException | None], bool] | None
     on_retry: Callable[[int, BaseException, float], None] | None
     request_id: bool
+    idempotency_keys: bool
+    rate_limit: float | None
+    max_concurrency: int | None
     logger: Callable[[Mapping[str, Any]], None] | None
+    before_request: list[Callable[[dict[str, Any]], None]]
+    after_response: list[Callable[[str, int, Mapping[str, str], Any], Any]]
     headers: dict[str, str]
     user_agent: str
     def _is_retryable(self, status: int, exc: BaseException | None) -> bool: ...
@@ -12700,11 +12705,19 @@ class CrawloraClient:
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
         on_retry: Callable[[int, BaseException, float], None] | None = ...,
         request_id: bool = ...,
+        idempotency_keys: bool = ...,
+        rate_limit: float | None = ...,
+        max_concurrency: int | None = ...,
         logger: Callable[[Mapping[str, Any]], None] | None = ...,
+        before_request: Callable[[dict[str, Any]], None] | Iterable[Callable[[dict[str, Any]], None]] | None = ...,
+        after_response: Callable[[str, int, Mapping[str, str], Any], Any] | Iterable[Callable[[str, int, Mapping[str, str], Any], Any]] | None = ...,
         headers: Mapping[str, str] | None = ...,
         user_agent: str | None = ...,
         transport: Callable[..., Any] | None = ...,
     ) -> None: ...
+    def close(self) -> None: ...
+    def __enter__(self) -> CrawloraClient: ...
+    def __exit__(self, *exc: Any) -> None: ...
     def paginate(
         self,
         operation_id: str,
@@ -12745,6 +12758,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> AirbnbRoomResponse: ...
     @overload
     def operation(
@@ -12755,6 +12770,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> AirbnbRoomCalendarResponse: ...
     @overload
     def operation(
@@ -12765,6 +12782,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> AirbnbRoomReviewsResponse: ...
     @overload
     def operation(
@@ -12775,6 +12794,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> AirbnbSearchResponse: ...
     @overload
     def operation(
@@ -12785,6 +12806,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> AmazonProductResponse: ...
     @overload
     def operation(
@@ -12795,6 +12818,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> AmazonSearchResponse: ...
     @overload
     def operation(
@@ -12805,6 +12830,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> AmazonSuggestResponse: ...
     @overload
     def operation(
@@ -12815,6 +12842,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> ApplePodcastsChartsResponse: ...
     @overload
     def operation(
@@ -12825,6 +12854,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> ApplePodcastsEpisodesSearchResponse: ...
     @overload
     def operation(
@@ -12835,6 +12866,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> ApplePodcastsSearchResponse: ...
     @overload
     def operation(
@@ -12845,6 +12878,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> ApplePodcastsShowResponse: ...
     @overload
     def operation(
@@ -12855,6 +12890,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> ApplePodcastsShowEpisodesResponse: ...
     @overload
     def operation(
@@ -12865,6 +12902,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> AppStoreAppResponse: ...
     @overload
     def operation(
@@ -12875,6 +12914,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> AppStoreDeveloperResponse: ...
     @overload
     def operation(
@@ -12885,6 +12926,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> AppStoreListResponse: ...
     @overload
     def operation(
@@ -12895,6 +12938,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> AppStorePrivacyResponse: ...
     @overload
     def operation(
@@ -12905,6 +12950,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> AppStoreRatingsResponse: ...
     @overload
     def operation(
@@ -12915,6 +12962,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> AppStoreReviewsResponse: ...
     @overload
     def operation(
@@ -12925,6 +12974,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> AppStoreSearchResponse: ...
     @overload
     def operation(
@@ -12935,6 +12986,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> AppStoreSimilarResponse: ...
     @overload
     def operation(
@@ -12945,6 +12998,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> AppStoreSuggestResponse: ...
     @overload
     def operation(
@@ -12955,6 +13010,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> AppStoreVersionHistoryResponse: ...
     @overload
     def operation(
@@ -12965,6 +13022,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> BillingMeResponse: ...
     @overload
     def operation(
@@ -12975,6 +13034,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> BillingMeCheckoutResponse: ...
     @overload
     def operation(
@@ -12985,6 +13046,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> BillingMeEventsResponse: ...
     @overload
     def operation(
@@ -12995,6 +13058,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> BillingMePeriodsResponse: ...
     @overload
     def operation(
@@ -13005,6 +13070,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> BillingMePeriodResponse: ...
     @overload
     def operation(
@@ -13015,6 +13082,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> BillingMePeriodStatementResponse: ...
     @overload
     def operation(
@@ -13025,6 +13094,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> BillingMePeriodStatementDownloadResponse: ...
     @overload
     def operation(
@@ -13035,6 +13106,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> BillingMePortalResponse: ...
     @overload
     def operation(
@@ -13045,6 +13118,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> BingImagesResponse: ...
     @overload
     def operation(
@@ -13055,6 +13130,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> BingNewsResponse: ...
     @overload
     def operation(
@@ -13065,6 +13142,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> BingSearchResponse: ...
     @overload
     def operation(
@@ -13075,6 +13154,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> BingSuggestResponse: ...
     @overload
     def operation(
@@ -13085,6 +13166,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> BingVideosResponse: ...
     @overload
     def operation(
@@ -13095,6 +13178,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> BraveImagesResponse: ...
     @overload
     def operation(
@@ -13105,6 +13190,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> BraveNewsResponse: ...
     @overload
     def operation(
@@ -13115,6 +13202,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> BraveSearchResponse: ...
     @overload
     def operation(
@@ -13125,6 +13214,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> BraveSuggestResponse: ...
     @overload
     def operation(
@@ -13135,6 +13226,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> BraveVideosResponse: ...
     @overload
     def operation(
@@ -13145,6 +13238,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> CoinGeckoCategoriesResponse: ...
     @overload
     def operation(
@@ -13155,6 +13250,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> CoinGeckoCategoryCoinsResponse: ...
     @overload
     def operation(
@@ -13165,6 +13262,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> CoinGeckoChainsResponse: ...
     @overload
     def operation(
@@ -13175,6 +13274,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> CoinGeckoChainResponse: ...
     @overload
     def operation(
@@ -13185,6 +13286,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> CoinGeckoCoinResponse: ...
     @overload
     def operation(
@@ -13195,6 +13298,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> CoinGeckoCoinAnalysisResponse: ...
     @overload
     def operation(
@@ -13205,6 +13310,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> CoinGeckoExchangeResponse: ...
     @overload
     def operation(
@@ -13215,6 +13322,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> CoinGeckoExchangesResponse: ...
     @overload
     def operation(
@@ -13225,6 +13334,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> CoinGeckoGainersLosersResponse: ...
     @overload
     def operation(
@@ -13235,6 +13346,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> CoinGeckoGlobalResponse: ...
     @overload
     def operation(
@@ -13245,6 +13358,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> CoinGeckoGlobalChartsResponse: ...
     @overload
     def operation(
@@ -13255,6 +13370,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> CoinGeckoLearnArticlesResponse: ...
     @overload
     def operation(
@@ -13265,6 +13382,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> CoinGeckoMarketsResponse: ...
     @overload
     def operation(
@@ -13275,6 +13394,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> CoinGeckoNewCoinsResponse: ...
     @overload
     def operation(
@@ -13285,6 +13406,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> CoinGeckoNewsResponse: ...
     @overload
     def operation(
@@ -13295,6 +13418,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> CoinGeckoNftCategoryResponse: ...
     @overload
     def operation(
@@ -13305,6 +13430,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> CoinGeckoNftsResponse: ...
     @overload
     def operation(
@@ -13315,6 +13442,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> CoinGeckoSearchResponse: ...
     @overload
     def operation(
@@ -13325,6 +13454,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> CoinGeckoTokenUnlocksResponse: ...
     @overload
     def operation(
@@ -13335,6 +13466,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> CoinGeckoTreasuriesResponse: ...
     @overload
     def operation(
@@ -13345,6 +13478,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> CoinGeckoTrendingResponse: ...
     @overload
     def operation(
@@ -13355,6 +13490,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> DatasetsListResponse: ...
     @overload
     def operation(
@@ -13365,6 +13502,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> DatasetsGoogleMapBusinessesFacetsResponse: ...
     @overload
     def operation(
@@ -13375,6 +13514,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> DatasetsGoogleMapBusinessesItemResponse: ...
     @overload
     def operation(
@@ -13385,6 +13526,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> DatasetsGoogleMapBusinessesNearbyResponse: ...
     @overload
     def operation(
@@ -13395,6 +13538,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> DatasetsGoogleMapBusinessesSearchResponse: ...
     @overload
     def operation(
@@ -13405,6 +13550,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> EBayEbayItemResponse: ...
     @overload
     def operation(
@@ -13415,6 +13562,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> EBayEbaySearchResponse: ...
     @overload
     def operation(
@@ -13425,6 +13574,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> EBayEbaySellerResponse: ...
     @overload
     def operation(
@@ -13435,6 +13586,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> EBayEbaySellerAboutResponse: ...
     @overload
     def operation(
@@ -13445,6 +13598,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> EBayEbaySellerFeedbackResponse: ...
     @overload
     def operation(
@@ -13455,6 +13610,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> EBayEbaySellerShopResponse: ...
     @overload
     def operation(
@@ -13465,6 +13622,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> GeocodingLookupResponse: ...
     @overload
     def operation(
@@ -13475,6 +13634,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> GeocodingReverseResponse: ...
     @overload
     def operation(
@@ -13485,6 +13646,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> GeocodingSearchResponse: ...
     @overload
     def operation(
@@ -13495,6 +13658,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> GoogleFinanceAnalystArticlesResponse: ...
     @overload
     def operation(
@@ -13505,6 +13670,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> GoogleFinanceChartResponse: ...
     @overload
     def operation(
@@ -13515,6 +13682,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> GoogleFinanceClassificationResponse: ...
     @overload
     def operation(
@@ -13525,6 +13694,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> GoogleFinanceCompanyResponse: ...
     @overload
     def operation(
@@ -13535,6 +13706,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> GoogleFinanceContextResponse: ...
     @overload
     def operation(
@@ -13545,6 +13718,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> GoogleFinanceFinancialsResponse: ...
     @overload
     def operation(
@@ -13555,6 +13730,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> GoogleFinanceMarketsCategoryNewsResponse: ...
     @overload
     def operation(
@@ -13565,6 +13742,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> GoogleFinanceMarketsCategoryStocksResponse: ...
     @overload
     def operation(
@@ -13575,6 +13754,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> GoogleFinanceMarketsEarningsResponse: ...
     @overload
     def operation(
@@ -13585,6 +13766,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> GoogleFinanceMarketsFeaturedResponse: ...
     @overload
     def operation(
@@ -13595,6 +13778,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> GoogleFinanceMarketsHeadlineResponse: ...
     @overload
     def operation(
@@ -13605,6 +13790,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> GoogleFinanceMarketsIndicesResponse: ...
     @overload
     def operation(
@@ -13615,6 +13802,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> GoogleFinanceMarketsMoversResponse: ...
     @overload
     def operation(
@@ -13625,6 +13814,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> GoogleFinanceMarketsTopResponse: ...
     @overload
     def operation(
@@ -13635,6 +13826,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> GoogleFinanceMarketsTrendingResponse: ...
     @overload
     def operation(
@@ -13645,6 +13838,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> GoogleFinanceNewsResponse: ...
     @overload
     def operation(
@@ -13655,6 +13850,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> GoogleFinanceQuoteResponse: ...
     @overload
     def operation(
@@ -13665,6 +13862,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> GoogleFinanceRelatedResponse: ...
     @overload
     def operation(
@@ -13675,6 +13874,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> GoogleFinanceSearchResponse: ...
     @overload
     def operation(
@@ -13685,6 +13886,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> GoogleFinanceTickerResponse: ...
     @overload
     def operation(
@@ -13695,6 +13898,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> GoogleJobsResponse: ...
     @overload
     def operation(
@@ -13705,6 +13910,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> GoogleMapPlaceResponse: ...
     @overload
     def operation(
@@ -13715,6 +13922,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> GoogleMapSearchResponse: ...
     @overload
     def operation(
@@ -13725,6 +13934,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> GoogleSearchResponse: ...
     @overload
     def operation(
@@ -13735,6 +13946,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> GoogleSuggestResponse: ...
     @overload
     def operation(
@@ -13745,6 +13958,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> GoogleTrendsCategoriesResponse: ...
     @overload
     def operation(
@@ -13755,6 +13970,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> GoogleTrendsEnumsResponse: ...
     @overload
     def operation(
@@ -13765,6 +13982,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> GoogleTrendsExploreResponse: ...
     @overload
     def operation(
@@ -13775,6 +13994,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> GoogleTrendsExploreInterestByRegionResponse: ...
     @overload
     def operation(
@@ -13785,6 +14006,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> GoogleTrendsExploreInterestOverTimeResponse: ...
     @overload
     def operation(
@@ -13795,6 +14018,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> GoogleTrendsExploreRelatedTopicsResponse: ...
     @overload
     def operation(
@@ -13805,6 +14030,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> GoogleTrendsExploreRisingQueriesResponse: ...
     @overload
     def operation(
@@ -13815,6 +14042,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> GoogleTrendsExploreTopQueriesResponse: ...
     @overload
     def operation(
@@ -13825,6 +14054,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> GoogleTrendsLocationsResponse: ...
     @overload
     def operation(
@@ -13835,6 +14066,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> GoogleTrendsTrendingResponse: ...
     @overload
     def operation(
@@ -13845,6 +14078,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> GoogleTrendsTrendingDetailResponse: ...
     @overload
     def operation(
@@ -13855,6 +14090,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> GooglePlayAppResponse: ...
     @overload
     def operation(
@@ -13865,6 +14102,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> GooglePlayCategoriesResponse: ...
     @overload
     def operation(
@@ -13875,6 +14114,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> GooglePlayDatasafetyResponse: ...
     @overload
     def operation(
@@ -13885,6 +14126,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> GooglePlayDeveloperResponse: ...
     @overload
     def operation(
@@ -13895,6 +14138,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> GooglePlayListResponse: ...
     @overload
     def operation(
@@ -13905,6 +14150,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> GooglePlayPermissionsResponse: ...
     @overload
     def operation(
@@ -13915,6 +14162,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> GooglePlayReviewsResponse: ...
     @overload
     def operation(
@@ -13925,6 +14174,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> GooglePlaySearchResponse: ...
     @overload
     def operation(
@@ -13935,6 +14186,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> GooglePlaySimilarResponse: ...
     @overload
     def operation(
@@ -13945,6 +14198,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> GooglePlaySuggestResponse: ...
     @overload
     def operation(
@@ -13955,6 +14210,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> InstagramPostResponse: ...
     @overload
     def operation(
@@ -13965,6 +14222,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> InstagramProfileResponse: ...
     @overload
     def operation(
@@ -13975,6 +14234,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> InstagramReelsResponse: ...
     @overload
     def operation(
@@ -13985,6 +14246,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> JustWatchJustwatchAgeCertificationsResponse: ...
     @overload
     def operation(
@@ -13995,6 +14258,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> JustWatchJustwatchDiscoverResponse: ...
     @overload
     def operation(
@@ -14005,6 +14270,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> JustWatchJustwatchEpisodeByIdResponse: ...
     @overload
     def operation(
@@ -14015,6 +14282,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> JustWatchJustwatchEpisodeOffersResponse: ...
     @overload
     def operation(
@@ -14025,6 +14294,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> JustWatchJustwatchGenreTitlesResponse: ...
     @overload
     def operation(
@@ -14035,6 +14306,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> JustWatchJustwatchGenresResponse: ...
     @overload
     def operation(
@@ -14045,6 +14318,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> JustWatchJustwatchMonetizationTitlesResponse: ...
     @overload
     def operation(
@@ -14055,6 +14330,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> JustWatchJustwatchNewResponse: ...
     @overload
     def operation(
@@ -14065,6 +14342,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> JustWatchJustwatchPopularResponse: ...
     @overload
     def operation(
@@ -14075,6 +14354,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> JustWatchJustwatchProviderTitlesResponse: ...
     @overload
     def operation(
@@ -14085,6 +14366,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> JustWatchJustwatchProvidersResponse: ...
     @overload
     def operation(
@@ -14095,6 +14378,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> JustWatchJustwatchSearchResponse: ...
     @overload
     def operation(
@@ -14105,6 +14390,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> JustWatchJustwatchSeasonByIdResponse: ...
     @overload
     def operation(
@@ -14115,6 +14402,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> JustWatchJustwatchSeasonEpisodesResponse: ...
     @overload
     def operation(
@@ -14125,6 +14414,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> JustWatchJustwatchShowSeasonsResponse: ...
     @overload
     def operation(
@@ -14135,6 +14426,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> JustWatchJustwatchTitleResponse: ...
     @overload
     def operation(
@@ -14145,6 +14438,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> JustWatchJustwatchTitleAnalysisResponse: ...
     @overload
     def operation(
@@ -14155,6 +14450,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> JustWatchJustwatchTitleByIdResponse: ...
     @overload
     def operation(
@@ -14165,6 +14462,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> JustWatchJustwatchTitleMediaResponse: ...
     @overload
     def operation(
@@ -14175,6 +14474,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> JustWatchJustwatchTitleOffersResponse: ...
     @overload
     def operation(
@@ -14185,6 +14486,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> JustWatchJustwatchTitleSimilarResponse: ...
     @overload
     def operation(
@@ -14195,6 +14498,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> LinkedInLinkedinCompanyResponse: ...
     @overload
     def operation(
@@ -14205,6 +14510,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> LinkedInLinkedinProductResponse: ...
     @overload
     def operation(
@@ -14215,6 +14522,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> LinkedInLinkedinShowcaseResponse: ...
     @overload
     def operation(
@@ -14225,6 +14534,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> MetaPingResponse: ...
     @overload
     def operation(
@@ -14235,6 +14546,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> ProductHuntCategoryResponse: ...
     @overload
     def operation(
@@ -14245,6 +14558,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> ProductHuntCategoryProductsResponse: ...
     @overload
     def operation(
@@ -14255,6 +14570,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> ProductHuntLeaderboardResponse: ...
     @overload
     def operation(
@@ -14265,6 +14582,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> ProductHuntProductResponse: ...
     @overload
     def operation(
@@ -14275,6 +14594,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> ProductHuntAboutResponse: ...
     @overload
     def operation(
@@ -14285,6 +14606,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> ProductHuntAlternativesResponse: ...
     @overload
     def operation(
@@ -14295,6 +14618,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> ProductHuntCustomersResponse: ...
     @overload
     def operation(
@@ -14305,6 +14630,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> ProductHuntLaunchesResponse: ...
     @overload
     def operation(
@@ -14315,6 +14642,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> ProductHuntMakersResponse: ...
     @overload
     def operation(
@@ -14325,6 +14654,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> ProductHuntReviewsResponse: ...
     @overload
     def operation(
@@ -14335,6 +14666,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> ProductHuntSearchResponse: ...
     @overload
     def operation(
@@ -14345,6 +14678,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> MetaReadyResponse: ...
     @overload
     def operation(
@@ -14355,6 +14690,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> ReferralsClickResponse: ...
     @overload
     def operation(
@@ -14365,6 +14702,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> ReferralsMeResponse: ...
     @overload
     def operation(
@@ -14375,6 +14714,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> ReferralsMeEventsResponse: ...
     @overload
     def operation(
@@ -14385,6 +14726,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> ShopAppAnalysisResponse: ...
     @overload
     def operation(
@@ -14395,6 +14738,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> ShopAppCategoriesResponse: ...
     @overload
     def operation(
@@ -14405,6 +14750,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> ShopAppProductResponse: ...
     @overload
     def operation(
@@ -14415,6 +14762,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> ShopAppProductRelatedResponse: ...
     @overload
     def operation(
@@ -14425,6 +14774,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> ShopAppProductReviewsResponse: ...
     @overload
     def operation(
@@ -14435,6 +14786,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> ShopAppProductShopResponse: ...
     @overload
     def operation(
@@ -14445,6 +14798,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> ShopAppProductVariantResponse: ...
     @overload
     def operation(
@@ -14455,6 +14810,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> ShopAppProductVariantsResponse: ...
     @overload
     def operation(
@@ -14465,6 +14822,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> ShopAppSearchResponse: ...
     @overload
     def operation(
@@ -14475,6 +14834,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> ShopAppShopResponse: ...
     @overload
     def operation(
@@ -14485,6 +14846,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> ShopAppCollectionProductsResponse: ...
     @overload
     def operation(
@@ -14495,6 +14858,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> ShopAppShopLocationsResponse: ...
     @overload
     def operation(
@@ -14505,6 +14870,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> ShopAppShopProductsResponse: ...
     @overload
     def operation(
@@ -14515,6 +14882,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> ShopAppShopReviewsResponse: ...
     @overload
     def operation(
@@ -14525,6 +14894,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> ShopAppShopTypeaheadResponse: ...
     @overload
     def operation(
@@ -14535,6 +14906,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> ShopAppSuggestionsResponse: ...
     @overload
     def operation(
@@ -14545,6 +14918,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> ShopifyCollectionsResponse: ...
     @overload
     def operation(
@@ -14555,6 +14930,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> ShopifyCollectionProductsResponse: ...
     @overload
     def operation(
@@ -14565,6 +14942,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> ShopifyPagesResponse: ...
     @overload
     def operation(
@@ -14575,6 +14954,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> ShopifyPageResponse: ...
     @overload
     def operation(
@@ -14585,6 +14966,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> ShopifyProductsResponse: ...
     @overload
     def operation(
@@ -14595,6 +14978,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> ShopifyProductResponse: ...
     @overload
     def operation(
@@ -14605,6 +14990,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> ShopifyProductRecommendationsResponse: ...
     @overload
     def operation(
@@ -14615,6 +15002,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> ShopifySearchSuggestResponse: ...
     @overload
     def operation(
@@ -14625,6 +15014,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> ShopifySitemapUrlsResponse: ...
     @overload
     def operation(
@@ -14635,6 +15026,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> ShopifySitemapsResponse: ...
     @overload
     def operation(
@@ -14645,6 +15038,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> ShopifyStoreResponse: ...
     @overload
     def operation(
@@ -14655,6 +15050,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> SimilarWebSearchResponse: ...
     @overload
     def operation(
@@ -14665,6 +15062,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> SimilarWebWebResponse: ...
     @overload
     def operation(
@@ -14675,6 +15074,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> SpotifyPodcastsCategoriesResponse: ...
     @overload
     def operation(
@@ -14685,6 +15086,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> SpotifyPodcastsChartsResponse: ...
     @overload
     def operation(
@@ -14695,6 +15098,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> SpotifyPodcastsEpisodeResponse: ...
     @overload
     def operation(
@@ -14705,6 +15110,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> SpotifyPodcastsHomeResponse: ...
     @overload
     def operation(
@@ -14715,6 +15122,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> SpotifyPodcastsSearchResponse: ...
     @overload
     def operation(
@@ -14725,6 +15134,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> SpotifyPodcastsShowResponse: ...
     @overload
     def operation(
@@ -14735,6 +15146,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> SpotifyPodcastsShowEpisodesResponse: ...
     @overload
     def operation(
@@ -14745,6 +15158,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> SpotifyPodcastsShowRecommendationsResponse: ...
     @overload
     def operation(
@@ -14755,6 +15170,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> SpotifyAlbumResponse: ...
     @overload
     def operation(
@@ -14765,6 +15182,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> SpotifyAlbumTracksResponse: ...
     @overload
     def operation(
@@ -14775,6 +15194,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> SpotifyAlbumsSearchResponse: ...
     @overload
     def operation(
@@ -14785,6 +15206,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> SpotifyArtistResponse: ...
     @overload
     def operation(
@@ -14795,6 +15218,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> SpotifyArtistAlbumsResponse: ...
     @overload
     def operation(
@@ -14805,6 +15230,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> SpotifyArtistPlaylistsResponse: ...
     @overload
     def operation(
@@ -14815,6 +15242,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> SpotifyArtistRelatedResponse: ...
     @overload
     def operation(
@@ -14825,6 +15254,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> SpotifyArtistsSearchResponse: ...
     @overload
     def operation(
@@ -14835,6 +15266,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> SpotifyAudiobookResponse: ...
     @overload
     def operation(
@@ -14845,6 +15278,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> SpotifyAudiobookChaptersResponse: ...
     @overload
     def operation(
@@ -14855,6 +15290,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> SpotifyAudiobooksSearchResponse: ...
     @overload
     def operation(
@@ -14865,6 +15302,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> SpotifyChapterResponse: ...
     @overload
     def operation(
@@ -14875,6 +15314,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> SpotifyEpisodesSearchResponse: ...
     @overload
     def operation(
@@ -14885,6 +15326,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> SpotifyFeaturedChartsByCountryResponse: ...
     @overload
     def operation(
@@ -14895,6 +15338,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> SpotifyGenreResponse: ...
     @overload
     def operation(
@@ -14905,6 +15350,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> SpotifyHomeResponse: ...
     @overload
     def operation(
@@ -14915,6 +15362,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> SpotifyPlaylistResponse: ...
     @overload
     def operation(
@@ -14925,6 +15374,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> SpotifyPlaylistsSearchResponse: ...
     @overload
     def operation(
@@ -14935,6 +15386,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> SpotifyPopularByCountryResponse: ...
     @overload
     def operation(
@@ -14945,6 +15398,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> SpotifyProfileResponse: ...
     @overload
     def operation(
@@ -14955,6 +15410,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> SpotifyProfileFollowersResponse: ...
     @overload
     def operation(
@@ -14965,6 +15422,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> SpotifyProfilePlaylistsResponse: ...
     @overload
     def operation(
@@ -14975,6 +15434,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> SpotifyProfilesSearchResponse: ...
     @overload
     def operation(
@@ -14985,6 +15446,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> SpotifySearchResponse: ...
     @overload
     def operation(
@@ -14995,6 +15458,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> SpotifySectionResponse: ...
     @overload
     def operation(
@@ -15005,6 +15470,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> SpotifyShowsSearchResponse: ...
     @overload
     def operation(
@@ -15015,6 +15482,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> SpotifyTrackResponse: ...
     @overload
     def operation(
@@ -15025,6 +15494,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> SpotifyTrackRecommendedResponse: ...
     @overload
     def operation(
@@ -15035,6 +15506,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> SpotifyTrackSimilarAlbumsResponse: ...
     @overload
     def operation(
@@ -15045,6 +15518,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> SpotifyTracksSearchResponse: ...
     @overload
     def operation(
@@ -15055,6 +15530,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> TiktokCategoryResponse: ...
     @overload
     def operation(
@@ -15065,6 +15542,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> TiktokVideoCommentsResponse: ...
     @overload
     def operation(
@@ -15075,6 +15554,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> TiktokExploreResponse: ...
     @overload
     def operation(
@@ -15085,6 +15566,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> TiktokChallengeResponse: ...
     @overload
     def operation(
@@ -15095,6 +15578,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> TiktokChallengeListResponse: ...
     @overload
     def operation(
@@ -15105,6 +15590,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> TiktokPopularTrendCountryIndustryMetaResponse: ...
     @overload
     def operation(
@@ -15115,6 +15602,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> TiktokPopularTrendCreatorResponse: ...
     @overload
     def operation(
@@ -15125,6 +15614,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> TiktokPostResponse: ...
     @overload
     def operation(
@@ -15135,6 +15626,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> TiktokProfilePostResponse: ...
     @overload
     def operation(
@@ -15145,6 +15638,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> TiktokProfileResponse: ...
     @overload
     def operation(
@@ -15155,6 +15650,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> TiktokSearchResponse: ...
     @overload
     def operation(
@@ -15165,6 +15662,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> TiktokSearchHashtagResponse: ...
     @overload
     def operation(
@@ -15175,6 +15674,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> TiktokSearchUserResponse: ...
     @overload
     def operation(
@@ -15185,6 +15686,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> TiktokTopAdsAnalysisResponse: ...
     @overload
     def operation(
@@ -15195,6 +15698,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> TiktokTopAdsDetailResponse: ...
     @overload
     def operation(
@@ -15205,6 +15710,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> TiktokTopAdsFiltersResponse: ...
     @overload
     def operation(
@@ -15215,6 +15722,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> TiktokTopAdsListResponse: ...
     @overload
     def operation(
@@ -15225,6 +15734,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> TiktokTopAdsLocationInfoResponse: ...
     @overload
     def operation(
@@ -15235,6 +15746,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> TiktokTopAdsLocationsResponse: ...
     @overload
     def operation(
@@ -15245,6 +15758,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> TiktokTopAdsRecommendResponse: ...
     @overload
     def operation(
@@ -15255,6 +15770,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> TiktokTopAdsSafetyResponse: ...
     @overload
     def operation(
@@ -15265,6 +15782,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> TiktokTopAdsSpotlightResponse: ...
     @overload
     def operation(
@@ -15275,6 +15794,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> TiktokTopAdsSuggestionsResponse: ...
     @overload
     def operation(
@@ -15285,6 +15806,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> TiktokTrendingResponse: ...
     @overload
     def operation(
@@ -15295,6 +15818,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> TripAdvisorTripadvisorAutocompleteResponse: ...
     @overload
     def operation(
@@ -15305,6 +15830,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> TripAdvisorTripadvisorEnumsResponse: ...
     @overload
     def operation(
@@ -15315,6 +15842,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> TripAdvisorTripadvisorHotelsResponse: ...
     @overload
     def operation(
@@ -15325,6 +15854,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> TripAdvisorTripadvisorPlaceResponse: ...
     @overload
     def operation(
@@ -15335,6 +15866,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> TripAdvisorTripadvisorReviewsResponse: ...
     @overload
     def operation(
@@ -15345,6 +15878,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> TripAdvisorTripadvisorSearchResponse: ...
     @overload
     def operation(
@@ -15355,6 +15890,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> TrustpilotBusinessSearchResponse: ...
     @overload
     def operation(
@@ -15365,6 +15902,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> TrustpilotBusinessResponse: ...
     @overload
     def operation(
@@ -15375,6 +15914,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> TrustpilotBusinessRelatedResponse: ...
     @overload
     def operation(
@@ -15385,6 +15926,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> TrustpilotBusinessReviewsResponse: ...
     @overload
     def operation(
@@ -15395,6 +15938,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> TrustpilotCategoriesResponse: ...
     @overload
     def operation(
@@ -15405,6 +15950,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> TrustpilotCategorySearchResponse: ...
     @overload
     def operation(
@@ -15415,6 +15962,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> TrustpilotCategoryResponse: ...
     @overload
     def operation(
@@ -15425,6 +15974,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> UsageMeEndpointsResponse: ...
     @overload
     def operation(
@@ -15435,6 +15986,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> UsageMeOverviewResponse: ...
     @overload
     def operation(
@@ -15445,6 +15998,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> UsageMeRecentIpsResponse: ...
     @overload
     def operation(
@@ -15455,6 +16010,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> UsageMeTimeseriesResponse: ...
     @overload
     def operation(
@@ -15465,6 +16022,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> UserMeResponse: ...
     @overload
     def operation(
@@ -15475,6 +16034,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> UserMeApiKeysResponse: ...
     @overload
     def operation(
@@ -15485,6 +16046,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> UserMeApiKeysRotateResponse: ...
     @overload
     def operation(
@@ -15495,6 +16058,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> UserMeApiKeysRevealResponse: ...
     @overload
     def operation(
@@ -15505,6 +16070,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> YahooFinanceCalendarsResponse: ...
     @overload
     def operation(
@@ -15515,6 +16082,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> YahooFinanceCalendarResponse: ...
     @overload
     def operation(
@@ -15525,6 +16094,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> YahooFinanceDownloadResponse: ...
     @overload
     def operation(
@@ -15535,6 +16106,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> YahooFinanceIndustriesResponse: ...
     @overload
     def operation(
@@ -15545,6 +16118,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> YahooFinanceIndustryResponse: ...
     @overload
     def operation(
@@ -15555,6 +16130,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> YahooFinanceMarketStatusResponse: ...
     @overload
     def operation(
@@ -15565,6 +16142,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> YahooFinanceMarketSummaryResponse: ...
     @overload
     def operation(
@@ -15575,6 +16154,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> YahooFinanceScreenerCustomResponse: ...
     @overload
     def operation(
@@ -15585,6 +16166,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> YahooFinanceScreenerResponse: ...
     @overload
     def operation(
@@ -15595,6 +16178,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> YahooFinanceScreenersResponse: ...
     @overload
     def operation(
@@ -15605,6 +16190,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> YahooFinanceSearchResponse: ...
     @overload
     def operation(
@@ -15615,6 +16202,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> YahooFinanceSectorsResponse: ...
     @overload
     def operation(
@@ -15625,6 +16214,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> YahooFinanceSectorResponse: ...
     @overload
     def operation(
@@ -15635,6 +16226,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> YahooFinanceTickerActionsResponse: ...
     @overload
     def operation(
@@ -15645,6 +16238,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> YahooFinanceTickerAnalystsResponse: ...
     @overload
     def operation(
@@ -15655,6 +16250,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> YahooFinanceTickerCalendarResponse: ...
     @overload
     def operation(
@@ -15665,6 +16262,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> YahooFinanceTickerCapitalGainsResponse: ...
     @overload
     def operation(
@@ -15675,6 +16274,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> YahooFinanceTickerDividendsResponse: ...
     @overload
     def operation(
@@ -15685,6 +16286,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> YahooFinanceTickerEarningsResponse: ...
     @overload
     def operation(
@@ -15695,6 +16298,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> YahooFinanceTickerEarningsDatesResponse: ...
     @overload
     def operation(
@@ -15705,6 +16310,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> YahooFinanceTickerFinancialsResponse: ...
     @overload
     def operation(
@@ -15715,6 +16322,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> YahooFinanceTickerFundsResponse: ...
     @overload
     def operation(
@@ -15725,6 +16334,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> YahooFinanceTickerHistoryResponse: ...
     @overload
     def operation(
@@ -15735,6 +16346,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> YahooFinanceTickerHistoryMetadataResponse: ...
     @overload
     def operation(
@@ -15745,6 +16358,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> YahooFinanceTickerHoldersResponse: ...
     @overload
     def operation(
@@ -15755,6 +16370,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> YahooFinanceTickerInfoResponse: ...
     @overload
     def operation(
@@ -15765,6 +16382,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> YahooFinanceTickerIsinResponse: ...
     @overload
     def operation(
@@ -15775,6 +16394,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> YahooFinanceTickerNewsResponse: ...
     @overload
     def operation(
@@ -15785,6 +16406,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> YahooFinanceTickerOptionsResponse: ...
     @overload
     def operation(
@@ -15795,6 +16418,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> YahooFinanceTickerOptionsExpirationResponse: ...
     @overload
     def operation(
@@ -15805,6 +16430,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> YahooFinanceTickerQuoteResponse: ...
     @overload
     def operation(
@@ -15815,6 +16442,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> YahooFinanceTickerSecFilingsResponse: ...
     @overload
     def operation(
@@ -15825,6 +16454,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> YahooFinanceTickerSharesResponse: ...
     @overload
     def operation(
@@ -15835,6 +16466,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> YahooFinanceTickerSharesFullResponse: ...
     @overload
     def operation(
@@ -15845,6 +16478,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> YahooFinanceTickerSplitsResponse: ...
     @overload
     def operation(
@@ -15855,6 +16490,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> YahooFinanceTickerSustainabilityResponse: ...
     @overload
     def operation(
@@ -15865,6 +16502,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> YahooFinanceTickerValuationResponse: ...
     @overload
     def operation(
@@ -15875,6 +16514,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> YahooFinanceTrendingResponse: ...
     @overload
     def operation(
@@ -15885,6 +16526,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> YoutubeCaptionsResponse: ...
     @overload
     def operation(
@@ -15895,6 +16538,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> YoutubeChannelPlaylistsResponse: ...
     @overload
     def operation(
@@ -15905,6 +16550,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> YoutubeChannelSearchResponse: ...
     @overload
     def operation(
@@ -15915,6 +16562,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> YoutubeChannelShortsResponse: ...
     @overload
     def operation(
@@ -15925,6 +16574,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> YoutubeChannelVideosResponse: ...
     @overload
     def operation(
@@ -15935,6 +16586,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> YoutubeCommentsResponse: ...
     @overload
     def operation(
@@ -15945,6 +16598,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> YoutubePlaylistResponse: ...
     @overload
     def operation(
@@ -15955,6 +16610,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> YoutubeProfileResponse: ...
     @overload
     def operation(
@@ -15965,6 +16622,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> YoutubeSearchResponse: ...
     @overload
     def operation(
@@ -15975,6 +16634,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> YoutubeTagResponse: ...
     @overload
     def operation(
@@ -15985,6 +16646,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> YoutubeTranscriptResponse: ...
     @overload
     def operation(
@@ -15995,6 +16658,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> YoutubeTranscriptLanguagesResponse: ...
     @overload
     def operation(
@@ -16005,6 +16670,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> YoutubeVideoResponse: ...
     @overload
     def operation(
@@ -16015,6 +16682,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> ZillowAutocompleteResponse: ...
     @overload
     def operation(
@@ -16025,6 +16694,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> ZillowPropertyResponse: ...
     @overload
     def operation(
@@ -16035,6 +16706,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> ZillowSearchResponse: ...
     @overload
     def operation(
@@ -16045,6 +16718,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> Any: ...
     @overload
     def request(
@@ -16055,6 +16730,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> AirbnbRoomResponse: ...
     @overload
     def request(
@@ -16065,6 +16742,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> AirbnbRoomCalendarResponse: ...
     @overload
     def request(
@@ -16075,6 +16754,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> AirbnbRoomReviewsResponse: ...
     @overload
     def request(
@@ -16085,6 +16766,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> AirbnbSearchResponse: ...
     @overload
     def request(
@@ -16095,6 +16778,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> AmazonProductResponse: ...
     @overload
     def request(
@@ -16105,6 +16790,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> AmazonSearchResponse: ...
     @overload
     def request(
@@ -16115,6 +16802,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> AmazonSuggestResponse: ...
     @overload
     def request(
@@ -16125,6 +16814,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> ApplePodcastsChartsResponse: ...
     @overload
     def request(
@@ -16135,6 +16826,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> ApplePodcastsEpisodesSearchResponse: ...
     @overload
     def request(
@@ -16145,6 +16838,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> ApplePodcastsSearchResponse: ...
     @overload
     def request(
@@ -16155,6 +16850,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> ApplePodcastsShowResponse: ...
     @overload
     def request(
@@ -16165,6 +16862,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> ApplePodcastsShowEpisodesResponse: ...
     @overload
     def request(
@@ -16175,6 +16874,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> AppStoreAppResponse: ...
     @overload
     def request(
@@ -16185,6 +16886,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> AppStoreDeveloperResponse: ...
     @overload
     def request(
@@ -16195,6 +16898,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> AppStoreListResponse: ...
     @overload
     def request(
@@ -16205,6 +16910,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> AppStorePrivacyResponse: ...
     @overload
     def request(
@@ -16215,6 +16922,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> AppStoreRatingsResponse: ...
     @overload
     def request(
@@ -16225,6 +16934,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> AppStoreReviewsResponse: ...
     @overload
     def request(
@@ -16235,6 +16946,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> AppStoreSearchResponse: ...
     @overload
     def request(
@@ -16245,6 +16958,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> AppStoreSimilarResponse: ...
     @overload
     def request(
@@ -16255,6 +16970,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> AppStoreSuggestResponse: ...
     @overload
     def request(
@@ -16265,6 +16982,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> AppStoreVersionHistoryResponse: ...
     @overload
     def request(
@@ -16275,6 +16994,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> BillingMeResponse: ...
     @overload
     def request(
@@ -16285,6 +17006,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> BillingMeCheckoutResponse: ...
     @overload
     def request(
@@ -16295,6 +17018,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> BillingMeEventsResponse: ...
     @overload
     def request(
@@ -16305,6 +17030,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> BillingMePeriodsResponse: ...
     @overload
     def request(
@@ -16315,6 +17042,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> BillingMePeriodResponse: ...
     @overload
     def request(
@@ -16325,6 +17054,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> BillingMePeriodStatementResponse: ...
     @overload
     def request(
@@ -16335,6 +17066,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> BillingMePeriodStatementDownloadResponse: ...
     @overload
     def request(
@@ -16345,6 +17078,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> BillingMePortalResponse: ...
     @overload
     def request(
@@ -16355,6 +17090,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> BingImagesResponse: ...
     @overload
     def request(
@@ -16365,6 +17102,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> BingNewsResponse: ...
     @overload
     def request(
@@ -16375,6 +17114,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> BingSearchResponse: ...
     @overload
     def request(
@@ -16385,6 +17126,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> BingSuggestResponse: ...
     @overload
     def request(
@@ -16395,6 +17138,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> BingVideosResponse: ...
     @overload
     def request(
@@ -16405,6 +17150,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> BraveImagesResponse: ...
     @overload
     def request(
@@ -16415,6 +17162,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> BraveNewsResponse: ...
     @overload
     def request(
@@ -16425,6 +17174,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> BraveSearchResponse: ...
     @overload
     def request(
@@ -16435,6 +17186,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> BraveSuggestResponse: ...
     @overload
     def request(
@@ -16445,6 +17198,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> BraveVideosResponse: ...
     @overload
     def request(
@@ -16455,6 +17210,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> CoinGeckoCategoriesResponse: ...
     @overload
     def request(
@@ -16465,6 +17222,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> CoinGeckoCategoryCoinsResponse: ...
     @overload
     def request(
@@ -16475,6 +17234,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> CoinGeckoChainsResponse: ...
     @overload
     def request(
@@ -16485,6 +17246,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> CoinGeckoChainResponse: ...
     @overload
     def request(
@@ -16495,6 +17258,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> CoinGeckoCoinResponse: ...
     @overload
     def request(
@@ -16505,6 +17270,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> CoinGeckoCoinAnalysisResponse: ...
     @overload
     def request(
@@ -16515,6 +17282,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> CoinGeckoExchangeResponse: ...
     @overload
     def request(
@@ -16525,6 +17294,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> CoinGeckoExchangesResponse: ...
     @overload
     def request(
@@ -16535,6 +17306,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> CoinGeckoGainersLosersResponse: ...
     @overload
     def request(
@@ -16545,6 +17318,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> CoinGeckoGlobalResponse: ...
     @overload
     def request(
@@ -16555,6 +17330,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> CoinGeckoGlobalChartsResponse: ...
     @overload
     def request(
@@ -16565,6 +17342,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> CoinGeckoLearnArticlesResponse: ...
     @overload
     def request(
@@ -16575,6 +17354,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> CoinGeckoMarketsResponse: ...
     @overload
     def request(
@@ -16585,6 +17366,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> CoinGeckoNewCoinsResponse: ...
     @overload
     def request(
@@ -16595,6 +17378,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> CoinGeckoNewsResponse: ...
     @overload
     def request(
@@ -16605,6 +17390,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> CoinGeckoNftCategoryResponse: ...
     @overload
     def request(
@@ -16615,6 +17402,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> CoinGeckoNftsResponse: ...
     @overload
     def request(
@@ -16625,6 +17414,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> CoinGeckoSearchResponse: ...
     @overload
     def request(
@@ -16635,6 +17426,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> CoinGeckoTokenUnlocksResponse: ...
     @overload
     def request(
@@ -16645,6 +17438,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> CoinGeckoTreasuriesResponse: ...
     @overload
     def request(
@@ -16655,6 +17450,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> CoinGeckoTrendingResponse: ...
     @overload
     def request(
@@ -16665,6 +17462,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> DatasetsListResponse: ...
     @overload
     def request(
@@ -16675,6 +17474,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> DatasetsGoogleMapBusinessesFacetsResponse: ...
     @overload
     def request(
@@ -16685,6 +17486,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> DatasetsGoogleMapBusinessesItemResponse: ...
     @overload
     def request(
@@ -16695,6 +17498,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> DatasetsGoogleMapBusinessesNearbyResponse: ...
     @overload
     def request(
@@ -16705,6 +17510,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> DatasetsGoogleMapBusinessesSearchResponse: ...
     @overload
     def request(
@@ -16715,6 +17522,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> EBayEbayItemResponse: ...
     @overload
     def request(
@@ -16725,6 +17534,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> EBayEbaySearchResponse: ...
     @overload
     def request(
@@ -16735,6 +17546,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> EBayEbaySellerResponse: ...
     @overload
     def request(
@@ -16745,6 +17558,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> EBayEbaySellerAboutResponse: ...
     @overload
     def request(
@@ -16755,6 +17570,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> EBayEbaySellerFeedbackResponse: ...
     @overload
     def request(
@@ -16765,6 +17582,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> EBayEbaySellerShopResponse: ...
     @overload
     def request(
@@ -16775,6 +17594,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> GeocodingLookupResponse: ...
     @overload
     def request(
@@ -16785,6 +17606,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> GeocodingReverseResponse: ...
     @overload
     def request(
@@ -16795,6 +17618,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> GeocodingSearchResponse: ...
     @overload
     def request(
@@ -16805,6 +17630,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> GoogleFinanceAnalystArticlesResponse: ...
     @overload
     def request(
@@ -16815,6 +17642,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> GoogleFinanceChartResponse: ...
     @overload
     def request(
@@ -16825,6 +17654,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> GoogleFinanceClassificationResponse: ...
     @overload
     def request(
@@ -16835,6 +17666,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> GoogleFinanceCompanyResponse: ...
     @overload
     def request(
@@ -16845,6 +17678,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> GoogleFinanceContextResponse: ...
     @overload
     def request(
@@ -16855,6 +17690,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> GoogleFinanceFinancialsResponse: ...
     @overload
     def request(
@@ -16865,6 +17702,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> GoogleFinanceMarketsCategoryNewsResponse: ...
     @overload
     def request(
@@ -16875,6 +17714,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> GoogleFinanceMarketsCategoryStocksResponse: ...
     @overload
     def request(
@@ -16885,6 +17726,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> GoogleFinanceMarketsEarningsResponse: ...
     @overload
     def request(
@@ -16895,6 +17738,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> GoogleFinanceMarketsFeaturedResponse: ...
     @overload
     def request(
@@ -16905,6 +17750,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> GoogleFinanceMarketsHeadlineResponse: ...
     @overload
     def request(
@@ -16915,6 +17762,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> GoogleFinanceMarketsIndicesResponse: ...
     @overload
     def request(
@@ -16925,6 +17774,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> GoogleFinanceMarketsMoversResponse: ...
     @overload
     def request(
@@ -16935,6 +17786,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> GoogleFinanceMarketsTopResponse: ...
     @overload
     def request(
@@ -16945,6 +17798,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> GoogleFinanceMarketsTrendingResponse: ...
     @overload
     def request(
@@ -16955,6 +17810,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> GoogleFinanceNewsResponse: ...
     @overload
     def request(
@@ -16965,6 +17822,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> GoogleFinanceQuoteResponse: ...
     @overload
     def request(
@@ -16975,6 +17834,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> GoogleFinanceRelatedResponse: ...
     @overload
     def request(
@@ -16985,6 +17846,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> GoogleFinanceSearchResponse: ...
     @overload
     def request(
@@ -16995,6 +17858,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> GoogleFinanceTickerResponse: ...
     @overload
     def request(
@@ -17005,6 +17870,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> GoogleJobsResponse: ...
     @overload
     def request(
@@ -17015,6 +17882,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> GoogleMapPlaceResponse: ...
     @overload
     def request(
@@ -17025,6 +17894,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> GoogleMapSearchResponse: ...
     @overload
     def request(
@@ -17035,6 +17906,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> GoogleSearchResponse: ...
     @overload
     def request(
@@ -17045,6 +17918,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> GoogleSuggestResponse: ...
     @overload
     def request(
@@ -17055,6 +17930,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> GoogleTrendsCategoriesResponse: ...
     @overload
     def request(
@@ -17065,6 +17942,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> GoogleTrendsEnumsResponse: ...
     @overload
     def request(
@@ -17075,6 +17954,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> GoogleTrendsExploreResponse: ...
     @overload
     def request(
@@ -17085,6 +17966,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> GoogleTrendsExploreInterestByRegionResponse: ...
     @overload
     def request(
@@ -17095,6 +17978,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> GoogleTrendsExploreInterestOverTimeResponse: ...
     @overload
     def request(
@@ -17105,6 +17990,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> GoogleTrendsExploreRelatedTopicsResponse: ...
     @overload
     def request(
@@ -17115,6 +18002,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> GoogleTrendsExploreRisingQueriesResponse: ...
     @overload
     def request(
@@ -17125,6 +18014,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> GoogleTrendsExploreTopQueriesResponse: ...
     @overload
     def request(
@@ -17135,6 +18026,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> GoogleTrendsLocationsResponse: ...
     @overload
     def request(
@@ -17145,6 +18038,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> GoogleTrendsTrendingResponse: ...
     @overload
     def request(
@@ -17155,6 +18050,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> GoogleTrendsTrendingDetailResponse: ...
     @overload
     def request(
@@ -17165,6 +18062,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> GooglePlayAppResponse: ...
     @overload
     def request(
@@ -17175,6 +18074,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> GooglePlayCategoriesResponse: ...
     @overload
     def request(
@@ -17185,6 +18086,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> GooglePlayDatasafetyResponse: ...
     @overload
     def request(
@@ -17195,6 +18098,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> GooglePlayDeveloperResponse: ...
     @overload
     def request(
@@ -17205,6 +18110,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> GooglePlayListResponse: ...
     @overload
     def request(
@@ -17215,6 +18122,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> GooglePlayPermissionsResponse: ...
     @overload
     def request(
@@ -17225,6 +18134,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> GooglePlayReviewsResponse: ...
     @overload
     def request(
@@ -17235,6 +18146,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> GooglePlaySearchResponse: ...
     @overload
     def request(
@@ -17245,6 +18158,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> GooglePlaySimilarResponse: ...
     @overload
     def request(
@@ -17255,6 +18170,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> GooglePlaySuggestResponse: ...
     @overload
     def request(
@@ -17265,6 +18182,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> InstagramPostResponse: ...
     @overload
     def request(
@@ -17275,6 +18194,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> InstagramProfileResponse: ...
     @overload
     def request(
@@ -17285,6 +18206,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> InstagramReelsResponse: ...
     @overload
     def request(
@@ -17295,6 +18218,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> JustWatchJustwatchAgeCertificationsResponse: ...
     @overload
     def request(
@@ -17305,6 +18230,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> JustWatchJustwatchDiscoverResponse: ...
     @overload
     def request(
@@ -17315,6 +18242,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> JustWatchJustwatchEpisodeByIdResponse: ...
     @overload
     def request(
@@ -17325,6 +18254,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> JustWatchJustwatchEpisodeOffersResponse: ...
     @overload
     def request(
@@ -17335,6 +18266,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> JustWatchJustwatchGenreTitlesResponse: ...
     @overload
     def request(
@@ -17345,6 +18278,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> JustWatchJustwatchGenresResponse: ...
     @overload
     def request(
@@ -17355,6 +18290,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> JustWatchJustwatchMonetizationTitlesResponse: ...
     @overload
     def request(
@@ -17365,6 +18302,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> JustWatchJustwatchNewResponse: ...
     @overload
     def request(
@@ -17375,6 +18314,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> JustWatchJustwatchPopularResponse: ...
     @overload
     def request(
@@ -17385,6 +18326,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> JustWatchJustwatchProviderTitlesResponse: ...
     @overload
     def request(
@@ -17395,6 +18338,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> JustWatchJustwatchProvidersResponse: ...
     @overload
     def request(
@@ -17405,6 +18350,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> JustWatchJustwatchSearchResponse: ...
     @overload
     def request(
@@ -17415,6 +18362,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> JustWatchJustwatchSeasonByIdResponse: ...
     @overload
     def request(
@@ -17425,6 +18374,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> JustWatchJustwatchSeasonEpisodesResponse: ...
     @overload
     def request(
@@ -17435,6 +18386,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> JustWatchJustwatchShowSeasonsResponse: ...
     @overload
     def request(
@@ -17445,6 +18398,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> JustWatchJustwatchTitleResponse: ...
     @overload
     def request(
@@ -17455,6 +18410,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> JustWatchJustwatchTitleAnalysisResponse: ...
     @overload
     def request(
@@ -17465,6 +18422,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> JustWatchJustwatchTitleByIdResponse: ...
     @overload
     def request(
@@ -17475,6 +18434,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> JustWatchJustwatchTitleMediaResponse: ...
     @overload
     def request(
@@ -17485,6 +18446,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> JustWatchJustwatchTitleOffersResponse: ...
     @overload
     def request(
@@ -17495,6 +18458,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> JustWatchJustwatchTitleSimilarResponse: ...
     @overload
     def request(
@@ -17505,6 +18470,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> LinkedInLinkedinCompanyResponse: ...
     @overload
     def request(
@@ -17515,6 +18482,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> LinkedInLinkedinProductResponse: ...
     @overload
     def request(
@@ -17525,6 +18494,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> LinkedInLinkedinShowcaseResponse: ...
     @overload
     def request(
@@ -17535,6 +18506,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> MetaPingResponse: ...
     @overload
     def request(
@@ -17545,6 +18518,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> ProductHuntCategoryResponse: ...
     @overload
     def request(
@@ -17555,6 +18530,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> ProductHuntCategoryProductsResponse: ...
     @overload
     def request(
@@ -17565,6 +18542,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> ProductHuntLeaderboardResponse: ...
     @overload
     def request(
@@ -17575,6 +18554,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> ProductHuntProductResponse: ...
     @overload
     def request(
@@ -17585,6 +18566,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> ProductHuntAboutResponse: ...
     @overload
     def request(
@@ -17595,6 +18578,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> ProductHuntAlternativesResponse: ...
     @overload
     def request(
@@ -17605,6 +18590,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> ProductHuntCustomersResponse: ...
     @overload
     def request(
@@ -17615,6 +18602,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> ProductHuntLaunchesResponse: ...
     @overload
     def request(
@@ -17625,6 +18614,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> ProductHuntMakersResponse: ...
     @overload
     def request(
@@ -17635,6 +18626,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> ProductHuntReviewsResponse: ...
     @overload
     def request(
@@ -17645,6 +18638,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> ProductHuntSearchResponse: ...
     @overload
     def request(
@@ -17655,6 +18650,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> MetaReadyResponse: ...
     @overload
     def request(
@@ -17665,6 +18662,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> ReferralsClickResponse: ...
     @overload
     def request(
@@ -17675,6 +18674,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> ReferralsMeResponse: ...
     @overload
     def request(
@@ -17685,6 +18686,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> ReferralsMeEventsResponse: ...
     @overload
     def request(
@@ -17695,6 +18698,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> ShopAppAnalysisResponse: ...
     @overload
     def request(
@@ -17705,6 +18710,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> ShopAppCategoriesResponse: ...
     @overload
     def request(
@@ -17715,6 +18722,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> ShopAppProductResponse: ...
     @overload
     def request(
@@ -17725,6 +18734,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> ShopAppProductRelatedResponse: ...
     @overload
     def request(
@@ -17735,6 +18746,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> ShopAppProductReviewsResponse: ...
     @overload
     def request(
@@ -17745,6 +18758,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> ShopAppProductShopResponse: ...
     @overload
     def request(
@@ -17755,6 +18770,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> ShopAppProductVariantResponse: ...
     @overload
     def request(
@@ -17765,6 +18782,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> ShopAppProductVariantsResponse: ...
     @overload
     def request(
@@ -17775,6 +18794,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> ShopAppSearchResponse: ...
     @overload
     def request(
@@ -17785,6 +18806,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> ShopAppShopResponse: ...
     @overload
     def request(
@@ -17795,6 +18818,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> ShopAppCollectionProductsResponse: ...
     @overload
     def request(
@@ -17805,6 +18830,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> ShopAppShopLocationsResponse: ...
     @overload
     def request(
@@ -17815,6 +18842,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> ShopAppShopProductsResponse: ...
     @overload
     def request(
@@ -17825,6 +18854,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> ShopAppShopReviewsResponse: ...
     @overload
     def request(
@@ -17835,6 +18866,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> ShopAppShopTypeaheadResponse: ...
     @overload
     def request(
@@ -17845,6 +18878,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> ShopAppSuggestionsResponse: ...
     @overload
     def request(
@@ -17855,6 +18890,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> ShopifyCollectionsResponse: ...
     @overload
     def request(
@@ -17865,6 +18902,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> ShopifyCollectionProductsResponse: ...
     @overload
     def request(
@@ -17875,6 +18914,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> ShopifyPagesResponse: ...
     @overload
     def request(
@@ -17885,6 +18926,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> ShopifyPageResponse: ...
     @overload
     def request(
@@ -17895,6 +18938,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> ShopifyProductsResponse: ...
     @overload
     def request(
@@ -17905,6 +18950,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> ShopifyProductResponse: ...
     @overload
     def request(
@@ -17915,6 +18962,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> ShopifyProductRecommendationsResponse: ...
     @overload
     def request(
@@ -17925,6 +18974,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> ShopifySearchSuggestResponse: ...
     @overload
     def request(
@@ -17935,6 +18986,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> ShopifySitemapUrlsResponse: ...
     @overload
     def request(
@@ -17945,6 +18998,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> ShopifySitemapsResponse: ...
     @overload
     def request(
@@ -17955,6 +19010,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> ShopifyStoreResponse: ...
     @overload
     def request(
@@ -17965,6 +19022,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> SimilarWebSearchResponse: ...
     @overload
     def request(
@@ -17975,6 +19034,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> SimilarWebWebResponse: ...
     @overload
     def request(
@@ -17985,6 +19046,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> SpotifyPodcastsCategoriesResponse: ...
     @overload
     def request(
@@ -17995,6 +19058,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> SpotifyPodcastsChartsResponse: ...
     @overload
     def request(
@@ -18005,6 +19070,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> SpotifyPodcastsEpisodeResponse: ...
     @overload
     def request(
@@ -18015,6 +19082,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> SpotifyPodcastsHomeResponse: ...
     @overload
     def request(
@@ -18025,6 +19094,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> SpotifyPodcastsSearchResponse: ...
     @overload
     def request(
@@ -18035,6 +19106,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> SpotifyPodcastsShowResponse: ...
     @overload
     def request(
@@ -18045,6 +19118,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> SpotifyPodcastsShowEpisodesResponse: ...
     @overload
     def request(
@@ -18055,6 +19130,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> SpotifyPodcastsShowRecommendationsResponse: ...
     @overload
     def request(
@@ -18065,6 +19142,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> SpotifyAlbumResponse: ...
     @overload
     def request(
@@ -18075,6 +19154,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> SpotifyAlbumTracksResponse: ...
     @overload
     def request(
@@ -18085,6 +19166,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> SpotifyAlbumsSearchResponse: ...
     @overload
     def request(
@@ -18095,6 +19178,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> SpotifyArtistResponse: ...
     @overload
     def request(
@@ -18105,6 +19190,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> SpotifyArtistAlbumsResponse: ...
     @overload
     def request(
@@ -18115,6 +19202,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> SpotifyArtistPlaylistsResponse: ...
     @overload
     def request(
@@ -18125,6 +19214,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> SpotifyArtistRelatedResponse: ...
     @overload
     def request(
@@ -18135,6 +19226,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> SpotifyArtistsSearchResponse: ...
     @overload
     def request(
@@ -18145,6 +19238,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> SpotifyAudiobookResponse: ...
     @overload
     def request(
@@ -18155,6 +19250,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> SpotifyAudiobookChaptersResponse: ...
     @overload
     def request(
@@ -18165,6 +19262,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> SpotifyAudiobooksSearchResponse: ...
     @overload
     def request(
@@ -18175,6 +19274,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> SpotifyChapterResponse: ...
     @overload
     def request(
@@ -18185,6 +19286,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> SpotifyEpisodesSearchResponse: ...
     @overload
     def request(
@@ -18195,6 +19298,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> SpotifyFeaturedChartsByCountryResponse: ...
     @overload
     def request(
@@ -18205,6 +19310,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> SpotifyGenreResponse: ...
     @overload
     def request(
@@ -18215,6 +19322,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> SpotifyHomeResponse: ...
     @overload
     def request(
@@ -18225,6 +19334,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> SpotifyPlaylistResponse: ...
     @overload
     def request(
@@ -18235,6 +19346,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> SpotifyPlaylistsSearchResponse: ...
     @overload
     def request(
@@ -18245,6 +19358,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> SpotifyPopularByCountryResponse: ...
     @overload
     def request(
@@ -18255,6 +19370,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> SpotifyProfileResponse: ...
     @overload
     def request(
@@ -18265,6 +19382,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> SpotifyProfileFollowersResponse: ...
     @overload
     def request(
@@ -18275,6 +19394,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> SpotifyProfilePlaylistsResponse: ...
     @overload
     def request(
@@ -18285,6 +19406,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> SpotifyProfilesSearchResponse: ...
     @overload
     def request(
@@ -18295,6 +19418,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> SpotifySearchResponse: ...
     @overload
     def request(
@@ -18305,6 +19430,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> SpotifySectionResponse: ...
     @overload
     def request(
@@ -18315,6 +19442,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> SpotifyShowsSearchResponse: ...
     @overload
     def request(
@@ -18325,6 +19454,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> SpotifyTrackResponse: ...
     @overload
     def request(
@@ -18335,6 +19466,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> SpotifyTrackRecommendedResponse: ...
     @overload
     def request(
@@ -18345,6 +19478,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> SpotifyTrackSimilarAlbumsResponse: ...
     @overload
     def request(
@@ -18355,6 +19490,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> SpotifyTracksSearchResponse: ...
     @overload
     def request(
@@ -18365,6 +19502,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> TiktokCategoryResponse: ...
     @overload
     def request(
@@ -18375,6 +19514,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> TiktokVideoCommentsResponse: ...
     @overload
     def request(
@@ -18385,6 +19526,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> TiktokExploreResponse: ...
     @overload
     def request(
@@ -18395,6 +19538,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> TiktokChallengeResponse: ...
     @overload
     def request(
@@ -18405,6 +19550,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> TiktokChallengeListResponse: ...
     @overload
     def request(
@@ -18415,6 +19562,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> TiktokPopularTrendCountryIndustryMetaResponse: ...
     @overload
     def request(
@@ -18425,6 +19574,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> TiktokPopularTrendCreatorResponse: ...
     @overload
     def request(
@@ -18435,6 +19586,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> TiktokPostResponse: ...
     @overload
     def request(
@@ -18445,6 +19598,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> TiktokProfilePostResponse: ...
     @overload
     def request(
@@ -18455,6 +19610,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> TiktokProfileResponse: ...
     @overload
     def request(
@@ -18465,6 +19622,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> TiktokSearchResponse: ...
     @overload
     def request(
@@ -18475,6 +19634,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> TiktokSearchHashtagResponse: ...
     @overload
     def request(
@@ -18485,6 +19646,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> TiktokSearchUserResponse: ...
     @overload
     def request(
@@ -18495,6 +19658,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> TiktokTopAdsAnalysisResponse: ...
     @overload
     def request(
@@ -18505,6 +19670,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> TiktokTopAdsDetailResponse: ...
     @overload
     def request(
@@ -18515,6 +19682,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> TiktokTopAdsFiltersResponse: ...
     @overload
     def request(
@@ -18525,6 +19694,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> TiktokTopAdsListResponse: ...
     @overload
     def request(
@@ -18535,6 +19706,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> TiktokTopAdsLocationInfoResponse: ...
     @overload
     def request(
@@ -18545,6 +19718,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> TiktokTopAdsLocationsResponse: ...
     @overload
     def request(
@@ -18555,6 +19730,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> TiktokTopAdsRecommendResponse: ...
     @overload
     def request(
@@ -18565,6 +19742,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> TiktokTopAdsSafetyResponse: ...
     @overload
     def request(
@@ -18575,6 +19754,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> TiktokTopAdsSpotlightResponse: ...
     @overload
     def request(
@@ -18585,6 +19766,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> TiktokTopAdsSuggestionsResponse: ...
     @overload
     def request(
@@ -18595,6 +19778,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> TiktokTrendingResponse: ...
     @overload
     def request(
@@ -18605,6 +19790,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> TripAdvisorTripadvisorAutocompleteResponse: ...
     @overload
     def request(
@@ -18615,6 +19802,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> TripAdvisorTripadvisorEnumsResponse: ...
     @overload
     def request(
@@ -18625,6 +19814,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> TripAdvisorTripadvisorHotelsResponse: ...
     @overload
     def request(
@@ -18635,6 +19826,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> TripAdvisorTripadvisorPlaceResponse: ...
     @overload
     def request(
@@ -18645,6 +19838,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> TripAdvisorTripadvisorReviewsResponse: ...
     @overload
     def request(
@@ -18655,6 +19850,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> TripAdvisorTripadvisorSearchResponse: ...
     @overload
     def request(
@@ -18665,6 +19862,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> TrustpilotBusinessSearchResponse: ...
     @overload
     def request(
@@ -18675,6 +19874,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> TrustpilotBusinessResponse: ...
     @overload
     def request(
@@ -18685,6 +19886,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> TrustpilotBusinessRelatedResponse: ...
     @overload
     def request(
@@ -18695,6 +19898,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> TrustpilotBusinessReviewsResponse: ...
     @overload
     def request(
@@ -18705,6 +19910,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> TrustpilotCategoriesResponse: ...
     @overload
     def request(
@@ -18715,6 +19922,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> TrustpilotCategorySearchResponse: ...
     @overload
     def request(
@@ -18725,6 +19934,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> TrustpilotCategoryResponse: ...
     @overload
     def request(
@@ -18735,6 +19946,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> UsageMeEndpointsResponse: ...
     @overload
     def request(
@@ -18745,6 +19958,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> UsageMeOverviewResponse: ...
     @overload
     def request(
@@ -18755,6 +19970,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> UsageMeRecentIpsResponse: ...
     @overload
     def request(
@@ -18765,6 +19982,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> UsageMeTimeseriesResponse: ...
     @overload
     def request(
@@ -18775,6 +19994,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> UserMeResponse: ...
     @overload
     def request(
@@ -18785,6 +20006,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> UserMeApiKeysResponse: ...
     @overload
     def request(
@@ -18795,6 +20018,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> UserMeApiKeysRotateResponse: ...
     @overload
     def request(
@@ -18805,6 +20030,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> UserMeApiKeysRevealResponse: ...
     @overload
     def request(
@@ -18815,6 +20042,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> YahooFinanceCalendarsResponse: ...
     @overload
     def request(
@@ -18825,6 +20054,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> YahooFinanceCalendarResponse: ...
     @overload
     def request(
@@ -18835,6 +20066,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> YahooFinanceDownloadResponse: ...
     @overload
     def request(
@@ -18845,6 +20078,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> YahooFinanceIndustriesResponse: ...
     @overload
     def request(
@@ -18855,6 +20090,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> YahooFinanceIndustryResponse: ...
     @overload
     def request(
@@ -18865,6 +20102,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> YahooFinanceMarketStatusResponse: ...
     @overload
     def request(
@@ -18875,6 +20114,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> YahooFinanceMarketSummaryResponse: ...
     @overload
     def request(
@@ -18885,6 +20126,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> YahooFinanceScreenerCustomResponse: ...
     @overload
     def request(
@@ -18895,6 +20138,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> YahooFinanceScreenerResponse: ...
     @overload
     def request(
@@ -18905,6 +20150,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> YahooFinanceScreenersResponse: ...
     @overload
     def request(
@@ -18915,6 +20162,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> YahooFinanceSearchResponse: ...
     @overload
     def request(
@@ -18925,6 +20174,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> YahooFinanceSectorsResponse: ...
     @overload
     def request(
@@ -18935,6 +20186,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> YahooFinanceSectorResponse: ...
     @overload
     def request(
@@ -18945,6 +20198,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> YahooFinanceTickerActionsResponse: ...
     @overload
     def request(
@@ -18955,6 +20210,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> YahooFinanceTickerAnalystsResponse: ...
     @overload
     def request(
@@ -18965,6 +20222,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> YahooFinanceTickerCalendarResponse: ...
     @overload
     def request(
@@ -18975,6 +20234,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> YahooFinanceTickerCapitalGainsResponse: ...
     @overload
     def request(
@@ -18985,6 +20246,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> YahooFinanceTickerDividendsResponse: ...
     @overload
     def request(
@@ -18995,6 +20258,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> YahooFinanceTickerEarningsResponse: ...
     @overload
     def request(
@@ -19005,6 +20270,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> YahooFinanceTickerEarningsDatesResponse: ...
     @overload
     def request(
@@ -19015,6 +20282,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> YahooFinanceTickerFinancialsResponse: ...
     @overload
     def request(
@@ -19025,6 +20294,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> YahooFinanceTickerFundsResponse: ...
     @overload
     def request(
@@ -19035,6 +20306,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> YahooFinanceTickerHistoryResponse: ...
     @overload
     def request(
@@ -19045,6 +20318,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> YahooFinanceTickerHistoryMetadataResponse: ...
     @overload
     def request(
@@ -19055,6 +20330,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> YahooFinanceTickerHoldersResponse: ...
     @overload
     def request(
@@ -19065,6 +20342,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> YahooFinanceTickerInfoResponse: ...
     @overload
     def request(
@@ -19075,6 +20354,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> YahooFinanceTickerIsinResponse: ...
     @overload
     def request(
@@ -19085,6 +20366,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> YahooFinanceTickerNewsResponse: ...
     @overload
     def request(
@@ -19095,6 +20378,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> YahooFinanceTickerOptionsResponse: ...
     @overload
     def request(
@@ -19105,6 +20390,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> YahooFinanceTickerOptionsExpirationResponse: ...
     @overload
     def request(
@@ -19115,6 +20402,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> YahooFinanceTickerQuoteResponse: ...
     @overload
     def request(
@@ -19125,6 +20414,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> YahooFinanceTickerSecFilingsResponse: ...
     @overload
     def request(
@@ -19135,6 +20426,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> YahooFinanceTickerSharesResponse: ...
     @overload
     def request(
@@ -19145,6 +20438,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> YahooFinanceTickerSharesFullResponse: ...
     @overload
     def request(
@@ -19155,6 +20450,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> YahooFinanceTickerSplitsResponse: ...
     @overload
     def request(
@@ -19165,6 +20462,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> YahooFinanceTickerSustainabilityResponse: ...
     @overload
     def request(
@@ -19175,6 +20474,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> YahooFinanceTickerValuationResponse: ...
     @overload
     def request(
@@ -19185,6 +20486,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> YahooFinanceTrendingResponse: ...
     @overload
     def request(
@@ -19195,6 +20498,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> YoutubeCaptionsResponse: ...
     @overload
     def request(
@@ -19205,6 +20510,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> YoutubeChannelPlaylistsResponse: ...
     @overload
     def request(
@@ -19215,6 +20522,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> YoutubeChannelSearchResponse: ...
     @overload
     def request(
@@ -19225,6 +20534,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> YoutubeChannelShortsResponse: ...
     @overload
     def request(
@@ -19235,6 +20546,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> YoutubeChannelVideosResponse: ...
     @overload
     def request(
@@ -19245,6 +20558,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> YoutubeCommentsResponse: ...
     @overload
     def request(
@@ -19255,6 +20570,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> YoutubePlaylistResponse: ...
     @overload
     def request(
@@ -19265,6 +20582,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> YoutubeProfileResponse: ...
     @overload
     def request(
@@ -19275,6 +20594,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> YoutubeSearchResponse: ...
     @overload
     def request(
@@ -19285,6 +20606,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> YoutubeTagResponse: ...
     @overload
     def request(
@@ -19295,6 +20618,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> YoutubeTranscriptResponse: ...
     @overload
     def request(
@@ -19305,6 +20630,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> YoutubeTranscriptLanguagesResponse: ...
     @overload
     def request(
@@ -19315,6 +20642,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> YoutubeVideoResponse: ...
     @overload
     def request(
@@ -19325,6 +20654,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> ZillowAutocompleteResponse: ...
     @overload
     def request(
@@ -19335,6 +20666,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> ZillowPropertyResponse: ...
     @overload
     def request(
@@ -19345,6 +20678,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> ZillowSearchResponse: ...
     @overload
     def request(
@@ -19355,6 +20690,8 @@ class CrawloraClient:
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> Any: ...
 
 VERSION: str
@@ -19368,3 +20705,6 @@ def _header_value(headers: Mapping[str, str], name: str) -> str: ...
 def _parse_response(body: bytes, content_type: str, response_type: str) -> Any: ...
 def _validate_response_type(response_type: str) -> ResponseType: ...
 def _api_error_class(status: int) -> type[CrawloraError]: ...
+def _run_before_request(hooks: list[Any], ctx: dict[str, Any]) -> None: ...
+def _run_after_response(hooks: list[Any], operation_id: Any, status: int, headers: Mapping[str, str], body: Any) -> Any: ...
+def _allowed_params(operation_id: str) -> set[str]: ...

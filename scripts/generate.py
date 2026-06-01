@@ -192,7 +192,12 @@ def stub_declarations(model):
             "    retry_predicate: Callable[[int, BaseException | None], bool] | None",
             "    on_retry: Callable[[int, BaseException, float], None] | None",
             "    request_id: bool",
+            "    idempotency_keys: bool",
+            "    rate_limit: float | None",
+            "    max_concurrency: int | None",
             "    logger: Callable[[Mapping[str, Any]], None] | None",
+            "    before_request: list[Callable[[dict[str, Any]], None]]",
+            "    after_response: list[Callable[[str, int, Mapping[str, str], Any], Any]]",
             "    headers: dict[str, str]",
             "    user_agent: str",
             "    def _is_retryable(self, status: int, exc: BaseException | None) -> bool: ...",
@@ -212,11 +217,19 @@ def stub_declarations(model):
             "        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,",
             "        on_retry: Callable[[int, BaseException, float], None] | None = ...,",
             "        request_id: bool = ...,",
+            "        idempotency_keys: bool = ...,",
+            "        rate_limit: float | None = ...,",
+            "        max_concurrency: int | None = ...,",
             "        logger: Callable[[Mapping[str, Any]], None] | None = ...,",
+            "        before_request: Callable[[dict[str, Any]], None] | Iterable[Callable[[dict[str, Any]], None]] | None = ...,",
+            "        after_response: Callable[[str, int, Mapping[str, str], Any], Any] | Iterable[Callable[[str, int, Mapping[str, str], Any], Any]] | None = ...,",
             "        headers: Mapping[str, str] | None = ...,",
             "        user_agent: str | None = ...,",
             "        transport: Callable[..., Any] | None = ...,",
             "    ) -> None: ...",
+            "    def close(self) -> None: ...",
+            "    def __enter__(self) -> CrawloraClient: ...",
+            "    def __exit__(self, *exc: Any) -> None: ...",
             "    def paginate(",
             "        self,",
             "        operation_id: str,",
@@ -265,6 +278,8 @@ def stub_declarations(model):
                     "        response_type: ResponseType = ...,",
                     "        timeout: float | None = ...,",
                     "        headers: Mapping[str, str] | None = ...,",
+                    "        retries: int | None = ...,",
+                    "        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,",
                     f"    ) -> {base}Response: ...",
                 ]
             )
@@ -279,6 +294,8 @@ def stub_declarations(model):
                 "        response_type: ResponseType = ...,",
                 "        timeout: float | None = ...,",
                 "        headers: Mapping[str, str] | None = ...,",
+                "        retries: int | None = ...,",
+                "        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,",
                 "    ) -> Any: ...",
             ]
         )
@@ -296,6 +313,9 @@ def stub_declarations(model):
             "def _parse_response(body: bytes, content_type: str, response_type: str) -> Any: ...",
             "def _validate_response_type(response_type: str) -> ResponseType: ...",
             "def _api_error_class(status: int) -> type[CrawloraError]: ...",
+            "def _run_before_request(hooks: list[Any], ctx: dict[str, Any]) -> None: ...",
+            "def _run_after_response(hooks: list[Any], operation_id: Any, status: int, headers: Mapping[str, str], body: Any) -> Any: ...",
+            "def _allowed_params(operation_id: str) -> set[str]: ...",
         ]
     )
     return "\n".join(lines) + "\n"

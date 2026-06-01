@@ -29,6 +29,7 @@ from .client import (
     CrawloraClient,
     CrawloraNetworkError,
     ResponseType,
+    _allowed_params,
     _api_error_class,
     _auth_headers,
     _build_request,
@@ -36,6 +37,8 @@ from .client import (
     _header_value,
     _merge_headers,
     _parse_response,
+    _run_after_response,
+    _run_before_request,
     _validate_response_type,
 )
 from .operations import GROUPS, OPERATIONS
@@ -46,10 +49,38 @@ except ImportError:  # pragma: no cover - exercised only without httpx
     httpx = None  # type: ignore[assignment]
 
 
+class _AsyncRateLimiter:
+    """Async client-side throttle: caps concurrency and spaces requests."""
+
+    def __init__(self, rps: float | None, concurrency: int | None) -> None:
+        self._interval = (1.0 / rps) if rps and rps > 0 else 0.0
+        self._sem = asyncio.Semaphore(concurrency) if concurrency and concurrency > 0 else None
+        self._lock = asyncio.Lock()
+        self._next = 0.0
+
+    async def __aenter__(self) -> "_AsyncRateLimiter":
+        if self._sem is not None:
+            await self._sem.acquire()
+        if self._interval:
+            async with self._lock:
+                now = asyncio.get_running_loop().time()
+                wait = max(0.0, self._next - now)
+                self._next = max(now, self._next) + self._interval
+            if wait > 0:
+                await asyncio.sleep(wait)
+        return self
+
+    async def __aexit__(self, *_exc: Any) -> None:
+        if self._sem is not None:
+            self._sem.release()
+
+
 class AsyncCrawloraClient:
     def __init__(self, **kwargs: Any) -> None:
         self._client = CrawloraClient(**kwargs)
         self._httpx = httpx.AsyncClient() if httpx is not None else None
+        c = self._client
+        self._limiter = _AsyncRateLimiter(c.rate_limit, c.max_concurrency) if (c.rate_limit or c.max_concurrency) else None
         for group_name, operations in GROUPS.items():
             setattr(self, group_name, _AsyncOperationGroup(self, operations))
 
@@ -80,8 +111,10 @@ class AsyncCrawloraClient:
         response_type: ResponseType = "auto",
         timeout: float | None = None,
         headers: Mapping[str, str] | None = None,
+        retries: int | None = None,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = None,
     ) -> Any:
-        return await self.request(operation_id, params, response_type=response_type, timeout=timeout, headers=headers)
+        return await self.request(operation_id, params, response_type=response_type, timeout=timeout, headers=headers, retries=retries, retry_predicate=retry_predicate)
 
     async def request(
         self,
@@ -91,11 +124,15 @@ class AsyncCrawloraClient:
         response_type: ResponseType = "auto",
         timeout: float | None = None,
         headers: Mapping[str, str] | None = None,
+        retries: int | None = None,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = None,
     ) -> Any:
         if self._httpx is None:
             return await asyncio.to_thread(
-                self._client.request, operation_id, params,
-                response_type=response_type, timeout=timeout, headers=headers,
+                lambda: self._client.request(
+                    operation_id, params, response_type=response_type, timeout=timeout,
+                    headers=headers, retries=retries, retry_predicate=retry_predicate,
+                )
             )
 
         operation: Any = OPERATIONS.get(operation_id)
@@ -104,15 +141,20 @@ class AsyncCrawloraClient:
         response_type = _validate_response_type(response_type)
         c = self._client
         c._log({"event": "request", "operation": operation_id})
+        max_retries = c.retries if retries is None else max(0, int(retries))
+        import uuid
+
+        idempotency_key = uuid.uuid4().hex if c.idempotency_keys and operation["method"] in ("POST", "PATCH") else None
 
         attempt = 0
         while True:
             try:
-                return await self._send(operation, dict(params or {}), response_type, timeout, headers)
+                return await self._send(operation, dict(params or {}), response_type, timeout, headers, idempotency_key)
             except Exception as exc:  # noqa: BLE001 - re-raised unless retryable
                 from .client import CrawloraError
 
-                if not isinstance(exc, CrawloraError) or attempt >= c.retries or not c._is_retryable(exc.status, exc):
+                retryable = retry_predicate(exc.status, exc) if (isinstance(exc, CrawloraError) and retry_predicate is not None) else (isinstance(exc, CrawloraError) and c._is_retryable(exc.status, exc))
+                if not isinstance(exc, CrawloraError) or attempt >= max_retries or not retryable:
                     raise
                 attempt += 1
                 delay = c._compute_retry_delay(attempt, exc.headers)
@@ -129,6 +171,7 @@ class AsyncCrawloraClient:
         response_type: ResponseType,
         timeout: float | None,
         headers: Mapping[str, str] | None,
+        idempotency_key: str | None = None,
     ) -> Any:
         c = self._client
         url, body, body_headers = _build_request(c.base_url, operation, params)
@@ -140,11 +183,19 @@ class AsyncCrawloraClient:
             headers or {},
         )
         req_id = _ensure_request_id(request_headers) if c.request_id else _header_value(request_headers, "x-request-id") or None
+        if idempotency_key and not _header_value(request_headers, "idempotency-key"):
+            request_headers["Idempotency-Key"] = idempotency_key
+        if c.before_request:
+            ctx = {"operation": operation.get("id"), "method": operation["method"], "url": url, "headers": request_headers}
+            _run_before_request(c.before_request, ctx)
+            url, request_headers = ctx["url"], ctx["headers"]
+        request_timeout = timeout if timeout is not None else c.timeout
         try:
-            response = await self._httpx.request(
-                operation["method"], url, content=body, headers=request_headers,
-                timeout=timeout if timeout is not None else c.timeout,
-            )
+            if self._limiter is not None:
+                async with self._limiter:
+                    response = await self._httpx.request(operation["method"], url, content=body, headers=request_headers, timeout=request_timeout)
+            else:
+                response = await self._httpx.request(operation["method"], url, content=body, headers=request_headers, timeout=request_timeout)
         except httpx.TimeoutException as exc:
             raise CrawloraNetworkError("Crawlora request timed out", request_id=req_id, cause=exc) from exc
         except httpx.HTTPError as exc:
@@ -172,6 +223,8 @@ class AsyncCrawloraClient:
             message = str(raw_msg) if raw_msg else f"HTTP {status}"
             error_class = _api_error_class(status)
             raise error_class(message, status=status, code=code, body=parsed, raw_body=raw_body, headers=resp_headers, request_id=req_id)
+        if c.after_response:
+            parsed = _run_after_response(c.after_response, operation.get("id"), status, resp_headers, parsed)
         return parsed
 
     async def paginate(
@@ -252,11 +305,15 @@ class _AsyncOperationGroup:
         operation_id = self._operations.get(name)
         if operation_id is None:
             raise AttributeError(name)
+        allowed = _allowed_params(operation_id)
 
         async def call(**params: Any) -> Any:
             response_type = params.pop("_response_type", "auto")
             timeout = params.pop("_timeout", None)
             headers = params.pop("_headers", None)
+            unknown = set(params) - allowed
+            if unknown:
+                raise TypeError(f"unexpected parameter(s) for {operation_id}: {', '.join(sorted(unknown))}")
             return await self._client.request(
                 operation_id, params, response_type=response_type, timeout=timeout, headers=headers
             )

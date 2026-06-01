@@ -6,6 +6,7 @@ import mimetypes
 import os
 import random
 import socket
+import threading
 import time
 import uuid
 from dataclasses import dataclass
@@ -15,10 +16,11 @@ from urllib.parse import urlencode, quote
 from urllib.request import Request, urlopen
 
 from ._pagination import default_items, default_start, detect_page_param, page_is_empty
+from ._transport_sync import KeepAliveTransport
 from .operations import GROUPS, OPERATIONS
 
 DEFAULT_BASE_URL = "https://api.crawlora.net/api/v1"
-VERSION = "1.4.0-sdk.1"
+VERSION = "1.5.0-sdk.1"
 DEFAULT_USER_AGENT = f"crawlora-python-sdk/{VERSION}"
 DEFAULT_MAX_RETRY_DELAY = 30.0
 DEFAULT_RETRY_STATUSES = (408, 409, 425, 429)
@@ -26,6 +28,32 @@ ResponseType = Literal["auto", "json", "text", "stream"]
 RetryPredicate = Callable[[int, "BaseException | None"], bool]
 RetryHook = Callable[[int, "BaseException", float], None]
 Logger = Callable[[Mapping[str, Any]], None]
+# before_request receives a mutable context dict {operation, method, url, headers};
+# mutating "headers"/"url" rewrites the outgoing request. after_response receives
+# (operation_id, status, headers, body) and may return a replacement body.
+BeforeRequest = Callable[[dict], None]
+AfterResponse = Callable[[str, int, Mapping[str, str], Any], Any]
+
+
+def _as_hook_list(value: Any) -> list:
+    if value is None:
+        return []
+    if callable(value):
+        return [value]
+    return list(value)
+
+
+def _run_before_request(hooks: list, ctx: dict) -> None:
+    for hook in hooks:
+        hook(ctx)
+
+
+def _run_after_response(hooks: list, operation_id: str, status: int, headers: Mapping[str, str], body: Any) -> Any:
+    for hook in hooks:
+        result = hook(operation_id, status, headers, body)
+        if result is not None:
+            body = result
+    return body
 
 
 class CrawloraError(Exception):
@@ -78,7 +106,47 @@ class _Response:
     body: bytes
 
 
+class _RateLimiter:
+    """Optional client-side throttle: caps concurrency and spaces requests to a
+    maximum rate (requests per second)."""
+
+    def __init__(self, rps: float | None, concurrency: int | None) -> None:
+        self._interval = (1.0 / rps) if rps and rps > 0 else 0.0
+        self._sem = threading.Semaphore(concurrency) if concurrency and concurrency > 0 else None
+        self._lock = threading.Lock()
+        self._next = 0.0
+
+    def __enter__(self) -> "_RateLimiter":
+        if self._sem is not None:
+            self._sem.acquire()
+        if self._interval:
+            with self._lock:
+                now = time.monotonic()
+                wait = max(0.0, self._next - now)
+                self._next = max(now, self._next) + self._interval
+            if wait > 0:
+                time.sleep(wait)
+        return self
+
+    def __exit__(self, *_exc: Any) -> None:
+        if self._sem is not None:
+            self._sem.release()
+
+
 class CrawloraClient:
+    """Synchronous client for the Crawlora API.
+
+    Call operations via grouped helpers (``client.bing.search(q="...")``) or
+    dynamically (``client.request("bing-search", {"q": "..."})``). Supports
+    configurable retries, an ``on_retry`` hook, opt-in ``request_id`` and
+    ``idempotency_keys``, ``before_request``/``after_response`` middleware,
+    client-side ``rate_limit``/``max_concurrency``, pagination
+    (``paginate``/``paginate_items``), and ``response_type="stream"``. Uses a
+    keep-alive connection pool by default; use it as a context manager (or call
+    ``close()``) to release pooled connections. See ``AsyncCrawloraClient`` for
+    an asyncio client.
+    """
+
     def __init__(
         self,
         *,
@@ -93,7 +161,12 @@ class CrawloraClient:
         retry_predicate: RetryPredicate | None = None,
         on_retry: RetryHook | None = None,
         request_id: bool = False,
+        idempotency_keys: bool = False,
+        rate_limit: float | None = None,
+        max_concurrency: int | None = None,
         logger: Logger | None = None,
+        before_request: BeforeRequest | Iterable[BeforeRequest] | None = None,
+        after_response: AfterResponse | Iterable[AfterResponse] | None = None,
         headers: Mapping[str, str] | None = None,
         user_agent: str | None = DEFAULT_USER_AGENT,
         transport: Callable[[Request, float], _Response] | None = None,
@@ -110,13 +183,33 @@ class CrawloraClient:
         self.retry_predicate = retry_predicate
         self.on_retry = on_retry
         self.request_id = request_id
+        self.idempotency_keys = idempotency_keys
+        self.rate_limit = rate_limit
+        self.max_concurrency = max_concurrency
+        self._rate_limiter = _RateLimiter(rate_limit, max_concurrency) if (rate_limit or max_concurrency) else None
         self.logger = logger
+        self.before_request = _as_hook_list(before_request)
+        self.after_response = _as_hook_list(after_response)
         self.headers = dict(headers or {})
         self.user_agent = user_agent or ""
-        self._transport = transport or self._urlopen_transport
+        # Default to a keep-alive pool (connection reuse); an injected transport
+        # (e.g. tests) is used as-is.
+        self._transport = transport or KeepAliveTransport()
 
         for group_name, operations in GROUPS.items():
             setattr(self, group_name, _OperationGroup(self, operations))
+
+    def close(self) -> None:
+        """Close pooled keep-alive connections, if any."""
+        closer = getattr(self._transport, "close", None)
+        if callable(closer):
+            closer()
+
+    def __enter__(self) -> "CrawloraClient":
+        return self
+
+    def __exit__(self, *_exc: Any) -> None:
+        self.close()
 
     def _is_retryable(self, status: int, exc: BaseException | None) -> bool:
         if self.retry_predicate is not None:
@@ -148,8 +241,13 @@ class CrawloraClient:
         response_type: ResponseType = "auto",
         timeout: float | None = None,
         headers: Mapping[str, str] | None = None,
+        retries: int | None = None,
+        retry_predicate: RetryPredicate | None = None,
     ) -> Any:
-        return self.request(operation_id, params, response_type=response_type, timeout=timeout, headers=headers)
+        return self.request(
+            operation_id, params, response_type=response_type, timeout=timeout, headers=headers,
+            retries=retries, retry_predicate=retry_predicate,
+        )
 
     def request(
         self,
@@ -159,19 +257,24 @@ class CrawloraClient:
         response_type: ResponseType = "auto",
         timeout: float | None = None,
         headers: Mapping[str, str] | None = None,
+        retries: int | None = None,
+        retry_predicate: RetryPredicate | None = None,
     ) -> Any:
         operation = OPERATIONS.get(operation_id)
         if operation is None:
             raise ValueError(f"unknown Crawlora operation: {operation_id}")
         response_type = _validate_response_type(response_type)
         self._log({"event": "request", "operation": operation_id})
+        max_retries = self.retries if retries is None else max(0, int(retries))
+        idempotency_key = uuid.uuid4().hex if self.idempotency_keys and operation["method"] in ("POST", "PATCH") else None
 
         attempt = 0
         while True:
             try:
-                return self._send(operation, dict(params or {}), response_type=response_type, timeout=timeout, headers=headers)
+                return self._send(operation, dict(params or {}), response_type=response_type, timeout=timeout, headers=headers, idempotency_key=idempotency_key)
             except CrawloraError as exc:
-                if attempt >= self.retries or not self._is_retryable(exc.status, exc):
+                retryable = retry_predicate(exc.status, exc) if retry_predicate is not None else self._is_retryable(exc.status, exc)
+                if attempt >= max_retries or not retryable:
                     raise
                 attempt += 1
                 delay = self._compute_retry_delay(attempt, exc.headers)
@@ -189,6 +292,7 @@ class CrawloraClient:
         response_type: ResponseType,
         timeout: float | None,
         headers: Mapping[str, str] | None,
+        idempotency_key: str | None = None,
     ) -> Any:
         url, body, body_headers = _build_request(self.base_url, operation, params)
         request_headers = _merge_headers(
@@ -199,9 +303,20 @@ class CrawloraClient:
             headers or {},
         )
         req_id = _ensure_request_id(request_headers) if self.request_id else _header_value(request_headers, "x-request-id") or None
+        if idempotency_key and not _header_value(request_headers, "idempotency-key"):
+            request_headers["Idempotency-Key"] = idempotency_key
+        if self.before_request:
+            ctx = {"operation": operation.get("id"), "method": operation["method"], "url": url, "headers": request_headers}
+            _run_before_request(self.before_request, ctx)
+            url, request_headers = ctx["url"], ctx["headers"]
         request = Request(url, data=body, headers=request_headers, method=operation["method"])
+        request_timeout = timeout if timeout is not None else self.timeout
         try:
-            response = self._transport(request, timeout if timeout is not None else self.timeout)
+            if self._rate_limiter is not None:
+                with self._rate_limiter:
+                    response = self._transport(request, request_timeout)
+            else:
+                response = self._transport(request, request_timeout)
         except Exception as exc:
             message = "Crawlora request timed out" if _is_timeout_error(exc) else "Crawlora transport error"
             raise CrawloraNetworkError(message, request_id=req_id, cause=exc) from exc
@@ -228,6 +343,8 @@ class CrawloraClient:
             message = parsed.get("msg") if isinstance(parsed, dict) and parsed.get("msg") else f"HTTP {response.status}"
             error_class = _api_error_class(response.status)
             raise error_class(message, status=response.status, code=code, body=parsed, raw_body=raw_body, headers=response.headers, request_id=req_id)
+        if self.after_response:
+            parsed = _run_after_response(self.after_response, operation.get("id"), response.status, response.headers, parsed)
         return parsed
 
     def paginate(
@@ -316,6 +433,20 @@ class CrawloraClient:
             raise
 
 
+def _allowed_params(operation_id: str) -> set[str]:
+    operation = OPERATIONS.get(operation_id) or {}
+    allowed = set(operation.get("pathParams", []))
+    allowed |= {p["name"] for p in operation.get("queryParams", [])}
+    allowed |= {p["name"] for p in operation.get("formParams", [])}
+    if operation.get("bodyParam"):
+        allowed.add(operation["bodyParam"])
+    allowed.add("body")
+    return allowed
+
+
+_REQUEST_OPTION_KWARGS = ("_response_type", "_timeout", "_headers")
+
+
 class _OperationGroup:
     def __init__(self, client: CrawloraClient, operations: Mapping[str, str]) -> None:
         self._client = client
@@ -325,11 +456,15 @@ class _OperationGroup:
         operation_id = self._operations.get(name)
         if operation_id is None:
             raise AttributeError(name)
+        allowed = _allowed_params(operation_id)
 
         def call(**params: Any) -> Any:
             response_type = params.pop("_response_type", "auto")
             timeout = params.pop("_timeout", None)
             headers = params.pop("_headers", None)
+            unknown = set(params) - allowed
+            if unknown:
+                raise TypeError(f"unexpected parameter(s) for {operation_id}: {', '.join(sorted(unknown))}")
             return self._client.request(operation_id, params, response_type=response_type, timeout=timeout, headers=headers)
 
         return call
