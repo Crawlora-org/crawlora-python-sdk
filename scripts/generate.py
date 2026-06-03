@@ -7,6 +7,7 @@ file only maps OpenAPI schemas to Python types and writes the Python artifacts:
 `crawlora/operations.py` (runtime metadata) and `crawlora/client.pyi` (stubs).
 """
 import json
+import keyword
 import os
 import pprint
 import shutil
@@ -23,7 +24,7 @@ SPEC_PATH = Path(os.environ.get("CRAWLORA_OPENAPI_SPEC", DEFAULT_SPEC))
 POLICY = core.NamingPolicy(
     case_fn=lambda parts: "_".join(parts) or "call",
     dedup_sep="_",
-    sanitize_keywords=True,
+    keywords=frozenset(keyword.kwlist),
     tag_group_overrides={
         "AppStore": "app_store",
         "CoinGecko": "coin_gecko",
