@@ -12,7 +12,7 @@ type stubs for editor and type-checker support.
 ## Install
 
 Published on [PyPI](https://pypi.org/project/crawlora/). The current release is a
-prerelease (`1.5.0.dev2`), so install it with `--pre`:
+prerelease (`1.5.0.dev3`), so install it with `--pre`:
 
 ```sh
 pip install --pre crawlora
