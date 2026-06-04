@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "crawlora"
-version = "1.5.0.dev1"
-description = "Python SDK for the public Crawlora API."
+version = "1.5.0.dev2"
+description = "Official Python SDK for the Crawlora web-scraping API: typed grouped and dynamic operation calls for every public endpoint, with retries, pagination, hooks, and an async client."
 readme = "README.md"
 requires-python = ">=3.10"
 license = "MIT"
@@ -32,7 +32,8 @@ dependencies = [
 async = ["httpx>=0.27"]
 
 [project.urls]
-Homepage = "https://github.com/Crawlora-org/crawlora-python-sdk"
+Homepage = "https://crawlora.net/"
+Documentation = "https://crawlora.net/docs"
 Repository = "https://github.com/Crawlora-org/crawlora-python-sdk"
 Issues = "https://github.com/Crawlora-org/crawlora-python-sdk/issues"
 
