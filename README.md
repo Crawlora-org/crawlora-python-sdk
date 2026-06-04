@@ -11,17 +11,15 @@ type stubs for editor and type-checker support.
 
 ## Install
 
-The Python SDK is currently distributed from Git beta tags:
+Published on [PyPI](https://pypi.org/project/crawlora/). The current release is a
+prerelease (`1.5.0.dev1`), so install it with `--pre`:
 
 ```sh
-pip install "git+https://github.com/Crawlora-org/crawlora-python-sdk.git@latest"
+pip install --pre crawlora
 ```
 
-For reproducible builds, pin a released tag:
-
-```sh
-pip install "git+https://github.com/Crawlora-org/crawlora-python-sdk.git@TAG"
-```
+(Git installs from beta tags also work, e.g.
+`pip install "git+https://github.com/Crawlora-org/crawlora-python-sdk.git@latest"`.)
 
 ## API Key
 
