@@ -12,7 +12,7 @@ type stubs for editor and type-checker support.
 ## Install
 
 Published on [PyPI](https://pypi.org/project/crawlora/). The current release is a
-prerelease (`1.5.0.dev1`), so install it with `--pre`:
+prerelease (`1.5.0.dev2`), so install it with `--pre`:
 
 ```sh
 pip install --pre crawlora
@@ -181,6 +181,6 @@ The import name is `crawlora`:
 from crawlora import CrawloraClient
 ```
 
-The future PyPI package target is also `crawlora`, but registry publication is
-not enabled yet. Until then, install from an explicit Git beta tag or the
-moving `latest` tag as shown above.
+The package is published on [PyPI](https://pypi.org/project/crawlora/) as
+`crawlora` (a prerelease — `pip install --pre crawlora`). Git beta tags and the
+moving `latest` tag also work, as shown above.
