@@ -13,7 +13,22 @@ license-files = ["LICENSE"]
 authors = [
   { name = "Crawlora" },
 ]
-keywords = ["crawlora", "sdk", "web-scraping", "api-client"]
+keywords = [
+  "crawlora",
+  "crawlora-sdk",
+  "web-scraping",
+  "scraping",
+  "scraper",
+  "web-scraper",
+  "api",
+  "api-client",
+  "rest-api",
+  "rest-api-client",
+  "sdk",
+  "client",
+  "data-extraction",
+  "serp",
+]
 classifiers = [
   "Development Status :: 4 - Beta",
   "Intended Audience :: Developers",
