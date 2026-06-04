@@ -1,5 +1,12 @@
 # Changelog
 
+## v1.6.0-sdk.1
+
+- Added the **Reddit** platform (`reddit.search`, `reddit.post`,
+  `reddit.comments`, `reddit.subreddit_posts`) and the **Brand** platform
+  (`brand.retrieve`), plus Yahoo Finance `yahoo_finance.lookup`. Regenerated from
+  the public API contract.
+
 ## v1.5.0-sdk.1
 
 - Added `before_request`/`after_response` middleware hooks (sync + async).

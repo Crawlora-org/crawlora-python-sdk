@@ -30,6 +30,15 @@ Literal operation ids infer response aliases in type checkers. Use grouped
 endpoint methods for ordinary app code and dynamic operation calls when your app
 stores operation ids in configuration, queues, or jobs.
 
+## Reddit And Brand
+
+Newer platforms are grouped like every other endpoint:
+
+```python
+posts = crawlora.reddit.search(q="python", subreddit="programming")
+brand = crawlora.brand.retrieve(domain="stripe.com")
+```
+
 ## Retries, Timeouts, And Headers
 
 ```python

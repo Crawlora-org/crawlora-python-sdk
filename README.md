@@ -1,8 +1,8 @@
 # Crawlora Python SDK
 
 Python client for the public Crawlora API. Use it to call Crawlora scraping,
-search, marketplace, media, maps, finance, and usage endpoints with generated
-type stubs for editor and type-checker support.
+search, social, marketplace, media, maps, finance, brand, and usage endpoints
+with generated type stubs for editor and type-checker support.
 
 - Runtime: Python 3.10+
 - Auth: `x-api-key`

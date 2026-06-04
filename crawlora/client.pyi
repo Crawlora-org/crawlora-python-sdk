@@ -968,6 +968,100 @@ ModelBingVideosResponseDoc = TypedDict('ModelBingVideosResponseDoc', {
     'msg': NotRequired[str],
 }, total=False)
 
+ModelBrandAddress = TypedDict('ModelBrandAddress', {
+    'city': NotRequired[str],
+    'country': NotRequired[str],
+    'country_code': NotRequired[str],
+    'postal_code': NotRequired[str],
+    'state_code': NotRequired[str],
+    'state_province': NotRequired[str],
+    'street': NotRequired[str],
+}, total=False)
+
+ModelBrandBackdrop = TypedDict('ModelBrandBackdrop', {
+    'colors': NotRequired[list[ModelBrandColor]],
+    'resolution': NotRequired[ModelBrandResolution],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelBrandBrandResponse = TypedDict('ModelBrandBrandResponse', {
+    'address': NotRequired[ModelBrandAddress],
+    'backdrops': NotRequired[list[ModelBrandBackdrop]],
+    'colors': NotRequired[list[ModelBrandColor]],
+    'description': NotRequired[str],
+    'domain': NotRequired[str],
+    'email': NotRequired[str],
+    'industries': NotRequired[ModelBrandIndustries],
+    'is_nsfw': NotRequired[bool],
+    'links': NotRequired[ModelBrandLinks],
+    'logos': NotRequired[list[ModelBrandLogo]],
+    'phone': NotRequired[str],
+    'primary_language': NotRequired[str],
+    'slogan': NotRequired[str],
+    'socials': NotRequired[list[ModelBrandSocial]],
+    'source': NotRequired[ModelBrandSourceDetail],
+    'stock': NotRequired[ModelBrandStock],
+    'title': NotRequired[str],
+}, total=False)
+
+ModelBrandColor = TypedDict('ModelBrandColor', {
+    'hex': NotRequired[str],
+    'name': NotRequired[str],
+}, total=False)
+
+ModelBrandEic = TypedDict('ModelBrandEic', {
+    'industry': NotRequired[str],
+    'subindustry': NotRequired[str],
+}, total=False)
+
+ModelBrandIndustries = TypedDict('ModelBrandIndustries', {
+    'eic': NotRequired[list[ModelBrandEic]],
+}, total=False)
+
+ModelBrandLinks = TypedDict('ModelBrandLinks', {
+    'blog': NotRequired[str],
+    'careers': NotRequired[str],
+    'contact': NotRequired[str],
+    'pricing': NotRequired[str],
+    'privacy': NotRequired[str],
+    'terms': NotRequired[str],
+}, total=False)
+
+ModelBrandLogo = TypedDict('ModelBrandLogo', {
+    'colors': NotRequired[list[ModelBrandColor]],
+    'mode': NotRequired[str],
+    'resolution': NotRequired[ModelBrandResolution],
+    'type': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelBrandResolution = TypedDict('ModelBrandResolution', {
+    'aspect_ratio': NotRequired[float],
+    'height': NotRequired[int],
+    'width': NotRequired[int],
+}, total=False)
+
+ModelBrandSocial = TypedDict('ModelBrandSocial', {
+    'type': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelBrandSourceDetail = TypedDict('ModelBrandSourceDetail', {
+    'type': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelBrandStock = TypedDict('ModelBrandStock', {
+    'exchange': NotRequired[str],
+    'ticker': NotRequired[str],
+}, total=False)
+
+ModelBrandRetrieveResponseDoc = TypedDict('ModelBrandRetrieveResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelBrandBrandResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
 ModelBraveDiscussion = TypedDict('ModelBraveDiscussion', {
     'age': NotRequired[str],
     'comment_count': NotRequired[int],
@@ -4811,6 +4905,114 @@ ModelProducthuntSearchTopicDoc = TypedDict('ModelProducthuntSearchTopicDoc', {
     'topic': NotRequired[dict[str, Any]],
 }, total=False)
 
+ModelRedditAuthor = TypedDict('ModelRedditAuthor', {
+    'name': NotRequired[str],
+    'profile_url': NotRequired[str],
+}, total=False)
+
+ModelRedditComment = TypedDict('ModelRedditComment', {
+    'author': NotRequired[ModelRedditAuthor],
+    'body': NotRequired[str],
+    'created': NotRequired[str],
+    'created_utc': NotRequired[int],
+    'depth': NotRequired[int],
+    'id': NotRequired[str],
+    'name': NotRequired[str],
+    'parent_id': NotRequired[str],
+    'permalink': NotRequired[str],
+    'replies': NotRequired[list[ModelRedditComment]],
+    'score': NotRequired[int],
+}, total=False)
+
+ModelRedditCommentsResponse = TypedDict('ModelRedditCommentsResponse', {
+    'comments': NotRequired[list[ModelRedditComment]],
+    'post': NotRequired[ModelRedditPost],
+    'source': NotRequired[ModelRedditSourceDetail],
+}, total=False)
+
+ModelRedditPagination = TypedDict('ModelRedditPagination', {
+    'after': NotRequired[str],
+    'limit': NotRequired[int],
+}, total=False)
+
+ModelRedditPost = TypedDict('ModelRedditPost', {
+    'author': NotRequired[ModelRedditAuthor],
+    'comment_count': NotRequired[int],
+    'created': NotRequired[str],
+    'created_utc': NotRequired[int],
+    'domain': NotRequired[str],
+    'flair': NotRequired[str],
+    'id': NotRequired[str],
+    'is_self': NotRequired[bool],
+    'is_video': NotRequired[bool],
+    'locked': NotRequired[bool],
+    'name': NotRequired[str],
+    'over_18': NotRequired[bool],
+    'permalink': NotRequired[str],
+    'score': NotRequired[int],
+    'selftext': NotRequired[str],
+    'source_feed_url': NotRequired[str],
+    'stickied': NotRequired[bool],
+    'subreddit': NotRequired[str],
+    'thumbnail': NotRequired[str],
+    'title': NotRequired[str],
+    'upvote_ratio': NotRequired[float],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelRedditPostResponse = TypedDict('ModelRedditPostResponse', {
+    'post': NotRequired[ModelRedditPost],
+    'source': NotRequired[ModelRedditSourceDetail],
+}, total=False)
+
+ModelRedditSearchResponse = TypedDict('ModelRedditSearchResponse', {
+    'pagination': NotRequired[ModelRedditPagination],
+    'posts': NotRequired[list[ModelRedditPost]],
+    'query': NotRequired[str],
+    'sort': NotRequired[str],
+    'source': NotRequired[ModelRedditSourceDetail],
+    'subreddit': NotRequired[str],
+    'time': NotRequired[str],
+}, total=False)
+
+ModelRedditSourceDetail = TypedDict('ModelRedditSourceDetail', {
+    'type': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelRedditSubredditPostsResponse = TypedDict('ModelRedditSubredditPostsResponse', {
+    'pagination': NotRequired[ModelRedditPagination],
+    'posts': NotRequired[list[ModelRedditPost]],
+    'sort': NotRequired[str],
+    'source': NotRequired[ModelRedditSourceDetail],
+    'subreddit': NotRequired[str],
+    'time': NotRequired[str],
+}, total=False)
+
+ModelRedditCommentsResponseDoc = TypedDict('ModelRedditCommentsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelRedditCommentsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelRedditPostResponseDoc = TypedDict('ModelRedditPostResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelRedditPostResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelRedditSearchResponseDoc = TypedDict('ModelRedditSearchResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelRedditSearchResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelRedditSubredditPostsResponseDoc = TypedDict('ModelRedditSubredditPostsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelRedditSubredditPostsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
 ModelReferralsReferralAttributionDoc = TypedDict('ModelReferralsReferralAttributionDoc', {
     'campaign': NotRequired[str],
     'code': NotRequired[str],
@@ -7780,6 +7982,15 @@ ModelYahoofinanceInfoResponse = TypedDict('ModelYahoofinanceInfoResponse', {
     'symbol': NotRequired[str],
 }, total=False)
 
+ModelYahoofinanceLookupResponse = TypedDict('ModelYahoofinanceLookupResponse', {
+    'count': NotRequired[int],
+    'documents': NotRequired[list[dict[str, Any]]],
+    'query': NotRequired[str],
+    'start': NotRequired[int],
+    'total': NotRequired[int],
+    'type': NotRequired[str],
+}, total=False)
+
 ModelYahoofinanceMarketStatusResponse = TypedDict('ModelYahoofinanceMarketStatusResponse', {
     'market': NotRequired[str],
     'status': NotRequired[dict[str, Any]],
@@ -7961,6 +8172,12 @@ ModelYahoofinanceInfoResponseDoc = TypedDict('ModelYahoofinanceInfoResponseDoc',
 ModelYahoofinanceIsinResponseDoc = TypedDict('ModelYahoofinanceIsinResponseDoc', {
     'code': NotRequired[int],
     'data': NotRequired[ModelYahoofinanceIsinresponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelYahoofinanceLookupResponseDoc = TypedDict('ModelYahoofinanceLookupResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelYahoofinanceLookupResponse],
     'msg': NotRequired[str],
 }, total=False)
 
@@ -8950,6 +9167,18 @@ BingVideosParams = TypedDict('BingVideosParams', {
     'count': NotRequired[int],
     'country': NotRequired[str],
     'lang': NotRequired[str],
+}, total=False)
+
+BrandRetrieveResponse = ModelBrandRetrieveResponseDoc
+BrandRetrieveParams = TypedDict('BrandRetrieveParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'domain': Required[str],
+    'force_language': NotRequired[str],
+    'maxSpeed': NotRequired[bool],
+    'maxAgeMs': NotRequired[int],
+    'timeoutMS': NotRequired[int],
 }, total=False)
 
 BraveImagesResponse = ModelBraveImagesResponseDoc
@@ -10216,6 +10445,50 @@ MetaReadyParams = TypedDict('MetaReadyParams', {
     '_headers': NotRequired[Mapping[str, str]],
 }, total=False)
 
+RedditCommentsResponse = ModelRedditCommentsResponseDoc
+RedditCommentsParams = TypedDict('RedditCommentsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': Required[str],
+    'sort': NotRequired[Literal['confidence', 'top', 'new', 'controversial', 'old', 'qa']],
+    'limit': NotRequired[int],
+    'depth': NotRequired[int],
+}, total=False)
+
+RedditPostResponse = ModelRedditPostResponseDoc
+RedditPostParams = TypedDict('RedditPostParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': Required[str],
+}, total=False)
+
+RedditSearchResponse = ModelRedditSearchResponseDoc
+RedditSearchParams = TypedDict('RedditSearchParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'q': Required[str],
+    'subreddit': NotRequired[str],
+    'sort': NotRequired[Literal['relevance', 'hot', 'new', 'top', 'comments']],
+    'time': NotRequired[Literal['hour', 'day', 'week', 'month', 'year', 'all']],
+    'limit': NotRequired[int],
+    'after': NotRequired[str],
+}, total=False)
+
+RedditSubredditPostsResponse = ModelRedditSubredditPostsResponseDoc
+RedditSubredditPostsParams = TypedDict('RedditSubredditPostsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'subreddit': Required[str],
+    'sort': NotRequired[Literal['hot', 'new', 'top', 'rising']],
+    'time': NotRequired[Literal['hour', 'day', 'week', 'month', 'year', 'all']],
+    'limit': NotRequired[int],
+    'after': NotRequired[str],
+}, total=False)
+
 ReferralsClickBody = ModelReferralsReferralClickRequestDoc
 ReferralsClickResponse = ModelReferralsReferralClickResponseDoc
 ReferralsClickParams = TypedDict('ReferralsClickParams', {
@@ -11458,6 +11731,17 @@ YahooFinanceIndustryParams = TypedDict('YahooFinanceIndustryParams', {
     'key': Required[str],
 }, total=False)
 
+YahooFinanceLookupResponse = ModelYahoofinanceLookupResponseDoc
+YahooFinanceLookupParams = TypedDict('YahooFinanceLookupParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'query': Required[str],
+    'type': NotRequired[Literal['all', 'equity', 'etf', 'mutualfund', 'index', 'future', 'currency', 'cryptocurrency']],
+    'count': NotRequired[int],
+    'start': NotRequired[int],
+}, total=False)
+
 YahooFinanceMarketStatusResponse = ModelYahoofinanceMarketStatusResponseDoc
 YahooFinanceMarketStatusParams = TypedDict('YahooFinanceMarketStatusParams', {
     '_response_type': NotRequired[ResponseType],
@@ -11956,6 +12240,9 @@ class BingGroup:
     def suggest(self, **params: Unpack[BingSuggestParams]) -> BingSuggestResponse: ...
     def videos(self, **params: Unpack[BingVideosParams]) -> BingVideosResponse: ...
 
+class BrandGroup:
+    def retrieve(self, **params: Unpack[BrandRetrieveParams]) -> BrandRetrieveResponse: ...
+
 class BraveGroup:
     def images(self, **params: Unpack[BraveImagesParams]) -> BraveImagesResponse: ...
     def news(self, **params: Unpack[BraveNewsParams]) -> BraveNewsResponse: ...
@@ -12106,6 +12393,12 @@ class ProductHuntGroup:
     def reviews(self, **params: Unpack[ProductHuntReviewsParams]) -> ProductHuntReviewsResponse: ...
     def search(self, **params: Unpack[ProductHuntSearchParams]) -> ProductHuntSearchResponse: ...
 
+class RedditGroup:
+    def comments(self, **params: Unpack[RedditCommentsParams]) -> RedditCommentsResponse: ...
+    def post(self, **params: Unpack[RedditPostParams]) -> RedditPostResponse: ...
+    def search(self, **params: Unpack[RedditSearchParams]) -> RedditSearchResponse: ...
+    def subreddit_posts(self, **params: Unpack[RedditSubredditPostsParams]) -> RedditSubredditPostsResponse: ...
+
 class ReferralsGroup:
     def click(self, **params: Unpack[ReferralsClickParams]) -> ReferralsClickResponse: ...
     def me(self, **params: Unpack[ReferralsMeParams]) -> ReferralsMeResponse: ...
@@ -12249,6 +12542,7 @@ class YahooFinanceGroup:
     def download(self, **params: Unpack[YahooFinanceDownloadParams]) -> YahooFinanceDownloadResponse: ...
     def industries(self, **params: Unpack[YahooFinanceIndustriesParams]) -> YahooFinanceIndustriesResponse: ...
     def industry(self, **params: Unpack[YahooFinanceIndustryParams]) -> YahooFinanceIndustryResponse: ...
+    def lookup(self, **params: Unpack[YahooFinanceLookupParams]) -> YahooFinanceLookupResponse: ...
     def market_status(self, **params: Unpack[YahooFinanceMarketStatusParams]) -> YahooFinanceMarketStatusResponse: ...
     def market_summary(self, **params: Unpack[YahooFinanceMarketSummaryParams]) -> YahooFinanceMarketSummaryResponse: ...
     def screener_custom(self, **params: Unpack[YahooFinanceScreenerCustomParams]) -> YahooFinanceScreenerCustomResponse: ...
@@ -12339,6 +12633,7 @@ OperationId = Literal[
     'bing-search',
     'bing-suggest',
     'bing-videos',
+    'brand-retrieve',
     'brave-images',
     'brave-news',
     'brave-search',
@@ -12465,6 +12760,10 @@ OperationId = Literal[
     'producthunt-reviews',
     'producthunt-search',
     'ready',
+    'reddit-comments',
+    'reddit-post',
+    'reddit-search',
+    'reddit-subreddit-posts',
     'referrals-click',
     'referrals-me',
     'referrals-me-events',
@@ -12585,6 +12884,7 @@ OperationId = Literal[
     'yahoo-finance-download',
     'yahoo-finance-industries',
     'yahoo-finance-industry',
+    'yahoo-finance-lookup',
     'yahoo-finance-market-status',
     'yahoo-finance-market-summary',
     'yahoo-finance-screener-custom',
@@ -12643,6 +12943,7 @@ class CrawloraClient:
     app_store: AppStoreGroup
     billing: BillingGroup
     bing: BingGroup
+    brand: BrandGroup
     brave: BraveGroup
     coin_gecko: CoinGeckoGroup
     datasets: DatasetsGroup
@@ -12655,6 +12956,7 @@ class CrawloraClient:
     linked_in: LinkedInGroup
     meta: MetaGroup
     product_hunt: ProductHuntGroup
+    reddit: RedditGroup
     referrals: ReferralsGroup
     shop_app: ShopAppGroup
     shopify: ShopifyGroup
@@ -13169,6 +13471,18 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> BingVideosResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['brand-retrieve'],
+        params: BrandRetrieveParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> BrandRetrieveResponse: ...
     @overload
     def operation(
         self,
@@ -14684,6 +14998,54 @@ class CrawloraClient:
     @overload
     def operation(
         self,
+        operation_id: Literal['reddit-comments'],
+        params: RedditCommentsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> RedditCommentsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['reddit-post'],
+        params: RedditPostParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> RedditPostResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['reddit-search'],
+        params: RedditSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> RedditSearchResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['reddit-subreddit-posts'],
+        params: RedditSubredditPostsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> RedditSubredditPostsResponse: ...
+    @overload
+    def operation(
+        self,
         operation_id: Literal['referrals-click'],
         params: ReferralsClickParams,
         *,
@@ -16121,6 +16483,18 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> YahooFinanceIndustryResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['yahoo-finance-lookup'],
+        params: YahooFinanceLookupParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> YahooFinanceLookupResponse: ...
     @overload
     def operation(
         self,
@@ -17144,6 +17518,18 @@ class CrawloraClient:
     @overload
     def request(
         self,
+        operation_id: Literal['brand-retrieve'],
+        params: BrandRetrieveParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> BrandRetrieveResponse: ...
+    @overload
+    def request(
+        self,
         operation_id: Literal['brave-images'],
         params: BraveImagesParams,
         *,
@@ -18656,6 +19042,54 @@ class CrawloraClient:
     @overload
     def request(
         self,
+        operation_id: Literal['reddit-comments'],
+        params: RedditCommentsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> RedditCommentsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['reddit-post'],
+        params: RedditPostParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> RedditPostResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['reddit-search'],
+        params: RedditSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> RedditSearchResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['reddit-subreddit-posts'],
+        params: RedditSubredditPostsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> RedditSubredditPostsResponse: ...
+    @overload
+    def request(
+        self,
         operation_id: Literal['referrals-click'],
         params: ReferralsClickParams,
         *,
@@ -20093,6 +20527,18 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> YahooFinanceIndustryResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['yahoo-finance-lookup'],
+        params: YahooFinanceLookupParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> YahooFinanceLookupResponse: ...
     @overload
     def request(
         self,
