@@ -2666,6 +2666,21 @@ ModelGoogleMapSearchOption = TypedDict('ModelGoogleMapSearchOption', {
     'language': NotRequired[str],
 }, total=False)
 
+ModelGoogleNewsResponse = TypedDict('ModelGoogleNewsResponse', {
+    'pagination': NotRequired[ModelGoogleVerticalPagination],
+    'results': NotRequired[list[ModelGoogleNewsResult]],
+}, total=False)
+
+ModelGoogleNewsResult = TypedDict('ModelGoogleNewsResult', {
+    'age': NotRequired[str],
+    'description': NotRequired[str],
+    'position': NotRequired[int],
+    'source': NotRequired[str],
+    'thumbnail': NotRequired[str],
+    'title': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
 ModelGooglePeopleAlsoAskItem = TypedDict('ModelGooglePeopleAlsoAskItem', {
     'answer': NotRequired[str],
     'date': NotRequired[str],
@@ -2728,6 +2743,28 @@ ModelGoogleSuggestionResult = TypedDict('ModelGoogleSuggestionResult', {
     'query': NotRequired[str],
 }, total=False)
 
+ModelGoogleVerticalPagination = TypedDict('ModelGoogleVerticalPagination', {
+    'next_page': NotRequired[int],
+    'page': NotRequired[int],
+    'previous_page': NotRequired[int],
+}, total=False)
+
+ModelGoogleVideoResult = TypedDict('ModelGoogleVideoResult', {
+    'age': NotRequired[str],
+    'description': NotRequired[str],
+    'duration': NotRequired[str],
+    'platform': NotRequired[str],
+    'position': NotRequired[int],
+    'thumbnail': NotRequired[str],
+    'title': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelGoogleVideosResponse = TypedDict('ModelGoogleVideosResponse', {
+    'pagination': NotRequired[ModelGoogleVerticalPagination],
+    'results': NotRequired[list[ModelGoogleVideoResult]],
+}, total=False)
+
 ModelGoogleMapPlaceResponseDoc = TypedDict('ModelGoogleMapPlaceResponseDoc', {
     'code': NotRequired[int],
     'data': NotRequired[ModelGooglePlace],
@@ -2740,6 +2777,12 @@ ModelGoogleMapSearchResponseDoc = TypedDict('ModelGoogleMapSearchResponseDoc', {
     'msg': NotRequired[str],
 }, total=False)
 
+ModelGoogleNewsResponseDoc = TypedDict('ModelGoogleNewsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelGoogleNewsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
 ModelGoogleSearchResponseDoc = TypedDict('ModelGoogleSearchResponseDoc', {
     'code': NotRequired[int],
     'data': NotRequired[ModelGoogleSearchResp],
@@ -2749,6 +2792,12 @@ ModelGoogleSearchResponseDoc = TypedDict('ModelGoogleSearchResponseDoc', {
 ModelGoogleSuggestResponseDoc = TypedDict('ModelGoogleSuggestResponseDoc', {
     'code': NotRequired[int],
     'data': NotRequired[ModelGoogleSuggestResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelGoogleVideosResponseDoc = TypedDict('ModelGoogleVideosResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelGoogleVideosResponse],
     'msg': NotRequired[str],
 }, total=False)
 
@@ -9814,6 +9863,18 @@ GoogleMapSearchParams = TypedDict('GoogleMapSearchParams', {
     'mapSearchOption': Required[GoogleMapSearchBody],
 }, total=False)
 
+GoogleNewsResponse = ModelGoogleNewsResponseDoc
+GoogleNewsParams = TypedDict('GoogleNewsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'q': Required[str],
+    'page': NotRequired[int],
+    'count': NotRequired[int],
+    'country': NotRequired[str],
+    'lang': NotRequired[str],
+}, total=False)
+
 GoogleSearchBody = ModelGoogleSearchOption
 GoogleSearchResponse = ModelGoogleSearchResponseDoc
 GoogleSearchParams = TypedDict('GoogleSearchParams', {
@@ -9932,6 +9993,18 @@ GoogleTrendsTrendingDetailParams = TypedDict('GoogleTrendsTrendingDetailParams',
     '_timeout': NotRequired[float],
     '_headers': NotRequired[Mapping[str, str]],
     'request': Required[GoogleTrendsTrendingDetailBody],
+}, total=False)
+
+GoogleVideosResponse = ModelGoogleVideosResponseDoc
+GoogleVideosParams = TypedDict('GoogleVideosParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'q': Required[str],
+    'page': NotRequired[int],
+    'count': NotRequired[int],
+    'country': NotRequired[str],
+    'lang': NotRequired[str],
 }, total=False)
 
 GooglePlayAppResponse = ModelGoogleplayAppDetailsResponse
@@ -12317,6 +12390,7 @@ class GoogleGroup:
     def jobs(self, **params: Unpack[GoogleJobsParams]) -> GoogleJobsResponse: ...
     def map_place(self, **params: Unpack[GoogleMapPlaceParams]) -> GoogleMapPlaceResponse: ...
     def map_search(self, **params: Unpack[GoogleMapSearchParams]) -> GoogleMapSearchResponse: ...
+    def news(self, **params: Unpack[GoogleNewsParams]) -> GoogleNewsResponse: ...
     def search(self, **params: Unpack[GoogleSearchParams]) -> GoogleSearchResponse: ...
     def suggest(self, **params: Unpack[GoogleSuggestParams]) -> GoogleSuggestResponse: ...
     def trends_categories(self, **params: Unpack[GoogleTrendsCategoriesParams]) -> GoogleTrendsCategoriesResponse: ...
@@ -12330,6 +12404,7 @@ class GoogleGroup:
     def trends_locations(self, **params: Unpack[GoogleTrendsLocationsParams]) -> GoogleTrendsLocationsResponse: ...
     def trends_trending(self, **params: Unpack[GoogleTrendsTrendingParams]) -> GoogleTrendsTrendingResponse: ...
     def trends_trending_detail(self, **params: Unpack[GoogleTrendsTrendingDetailParams]) -> GoogleTrendsTrendingDetailResponse: ...
+    def videos(self, **params: Unpack[GoogleVideosParams]) -> GoogleVideosResponse: ...
 
 class GooglePlayGroup:
     def app(self, **params: Unpack[GooglePlayAppParams]) -> GooglePlayAppResponse: ...
@@ -12697,6 +12772,7 @@ OperationId = Literal[
     'google-jobs',
     'google-map-place',
     'google-map-search',
+    'google-news',
     'google-search',
     'google-suggest',
     'google-trends-categories',
@@ -12710,6 +12786,7 @@ OperationId = Literal[
     'google-trends-locations',
     'google-trends-trending',
     'google-trends-trending-detail',
+    'google-videos',
     'googleplay-app',
     'googleplay-categories',
     'googleplay-datasafety',
@@ -14242,6 +14319,18 @@ class CrawloraClient:
     @overload
     def operation(
         self,
+        operation_id: Literal['google-news'],
+        params: GoogleNewsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> GoogleNewsResponse: ...
+    @overload
+    def operation(
+        self,
         operation_id: Literal['google-search'],
         params: GoogleSearchParams,
         *,
@@ -14395,6 +14484,18 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> GoogleTrendsTrendingDetailResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['google-videos'],
+        params: GoogleVideosParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> GoogleVideosResponse: ...
     @overload
     def operation(
         self,
@@ -18286,6 +18387,18 @@ class CrawloraClient:
     @overload
     def request(
         self,
+        operation_id: Literal['google-news'],
+        params: GoogleNewsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> GoogleNewsResponse: ...
+    @overload
+    def request(
+        self,
         operation_id: Literal['google-search'],
         params: GoogleSearchParams,
         *,
@@ -18439,6 +18552,18 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> GoogleTrendsTrendingDetailResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['google-videos'],
+        params: GoogleVideosParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> GoogleVideosResponse: ...
     @overload
     def request(
         self,

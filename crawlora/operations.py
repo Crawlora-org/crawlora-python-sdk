@@ -2640,6 +2640,22 @@ OPERATIONS = {'airbnb-room': {'bodyParam': None,
                        'produces': ['application/json'],
                        'queryParams': [],
                        'security': ['ApiKeyAuth']},
+ 'google-news': {'bodyParam': None,
+                 'bodyRequired': False,
+                 'consumes': ['application/json'],
+                 'formParams': [],
+                 'id': 'google-news',
+                 'method': 'GET',
+                 'paginatable': True,
+                 'path': '/google/news',
+                 'pathParams': [],
+                 'produces': ['application/json'],
+                 'queryParams': [{'in': 'query', 'name': 'q', 'required': True, 'type': 'string'},
+                                 {'in': 'query', 'name': 'page', 'type': 'integer'},
+                                 {'in': 'query', 'name': 'count', 'type': 'integer'},
+                                 {'in': 'query', 'name': 'country', 'type': 'string'},
+                                 {'in': 'query', 'name': 'lang', 'type': 'string'}],
+                 'security': ['ApiKeyAuth']},
  'google-search': {'bodyParam': 'searchOption',
                    'bodyRequired': True,
                    'consumes': ['application/json'],
@@ -3086,6 +3102,22 @@ OPERATIONS = {'airbnb-room': {'bodyParam': None,
                                    'produces': ['application/json'],
                                    'queryParams': [],
                                    'security': ['ApiKeyAuth']},
+ 'google-videos': {'bodyParam': None,
+                   'bodyRequired': False,
+                   'consumes': ['application/json'],
+                   'formParams': [],
+                   'id': 'google-videos',
+                   'method': 'GET',
+                   'paginatable': True,
+                   'path': '/google/videos',
+                   'pathParams': [],
+                   'produces': ['application/json'],
+                   'queryParams': [{'in': 'query', 'name': 'q', 'required': True, 'type': 'string'},
+                                   {'in': 'query', 'name': 'page', 'type': 'integer'},
+                                   {'in': 'query', 'name': 'count', 'type': 'integer'},
+                                   {'in': 'query', 'name': 'country', 'type': 'string'},
+                                   {'in': 'query', 'name': 'lang', 'type': 'string'}],
+                   'security': ['ApiKeyAuth']},
  'googleplay-app': {'bodyParam': None,
                     'bodyRequired': False,
                     'consumes': ['application/json'],
@@ -6335,6 +6367,7 @@ GROUPS = {'airbnb': {'room': 'airbnb-room',
             'jobs': 'google-jobs',
             'map_place': 'google-map-place',
             'map_search': 'google-map-search',
+            'news': 'google-news',
             'search': 'google-search',
             'suggest': 'google-suggest',
             'trends_categories': 'google-trends-categories',
@@ -6347,7 +6380,8 @@ GROUPS = {'airbnb': {'room': 'airbnb-room',
             'trends_explore_top_queries': 'google-trends-explore-top-queries',
             'trends_locations': 'google-trends-locations',
             'trends_trending': 'google-trends-trending',
-            'trends_trending_detail': 'google-trends-trending-detail'},
+            'trends_trending_detail': 'google-trends-trending-detail',
+            'videos': 'google-videos'},
  'google_play': {'app': 'googleplay-app',
                  'categories': 'googleplay-categories',
                  'datasafety': 'googleplay-datasafety',
@@ -6565,7 +6599,7 @@ GROUPS = {'airbnb': {'room': 'airbnb-room',
              'video': 'youtube-video'},
  'zillow': {'autocomplete': 'zillow-autocomplete', 'property': 'zillow-property', 'search': 'zillow-search'}}
 
-OPERATION_COUNT = 336
+OPERATION_COUNT = 338
 
 class OperationId:
     AIRBNB_ROOM = 'airbnb-room'
@@ -6667,6 +6701,7 @@ class OperationId:
     GOOGLE_JOBS = 'google-jobs'
     GOOGLE_MAP_PLACE = 'google-map-place'
     GOOGLE_MAP_SEARCH = 'google-map-search'
+    GOOGLE_NEWS = 'google-news'
     GOOGLE_PLAY_APP = 'googleplay-app'
     GOOGLE_PLAY_CATEGORIES = 'googleplay-categories'
     GOOGLE_PLAY_DATASAFETY = 'googleplay-datasafety'
@@ -6690,6 +6725,7 @@ class OperationId:
     GOOGLE_TRENDS_LOCATIONS = 'google-trends-locations'
     GOOGLE_TRENDS_TRENDING = 'google-trends-trending'
     GOOGLE_TRENDS_TRENDING_DETAIL = 'google-trends-trending-detail'
+    GOOGLE_VIDEOS = 'google-videos'
     INSTAGRAM_POST = 'instagram-post'
     INSTAGRAM_PROFILE = 'instagram-profile'
     INSTAGRAM_REELS = 'instagram-reels'
