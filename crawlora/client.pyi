@@ -968,6 +968,600 @@ ModelBingVideosResponseDoc = TypedDict('ModelBingVideosResponseDoc', {
     'msg': NotRequired[str],
 }, total=False)
 
+ModelBoxofficemojoCalendarChangeDay = TypedDict('ModelBoxofficemojoCalendarChangeDay', {
+    'change_date': NotRequired[str],
+    'changes': NotRequired[list[ModelBoxofficemojoCalendarChangeRow]],
+}, total=False)
+
+ModelBoxofficemojoCalendarChangeRow = TypedDict('ModelBoxofficemojoCalendarChangeRow', {
+    'distributor': NotRequired[str],
+    'new_date': NotRequired[str],
+    'new_date_path': NotRequired[str],
+    'new_date_url': NotRequired[str],
+    'old_date': NotRequired[str],
+    'old_date_path': NotRequired[str],
+    'old_date_url': NotRequired[str],
+    'release': NotRequired[str],
+    'release_path': NotRequired[str],
+    'release_url': NotRequired[str],
+    'scale': NotRequired[str],
+}, total=False)
+
+ModelBoxofficemojoCalendarChangesResponse = TypedDict('ModelBoxofficemojoCalendarChangesResponse', {
+    'fetched_at': NotRequired[str],
+    'offset': NotRequired[int],
+    'public_page_derived': NotRequired[bool],
+    'range': NotRequired[str],
+    'results': NotRequired[list[ModelBoxofficemojoCalendarChangeDay]],
+    'source_url': NotRequired[str],
+}, total=False)
+
+ModelBoxofficemojoCalendarDateResponse = TypedDict('ModelBoxofficemojoCalendarDateResponse', {
+    'date': NotRequired[str],
+    'fetched_at': NotRequired[str],
+    'public_page_derived': NotRequired[bool],
+    'results': NotRequired[list[ModelBoxofficemojoCalendarReleaseRow]],
+    'source_url': NotRequired[str],
+}, total=False)
+
+ModelBoxofficemojoCalendarDateRows = TypedDict('ModelBoxofficemojoCalendarDateRows', {
+    'date': NotRequired[str],
+    'releases': NotRequired[list[ModelBoxofficemojoCalendarReleaseRow]],
+}, total=False)
+
+ModelBoxofficemojoCalendarReleaseRow = TypedDict('ModelBoxofficemojoCalendarReleaseRow', {
+    'cast': NotRequired[list[str]],
+    'distributor': NotRequired[str],
+    'genres': NotRequired[list[str]],
+    'image_hi_res_url': NotRequired[str],
+    'image_url': NotRequired[str],
+    'release': NotRequired[str],
+    'release_path': NotRequired[str],
+    'release_url': NotRequired[str],
+    'scale': NotRequired[str],
+}, total=False)
+
+ModelBoxofficemojoCalendarResponse = TypedDict('ModelBoxofficemojoCalendarResponse', {
+    'fetched_at': NotRequired[str],
+    'month': NotRequired[int],
+    'public_page_derived': NotRequired[bool],
+    'results': NotRequired[list[ModelBoxofficemojoCalendarDateRows]],
+    'source_url': NotRequired[str],
+    'year': NotRequired[int],
+}, total=False)
+
+ModelBoxofficemojoDomesticDateResponse = TypedDict('ModelBoxofficemojoDomesticDateResponse', {
+    'date': NotRequired[str],
+    'fetched_at': NotRequired[str],
+    'public_page_derived': NotRequired[bool],
+    'results': NotRequired[list[ModelBoxofficemojoDomesticDateRow]],
+    'source_url': NotRequired[str],
+}, total=False)
+
+ModelBoxofficemojoDomesticDateRow = TypedDict('ModelBoxofficemojoDomesticDateRow', {
+    'average': NotRequired[int],
+    'average_raw': NotRequired[str],
+    'daily_gross': NotRequired[int],
+    'daily_gross_raw': NotRequired[str],
+    'day_change': NotRequired[float],
+    'days': NotRequired[int],
+    'distributor': NotRequired[str],
+    'rank': NotRequired[int],
+    'release': NotRequired[str],
+    'release_path': NotRequired[str],
+    'release_url': NotRequired[str],
+    'theaters': NotRequired[int],
+    'total_gross': NotRequired[int],
+    'total_gross_raw': NotRequired[str],
+    'week_change': NotRequired[float],
+    'yesterday_rank': NotRequired[int],
+}, total=False)
+
+ModelBoxofficemojoDomesticWeekendResponse = TypedDict('ModelBoxofficemojoDomesticWeekendResponse', {
+    'date_range': NotRequired[str],
+    'fetched_at': NotRequired[str],
+    'public_page_derived': NotRequired[bool],
+    'results': NotRequired[list[ModelBoxofficemojoDomesticWeekendRow]],
+    'source_url': NotRequired[str],
+    'week': NotRequired[int],
+    'year': NotRequired[int],
+}, total=False)
+
+ModelBoxofficemojoDomesticWeekendRow = TypedDict('ModelBoxofficemojoDomesticWeekendRow', {
+    'average': NotRequired[int],
+    'average_raw': NotRequired[str],
+    'change_percent': NotRequired[float],
+    'distributor': NotRequired[str],
+    'estimated': NotRequired[bool],
+    'gross': NotRequired[int],
+    'gross_raw': NotRequired[str],
+    'last_week_rank': NotRequired[int],
+    'new_this_week': NotRequired[bool],
+    'rank': NotRequired[int],
+    'release': NotRequired[str],
+    'theater_change': NotRequired[int],
+    'theaters': NotRequired[int],
+    'title_id': NotRequired[str],
+    'title_path': NotRequired[str],
+    'title_url': NotRequired[str],
+    'total_gross': NotRequired[int],
+    'total_gross_raw': NotRequired[str],
+    'weeks': NotRequired[int],
+}, total=False)
+
+ModelBoxofficemojoDomesticYearResponse = TypedDict('ModelBoxofficemojoDomesticYearResponse', {
+    'fetched_at': NotRequired[str],
+    'grosses_option': NotRequired[str],
+    'public_page_derived': NotRequired[bool],
+    'results': NotRequired[list[ModelBoxofficemojoDomesticYearRow]],
+    'source_url': NotRequired[str],
+    'year': NotRequired[int],
+}, total=False)
+
+ModelBoxofficemojoDomesticYearRow = TypedDict('ModelBoxofficemojoDomesticYearRow', {
+    'distributor': NotRequired[str],
+    'gross': NotRequired[int],
+    'gross_raw': NotRequired[str],
+    'new_this_year': NotRequired[bool],
+    'rank': NotRequired[int],
+    'release': NotRequired[str],
+    'release_date': NotRequired[str],
+    'release_path': NotRequired[str],
+    'release_url': NotRequired[str],
+    'theaters': NotRequired[int],
+    'total_gross': NotRequired[int],
+    'total_gross_raw': NotRequired[str],
+}, total=False)
+
+ModelBoxofficemojoLifetimeGrossRow = TypedDict('ModelBoxofficemojoLifetimeGrossRow', {
+    'lifetime_gross': NotRequired[int],
+    'lifetime_gross_raw': NotRequired[str],
+    'rank': NotRequired[int],
+    'title': NotRequired[str],
+    'title_id': NotRequired[str],
+    'title_path': NotRequired[str],
+    'title_url': NotRequired[str],
+    'year': NotRequired[int],
+}, total=False)
+
+ModelBoxofficemojoLifetimeGrossesResponse = TypedDict('ModelBoxofficemojoLifetimeGrossesResponse', {
+    'area': NotRequired[str],
+    'fetched_at': NotRequired[str],
+    'offset': NotRequired[int],
+    'public_page_derived': NotRequired[bool],
+    'range': NotRequired[str],
+    'results': NotRequired[list[ModelBoxofficemojoLifetimeGrossRow]],
+    'source_url': NotRequired[str],
+}, total=False)
+
+ModelBoxofficemojoMarketGross = TypedDict('ModelBoxofficemojoMarketGross', {
+    'gross_raw': NotRequired[str],
+    'lifetime_gross': NotRequired[int],
+    'market': NotRequired[str],
+    'rank': NotRequired[int],
+    'release_count': NotRequired[int],
+}, total=False)
+
+ModelBoxofficemojoMarketGrossTable = TypedDict('ModelBoxofficemojoMarketGrossTable', {
+    'markets': NotRequired[list[ModelBoxofficemojoMarketGross]],
+    'region': NotRequired[str],
+}, total=False)
+
+ModelBoxofficemojoReleaseDailyRow = TypedDict('ModelBoxofficemojoReleaseDailyRow', {
+    'average': NotRequired[int],
+    'average_raw': NotRequired[str],
+    'daily_gross': NotRequired[int],
+    'daily_gross_raw': NotRequired[str],
+    'date': NotRequired[str],
+    'day': NotRequired[int],
+    'day_change': NotRequired[float],
+    'day_of_week': NotRequired[str],
+    'rank': NotRequired[int],
+    'theaters': NotRequired[int],
+    'total_gross': NotRequired[int],
+    'total_gross_raw': NotRequired[str],
+    'week_change': NotRequired[float],
+}, total=False)
+
+ModelBoxofficemojoReleaseGroup = TypedDict('ModelBoxofficemojoReleaseGroup', {
+    'domestic': NotRequired[int],
+    'domestic_raw': NotRequired[str],
+    'international': NotRequired[int],
+    'international_raw': NotRequired[str],
+    'markets': NotRequired[str],
+    'name': NotRequired[str],
+    'path': NotRequired[str],
+    'rollout': NotRequired[str],
+    'url': NotRequired[str],
+    'worldwide': NotRequired[int],
+    'worldwide_raw': NotRequired[str],
+}, total=False)
+
+ModelBoxofficemojoReleaseGroupMarketRow = TypedDict('ModelBoxofficemojoReleaseGroupMarketRow', {
+    'gross': NotRequired[int],
+    'gross_raw': NotRequired[str],
+    'market': NotRequired[str],
+    'opening': NotRequired[int],
+    'opening_raw': NotRequired[str],
+    'release_date': NotRequired[str],
+    'release_path': NotRequired[str],
+    'release_url': NotRequired[str],
+}, total=False)
+
+ModelBoxofficemojoReleaseGroupRegionTable = TypedDict('ModelBoxofficemojoReleaseGroupRegionTable', {
+    'markets': NotRequired[list[ModelBoxofficemojoReleaseGroupMarketRow]],
+    'region': NotRequired[str],
+}, total=False)
+
+ModelBoxofficemojoReleaseGroupResponse = TypedDict('ModelBoxofficemojoReleaseGroupResponse', {
+    'fetched_at': NotRequired[str],
+    'path': NotRequired[str],
+    'public_page_derived': NotRequired[bool],
+    'regions': NotRequired[list[ModelBoxofficemojoReleaseGroupRegionTable]],
+    'release_group_id': NotRequired[str],
+    'source_url': NotRequired[str],
+    'title': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelBoxofficemojoReleaseResponse = TypedDict('ModelBoxofficemojoReleaseResponse', {
+    'daily_grosses': NotRequired[list[ModelBoxofficemojoReleaseDailyRow]],
+    'fetched_at': NotRequired[str],
+    'path': NotRequired[str],
+    'public_page_derived': NotRequired[bool],
+    'release_id': NotRequired[str],
+    'source_url': NotRequired[str],
+    'summary': NotRequired[ModelBoxofficemojoReleaseSummary],
+    'title': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelBoxofficemojoReleaseSummary = TypedDict('ModelBoxofficemojoReleaseSummary', {
+    'budget': NotRequired[int],
+    'budget_raw': NotRequired[str],
+    'distributor': NotRequired[str],
+    'genres': NotRequired[str],
+    'mpaa': NotRequired[str],
+    'opening': NotRequired[int],
+    'opening_raw': NotRequired[str],
+    'opening_theaters': NotRequired[int],
+    'release_date': NotRequired[str],
+    'running_time': NotRequired[str],
+    'widest_release': NotRequired[int],
+    'widest_release_raw': NotRequired[str],
+}, total=False)
+
+ModelBoxofficemojoShowdownRelease = TypedDict('ModelBoxofficemojoShowdownRelease', {
+    'close_date': NotRequired[str],
+    'distributor': NotRequired[str],
+    'domestic_gross': NotRequired[int],
+    'domestic_gross_raw': NotRequired[str],
+    'domestic_share': NotRequired[float],
+    'foreign_gross': NotRequired[int],
+    'foreign_gross_raw': NotRequired[str],
+    'foreign_share': NotRequired[float],
+    'genre': NotRequired[str],
+    'gross_to_date': NotRequired[int],
+    'gross_to_date_raw': NotRequired[str],
+    'mpa_rating': NotRequired[str],
+    'opening_share': NotRequired[float],
+    'opening_weekend': NotRequired[int],
+    'opening_weekend_raw': NotRequired[str],
+    'production_budget': NotRequired[int],
+    'production_budget_raw': NotRequired[str],
+    'release': NotRequired[str],
+    'release_date': NotRequired[str],
+    'release_path': NotRequired[str],
+    'release_url': NotRequired[str],
+    'running_time': NotRequired[str],
+    'weekends_at_number_one': NotRequired[int],
+    'weekends_in_top_ten': NotRequired[int],
+    'widest_release': NotRequired[int],
+    'worldwide_gross': NotRequired[int],
+    'worldwide_gross_raw': NotRequired[str],
+}, total=False)
+
+ModelBoxofficemojoShowdownResponse = TypedDict('ModelBoxofficemojoShowdownResponse', {
+    'fetched_at': NotRequired[str],
+    'name': NotRequired[str],
+    'path': NotRequired[str],
+    'public_page_derived': NotRequired[bool],
+    'releases': NotRequired[list[ModelBoxofficemojoShowdownRelease]],
+    'showdown_id': NotRequired[str],
+    'source_url': NotRequired[str],
+    'summary': NotRequired[ModelBoxofficemojoShowdownSummary],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelBoxofficemojoShowdownRow = TypedDict('ModelBoxofficemojoShowdownRow', {
+    'name': NotRequired[str],
+    'num_releases': NotRequired[int],
+    'path': NotRequired[str],
+    'showdown_id': NotRequired[str],
+    'top_release': NotRequired[str],
+    'top_release_gross': NotRequired[int],
+    'top_release_gross_raw': NotRequired[str],
+    'top_release_path': NotRequired[str],
+    'top_release_url': NotRequired[str],
+    'total_gross': NotRequired[int],
+    'total_gross_raw': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelBoxofficemojoShowdownSummary = TypedDict('ModelBoxofficemojoShowdownSummary', {
+    'highest_opening_release': NotRequired[str],
+    'highest_opening_weekend': NotRequired[int],
+    'release_count': NotRequired[int],
+    'top_domestic_gross': NotRequired[int],
+    'top_domestic_release': NotRequired[str],
+    'top_worldwide_gross': NotRequired[int],
+    'top_worldwide_release': NotRequired[str],
+    'total_domestic_gross': NotRequired[int],
+    'total_worldwide_gross': NotRequired[int],
+}, total=False)
+
+ModelBoxofficemojoShowdownsResponse = TypedDict('ModelBoxofficemojoShowdownsResponse', {
+    'fetched_at': NotRequired[str],
+    'public_page_derived': NotRequired[bool],
+    'results': NotRequired[list[ModelBoxofficemojoShowdownRow]],
+    'source_url': NotRequired[str],
+}, total=False)
+
+ModelBoxofficemojoTaxonomyDetailResponse = TypedDict('ModelBoxofficemojoTaxonomyDetailResponse', {
+    'fetched_at': NotRequired[str],
+    'id': NotRequired[str],
+    'kind': NotRequired[str],
+    'name': NotRequired[str],
+    'path': NotRequired[str],
+    'public_page_derived': NotRequired[bool],
+    'results': NotRequired[list[ModelBoxofficemojoTaxonomyMovieRow]],
+    'source_url': NotRequired[str],
+    'summary': NotRequired[ModelBoxofficemojoTaxonomySummary],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelBoxofficemojoTaxonomyListResponse = TypedDict('ModelBoxofficemojoTaxonomyListResponse', {
+    'fetched_at': NotRequired[str],
+    'kind': NotRequired[str],
+    'public_page_derived': NotRequired[bool],
+    'results': NotRequired[list[ModelBoxofficemojoTaxonomyListRow]],
+    'source_url': NotRequired[str],
+}, total=False)
+
+ModelBoxofficemojoTaxonomyListRow = TypedDict('ModelBoxofficemojoTaxonomyListRow', {
+    'id': NotRequired[str],
+    'lifetime_gross': NotRequired[int],
+    'lifetime_gross_raw': NotRequired[str],
+    'name': NotRequired[str],
+    'path': NotRequired[str],
+    'rank': NotRequired[int],
+    'releases': NotRequired[int],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelBoxofficemojoTaxonomyMovieRow = TypedDict('ModelBoxofficemojoTaxonomyMovieRow', {
+    'distributor': NotRequired[str],
+    'lifetime_gross': NotRequired[int],
+    'lifetime_gross_raw': NotRequired[str],
+    'max_theaters': NotRequired[int],
+    'open_theaters': NotRequired[int],
+    'opening': NotRequired[int],
+    'opening_raw': NotRequired[str],
+    'rank': NotRequired[int],
+    'release': NotRequired[str],
+    'release_date': NotRequired[str],
+    'title_id': NotRequired[str],
+    'title_path': NotRequired[str],
+    'title_url': NotRequired[str],
+}, total=False)
+
+ModelBoxofficemojoTaxonomySummary = TypedDict('ModelBoxofficemojoTaxonomySummary', {
+    'movie_count': NotRequired[int],
+    'top_distributor': NotRequired[str],
+    'top_release': NotRequired[str],
+    'top_release_gross': NotRequired[int],
+    'total_gross': NotRequired[int],
+}, total=False)
+
+ModelBoxofficemojoTitleResponse = TypedDict('ModelBoxofficemojoTitleResponse', {
+    'fetched_at': NotRequired[str],
+    'market_grosses': NotRequired[list[ModelBoxofficemojoMarketGrossTable]],
+    'path': NotRequired[str],
+    'public_page_derived': NotRequired[bool],
+    'release_groups': NotRequired[list[ModelBoxofficemojoReleaseGroup]],
+    'source_url': NotRequired[str],
+    'title': NotRequired[str],
+    'title_id': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelBoxofficemojoWeekendDistributorResponse = TypedDict('ModelBoxofficemojoWeekendDistributorResponse', {
+    'date_range': NotRequired[str],
+    'fetched_at': NotRequired[str],
+    'public_page_derived': NotRequired[bool],
+    'results': NotRequired[list[ModelBoxofficemojoWeekendDistributorRow]],
+    'source_url': NotRequired[str],
+    'week': NotRequired[int],
+    'year': NotRequired[int],
+}, total=False)
+
+ModelBoxofficemojoWeekendDistributorRow = TypedDict('ModelBoxofficemojoWeekendDistributorRow', {
+    'change_percent': NotRequired[float],
+    'distributor': NotRequired[str],
+    'gross_share': NotRequired[float],
+    'last_week_rank': NotRequired[int],
+    'rank': NotRequired[int],
+    'releases': NotRequired[int],
+    'share': NotRequired[float],
+    'top_release': NotRequired[str],
+    'top_release_path': NotRequired[str],
+    'top_release_url': NotRequired[str],
+    'total_gross': NotRequired[int],
+    'total_gross_raw': NotRequired[str],
+    'week_in_release': NotRequired[int],
+    'weekend_gross': NotRequired[int],
+    'weekend_gross_raw': NotRequired[str],
+}, total=False)
+
+ModelBoxofficemojoWeekendEstimateRow = TypedDict('ModelBoxofficemojoWeekendEstimateRow', {
+    'actual_gross': NotRequired[int],
+    'actual_gross_raw': NotRequired[str],
+    'actual_rank': NotRequired[int],
+    'actual_total': NotRequired[int],
+    'actual_total_raw': NotRequired[str],
+    'distributor': NotRequired[str],
+    'estimated_gross': NotRequired[int],
+    'estimated_gross_raw': NotRequired[str],
+    'estimated_rank': NotRequired[int],
+    'estimated_total': NotRequired[int],
+    'estimated_total_raw': NotRequired[str],
+    'gross_diff': NotRequired[int],
+    'gross_diff_percent': NotRequired[float],
+    'gross_diff_raw': NotRequired[str],
+    'rank_diff': NotRequired[int],
+    'release': NotRequired[str],
+    'release_path': NotRequired[str],
+    'release_url': NotRequired[str],
+    'theaters': NotRequired[int],
+    'weekend_in_release': NotRequired[int],
+}, total=False)
+
+ModelBoxofficemojoWeekendEstimatesResponse = TypedDict('ModelBoxofficemojoWeekendEstimatesResponse', {
+    'date_range': NotRequired[str],
+    'fetched_at': NotRequired[str],
+    'public_page_derived': NotRequired[bool],
+    'results': NotRequired[list[ModelBoxofficemojoWeekendEstimateRow]],
+    'source_url': NotRequired[str],
+    'week': NotRequired[int],
+    'year': NotRequired[int],
+}, total=False)
+
+ModelBoxofficemojoWorldwideYearResponse = TypedDict('ModelBoxofficemojoWorldwideYearResponse', {
+    'fetched_at': NotRequired[str],
+    'public_page_derived': NotRequired[bool],
+    'results': NotRequired[list[ModelBoxofficemojoWorldwideYearRow]],
+    'source_url': NotRequired[str],
+    'year': NotRequired[int],
+}, total=False)
+
+ModelBoxofficemojoWorldwideYearRow = TypedDict('ModelBoxofficemojoWorldwideYearRow', {
+    'domestic': NotRequired[int],
+    'domestic_raw': NotRequired[str],
+    'domestic_share': NotRequired[float],
+    'foreign': NotRequired[int],
+    'foreign_raw': NotRequired[str],
+    'foreign_share': NotRequired[float],
+    'rank': NotRequired[int],
+    'release_group': NotRequired[str],
+    'title_id': NotRequired[str],
+    'title_path': NotRequired[str],
+    'title_url': NotRequired[str],
+    'worldwide': NotRequired[int],
+    'worldwide_raw': NotRequired[str],
+}, total=False)
+
+ModelBoxofficemojoCalendarChangesResponseDoc = TypedDict('ModelBoxofficemojoCalendarChangesResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelBoxofficemojoCalendarChangesResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelBoxofficemojoCalendarDateResponseDoc = TypedDict('ModelBoxofficemojoCalendarDateResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelBoxofficemojoCalendarDateResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelBoxofficemojoCalendarResponseDoc = TypedDict('ModelBoxofficemojoCalendarResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelBoxofficemojoCalendarResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelBoxofficemojoDomesticDateResponseDoc = TypedDict('ModelBoxofficemojoDomesticDateResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelBoxofficemojoDomesticDateResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelBoxofficemojoDomesticWeekendResponseDoc = TypedDict('ModelBoxofficemojoDomesticWeekendResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelBoxofficemojoDomesticWeekendResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelBoxofficemojoDomesticYearResponseDoc = TypedDict('ModelBoxofficemojoDomesticYearResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelBoxofficemojoDomesticYearResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelBoxofficemojoLifetimeGrossesResponseDoc = TypedDict('ModelBoxofficemojoLifetimeGrossesResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelBoxofficemojoLifetimeGrossesResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelBoxofficemojoReleaseGroupResponseDoc = TypedDict('ModelBoxofficemojoReleaseGroupResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelBoxofficemojoReleaseGroupResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelBoxofficemojoReleaseResponseDoc = TypedDict('ModelBoxofficemojoReleaseResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelBoxofficemojoReleaseResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelBoxofficemojoShowdownResponseDoc = TypedDict('ModelBoxofficemojoShowdownResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelBoxofficemojoShowdownResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelBoxofficemojoShowdownsResponseDoc = TypedDict('ModelBoxofficemojoShowdownsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelBoxofficemojoShowdownsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelBoxofficemojoTaxonomyDetailResponseDoc = TypedDict('ModelBoxofficemojoTaxonomyDetailResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelBoxofficemojoTaxonomyDetailResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelBoxofficemojoTaxonomyListResponseDoc = TypedDict('ModelBoxofficemojoTaxonomyListResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelBoxofficemojoTaxonomyListResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelBoxofficemojoTitleResponseDoc = TypedDict('ModelBoxofficemojoTitleResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelBoxofficemojoTitleResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelBoxofficemojoWeekendDistributorResponseDoc = TypedDict('ModelBoxofficemojoWeekendDistributorResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelBoxofficemojoWeekendDistributorResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelBoxofficemojoWeekendEstimatesResponseDoc = TypedDict('ModelBoxofficemojoWeekendEstimatesResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelBoxofficemojoWeekendEstimatesResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelBoxofficemojoWorldwideYearResponseDoc = TypedDict('ModelBoxofficemojoWorldwideYearResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelBoxofficemojoWorldwideYearResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
 ModelBrandAddress = TypedDict('ModelBrandAddress', {
     'city': NotRequired[str],
     'country': NotRequired[str],
@@ -2982,6 +3576,422 @@ ModelGoogleplaySuggestResponseDoc = TypedDict('ModelGoogleplaySuggestResponseDoc
     'msg': NotRequired[str],
 }, total=False)
 
+ModelImdbAlternateTitle = TypedDict('ModelImdbAlternateTitle', {
+    'country': NotRequired[str],
+    'title': NotRequired[str],
+    'type': NotRequired[str],
+}, total=False)
+
+ModelImdbAwardItem = TypedDict('ModelImdbAwardItem', {
+    'award': NotRequired[str],
+    'category': NotRequired[str],
+    'event': NotRequired[str],
+    'notes': NotRequired[str],
+    'public_signals': NotRequired[int],
+    'recipients': NotRequired[list[ModelImdbPerson]],
+    'result': NotRequired[str],
+    'titles': NotRequired[list[ModelImdbAwardTitle]],
+    'year': NotRequired[str],
+}, total=False)
+
+ModelImdbAwardTitle = TypedDict('ModelImdbAwardTitle', {
+    'id': NotRequired[str],
+    'title': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelImdbCompanyItem = TypedDict('ModelImdbCompanyItem', {
+    'name': NotRequired[str],
+    'note': NotRequired[str],
+    'public_signals': NotRequired[int],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelImdbCompanySection = TypedDict('ModelImdbCompanySection', {
+    'companies': NotRequired[list[ModelImdbCompanyItem]],
+    'name': NotRequired[str],
+    'slug': NotRequired[str],
+}, total=False)
+
+ModelImdbCreditItem = TypedDict('ModelImdbCreditItem', {
+    'character': NotRequired[str],
+    'name': NotRequired[str],
+    'role': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelImdbCreditSection = TypedDict('ModelImdbCreditSection', {
+    'credits': NotRequired[list[ModelImdbCreditItem]],
+    'name': NotRequired[str],
+    'slug': NotRequired[str],
+}, total=False)
+
+ModelImdbCreditsResponse = TypedDict('ModelImdbCreditsResponse', {
+    'fetched_at': NotRequired[str],
+    'id': NotRequired[str],
+    'public_page_derived': NotRequired[bool],
+    'sections': NotRequired[list[ModelImdbCreditSection]],
+    'source_url': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelImdbEpisodeItem = TypedDict('ModelImdbEpisodeItem', {
+    'air_date': NotRequired[str],
+    'episode': NotRequired[int],
+    'id': NotRequired[str],
+    'plot': NotRequired[str],
+    'public_signals': NotRequired[int],
+    'rating_count': NotRequired[int],
+    'rating_value': NotRequired[float],
+    'season': NotRequired[int],
+    'title': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelImdbEpisodesResponse = TypedDict('ModelImdbEpisodesResponse', {
+    'episodes': NotRequired[list[ModelImdbEpisodeItem]],
+    'fetched_at': NotRequired[str],
+    'id': NotRequired[str],
+    'limit': NotRequired[int],
+    'public_page_derived': NotRequired[bool],
+    'season': NotRequired[int],
+    'source_url': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelImdbKeywordItem = TypedDict('ModelImdbKeywordItem', {
+    'keyword': NotRequired[str],
+    'public_signals': NotRequired[int],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelImdbLocationItem = TypedDict('ModelImdbLocationItem', {
+    'location': NotRequired[str],
+    'note': NotRequired[str],
+    'public_signals': NotRequired[int],
+}, total=False)
+
+ModelImdbNameAwardsResponse = TypedDict('ModelImdbNameAwardsResponse', {
+    'awards': NotRequired[list[ModelImdbAwardItem]],
+    'fetched_at': NotRequired[str],
+    'id': NotRequired[str],
+    'public_page_derived': NotRequired[bool],
+    'source_url': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelImdbNameCreditItem = TypedDict('ModelImdbNameCreditItem', {
+    'episodes': NotRequired[str],
+    'id': NotRequired[str],
+    'role': NotRequired[str],
+    'title': NotRequired[str],
+    'url': NotRequired[str],
+    'year': NotRequired[str],
+}, total=False)
+
+ModelImdbNameCreditSection = TypedDict('ModelImdbNameCreditSection', {
+    'credits': NotRequired[list[ModelImdbNameCreditItem]],
+    'name': NotRequired[str],
+    'slug': NotRequired[str],
+}, total=False)
+
+ModelImdbNameCreditsResponse = TypedDict('ModelImdbNameCreditsResponse', {
+    'fetched_at': NotRequired[str],
+    'id': NotRequired[str],
+    'public_page_derived': NotRequired[bool],
+    'sections': NotRequired[list[ModelImdbNameCreditSection]],
+    'source_url': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelImdbNameKnownForItem = TypedDict('ModelImdbNameKnownForItem', {
+    'category': NotRequired[str],
+    'id': NotRequired[str],
+    'title': NotRequired[str],
+    'url': NotRequired[str],
+    'year': NotRequired[str],
+}, total=False)
+
+ModelImdbNameResponse = TypedDict('ModelImdbNameResponse', {
+    'bio': NotRequired[str],
+    'birth_date': NotRequired[str],
+    'birth_place': NotRequired[str],
+    'death_date': NotRequired[str],
+    'fetched_at': NotRequired[str],
+    'id': NotRequired[str],
+    'image_url': NotRequired[str],
+    'known_for': NotRequired[list[ModelImdbNameKnownForItem]],
+    'name': NotRequired[str],
+    'professions': NotRequired[list[str]],
+    'public_page_derived': NotRequired[bool],
+    'source_url': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelImdbParentalGuideCategory = TypedDict('ModelImdbParentalGuideCategory', {
+    'items': NotRequired[list[str]],
+    'name': NotRequired[str],
+    'severity': NotRequired[str],
+    'slug': NotRequired[str],
+}, total=False)
+
+ModelImdbParentalGuideResponse = TypedDict('ModelImdbParentalGuideResponse', {
+    'categories': NotRequired[list[ModelImdbParentalGuideCategory]],
+    'fetched_at': NotRequired[str],
+    'id': NotRequired[str],
+    'public_page_derived': NotRequired[bool],
+    'source_url': NotRequired[str],
+    'summary': NotRequired[ModelImdbParentalGuideSummary],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelImdbParentalGuideSummary = TypedDict('ModelImdbParentalGuideSummary', {
+    'categories_count': NotRequired[int],
+    'highest_severity': NotRequired[str],
+    'item_count': NotRequired[int],
+    'present_categories': NotRequired[list[str]],
+    'public_page_signals': NotRequired[int],
+    'severity_counts': NotRequired[dict[str, int]],
+}, total=False)
+
+ModelImdbPerson = TypedDict('ModelImdbPerson', {
+    'name': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelImdbPublicFactItem = TypedDict('ModelImdbPublicFactItem', {
+    'public_signals': NotRequired[int],
+    'spoiler': NotRequired[bool],
+    'text': NotRequired[str],
+}, total=False)
+
+ModelImdbPublicFactsAnalysisSummary = TypedDict('ModelImdbPublicFactsAnalysisSummary', {
+    'company_count': NotRequired[int],
+    'company_section_count': NotRequired[int],
+    'filming_location_count': NotRequired[int],
+    'goof_count': NotRequired[int],
+    'keyword_count': NotRequired[int],
+    'public_fact_coverage_pages': NotRequired[int],
+    'public_page_signals': NotRequired[int],
+    'quote_count': NotRequired[int],
+    'spoiler_fact_count': NotRequired[int],
+    'trivia_count': NotRequired[int],
+}, total=False)
+
+ModelImdbReleaseInfoItem = TypedDict('ModelImdbReleaseInfoItem', {
+    'country': NotRequired[str],
+    'date': NotRequired[str],
+    'note': NotRequired[str],
+}, total=False)
+
+ModelImdbReleaseInfoResponse = TypedDict('ModelImdbReleaseInfoResponse', {
+    'alternate_titles': NotRequired[list[ModelImdbAlternateTitle]],
+    'fetched_at': NotRequired[str],
+    'id': NotRequired[str],
+    'public_page_derived': NotRequired[bool],
+    'releases': NotRequired[list[ModelImdbReleaseInfoItem]],
+    'source_url': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelImdbReviewItem = TypedDict('ModelImdbReviewItem', {
+    'author': NotRequired[str],
+    'date': NotRequired[str],
+    'helpful_votes': NotRequired[int],
+    'helpfulness': NotRequired[str],
+    'id': NotRequired[str],
+    'public_signals': NotRequired[int],
+    'rating': NotRequired[int],
+    'spoiler': NotRequired[bool],
+    'text': NotRequired[str],
+    'title': NotRequired[str],
+    'total_votes': NotRequired[int],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelImdbReviewsResponse = TypedDict('ModelImdbReviewsResponse', {
+    'fetched_at': NotRequired[str],
+    'id': NotRequired[str],
+    'limit': NotRequired[int],
+    'public_page_derived': NotRequired[bool],
+    'reviews': NotRequired[list[ModelImdbReviewItem]],
+    'source_url': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelImdbSearchItem = TypedDict('ModelImdbSearchItem', {
+    'description': NotRequired[str],
+    'id': NotRequired[str],
+    'image_url': NotRequired[str],
+    'title': NotRequired[str],
+    'title_type': NotRequired[str],
+    'url': NotRequired[str],
+    'year': NotRequired[str],
+}, total=False)
+
+ModelImdbSearchResponse = TypedDict('ModelImdbSearchResponse', {
+    'fetched_at': NotRequired[str],
+    'limit': NotRequired[int],
+    'query': NotRequired[str],
+    'results': NotRequired[list[ModelImdbSearchItem]],
+    'source_url': NotRequired[str],
+}, total=False)
+
+ModelImdbTechnicalSpecItem = TypedDict('ModelImdbTechnicalSpecItem', {
+    'name': NotRequired[str],
+    'slug': NotRequired[str],
+    'values': NotRequired[list[str]],
+}, total=False)
+
+ModelImdbTechnicalSpecsResponse = TypedDict('ModelImdbTechnicalSpecsResponse', {
+    'fetched_at': NotRequired[str],
+    'id': NotRequired[str],
+    'public_page_derived': NotRequired[bool],
+    'source_url': NotRequired[str],
+    'specs': NotRequired[list[ModelImdbTechnicalSpecItem]],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelImdbTitleAwardsResponse = TypedDict('ModelImdbTitleAwardsResponse', {
+    'awards': NotRequired[list[ModelImdbAwardItem]],
+    'fetched_at': NotRequired[str],
+    'id': NotRequired[str],
+    'public_page_derived': NotRequired[bool],
+    'source_url': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelImdbTitlePublicFactsAnalysisResponse = TypedDict('ModelImdbTitlePublicFactsAnalysisResponse', {
+    'company_credits': NotRequired[ModelImdbTitlePublicFactsResponse],
+    'filming_locations': NotRequired[ModelImdbTitlePublicFactsResponse],
+    'goofs': NotRequired[ModelImdbTitlePublicFactsResponse],
+    'keywords': NotRequired[ModelImdbTitlePublicFactsResponse],
+    'not_viewing_advice': NotRequired[bool],
+    'public_page_derived': NotRequired[bool],
+    'quotes': NotRequired[ModelImdbTitlePublicFactsResponse],
+    'summary': NotRequired[ModelImdbPublicFactsAnalysisSummary],
+    'trivia': NotRequired[ModelImdbTitlePublicFactsResponse],
+}, total=False)
+
+ModelImdbTitlePublicFactsResponse = TypedDict('ModelImdbTitlePublicFactsResponse', {
+    'company_credits': NotRequired[list[ModelImdbCompanySection]],
+    'facts': NotRequired[list[ModelImdbPublicFactItem]],
+    'fetched_at': NotRequired[str],
+    'id': NotRequired[str],
+    'keywords': NotRequired[list[ModelImdbKeywordItem]],
+    'locations': NotRequired[list[ModelImdbLocationItem]],
+    'public_page_derived': NotRequired[bool],
+    'source_url': NotRequired[str],
+    'type': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelImdbTitleResponse = TypedDict('ModelImdbTitleResponse', {
+    'cast': NotRequired[list[ModelImdbPerson]],
+    'content_rating': NotRequired[str],
+    'directors': NotRequired[list[ModelImdbPerson]],
+    'fetched_at': NotRequired[str],
+    'genres': NotRequired[list[str]],
+    'id': NotRequired[str],
+    'image_url': NotRequired[str],
+    'plot': NotRequired[str],
+    'popularity_rank': NotRequired[int],
+    'public_page_derived': NotRequired[bool],
+    'rating_count': NotRequired[int],
+    'rating_value': NotRequired[float],
+    'release_date': NotRequired[str],
+    'runtime_minutes': NotRequired[int],
+    'source_url': NotRequired[str],
+    'title': NotRequired[str],
+    'title_type': NotRequired[str],
+    'url': NotRequired[str],
+    'year': NotRequired[str],
+}, total=False)
+
+ModelImdbCreditsResponseDoc = TypedDict('ModelImdbCreditsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelImdbCreditsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelImdbEpisodesResponseDoc = TypedDict('ModelImdbEpisodesResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelImdbEpisodesResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelImdbNameAwardsResponseDoc = TypedDict('ModelImdbNameAwardsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelImdbNameAwardsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelImdbNameCreditsResponseDoc = TypedDict('ModelImdbNameCreditsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelImdbNameCreditsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelImdbNameResponseDoc = TypedDict('ModelImdbNameResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelImdbNameResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelImdbParentalGuideResponseDoc = TypedDict('ModelImdbParentalGuideResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelImdbParentalGuideResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelImdbReleaseInfoResponseDoc = TypedDict('ModelImdbReleaseInfoResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelImdbReleaseInfoResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelImdbReviewsResponseDoc = TypedDict('ModelImdbReviewsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelImdbReviewsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelImdbSearchResponseDoc = TypedDict('ModelImdbSearchResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelImdbSearchResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelImdbTechnicalSpecsResponseDoc = TypedDict('ModelImdbTechnicalSpecsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelImdbTechnicalSpecsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelImdbTitleAwardsResponseDoc = TypedDict('ModelImdbTitleAwardsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelImdbTitleAwardsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelImdbTitlePublicFactsAnalysisResponseDoc = TypedDict('ModelImdbTitlePublicFactsAnalysisResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelImdbTitlePublicFactsAnalysisResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelImdbTitlePublicFactsResponseDoc = TypedDict('ModelImdbTitlePublicFactsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelImdbTitlePublicFactsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelImdbTitleResponseDoc = TypedDict('ModelImdbTitleResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelImdbTitleResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
 ModelInstagramBusinessAddress = TypedDict('ModelInstagramBusinessAddress', {
     'city_name': NotRequired[str],
     'latitude': NotRequired[float],
@@ -3580,6 +4590,429 @@ ModelJustwatchTitleResponseDoc = TypedDict('ModelJustwatchTitleResponseDoc', {
     'msg': NotRequired[str],
 }, total=False)
 
+ModelKalshiBatchMarketHistoryResponse = TypedDict('ModelKalshiBatchMarketHistoryResponse', {
+    'end_ts': NotRequired[int],
+    'fetched_at': NotRequired[str],
+    'include_latest_before_start': NotRequired[bool],
+    'markets': NotRequired[list[ModelKalshiMarketHistoryResponse]],
+    'period_interval': NotRequired[int],
+    'source_url': NotRequired[str],
+    'start_ts': NotRequired[int],
+    'tickers': NotRequired[list[str]],
+}, total=False)
+
+ModelKalshiBatchOrderBookResponse = TypedDict('ModelKalshiBatchOrderBookResponse', {
+    'books': NotRequired[list[ModelKalshiOrderBookResponse]],
+    'fetched_at': NotRequired[str],
+    'source_url': NotRequired[str],
+    'tickers': NotRequired[list[str]],
+}, total=False)
+
+ModelKalshiCandleOhlc = TypedDict('ModelKalshiCandleOhlc', {
+    'close': NotRequired[float],
+    'high': NotRequired[float],
+    'low': NotRequired[float],
+    'mean': NotRequired[float],
+    'open': NotRequired[float],
+    'previous': NotRequired[float],
+}, total=False)
+
+ModelKalshiCompetition = TypedDict('ModelKalshiCompetition', {
+    'id': NotRequired[str],
+    'name': NotRequired[str],
+}, total=False)
+
+ModelKalshiEventHistoryResponse = TypedDict('ModelKalshiEventHistoryResponse', {
+    'adjusted_end_ts': NotRequired[int],
+    'end_ts': NotRequired[int],
+    'event_ticker': NotRequired[str],
+    'fetched_at': NotRequired[str],
+    'include_latest_before_start': NotRequired[bool],
+    'market_tickers': NotRequired[list[str]],
+    'markets': NotRequired[list[ModelKalshiMarketHistoryResponse]],
+    'period_interval': NotRequired[int],
+    'series_ticker': NotRequired[str],
+    'source_url': NotRequired[str],
+    'start_ts': NotRequired[int],
+}, total=False)
+
+ModelKalshiEventMetadataResponse = TypedDict('ModelKalshiEventMetadataResponse', {
+    'competition': NotRequired[ModelKalshiCompetition],
+    'competition_scope': NotRequired[str],
+    'event_ticker': NotRequired[str],
+    'featured_image_url': NotRequired[str],
+    'fetched_at': NotRequired[str],
+    'image_url': NotRequired[str],
+    'market_details': NotRequired[list[ModelKalshiMarketDetail]],
+    'settlement_sources': NotRequired[list[ModelKalshiSettlementSource]],
+    'source_url': NotRequired[str],
+}, total=False)
+
+ModelKalshiEventResponse = TypedDict('ModelKalshiEventResponse', {
+    'event': NotRequired[ModelKalshiEventRow],
+    'fetched_at': NotRequired[str],
+    'markets': NotRequired[list[ModelKalshiMarketRow]],
+    'source_url': NotRequired[str],
+}, total=False)
+
+ModelKalshiEventRow = TypedDict('ModelKalshiEventRow', {
+    'available_on_brokers': NotRequired[bool],
+    'category': NotRequired[str],
+    'collateral_return_type': NotRequired[str],
+    'event_ticker': NotRequired[str],
+    'last_updated': NotRequired[str],
+    'markets': NotRequired[list[ModelKalshiMarketRow]],
+    'mutually_exclusive': NotRequired[bool],
+    'series_ticker': NotRequired[str],
+    'strike_period': NotRequired[str],
+    'sub_title': NotRequired[str],
+    'title': NotRequired[str],
+}, total=False)
+
+ModelKalshiEventsResponse = TypedDict('ModelKalshiEventsResponse', {
+    'cursor': NotRequired[str],
+    'events': NotRequired[list[ModelKalshiEventRow]],
+    'fetched_at': NotRequired[str],
+    'limit': NotRequired[int],
+    'source_url': NotRequired[str],
+}, total=False)
+
+ModelKalshiExchangeHoursBlock = TypedDict('ModelKalshiExchangeHoursBlock', {
+    'close_time': NotRequired[str],
+    'open_time': NotRequired[str],
+}, total=False)
+
+ModelKalshiExchangeMaintenanceWindow = TypedDict('ModelKalshiExchangeMaintenanceWindow', {
+    'end_time': NotRequired[str],
+    'reason': NotRequired[str],
+    'start_time': NotRequired[str],
+}, total=False)
+
+ModelKalshiExchangeScheduleResponse = TypedDict('ModelKalshiExchangeScheduleResponse', {
+    'fetched_at': NotRequired[str],
+    'maintenance_windows': NotRequired[list[ModelKalshiExchangeMaintenanceWindow]],
+    'source_url': NotRequired[str],
+    'standard_hours': NotRequired[list[ModelKalshiExchangeStandardHours]],
+}, total=False)
+
+ModelKalshiExchangeStandardHours = TypedDict('ModelKalshiExchangeStandardHours', {
+    'end_time': NotRequired[str],
+    'friday': NotRequired[list[ModelKalshiExchangeHoursBlock]],
+    'monday': NotRequired[list[ModelKalshiExchangeHoursBlock]],
+    'saturday': NotRequired[list[ModelKalshiExchangeHoursBlock]],
+    'start_time': NotRequired[str],
+    'sunday': NotRequired[list[ModelKalshiExchangeHoursBlock]],
+    'thursday': NotRequired[list[ModelKalshiExchangeHoursBlock]],
+    'tuesday': NotRequired[list[ModelKalshiExchangeHoursBlock]],
+    'wednesday': NotRequired[list[ModelKalshiExchangeHoursBlock]],
+}, total=False)
+
+ModelKalshiExchangeStatusResponse = TypedDict('ModelKalshiExchangeStatusResponse', {
+    'exchange_active': NotRequired[bool],
+    'fetched_at': NotRequired[str],
+    'source_url': NotRequired[str],
+    'trading_active': NotRequired[bool],
+}, total=False)
+
+ModelKalshiHistoricalCutoffResponse = TypedDict('ModelKalshiHistoricalCutoffResponse', {
+    'fetched_at': NotRequired[str],
+    'market_settled_at': NotRequired[str],
+    'orders_updated_at': NotRequired[str],
+    'source_url': NotRequired[str],
+    'trades_created_at': NotRequired[str],
+}, total=False)
+
+ModelKalshiHistoricalMarketResponse = TypedDict('ModelKalshiHistoricalMarketResponse', {
+    'fetched_at': NotRequired[str],
+    'market': NotRequired[ModelKalshiMarketRow],
+    'source_url': NotRequired[str],
+}, total=False)
+
+ModelKalshiHistoricalMarketsResponse = TypedDict('ModelKalshiHistoricalMarketsResponse', {
+    'cursor': NotRequired[str],
+    'fetched_at': NotRequired[str],
+    'limit': NotRequired[int],
+    'markets': NotRequired[list[ModelKalshiMarketRow]],
+    'source_url': NotRequired[str],
+}, total=False)
+
+ModelKalshiHistoricalTradesResponse = TypedDict('ModelKalshiHistoricalTradesResponse', {
+    'cursor': NotRequired[str],
+    'fetched_at': NotRequired[str],
+    'limit': NotRequired[int],
+    'max_ts': NotRequired[int],
+    'min_ts': NotRequired[int],
+    'source_url': NotRequired[str],
+    'ticker': NotRequired[str],
+    'trades': NotRequired[list[ModelKalshiTradeRow]],
+}, total=False)
+
+ModelKalshiMarketCandlestick = TypedDict('ModelKalshiMarketCandlestick', {
+    'end_period_at': NotRequired[str],
+    'end_period_ts': NotRequired[int],
+    'open_interest': NotRequired[float],
+    'price': NotRequired[ModelKalshiCandleOhlc],
+    'volume': NotRequired[float],
+    'yes_ask': NotRequired[ModelKalshiCandleOhlc],
+    'yes_bid': NotRequired[ModelKalshiCandleOhlc],
+}, total=False)
+
+ModelKalshiMarketDetail = TypedDict('ModelKalshiMarketDetail', {
+    'color_code': NotRequired[str],
+    'image_url': NotRequired[str],
+    'market_ticker': NotRequired[str],
+}, total=False)
+
+ModelKalshiMarketHistoryResponse = TypedDict('ModelKalshiMarketHistoryResponse', {
+    'candlesticks': NotRequired[list[ModelKalshiMarketCandlestick]],
+    'end_ts': NotRequired[int],
+    'fetched_at': NotRequired[str],
+    'include_latest_before_start': NotRequired[bool],
+    'period_interval': NotRequired[int],
+    'series_ticker': NotRequired[str],
+    'source_url': NotRequired[str],
+    'start_ts': NotRequired[int],
+    'ticker': NotRequired[str],
+}, total=False)
+
+ModelKalshiMarketResponse = TypedDict('ModelKalshiMarketResponse', {
+    'fetched_at': NotRequired[str],
+    'market': NotRequired[ModelKalshiMarketRow],
+    'source_url': NotRequired[str],
+}, total=False)
+
+ModelKalshiMarketRow = TypedDict('ModelKalshiMarketRow', {
+    'close_time': NotRequired[str],
+    'event_ticker': NotRequired[str],
+    'expiration_time': NotRequired[str],
+    'last_price': NotRequired[float],
+    'liquidity': NotRequired[float],
+    'market_type': NotRequired[str],
+    'no_ask': NotRequired[float],
+    'no_bid': NotRequired[float],
+    'open_interest': NotRequired[float],
+    'open_time': NotRequired[str],
+    'previous_price': NotRequired[float],
+    'response_price_unit': NotRequired[str],
+    'result': NotRequired[str],
+    'rules_primary': NotRequired[str],
+    'status': NotRequired[str],
+    'sub_title': NotRequired[str],
+    'ticker': NotRequired[str],
+    'title': NotRequired[str],
+    'volume': NotRequired[float],
+    'volume_24h': NotRequired[float],
+    'yes_ask': NotRequired[float],
+    'yes_bid': NotRequired[float],
+}, total=False)
+
+ModelKalshiMarketsResponse = TypedDict('ModelKalshiMarketsResponse', {
+    'cursor': NotRequired[str],
+    'fetched_at': NotRequired[str],
+    'limit': NotRequired[int],
+    'markets': NotRequired[list[ModelKalshiMarketRow]],
+    'source_url': NotRequired[str],
+}, total=False)
+
+ModelKalshiMultivariateEventsResponse = TypedDict('ModelKalshiMultivariateEventsResponse', {
+    'cursor': NotRequired[str],
+    'events': NotRequired[list[ModelKalshiEventRow]],
+    'fetched_at': NotRequired[str],
+    'limit': NotRequired[int],
+    'source_url': NotRequired[str],
+}, total=False)
+
+ModelKalshiOrderBookLevel = TypedDict('ModelKalshiOrderBookLevel', {
+    'price': NotRequired[float],
+    'size': NotRequired[float],
+}, total=False)
+
+ModelKalshiOrderBookResponse = TypedDict('ModelKalshiOrderBookResponse', {
+    'fetched_at': NotRequired[str],
+    'no': NotRequired[list[ModelKalshiOrderBookLevel]],
+    'raw_unit_hint': NotRequired[str],
+    'source_url': NotRequired[str],
+    'ticker': NotRequired[str],
+    'yes': NotRequired[list[ModelKalshiOrderBookLevel]],
+}, total=False)
+
+ModelKalshiSeriesDetailResponse = TypedDict('ModelKalshiSeriesDetailResponse', {
+    'fetched_at': NotRequired[str],
+    'series': NotRequired[ModelKalshiSeriesRow],
+    'source_url': NotRequired[str],
+}, total=False)
+
+ModelKalshiSeriesResponse = TypedDict('ModelKalshiSeriesResponse', {
+    'cursor': NotRequired[str],
+    'fetched_at': NotRequired[str],
+    'limit': NotRequired[int],
+    'series': NotRequired[list[ModelKalshiSeriesRow]],
+    'source_url': NotRequired[str],
+}, total=False)
+
+ModelKalshiSeriesRow = TypedDict('ModelKalshiSeriesRow', {
+    'category': NotRequired[str],
+    'contract_terms_url': NotRequired[str],
+    'contract_url': NotRequired[str],
+    'fee_multiplier': NotRequired[float],
+    'fee_type': NotRequired[str],
+    'frequency': NotRequired[str],
+    'last_updated': NotRequired[str],
+    'series_ticker': NotRequired[str],
+    'settlement_sources': NotRequired[list[ModelKalshiSettlementSource]],
+    'title': NotRequired[str],
+}, total=False)
+
+ModelKalshiSettlementSource = TypedDict('ModelKalshiSettlementSource', {
+    'name': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelKalshiTradeRow = TypedDict('ModelKalshiTradeRow', {
+    'count': NotRequired[float],
+    'created_time': NotRequired[str],
+    'created_ts': NotRequired[int],
+    'is_block_trade': NotRequired[bool],
+    'no_price': NotRequired[float],
+    'taker_book_side': NotRequired[str],
+    'taker_outcome_side': NotRequired[str],
+    'taker_side': NotRequired[str],
+    'ticker': NotRequired[str],
+    'trade_id': NotRequired[str],
+    'yes_price': NotRequired[float],
+}, total=False)
+
+ModelKalshiTradesResponse = TypedDict('ModelKalshiTradesResponse', {
+    'cursor': NotRequired[str],
+    'fetched_at': NotRequired[str],
+    'limit': NotRequired[int],
+    'max_ts': NotRequired[int],
+    'min_ts': NotRequired[int],
+    'source_url': NotRequired[str],
+    'ticker': NotRequired[str],
+    'trades': NotRequired[list[ModelKalshiTradeRow]],
+}, total=False)
+
+ModelKalshiBatchMarketHistoryResponseDoc = TypedDict('ModelKalshiBatchMarketHistoryResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelKalshiBatchMarketHistoryResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelKalshiBatchOrderBookResponseDoc = TypedDict('ModelKalshiBatchOrderBookResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelKalshiBatchOrderBookResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelKalshiEventHistoryResponseDoc = TypedDict('ModelKalshiEventHistoryResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelKalshiEventHistoryResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelKalshiEventMetadataResponseDoc = TypedDict('ModelKalshiEventMetadataResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelKalshiEventMetadataResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelKalshiEventResponseDoc = TypedDict('ModelKalshiEventResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelKalshiEventResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelKalshiEventsResponseDoc = TypedDict('ModelKalshiEventsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelKalshiEventsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelKalshiExchangeScheduleResponseDoc = TypedDict('ModelKalshiExchangeScheduleResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelKalshiExchangeScheduleResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelKalshiExchangeStatusResponseDoc = TypedDict('ModelKalshiExchangeStatusResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelKalshiExchangeStatusResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelKalshiHistoricalCutoffResponseDoc = TypedDict('ModelKalshiHistoricalCutoffResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelKalshiHistoricalCutoffResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelKalshiHistoricalMarketResponseDoc = TypedDict('ModelKalshiHistoricalMarketResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelKalshiHistoricalMarketResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelKalshiHistoricalMarketsResponseDoc = TypedDict('ModelKalshiHistoricalMarketsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelKalshiHistoricalMarketsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelKalshiHistoricalTradesResponseDoc = TypedDict('ModelKalshiHistoricalTradesResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelKalshiHistoricalTradesResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelKalshiMarketHistoryResponseDoc = TypedDict('ModelKalshiMarketHistoryResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelKalshiMarketHistoryResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelKalshiMarketResponseDoc = TypedDict('ModelKalshiMarketResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelKalshiMarketResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelKalshiMarketsResponseDoc = TypedDict('ModelKalshiMarketsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelKalshiMarketsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelKalshiMultivariateEventsResponseDoc = TypedDict('ModelKalshiMultivariateEventsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelKalshiMultivariateEventsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelKalshiOrderBookResponseDoc = TypedDict('ModelKalshiOrderBookResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelKalshiOrderBookResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelKalshiSeriesDetailResponseDoc = TypedDict('ModelKalshiSeriesDetailResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelKalshiSeriesDetailResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelKalshiSeriesResponseDoc = TypedDict('ModelKalshiSeriesResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelKalshiSeriesResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelKalshiTradesResponseDoc = TypedDict('ModelKalshiTradesResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelKalshiTradesResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
 ModelLinkedinCustomer = TypedDict('ModelLinkedinCustomer', {
     'follower_count': NotRequired[int],
     'industry': NotRequired[str],
@@ -3680,6 +5113,885 @@ ModelLinkedinProductResponseDoc = TypedDict('ModelLinkedinProductResponseDoc', {
 ModelLinkedinShowcaseResponseDoc = TypedDict('ModelLinkedinShowcaseResponseDoc', {
     'code': NotRequired[int],
     'data': NotRequired[ModelLinkedinLinkedinCompanyResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelMetaculusForecastHistoryPoint = TypedDict('ModelMetaculusForecastHistoryPoint', {
+    'center': NotRequired[float],
+    'centers': NotRequired[list[float]],
+    'end_time': NotRequired[str],
+    'end_ts': NotRequired[float],
+    'forecaster_count': NotRequired[int],
+    'interval_lower_bounds': NotRequired[list[float]],
+    'interval_upper_bounds': NotRequired[list[float]],
+    'lower': NotRequired[float],
+    'start_time': NotRequired[str],
+    'start_ts': NotRequired[float],
+    'upper': NotRequired[float],
+}, total=False)
+
+ModelMetaculusForecastHistoryResponse = TypedDict('ModelMetaculusForecastHistoryResponse', {
+    'fetched_at': NotRequired[str],
+    'max_points': NotRequired[int],
+    'method': NotRequired[str],
+    'points': NotRequired[list[ModelMetaculusForecastHistoryPoint]],
+    'points_count': NotRequired[int],
+    'public_page_derived': NotRequired[bool],
+    'question': NotRequired[ModelMetaculusQuestionRow],
+    'source_url': NotRequired[str],
+}, total=False)
+
+ModelMetaculusForecastSummary = TypedDict('ModelMetaculusForecastSummary', {
+    'center': NotRequired[float],
+    'centers': NotRequired[list[float]],
+    'forecaster_count': NotRequired[int],
+    'history_points': NotRequired[int],
+    'interval_lower_bounds': NotRequired[list[float]],
+    'interval_upper_bounds': NotRequired[list[float]],
+    'lower': NotRequired[float],
+    'method': NotRequired[str],
+    'upper': NotRequired[float],
+}, total=False)
+
+ModelMetaculusForecastsResponse = TypedDict('ModelMetaculusForecastsResponse', {
+    'fetched_at': NotRequired[str],
+    'methods': NotRequired[list[ModelMetaculusForecastSummary]],
+    'methods_count': NotRequired[int],
+    'public_page_derived': NotRequired[bool],
+    'question': NotRequired[ModelMetaculusQuestionRow],
+    'source_url': NotRequired[str],
+}, total=False)
+
+ModelMetaculusOptionForecast = TypedDict('ModelMetaculusOptionForecast', {
+    'center': NotRequired[float],
+    'forecast_value': NotRequired[float],
+    'forecaster_count': NotRequired[int],
+    'index': NotRequired[int],
+    'label': NotRequired[str],
+    'lower': NotRequired[float],
+    'mean': NotRequired[float],
+    'upper': NotRequired[float],
+}, total=False)
+
+ModelMetaculusOptionsChange = TypedDict('ModelMetaculusOptionsChange', {
+    'changed_at': NotRequired[str],
+    'options': NotRequired[list[str]],
+}, total=False)
+
+ModelMetaculusOptionsResponse = TypedDict('ModelMetaculusOptionsResponse', {
+    'fetched_at': NotRequired[str],
+    'method': NotRequired[str],
+    'options': NotRequired[list[ModelMetaculusOptionForecast]],
+    'options_count': NotRequired[int],
+    'options_history': NotRequired[list[ModelMetaculusOptionsChange]],
+    'public_page_derived': NotRequired[bool],
+    'question': NotRequired[ModelMetaculusQuestionRow],
+    'source_url': NotRequired[str],
+}, total=False)
+
+ModelMetaculusProject = TypedDict('ModelMetaculusProject', {
+    'emoji': NotRequired[str],
+    'id': NotRequired[int],
+    'name': NotRequired[str],
+    'slug': NotRequired[str],
+    'type': NotRequired[str],
+}, total=False)
+
+ModelMetaculusQuestionMetadataResponse = TypedDict('ModelMetaculusQuestionMetadataResponse', {
+    'actual_close_time': NotRequired[str],
+    'actual_resolve_time': NotRequired[str],
+    'all_options_ever': NotRequired[list[str]],
+    'default_aggregation_method': NotRequired[str],
+    'default_score_type': NotRequired[str],
+    'fetched_at': NotRequired[str],
+    'group_variable': NotRequired[str],
+    'inbound_outcome_count': NotRequired[int],
+    'include_bots_in_aggregates': NotRequired[bool],
+    'open_lower_bound': NotRequired[bool],
+    'open_upper_bound': NotRequired[bool],
+    'options': NotRequired[list[str]],
+    'options_history': NotRequired[list[ModelMetaculusOptionsChange]],
+    'options_order': NotRequired[str],
+    'possibilities': NotRequired[str],
+    'public_page_derived': NotRequired[bool],
+    'question': NotRequired[ModelMetaculusQuestionRow],
+    'resolution': NotRequired[str],
+    'resolution_set_time': NotRequired[str],
+    'scaling': NotRequired[ModelMetaculusQuestionScaling],
+    'short_title': NotRequired[str],
+    'source_url': NotRequired[str],
+}, total=False)
+
+ModelMetaculusQuestionResponse = TypedDict('ModelMetaculusQuestionResponse', {
+    'fetched_at': NotRequired[str],
+    'question': NotRequired[ModelMetaculusQuestionRow],
+    'source_url': NotRequired[str],
+}, total=False)
+
+ModelMetaculusQuestionRow = TypedDict('ModelMetaculusQuestionRow', {
+    'categories': NotRequired[list[ModelMetaculusProject]],
+    'comment_count': NotRequired[int],
+    'edited_at': NotRequired[str],
+    'forecaster_count': NotRequired[int],
+    'forecasts_count': NotRequired[int],
+    'id': NotRequired[int],
+    'latest_forecast_center': NotRequired[float],
+    'latest_forecast_lower': NotRequired[float],
+    'latest_forecast_upper': NotRequired[float],
+    'open_time': NotRequired[str],
+    'projects': NotRequired[list[ModelMetaculusProject]],
+    'public_page_derived': NotRequired[bool],
+    'published_at': NotRequired[str],
+    'question_id': NotRequired[int],
+    'question_title': NotRequired[str],
+    'question_type': NotRequired[str],
+    'resolved': NotRequired[bool],
+    'scheduled_close_time': NotRequired[str],
+    'scheduled_resolve_time': NotRequired[str],
+    'slug': NotRequired[str],
+    'status': NotRequired[str],
+    'title': NotRequired[str],
+    'unit': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelMetaculusQuestionScaling = TypedDict('ModelMetaculusQuestionScaling', {
+    'continuous_range': NotRequired[list[str]],
+    'inbound_outcome_count': NotRequired[int],
+    'nominal_max': NotRequired[float],
+    'nominal_min': NotRequired[float],
+    'open_lower_bound': NotRequired[bool],
+    'open_upper_bound': NotRequired[bool],
+    'range_max': NotRequired[float],
+    'range_min': NotRequired[float],
+    'zero_point': NotRequired[float],
+}, total=False)
+
+ModelMetaculusQuestionsResponse = TypedDict('ModelMetaculusQuestionsResponse', {
+    'feed': NotRequired[str],
+    'fetched_at': NotRequired[str],
+    'limit': NotRequired[int],
+    'questions': NotRequired[list[ModelMetaculusQuestionRow]],
+    'source_url': NotRequired[str],
+}, total=False)
+
+ModelMetaculusForecastHistoryResponseDoc = TypedDict('ModelMetaculusForecastHistoryResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelMetaculusForecastHistoryResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelMetaculusForecastsResponseDoc = TypedDict('ModelMetaculusForecastsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelMetaculusForecastsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelMetaculusMetadataResponseDoc = TypedDict('ModelMetaculusMetadataResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelMetaculusQuestionMetadataResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelMetaculusOptionsResponseDoc = TypedDict('ModelMetaculusOptionsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelMetaculusOptionsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelMetaculusQuestionResponseDoc = TypedDict('ModelMetaculusQuestionResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelMetaculusQuestionResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelMetaculusQuestionsResponseDoc = TypedDict('ModelMetaculusQuestionsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelMetaculusQuestionsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelPolymarketActivityTradesResponse = TypedDict('ModelPolymarketActivityTradesResponse', {
+    'event_id': NotRequired[str],
+    'fetched_at': NotRequired[str],
+    'filter_amount': NotRequired[str],
+    'filter_type': NotRequired[str],
+    'limit': NotRequired[int],
+    'market': NotRequired[str],
+    'offset': NotRequired[int],
+    'source_url': NotRequired[str],
+    'taker_only': NotRequired[str],
+    'trades': NotRequired[list[ModelPolymarketTradeSummary]],
+}, total=False)
+
+ModelPolymarketBatchTokenMidpoint = TypedDict('ModelPolymarketBatchTokenMidpoint', {
+    'midpoint': NotRequired[float],
+    'token_id': NotRequired[str],
+}, total=False)
+
+ModelPolymarketBatchTokenMidpointsOption = TypedDict('ModelPolymarketBatchTokenMidpointsOption', {
+    'token_ids': Required[list[str]],
+}, total=False)
+
+ModelPolymarketBatchTokenMidpointsResponse = TypedDict('ModelPolymarketBatchTokenMidpointsResponse', {
+    'fetched_at': NotRequired[str],
+    'midpoints': NotRequired[list[ModelPolymarketBatchTokenMidpoint]],
+    'missing': NotRequired[list[str]],
+    'source_url': NotRequired[str],
+    'token_ids': NotRequired[list[str]],
+}, total=False)
+
+ModelPolymarketBatchTokenOrderBooksOption = TypedDict('ModelPolymarketBatchTokenOrderBooksOption', {
+    'token_ids': Required[list[str]],
+}, total=False)
+
+ModelPolymarketBatchTokenOrderBooksResponse = TypedDict('ModelPolymarketBatchTokenOrderBooksResponse', {
+    'books': NotRequired[list[ModelPolymarketOrderBookSummary]],
+    'fetched_at': NotRequired[str],
+    'missing': NotRequired[list[str]],
+    'source_url': NotRequired[str],
+    'token_ids': NotRequired[list[str]],
+}, total=False)
+
+ModelPolymarketBatchTokenPrice = TypedDict('ModelPolymarketBatchTokenPrice', {
+    'buy_price': NotRequired[float],
+    'sell_price': NotRequired[float],
+    'token_id': NotRequired[str],
+}, total=False)
+
+ModelPolymarketBatchTokenPricesOption = TypedDict('ModelPolymarketBatchTokenPricesOption', {
+    'side': NotRequired[str],
+    'token_ids': Required[list[str]],
+}, total=False)
+
+ModelPolymarketBatchTokenPricesResponse = TypedDict('ModelPolymarketBatchTokenPricesResponse', {
+    'fetched_at': NotRequired[str],
+    'missing': NotRequired[list[str]],
+    'prices': NotRequired[list[ModelPolymarketBatchTokenPrice]],
+    'side': NotRequired[str],
+    'source_url': NotRequired[str],
+    'token_ids': NotRequired[list[str]],
+}, total=False)
+
+ModelPolymarketBatchTokenSpread = TypedDict('ModelPolymarketBatchTokenSpread', {
+    'spread': NotRequired[float],
+    'token_id': NotRequired[str],
+}, total=False)
+
+ModelPolymarketBatchTokenSpreadsOption = TypedDict('ModelPolymarketBatchTokenSpreadsOption', {
+    'token_ids': Required[list[str]],
+}, total=False)
+
+ModelPolymarketBatchTokenSpreadsResponse = TypedDict('ModelPolymarketBatchTokenSpreadsResponse', {
+    'fetched_at': NotRequired[str],
+    'missing': NotRequired[list[str]],
+    'source_url': NotRequired[str],
+    'spreads': NotRequired[list[ModelPolymarketBatchTokenSpread]],
+    'token_ids': NotRequired[list[str]],
+}, total=False)
+
+ModelPolymarketClobMarketResponse = TypedDict('ModelPolymarketClobMarketResponse', {
+    'condition_id': NotRequired[str],
+    'fetched_at': NotRequired[str],
+    'market': NotRequired[ModelPolymarketClobMarketSummary],
+    'source_url': NotRequired[str],
+}, total=False)
+
+ModelPolymarketClobMarketSummary = TypedDict('ModelPolymarketClobMarketSummary', {
+    'accepting_order_timestamp': NotRequired[str],
+    'accepting_orders': NotRequired[bool],
+    'active': NotRequired[bool],
+    'archived': NotRequired[bool],
+    'closed': NotRequired[bool],
+    'condition_id': NotRequired[str],
+    'description': NotRequired[str],
+    'enable_order_book': NotRequired[bool],
+    'end_date': NotRequired[str],
+    'game_start_time': NotRequired[str],
+    'icon_url': NotRequired[str],
+    'image_url': NotRequired[str],
+    'is_50_50_outcome': NotRequired[bool],
+    'maker_base_fee': NotRequired[int],
+    'market_slug': NotRequired[str],
+    'market_url': NotRequired[str],
+    'minimum_order_size': NotRequired[float],
+    'minimum_tick_size': NotRequired[float],
+    'neg_risk': NotRequired[bool],
+    'neg_risk_market_id': NotRequired[str],
+    'neg_risk_request_id': NotRequired[str],
+    'notifications_enabled': NotRequired[bool],
+    'question': NotRequired[str],
+    'question_id': NotRequired[str],
+    'rewards': NotRequired[ModelPolymarketClobRewardsSummary],
+    'seconds_delay': NotRequired[int],
+    'tags': NotRequired[list[str]],
+    'taker_base_fee': NotRequired[int],
+    'tokens': NotRequired[list[ModelPolymarketClobTokenSummary]],
+}, total=False)
+
+ModelPolymarketClobRewardRate = TypedDict('ModelPolymarketClobRewardRate', {
+    'asset_address': NotRequired[str],
+    'rewards_daily_rate': NotRequired[float],
+}, total=False)
+
+ModelPolymarketClobRewardsSummary = TypedDict('ModelPolymarketClobRewardsSummary', {
+    'max_spread': NotRequired[float],
+    'min_size': NotRequired[float],
+    'rates': NotRequired[list[ModelPolymarketClobRewardRate]],
+}, total=False)
+
+ModelPolymarketClobTokenSummary = TypedDict('ModelPolymarketClobTokenSummary', {
+    'outcome': NotRequired[str],
+    'price': NotRequired[float],
+    'token_id': NotRequired[str],
+    'winner': NotRequired[bool],
+}, total=False)
+
+ModelPolymarketEventDetailResponse = TypedDict('ModelPolymarketEventDetailResponse', {
+    'event': NotRequired[ModelPolymarketEventSummary],
+    'fetched_at': NotRequired[str],
+    'slug': NotRequired[str],
+    'source_url': NotRequired[str],
+}, total=False)
+
+ModelPolymarketEventSummary = TypedDict('ModelPolymarketEventSummary', {
+    'active': NotRequired[bool],
+    'closed': NotRequired[bool],
+    'comment_count': NotRequired[int],
+    'description': NotRequired[str],
+    'end_date': NotRequired[str],
+    'featured': NotRequired[bool],
+    'icon_url': NotRequired[str],
+    'id': NotRequired[str],
+    'image_url': NotRequired[str],
+    'liquidity': NotRequired[float],
+    'markets': NotRequired[list[ModelPolymarketMarketSummary]],
+    'markets_count': NotRequired[int],
+    'open_interest': NotRequired[float],
+    'restricted': NotRequired[bool],
+    'slug': NotRequired[str],
+    'start_date': NotRequired[str],
+    'tags': NotRequired[list[ModelPolymarketTagSummary]],
+    'title': NotRequired[str],
+    'updated_at': NotRequired[str],
+    'url': NotRequired[str],
+    'volume': NotRequired[float],
+    'volume_24h': NotRequired[float],
+}, total=False)
+
+ModelPolymarketEventsResponse = TypedDict('ModelPolymarketEventsResponse', {
+    'ascending': NotRequired[bool],
+    'closed': NotRequired[str],
+    'events': NotRequired[list[ModelPolymarketEventSummary]],
+    'fetched_at': NotRequired[str],
+    'limit': NotRequired[int],
+    'offset': NotRequired[int],
+    'order': NotRequired[str],
+    'source_url': NotRequired[str],
+}, total=False)
+
+ModelPolymarketHomepageFeedResponse = TypedDict('ModelPolymarketHomepageFeedResponse', {
+    'cursor': NotRequired[str],
+    'events': NotRequired[list[ModelPolymarketEventSummary]],
+    'feed': NotRequired[str],
+    'fetched_at': NotRequired[str],
+    'has_more': NotRequired[bool],
+    'limit': NotRequired[int],
+    'markets': NotRequired[list[ModelPolymarketMarketSummary]],
+    'next_cursor': NotRequired[str],
+    'source_kind': NotRequired[str],
+    'source_url': NotRequired[str],
+}, total=False)
+
+ModelPolymarketLeaderboardEntry = TypedDict('ModelPolymarketLeaderboardEntry', {
+    'profile_image_url': NotRequired[str],
+    'profit_loss': NotRequired[float],
+    'proxy_wallet': NotRequired[str],
+    'rank': NotRequired[str],
+    'user_name': NotRequired[str],
+    'verified_badge': NotRequired[bool],
+    'volume': NotRequired[float],
+    'x_username': NotRequired[str],
+}, total=False)
+
+ModelPolymarketLeaderboardResponse = TypedDict('ModelPolymarketLeaderboardResponse', {
+    'fetched_at': NotRequired[str],
+    'limit': NotRequired[int],
+    'rows': NotRequired[list[ModelPolymarketLeaderboardEntry]],
+    'sort_by': NotRequired[str],
+    'source_url': NotRequired[str],
+    'window': NotRequired[str],
+}, total=False)
+
+ModelPolymarketMacroDashboardResponse = TypedDict('ModelPolymarketMacroDashboardResponse', {
+    'cursor': NotRequired[str],
+    'events': NotRequired[list[ModelPolymarketEventSummary]],
+    'fetched_at': NotRequired[str],
+    'has_more': NotRequired[bool],
+    'limit': NotRequired[int],
+    'next_cursor': NotRequired[str],
+    'source_url': NotRequired[str],
+}, total=False)
+
+ModelPolymarketMarketDetailResponse = TypedDict('ModelPolymarketMarketDetailResponse', {
+    'condition_id': NotRequired[str],
+    'fetched_at': NotRequired[str],
+    'id': NotRequired[str],
+    'market': NotRequired[ModelPolymarketMarketSummary],
+    'slug': NotRequired[str],
+    'source_url': NotRequired[str],
+}, total=False)
+
+ModelPolymarketMarketLiquidityResponse = TypedDict('ModelPolymarketMarketLiquidityResponse', {
+    'clob_market': NotRequired[ModelPolymarketClobMarketSummary],
+    'condition_id': NotRequired[str],
+    'fetched_at': NotRequired[str],
+    'id': NotRequired[str],
+    'market': NotRequired[ModelPolymarketMarketSummary],
+    'slug': NotRequired[str],
+    'source_urls': NotRequired[list[str]],
+    'tokens': NotRequired[list[ModelPolymarketMarketLiquidityTokenSummary]],
+}, total=False)
+
+ModelPolymarketMarketLiquidityTokenSummary = TypedDict('ModelPolymarketMarketLiquidityTokenSummary', {
+    'ask_depth': NotRequired[float],
+    'bid_depth': NotRequired[float],
+    'buy_price': NotRequired[float],
+    'clob_price': NotRequired[float],
+    'gamma_price': NotRequired[float],
+    'last_trade_price': NotRequired[float],
+    'midpoint': NotRequired[float],
+    'orderbook_best_ask': NotRequired[float],
+    'orderbook_best_bid': NotRequired[float],
+    'orderbook_spread': NotRequired[float],
+    'outcome': NotRequired[str],
+    'sell_price': NotRequired[float],
+    'spread': NotRequired[float],
+    'token_id': NotRequired[str],
+}, total=False)
+
+ModelPolymarketMarketSummary = TypedDict('ModelPolymarketMarketSummary', {
+    'active': NotRequired[bool],
+    'best_ask': NotRequired[float],
+    'best_bid': NotRequired[float],
+    'closed': NotRequired[bool],
+    'condition_id': NotRequired[str],
+    'end_date': NotRequired[str],
+    'id': NotRequired[str],
+    'last_trade_price': NotRequired[float],
+    'liquidity': NotRequired[float],
+    'outcomes': NotRequired[list[ModelPolymarketOutcomePricePoint]],
+    'question': NotRequired[str],
+    'slug': NotRequired[str],
+    'token_ids': NotRequired[list[str]],
+    'url': NotRequired[str],
+    'volume': NotRequired[float],
+    'volume_24h': NotRequired[float],
+}, total=False)
+
+ModelPolymarketMarketsResponse = TypedDict('ModelPolymarketMarketsResponse', {
+    'ascending': NotRequired[bool],
+    'closed': NotRequired[str],
+    'fetched_at': NotRequired[str],
+    'limit': NotRequired[int],
+    'markets': NotRequired[list[ModelPolymarketMarketSummary]],
+    'offset': NotRequired[int],
+    'order': NotRequired[str],
+    'source_url': NotRequired[str],
+}, total=False)
+
+ModelPolymarketOrderBookLevel = TypedDict('ModelPolymarketOrderBookLevel', {
+    'price': NotRequired[float],
+    'size': NotRequired[float],
+}, total=False)
+
+ModelPolymarketOrderBookSummary = TypedDict('ModelPolymarketOrderBookSummary', {
+    'asks': NotRequired[list[ModelPolymarketOrderBookLevel]],
+    'bids': NotRequired[list[ModelPolymarketOrderBookLevel]],
+    'condition_id': NotRequired[str],
+    'hash': NotRequired[str],
+    'last_trade_price': NotRequired[float],
+    'min_order_size': NotRequired[float],
+    'neg_risk': NotRequired[bool],
+    'tick_size': NotRequired[float],
+    'timestamp': NotRequired[str],
+    'token_id': NotRequired[str],
+}, total=False)
+
+ModelPolymarketOutcomePricePoint = TypedDict('ModelPolymarketOutcomePricePoint', {
+    'best_ask': NotRequired[float],
+    'best_bid': NotRequired[float],
+    'last_trade_price': NotRequired[float],
+    'liquidity': NotRequired[float],
+    'market_id': NotRequired[str],
+    'market_slug': NotRequired[str],
+    'outcome': NotRequired[str],
+    'price': NotRequired[float],
+    'question': NotRequired[str],
+    'volume': NotRequired[float],
+}, total=False)
+
+ModelPolymarketPredictionsResponse = TypedDict('ModelPolymarketPredictionsResponse', {
+    'cursor': NotRequired[str],
+    'events': NotRequired[list[ModelPolymarketEventSummary]],
+    'fetched_at': NotRequired[str],
+    'has_more': NotRequired[bool],
+    'limit': NotRequired[int],
+    'next_cursor': NotRequired[str],
+    'recurrence': NotRequired[str],
+    'sort': NotRequired[str],
+    'source_url': NotRequired[str],
+    'status': NotRequired[str],
+    'tag': NotRequired[str],
+}, total=False)
+
+ModelPolymarketPriceHistoryPoint = TypedDict('ModelPolymarketPriceHistoryPoint', {
+    'price': NotRequired[float],
+    'timestamp': NotRequired[int],
+}, total=False)
+
+ModelPolymarketProfileMatch = TypedDict('ModelPolymarketProfileMatch', {
+    'id': NotRequired[str],
+    'name': NotRequired[str],
+    'username': NotRequired[str],
+}, total=False)
+
+ModelPolymarketPublicDataResponse = TypedDict('ModelPolymarketPublicDataResponse', {
+    'data': NotRequired[dict[str, Any]],
+    'fetched_at': NotRequired[str],
+    'route': NotRequired[str],
+    'source_url': NotRequired[str],
+}, total=False)
+
+ModelPolymarketRewardsConfigSummary = TypedDict('ModelPolymarketRewardsConfigSummary', {
+    'asset_address': NotRequired[str],
+    'end_date': NotRequired[str],
+    'id': NotRequired[int],
+    'rate_per_day': NotRequired[float],
+    'start_date': NotRequired[str],
+    'total_rewards': NotRequired[float],
+}, total=False)
+
+ModelPolymarketRewardsMarketResponse = TypedDict('ModelPolymarketRewardsMarketResponse', {
+    'condition_id': NotRequired[str],
+    'count': NotRequired[int],
+    'fetched_at': NotRequired[str],
+    'market': NotRequired[ModelPolymarketRewardsMarketSummary],
+    'source_url': NotRequired[str],
+}, total=False)
+
+ModelPolymarketRewardsMarketSummary = TypedDict('ModelPolymarketRewardsMarketSummary', {
+    'condition_id': NotRequired[str],
+    'daily_reward_rate': NotRequired[float],
+    'earning_percentage': NotRequired[float],
+    'earnings': NotRequired[list[dict[str, Any]]],
+    'event_id': NotRequired[str],
+    'event_slug': NotRequired[str],
+    'event_url': NotRequired[str],
+    'image_url': NotRequired[str],
+    'maker_address': NotRequired[str],
+    'market_competitiveness': NotRequired[float],
+    'market_id': NotRequired[str],
+    'market_slug': NotRequired[str],
+    'market_url': NotRequired[str],
+    'question': NotRequired[str],
+    'rewards_config': NotRequired[list[ModelPolymarketRewardsConfigSummary]],
+    'rewards_max_spread': NotRequired[float],
+    'rewards_min_size': NotRequired[float],
+    'spread': NotRequired[float],
+    'tokens': NotRequired[list[ModelPolymarketRewardsTokenSummary]],
+    'total_configured_rewards': NotRequired[float],
+    'volume_24h': NotRequired[float],
+}, total=False)
+
+ModelPolymarketRewardsMarketsResponse = TypedDict('ModelPolymarketRewardsMarketsResponse', {
+    'count': NotRequired[int],
+    'cursor': NotRequired[str],
+    'date': NotRequired[str],
+    'fetched_at': NotRequired[str],
+    'has_more': NotRequired[bool],
+    'limit': NotRequired[int],
+    'markets': NotRequired[list[ModelPolymarketRewardsMarketSummary]],
+    'next_cursor': NotRequired[str],
+    'order_by': NotRequired[str],
+    'position': NotRequired[str],
+    'q': NotRequired[str],
+    'source_url': NotRequired[str],
+    'tag_slug': NotRequired[str],
+    'total_count': NotRequired[int],
+}, total=False)
+
+ModelPolymarketRewardsTokenSummary = TypedDict('ModelPolymarketRewardsTokenSummary', {
+    'outcome': NotRequired[str],
+    'price': NotRequired[float],
+    'token_id': NotRequired[str],
+}, total=False)
+
+ModelPolymarketSearchResponse = TypedDict('ModelPolymarketSearchResponse', {
+    'ascending': NotRequired[bool],
+    'events': NotRequired[list[ModelPolymarketEventSummary]],
+    'fetched_at': NotRequired[str],
+    'has_more': NotRequired[bool],
+    'limit': NotRequired[int],
+    'profiles': NotRequired[list[ModelPolymarketProfileMatch]],
+    'query': NotRequired[str],
+    'sort': NotRequired[str],
+    'source_url': NotRequired[str],
+    'status': NotRequired[str],
+    'tags': NotRequired[list[ModelPolymarketTagSummary]],
+    'total_results': NotRequired[int],
+}, total=False)
+
+ModelPolymarketSimilarEventsResponse = TypedDict('ModelPolymarketSimilarEventsResponse', {
+    'events': NotRequired[list[ModelPolymarketEventSummary]],
+    'fetched_at': NotRequired[str],
+    'limit': NotRequired[int],
+    'source_url': NotRequired[str],
+}, total=False)
+
+ModelPolymarketTagResponse = TypedDict('ModelPolymarketTagResponse', {
+    'fetched_at': NotRequired[str],
+    'source_url': NotRequired[str],
+    'tag': NotRequired[ModelPolymarketTagSummary],
+}, total=False)
+
+ModelPolymarketTagSummary = TypedDict('ModelPolymarketTagSummary', {
+    'id': NotRequired[str],
+    'label': NotRequired[str],
+    'slug': NotRequired[str],
+}, total=False)
+
+ModelPolymarketTagsResponse = TypedDict('ModelPolymarketTagsResponse', {
+    'fetched_at': NotRequired[str],
+    'limit': NotRequired[int],
+    'offset': NotRequired[int],
+    'source_url': NotRequired[str],
+    'tags': NotRequired[list[ModelPolymarketTagSummary]],
+}, total=False)
+
+ModelPolymarketTokenMidpointResponse = TypedDict('ModelPolymarketTokenMidpointResponse', {
+    'fetched_at': NotRequired[str],
+    'midpoint': NotRequired[float],
+    'source_url': NotRequired[str],
+    'token_id': NotRequired[str],
+}, total=False)
+
+ModelPolymarketTokenOrderBookResponse = TypedDict('ModelPolymarketTokenOrderBookResponse', {
+    'book': NotRequired[ModelPolymarketOrderBookSummary],
+    'fetched_at': NotRequired[str],
+    'source_url': NotRequired[str],
+    'token_id': NotRequired[str],
+}, total=False)
+
+ModelPolymarketTokenPriceHistoryResponse = TypedDict('ModelPolymarketTokenPriceHistoryResponse', {
+    'end_ts': NotRequired[int],
+    'fetched_at': NotRequired[str],
+    'fidelity': NotRequired[int],
+    'interval': NotRequired[str],
+    'points': NotRequired[list[ModelPolymarketPriceHistoryPoint]],
+    'source_url': NotRequired[str],
+    'start_ts': NotRequired[int],
+    'token_id': NotRequired[str],
+}, total=False)
+
+ModelPolymarketTokenPriceResponse = TypedDict('ModelPolymarketTokenPriceResponse', {
+    'fetched_at': NotRequired[str],
+    'price': NotRequired[float],
+    'side': NotRequired[str],
+    'source_url': NotRequired[str],
+    'token_id': NotRequired[str],
+}, total=False)
+
+ModelPolymarketTokenSpreadResponse = TypedDict('ModelPolymarketTokenSpreadResponse', {
+    'fetched_at': NotRequired[str],
+    'source_url': NotRequired[str],
+    'spread': NotRequired[float],
+    'token_id': NotRequired[str],
+}, total=False)
+
+ModelPolymarketTradeSummary = TypedDict('ModelPolymarketTradeSummary', {
+    'asset': NotRequired[str],
+    'bio': NotRequired[str],
+    'condition_id': NotRequired[str],
+    'event_slug': NotRequired[str],
+    'icon_url': NotRequired[str],
+    'name': NotRequired[str],
+    'outcome': NotRequired[str],
+    'outcome_index': NotRequired[int],
+    'price': NotRequired[float],
+    'profile_image_optimized': NotRequired[str],
+    'profile_image_url': NotRequired[str],
+    'proxy_wallet': NotRequired[str],
+    'pseudonym': NotRequired[str],
+    'side': NotRequired[str],
+    'size': NotRequired[float],
+    'slug': NotRequired[str],
+    'timestamp': NotRequired[int],
+    'title': NotRequired[str],
+    'transaction_hash': NotRequired[str],
+    'url': NotRequired[str],
+    'value': NotRequired[float],
+}, total=False)
+
+ModelPolymarketActivityTradesResponseDoc = TypedDict('ModelPolymarketActivityTradesResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelPolymarketActivityTradesResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelPolymarketBatchTokenMidpointsResponseDoc = TypedDict('ModelPolymarketBatchTokenMidpointsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelPolymarketBatchTokenMidpointsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelPolymarketBatchTokenOrderBooksResponseDoc = TypedDict('ModelPolymarketBatchTokenOrderBooksResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelPolymarketBatchTokenOrderBooksResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelPolymarketBatchTokenPricesResponseDoc = TypedDict('ModelPolymarketBatchTokenPricesResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelPolymarketBatchTokenPricesResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelPolymarketBatchTokenSpreadsResponseDoc = TypedDict('ModelPolymarketBatchTokenSpreadsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelPolymarketBatchTokenSpreadsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelPolymarketClobMarketResponseDoc = TypedDict('ModelPolymarketClobMarketResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelPolymarketClobMarketResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelPolymarketEventDetailResponseDoc = TypedDict('ModelPolymarketEventDetailResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelPolymarketEventDetailResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelPolymarketEventsResponseDoc = TypedDict('ModelPolymarketEventsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelPolymarketEventsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelPolymarketHomepageFeedResponseDoc = TypedDict('ModelPolymarketHomepageFeedResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelPolymarketHomepageFeedResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelPolymarketLeaderboardResponseDoc = TypedDict('ModelPolymarketLeaderboardResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelPolymarketLeaderboardResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelPolymarketMacroDashboardResponseDoc = TypedDict('ModelPolymarketMacroDashboardResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelPolymarketMacroDashboardResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelPolymarketMarketDetailResponseDoc = TypedDict('ModelPolymarketMarketDetailResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelPolymarketMarketDetailResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelPolymarketMarketLiquidityResponseDoc = TypedDict('ModelPolymarketMarketLiquidityResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelPolymarketMarketLiquidityResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelPolymarketMarketsResponseDoc = TypedDict('ModelPolymarketMarketsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelPolymarketMarketsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelPolymarketPredictionsResponseDoc = TypedDict('ModelPolymarketPredictionsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelPolymarketPredictionsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelPolymarketPublicDataResponseDoc = TypedDict('ModelPolymarketPublicDataResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelPolymarketPublicDataResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelPolymarketRewardsMarketResponseDoc = TypedDict('ModelPolymarketRewardsMarketResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelPolymarketRewardsMarketResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelPolymarketRewardsMarketsResponseDoc = TypedDict('ModelPolymarketRewardsMarketsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelPolymarketRewardsMarketsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelPolymarketSearchResponseDoc = TypedDict('ModelPolymarketSearchResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelPolymarketSearchResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelPolymarketSimilarEventsResponseDoc = TypedDict('ModelPolymarketSimilarEventsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelPolymarketSimilarEventsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelPolymarketTagResponseDoc = TypedDict('ModelPolymarketTagResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelPolymarketTagResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelPolymarketTagsResponseDoc = TypedDict('ModelPolymarketTagsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelPolymarketTagsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelPolymarketTokenMidpointResponseDoc = TypedDict('ModelPolymarketTokenMidpointResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelPolymarketTokenMidpointResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelPolymarketTokenOrderBookResponseDoc = TypedDict('ModelPolymarketTokenOrderBookResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelPolymarketTokenOrderBookResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelPolymarketTokenPriceHistoryResponseDoc = TypedDict('ModelPolymarketTokenPriceHistoryResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelPolymarketTokenPriceHistoryResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelPolymarketTokenPriceResponseDoc = TypedDict('ModelPolymarketTokenPriceResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelPolymarketTokenPriceResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelPolymarketTokenSpreadResponseDoc = TypedDict('ModelPolymarketTokenSpreadResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelPolymarketTokenSpreadResponse],
     'msg': NotRequired[str],
 }, total=False)
 
@@ -4979,6 +7291,24 @@ ModelRedditCommentsResponse = TypedDict('ModelRedditCommentsResponse', {
     'source': NotRequired[ModelRedditSourceDetail],
 }, total=False)
 
+ModelRedditDomainPostsResponse = TypedDict('ModelRedditDomainPostsResponse', {
+    'domain': NotRequired[str],
+    'pagination': NotRequired[ModelRedditPagination],
+    'posts': NotRequired[list[ModelRedditPost]],
+    'sort': NotRequired[str],
+    'source': NotRequired[ModelRedditSourceDetail],
+    'time': NotRequired[str],
+}, total=False)
+
+ModelRedditMultiSubredditPostsResponse = TypedDict('ModelRedditMultiSubredditPostsResponse', {
+    'pagination': NotRequired[ModelRedditPagination],
+    'posts': NotRequired[list[ModelRedditPost]],
+    'sort': NotRequired[str],
+    'source': NotRequired[ModelRedditSourceDetail],
+    'subreddits': NotRequired[list[str]],
+    'time': NotRequired[str],
+}, total=False)
+
 ModelRedditPagination = TypedDict('ModelRedditPagination', {
     'after': NotRequired[str],
     'limit': NotRequired[int],
@@ -5029,6 +7359,26 @@ ModelRedditSourceDetail = TypedDict('ModelRedditSourceDetail', {
     'url': NotRequired[str],
 }, total=False)
 
+ModelRedditSubredditAboutResponse = TypedDict('ModelRedditSubredditAboutResponse', {
+    'display_name': NotRequired[str],
+    'feed_url': NotRequired[str],
+    'latest_post_created': NotRequired[str],
+    'latest_post_created_utc': NotRequired[int],
+    'public_url': NotRequired[str],
+    'recent_post_count': NotRequired[int],
+    'sample_posts': NotRequired[list[ModelRedditPost]],
+    'source': NotRequired[ModelRedditSourceDetail],
+    'subreddit': NotRequired[str],
+    'title': NotRequired[str],
+}, total=False)
+
+ModelRedditSubredditCommentsResponse = TypedDict('ModelRedditSubredditCommentsResponse', {
+    'comments': NotRequired[list[ModelRedditComment]],
+    'pagination': NotRequired[ModelRedditPagination],
+    'source': NotRequired[ModelRedditSourceDetail],
+    'subreddit': NotRequired[str],
+}, total=False)
+
 ModelRedditSubredditPostsResponse = TypedDict('ModelRedditSubredditPostsResponse', {
     'pagination': NotRequired[ModelRedditPagination],
     'posts': NotRequired[list[ModelRedditPost]],
@@ -5038,9 +7388,43 @@ ModelRedditSubredditPostsResponse = TypedDict('ModelRedditSubredditPostsResponse
     'time': NotRequired[str],
 }, total=False)
 
+ModelRedditTrendsResponse = TypedDict('ModelRedditTrendsResponse', {
+    'pagination': NotRequired[ModelRedditPagination],
+    'posts': NotRequired[list[ModelRedditPost]],
+    'sort': NotRequired[str],
+    'source': NotRequired[ModelRedditSourceDetail],
+    'time': NotRequired[str],
+}, total=False)
+
+ModelRedditUserCommentsResponse = TypedDict('ModelRedditUserCommentsResponse', {
+    'comments': NotRequired[list[ModelRedditComment]],
+    'pagination': NotRequired[ModelRedditPagination],
+    'source': NotRequired[ModelRedditSourceDetail],
+    'username': NotRequired[str],
+}, total=False)
+
+ModelRedditUserPostsResponse = TypedDict('ModelRedditUserPostsResponse', {
+    'pagination': NotRequired[ModelRedditPagination],
+    'posts': NotRequired[list[ModelRedditPost]],
+    'source': NotRequired[ModelRedditSourceDetail],
+    'username': NotRequired[str],
+}, total=False)
+
 ModelRedditCommentsResponseDoc = TypedDict('ModelRedditCommentsResponseDoc', {
     'code': NotRequired[int],
     'data': NotRequired[ModelRedditCommentsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelRedditDomainPostsResponseDoc = TypedDict('ModelRedditDomainPostsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelRedditDomainPostsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelRedditMultiSubredditPostsResponseDoc = TypedDict('ModelRedditMultiSubredditPostsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelRedditMultiSubredditPostsResponse],
     'msg': NotRequired[str],
 }, total=False)
 
@@ -5056,9 +7440,39 @@ ModelRedditSearchResponseDoc = TypedDict('ModelRedditSearchResponseDoc', {
     'msg': NotRequired[str],
 }, total=False)
 
+ModelRedditSubredditAboutResponseDoc = TypedDict('ModelRedditSubredditAboutResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelRedditSubredditAboutResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelRedditSubredditCommentsResponseDoc = TypedDict('ModelRedditSubredditCommentsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelRedditSubredditCommentsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
 ModelRedditSubredditPostsResponseDoc = TypedDict('ModelRedditSubredditPostsResponseDoc', {
     'code': NotRequired[int],
     'data': NotRequired[ModelRedditSubredditPostsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelRedditTrendsResponseDoc = TypedDict('ModelRedditTrendsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelRedditTrendsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelRedditUserCommentsResponseDoc = TypedDict('ModelRedditUserCommentsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelRedditUserCommentsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelRedditUserPostsResponseDoc = TypedDict('ModelRedditUserPostsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelRedditUserPostsResponse],
     'msg': NotRequired[str],
 }, total=False)
 
@@ -5112,6 +7526,359 @@ ModelReferralsReferralsStatsDoc = TypedDict('ModelReferralsReferralsStatsDoc', {
     'rejected': NotRequired[int],
     'review_required': NotRequired[int],
     'rewarded': NotRequired[int],
+}, total=False)
+
+ModelRottentomatoesBrowseItem = TypedDict('ModelRottentomatoesBrowseItem', {
+    'critics_review_count': NotRequired[int],
+    'date_created': NotRequired[str],
+    'image_url': NotRequired[str],
+    'media_type': NotRequired[str],
+    'path': NotRequired[str],
+    'position': NotRequired[int],
+    'title': NotRequired[str],
+    'tomatometer_score': NotRequired[int],
+    'url': NotRequired[str],
+    'video': NotRequired[ModelRottentomatoesEpisodeVideo],
+}, total=False)
+
+ModelRottentomatoesBrowseResponse = TypedDict('ModelRottentomatoesBrowseResponse', {
+    'fetched_at': NotRequired[str],
+    'items': NotRequired[list[ModelRottentomatoesBrowseItem]],
+    'limit': NotRequired[int],
+    'list': NotRequired[str],
+    'public_page_derived': NotRequired[bool],
+    'sort': NotRequired[str],
+    'source_url': NotRequired[str],
+    'title': NotRequired[str],
+}, total=False)
+
+ModelRottentomatoesEpisodeResponse = TypedDict('ModelRottentomatoesEpisodeResponse', {
+    'air_date': NotRequired[str],
+    'audience_score': NotRequired[ModelRottentomatoesScore],
+    'cast': NotRequired[list[ModelRottentomatoesPerson]],
+    'critics_score': NotRequired[ModelRottentomatoesScore],
+    'description': NotRequired[str],
+    'directors': NotRequired[list[ModelRottentomatoesPerson]],
+    'ems_id': NotRequired[str],
+    'episode_number': NotRequired[int],
+    'fetched_at': NotRequired[str],
+    'genres': NotRequired[list[str]],
+    'image_url': NotRequired[str],
+    'lifecycle': NotRequired[str],
+    'media_type': NotRequired[str],
+    'parent_season': NotRequired[ModelRottentomatoesSeasonSummary],
+    'parent_series': NotRequired[ModelRottentomatoesSeriesSummary],
+    'path': NotRequired[str],
+    'producers': NotRequired[list[ModelRottentomatoesPerson]],
+    'public_page_derived': NotRequired[bool],
+    'season_number': NotRequired[int],
+    'source_url': NotRequired[str],
+    'title': NotRequired[str],
+    'url': NotRequired[str],
+    'video': NotRequired[ModelRottentomatoesEpisodeVideo],
+}, total=False)
+
+ModelRottentomatoesEpisodeVideo = TypedDict('ModelRottentomatoesEpisodeVideo', {
+    'description': NotRequired[str],
+    'duration': NotRequired[str],
+    'thumbnail': NotRequired[str],
+    'title': NotRequired[str],
+    'upload_date': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelRottentomatoesMovieResponse = TypedDict('ModelRottentomatoesMovieResponse', {
+    'audience_reviews': NotRequired[list[ModelRottentomatoesReview]],
+    'audience_score': NotRequired[ModelRottentomatoesScore],
+    'cast': NotRequired[list[ModelRottentomatoesPerson]],
+    'content_rating': NotRequired[str],
+    'critics_score': NotRequired[ModelRottentomatoesScore],
+    'description': NotRequired[str],
+    'directors': NotRequired[list[ModelRottentomatoesPerson]],
+    'ems_id': NotRequired[str],
+    'fetched_at': NotRequired[str],
+    'genres': NotRequired[list[str]],
+    'image_url': NotRequired[str],
+    'media_type': NotRequired[str],
+    'path': NotRequired[str],
+    'producers': NotRequired[list[ModelRottentomatoesPerson]],
+    'public_page_derived': NotRequired[bool],
+    'release_date': NotRequired[str],
+    'reviews_url': NotRequired[str],
+    'source_url': NotRequired[str],
+    'title': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelRottentomatoesMovieReview = TypedDict('ModelRottentomatoesMovieReview', {
+    'created_at': NotRequired[str],
+    'critic_url': NotRequired[str],
+    'display_name': NotRequired[str],
+    'has_profanity': NotRequired[bool],
+    'has_spoilers': NotRequired[bool],
+    'id': NotRequired[str],
+    'original_score': NotRequired[str],
+    'publication': NotRequired[str],
+    'publication_approved': NotRequired[bool],
+    'publication_review_url': NotRequired[str],
+    'rating': NotRequired[float],
+    'rating_label': NotRequired[str],
+    'review': NotRequired[str],
+    'score_sentiment': NotRequired[str],
+    'super_reviewer': NotRequired[bool],
+    'tomatometer_approved': NotRequired[bool],
+    'top_critic': NotRequired[bool],
+    'top_publication': NotRequired[bool],
+    'top_review': NotRequired[bool],
+    'type': NotRequired[str],
+    'verified': NotRequired[bool],
+}, total=False)
+
+ModelRottentomatoesPerson = TypedDict('ModelRottentomatoesPerson', {
+    'image_url': NotRequired[str],
+    'name': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelRottentomatoesPersonCredit = TypedDict('ModelRottentomatoesPersonCredit', {
+    'audience_score': NotRequired[ModelRottentomatoesScore],
+    'credits': NotRequired[str],
+    'critics_score': NotRequired[ModelRottentomatoesScore],
+    'path': NotRequired[str],
+    'position': NotRequired[int],
+    'poster_url': NotRequired[str],
+    'title': NotRequired[str],
+    'url': NotRequired[str],
+    'years_featured': NotRequired[str],
+}, total=False)
+
+ModelRottentomatoesPersonRatedTitle = TypedDict('ModelRottentomatoesPersonRatedTitle', {
+    'path': NotRequired[str],
+    'score': NotRequired[int],
+    'title': NotRequired[str],
+    'url': NotRequired[str],
+    'year': NotRequired[str],
+}, total=False)
+
+ModelRottentomatoesPersonResponse = TypedDict('ModelRottentomatoesPersonResponse', {
+    'birth_date': NotRequired[str],
+    'birthplace': NotRequired[str],
+    'description': NotRequired[str],
+    'ems_id': NotRequired[str],
+    'fetched_at': NotRequired[str],
+    'filmography': NotRequired[list[ModelRottentomatoesPersonCredit]],
+    'filmography_api_url': NotRequired[str],
+    'highest_rated': NotRequired[ModelRottentomatoesPersonRatedTitle],
+    'image_url': NotRequired[str],
+    'lowest_rated': NotRequired[ModelRottentomatoesPersonRatedTitle],
+    'name': NotRequired[str],
+    'page_info': NotRequired[ModelRottentomatoesReviewPageInfo],
+    'path': NotRequired[str],
+    'public_page_derived': NotRequired[bool],
+    'source_url': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelRottentomatoesReview = TypedDict('ModelRottentomatoesReview', {
+    'display_date': NotRequired[str],
+    'display_name': NotRequired[str],
+    'fandango_review': NotRequired[bool],
+    'rating': NotRequired[float],
+    'rating_id': NotRequired[str],
+    'rating_range': NotRequired[str],
+    'review': NotRequired[str],
+    'verified': NotRequired[bool],
+}, total=False)
+
+ModelRottentomatoesReviewMovieSummary = TypedDict('ModelRottentomatoesReviewMovieSummary', {
+    'ems_id': NotRequired[str],
+    'media_type': NotRequired[str],
+    'path': NotRequired[str],
+    'title': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelRottentomatoesReviewPageInfo = TypedDict('ModelRottentomatoesReviewPageInfo', {
+    'end_cursor': NotRequired[str],
+    'has_next_page': NotRequired[bool],
+}, total=False)
+
+ModelRottentomatoesReviewsResponse = TypedDict('ModelRottentomatoesReviewsResponse', {
+    'fetched_at': NotRequired[str],
+    'limit': NotRequired[int],
+    'movie': NotRequired[ModelRottentomatoesReviewMovieSummary],
+    'page_info': NotRequired[ModelRottentomatoesReviewPageInfo],
+    'public_page_derived': NotRequired[bool],
+    'reviews': NotRequired[list[ModelRottentomatoesMovieReview]],
+    'reviews_api_url': NotRequired[str],
+    'source_url': NotRequired[str],
+    'type': NotRequired[str],
+}, total=False)
+
+ModelRottentomatoesScore = TypedDict('ModelRottentomatoesScore', {
+    'average_rating': NotRequired[str],
+    'banded_rating_count': NotRequired[str],
+    'certified': NotRequired[bool],
+    'liked_count': NotRequired[int],
+    'not_liked_count': NotRequired[int],
+    'rating_count': NotRequired[int],
+    'review_count': NotRequired[int],
+    'reviews_page_url': NotRequired[str],
+    'score': NotRequired[int],
+    'score_percent': NotRequired[str],
+    'score_type': NotRequired[str],
+    'sentiment': NotRequired[str],
+    'title': NotRequired[str],
+}, total=False)
+
+ModelRottentomatoesSearchMovie = TypedDict('ModelRottentomatoesSearchMovie', {
+    'cast': NotRequired[str],
+    'certified_fresh': NotRequired[bool],
+    'end_year': NotRequired[str],
+    'image_url': NotRequired[str],
+    'path': NotRequired[str],
+    'release_year': NotRequired[str],
+    'start_year': NotRequired[str],
+    'title': NotRequired[str],
+    'tomatometer_score': NotRequired[int],
+    'tomatometer_sentiment': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelRottentomatoesSearchResponse = TypedDict('ModelRottentomatoesSearchResponse', {
+    'fetched_at': NotRequired[str],
+    'limit': NotRequired[int],
+    'query': NotRequired[str],
+    'results': NotRequired[list[ModelRottentomatoesSearchMovie]],
+    'source_url': NotRequired[str],
+}, total=False)
+
+ModelRottentomatoesSeasonEpisode = TypedDict('ModelRottentomatoesSeasonEpisode', {
+    'air_date': NotRequired[str],
+    'description': NotRequired[str],
+    'episode_number': NotRequired[str],
+    'path': NotRequired[str],
+    'title': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelRottentomatoesSeasonResponse = TypedDict('ModelRottentomatoesSeasonResponse', {
+    'audience_score': NotRequired[ModelRottentomatoesScore],
+    'cast': NotRequired[list[ModelRottentomatoesPerson]],
+    'critics_score': NotRequired[ModelRottentomatoesScore],
+    'description': NotRequired[str],
+    'directors': NotRequired[list[ModelRottentomatoesPerson]],
+    'ems_id': NotRequired[str],
+    'episode_count': NotRequired[int],
+    'episodes': NotRequired[list[ModelRottentomatoesSeasonEpisode]],
+    'fetched_at': NotRequired[str],
+    'genres': NotRequired[list[str]],
+    'image_url': NotRequired[str],
+    'lifecycle': NotRequired[str],
+    'media_type': NotRequired[str],
+    'parent_series': NotRequired[ModelRottentomatoesSeriesSummary],
+    'path': NotRequired[str],
+    'producers': NotRequired[list[ModelRottentomatoesPerson]],
+    'public_page_derived': NotRequired[bool],
+    'release_date': NotRequired[str],
+    'season_number': NotRequired[int],
+    'source_url': NotRequired[str],
+    'title': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelRottentomatoesSeasonSummary = TypedDict('ModelRottentomatoesSeasonSummary', {
+    'ems_id': NotRequired[str],
+    'path': NotRequired[str],
+    'season_number': NotRequired[int],
+    'title': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelRottentomatoesSeriesResponse = TypedDict('ModelRottentomatoesSeriesResponse', {
+    'audience_score': NotRequired[ModelRottentomatoesScore],
+    'cast': NotRequired[list[ModelRottentomatoesPerson]],
+    'content_rating': NotRequired[str],
+    'critics_score': NotRequired[ModelRottentomatoesScore],
+    'description': NotRequired[str],
+    'directors': NotRequired[list[ModelRottentomatoesPerson]],
+    'ems_id': NotRequired[str],
+    'end_date': NotRequired[str],
+    'fetched_at': NotRequired[str],
+    'genres': NotRequired[list[str]],
+    'image_url': NotRequired[str],
+    'lifecycle': NotRequired[str],
+    'media_type': NotRequired[str],
+    'number_of_seasons': NotRequired[int],
+    'path': NotRequired[str],
+    'producers': NotRequired[list[ModelRottentomatoesPerson]],
+    'public_page_derived': NotRequired[bool],
+    'seasons': NotRequired[list[ModelRottentomatoesTvseason]],
+    'source_url': NotRequired[str],
+    'start_date': NotRequired[str],
+    'title': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelRottentomatoesSeriesSummary = TypedDict('ModelRottentomatoesSeriesSummary', {
+    'ems_id': NotRequired[str],
+    'path': NotRequired[str],
+    'title': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelRottentomatoesTvseason = TypedDict('ModelRottentomatoesTvseason', {
+    'name': NotRequired[str],
+    'path': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelRottentomatoesBrowseResponseDoc = TypedDict('ModelRottentomatoesBrowseResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelRottentomatoesBrowseResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelRottentomatoesEpisodeResponseDoc = TypedDict('ModelRottentomatoesEpisodeResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelRottentomatoesEpisodeResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelRottentomatoesMovieResponseDoc = TypedDict('ModelRottentomatoesMovieResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelRottentomatoesMovieResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelRottentomatoesPersonResponseDoc = TypedDict('ModelRottentomatoesPersonResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelRottentomatoesPersonResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelRottentomatoesReviewsResponseDoc = TypedDict('ModelRottentomatoesReviewsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelRottentomatoesReviewsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelRottentomatoesSearchResponseDoc = TypedDict('ModelRottentomatoesSearchResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelRottentomatoesSearchResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelRottentomatoesSeasonResponseDoc = TypedDict('ModelRottentomatoesSeasonResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelRottentomatoesSeasonResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelRottentomatoesSeriesResponseDoc = TypedDict('ModelRottentomatoesSeriesResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelRottentomatoesSeriesResponse],
+    'msg': NotRequired[str],
 }, total=False)
 
 ModelShopappAnalysisResponse = TypedDict('ModelShopappAnalysisResponse', {
@@ -9218,6 +11985,189 @@ BingVideosParams = TypedDict('BingVideosParams', {
     'lang': NotRequired[str],
 }, total=False)
 
+BoxOfficeMojoBoxofficemojoBrandResponse = ModelBoxofficemojoTaxonomyDetailResponseDoc
+BoxOfficeMojoBoxofficemojoBrandParams = TypedDict('BoxOfficeMojoBoxofficemojoBrandParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': NotRequired[str],
+    'path': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+BoxOfficeMojoBoxofficemojoBrandsResponse = ModelBoxofficemojoTaxonomyListResponseDoc
+BoxOfficeMojoBoxofficemojoBrandsParams = TypedDict('BoxOfficeMojoBoxofficemojoBrandsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+}, total=False)
+
+BoxOfficeMojoBoxofficemojoCalendarResponse = ModelBoxofficemojoCalendarResponseDoc
+BoxOfficeMojoBoxofficemojoCalendarParams = TypedDict('BoxOfficeMojoBoxofficemojoCalendarParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'year': Required[int],
+    'month': Required[int],
+}, total=False)
+
+BoxOfficeMojoBoxofficemojoCalendarChangesResponse = ModelBoxofficemojoCalendarChangesResponseDoc
+BoxOfficeMojoBoxofficemojoCalendarChangesParams = TypedDict('BoxOfficeMojoBoxofficemojoCalendarChangesParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'offset': NotRequired[int],
+}, total=False)
+
+BoxOfficeMojoBoxofficemojoCalendarDateResponse = ModelBoxofficemojoCalendarDateResponseDoc
+BoxOfficeMojoBoxofficemojoCalendarDateParams = TypedDict('BoxOfficeMojoBoxofficemojoCalendarDateParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'date': Required[str],
+}, total=False)
+
+BoxOfficeMojoBoxofficemojoDateDomesticResponse = ModelBoxofficemojoDomesticDateResponseDoc
+BoxOfficeMojoBoxofficemojoDateDomesticParams = TypedDict('BoxOfficeMojoBoxofficemojoDateDomesticParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'date': Required[str],
+}, total=False)
+
+BoxOfficeMojoBoxofficemojoFranchiseResponse = ModelBoxofficemojoTaxonomyDetailResponseDoc
+BoxOfficeMojoBoxofficemojoFranchiseParams = TypedDict('BoxOfficeMojoBoxofficemojoFranchiseParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': NotRequired[str],
+    'path': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+BoxOfficeMojoBoxofficemojoFranchisesResponse = ModelBoxofficemojoTaxonomyListResponseDoc
+BoxOfficeMojoBoxofficemojoFranchisesParams = TypedDict('BoxOfficeMojoBoxofficemojoFranchisesParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+}, total=False)
+
+BoxOfficeMojoBoxofficemojoGenreResponse = ModelBoxofficemojoTaxonomyDetailResponseDoc
+BoxOfficeMojoBoxofficemojoGenreParams = TypedDict('BoxOfficeMojoBoxofficemojoGenreParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': NotRequired[str],
+    'path': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+BoxOfficeMojoBoxofficemojoGenresResponse = ModelBoxofficemojoTaxonomyListResponseDoc
+BoxOfficeMojoBoxofficemojoGenresParams = TypedDict('BoxOfficeMojoBoxofficemojoGenresParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+}, total=False)
+
+BoxOfficeMojoBoxofficemojoLifetimeGrossesResponse = ModelBoxofficemojoLifetimeGrossesResponseDoc
+BoxOfficeMojoBoxofficemojoLifetimeGrossesParams = TypedDict('BoxOfficeMojoBoxofficemojoLifetimeGrossesParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'area': NotRequired[Literal['worldwide', 'domestic']],
+    'offset': NotRequired[int],
+}, total=False)
+
+BoxOfficeMojoBoxofficemojoReleaseResponse = ModelBoxofficemojoReleaseResponseDoc
+BoxOfficeMojoBoxofficemojoReleaseParams = TypedDict('BoxOfficeMojoBoxofficemojoReleaseParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': NotRequired[str],
+    'path': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+BoxOfficeMojoBoxofficemojoReleaseGroupResponse = ModelBoxofficemojoReleaseGroupResponseDoc
+BoxOfficeMojoBoxofficemojoReleaseGroupParams = TypedDict('BoxOfficeMojoBoxofficemojoReleaseGroupParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': NotRequired[str],
+    'path': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+BoxOfficeMojoBoxofficemojoShowdownResponse = ModelBoxofficemojoShowdownResponseDoc
+BoxOfficeMojoBoxofficemojoShowdownParams = TypedDict('BoxOfficeMojoBoxofficemojoShowdownParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': NotRequired[str],
+    'path': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+BoxOfficeMojoBoxofficemojoShowdownsResponse = ModelBoxofficemojoShowdownsResponseDoc
+BoxOfficeMojoBoxofficemojoShowdownsParams = TypedDict('BoxOfficeMojoBoxofficemojoShowdownsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+}, total=False)
+
+BoxOfficeMojoBoxofficemojoTitleResponse = ModelBoxofficemojoTitleResponseDoc
+BoxOfficeMojoBoxofficemojoTitleParams = TypedDict('BoxOfficeMojoBoxofficemojoTitleParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': NotRequired[str],
+    'path': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+BoxOfficeMojoBoxofficemojoWeekendDomesticResponse = ModelBoxofficemojoDomesticWeekendResponseDoc
+BoxOfficeMojoBoxofficemojoWeekendDomesticParams = TypedDict('BoxOfficeMojoBoxofficemojoWeekendDomesticParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'year': Required[int],
+    'week': Required[int],
+}, total=False)
+
+BoxOfficeMojoBoxofficemojoWeekendDomesticByDistributorResponse = ModelBoxofficemojoWeekendDistributorResponseDoc
+BoxOfficeMojoBoxofficemojoWeekendDomesticByDistributorParams = TypedDict('BoxOfficeMojoBoxofficemojoWeekendDomesticByDistributorParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'year': Required[int],
+    'week': Required[int],
+}, total=False)
+
+BoxOfficeMojoBoxofficemojoWeekendDomesticEstimatesResponse = ModelBoxofficemojoWeekendEstimatesResponseDoc
+BoxOfficeMojoBoxofficemojoWeekendDomesticEstimatesParams = TypedDict('BoxOfficeMojoBoxofficemojoWeekendDomesticEstimatesParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'year': Required[int],
+    'week': Required[int],
+}, total=False)
+
+BoxOfficeMojoBoxofficemojoYearDomesticResponse = ModelBoxofficemojoDomesticYearResponseDoc
+BoxOfficeMojoBoxofficemojoYearDomesticParams = TypedDict('BoxOfficeMojoBoxofficemojoYearDomesticParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'year': Required[int],
+}, total=False)
+
+BoxOfficeMojoBoxofficemojoYearWorldwideResponse = ModelBoxofficemojoWorldwideYearResponseDoc
+BoxOfficeMojoBoxofficemojoYearWorldwideParams = TypedDict('BoxOfficeMojoBoxofficemojoYearWorldwideParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'year': Required[int],
+}, total=False)
+
 BrandRetrieveResponse = ModelBrandRetrieveResponseDoc
 BrandRetrieveParams = TypedDict('BrandRetrieveParams', {
     '_response_type': NotRequired[ResponseType],
@@ -10121,6 +13071,180 @@ GooglePlaySuggestParams = TypedDict('GooglePlaySuggestParams', {
     'lang': NotRequired[str],
 }, total=False)
 
+ImdbNameResponse = ModelImdbNameResponseDoc
+ImdbNameParams = TypedDict('ImdbNameParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ImdbNameAwardsResponse = ModelImdbNameAwardsResponseDoc
+ImdbNameAwardsParams = TypedDict('ImdbNameAwardsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ImdbNameCreditsResponse = ModelImdbNameCreditsResponseDoc
+ImdbNameCreditsParams = TypedDict('ImdbNameCreditsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ImdbSearchResponse = ModelImdbSearchResponseDoc
+ImdbSearchParams = TypedDict('ImdbSearchParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'query': Required[str],
+    'limit': NotRequired[int],
+}, total=False)
+
+ImdbTitleResponse = ModelImdbTitleResponseDoc
+ImdbTitleParams = TypedDict('ImdbTitleParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ImdbTitleAwardsResponse = ModelImdbTitleAwardsResponseDoc
+ImdbTitleAwardsParams = TypedDict('ImdbTitleAwardsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ImdbTitleCompanyCreditsResponse = ModelImdbTitlePublicFactsResponseDoc
+ImdbTitleCompanyCreditsParams = TypedDict('ImdbTitleCompanyCreditsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ImdbTitleCreditsResponse = ModelImdbCreditsResponseDoc
+ImdbTitleCreditsParams = TypedDict('ImdbTitleCreditsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ImdbTitleEpisodesResponse = ModelImdbEpisodesResponseDoc
+ImdbTitleEpisodesParams = TypedDict('ImdbTitleEpisodesParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': NotRequired[str],
+    'url': NotRequired[str],
+    'season': NotRequired[int],
+    'limit': NotRequired[int],
+}, total=False)
+
+ImdbTitleFilmingLocationsResponse = ModelImdbTitlePublicFactsResponseDoc
+ImdbTitleFilmingLocationsParams = TypedDict('ImdbTitleFilmingLocationsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ImdbTitleGoofsResponse = ModelImdbTitlePublicFactsResponseDoc
+ImdbTitleGoofsParams = TypedDict('ImdbTitleGoofsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ImdbTitleKeywordsResponse = ModelImdbTitlePublicFactsResponseDoc
+ImdbTitleKeywordsParams = TypedDict('ImdbTitleKeywordsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ImdbTitleParentalGuideResponse = ModelImdbParentalGuideResponseDoc
+ImdbTitleParentalGuideParams = TypedDict('ImdbTitleParentalGuideParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ImdbTitlePublicFactsAnalysisResponse = ModelImdbTitlePublicFactsAnalysisResponseDoc
+ImdbTitlePublicFactsAnalysisParams = TypedDict('ImdbTitlePublicFactsAnalysisParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ImdbTitleQuotesResponse = ModelImdbTitlePublicFactsResponseDoc
+ImdbTitleQuotesParams = TypedDict('ImdbTitleQuotesParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ImdbTitleReleaseInfoResponse = ModelImdbReleaseInfoResponseDoc
+ImdbTitleReleaseInfoParams = TypedDict('ImdbTitleReleaseInfoParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ImdbTitleReviewsResponse = ModelImdbReviewsResponseDoc
+ImdbTitleReviewsParams = TypedDict('ImdbTitleReviewsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': NotRequired[str],
+    'url': NotRequired[str],
+    'limit': NotRequired[int],
+}, total=False)
+
+ImdbTitleTechnicalSpecsResponse = ModelImdbTechnicalSpecsResponseDoc
+ImdbTitleTechnicalSpecsParams = TypedDict('ImdbTitleTechnicalSpecsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ImdbTitleTriviaResponse = ModelImdbTitlePublicFactsResponseDoc
+ImdbTitleTriviaParams = TypedDict('ImdbTitleTriviaParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
 InstagramPostResponse = ModelInstagramPostResponseDoc
 InstagramPostParams = TypedDict('InstagramPostParams', {
     '_response_type': NotRequired[ResponseType],
@@ -10365,6 +13489,216 @@ JustWatchJustwatchTitleSimilarParams = TypedDict('JustWatchJustwatchTitleSimilar
     'limit': NotRequired[int],
 }, total=False)
 
+KalshiEventResponse = ModelKalshiEventResponseDoc
+KalshiEventParams = TypedDict('KalshiEventParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'event_ticker': Required[str],
+}, total=False)
+
+KalshiEventHistoryResponse = ModelKalshiEventHistoryResponseDoc
+KalshiEventHistoryParams = TypedDict('KalshiEventHistoryParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'event_ticker': Required[str],
+    'series_ticker': NotRequired[str],
+    'start_ts': NotRequired[int],
+    'end_ts': NotRequired[int],
+    'period_interval': NotRequired[int],
+    'include_latest_before_start': NotRequired[bool],
+}, total=False)
+
+KalshiEventMetadataResponse = ModelKalshiEventMetadataResponseDoc
+KalshiEventMetadataParams = TypedDict('KalshiEventMetadataParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'event_ticker': Required[str],
+}, total=False)
+
+KalshiEventsResponse = ModelKalshiEventsResponseDoc
+KalshiEventsParams = TypedDict('KalshiEventsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'limit': NotRequired[int],
+    'cursor': NotRequired[str],
+    'series_ticker': NotRequired[str],
+    'category': NotRequired[str],
+    'status': NotRequired[Literal['open', 'closed', 'settled']],
+    'with_nested_markets': NotRequired[bool],
+    'with_milestones': NotRequired[bool],
+    'min_close_ts': NotRequired[int],
+    'min_updated_ts': NotRequired[int],
+}, total=False)
+
+KalshiMultivariateEventsResponse = ModelKalshiMultivariateEventsResponseDoc
+KalshiMultivariateEventsParams = TypedDict('KalshiMultivariateEventsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'limit': NotRequired[int],
+    'cursor': NotRequired[str],
+}, total=False)
+
+KalshiExchangeScheduleResponse = ModelKalshiExchangeScheduleResponseDoc
+KalshiExchangeScheduleParams = TypedDict('KalshiExchangeScheduleParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+}, total=False)
+
+KalshiExchangeStatusResponse = ModelKalshiExchangeStatusResponseDoc
+KalshiExchangeStatusParams = TypedDict('KalshiExchangeStatusParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+}, total=False)
+
+KalshiHistoricalCutoffResponse = ModelKalshiHistoricalCutoffResponseDoc
+KalshiHistoricalCutoffParams = TypedDict('KalshiHistoricalCutoffParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+}, total=False)
+
+KalshiHistoricalMarketResponse = ModelKalshiHistoricalMarketResponseDoc
+KalshiHistoricalMarketParams = TypedDict('KalshiHistoricalMarketParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'ticker': Required[str],
+}, total=False)
+
+KalshiHistoricalMarketHistoryResponse = ModelKalshiMarketHistoryResponseDoc
+KalshiHistoricalMarketHistoryParams = TypedDict('KalshiHistoricalMarketHistoryParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'ticker': Required[str],
+    'start_ts': NotRequired[int],
+    'end_ts': NotRequired[int],
+    'period_interval': NotRequired[int],
+}, total=False)
+
+KalshiHistoricalMarketsResponse = ModelKalshiHistoricalMarketsResponseDoc
+KalshiHistoricalMarketsParams = TypedDict('KalshiHistoricalMarketsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'limit': NotRequired[int],
+    'cursor': NotRequired[str],
+    'tickers': NotRequired[str],
+    'event_ticker': NotRequired[str],
+    'series_ticker': NotRequired[str],
+    'mve_filter': NotRequired[Literal['exclude']],
+}, total=False)
+
+KalshiHistoricalTradesResponse = ModelKalshiHistoricalTradesResponseDoc
+KalshiHistoricalTradesParams = TypedDict('KalshiHistoricalTradesParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'limit': NotRequired[int],
+    'cursor': NotRequired[str],
+    'ticker': NotRequired[str],
+    'min_ts': NotRequired[int],
+    'max_ts': NotRequired[int],
+}, total=False)
+
+KalshiMarketResponse = ModelKalshiMarketResponseDoc
+KalshiMarketParams = TypedDict('KalshiMarketParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'ticker': Required[str],
+}, total=False)
+
+KalshiMarketHistoryResponse = ModelKalshiMarketHistoryResponseDoc
+KalshiMarketHistoryParams = TypedDict('KalshiMarketHistoryParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'ticker': Required[str],
+    'series_ticker': NotRequired[str],
+    'start_ts': NotRequired[int],
+    'end_ts': NotRequired[int],
+    'period_interval': NotRequired[int],
+    'include_latest_before_start': NotRequired[bool],
+}, total=False)
+
+KalshiMarketOrderbookResponse = ModelKalshiOrderBookResponseDoc
+KalshiMarketOrderbookParams = TypedDict('KalshiMarketOrderbookParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'ticker': Required[str],
+}, total=False)
+
+KalshiMarketsResponse = ModelKalshiMarketsResponseDoc
+KalshiMarketsParams = TypedDict('KalshiMarketsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'limit': NotRequired[int],
+    'cursor': NotRequired[str],
+    'event_ticker': NotRequired[str],
+    'series_ticker': NotRequired[str],
+    'status': NotRequired[Literal['unopened', 'open', 'closed', 'settled']],
+    'ticker': NotRequired[str],
+}, total=False)
+
+KalshiMarketsHistoryResponse = ModelKalshiBatchMarketHistoryResponseDoc
+KalshiMarketsHistoryParams = TypedDict('KalshiMarketsHistoryParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'market_tickers': Required[str],
+    'start_ts': NotRequired[int],
+    'end_ts': NotRequired[int],
+    'period_interval': NotRequired[int],
+    'include_latest_before_start': NotRequired[bool],
+}, total=False)
+
+KalshiMarketsOrderbooksResponse = ModelKalshiBatchOrderBookResponseDoc
+KalshiMarketsOrderbooksParams = TypedDict('KalshiMarketsOrderbooksParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'tickers': Required[str],
+}, total=False)
+
+KalshiSeriesResponse = ModelKalshiSeriesResponseDoc
+KalshiSeriesParams = TypedDict('KalshiSeriesParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'limit': NotRequired[int],
+    'cursor': NotRequired[str],
+}, total=False)
+
+KalshiSeriesDetailResponse = ModelKalshiSeriesDetailResponseDoc
+KalshiSeriesDetailParams = TypedDict('KalshiSeriesDetailParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'series_ticker': Required[str],
+}, total=False)
+
+KalshiTradesResponse = ModelKalshiTradesResponseDoc
+KalshiTradesParams = TypedDict('KalshiTradesParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'limit': NotRequired[int],
+    'cursor': NotRequired[str],
+    'ticker': NotRequired[str],
+    'min_ts': NotRequired[int],
+    'max_ts': NotRequired[int],
+}, total=False)
+
 LinkedInLinkedinCompanyResponse = ModelLinkedinCompanyResponseDoc
 LinkedInLinkedinCompanyParams = TypedDict('LinkedInLinkedinCompanyParams', {
     '_response_type': NotRequired[ResponseType],
@@ -10389,11 +13723,747 @@ LinkedInLinkedinShowcaseParams = TypedDict('LinkedInLinkedinShowcaseParams', {
     'id': Required[str],
 }, total=False)
 
+MetaculusCategoryQuestionsResponse = ModelMetaculusQuestionsResponseDoc
+MetaculusCategoryQuestionsParams = TypedDict('MetaculusCategoryQuestionsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'slug': Required[Literal['artificial-intelligence', 'computing-and-math', 'cryptocurrencies', 'economy-business', 'elections', 'environment-climate', 'geopolitics', 'health-pandemics', 'law', 'metaculus', 'natural-sciences', 'nuclear', 'politics', 'social-sciences', 'space', 'sports-entertainment', 'technology']],
+    'limit': NotRequired[int],
+}, total=False)
+
+MetaculusCommentsFeedResponse = ModelMetaculusQuestionsResponseDoc
+MetaculusCommentsFeedParams = TypedDict('MetaculusCommentsFeedParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'limit': NotRequired[int],
+    'topic': NotRequired[str],
+}, total=False)
+
+MetaculusProjectQuestionsResponse = ModelMetaculusQuestionsResponseDoc
+MetaculusProjectQuestionsParams = TypedDict('MetaculusProjectQuestionsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'slug': Required[str],
+    'limit': NotRequired[int],
+}, total=False)
+
+MetaculusQuestionResponse = ModelMetaculusQuestionResponseDoc
+MetaculusQuestionParams = TypedDict('MetaculusQuestionParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': Required[str],
+}, total=False)
+
+MetaculusQuestionForecastHistoryResponse = ModelMetaculusForecastHistoryResponseDoc
+MetaculusQuestionForecastHistoryParams = TypedDict('MetaculusQuestionForecastHistoryParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': Required[str],
+    'method': NotRequired[Literal['recency_weighted', 'unweighted', 'single_aggregation']],
+    'max_points': NotRequired[int],
+}, total=False)
+
+MetaculusQuestionForecastsResponse = ModelMetaculusForecastsResponseDoc
+MetaculusQuestionForecastsParams = TypedDict('MetaculusQuestionForecastsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': Required[str],
+}, total=False)
+
+MetaculusQuestionMetadataResponse = ModelMetaculusMetadataResponseDoc
+MetaculusQuestionMetadataParams = TypedDict('MetaculusQuestionMetadataParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': Required[str],
+}, total=False)
+
+MetaculusQuestionOptionsResponse = ModelMetaculusOptionsResponseDoc
+MetaculusQuestionOptionsParams = TypedDict('MetaculusQuestionOptionsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': Required[str],
+    'method': NotRequired[Literal['recency_weighted', 'unweighted', 'single_aggregation']],
+}, total=False)
+
+MetaculusQuestionsResponse = ModelMetaculusQuestionsResponseDoc
+MetaculusQuestionsParams = TypedDict('MetaculusQuestionsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'limit': NotRequired[int],
+    'topic': NotRequired[str],
+}, total=False)
+
+MetaculusTopCommentsResponse = ModelMetaculusQuestionsResponseDoc
+MetaculusTopCommentsParams = TypedDict('MetaculusTopCommentsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'limit': NotRequired[int],
+    'topic': NotRequired[str],
+}, total=False)
+
+MetaculusTournamentQuestionsResponse = ModelMetaculusQuestionsResponseDoc
+MetaculusTournamentQuestionsParams = TypedDict('MetaculusTournamentQuestionsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'slug': Required[str],
+    'limit': NotRequired[int],
+}, total=False)
+
 MetaPingResponse = ModelApiPingResponseDoc
 MetaPingParams = TypedDict('MetaPingParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
     '_headers': NotRequired[Mapping[str, str]],
+}, total=False)
+
+PolymarketActivityTradesResponse = ModelPolymarketActivityTradesResponseDoc
+PolymarketActivityTradesParams = TypedDict('PolymarketActivityTradesParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'limit': NotRequired[int],
+    'offset': NotRequired[int],
+    'taker_only': NotRequired[Literal['true', 'false']],
+    'filter_type': NotRequired[Literal['CASH']],
+    'filter_amount': NotRequired[Literal['1', '5', '10', '100', '1000', '10000', '100000']],
+    'event_id': NotRequired[str],
+    'market': NotRequired[str],
+}, total=False)
+
+PolymarketClobMarketResponse = ModelPolymarketClobMarketResponseDoc
+PolymarketClobMarketParams = TypedDict('PolymarketClobMarketParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'condition_id': Required[str],
+}, total=False)
+
+PolymarketDashboardMacroResponse = ModelPolymarketMacroDashboardResponseDoc
+PolymarketDashboardMacroParams = TypedDict('PolymarketDashboardMacroParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'limit': NotRequired[int],
+    'cursor': NotRequired[str],
+}, total=False)
+
+PolymarketDataFollowersResponse = ModelPolymarketPublicDataResponseDoc
+PolymarketDataFollowersParams = TypedDict('PolymarketDataFollowersParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'address': Required[str],
+    'limit': NotRequired[int],
+    'offset': NotRequired[int],
+    'order': NotRequired[str],
+    'ascending': NotRequired[bool],
+    'after_cursor': NotRequired[str],
+}, total=False)
+
+PolymarketDataFollowingResponse = ModelPolymarketPublicDataResponseDoc
+PolymarketDataFollowingParams = TypedDict('PolymarketDataFollowingParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'address': Required[str],
+    'limit': NotRequired[int],
+    'offset': NotRequired[int],
+    'order': NotRequired[str],
+    'ascending': NotRequired[bool],
+    'after_cursor': NotRequired[str],
+}, total=False)
+
+PolymarketDataFollowsCountsResponse = ModelPolymarketPublicDataResponseDoc
+PolymarketDataFollowsCountsParams = TypedDict('PolymarketDataFollowsCountsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'address': Required[str],
+}, total=False)
+
+PolymarketEventDetailByIdResponse = ModelPolymarketEventDetailResponseDoc
+PolymarketEventDetailByIdParams = TypedDict('PolymarketEventDetailByIdParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': Required[str],
+}, total=False)
+
+PolymarketEventActivityByIdResponse = ModelPolymarketActivityTradesResponseDoc
+PolymarketEventActivityByIdParams = TypedDict('PolymarketEventActivityByIdParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': Required[str],
+    'limit': NotRequired[int],
+    'offset': NotRequired[int],
+    'taker_only': NotRequired[Literal['true', 'false']],
+    'filter_type': NotRequired[Literal['CASH']],
+    'filter_amount': NotRequired[Literal['1', '5', '10', '100', '1000', '10000', '100000']],
+}, total=False)
+
+PolymarketEventDetailResponse = ModelPolymarketEventDetailResponseDoc
+PolymarketEventDetailParams = TypedDict('PolymarketEventDetailParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'slug': Required[str],
+}, total=False)
+
+PolymarketEventActivityResponse = ModelPolymarketActivityTradesResponseDoc
+PolymarketEventActivityParams = TypedDict('PolymarketEventActivityParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'slug': Required[str],
+    'limit': NotRequired[int],
+    'offset': NotRequired[int],
+    'taker_only': NotRequired[Literal['true', 'false']],
+    'filter_type': NotRequired[Literal['CASH']],
+    'filter_amount': NotRequired[Literal['1', '5', '10', '100', '1000', '10000', '100000']],
+}, total=False)
+
+PolymarketEventsResponse = ModelPolymarketEventsResponseDoc
+PolymarketEventsParams = TypedDict('PolymarketEventsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'limit': NotRequired[int],
+    'offset': NotRequired[int],
+    'order': NotRequired[Literal['volume24hr', 'volume', 'liquidity', 'endDate', 'updatedAt', 'createdAt', 'id', 'slug', 'title', 'question', 'label']],
+    'ascending': NotRequired[bool],
+    'closed': NotRequired[Literal['true', 'false']],
+}, total=False)
+
+PolymarketEventsSimilarResponse = ModelPolymarketSimilarEventsResponseDoc
+PolymarketEventsSimilarParams = TypedDict('PolymarketEventsSimilarParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': NotRequired[int],
+    'event_title': NotRequired[str],
+    'event_slug': NotRequired[str],
+    'market_title': NotRequired[str],
+    'market_slug': NotRequired[str],
+    'limit': NotRequired[int],
+    'closed': NotRequired[Literal['true', 'false']],
+}, total=False)
+
+PolymarketEventTagsResponse = ModelPolymarketTagsResponseDoc
+PolymarketEventTagsParams = TypedDict('PolymarketEventTagsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': Required[str],
+}, total=False)
+
+PolymarketFeeTypesResponse = ModelPolymarketPublicDataResponseDoc
+PolymarketFeeTypesParams = TypedDict('PolymarketFeeTypesParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'active': NotRequired[Literal['true', 'false']],
+    'search': NotRequired[str],
+}, total=False)
+
+PolymarketGamesResponse = ModelPolymarketPublicDataResponseDoc
+PolymarketGamesParams = TypedDict('PolymarketGamesParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'sport': NotRequired[str],
+    'ticker': NotRequired[str],
+}, total=False)
+
+PolymarketHomepageFeedResponse = ModelPolymarketHomepageFeedResponseDoc
+PolymarketHomepageFeedParams = TypedDict('PolymarketHomepageFeedParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'feed': NotRequired[Literal['trending', 'breaking', 'new', 'politics', 'sports', 'crypto', 'esports', 'iran', 'finance', 'geopolitics', 'tech', 'culture', 'economy', 'weather', 'mentions', 'elections']],
+    'limit': NotRequired[int],
+    'cursor': NotRequired[str],
+}, total=False)
+
+PolymarketLeaderboardResponse = ModelPolymarketLeaderboardResponseDoc
+PolymarketLeaderboardParams = TypedDict('PolymarketLeaderboardParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'window': NotRequired[Literal['1d', '7d', '30d', 'all']],
+    'sort_by': NotRequired[Literal['profit', 'volume']],
+    'limit': NotRequired[int],
+}, total=False)
+
+PolymarketMarketClarificationsResponse = ModelPolymarketPublicDataResponseDoc
+PolymarketMarketClarificationsParams = TypedDict('PolymarketMarketClarificationsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'market_id': NotRequired[str],
+    'event_id': NotRequired[str],
+    'state': NotRequired[str],
+    'question_id': NotRequired[str],
+    'tx_hash': NotRequired[str],
+    'limit': NotRequired[int],
+    'offset': NotRequired[int],
+    'order': NotRequired[str],
+    'ascending': NotRequired[bool],
+    'after_cursor': NotRequired[str],
+}, total=False)
+
+PolymarketMarketDetailByConditionResponse = ModelPolymarketMarketDetailResponseDoc
+PolymarketMarketDetailByConditionParams = TypedDict('PolymarketMarketDetailByConditionParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'condition_id': Required[str],
+}, total=False)
+
+PolymarketMarketActivityByConditionResponse = ModelPolymarketActivityTradesResponseDoc
+PolymarketMarketActivityByConditionParams = TypedDict('PolymarketMarketActivityByConditionParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'condition_id': Required[str],
+    'limit': NotRequired[int],
+    'offset': NotRequired[int],
+    'taker_only': NotRequired[Literal['true', 'false']],
+    'filter_type': NotRequired[Literal['CASH']],
+    'filter_amount': NotRequired[Literal['1', '5', '10', '100', '1000', '10000', '100000']],
+}, total=False)
+
+PolymarketMarketLiquidityByConditionResponse = ModelPolymarketMarketLiquidityResponseDoc
+PolymarketMarketLiquidityByConditionParams = TypedDict('PolymarketMarketLiquidityByConditionParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'condition_id': Required[str],
+}, total=False)
+
+PolymarketMarketDetailBySlugResponse = ModelPolymarketMarketDetailResponseDoc
+PolymarketMarketDetailBySlugParams = TypedDict('PolymarketMarketDetailBySlugParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'slug': Required[str],
+}, total=False)
+
+PolymarketMarketLiquidityBySlugResponse = ModelPolymarketMarketLiquidityResponseDoc
+PolymarketMarketLiquidityBySlugParams = TypedDict('PolymarketMarketLiquidityBySlugParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'slug': Required[str],
+}, total=False)
+
+PolymarketMarketDetailResponse = ModelPolymarketMarketDetailResponseDoc
+PolymarketMarketDetailParams = TypedDict('PolymarketMarketDetailParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': Required[str],
+}, total=False)
+
+PolymarketMarketLiquidityResponse = ModelPolymarketMarketLiquidityResponseDoc
+PolymarketMarketLiquidityParams = TypedDict('PolymarketMarketLiquidityParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': Required[str],
+}, total=False)
+
+PolymarketMarketTagsResponse = ModelPolymarketTagsResponseDoc
+PolymarketMarketTagsParams = TypedDict('PolymarketMarketTagsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': Required[str],
+}, total=False)
+
+PolymarketMarketsResponse = ModelPolymarketMarketsResponseDoc
+PolymarketMarketsParams = TypedDict('PolymarketMarketsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'limit': NotRequired[int],
+    'offset': NotRequired[int],
+    'order': NotRequired[Literal['volume24hr', 'volume', 'liquidity', 'endDate', 'updatedAt', 'createdAt', 'id', 'slug', 'title', 'question', 'label']],
+    'ascending': NotRequired[bool],
+    'closed': NotRequired[Literal['true', 'false']],
+}, total=False)
+
+PolymarketPredictionsResponse = ModelPolymarketPredictionsResponseDoc
+PolymarketPredictionsParams = TypedDict('PolymarketPredictionsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'status': NotRequired[Literal['active', 'resolved', 'all']],
+    'sort': NotRequired[Literal['competitive', 'volume', 'volume_24hr', 'ending_soon', 'liquidity', 'newest', 'closed_time']],
+    'tag': NotRequired[str],
+    'recurrence': NotRequired[Literal['hourly', 'daily', 'weekly', 'monthly', 'yearly']],
+    'limit': NotRequired[int],
+    'cursor': NotRequired[str],
+}, total=False)
+
+PolymarketRewardsMarketResponse = ModelPolymarketRewardsMarketResponseDoc
+PolymarketRewardsMarketParams = TypedDict('PolymarketRewardsMarketParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'condition_id': Required[str],
+}, total=False)
+
+PolymarketRewardsMarketsResponse = ModelPolymarketRewardsMarketsResponseDoc
+PolymarketRewardsMarketsParams = TypedDict('PolymarketRewardsMarketsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'order_by': NotRequired[Literal['market', 'earnings', 'max_spread', 'min_size', 'rate_per_day', 'price', 'earning_percentage', 'spread']],
+    'position': NotRequired[Literal['asc', 'desc']],
+    'date': NotRequired[str],
+    'q': NotRequired[str],
+    'tag_slug': NotRequired[Literal['all', 'politics', 'sports', 'crypto', 'pop-culture', 'middle-east', 'business', 'science']],
+    'cursor': NotRequired[str],
+    'limit': NotRequired[int],
+}, total=False)
+
+PolymarketSearchResponse = ModelPolymarketSearchResponseDoc
+PolymarketSearchParams = TypedDict('PolymarketSearchParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'q': Required[str],
+    'limit': NotRequired[int],
+    'status': NotRequired[Literal['open', 'closed', 'all']],
+    'sort': NotRequired[Literal['relevance', 'volume24hr', 'volume', 'liquidity', 'endDate']],
+    'ascending': NotRequired[bool],
+    'include_tags': NotRequired[bool],
+    'include_profiles': NotRequired[bool],
+}, total=False)
+
+PolymarketSportsResponse = ModelPolymarketPublicDataResponseDoc
+PolymarketSportsParams = TypedDict('PolymarketSportsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+}, total=False)
+
+PolymarketSportsByPartnerResponse = ModelPolymarketPublicDataResponseDoc
+PolymarketSportsByPartnerParams = TypedDict('PolymarketSportsByPartnerParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'partner': NotRequired[str],
+    'external_id': NotRequired[str],
+}, total=False)
+
+PolymarketSportsMarketTypesResponse = ModelPolymarketPublicDataResponseDoc
+PolymarketSportsMarketTypesParams = TypedDict('PolymarketSportsMarketTypesParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+}, total=False)
+
+PolymarketSportsSummaryResponse = ModelPolymarketPublicDataResponseDoc
+PolymarketSportsSummaryParams = TypedDict('PolymarketSportsSummaryParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+}, total=False)
+
+PolymarketSportResponse = ModelPolymarketPublicDataResponseDoc
+PolymarketSportParams = TypedDict('PolymarketSportParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': Required[int],
+}, total=False)
+
+PolymarketSportExternalPartnersResponse = ModelPolymarketPublicDataResponseDoc
+PolymarketSportExternalPartnersParams = TypedDict('PolymarketSportExternalPartnersParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': Required[int],
+}, total=False)
+
+PolymarketSportExternalPartnerResponse = ModelPolymarketPublicDataResponseDoc
+PolymarketSportExternalPartnerParams = TypedDict('PolymarketSportExternalPartnerParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': Required[int],
+    'partner_ref': Required[str],
+}, total=False)
+
+PolymarketSpotlightsResponse = ModelPolymarketPublicDataResponseDoc
+PolymarketSpotlightsParams = TypedDict('PolymarketSpotlightsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+}, total=False)
+
+PolymarketSpotlightsKeysetResponse = ModelPolymarketPublicDataResponseDoc
+PolymarketSpotlightsKeysetParams = TypedDict('PolymarketSpotlightsKeysetParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'limit': NotRequired[int],
+    'offset': NotRequired[int],
+    'order': NotRequired[str],
+    'ascending': NotRequired[bool],
+    'after_cursor': NotRequired[str],
+}, total=False)
+
+PolymarketSpotlightResponse = ModelPolymarketPublicDataResponseDoc
+PolymarketSpotlightParams = TypedDict('PolymarketSpotlightParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'slug': Required[str],
+}, total=False)
+
+PolymarketStatusResponse = ModelPolymarketPublicDataResponseDoc
+PolymarketStatusParams = TypedDict('PolymarketStatusParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+}, total=False)
+
+PolymarketTagBySlugResponse = ModelPolymarketTagResponseDoc
+PolymarketTagBySlugParams = TypedDict('PolymarketTagBySlugParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'slug': Required[str],
+    'locale': NotRequired[str],
+}, total=False)
+
+PolymarketRelatedTagsBySlugResponse = ModelPolymarketTagsResponseDoc
+PolymarketRelatedTagsBySlugParams = TypedDict('PolymarketRelatedTagsBySlugParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'slug': Required[str],
+    'omit_empty': NotRequired[Literal['true', 'false']],
+    'status': NotRequired[str],
+    'locale': NotRequired[str],
+}, total=False)
+
+PolymarketRelatedTagRowsBySlugResponse = ModelPolymarketTagsResponseDoc
+PolymarketRelatedTagRowsBySlugParams = TypedDict('PolymarketRelatedTagRowsBySlugParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'slug': Required[str],
+    'omit_empty': NotRequired[Literal['true', 'false']],
+    'status': NotRequired[str],
+    'locale': NotRequired[str],
+}, total=False)
+
+PolymarketTagResponse = ModelPolymarketTagResponseDoc
+PolymarketTagParams = TypedDict('PolymarketTagParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': Required[str],
+    'include_template': NotRequired[bool],
+    'locale': NotRequired[str],
+}, total=False)
+
+PolymarketRelatedTagsResponse = ModelPolymarketTagsResponseDoc
+PolymarketRelatedTagsParams = TypedDict('PolymarketRelatedTagsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': Required[str],
+    'omit_empty': NotRequired[Literal['true', 'false']],
+    'status': NotRequired[str],
+    'locale': NotRequired[str],
+}, total=False)
+
+PolymarketRelatedTagRowsResponse = ModelPolymarketTagsResponseDoc
+PolymarketRelatedTagRowsParams = TypedDict('PolymarketRelatedTagRowsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': Required[str],
+    'omit_empty': NotRequired[Literal['true', 'false']],
+    'status': NotRequired[str],
+    'locale': NotRequired[str],
+}, total=False)
+
+PolymarketTagsResponse = ModelPolymarketTagsResponseDoc
+PolymarketTagsParams = TypedDict('PolymarketTagsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'limit': NotRequired[int],
+    'offset': NotRequired[int],
+    'order': NotRequired[Literal['volume24hr', 'volume', 'liquidity', 'endDate', 'updatedAt', 'createdAt', 'id', 'slug', 'title', 'question', 'label']],
+    'ascending': NotRequired[Literal['true', 'false']],
+    'locale': NotRequired[str],
+}, total=False)
+
+PolymarketTeamsResponse = ModelPolymarketPublicDataResponseDoc
+PolymarketTeamsParams = TypedDict('PolymarketTeamsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'league': NotRequired[str],
+    'name': NotRequired[str],
+    'abbreviation': NotRequired[str],
+    'provider_id': NotRequired[str],
+    'limit': NotRequired[int],
+    'offset': NotRequired[int],
+    'order': NotRequired[str],
+    'ascending': NotRequired[bool],
+}, total=False)
+
+PolymarketTeamsByPartnerResponse = ModelPolymarketPublicDataResponseDoc
+PolymarketTeamsByPartnerParams = TypedDict('PolymarketTeamsByPartnerParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'partner': NotRequired[str],
+    'external_id': NotRequired[str],
+}, total=False)
+
+PolymarketTeamResponse = ModelPolymarketPublicDataResponseDoc
+PolymarketTeamParams = TypedDict('PolymarketTeamParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': Required[int],
+}, total=False)
+
+PolymarketTeamExternalPartnersResponse = ModelPolymarketPublicDataResponseDoc
+PolymarketTeamExternalPartnersParams = TypedDict('PolymarketTeamExternalPartnersParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': Required[int],
+}, total=False)
+
+PolymarketTeamExternalPartnerResponse = ModelPolymarketPublicDataResponseDoc
+PolymarketTeamExternalPartnerParams = TypedDict('PolymarketTeamExternalPartnerParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': Required[int],
+    'partner_ref': Required[str],
+}, total=False)
+
+PolymarketTokenMidpointResponse = ModelPolymarketTokenMidpointResponseDoc
+PolymarketTokenMidpointParams = TypedDict('PolymarketTokenMidpointParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'token_id': Required[str],
+}, total=False)
+
+PolymarketTokenOrderbookResponse = ModelPolymarketTokenOrderBookResponseDoc
+PolymarketTokenOrderbookParams = TypedDict('PolymarketTokenOrderbookParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'token_id': Required[str],
+}, total=False)
+
+PolymarketTokenPriceResponse = ModelPolymarketTokenPriceResponseDoc
+PolymarketTokenPriceParams = TypedDict('PolymarketTokenPriceParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'token_id': Required[str],
+    'side': NotRequired[Literal['buy', 'sell']],
+}, total=False)
+
+PolymarketTokenPriceHistoryResponse = ModelPolymarketTokenPriceHistoryResponseDoc
+PolymarketTokenPriceHistoryParams = TypedDict('PolymarketTokenPriceHistoryParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'token_id': Required[str],
+    'interval': NotRequired[Literal['1m', '1h', '6h', '1d', '1w', 'all', 'max']],
+    'fidelity': NotRequired[int],
+    'start_ts': NotRequired[int],
+    'end_ts': NotRequired[int],
+}, total=False)
+
+PolymarketTokenSpreadResponse = ModelPolymarketTokenSpreadResponseDoc
+PolymarketTokenSpreadParams = TypedDict('PolymarketTokenSpreadParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'token_id': Required[str],
+}, total=False)
+
+PolymarketTokensMidpointsBody = ModelPolymarketBatchTokenMidpointsOption
+PolymarketTokensMidpointsResponse = ModelPolymarketBatchTokenMidpointsResponseDoc
+PolymarketTokensMidpointsParams = TypedDict('PolymarketTokensMidpointsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'body': Required[PolymarketTokensMidpointsBody],
+}, total=False)
+
+PolymarketTokensOrderbooksBody = ModelPolymarketBatchTokenOrderBooksOption
+PolymarketTokensOrderbooksResponse = ModelPolymarketBatchTokenOrderBooksResponseDoc
+PolymarketTokensOrderbooksParams = TypedDict('PolymarketTokensOrderbooksParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'body': Required[PolymarketTokensOrderbooksBody],
+}, total=False)
+
+PolymarketTokensPricesBody = ModelPolymarketBatchTokenPricesOption
+PolymarketTokensPricesResponse = ModelPolymarketBatchTokenPricesResponseDoc
+PolymarketTokensPricesParams = TypedDict('PolymarketTokensPricesParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'body': Required[PolymarketTokensPricesBody],
+}, total=False)
+
+PolymarketTokensSpreadsBody = ModelPolymarketBatchTokenSpreadsOption
+PolymarketTokensSpreadsResponse = ModelPolymarketBatchTokenSpreadsResponseDoc
+PolymarketTokensSpreadsParams = TypedDict('PolymarketTokensSpreadsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'body': Required[PolymarketTokensSpreadsBody],
+}, total=False)
+
+PolymarketTournamentsResponse = ModelPolymarketPublicDataResponseDoc
+PolymarketTournamentsParams = TypedDict('PolymarketTournamentsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'limit': NotRequired[int],
+    'offset': NotRequired[int],
+    'order': NotRequired[str],
+    'ascending': NotRequired[bool],
+}, total=False)
+
+PolymarketTournamentResponse = ModelPolymarketPublicDataResponseDoc
+PolymarketTournamentParams = TypedDict('PolymarketTournamentParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': Required[int],
 }, total=False)
 
 ProductHuntCategoryResponse = ModelProducthuntCategoryResponseDoc
@@ -10529,6 +14599,18 @@ RedditCommentsParams = TypedDict('RedditCommentsParams', {
     'depth': NotRequired[int],
 }, total=False)
 
+RedditDomainPostsResponse = ModelRedditDomainPostsResponseDoc
+RedditDomainPostsParams = TypedDict('RedditDomainPostsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'domain': Required[str],
+    'sort': NotRequired[Literal['hot', 'new', 'top', 'rising']],
+    'time': NotRequired[Literal['hour', 'day', 'week', 'month', 'year', 'all']],
+    'limit': NotRequired[int],
+    'after': NotRequired[str],
+}, total=False)
+
 RedditPostResponse = ModelRedditPostResponseDoc
 RedditPostParams = TypedDict('RedditPostParams', {
     '_response_type': NotRequired[ResponseType],
@@ -10550,6 +14632,25 @@ RedditSearchParams = TypedDict('RedditSearchParams', {
     'after': NotRequired[str],
 }, total=False)
 
+RedditSubredditAboutResponse = ModelRedditSubredditAboutResponseDoc
+RedditSubredditAboutParams = TypedDict('RedditSubredditAboutParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'subreddit': Required[str],
+    'limit': NotRequired[int],
+}, total=False)
+
+RedditSubredditCommentsResponse = ModelRedditSubredditCommentsResponseDoc
+RedditSubredditCommentsParams = TypedDict('RedditSubredditCommentsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'subreddit': Required[str],
+    'limit': NotRequired[int],
+    'after': NotRequired[str],
+}, total=False)
+
 RedditSubredditPostsResponse = ModelRedditSubredditPostsResponseDoc
 RedditSubredditPostsParams = TypedDict('RedditSubredditPostsParams', {
     '_response_type': NotRequired[ResponseType],
@@ -10558,6 +14659,49 @@ RedditSubredditPostsParams = TypedDict('RedditSubredditPostsParams', {
     'subreddit': Required[str],
     'sort': NotRequired[Literal['hot', 'new', 'top', 'rising']],
     'time': NotRequired[Literal['hour', 'day', 'week', 'month', 'year', 'all']],
+    'limit': NotRequired[int],
+    'after': NotRequired[str],
+}, total=False)
+
+RedditSubredditsPostsResponse = ModelRedditMultiSubredditPostsResponseDoc
+RedditSubredditsPostsParams = TypedDict('RedditSubredditsPostsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'subreddits': Required[str],
+    'sort': NotRequired[Literal['hot', 'new', 'top', 'rising']],
+    'time': NotRequired[Literal['hour', 'day', 'week', 'month', 'year', 'all']],
+    'limit': NotRequired[int],
+    'after': NotRequired[str],
+}, total=False)
+
+RedditTrendsResponse = ModelRedditTrendsResponseDoc
+RedditTrendsParams = TypedDict('RedditTrendsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'sort': NotRequired[Literal['hot', 'new', 'rising', 'top']],
+    'time': NotRequired[Literal['hour', 'day', 'week', 'month', 'year', 'all']],
+    'limit': NotRequired[int],
+    'after': NotRequired[str],
+}, total=False)
+
+RedditUserCommentsResponse = ModelRedditUserCommentsResponseDoc
+RedditUserCommentsParams = TypedDict('RedditUserCommentsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'username': Required[str],
+    'limit': NotRequired[int],
+    'after': NotRequired[str],
+}, total=False)
+
+RedditUserPostsResponse = ModelRedditUserPostsResponseDoc
+RedditUserPostsParams = TypedDict('RedditUserPostsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'username': Required[str],
     'limit': NotRequired[int],
     'after': NotRequired[str],
 }, total=False)
@@ -10584,6 +14728,92 @@ ReferralsMeEventsParams = TypedDict('ReferralsMeEventsParams', {
     '_timeout': NotRequired[float],
     '_headers': NotRequired[Mapping[str, str]],
     'limit': NotRequired[int],
+}, total=False)
+
+RottenTomatoesRottentomatoesBrowseMoviesResponse = ModelRottentomatoesBrowseResponseDoc
+RottenTomatoesRottentomatoesBrowseMoviesParams = TypedDict('RottenTomatoesRottentomatoesBrowseMoviesParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'list': NotRequired[Literal['movies_in_theaters', 'movies_at_home', 'movies_coming_soon']],
+    'sort': NotRequired[Literal['popular', 'newest', 'top_box_office']],
+    'limit': NotRequired[int],
+}, total=False)
+
+RottenTomatoesRottentomatoesBrowseTvResponse = ModelRottentomatoesBrowseResponseDoc
+RottenTomatoesRottentomatoesBrowseTvParams = TypedDict('RottenTomatoesRottentomatoesBrowseTvParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'list': NotRequired[Literal['tv_series_browse']],
+    'sort': NotRequired[Literal['popular', 'newest']],
+    'limit': NotRequired[int],
+}, total=False)
+
+RottenTomatoesRottentomatoesEpisodeResponse = ModelRottentomatoesEpisodeResponseDoc
+RottenTomatoesRottentomatoesEpisodeParams = TypedDict('RottenTomatoesRottentomatoesEpisodeParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'path': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+RottenTomatoesRottentomatoesMovieResponse = ModelRottentomatoesMovieResponseDoc
+RottenTomatoesRottentomatoesMovieParams = TypedDict('RottenTomatoesRottentomatoesMovieParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'path': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+RottenTomatoesRottentomatoesMovieReviewsResponse = ModelRottentomatoesReviewsResponseDoc
+RottenTomatoesRottentomatoesMovieReviewsParams = TypedDict('RottenTomatoesRottentomatoesMovieReviewsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'path': NotRequired[str],
+    'url': NotRequired[str],
+    'type': NotRequired[Literal['critics', 'top-critics', 'audience', 'verified-audience']],
+    'limit': NotRequired[int],
+    'after': NotRequired[str],
+}, total=False)
+
+RottenTomatoesRottentomatoesPersonResponse = ModelRottentomatoesPersonResponseDoc
+RottenTomatoesRottentomatoesPersonParams = TypedDict('RottenTomatoesRottentomatoesPersonParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'path': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+RottenTomatoesRottentomatoesSearchResponse = ModelRottentomatoesSearchResponseDoc
+RottenTomatoesRottentomatoesSearchParams = TypedDict('RottenTomatoesRottentomatoesSearchParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'query': Required[str],
+    'limit': NotRequired[int],
+}, total=False)
+
+RottenTomatoesRottentomatoesSeasonResponse = ModelRottentomatoesSeasonResponseDoc
+RottenTomatoesRottentomatoesSeasonParams = TypedDict('RottenTomatoesRottentomatoesSeasonParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'path': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+RottenTomatoesRottentomatoesSeriesResponse = ModelRottentomatoesSeriesResponseDoc
+RottenTomatoesRottentomatoesSeriesParams = TypedDict('RottenTomatoesRottentomatoesSeriesParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'path': NotRequired[str],
+    'url': NotRequired[str],
 }, total=False)
 
 ShopAppAnalysisResponse = ModelShopappAnalysisResponseDoc
@@ -12313,6 +16543,29 @@ class BingGroup:
     def suggest(self, **params: Unpack[BingSuggestParams]) -> BingSuggestResponse: ...
     def videos(self, **params: Unpack[BingVideosParams]) -> BingVideosResponse: ...
 
+class BoxOfficeMojoGroup:
+    def boxofficemojo_brand(self, **params: Unpack[BoxOfficeMojoBoxofficemojoBrandParams]) -> BoxOfficeMojoBoxofficemojoBrandResponse: ...
+    def boxofficemojo_brands(self, **params: Unpack[BoxOfficeMojoBoxofficemojoBrandsParams]) -> BoxOfficeMojoBoxofficemojoBrandsResponse: ...
+    def boxofficemojo_calendar(self, **params: Unpack[BoxOfficeMojoBoxofficemojoCalendarParams]) -> BoxOfficeMojoBoxofficemojoCalendarResponse: ...
+    def boxofficemojo_calendar_changes(self, **params: Unpack[BoxOfficeMojoBoxofficemojoCalendarChangesParams]) -> BoxOfficeMojoBoxofficemojoCalendarChangesResponse: ...
+    def boxofficemojo_calendar_date(self, **params: Unpack[BoxOfficeMojoBoxofficemojoCalendarDateParams]) -> BoxOfficeMojoBoxofficemojoCalendarDateResponse: ...
+    def boxofficemojo_date_domestic(self, **params: Unpack[BoxOfficeMojoBoxofficemojoDateDomesticParams]) -> BoxOfficeMojoBoxofficemojoDateDomesticResponse: ...
+    def boxofficemojo_franchise(self, **params: Unpack[BoxOfficeMojoBoxofficemojoFranchiseParams]) -> BoxOfficeMojoBoxofficemojoFranchiseResponse: ...
+    def boxofficemojo_franchises(self, **params: Unpack[BoxOfficeMojoBoxofficemojoFranchisesParams]) -> BoxOfficeMojoBoxofficemojoFranchisesResponse: ...
+    def boxofficemojo_genre(self, **params: Unpack[BoxOfficeMojoBoxofficemojoGenreParams]) -> BoxOfficeMojoBoxofficemojoGenreResponse: ...
+    def boxofficemojo_genres(self, **params: Unpack[BoxOfficeMojoBoxofficemojoGenresParams]) -> BoxOfficeMojoBoxofficemojoGenresResponse: ...
+    def boxofficemojo_lifetime_grosses(self, **params: Unpack[BoxOfficeMojoBoxofficemojoLifetimeGrossesParams]) -> BoxOfficeMojoBoxofficemojoLifetimeGrossesResponse: ...
+    def boxofficemojo_release(self, **params: Unpack[BoxOfficeMojoBoxofficemojoReleaseParams]) -> BoxOfficeMojoBoxofficemojoReleaseResponse: ...
+    def boxofficemojo_release_group(self, **params: Unpack[BoxOfficeMojoBoxofficemojoReleaseGroupParams]) -> BoxOfficeMojoBoxofficemojoReleaseGroupResponse: ...
+    def boxofficemojo_showdown(self, **params: Unpack[BoxOfficeMojoBoxofficemojoShowdownParams]) -> BoxOfficeMojoBoxofficemojoShowdownResponse: ...
+    def boxofficemojo_showdowns(self, **params: Unpack[BoxOfficeMojoBoxofficemojoShowdownsParams]) -> BoxOfficeMojoBoxofficemojoShowdownsResponse: ...
+    def boxofficemojo_title(self, **params: Unpack[BoxOfficeMojoBoxofficemojoTitleParams]) -> BoxOfficeMojoBoxofficemojoTitleResponse: ...
+    def boxofficemojo_weekend_domestic(self, **params: Unpack[BoxOfficeMojoBoxofficemojoWeekendDomesticParams]) -> BoxOfficeMojoBoxofficemojoWeekendDomesticResponse: ...
+    def boxofficemojo_weekend_domestic_by_distributor(self, **params: Unpack[BoxOfficeMojoBoxofficemojoWeekendDomesticByDistributorParams]) -> BoxOfficeMojoBoxofficemojoWeekendDomesticByDistributorResponse: ...
+    def boxofficemojo_weekend_domestic_estimates(self, **params: Unpack[BoxOfficeMojoBoxofficemojoWeekendDomesticEstimatesParams]) -> BoxOfficeMojoBoxofficemojoWeekendDomesticEstimatesResponse: ...
+    def boxofficemojo_year_domestic(self, **params: Unpack[BoxOfficeMojoBoxofficemojoYearDomesticParams]) -> BoxOfficeMojoBoxofficemojoYearDomesticResponse: ...
+    def boxofficemojo_year_worldwide(self, **params: Unpack[BoxOfficeMojoBoxofficemojoYearWorldwideParams]) -> BoxOfficeMojoBoxofficemojoYearWorldwideResponse: ...
+
 class BrandGroup:
     def retrieve(self, **params: Unpack[BrandRetrieveParams]) -> BrandRetrieveResponse: ...
 
@@ -12418,6 +16671,27 @@ class GooglePlayGroup:
     def similar(self, **params: Unpack[GooglePlaySimilarParams]) -> GooglePlaySimilarResponse: ...
     def suggest(self, **params: Unpack[GooglePlaySuggestParams]) -> GooglePlaySuggestResponse: ...
 
+class ImdbGroup:
+    def name(self, **params: Unpack[ImdbNameParams]) -> ImdbNameResponse: ...
+    def name_awards(self, **params: Unpack[ImdbNameAwardsParams]) -> ImdbNameAwardsResponse: ...
+    def name_credits(self, **params: Unpack[ImdbNameCreditsParams]) -> ImdbNameCreditsResponse: ...
+    def search(self, **params: Unpack[ImdbSearchParams]) -> ImdbSearchResponse: ...
+    def title(self, **params: Unpack[ImdbTitleParams]) -> ImdbTitleResponse: ...
+    def title_awards(self, **params: Unpack[ImdbTitleAwardsParams]) -> ImdbTitleAwardsResponse: ...
+    def title_company_credits(self, **params: Unpack[ImdbTitleCompanyCreditsParams]) -> ImdbTitleCompanyCreditsResponse: ...
+    def title_credits(self, **params: Unpack[ImdbTitleCreditsParams]) -> ImdbTitleCreditsResponse: ...
+    def title_episodes(self, **params: Unpack[ImdbTitleEpisodesParams]) -> ImdbTitleEpisodesResponse: ...
+    def title_filming_locations(self, **params: Unpack[ImdbTitleFilmingLocationsParams]) -> ImdbTitleFilmingLocationsResponse: ...
+    def title_goofs(self, **params: Unpack[ImdbTitleGoofsParams]) -> ImdbTitleGoofsResponse: ...
+    def title_keywords(self, **params: Unpack[ImdbTitleKeywordsParams]) -> ImdbTitleKeywordsResponse: ...
+    def title_parental_guide(self, **params: Unpack[ImdbTitleParentalGuideParams]) -> ImdbTitleParentalGuideResponse: ...
+    def title_public_facts_analysis(self, **params: Unpack[ImdbTitlePublicFactsAnalysisParams]) -> ImdbTitlePublicFactsAnalysisResponse: ...
+    def title_quotes(self, **params: Unpack[ImdbTitleQuotesParams]) -> ImdbTitleQuotesResponse: ...
+    def title_release_info(self, **params: Unpack[ImdbTitleReleaseInfoParams]) -> ImdbTitleReleaseInfoResponse: ...
+    def title_reviews(self, **params: Unpack[ImdbTitleReviewsParams]) -> ImdbTitleReviewsResponse: ...
+    def title_technical_specs(self, **params: Unpack[ImdbTitleTechnicalSpecsParams]) -> ImdbTitleTechnicalSpecsResponse: ...
+    def title_trivia(self, **params: Unpack[ImdbTitleTriviaParams]) -> ImdbTitleTriviaResponse: ...
+
 class InstagramGroup:
     def post(self, **params: Unpack[InstagramPostParams]) -> InstagramPostResponse: ...
     def profile(self, **params: Unpack[InstagramProfileParams]) -> InstagramProfileResponse: ...
@@ -12446,14 +16720,117 @@ class JustWatchGroup:
     def justwatch_title_offers(self, **params: Unpack[JustWatchJustwatchTitleOffersParams]) -> JustWatchJustwatchTitleOffersResponse: ...
     def justwatch_title_similar(self, **params: Unpack[JustWatchJustwatchTitleSimilarParams]) -> JustWatchJustwatchTitleSimilarResponse: ...
 
+class KalshiGroup:
+    def event(self, **params: Unpack[KalshiEventParams]) -> KalshiEventResponse: ...
+    def event_history(self, **params: Unpack[KalshiEventHistoryParams]) -> KalshiEventHistoryResponse: ...
+    def event_metadata(self, **params: Unpack[KalshiEventMetadataParams]) -> KalshiEventMetadataResponse: ...
+    def events(self, **params: Unpack[KalshiEventsParams]) -> KalshiEventsResponse: ...
+    def multivariate_events(self, **params: Unpack[KalshiMultivariateEventsParams]) -> KalshiMultivariateEventsResponse: ...
+    def exchange_schedule(self, **params: Unpack[KalshiExchangeScheduleParams]) -> KalshiExchangeScheduleResponse: ...
+    def exchange_status(self, **params: Unpack[KalshiExchangeStatusParams]) -> KalshiExchangeStatusResponse: ...
+    def historical_cutoff(self, **params: Unpack[KalshiHistoricalCutoffParams]) -> KalshiHistoricalCutoffResponse: ...
+    def historical_market(self, **params: Unpack[KalshiHistoricalMarketParams]) -> KalshiHistoricalMarketResponse: ...
+    def historical_market_history(self, **params: Unpack[KalshiHistoricalMarketHistoryParams]) -> KalshiHistoricalMarketHistoryResponse: ...
+    def historical_markets(self, **params: Unpack[KalshiHistoricalMarketsParams]) -> KalshiHistoricalMarketsResponse: ...
+    def historical_trades(self, **params: Unpack[KalshiHistoricalTradesParams]) -> KalshiHistoricalTradesResponse: ...
+    def market(self, **params: Unpack[KalshiMarketParams]) -> KalshiMarketResponse: ...
+    def market_history(self, **params: Unpack[KalshiMarketHistoryParams]) -> KalshiMarketHistoryResponse: ...
+    def market_orderbook(self, **params: Unpack[KalshiMarketOrderbookParams]) -> KalshiMarketOrderbookResponse: ...
+    def markets(self, **params: Unpack[KalshiMarketsParams]) -> KalshiMarketsResponse: ...
+    def markets_history(self, **params: Unpack[KalshiMarketsHistoryParams]) -> KalshiMarketsHistoryResponse: ...
+    def markets_orderbooks(self, **params: Unpack[KalshiMarketsOrderbooksParams]) -> KalshiMarketsOrderbooksResponse: ...
+    def series(self, **params: Unpack[KalshiSeriesParams]) -> KalshiSeriesResponse: ...
+    def series_detail(self, **params: Unpack[KalshiSeriesDetailParams]) -> KalshiSeriesDetailResponse: ...
+    def trades(self, **params: Unpack[KalshiTradesParams]) -> KalshiTradesResponse: ...
+
 class LinkedInGroup:
     def linkedin_company(self, **params: Unpack[LinkedInLinkedinCompanyParams]) -> LinkedInLinkedinCompanyResponse: ...
     def linkedin_product(self, **params: Unpack[LinkedInLinkedinProductParams]) -> LinkedInLinkedinProductResponse: ...
     def linkedin_showcase(self, **params: Unpack[LinkedInLinkedinShowcaseParams]) -> LinkedInLinkedinShowcaseResponse: ...
 
+class MetaculusGroup:
+    def category_questions(self, **params: Unpack[MetaculusCategoryQuestionsParams]) -> MetaculusCategoryQuestionsResponse: ...
+    def comments_feed(self, **params: Unpack[MetaculusCommentsFeedParams]) -> MetaculusCommentsFeedResponse: ...
+    def project_questions(self, **params: Unpack[MetaculusProjectQuestionsParams]) -> MetaculusProjectQuestionsResponse: ...
+    def question(self, **params: Unpack[MetaculusQuestionParams]) -> MetaculusQuestionResponse: ...
+    def question_forecast_history(self, **params: Unpack[MetaculusQuestionForecastHistoryParams]) -> MetaculusQuestionForecastHistoryResponse: ...
+    def question_forecasts(self, **params: Unpack[MetaculusQuestionForecastsParams]) -> MetaculusQuestionForecastsResponse: ...
+    def question_metadata(self, **params: Unpack[MetaculusQuestionMetadataParams]) -> MetaculusQuestionMetadataResponse: ...
+    def question_options(self, **params: Unpack[MetaculusQuestionOptionsParams]) -> MetaculusQuestionOptionsResponse: ...
+    def questions(self, **params: Unpack[MetaculusQuestionsParams]) -> MetaculusQuestionsResponse: ...
+    def top_comments(self, **params: Unpack[MetaculusTopCommentsParams]) -> MetaculusTopCommentsResponse: ...
+    def tournament_questions(self, **params: Unpack[MetaculusTournamentQuestionsParams]) -> MetaculusTournamentQuestionsResponse: ...
+
 class MetaGroup:
     def ping(self, **params: Unpack[MetaPingParams]) -> MetaPingResponse: ...
     def ready(self, **params: Unpack[MetaReadyParams]) -> MetaReadyResponse: ...
+
+class PolymarketGroup:
+    def activity_trades(self, **params: Unpack[PolymarketActivityTradesParams]) -> PolymarketActivityTradesResponse: ...
+    def clob_market(self, **params: Unpack[PolymarketClobMarketParams]) -> PolymarketClobMarketResponse: ...
+    def dashboard_macro(self, **params: Unpack[PolymarketDashboardMacroParams]) -> PolymarketDashboardMacroResponse: ...
+    def data_followers(self, **params: Unpack[PolymarketDataFollowersParams]) -> PolymarketDataFollowersResponse: ...
+    def data_following(self, **params: Unpack[PolymarketDataFollowingParams]) -> PolymarketDataFollowingResponse: ...
+    def data_follows_counts(self, **params: Unpack[PolymarketDataFollowsCountsParams]) -> PolymarketDataFollowsCountsResponse: ...
+    def event_detail_by_id(self, **params: Unpack[PolymarketEventDetailByIdParams]) -> PolymarketEventDetailByIdResponse: ...
+    def event_activity_by_id(self, **params: Unpack[PolymarketEventActivityByIdParams]) -> PolymarketEventActivityByIdResponse: ...
+    def event_detail(self, **params: Unpack[PolymarketEventDetailParams]) -> PolymarketEventDetailResponse: ...
+    def event_activity(self, **params: Unpack[PolymarketEventActivityParams]) -> PolymarketEventActivityResponse: ...
+    def events(self, **params: Unpack[PolymarketEventsParams]) -> PolymarketEventsResponse: ...
+    def events_similar(self, **params: Unpack[PolymarketEventsSimilarParams]) -> PolymarketEventsSimilarResponse: ...
+    def event_tags(self, **params: Unpack[PolymarketEventTagsParams]) -> PolymarketEventTagsResponse: ...
+    def fee_types(self, **params: Unpack[PolymarketFeeTypesParams]) -> PolymarketFeeTypesResponse: ...
+    def games(self, **params: Unpack[PolymarketGamesParams]) -> PolymarketGamesResponse: ...
+    def homepage_feed(self, **params: Unpack[PolymarketHomepageFeedParams]) -> PolymarketHomepageFeedResponse: ...
+    def leaderboard(self, **params: Unpack[PolymarketLeaderboardParams]) -> PolymarketLeaderboardResponse: ...
+    def market_clarifications(self, **params: Unpack[PolymarketMarketClarificationsParams]) -> PolymarketMarketClarificationsResponse: ...
+    def market_detail_by_condition(self, **params: Unpack[PolymarketMarketDetailByConditionParams]) -> PolymarketMarketDetailByConditionResponse: ...
+    def market_activity_by_condition(self, **params: Unpack[PolymarketMarketActivityByConditionParams]) -> PolymarketMarketActivityByConditionResponse: ...
+    def market_liquidity_by_condition(self, **params: Unpack[PolymarketMarketLiquidityByConditionParams]) -> PolymarketMarketLiquidityByConditionResponse: ...
+    def market_detail_by_slug(self, **params: Unpack[PolymarketMarketDetailBySlugParams]) -> PolymarketMarketDetailBySlugResponse: ...
+    def market_liquidity_by_slug(self, **params: Unpack[PolymarketMarketLiquidityBySlugParams]) -> PolymarketMarketLiquidityBySlugResponse: ...
+    def market_detail(self, **params: Unpack[PolymarketMarketDetailParams]) -> PolymarketMarketDetailResponse: ...
+    def market_liquidity(self, **params: Unpack[PolymarketMarketLiquidityParams]) -> PolymarketMarketLiquidityResponse: ...
+    def market_tags(self, **params: Unpack[PolymarketMarketTagsParams]) -> PolymarketMarketTagsResponse: ...
+    def markets(self, **params: Unpack[PolymarketMarketsParams]) -> PolymarketMarketsResponse: ...
+    def predictions(self, **params: Unpack[PolymarketPredictionsParams]) -> PolymarketPredictionsResponse: ...
+    def rewards_market(self, **params: Unpack[PolymarketRewardsMarketParams]) -> PolymarketRewardsMarketResponse: ...
+    def rewards_markets(self, **params: Unpack[PolymarketRewardsMarketsParams]) -> PolymarketRewardsMarketsResponse: ...
+    def search(self, **params: Unpack[PolymarketSearchParams]) -> PolymarketSearchResponse: ...
+    def sports(self, **params: Unpack[PolymarketSportsParams]) -> PolymarketSportsResponse: ...
+    def sports_by_partner(self, **params: Unpack[PolymarketSportsByPartnerParams]) -> PolymarketSportsByPartnerResponse: ...
+    def sports_market_types(self, **params: Unpack[PolymarketSportsMarketTypesParams]) -> PolymarketSportsMarketTypesResponse: ...
+    def sports_summary(self, **params: Unpack[PolymarketSportsSummaryParams]) -> PolymarketSportsSummaryResponse: ...
+    def sport(self, **params: Unpack[PolymarketSportParams]) -> PolymarketSportResponse: ...
+    def sport_external_partners(self, **params: Unpack[PolymarketSportExternalPartnersParams]) -> PolymarketSportExternalPartnersResponse: ...
+    def sport_external_partner(self, **params: Unpack[PolymarketSportExternalPartnerParams]) -> PolymarketSportExternalPartnerResponse: ...
+    def spotlights(self, **params: Unpack[PolymarketSpotlightsParams]) -> PolymarketSpotlightsResponse: ...
+    def spotlights_keyset(self, **params: Unpack[PolymarketSpotlightsKeysetParams]) -> PolymarketSpotlightsKeysetResponse: ...
+    def spotlight(self, **params: Unpack[PolymarketSpotlightParams]) -> PolymarketSpotlightResponse: ...
+    def status(self, **params: Unpack[PolymarketStatusParams]) -> PolymarketStatusResponse: ...
+    def tag_by_slug(self, **params: Unpack[PolymarketTagBySlugParams]) -> PolymarketTagBySlugResponse: ...
+    def related_tags_by_slug(self, **params: Unpack[PolymarketRelatedTagsBySlugParams]) -> PolymarketRelatedTagsBySlugResponse: ...
+    def related_tag_rows_by_slug(self, **params: Unpack[PolymarketRelatedTagRowsBySlugParams]) -> PolymarketRelatedTagRowsBySlugResponse: ...
+    def tag(self, **params: Unpack[PolymarketTagParams]) -> PolymarketTagResponse: ...
+    def related_tags(self, **params: Unpack[PolymarketRelatedTagsParams]) -> PolymarketRelatedTagsResponse: ...
+    def related_tag_rows(self, **params: Unpack[PolymarketRelatedTagRowsParams]) -> PolymarketRelatedTagRowsResponse: ...
+    def tags(self, **params: Unpack[PolymarketTagsParams]) -> PolymarketTagsResponse: ...
+    def teams(self, **params: Unpack[PolymarketTeamsParams]) -> PolymarketTeamsResponse: ...
+    def teams_by_partner(self, **params: Unpack[PolymarketTeamsByPartnerParams]) -> PolymarketTeamsByPartnerResponse: ...
+    def team(self, **params: Unpack[PolymarketTeamParams]) -> PolymarketTeamResponse: ...
+    def team_external_partners(self, **params: Unpack[PolymarketTeamExternalPartnersParams]) -> PolymarketTeamExternalPartnersResponse: ...
+    def team_external_partner(self, **params: Unpack[PolymarketTeamExternalPartnerParams]) -> PolymarketTeamExternalPartnerResponse: ...
+    def token_midpoint(self, **params: Unpack[PolymarketTokenMidpointParams]) -> PolymarketTokenMidpointResponse: ...
+    def token_orderbook(self, **params: Unpack[PolymarketTokenOrderbookParams]) -> PolymarketTokenOrderbookResponse: ...
+    def token_price(self, **params: Unpack[PolymarketTokenPriceParams]) -> PolymarketTokenPriceResponse: ...
+    def token_price_history(self, **params: Unpack[PolymarketTokenPriceHistoryParams]) -> PolymarketTokenPriceHistoryResponse: ...
+    def token_spread(self, **params: Unpack[PolymarketTokenSpreadParams]) -> PolymarketTokenSpreadResponse: ...
+    def tokens_midpoints(self, **params: Unpack[PolymarketTokensMidpointsParams]) -> PolymarketTokensMidpointsResponse: ...
+    def tokens_orderbooks(self, **params: Unpack[PolymarketTokensOrderbooksParams]) -> PolymarketTokensOrderbooksResponse: ...
+    def tokens_prices(self, **params: Unpack[PolymarketTokensPricesParams]) -> PolymarketTokensPricesResponse: ...
+    def tokens_spreads(self, **params: Unpack[PolymarketTokensSpreadsParams]) -> PolymarketTokensSpreadsResponse: ...
+    def tournaments(self, **params: Unpack[PolymarketTournamentsParams]) -> PolymarketTournamentsResponse: ...
+    def tournament(self, **params: Unpack[PolymarketTournamentParams]) -> PolymarketTournamentResponse: ...
 
 class ProductHuntGroup:
     def category(self, **params: Unpack[ProductHuntCategoryParams]) -> ProductHuntCategoryResponse: ...
@@ -12470,14 +16847,32 @@ class ProductHuntGroup:
 
 class RedditGroup:
     def comments(self, **params: Unpack[RedditCommentsParams]) -> RedditCommentsResponse: ...
+    def domain_posts(self, **params: Unpack[RedditDomainPostsParams]) -> RedditDomainPostsResponse: ...
     def post(self, **params: Unpack[RedditPostParams]) -> RedditPostResponse: ...
     def search(self, **params: Unpack[RedditSearchParams]) -> RedditSearchResponse: ...
+    def subreddit_about(self, **params: Unpack[RedditSubredditAboutParams]) -> RedditSubredditAboutResponse: ...
+    def subreddit_comments(self, **params: Unpack[RedditSubredditCommentsParams]) -> RedditSubredditCommentsResponse: ...
     def subreddit_posts(self, **params: Unpack[RedditSubredditPostsParams]) -> RedditSubredditPostsResponse: ...
+    def subreddits_posts(self, **params: Unpack[RedditSubredditsPostsParams]) -> RedditSubredditsPostsResponse: ...
+    def trends(self, **params: Unpack[RedditTrendsParams]) -> RedditTrendsResponse: ...
+    def user_comments(self, **params: Unpack[RedditUserCommentsParams]) -> RedditUserCommentsResponse: ...
+    def user_posts(self, **params: Unpack[RedditUserPostsParams]) -> RedditUserPostsResponse: ...
 
 class ReferralsGroup:
     def click(self, **params: Unpack[ReferralsClickParams]) -> ReferralsClickResponse: ...
     def me(self, **params: Unpack[ReferralsMeParams]) -> ReferralsMeResponse: ...
     def me_events(self, **params: Unpack[ReferralsMeEventsParams]) -> ReferralsMeEventsResponse: ...
+
+class RottenTomatoesGroup:
+    def rottentomatoes_browse_movies(self, **params: Unpack[RottenTomatoesRottentomatoesBrowseMoviesParams]) -> RottenTomatoesRottentomatoesBrowseMoviesResponse: ...
+    def rottentomatoes_browse_tv(self, **params: Unpack[RottenTomatoesRottentomatoesBrowseTvParams]) -> RottenTomatoesRottentomatoesBrowseTvResponse: ...
+    def rottentomatoes_episode(self, **params: Unpack[RottenTomatoesRottentomatoesEpisodeParams]) -> RottenTomatoesRottentomatoesEpisodeResponse: ...
+    def rottentomatoes_movie(self, **params: Unpack[RottenTomatoesRottentomatoesMovieParams]) -> RottenTomatoesRottentomatoesMovieResponse: ...
+    def rottentomatoes_movie_reviews(self, **params: Unpack[RottenTomatoesRottentomatoesMovieReviewsParams]) -> RottenTomatoesRottentomatoesMovieReviewsResponse: ...
+    def rottentomatoes_person(self, **params: Unpack[RottenTomatoesRottentomatoesPersonParams]) -> RottenTomatoesRottentomatoesPersonResponse: ...
+    def rottentomatoes_search(self, **params: Unpack[RottenTomatoesRottentomatoesSearchParams]) -> RottenTomatoesRottentomatoesSearchResponse: ...
+    def rottentomatoes_season(self, **params: Unpack[RottenTomatoesRottentomatoesSeasonParams]) -> RottenTomatoesRottentomatoesSeasonResponse: ...
+    def rottentomatoes_series(self, **params: Unpack[RottenTomatoesRottentomatoesSeriesParams]) -> RottenTomatoesRottentomatoesSeriesResponse: ...
 
 class ShopAppGroup:
     def analysis(self, **params: Unpack[ShopAppAnalysisParams]) -> ShopAppAnalysisResponse: ...
@@ -12708,6 +17103,27 @@ OperationId = Literal[
     'bing-search',
     'bing-suggest',
     'bing-videos',
+    'boxofficemojo-brand',
+    'boxofficemojo-brands',
+    'boxofficemojo-calendar',
+    'boxofficemojo-calendar-changes',
+    'boxofficemojo-calendar-date',
+    'boxofficemojo-date-domestic',
+    'boxofficemojo-franchise',
+    'boxofficemojo-franchises',
+    'boxofficemojo-genre',
+    'boxofficemojo-genres',
+    'boxofficemojo-lifetime-grosses',
+    'boxofficemojo-release',
+    'boxofficemojo-release-group',
+    'boxofficemojo-showdown',
+    'boxofficemojo-showdowns',
+    'boxofficemojo-title',
+    'boxofficemojo-weekend-domestic',
+    'boxofficemojo-weekend-domestic-by-distributor',
+    'boxofficemojo-weekend-domestic-estimates',
+    'boxofficemojo-year-domestic',
+    'boxofficemojo-year-worldwide',
     'brand-retrieve',
     'brave-images',
     'brave-news',
@@ -12797,6 +17213,25 @@ OperationId = Literal[
     'googleplay-search',
     'googleplay-similar',
     'googleplay-suggest',
+    'imdb-name',
+    'imdb-name-awards',
+    'imdb-name-credits',
+    'imdb-search',
+    'imdb-title',
+    'imdb-title-awards',
+    'imdb-title-company-credits',
+    'imdb-title-credits',
+    'imdb-title-episodes',
+    'imdb-title-filming-locations',
+    'imdb-title-goofs',
+    'imdb-title-keywords',
+    'imdb-title-parental-guide',
+    'imdb-title-public-facts-analysis',
+    'imdb-title-quotes',
+    'imdb-title-release-info',
+    'imdb-title-reviews',
+    'imdb-title-technical-specs',
+    'imdb-title-trivia',
     'instagram-post',
     'instagram-profile',
     'instagram-reels',
@@ -12821,10 +17256,107 @@ OperationId = Literal[
     'justwatch-title-media',
     'justwatch-title-offers',
     'justwatch-title-similar',
+    'kalshi-event',
+    'kalshi-event-history',
+    'kalshi-event-metadata',
+    'kalshi-events',
+    'kalshi-multivariate-events',
+    'kalshi-exchange-schedule',
+    'kalshi-exchange-status',
+    'kalshi-historical-cutoff',
+    'kalshi-historical-market',
+    'kalshi-historical-market-history',
+    'kalshi-historical-markets',
+    'kalshi-historical-trades',
+    'kalshi-market',
+    'kalshi-market-history',
+    'kalshi-market-orderbook',
+    'kalshi-markets',
+    'kalshi-markets-history',
+    'kalshi-markets-orderbooks',
+    'kalshi-series',
+    'kalshi-series-detail',
+    'kalshi-trades',
     'linkedin-company',
     'linkedin-product',
     'linkedin-showcase',
+    'metaculus-category-questions',
+    'metaculus-comments-feed',
+    'metaculus-project-questions',
+    'metaculus-question',
+    'metaculus-question-forecast-history',
+    'metaculus-question-forecasts',
+    'metaculus-question-metadata',
+    'metaculus-question-options',
+    'metaculus-questions',
+    'metaculus-top-comments',
+    'metaculus-tournament-questions',
     'ping',
+    'polymarket-activity-trades',
+    'polymarket-clob-market',
+    'polymarket-dashboard-macro',
+    'polymarket-data-followers',
+    'polymarket-data-following',
+    'polymarket-data-follows-counts',
+    'polymarket-event-detail-by-id',
+    'polymarket-event-activity-by-id',
+    'polymarket-event-detail',
+    'polymarket-event-activity',
+    'polymarket-events',
+    'polymarket-events-similar',
+    'polymarket-event-tags',
+    'polymarket-fee-types',
+    'polymarket-games',
+    'polymarket-homepage-feed',
+    'polymarket-leaderboard',
+    'polymarket-market-clarifications',
+    'polymarket-market-detail-by-condition',
+    'polymarket-market-activity-by-condition',
+    'polymarket-market-liquidity-by-condition',
+    'polymarket-market-detail-by-slug',
+    'polymarket-market-liquidity-by-slug',
+    'polymarket-market-detail',
+    'polymarket-market-liquidity',
+    'polymarket-market-tags',
+    'polymarket-markets',
+    'polymarket-predictions',
+    'polymarket-rewards-market',
+    'polymarket-rewards-markets',
+    'polymarket-search',
+    'polymarket-sports',
+    'polymarket-sports-by-partner',
+    'polymarket-sports-market-types',
+    'polymarket-sports-summary',
+    'polymarket-sport',
+    'polymarket-sport-external-partners',
+    'polymarket-sport-external-partner',
+    'polymarket-spotlights',
+    'polymarket-spotlights-keyset',
+    'polymarket-spotlight',
+    'polymarket-status',
+    'polymarket-tag-by-slug',
+    'polymarket-related-tags-by-slug',
+    'polymarket-related-tag-rows-by-slug',
+    'polymarket-tag',
+    'polymarket-related-tags',
+    'polymarket-related-tag-rows',
+    'polymarket-tags',
+    'polymarket-teams',
+    'polymarket-teams-by-partner',
+    'polymarket-team',
+    'polymarket-team-external-partners',
+    'polymarket-team-external-partner',
+    'polymarket-token-midpoint',
+    'polymarket-token-orderbook',
+    'polymarket-token-price',
+    'polymarket-token-price-history',
+    'polymarket-token-spread',
+    'polymarket-tokens-midpoints',
+    'polymarket-tokens-orderbooks',
+    'polymarket-tokens-prices',
+    'polymarket-tokens-spreads',
+    'polymarket-tournaments',
+    'polymarket-tournament',
     'producthunt-category',
     'producthunt-category-products',
     'producthunt-leaderboard',
@@ -12838,12 +17370,28 @@ OperationId = Literal[
     'producthunt-search',
     'ready',
     'reddit-comments',
+    'reddit-domain-posts',
     'reddit-post',
     'reddit-search',
+    'reddit-subreddit-about',
+    'reddit-subreddit-comments',
     'reddit-subreddit-posts',
+    'reddit-subreddits-posts',
+    'reddit-trends',
+    'reddit-user-comments',
+    'reddit-user-posts',
     'referrals-click',
     'referrals-me',
     'referrals-me-events',
+    'rottentomatoes-browse-movies',
+    'rottentomatoes-browse-tv',
+    'rottentomatoes-episode',
+    'rottentomatoes-movie',
+    'rottentomatoes-movie-reviews',
+    'rottentomatoes-person',
+    'rottentomatoes-search',
+    'rottentomatoes-season',
+    'rottentomatoes-series',
     'shop-app-analysis',
     'shop-app-categories',
     'shop-app-product',
@@ -13020,6 +17568,7 @@ class CrawloraClient:
     app_store: AppStoreGroup
     billing: BillingGroup
     bing: BingGroup
+    box_office_mojo: BoxOfficeMojoGroup
     brand: BrandGroup
     brave: BraveGroup
     coin_gecko: CoinGeckoGroup
@@ -13028,13 +17577,18 @@ class CrawloraClient:
     geocoding: GeocodingGroup
     google: GoogleGroup
     google_play: GooglePlayGroup
+    imdb: ImdbGroup
     instagram: InstagramGroup
     just_watch: JustWatchGroup
+    kalshi: KalshiGroup
     linked_in: LinkedInGroup
+    metaculus: MetaculusGroup
     meta: MetaGroup
+    polymarket: PolymarketGroup
     product_hunt: ProductHuntGroup
     reddit: RedditGroup
     referrals: ReferralsGroup
+    rotten_tomatoes: RottenTomatoesGroup
     shop_app: ShopAppGroup
     shopify: ShopifyGroup
     similar_web: SimilarWebGroup
@@ -13548,6 +18102,258 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> BingVideosResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['boxofficemojo-brand'],
+        params: BoxOfficeMojoBoxofficemojoBrandParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> BoxOfficeMojoBoxofficemojoBrandResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['boxofficemojo-brands'],
+        params: BoxOfficeMojoBoxofficemojoBrandsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> BoxOfficeMojoBoxofficemojoBrandsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['boxofficemojo-calendar'],
+        params: BoxOfficeMojoBoxofficemojoCalendarParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> BoxOfficeMojoBoxofficemojoCalendarResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['boxofficemojo-calendar-changes'],
+        params: BoxOfficeMojoBoxofficemojoCalendarChangesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> BoxOfficeMojoBoxofficemojoCalendarChangesResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['boxofficemojo-calendar-date'],
+        params: BoxOfficeMojoBoxofficemojoCalendarDateParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> BoxOfficeMojoBoxofficemojoCalendarDateResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['boxofficemojo-date-domestic'],
+        params: BoxOfficeMojoBoxofficemojoDateDomesticParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> BoxOfficeMojoBoxofficemojoDateDomesticResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['boxofficemojo-franchise'],
+        params: BoxOfficeMojoBoxofficemojoFranchiseParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> BoxOfficeMojoBoxofficemojoFranchiseResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['boxofficemojo-franchises'],
+        params: BoxOfficeMojoBoxofficemojoFranchisesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> BoxOfficeMojoBoxofficemojoFranchisesResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['boxofficemojo-genre'],
+        params: BoxOfficeMojoBoxofficemojoGenreParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> BoxOfficeMojoBoxofficemojoGenreResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['boxofficemojo-genres'],
+        params: BoxOfficeMojoBoxofficemojoGenresParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> BoxOfficeMojoBoxofficemojoGenresResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['boxofficemojo-lifetime-grosses'],
+        params: BoxOfficeMojoBoxofficemojoLifetimeGrossesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> BoxOfficeMojoBoxofficemojoLifetimeGrossesResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['boxofficemojo-release'],
+        params: BoxOfficeMojoBoxofficemojoReleaseParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> BoxOfficeMojoBoxofficemojoReleaseResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['boxofficemojo-release-group'],
+        params: BoxOfficeMojoBoxofficemojoReleaseGroupParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> BoxOfficeMojoBoxofficemojoReleaseGroupResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['boxofficemojo-showdown'],
+        params: BoxOfficeMojoBoxofficemojoShowdownParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> BoxOfficeMojoBoxofficemojoShowdownResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['boxofficemojo-showdowns'],
+        params: BoxOfficeMojoBoxofficemojoShowdownsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> BoxOfficeMojoBoxofficemojoShowdownsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['boxofficemojo-title'],
+        params: BoxOfficeMojoBoxofficemojoTitleParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> BoxOfficeMojoBoxofficemojoTitleResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['boxofficemojo-weekend-domestic'],
+        params: BoxOfficeMojoBoxofficemojoWeekendDomesticParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> BoxOfficeMojoBoxofficemojoWeekendDomesticResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['boxofficemojo-weekend-domestic-by-distributor'],
+        params: BoxOfficeMojoBoxofficemojoWeekendDomesticByDistributorParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> BoxOfficeMojoBoxofficemojoWeekendDomesticByDistributorResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['boxofficemojo-weekend-domestic-estimates'],
+        params: BoxOfficeMojoBoxofficemojoWeekendDomesticEstimatesParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> BoxOfficeMojoBoxofficemojoWeekendDomesticEstimatesResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['boxofficemojo-year-domestic'],
+        params: BoxOfficeMojoBoxofficemojoYearDomesticParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> BoxOfficeMojoBoxofficemojoYearDomesticResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['boxofficemojo-year-worldwide'],
+        params: BoxOfficeMojoBoxofficemojoYearWorldwideParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> BoxOfficeMojoBoxofficemojoYearWorldwideResponse: ...
     @overload
     def operation(
         self,
@@ -14619,6 +19425,234 @@ class CrawloraClient:
     @overload
     def operation(
         self,
+        operation_id: Literal['imdb-name'],
+        params: ImdbNameParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ImdbNameResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['imdb-name-awards'],
+        params: ImdbNameAwardsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ImdbNameAwardsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['imdb-name-credits'],
+        params: ImdbNameCreditsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ImdbNameCreditsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['imdb-search'],
+        params: ImdbSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ImdbSearchResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['imdb-title'],
+        params: ImdbTitleParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ImdbTitleResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['imdb-title-awards'],
+        params: ImdbTitleAwardsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ImdbTitleAwardsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['imdb-title-company-credits'],
+        params: ImdbTitleCompanyCreditsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ImdbTitleCompanyCreditsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['imdb-title-credits'],
+        params: ImdbTitleCreditsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ImdbTitleCreditsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['imdb-title-episodes'],
+        params: ImdbTitleEpisodesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ImdbTitleEpisodesResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['imdb-title-filming-locations'],
+        params: ImdbTitleFilmingLocationsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ImdbTitleFilmingLocationsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['imdb-title-goofs'],
+        params: ImdbTitleGoofsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ImdbTitleGoofsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['imdb-title-keywords'],
+        params: ImdbTitleKeywordsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ImdbTitleKeywordsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['imdb-title-parental-guide'],
+        params: ImdbTitleParentalGuideParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ImdbTitleParentalGuideResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['imdb-title-public-facts-analysis'],
+        params: ImdbTitlePublicFactsAnalysisParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ImdbTitlePublicFactsAnalysisResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['imdb-title-quotes'],
+        params: ImdbTitleQuotesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ImdbTitleQuotesResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['imdb-title-release-info'],
+        params: ImdbTitleReleaseInfoParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ImdbTitleReleaseInfoResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['imdb-title-reviews'],
+        params: ImdbTitleReviewsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ImdbTitleReviewsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['imdb-title-technical-specs'],
+        params: ImdbTitleTechnicalSpecsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ImdbTitleTechnicalSpecsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['imdb-title-trivia'],
+        params: ImdbTitleTriviaParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ImdbTitleTriviaResponse: ...
+    @overload
+    def operation(
+        self,
         operation_id: Literal['instagram-post'],
         params: InstagramPostParams,
         *,
@@ -14907,6 +19941,258 @@ class CrawloraClient:
     @overload
     def operation(
         self,
+        operation_id: Literal['kalshi-event'],
+        params: KalshiEventParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> KalshiEventResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['kalshi-event-history'],
+        params: KalshiEventHistoryParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> KalshiEventHistoryResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['kalshi-event-metadata'],
+        params: KalshiEventMetadataParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> KalshiEventMetadataResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['kalshi-events'],
+        params: KalshiEventsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> KalshiEventsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['kalshi-multivariate-events'],
+        params: KalshiMultivariateEventsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> KalshiMultivariateEventsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['kalshi-exchange-schedule'],
+        params: KalshiExchangeScheduleParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> KalshiExchangeScheduleResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['kalshi-exchange-status'],
+        params: KalshiExchangeStatusParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> KalshiExchangeStatusResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['kalshi-historical-cutoff'],
+        params: KalshiHistoricalCutoffParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> KalshiHistoricalCutoffResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['kalshi-historical-market'],
+        params: KalshiHistoricalMarketParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> KalshiHistoricalMarketResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['kalshi-historical-market-history'],
+        params: KalshiHistoricalMarketHistoryParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> KalshiHistoricalMarketHistoryResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['kalshi-historical-markets'],
+        params: KalshiHistoricalMarketsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> KalshiHistoricalMarketsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['kalshi-historical-trades'],
+        params: KalshiHistoricalTradesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> KalshiHistoricalTradesResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['kalshi-market'],
+        params: KalshiMarketParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> KalshiMarketResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['kalshi-market-history'],
+        params: KalshiMarketHistoryParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> KalshiMarketHistoryResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['kalshi-market-orderbook'],
+        params: KalshiMarketOrderbookParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> KalshiMarketOrderbookResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['kalshi-markets'],
+        params: KalshiMarketsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> KalshiMarketsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['kalshi-markets-history'],
+        params: KalshiMarketsHistoryParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> KalshiMarketsHistoryResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['kalshi-markets-orderbooks'],
+        params: KalshiMarketsOrderbooksParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> KalshiMarketsOrderbooksResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['kalshi-series'],
+        params: KalshiSeriesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> KalshiSeriesResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['kalshi-series-detail'],
+        params: KalshiSeriesDetailParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> KalshiSeriesDetailResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['kalshi-trades'],
+        params: KalshiTradesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> KalshiTradesResponse: ...
+    @overload
+    def operation(
+        self,
         operation_id: Literal['linkedin-company'],
         params: LinkedInLinkedinCompanyParams,
         *,
@@ -14943,6 +20229,138 @@ class CrawloraClient:
     @overload
     def operation(
         self,
+        operation_id: Literal['metaculus-category-questions'],
+        params: MetaculusCategoryQuestionsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> MetaculusCategoryQuestionsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['metaculus-comments-feed'],
+        params: MetaculusCommentsFeedParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> MetaculusCommentsFeedResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['metaculus-project-questions'],
+        params: MetaculusProjectQuestionsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> MetaculusProjectQuestionsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['metaculus-question'],
+        params: MetaculusQuestionParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> MetaculusQuestionResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['metaculus-question-forecast-history'],
+        params: MetaculusQuestionForecastHistoryParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> MetaculusQuestionForecastHistoryResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['metaculus-question-forecasts'],
+        params: MetaculusQuestionForecastsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> MetaculusQuestionForecastsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['metaculus-question-metadata'],
+        params: MetaculusQuestionMetadataParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> MetaculusQuestionMetadataResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['metaculus-question-options'],
+        params: MetaculusQuestionOptionsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> MetaculusQuestionOptionsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['metaculus-questions'],
+        params: MetaculusQuestionsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> MetaculusQuestionsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['metaculus-top-comments'],
+        params: MetaculusTopCommentsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> MetaculusTopCommentsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['metaculus-tournament-questions'],
+        params: MetaculusTournamentQuestionsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> MetaculusTournamentQuestionsResponse: ...
+    @overload
+    def operation(
+        self,
         operation_id: Literal['ping'],
         params: MetaPingParams = ...,
         *,
@@ -14952,6 +20370,786 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> MetaPingResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['polymarket-activity-trades'],
+        params: PolymarketActivityTradesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> PolymarketActivityTradesResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['polymarket-clob-market'],
+        params: PolymarketClobMarketParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> PolymarketClobMarketResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['polymarket-dashboard-macro'],
+        params: PolymarketDashboardMacroParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> PolymarketDashboardMacroResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['polymarket-data-followers'],
+        params: PolymarketDataFollowersParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> PolymarketDataFollowersResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['polymarket-data-following'],
+        params: PolymarketDataFollowingParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> PolymarketDataFollowingResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['polymarket-data-follows-counts'],
+        params: PolymarketDataFollowsCountsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> PolymarketDataFollowsCountsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['polymarket-event-detail-by-id'],
+        params: PolymarketEventDetailByIdParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> PolymarketEventDetailByIdResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['polymarket-event-activity-by-id'],
+        params: PolymarketEventActivityByIdParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> PolymarketEventActivityByIdResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['polymarket-event-detail'],
+        params: PolymarketEventDetailParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> PolymarketEventDetailResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['polymarket-event-activity'],
+        params: PolymarketEventActivityParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> PolymarketEventActivityResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['polymarket-events'],
+        params: PolymarketEventsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> PolymarketEventsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['polymarket-events-similar'],
+        params: PolymarketEventsSimilarParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> PolymarketEventsSimilarResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['polymarket-event-tags'],
+        params: PolymarketEventTagsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> PolymarketEventTagsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['polymarket-fee-types'],
+        params: PolymarketFeeTypesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> PolymarketFeeTypesResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['polymarket-games'],
+        params: PolymarketGamesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> PolymarketGamesResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['polymarket-homepage-feed'],
+        params: PolymarketHomepageFeedParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> PolymarketHomepageFeedResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['polymarket-leaderboard'],
+        params: PolymarketLeaderboardParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> PolymarketLeaderboardResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['polymarket-market-clarifications'],
+        params: PolymarketMarketClarificationsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> PolymarketMarketClarificationsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['polymarket-market-detail-by-condition'],
+        params: PolymarketMarketDetailByConditionParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> PolymarketMarketDetailByConditionResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['polymarket-market-activity-by-condition'],
+        params: PolymarketMarketActivityByConditionParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> PolymarketMarketActivityByConditionResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['polymarket-market-liquidity-by-condition'],
+        params: PolymarketMarketLiquidityByConditionParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> PolymarketMarketLiquidityByConditionResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['polymarket-market-detail-by-slug'],
+        params: PolymarketMarketDetailBySlugParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> PolymarketMarketDetailBySlugResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['polymarket-market-liquidity-by-slug'],
+        params: PolymarketMarketLiquidityBySlugParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> PolymarketMarketLiquidityBySlugResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['polymarket-market-detail'],
+        params: PolymarketMarketDetailParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> PolymarketMarketDetailResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['polymarket-market-liquidity'],
+        params: PolymarketMarketLiquidityParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> PolymarketMarketLiquidityResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['polymarket-market-tags'],
+        params: PolymarketMarketTagsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> PolymarketMarketTagsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['polymarket-markets'],
+        params: PolymarketMarketsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> PolymarketMarketsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['polymarket-predictions'],
+        params: PolymarketPredictionsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> PolymarketPredictionsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['polymarket-rewards-market'],
+        params: PolymarketRewardsMarketParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> PolymarketRewardsMarketResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['polymarket-rewards-markets'],
+        params: PolymarketRewardsMarketsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> PolymarketRewardsMarketsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['polymarket-search'],
+        params: PolymarketSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> PolymarketSearchResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['polymarket-sports'],
+        params: PolymarketSportsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> PolymarketSportsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['polymarket-sports-by-partner'],
+        params: PolymarketSportsByPartnerParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> PolymarketSportsByPartnerResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['polymarket-sports-market-types'],
+        params: PolymarketSportsMarketTypesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> PolymarketSportsMarketTypesResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['polymarket-sports-summary'],
+        params: PolymarketSportsSummaryParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> PolymarketSportsSummaryResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['polymarket-sport'],
+        params: PolymarketSportParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> PolymarketSportResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['polymarket-sport-external-partners'],
+        params: PolymarketSportExternalPartnersParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> PolymarketSportExternalPartnersResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['polymarket-sport-external-partner'],
+        params: PolymarketSportExternalPartnerParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> PolymarketSportExternalPartnerResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['polymarket-spotlights'],
+        params: PolymarketSpotlightsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> PolymarketSpotlightsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['polymarket-spotlights-keyset'],
+        params: PolymarketSpotlightsKeysetParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> PolymarketSpotlightsKeysetResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['polymarket-spotlight'],
+        params: PolymarketSpotlightParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> PolymarketSpotlightResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['polymarket-status'],
+        params: PolymarketStatusParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> PolymarketStatusResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['polymarket-tag-by-slug'],
+        params: PolymarketTagBySlugParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> PolymarketTagBySlugResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['polymarket-related-tags-by-slug'],
+        params: PolymarketRelatedTagsBySlugParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> PolymarketRelatedTagsBySlugResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['polymarket-related-tag-rows-by-slug'],
+        params: PolymarketRelatedTagRowsBySlugParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> PolymarketRelatedTagRowsBySlugResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['polymarket-tag'],
+        params: PolymarketTagParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> PolymarketTagResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['polymarket-related-tags'],
+        params: PolymarketRelatedTagsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> PolymarketRelatedTagsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['polymarket-related-tag-rows'],
+        params: PolymarketRelatedTagRowsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> PolymarketRelatedTagRowsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['polymarket-tags'],
+        params: PolymarketTagsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> PolymarketTagsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['polymarket-teams'],
+        params: PolymarketTeamsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> PolymarketTeamsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['polymarket-teams-by-partner'],
+        params: PolymarketTeamsByPartnerParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> PolymarketTeamsByPartnerResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['polymarket-team'],
+        params: PolymarketTeamParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> PolymarketTeamResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['polymarket-team-external-partners'],
+        params: PolymarketTeamExternalPartnersParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> PolymarketTeamExternalPartnersResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['polymarket-team-external-partner'],
+        params: PolymarketTeamExternalPartnerParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> PolymarketTeamExternalPartnerResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['polymarket-token-midpoint'],
+        params: PolymarketTokenMidpointParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> PolymarketTokenMidpointResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['polymarket-token-orderbook'],
+        params: PolymarketTokenOrderbookParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> PolymarketTokenOrderbookResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['polymarket-token-price'],
+        params: PolymarketTokenPriceParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> PolymarketTokenPriceResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['polymarket-token-price-history'],
+        params: PolymarketTokenPriceHistoryParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> PolymarketTokenPriceHistoryResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['polymarket-token-spread'],
+        params: PolymarketTokenSpreadParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> PolymarketTokenSpreadResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['polymarket-tokens-midpoints'],
+        params: PolymarketTokensMidpointsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> PolymarketTokensMidpointsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['polymarket-tokens-orderbooks'],
+        params: PolymarketTokensOrderbooksParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> PolymarketTokensOrderbooksResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['polymarket-tokens-prices'],
+        params: PolymarketTokensPricesParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> PolymarketTokensPricesResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['polymarket-tokens-spreads'],
+        params: PolymarketTokensSpreadsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> PolymarketTokensSpreadsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['polymarket-tournaments'],
+        params: PolymarketTournamentsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> PolymarketTournamentsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['polymarket-tournament'],
+        params: PolymarketTournamentParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> PolymarketTournamentResponse: ...
     @overload
     def operation(
         self,
@@ -15111,6 +21309,18 @@ class CrawloraClient:
     @overload
     def operation(
         self,
+        operation_id: Literal['reddit-domain-posts'],
+        params: RedditDomainPostsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> RedditDomainPostsResponse: ...
+    @overload
+    def operation(
+        self,
         operation_id: Literal['reddit-post'],
         params: RedditPostParams,
         *,
@@ -15135,6 +21345,30 @@ class CrawloraClient:
     @overload
     def operation(
         self,
+        operation_id: Literal['reddit-subreddit-about'],
+        params: RedditSubredditAboutParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> RedditSubredditAboutResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['reddit-subreddit-comments'],
+        params: RedditSubredditCommentsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> RedditSubredditCommentsResponse: ...
+    @overload
+    def operation(
+        self,
         operation_id: Literal['reddit-subreddit-posts'],
         params: RedditSubredditPostsParams,
         *,
@@ -15144,6 +21378,54 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> RedditSubredditPostsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['reddit-subreddits-posts'],
+        params: RedditSubredditsPostsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> RedditSubredditsPostsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['reddit-trends'],
+        params: RedditTrendsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> RedditTrendsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['reddit-user-comments'],
+        params: RedditUserCommentsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> RedditUserCommentsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['reddit-user-posts'],
+        params: RedditUserPostsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> RedditUserPostsResponse: ...
     @overload
     def operation(
         self,
@@ -15180,6 +21462,114 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> ReferralsMeEventsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['rottentomatoes-browse-movies'],
+        params: RottenTomatoesRottentomatoesBrowseMoviesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> RottenTomatoesRottentomatoesBrowseMoviesResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['rottentomatoes-browse-tv'],
+        params: RottenTomatoesRottentomatoesBrowseTvParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> RottenTomatoesRottentomatoesBrowseTvResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['rottentomatoes-episode'],
+        params: RottenTomatoesRottentomatoesEpisodeParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> RottenTomatoesRottentomatoesEpisodeResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['rottentomatoes-movie'],
+        params: RottenTomatoesRottentomatoesMovieParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> RottenTomatoesRottentomatoesMovieResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['rottentomatoes-movie-reviews'],
+        params: RottenTomatoesRottentomatoesMovieReviewsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> RottenTomatoesRottentomatoesMovieReviewsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['rottentomatoes-person'],
+        params: RottenTomatoesRottentomatoesPersonParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> RottenTomatoesRottentomatoesPersonResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['rottentomatoes-search'],
+        params: RottenTomatoesRottentomatoesSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> RottenTomatoesRottentomatoesSearchResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['rottentomatoes-season'],
+        params: RottenTomatoesRottentomatoesSeasonParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> RottenTomatoesRottentomatoesSeasonResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['rottentomatoes-series'],
+        params: RottenTomatoesRottentomatoesSeriesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> RottenTomatoesRottentomatoesSeriesResponse: ...
     @overload
     def operation(
         self,
@@ -17619,6 +24009,258 @@ class CrawloraClient:
     @overload
     def request(
         self,
+        operation_id: Literal['boxofficemojo-brand'],
+        params: BoxOfficeMojoBoxofficemojoBrandParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> BoxOfficeMojoBoxofficemojoBrandResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['boxofficemojo-brands'],
+        params: BoxOfficeMojoBoxofficemojoBrandsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> BoxOfficeMojoBoxofficemojoBrandsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['boxofficemojo-calendar'],
+        params: BoxOfficeMojoBoxofficemojoCalendarParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> BoxOfficeMojoBoxofficemojoCalendarResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['boxofficemojo-calendar-changes'],
+        params: BoxOfficeMojoBoxofficemojoCalendarChangesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> BoxOfficeMojoBoxofficemojoCalendarChangesResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['boxofficemojo-calendar-date'],
+        params: BoxOfficeMojoBoxofficemojoCalendarDateParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> BoxOfficeMojoBoxofficemojoCalendarDateResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['boxofficemojo-date-domestic'],
+        params: BoxOfficeMojoBoxofficemojoDateDomesticParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> BoxOfficeMojoBoxofficemojoDateDomesticResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['boxofficemojo-franchise'],
+        params: BoxOfficeMojoBoxofficemojoFranchiseParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> BoxOfficeMojoBoxofficemojoFranchiseResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['boxofficemojo-franchises'],
+        params: BoxOfficeMojoBoxofficemojoFranchisesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> BoxOfficeMojoBoxofficemojoFranchisesResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['boxofficemojo-genre'],
+        params: BoxOfficeMojoBoxofficemojoGenreParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> BoxOfficeMojoBoxofficemojoGenreResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['boxofficemojo-genres'],
+        params: BoxOfficeMojoBoxofficemojoGenresParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> BoxOfficeMojoBoxofficemojoGenresResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['boxofficemojo-lifetime-grosses'],
+        params: BoxOfficeMojoBoxofficemojoLifetimeGrossesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> BoxOfficeMojoBoxofficemojoLifetimeGrossesResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['boxofficemojo-release'],
+        params: BoxOfficeMojoBoxofficemojoReleaseParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> BoxOfficeMojoBoxofficemojoReleaseResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['boxofficemojo-release-group'],
+        params: BoxOfficeMojoBoxofficemojoReleaseGroupParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> BoxOfficeMojoBoxofficemojoReleaseGroupResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['boxofficemojo-showdown'],
+        params: BoxOfficeMojoBoxofficemojoShowdownParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> BoxOfficeMojoBoxofficemojoShowdownResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['boxofficemojo-showdowns'],
+        params: BoxOfficeMojoBoxofficemojoShowdownsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> BoxOfficeMojoBoxofficemojoShowdownsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['boxofficemojo-title'],
+        params: BoxOfficeMojoBoxofficemojoTitleParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> BoxOfficeMojoBoxofficemojoTitleResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['boxofficemojo-weekend-domestic'],
+        params: BoxOfficeMojoBoxofficemojoWeekendDomesticParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> BoxOfficeMojoBoxofficemojoWeekendDomesticResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['boxofficemojo-weekend-domestic-by-distributor'],
+        params: BoxOfficeMojoBoxofficemojoWeekendDomesticByDistributorParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> BoxOfficeMojoBoxofficemojoWeekendDomesticByDistributorResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['boxofficemojo-weekend-domestic-estimates'],
+        params: BoxOfficeMojoBoxofficemojoWeekendDomesticEstimatesParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> BoxOfficeMojoBoxofficemojoWeekendDomesticEstimatesResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['boxofficemojo-year-domestic'],
+        params: BoxOfficeMojoBoxofficemojoYearDomesticParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> BoxOfficeMojoBoxofficemojoYearDomesticResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['boxofficemojo-year-worldwide'],
+        params: BoxOfficeMojoBoxofficemojoYearWorldwideParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> BoxOfficeMojoBoxofficemojoYearWorldwideResponse: ...
+    @overload
+    def request(
+        self,
         operation_id: Literal['brand-retrieve'],
         params: BrandRetrieveParams,
         *,
@@ -18687,6 +25329,234 @@ class CrawloraClient:
     @overload
     def request(
         self,
+        operation_id: Literal['imdb-name'],
+        params: ImdbNameParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ImdbNameResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['imdb-name-awards'],
+        params: ImdbNameAwardsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ImdbNameAwardsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['imdb-name-credits'],
+        params: ImdbNameCreditsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ImdbNameCreditsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['imdb-search'],
+        params: ImdbSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ImdbSearchResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['imdb-title'],
+        params: ImdbTitleParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ImdbTitleResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['imdb-title-awards'],
+        params: ImdbTitleAwardsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ImdbTitleAwardsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['imdb-title-company-credits'],
+        params: ImdbTitleCompanyCreditsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ImdbTitleCompanyCreditsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['imdb-title-credits'],
+        params: ImdbTitleCreditsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ImdbTitleCreditsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['imdb-title-episodes'],
+        params: ImdbTitleEpisodesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ImdbTitleEpisodesResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['imdb-title-filming-locations'],
+        params: ImdbTitleFilmingLocationsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ImdbTitleFilmingLocationsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['imdb-title-goofs'],
+        params: ImdbTitleGoofsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ImdbTitleGoofsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['imdb-title-keywords'],
+        params: ImdbTitleKeywordsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ImdbTitleKeywordsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['imdb-title-parental-guide'],
+        params: ImdbTitleParentalGuideParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ImdbTitleParentalGuideResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['imdb-title-public-facts-analysis'],
+        params: ImdbTitlePublicFactsAnalysisParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ImdbTitlePublicFactsAnalysisResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['imdb-title-quotes'],
+        params: ImdbTitleQuotesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ImdbTitleQuotesResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['imdb-title-release-info'],
+        params: ImdbTitleReleaseInfoParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ImdbTitleReleaseInfoResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['imdb-title-reviews'],
+        params: ImdbTitleReviewsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ImdbTitleReviewsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['imdb-title-technical-specs'],
+        params: ImdbTitleTechnicalSpecsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ImdbTitleTechnicalSpecsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['imdb-title-trivia'],
+        params: ImdbTitleTriviaParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ImdbTitleTriviaResponse: ...
+    @overload
+    def request(
+        self,
         operation_id: Literal['instagram-post'],
         params: InstagramPostParams,
         *,
@@ -18975,6 +25845,258 @@ class CrawloraClient:
     @overload
     def request(
         self,
+        operation_id: Literal['kalshi-event'],
+        params: KalshiEventParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> KalshiEventResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['kalshi-event-history'],
+        params: KalshiEventHistoryParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> KalshiEventHistoryResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['kalshi-event-metadata'],
+        params: KalshiEventMetadataParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> KalshiEventMetadataResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['kalshi-events'],
+        params: KalshiEventsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> KalshiEventsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['kalshi-multivariate-events'],
+        params: KalshiMultivariateEventsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> KalshiMultivariateEventsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['kalshi-exchange-schedule'],
+        params: KalshiExchangeScheduleParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> KalshiExchangeScheduleResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['kalshi-exchange-status'],
+        params: KalshiExchangeStatusParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> KalshiExchangeStatusResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['kalshi-historical-cutoff'],
+        params: KalshiHistoricalCutoffParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> KalshiHistoricalCutoffResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['kalshi-historical-market'],
+        params: KalshiHistoricalMarketParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> KalshiHistoricalMarketResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['kalshi-historical-market-history'],
+        params: KalshiHistoricalMarketHistoryParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> KalshiHistoricalMarketHistoryResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['kalshi-historical-markets'],
+        params: KalshiHistoricalMarketsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> KalshiHistoricalMarketsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['kalshi-historical-trades'],
+        params: KalshiHistoricalTradesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> KalshiHistoricalTradesResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['kalshi-market'],
+        params: KalshiMarketParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> KalshiMarketResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['kalshi-market-history'],
+        params: KalshiMarketHistoryParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> KalshiMarketHistoryResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['kalshi-market-orderbook'],
+        params: KalshiMarketOrderbookParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> KalshiMarketOrderbookResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['kalshi-markets'],
+        params: KalshiMarketsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> KalshiMarketsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['kalshi-markets-history'],
+        params: KalshiMarketsHistoryParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> KalshiMarketsHistoryResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['kalshi-markets-orderbooks'],
+        params: KalshiMarketsOrderbooksParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> KalshiMarketsOrderbooksResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['kalshi-series'],
+        params: KalshiSeriesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> KalshiSeriesResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['kalshi-series-detail'],
+        params: KalshiSeriesDetailParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> KalshiSeriesDetailResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['kalshi-trades'],
+        params: KalshiTradesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> KalshiTradesResponse: ...
+    @overload
+    def request(
+        self,
         operation_id: Literal['linkedin-company'],
         params: LinkedInLinkedinCompanyParams,
         *,
@@ -19011,6 +26133,138 @@ class CrawloraClient:
     @overload
     def request(
         self,
+        operation_id: Literal['metaculus-category-questions'],
+        params: MetaculusCategoryQuestionsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> MetaculusCategoryQuestionsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['metaculus-comments-feed'],
+        params: MetaculusCommentsFeedParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> MetaculusCommentsFeedResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['metaculus-project-questions'],
+        params: MetaculusProjectQuestionsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> MetaculusProjectQuestionsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['metaculus-question'],
+        params: MetaculusQuestionParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> MetaculusQuestionResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['metaculus-question-forecast-history'],
+        params: MetaculusQuestionForecastHistoryParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> MetaculusQuestionForecastHistoryResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['metaculus-question-forecasts'],
+        params: MetaculusQuestionForecastsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> MetaculusQuestionForecastsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['metaculus-question-metadata'],
+        params: MetaculusQuestionMetadataParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> MetaculusQuestionMetadataResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['metaculus-question-options'],
+        params: MetaculusQuestionOptionsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> MetaculusQuestionOptionsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['metaculus-questions'],
+        params: MetaculusQuestionsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> MetaculusQuestionsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['metaculus-top-comments'],
+        params: MetaculusTopCommentsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> MetaculusTopCommentsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['metaculus-tournament-questions'],
+        params: MetaculusTournamentQuestionsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> MetaculusTournamentQuestionsResponse: ...
+    @overload
+    def request(
+        self,
         operation_id: Literal['ping'],
         params: MetaPingParams = ...,
         *,
@@ -19020,6 +26274,786 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> MetaPingResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['polymarket-activity-trades'],
+        params: PolymarketActivityTradesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> PolymarketActivityTradesResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['polymarket-clob-market'],
+        params: PolymarketClobMarketParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> PolymarketClobMarketResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['polymarket-dashboard-macro'],
+        params: PolymarketDashboardMacroParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> PolymarketDashboardMacroResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['polymarket-data-followers'],
+        params: PolymarketDataFollowersParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> PolymarketDataFollowersResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['polymarket-data-following'],
+        params: PolymarketDataFollowingParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> PolymarketDataFollowingResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['polymarket-data-follows-counts'],
+        params: PolymarketDataFollowsCountsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> PolymarketDataFollowsCountsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['polymarket-event-detail-by-id'],
+        params: PolymarketEventDetailByIdParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> PolymarketEventDetailByIdResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['polymarket-event-activity-by-id'],
+        params: PolymarketEventActivityByIdParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> PolymarketEventActivityByIdResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['polymarket-event-detail'],
+        params: PolymarketEventDetailParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> PolymarketEventDetailResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['polymarket-event-activity'],
+        params: PolymarketEventActivityParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> PolymarketEventActivityResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['polymarket-events'],
+        params: PolymarketEventsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> PolymarketEventsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['polymarket-events-similar'],
+        params: PolymarketEventsSimilarParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> PolymarketEventsSimilarResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['polymarket-event-tags'],
+        params: PolymarketEventTagsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> PolymarketEventTagsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['polymarket-fee-types'],
+        params: PolymarketFeeTypesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> PolymarketFeeTypesResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['polymarket-games'],
+        params: PolymarketGamesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> PolymarketGamesResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['polymarket-homepage-feed'],
+        params: PolymarketHomepageFeedParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> PolymarketHomepageFeedResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['polymarket-leaderboard'],
+        params: PolymarketLeaderboardParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> PolymarketLeaderboardResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['polymarket-market-clarifications'],
+        params: PolymarketMarketClarificationsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> PolymarketMarketClarificationsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['polymarket-market-detail-by-condition'],
+        params: PolymarketMarketDetailByConditionParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> PolymarketMarketDetailByConditionResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['polymarket-market-activity-by-condition'],
+        params: PolymarketMarketActivityByConditionParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> PolymarketMarketActivityByConditionResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['polymarket-market-liquidity-by-condition'],
+        params: PolymarketMarketLiquidityByConditionParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> PolymarketMarketLiquidityByConditionResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['polymarket-market-detail-by-slug'],
+        params: PolymarketMarketDetailBySlugParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> PolymarketMarketDetailBySlugResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['polymarket-market-liquidity-by-slug'],
+        params: PolymarketMarketLiquidityBySlugParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> PolymarketMarketLiquidityBySlugResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['polymarket-market-detail'],
+        params: PolymarketMarketDetailParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> PolymarketMarketDetailResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['polymarket-market-liquidity'],
+        params: PolymarketMarketLiquidityParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> PolymarketMarketLiquidityResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['polymarket-market-tags'],
+        params: PolymarketMarketTagsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> PolymarketMarketTagsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['polymarket-markets'],
+        params: PolymarketMarketsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> PolymarketMarketsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['polymarket-predictions'],
+        params: PolymarketPredictionsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> PolymarketPredictionsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['polymarket-rewards-market'],
+        params: PolymarketRewardsMarketParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> PolymarketRewardsMarketResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['polymarket-rewards-markets'],
+        params: PolymarketRewardsMarketsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> PolymarketRewardsMarketsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['polymarket-search'],
+        params: PolymarketSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> PolymarketSearchResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['polymarket-sports'],
+        params: PolymarketSportsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> PolymarketSportsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['polymarket-sports-by-partner'],
+        params: PolymarketSportsByPartnerParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> PolymarketSportsByPartnerResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['polymarket-sports-market-types'],
+        params: PolymarketSportsMarketTypesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> PolymarketSportsMarketTypesResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['polymarket-sports-summary'],
+        params: PolymarketSportsSummaryParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> PolymarketSportsSummaryResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['polymarket-sport'],
+        params: PolymarketSportParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> PolymarketSportResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['polymarket-sport-external-partners'],
+        params: PolymarketSportExternalPartnersParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> PolymarketSportExternalPartnersResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['polymarket-sport-external-partner'],
+        params: PolymarketSportExternalPartnerParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> PolymarketSportExternalPartnerResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['polymarket-spotlights'],
+        params: PolymarketSpotlightsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> PolymarketSpotlightsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['polymarket-spotlights-keyset'],
+        params: PolymarketSpotlightsKeysetParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> PolymarketSpotlightsKeysetResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['polymarket-spotlight'],
+        params: PolymarketSpotlightParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> PolymarketSpotlightResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['polymarket-status'],
+        params: PolymarketStatusParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> PolymarketStatusResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['polymarket-tag-by-slug'],
+        params: PolymarketTagBySlugParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> PolymarketTagBySlugResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['polymarket-related-tags-by-slug'],
+        params: PolymarketRelatedTagsBySlugParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> PolymarketRelatedTagsBySlugResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['polymarket-related-tag-rows-by-slug'],
+        params: PolymarketRelatedTagRowsBySlugParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> PolymarketRelatedTagRowsBySlugResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['polymarket-tag'],
+        params: PolymarketTagParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> PolymarketTagResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['polymarket-related-tags'],
+        params: PolymarketRelatedTagsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> PolymarketRelatedTagsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['polymarket-related-tag-rows'],
+        params: PolymarketRelatedTagRowsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> PolymarketRelatedTagRowsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['polymarket-tags'],
+        params: PolymarketTagsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> PolymarketTagsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['polymarket-teams'],
+        params: PolymarketTeamsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> PolymarketTeamsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['polymarket-teams-by-partner'],
+        params: PolymarketTeamsByPartnerParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> PolymarketTeamsByPartnerResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['polymarket-team'],
+        params: PolymarketTeamParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> PolymarketTeamResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['polymarket-team-external-partners'],
+        params: PolymarketTeamExternalPartnersParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> PolymarketTeamExternalPartnersResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['polymarket-team-external-partner'],
+        params: PolymarketTeamExternalPartnerParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> PolymarketTeamExternalPartnerResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['polymarket-token-midpoint'],
+        params: PolymarketTokenMidpointParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> PolymarketTokenMidpointResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['polymarket-token-orderbook'],
+        params: PolymarketTokenOrderbookParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> PolymarketTokenOrderbookResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['polymarket-token-price'],
+        params: PolymarketTokenPriceParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> PolymarketTokenPriceResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['polymarket-token-price-history'],
+        params: PolymarketTokenPriceHistoryParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> PolymarketTokenPriceHistoryResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['polymarket-token-spread'],
+        params: PolymarketTokenSpreadParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> PolymarketTokenSpreadResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['polymarket-tokens-midpoints'],
+        params: PolymarketTokensMidpointsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> PolymarketTokensMidpointsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['polymarket-tokens-orderbooks'],
+        params: PolymarketTokensOrderbooksParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> PolymarketTokensOrderbooksResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['polymarket-tokens-prices'],
+        params: PolymarketTokensPricesParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> PolymarketTokensPricesResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['polymarket-tokens-spreads'],
+        params: PolymarketTokensSpreadsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> PolymarketTokensSpreadsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['polymarket-tournaments'],
+        params: PolymarketTournamentsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> PolymarketTournamentsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['polymarket-tournament'],
+        params: PolymarketTournamentParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> PolymarketTournamentResponse: ...
     @overload
     def request(
         self,
@@ -19179,6 +27213,18 @@ class CrawloraClient:
     @overload
     def request(
         self,
+        operation_id: Literal['reddit-domain-posts'],
+        params: RedditDomainPostsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> RedditDomainPostsResponse: ...
+    @overload
+    def request(
+        self,
         operation_id: Literal['reddit-post'],
         params: RedditPostParams,
         *,
@@ -19203,6 +27249,30 @@ class CrawloraClient:
     @overload
     def request(
         self,
+        operation_id: Literal['reddit-subreddit-about'],
+        params: RedditSubredditAboutParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> RedditSubredditAboutResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['reddit-subreddit-comments'],
+        params: RedditSubredditCommentsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> RedditSubredditCommentsResponse: ...
+    @overload
+    def request(
+        self,
         operation_id: Literal['reddit-subreddit-posts'],
         params: RedditSubredditPostsParams,
         *,
@@ -19212,6 +27282,54 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> RedditSubredditPostsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['reddit-subreddits-posts'],
+        params: RedditSubredditsPostsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> RedditSubredditsPostsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['reddit-trends'],
+        params: RedditTrendsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> RedditTrendsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['reddit-user-comments'],
+        params: RedditUserCommentsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> RedditUserCommentsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['reddit-user-posts'],
+        params: RedditUserPostsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> RedditUserPostsResponse: ...
     @overload
     def request(
         self,
@@ -19248,6 +27366,114 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> ReferralsMeEventsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['rottentomatoes-browse-movies'],
+        params: RottenTomatoesRottentomatoesBrowseMoviesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> RottenTomatoesRottentomatoesBrowseMoviesResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['rottentomatoes-browse-tv'],
+        params: RottenTomatoesRottentomatoesBrowseTvParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> RottenTomatoesRottentomatoesBrowseTvResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['rottentomatoes-episode'],
+        params: RottenTomatoesRottentomatoesEpisodeParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> RottenTomatoesRottentomatoesEpisodeResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['rottentomatoes-movie'],
+        params: RottenTomatoesRottentomatoesMovieParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> RottenTomatoesRottentomatoesMovieResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['rottentomatoes-movie-reviews'],
+        params: RottenTomatoesRottentomatoesMovieReviewsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> RottenTomatoesRottentomatoesMovieReviewsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['rottentomatoes-person'],
+        params: RottenTomatoesRottentomatoesPersonParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> RottenTomatoesRottentomatoesPersonResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['rottentomatoes-search'],
+        params: RottenTomatoesRottentomatoesSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> RottenTomatoesRottentomatoesSearchResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['rottentomatoes-season'],
+        params: RottenTomatoesRottentomatoesSeasonParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> RottenTomatoesRottentomatoesSeasonResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['rottentomatoes-series'],
+        params: RottenTomatoesRottentomatoesSeriesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> RottenTomatoesRottentomatoesSeriesResponse: ...
     @overload
     def request(
         self,
