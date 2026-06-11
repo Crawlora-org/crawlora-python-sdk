@@ -2,7 +2,7 @@
 
 Generated from `openapi/public.json`. Deprecated, admin, and internal operations are excluded from this SDK contract.
 
-Total operations: `491`
+Total operations: `499`
 
 | Group | SDK method | Operation ID | HTTP | Params | Auth | Response | Notes |
 | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -89,6 +89,9 @@ Total operations: `491`
 | coin_gecko | `coin_gecko.token_unlocks` | `coingecko-token-unlocks` | `GET /coingecko/token-unlocks` | `limit` (query int) | `ApiKeyAuth` | `CoinGeckoTokenUnlocksResponse` |  |
 | coin_gecko | `coin_gecko.treasuries` | `coingecko-treasuries` | `GET /coingecko/treasuries` | `asset` (query Literal['all', 'bitcoin', 'ethereum', 'solana', 'bnb', 'xrp', 'tron'])<br>`holder_type` (query Literal['all', 'companies', 'governments'])<br>`limit` (query int)<br>`vs_currency` (query Literal['btc', 'eth', 'ltc', 'bch', 'bnb', 'eos', 'xrp', 'xlm', 'link', 'dot', 'yfi', 'sol', 'usd', 'aed', 'ars', 'aud', 'bdt', 'bhd', 'bmd', 'brl', 'cad', 'chf', 'clp', 'cny', 'czk', 'dkk', 'eur', 'gbp', 'gel', 'hkd', 'huf', 'idr', 'ils', 'inr', 'jpy', 'krw', 'kwd', 'lkr', 'mmk', 'mxn', 'myr', 'ngn', 'nok', 'nzd', 'php', 'pkr', 'pln', 'rub', 'sar', 'sek', 'sgd', 'thb', 'try', 'twd', 'uah', 'vef', 'vnd', 'zar', 'xdr', 'xag', 'xau', 'bits', 'sats']) | `ApiKeyAuth` | `CoinGeckoTreasuriesResponse` |  |
 | coin_gecko | `coin_gecko.trending` | `coingecko-trending` | `GET /coingecko/trending` | `limit` (query int)<br>`vs_currency` (query Literal['btc', 'eth', 'ltc', 'bch', 'bnb', 'eos', 'xrp', 'xlm', 'link', 'dot', 'yfi', 'sol', 'usd', 'aed', 'ars', 'aud', 'bdt', 'bhd', 'bmd', 'brl', 'cad', 'chf', 'clp', 'cny', 'czk', 'dkk', 'eur', 'gbp', 'gel', 'hkd', 'huf', 'idr', 'ils', 'inr', 'jpy', 'krw', 'kwd', 'lkr', 'mmk', 'mxn', 'myr', 'ngn', 'nok', 'nzd', 'php', 'pkr', 'pln', 'rub', 'sar', 'sek', 'sgd', 'thb', 'try', 'twd', 'uah', 'vef', 'vnd', 'zar', 'xdr', 'xag', 'xau', 'bits', 'sats']) | `ApiKeyAuth` | `CoinGeckoTrendingResponse` |  |
+| web | `web.contact` | `contact` | `POST /contact` | `option` (body str required) | `ApiKeyAuth` | `WebContactResponse` |  |
+| web | `web.antibot_check` | `antibot-check` | `POST /diagnostics/antibot-check` | `request` (body str required) | `ApiKeyAuth` | `WebAntibotCheckResponse` |  |
+| web | `web.scrape` | `web-scrape` | `POST /web/scrape` | `scrapeOption` (body str required) | `ApiKeyAuth` | `WebScrapeResponse` |  |
 | datasets | `datasets.list` | `datasets-list` | `GET /datasets` | none | `ApiKeyAuth` | `DatasetsListResponse` |  |
 | datasets | `datasets.google_map_businesses_facets` | `datasets-google-map-businesses-facets` | `GET /datasets/google-map-businesses/facets` | `facet` (query str required)<br>`q` (query str)<br>`category` (query str)<br>`country` (query str)<br>`state` (query str)<br>`county` (query str)<br>`city` (query str)<br>`town` (query str)<br>`min_rating` (query float)<br>`min_review_count` (query int)<br>`has_website` (query bool)<br>`has_phone` (query bool)<br>`lat` (query float)<br>`lon` (query float)<br>`radius_m` (query int)<br>`sort` (query str) | `ApiKeyAuth` | `DatasetsGoogleMapBusinessesFacetsResponse` |  |
 | datasets | `datasets.google_map_businesses_item` | `datasets-google-map-businesses-item` | `GET /datasets/google-map-businesses/items/{place_id}` | `place_id` (path str required) | `ApiKeyAuth` | `DatasetsGoogleMapBusinessesItemResponse` |  |
@@ -318,6 +321,11 @@ Total operations: `491`
 | reddit | `reddit.trends` | `reddit-trends` | `GET /reddit/trends` | `sort` (query Literal['hot', 'new', 'rising', 'top'])<br>`time` (query Literal['hour', 'day', 'week', 'month', 'year', 'all'])<br>`limit` (query int)<br>`after` (query str) | `ApiKeyAuth` | `RedditTrendsResponse` |  |
 | reddit | `reddit.user_comments` | `reddit-user-comments` | `GET /reddit/user/{username}/comments` | `username` (path str required)<br>`limit` (query int)<br>`after` (query str) | `ApiKeyAuth` | `RedditUserCommentsResponse` |  |
 | reddit | `reddit.user_posts` | `reddit-user-posts` | `GET /reddit/user/{username}/posts` | `username` (path str required)<br>`limit` (query int)<br>`after` (query str) | `ApiKeyAuth` | `RedditUserPostsResponse` |  |
+| redfin | `redfin.estimate` | `redfin-estimate` | `GET /redfin/estimate` | `property_id` (query str required) | `ApiKeyAuth` | `RedfinEstimateResponse` |  |
+| redfin | `redfin.property` | `redfin-property` | `GET /redfin/property` | `url` (query str)<br>`property_id` (query str)<br>`listing_id` (query str) | `ApiKeyAuth` | `RedfinPropertyResponse` |  |
+| redfin | `redfin.region_trends` | `redfin-region-trends` | `GET /redfin/region-trends` | `region_id` (query int required)<br>`region_type` (query int) | `ApiKeyAuth` | `RedfinRegionTrendsResponse` |  |
+| redfin | `redfin.search` | `redfin-search` | `GET /redfin/search` | `location` (query str)<br>`page` (query int)<br>`region_id` (query int)<br>`region_type` (query int)<br>`status` (query str)<br>`min_price` (query int)<br>`max_price` (query int)<br>`min_beds` (query int)<br>`min_baths` (query float) | `ApiKeyAuth` | `RedfinSearchResponse` |  |
+| redfin | `redfin.similar` | `redfin-similar` | `GET /redfin/similar` | `property_id` (query str required) | `ApiKeyAuth` | `RedfinSimilarResponse` |  |
 | referrals | `referrals.click` | `referrals-click` | `POST /referrals/click` | `request` (body str required) | none | `ReferralsClickResponse` |  |
 | referrals | `referrals.me` | `referrals-me` | `GET /referrals/me` | none | `JWTAuth` | `ReferralsMeResponse` |  |
 | referrals | `referrals.me_events` | `referrals-me-events` | `GET /referrals/me/events` | `limit` (query int) | `JWTAuth` | `ReferralsMeEventsResponse` |  |

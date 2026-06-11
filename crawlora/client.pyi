@@ -173,6 +173,43 @@ ModelAmazonSuggestResponseDoc = TypedDict('ModelAmazonSuggestResponseDoc', {
     'msg': NotRequired[str],
 }, total=False)
 
+ModelAntibotBand = Literal['easy', 'medium', 'hard', 'very_hard', 'blocked', 'unknown']
+
+ModelAntibotProtection = TypedDict('ModelAntibotProtection', {
+    'confidence': NotRequired[str],
+    'evidence': NotRequired[list[str]],
+    'kind': NotRequired[str],
+    'vendor': NotRequired[str],
+}, total=False)
+
+ModelAntibotSignals = TypedDict('ModelAntibotSignals', {
+    'attempts_passed': NotRequired[int],
+    'attempts_run': NotRequired[int],
+    'attempts_skipped': NotRequired[int],
+    'block_markers': NotRequired[list[str]],
+    'blocked_status': NotRequired[bool],
+    'captcha_detected': NotRequired[bool],
+    'challenge_detected': NotRequired[bool],
+    'js_render_likely': NotRequired[bool],
+    'rate_limited': NotRequired[bool],
+}, total=False)
+
+ModelAntibotVerdict = TypedDict('ModelAntibotVerdict', {
+    'coverage': NotRequired[str],
+    'difficulty_band': NotRequired[ModelAntibotBand],
+    'difficulty_score': NotRequired[int],
+    'easiest_working_transport': NotRequired[str],
+    'gated_layers': NotRequired[list[str]],
+    'notes': NotRequired[list[str]],
+    'protections': NotRequired[list[ModelAntibotProtection]],
+    'recommended_approach': NotRequired[str],
+    'recommended_profile': NotRequired[str],
+    'scrapeable': NotRequired[bool],
+    'signals': NotRequired[ModelAntibotSignals],
+    'summary': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
 ModelApiComponentStatus = TypedDict('ModelApiComponentStatus', {
     'error': NotRequired[str],
     'ready': NotRequired[bool],
@@ -2480,6 +2517,48 @@ ModelContactContact = TypedDict('ModelContactContact', {
     'url': NotRequired[str],
 }, total=False)
 
+ModelContactContactRequest = TypedDict('ModelContactContactRequest', {
+    'independents_only': NotRequired[bool],
+    'max_pages': NotRequired[int],
+    'url': Required[str],
+    'verify': NotRequired[bool],
+}, total=False)
+
+ModelContactContactResult = TypedDict('ModelContactContactResult', {
+    'crawl_status': NotRequired[Literal['ok', 'blocked', 'unreachable']],
+    'crawled_pages': NotRequired[list[str]],
+    'domain': NotRequired[str],
+    'domain_type': NotRequired[Literal['independent', 'chain', 'social', 'builder', 'directory']],
+    'emails': NotRequired[list[ModelContactEmailContact]],
+    'phones': NotRequired[list[ModelContactPhoneContact]],
+    'socials': NotRequired[list[ModelContactSocialProfile]],
+    'website': NotRequired[str],
+}, total=False)
+
+ModelContactEmailContact = TypedDict('ModelContactEmailContact', {
+    'address': NotRequired[str],
+    'source_page': NotRequired[str],
+    'status': NotRequired[Literal['verified', 'risky', 'unverified', 'invalid']],
+    'type': NotRequired[Literal['generic', 'role', 'personal']],
+}, total=False)
+
+ModelContactPhoneContact = TypedDict('ModelContactPhoneContact', {
+    'number': NotRequired[str],
+    'source_page': NotRequired[str],
+}, total=False)
+
+ModelContactSocialProfile = TypedDict('ModelContactSocialProfile', {
+    'handle': NotRequired[str],
+    'network': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelContactContactResponseDoc = TypedDict('ModelContactContactResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelContactContactResult],
+    'msg': NotRequired[str],
+}, total=False)
+
 ModelDatasetsDatasetInfo = TypedDict('ModelDatasetsDatasetInfo', {
     'capabilities': NotRequired[list[str]],
     'description': NotRequired[str],
@@ -2527,6 +2606,17 @@ ModelDatasetsGoogleMapBusinessesSearchResponseDoc = TypedDict('ModelDatasetsGoog
 ModelDatasetsListResponseDoc = TypedDict('ModelDatasetsListResponseDoc', {
     'code': NotRequired[int],
     'data': NotRequired[ModelDatasetsDatasetListResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelDiagnosticsAntibotCheckRequest = TypedDict('ModelDiagnosticsAntibotCheckRequest', {
+    'fast': NotRequired[bool],
+    'url': Required[str],
+}, total=False)
+
+ModelDiagnosticsAntibotCheckResponseDoc = TypedDict('ModelDiagnosticsAntibotCheckResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelAntibotVerdict],
     'msg': NotRequired[str],
 }, total=False)
 
@@ -7476,6 +7566,107 @@ ModelRedditUserPostsResponseDoc = TypedDict('ModelRedditUserPostsResponseDoc', {
     'msg': NotRequired[str],
 }, total=False)
 
+ModelRedfinEstimateResponse = TypedDict('ModelRedfinEstimateResponse', {
+    'address': NotRequired[str],
+    'baths': NotRequired[float],
+    'beds': NotRequired[float],
+    'city_time_series': NotRequired[list[float]],
+    'county_time_series': NotRequired[list[float]],
+    'estimate': NotRequired[float],
+    'estimate_text': NotRequired[str],
+    'latitude': NotRequired[float],
+    'listing_price': NotRequired[float],
+    'longitude': NotRequired[float],
+    'postal_code_time_series': NotRequired[list[float]],
+    'property_id': NotRequired[str],
+    'property_time_series': NotRequired[list[float]],
+    'sqft': NotRequired[float],
+    'updated_at': NotRequired[int],
+    'year_built': NotRequired[int],
+}, total=False)
+
+ModelRedfinPropertyItem = TypedDict('ModelRedfinPropertyItem', {
+    'address': NotRequired[str],
+    'baths': NotRequired[float],
+    'beds': NotRequired[float],
+    'city': NotRequired[str],
+    'days_on_market': NotRequired[int],
+    'hoa_monthly': NotRequired[float],
+    'image': NotRequired[str],
+    'latitude': NotRequired[float],
+    'listing_id': NotRequired[str],
+    'longitude': NotRequired[float],
+    'lot_size': NotRequired[float],
+    'mls_number': NotRequired[str],
+    'price': NotRequired[float],
+    'price_per_sqft': NotRequired[float],
+    'property_id': NotRequired[str],
+    'property_type': NotRequired[str],
+    'sqft': NotRequired[float],
+    'state': NotRequired[str],
+    'status': NotRequired[str],
+    'url': NotRequired[str],
+    'year_built': NotRequired[int],
+    'zip': NotRequired[str],
+}, total=False)
+
+ModelRedfinPropertyResponse = TypedDict('ModelRedfinPropertyResponse', {
+    'address': NotRequired[str],
+    'baths': NotRequired[float],
+    'beds': NotRequired[float],
+    'city': NotRequired[str],
+    'days_on_market': NotRequired[int],
+    'description': NotRequired[str],
+    'facts': NotRequired[list[str]],
+    'hoa_monthly': NotRequired[float],
+    'image': NotRequired[str],
+    'latitude': NotRequired[float],
+    'listing_id': NotRequired[str],
+    'longitude': NotRequired[float],
+    'lot_size': NotRequired[float],
+    'mls_number': NotRequired[str],
+    'price': NotRequired[float],
+    'price_per_sqft': NotRequired[float],
+    'property_id': NotRequired[str],
+    'property_type': NotRequired[str],
+    'sqft': NotRequired[float],
+    'state': NotRequired[str],
+    'status': NotRequired[str],
+    'url': NotRequired[str],
+    'year_built': NotRequired[int],
+    'zip': NotRequired[str],
+}, total=False)
+
+ModelRedfinRegionTrendsResponse = TypedDict('ModelRedfinRegionTrendsResponse', {
+    'avg_days_on_market': NotRequired[str],
+    'avg_down_payment': NotRequired[str],
+    'avg_num_offers': NotRequired[str],
+    'median_list_per_sqft': NotRequired[str],
+    'median_list_price': NotRequired[str],
+    'median_sale_per_list': NotRequired[str],
+    'median_sale_per_sqft': NotRequired[str],
+    'median_sale_price': NotRequired[str],
+    'num_homes_on_market': NotRequired[str],
+    'num_homes_sold': NotRequired[str],
+    'region_id': NotRequired[int],
+    'region_type': NotRequired[int],
+    'yoy_sale_per_sqft': NotRequired[str],
+    'yoy_sale_price': NotRequired[str],
+}, total=False)
+
+ModelRedfinSearchResponse = TypedDict('ModelRedfinSearchResponse', {
+    'location': NotRequired[str],
+    'page': NotRequired[int],
+    'region_id': NotRequired[int],
+    'region_type': NotRequired[int],
+    'results': NotRequired[list[ModelRedfinPropertyItem]],
+}, total=False)
+
+ModelRedfinSimilarResponse = TypedDict('ModelRedfinSimilarResponse', {
+    'property_id': NotRequired[str],
+    'results': NotRequired[list[ModelRedfinPropertyItem]],
+}, total=False)
+
 ModelReferralsReferralAttributionDoc = TypedDict('ModelReferralsReferralAttributionDoc', {
     'campaign': NotRequired[str],
     'code': NotRequired[str],
@@ -8816,6 +9007,7 @@ ModelSpotifyCountryHubContentMeta = TypedDict('ModelSpotifyCountryHubContentMeta
     'fetchedAt': NotRequired[str],
     'itemCount': NotRequired[int],
     'operationName': NotRequired[str],
+    'partialErrors': NotRequired[int],
 }, total=False)
 
 ModelSpotifyCountryHubContentResponse = TypedDict('ModelSpotifyCountryHubContentResponse', {
@@ -8850,6 +9042,7 @@ ModelSpotifyCountryHubMeta = TypedDict('ModelSpotifyCountryHubMeta', {
     'fetchedAt': NotRequired[str],
     'itemCount': NotRequired[int],
     'operationName': NotRequired[str],
+    'partialErrors': NotRequired[int],
     'sectionCount': NotRequired[int],
 }, total=False)
 
@@ -10697,6 +10890,65 @@ ModelUserUserRotateApikeyResponseDoc = TypedDict('ModelUserUserRotateApikeyRespo
     'msg': NotRequired[str],
 }, total=False)
 
+ModelWebScrapeInfo = TypedDict('ModelWebScrapeInfo', {
+    'backend': NotRequired[str],
+    'cache_state': NotRequired[str],
+    'cached_at': NotRequired[str],
+    'escalated': NotRequired[bool],
+    'method': NotRequired[str],
+}, total=False)
+
+ModelWebScrapeLink = TypedDict('ModelWebScrapeLink', {
+    'href': NotRequired[str],
+    'rel': NotRequired[str],
+    'text': NotRequired[str],
+}, total=False)
+
+ModelWebScrapeMetadata = TypedDict('ModelWebScrapeMetadata', {
+    'author': NotRequired[str],
+    'canonical_url': NotRequired[str],
+    'content_type': NotRequired[str],
+    'description': NotRequired[str],
+    'final_url': NotRequired[str],
+    'image': NotRequired[str],
+    'language': NotRequired[str],
+    'modified_at': NotRequired[str],
+    'published_at': NotRequired[str],
+    'section': NotRequired[str],
+    'site_name': NotRequired[str],
+    'source_url': NotRequired[str],
+    'status_code': NotRequired[int],
+    'title': NotRequired[str],
+}, total=False)
+
+ModelWebScrapeOption = TypedDict('ModelWebScrapeOption', {
+    'backend': NotRequired[str],
+    'formats': NotRequired[list[str]],
+    'max_age': NotRequired[int],
+    'only_main_content': NotRequired[bool],
+    'proxy': NotRequired[str],
+    'render': NotRequired[Literal['auto', 'http', 'browser', 'unblocker']],
+    'store_in_cache': NotRequired[bool],
+    'url': Required[str],
+    'wait_for': NotRequired[int],
+}, total=False)
+
+ModelWebScrapeResult = TypedDict('ModelWebScrapeResult', {
+    'html': NotRequired[str],
+    'link_details': NotRequired[list[ModelWebScrapeLink]],
+    'links': NotRequired[list[str]],
+    'markdown': NotRequired[str],
+    'metadata': NotRequired[ModelWebScrapeMetadata],
+    'raw_html': NotRequired[str],
+    'scrape': NotRequired[ModelWebScrapeInfo],
+}, total=False)
+
+ModelWebScrapeResponseDoc = TypedDict('ModelWebScrapeResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelWebScrapeResult],
+    'msg': NotRequired[str],
+}, total=False)
+
 ModelYahoofinanceActionEvents = TypedDict('ModelYahoofinanceActionEvents', {
     'capital_gains': NotRequired[list[dict[str, Any]]],
     'dividends': NotRequired[list[dict[str, Any]]],
@@ -12448,6 +12700,15 @@ CoinGeckoTrendingParams = TypedDict('CoinGeckoTrendingParams', {
     'vs_currency': NotRequired[Literal['btc', 'eth', 'ltc', 'bch', 'bnb', 'eos', 'xrp', 'xlm', 'link', 'dot', 'yfi', 'sol', 'usd', 'aed', 'ars', 'aud', 'bdt', 'bhd', 'bmd', 'brl', 'cad', 'chf', 'clp', 'cny', 'czk', 'dkk', 'eur', 'gbp', 'gel', 'hkd', 'huf', 'idr', 'ils', 'inr', 'jpy', 'krw', 'kwd', 'lkr', 'mmk', 'mxn', 'myr', 'ngn', 'nok', 'nzd', 'php', 'pkr', 'pln', 'rub', 'sar', 'sek', 'sgd', 'thb', 'try', 'twd', 'uah', 'vef', 'vnd', 'zar', 'xdr', 'xag', 'xau', 'bits', 'sats']],
 }, total=False)
 
+WebContactBody = ModelContactContactRequest
+WebContactResponse = ModelContactContactResponseDoc
+WebContactParams = TypedDict('WebContactParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'option': Required[WebContactBody],
+}, total=False)
+
 DatasetsListResponse = ModelDatasetsListResponseDoc
 DatasetsListParams = TypedDict('DatasetsListParams', {
     '_response_type': NotRequired[ResponseType],
@@ -12523,6 +12784,15 @@ DatasetsGoogleMapBusinessesSearchParams = TypedDict('DatasetsGoogleMapBusinesses
     'sort': NotRequired[str],
     'page': NotRequired[int],
     'page_size': NotRequired[int],
+}, total=False)
+
+WebAntibotCheckBody = ModelDiagnosticsAntibotCheckRequest
+WebAntibotCheckResponse = ModelDiagnosticsAntibotCheckResponseDoc
+WebAntibotCheckParams = TypedDict('WebAntibotCheckParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'request': Required[WebAntibotCheckBody],
 }, total=False)
 
 EBayEbayItemResponse = ModelEbayItemResponseDoc
@@ -14706,6 +14976,57 @@ RedditUserPostsParams = TypedDict('RedditUserPostsParams', {
     'after': NotRequired[str],
 }, total=False)
 
+RedfinEstimateResponse = ModelRedfinEstimateResponse
+RedfinEstimateParams = TypedDict('RedfinEstimateParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'property_id': Required[str],
+}, total=False)
+
+RedfinPropertyResponse = ModelRedfinPropertyResponse
+RedfinPropertyParams = TypedDict('RedfinPropertyParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'url': NotRequired[str],
+    'property_id': NotRequired[str],
+    'listing_id': NotRequired[str],
+}, total=False)
+
+RedfinRegionTrendsResponse = ModelRedfinRegionTrendsResponse
+RedfinRegionTrendsParams = TypedDict('RedfinRegionTrendsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'region_id': Required[int],
+    'region_type': NotRequired[int],
+}, total=False)
+
+RedfinSearchResponse = ModelRedfinSearchResponse
+RedfinSearchParams = TypedDict('RedfinSearchParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'location': NotRequired[str],
+    'page': NotRequired[int],
+    'region_id': NotRequired[int],
+    'region_type': NotRequired[int],
+    'status': NotRequired[str],
+    'min_price': NotRequired[int],
+    'max_price': NotRequired[int],
+    'min_beds': NotRequired[int],
+    'min_baths': NotRequired[float],
+}, total=False)
+
+RedfinSimilarResponse = ModelRedfinSimilarResponse
+RedfinSimilarParams = TypedDict('RedfinSimilarParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'property_id': Required[str],
+}, total=False)
+
 ReferralsClickBody = ModelReferralsReferralClickRequestDoc
 ReferralsClickResponse = ModelReferralsReferralClickResponseDoc
 ReferralsClickParams = TypedDict('ReferralsClickParams', {
@@ -15989,6 +16310,15 @@ UserMeApiKeysRevealParams = TypedDict('UserMeApiKeysRevealParams', {
     'id': Required[str],
 }, total=False)
 
+WebScrapeBody = ModelWebScrapeOption
+WebScrapeResponse = ModelWebScrapeResponseDoc
+WebScrapeParams = TypedDict('WebScrapeParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'scrapeOption': Required[WebScrapeBody],
+}, total=False)
+
 YahooFinanceCalendarsResponse = ModelYahoofinanceCalendarsResponseDoc
 YahooFinanceCalendarsParams = TypedDict('YahooFinanceCalendarsParams', {
     '_response_type': NotRequired[ResponseType],
@@ -16599,6 +16929,11 @@ class CoinGeckoGroup:
     def treasuries(self, **params: Unpack[CoinGeckoTreasuriesParams]) -> CoinGeckoTreasuriesResponse: ...
     def trending(self, **params: Unpack[CoinGeckoTrendingParams]) -> CoinGeckoTrendingResponse: ...
 
+class WebGroup:
+    def contact(self, **params: Unpack[WebContactParams]) -> WebContactResponse: ...
+    def antibot_check(self, **params: Unpack[WebAntibotCheckParams]) -> WebAntibotCheckResponse: ...
+    def scrape(self, **params: Unpack[WebScrapeParams]) -> WebScrapeResponse: ...
+
 class DatasetsGroup:
     def list(self, **params: Unpack[DatasetsListParams]) -> DatasetsListResponse: ...
     def google_map_businesses_facets(self, **params: Unpack[DatasetsGoogleMapBusinessesFacetsParams]) -> DatasetsGoogleMapBusinessesFacetsResponse: ...
@@ -16857,6 +17192,13 @@ class RedditGroup:
     def trends(self, **params: Unpack[RedditTrendsParams]) -> RedditTrendsResponse: ...
     def user_comments(self, **params: Unpack[RedditUserCommentsParams]) -> RedditUserCommentsResponse: ...
     def user_posts(self, **params: Unpack[RedditUserPostsParams]) -> RedditUserPostsResponse: ...
+
+class RedfinGroup:
+    def estimate(self, **params: Unpack[RedfinEstimateParams]) -> RedfinEstimateResponse: ...
+    def property(self, **params: Unpack[RedfinPropertyParams]) -> RedfinPropertyResponse: ...
+    def region_trends(self, **params: Unpack[RedfinRegionTrendsParams]) -> RedfinRegionTrendsResponse: ...
+    def search(self, **params: Unpack[RedfinSearchParams]) -> RedfinSearchResponse: ...
+    def similar(self, **params: Unpack[RedfinSimilarParams]) -> RedfinSimilarResponse: ...
 
 class ReferralsGroup:
     def click(self, **params: Unpack[ReferralsClickParams]) -> ReferralsClickResponse: ...
@@ -17151,11 +17493,13 @@ OperationId = Literal[
     'coingecko-token-unlocks',
     'coingecko-treasuries',
     'coingecko-trending',
+    'contact',
     'datasets-list',
     'datasets-google-map-businesses-facets',
     'datasets-google-map-businesses-item',
     'datasets-google-map-businesses-nearby',
     'datasets-google-map-businesses-search',
+    'antibot-check',
     'ebay-item',
     'ebay-search',
     'ebay-seller',
@@ -17380,6 +17724,11 @@ OperationId = Literal[
     'reddit-trends',
     'reddit-user-comments',
     'reddit-user-posts',
+    'redfin-estimate',
+    'redfin-property',
+    'redfin-region-trends',
+    'redfin-search',
+    'redfin-similar',
     'referrals-click',
     'referrals-me',
     'referrals-me-events',
@@ -17504,6 +17853,7 @@ OperationId = Literal[
     'user-me-api-keys',
     'user-me-api-keys-rotate',
     'user-me-api-keys-reveal',
+    'web-scrape',
     'yahoo-finance-calendars',
     'yahoo-finance-calendar',
     'yahoo-finance-download',
@@ -17572,6 +17922,7 @@ class CrawloraClient:
     brand: BrandGroup
     brave: BraveGroup
     coin_gecko: CoinGeckoGroup
+    web: WebGroup
     datasets: DatasetsGroup
     e_bay: EBayGroup
     geocoding: GeocodingGroup
@@ -17587,6 +17938,7 @@ class CrawloraClient:
     polymarket: PolymarketGroup
     product_hunt: ProductHuntGroup
     reddit: RedditGroup
+    redfin: RedfinGroup
     referrals: ReferralsGroup
     rotten_tomatoes: RottenTomatoesGroup
     shop_app: ShopAppGroup
@@ -18681,6 +19033,18 @@ class CrawloraClient:
     @overload
     def operation(
         self,
+        operation_id: Literal['contact'],
+        params: WebContactParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> WebContactResponse: ...
+    @overload
+    def operation(
+        self,
         operation_id: Literal['datasets-list'],
         params: DatasetsListParams = ...,
         *,
@@ -18738,6 +19102,18 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> DatasetsGoogleMapBusinessesSearchResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['antibot-check'],
+        params: WebAntibotCheckParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> WebAntibotCheckResponse: ...
     @overload
     def operation(
         self,
@@ -21429,6 +21805,66 @@ class CrawloraClient:
     @overload
     def operation(
         self,
+        operation_id: Literal['redfin-estimate'],
+        params: RedfinEstimateParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> RedfinEstimateResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['redfin-property'],
+        params: RedfinPropertyParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> RedfinPropertyResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['redfin-region-trends'],
+        params: RedfinRegionTrendsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> RedfinRegionTrendsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['redfin-search'],
+        params: RedfinSearchParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> RedfinSearchResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['redfin-similar'],
+        params: RedfinSimilarParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> RedfinSimilarResponse: ...
+    @overload
+    def operation(
+        self,
         operation_id: Literal['referrals-click'],
         params: ReferralsClickParams,
         *,
@@ -22914,6 +23350,18 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> UserMeApiKeysRevealResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['web-scrape'],
+        params: WebScrapeParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> WebScrapeResponse: ...
     @overload
     def operation(
         self,
@@ -24585,6 +25033,18 @@ class CrawloraClient:
     @overload
     def request(
         self,
+        operation_id: Literal['contact'],
+        params: WebContactParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> WebContactResponse: ...
+    @overload
+    def request(
+        self,
         operation_id: Literal['datasets-list'],
         params: DatasetsListParams = ...,
         *,
@@ -24642,6 +25102,18 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> DatasetsGoogleMapBusinessesSearchResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['antibot-check'],
+        params: WebAntibotCheckParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> WebAntibotCheckResponse: ...
     @overload
     def request(
         self,
@@ -27333,6 +27805,66 @@ class CrawloraClient:
     @overload
     def request(
         self,
+        operation_id: Literal['redfin-estimate'],
+        params: RedfinEstimateParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> RedfinEstimateResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['redfin-property'],
+        params: RedfinPropertyParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> RedfinPropertyResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['redfin-region-trends'],
+        params: RedfinRegionTrendsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> RedfinRegionTrendsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['redfin-search'],
+        params: RedfinSearchParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> RedfinSearchResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['redfin-similar'],
+        params: RedfinSimilarParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> RedfinSimilarResponse: ...
+    @overload
+    def request(
+        self,
         operation_id: Literal['referrals-click'],
         params: ReferralsClickParams,
         *,
@@ -28818,6 +29350,18 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> UserMeApiKeysRevealResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['web-scrape'],
+        params: WebScrapeParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> WebScrapeResponse: ...
     @overload
     def request(
         self,
