@@ -176,10 +176,15 @@ ModelAmazonSuggestResponseDoc = TypedDict('ModelAmazonSuggestResponseDoc', {
 ModelAntibotBand = Literal['easy', 'medium', 'hard', 'very_hard', 'blocked', 'unknown']
 
 ModelAntibotProtection = TypedDict('ModelAntibotProtection', {
+    'captcha_mode': NotRequired[str],
+    'captcha_type': NotRequired[str],
     'confidence': NotRequired[str],
+    'confidence_score': NotRequired[int],
+    'custom_vm': NotRequired[bool],
     'evidence': NotRequired[list[str]],
     'kind': NotRequired[str],
     'vendor': NotRequired[str],
+    'vm_vendor': NotRequired[str],
 }, total=False)
 
 ModelAntibotSignals = TypedDict('ModelAntibotSignals', {
@@ -195,19 +200,28 @@ ModelAntibotSignals = TypedDict('ModelAntibotSignals', {
 }, total=False)
 
 ModelAntibotVerdict = TypedDict('ModelAntibotVerdict', {
+    'auth_required': NotRequired[bool],
+    'block_detail': NotRequired[str],
+    'block_reason': NotRequired[str],
+    'captcha_types': NotRequired[list[str]],
     'coverage': NotRequired[str],
+    'custom_vm': NotRequired[bool],
+    'detection_confidence_score': NotRequired[int],
     'difficulty_band': NotRequired[ModelAntibotBand],
     'difficulty_score': NotRequired[int],
     'easiest_working_transport': NotRequired[str],
+    'enforcement': NotRequired[str],
     'gated_layers': NotRequired[list[str]],
     'notes': NotRequired[list[str]],
     'protections': NotRequired[list[ModelAntibotProtection]],
     'recommended_approach': NotRequired[str],
     'recommended_profile': NotRequired[str],
+    'retry_after': NotRequired[str],
     'scrapeable': NotRequired[bool],
     'signals': NotRequired[ModelAntibotSignals],
     'summary': NotRequired[str],
     'url': NotRequired[str],
+    'vm_vendor': NotRequired[str],
 }, total=False)
 
 ModelApiComponentStatus = TypedDict('ModelApiComponentStatus', {
