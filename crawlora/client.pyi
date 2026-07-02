@@ -28,7 +28,18 @@ class _RequestOptions(TypedDict, total=False):
     _timeout: float
     _headers: Mapping[str, str]
 
+ModelAirbnbCalendarDay = TypedDict('ModelAirbnbCalendarDay', {
+    'available': NotRequired[bool],
+    'available_for_checkin': NotRequired[bool],
+    'available_for_checkout': NotRequired[bool],
+    'bookable': NotRequired[bool],
+    'date': NotRequired[str],
+    'max_nights': NotRequired[int],
+    'min_nights': NotRequired[int],
+}, total=False)
+
 ModelAirbnbCalendarMonth = TypedDict('ModelAirbnbCalendarMonth', {
+    'days': NotRequired[list[ModelAirbnbCalendarDay]],
     'month': NotRequired[str],
     'year': NotRequired[int],
 }, total=False)
@@ -40,12 +51,15 @@ ModelAirbnbCalendarResponse = TypedDict('ModelAirbnbCalendarResponse', {
 
 ModelAirbnbListingItem = TypedDict('ModelAirbnbListingItem', {
     'host': NotRequired[str],
+    'host_id': NotRequired[str],
     'id': NotRequired[str],
     'image': NotRequired[str],
+    'is_superhost': NotRequired[bool],
     'latitude': NotRequired[float],
     'location': NotRequired[str],
     'longitude': NotRequired[float],
     'price': NotRequired[float],
+    'price_per_night': NotRequired[float],
     'rating': NotRequired[float],
     'review_count': NotRequired[int],
     'title': NotRequired[str],
@@ -69,12 +83,15 @@ ModelAirbnbRoomResponse = TypedDict('ModelAirbnbRoomResponse', {
     'amenities': NotRequired[list[str]],
     'description': NotRequired[str],
     'host': NotRequired[str],
+    'host_id': NotRequired[str],
     'id': NotRequired[str],
     'image': NotRequired[str],
+    'is_superhost': NotRequired[bool],
     'latitude': NotRequired[float],
     'location': NotRequired[str],
     'longitude': NotRequired[float],
     'price': NotRequired[float],
+    'price_per_night': NotRequired[float],
     'rating': NotRequired[float],
     'review_count': NotRequired[int],
     'title': NotRequired[str],
@@ -2573,6 +2590,34 @@ ModelContactContactResponseDoc = TypedDict('ModelContactContactResponseDoc', {
     'msg': NotRequired[str],
 }, total=False)
 
+ModelDatasetsAppsSearchResponse = TypedDict('ModelDatasetsAppsSearchResponse', {
+    'dataset': NotRequired[str],
+    'items': NotRequired[list[ModelEsAppRecord]],
+    'page': NotRequired[int],
+    'page_size': NotRequired[int],
+    'sort': NotRequired[str],
+    'total': NotRequired[int],
+}, total=False)
+
+ModelDatasetsChartsSearchResponse = TypedDict('ModelDatasetsChartsSearchResponse', {
+    'dataset': NotRequired[str],
+    'items': NotRequired[list[ModelEsChartEntry]],
+    'page': NotRequired[int],
+    'page_size': NotRequired[int],
+    'snapshot_date': NotRequired[str],
+    'sort': NotRequired[str],
+    'total': NotRequired[int],
+}, total=False)
+
+ModelDatasetsCreatorsSearchResponse = TypedDict('ModelDatasetsCreatorsSearchResponse', {
+    'dataset': NotRequired[str],
+    'items': NotRequired[list[ModelEsCreatorRecord]],
+    'page': NotRequired[int],
+    'page_size': NotRequired[int],
+    'sort': NotRequired[str],
+    'total': NotRequired[int],
+}, total=False)
+
 ModelDatasetsDatasetInfo = TypedDict('ModelDatasetsDatasetInfo', {
     'capabilities': NotRequired[list[str]],
     'description': NotRequired[str],
@@ -2582,6 +2627,21 @@ ModelDatasetsDatasetInfo = TypedDict('ModelDatasetsDatasetInfo', {
 
 ModelDatasetsDatasetListResponse = TypedDict('ModelDatasetsDatasetListResponse', {
     'items': NotRequired[list[ModelDatasetsDatasetInfo]],
+}, total=False)
+
+ModelDatasetsGithubUserFacetResponse = TypedDict('ModelDatasetsGithubUserFacetResponse', {
+    'dataset': NotRequired[str],
+    'facet': NotRequired[str],
+    'items': NotRequired[list[ModelEsGithubUserDatasetFacetItem]],
+}, total=False)
+
+ModelDatasetsGithubUserSearchResponse = TypedDict('ModelDatasetsGithubUserSearchResponse', {
+    'dataset': NotRequired[str],
+    'items': NotRequired[list[ModelEsGithubUserDatasetItem]],
+    'page': NotRequired[int],
+    'page_size': NotRequired[int],
+    'sort': NotRequired[str],
+    'total': NotRequired[int],
 }, total=False)
 
 ModelDatasetsGoogleBusinessFacetResponse = TypedDict('ModelDatasetsGoogleBusinessFacetResponse', {
@@ -2597,6 +2657,51 @@ ModelDatasetsGoogleBusinessSearchResponse = TypedDict('ModelDatasetsGoogleBusine
     'page_size': NotRequired[int],
     'sort': NotRequired[str],
     'total': NotRequired[int],
+}, total=False)
+
+ModelDatasetsReviewsSearchResponse = TypedDict('ModelDatasetsReviewsSearchResponse', {
+    'dataset': NotRequired[str],
+    'items': NotRequired[list[ModelEsAppReview]],
+    'page': NotRequired[int],
+    'page_size': NotRequired[int],
+    'sort': NotRequired[str],
+    'total': NotRequired[int],
+}, total=False)
+
+ModelDatasetsAppsSearchResponseDoc = TypedDict('ModelDatasetsAppsSearchResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelDatasetsAppsSearchResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelDatasetsChartsSearchResponseDoc = TypedDict('ModelDatasetsChartsSearchResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelDatasetsChartsSearchResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelDatasetsCreatorsSearchResponseDoc = TypedDict('ModelDatasetsCreatorsSearchResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelDatasetsCreatorsSearchResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelDatasetsGithubUserResponseDoc = TypedDict('ModelDatasetsGithubUserResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelEsGithubUserRecord],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelDatasetsGithubUsersFacetResponseDoc = TypedDict('ModelDatasetsGithubUsersFacetResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelDatasetsGithubUserFacetResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelDatasetsGithubUsersSearchResponseDoc = TypedDict('ModelDatasetsGithubUsersSearchResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelDatasetsGithubUserSearchResponse],
+    'msg': NotRequired[str],
 }, total=False)
 
 ModelDatasetsGoogleMapBusinessResponseDoc = TypedDict('ModelDatasetsGoogleMapBusinessResponseDoc', {
@@ -2620,6 +2725,12 @@ ModelDatasetsGoogleMapBusinessesSearchResponseDoc = TypedDict('ModelDatasetsGoog
 ModelDatasetsListResponseDoc = TypedDict('ModelDatasetsListResponseDoc', {
     'code': NotRequired[int],
     'data': NotRequired[ModelDatasetsDatasetListResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelDatasetsReviewsSearchResponseDoc = TypedDict('ModelDatasetsReviewsSearchResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelDatasetsReviewsSearchResponse],
     'msg': NotRequired[str],
 }, total=False)
 
@@ -2811,9 +2922,214 @@ ModelEbaySellerShopResponseDoc = TypedDict('ModelEbaySellerShopResponseDoc', {
     'msg': NotRequired[Any],
 }, total=False)
 
+ModelEsAppRecord = TypedDict('ModelEsAppRecord', {
+    'android_max_installs': NotRequired[int],
+    'android_package': NotRequired[str],
+    'app_uid': NotRequired[str],
+    'category': NotRequired[str],
+    'countries_available': NotRequired[list[str]],
+    'country': NotRequired[str],
+    'currency': NotRequired[str],
+    'developer': NotRequired[str],
+    'developer_id': NotRequired[str],
+    'first_seen': NotRequired[str],
+    'free': NotRequired[bool],
+    'icon_url': NotRequired[str],
+    'ios_app_id': NotRequired[str],
+    'ios_bundle_id': NotRequired[str],
+    'last_crawled': NotRequired[str],
+    'popularity': NotRequired[int],
+    'price_cents': NotRequired[int],
+    'ratings_count': NotRequired[int],
+    'released_at': NotRequired[str],
+    'score': NotRequired[float],
+    'store': NotRequired[str],
+    'title': NotRequired[str],
+    'updated_at': NotRequired[str],
+    'url': NotRequired[str],
+    'version': NotRequired[str],
+}, total=False)
+
+ModelEsAppReview = TypedDict('ModelEsAppReview', {
+    'app_id': NotRequired[str],
+    'app_uid': NotRequired[str],
+    'country': NotRequired[str],
+    'last_crawled': NotRequired[str],
+    'reply_text': NotRequired[str],
+    'review_id': NotRequired[str],
+    'review_uid': NotRequired[str],
+    'reviewed_at': NotRequired[str],
+    'score': NotRequired[int],
+    'store': NotRequired[str],
+    'text': NotRequired[str],
+    'thumbs_up': NotRequired[int],
+    'title': NotRequired[str],
+    'url': NotRequired[str],
+    'user_name': NotRequired[str],
+    'version': NotRequired[str],
+}, total=False)
+
+ModelEsChartEntry = TypedDict('ModelEsChartEntry', {
+    'app_id': NotRequired[str],
+    'category': NotRequired[str],
+    'chart_type': NotRequired[str],
+    'chart_uid': NotRequired[str],
+    'collection': NotRequired[str],
+    'country': NotRequired[str],
+    'crawled_at': NotRequired[str],
+    'developer': NotRequired[str],
+    'free': NotRequired[bool],
+    'rank': NotRequired[int],
+    'score': NotRequired[float],
+    'snapshot_date': NotRequired[str],
+    'store': NotRequired[str],
+    'title': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelEsCreatorRecord = TypedDict('ModelEsCreatorRecord', {
+    'avatar_url': NotRequired[str],
+    'avg_views': NotRequired[int],
+    'bio': NotRequired[str],
+    'bio_link': NotRequired[str],
+    'brand_affiliations': NotRequired[list[str]],
+    'country': NotRequired[str],
+    'creator_uid': NotRequired[str],
+    'email': NotRequired[str],
+    'email_status': NotRequired[str],
+    'engagement_rate': NotRequired[float],
+    'first_seen': NotRequired[str],
+    'follower_count': NotRequired[int],
+    'following_count': NotRequired[int],
+    'language': NotRequired[str],
+    'last_crawled': NotRequired[str],
+    'last_post_at': NotRequired[str],
+    'niche': NotRequired[str],
+    'nickname': NotRequired[str],
+    'platform': NotRequired[str],
+    'post_stats': NotRequired[ModelEsPostStatsAgg],
+    'sec_uid': NotRequired[str],
+    'source': NotRequired[str],
+    'status': NotRequired[str],
+    'total_likes': NotRequired[int],
+    'unique_id': NotRequired[str],
+    'verified': NotRequired[bool],
+    'video_count': NotRequired[int],
+}, total=False)
+
 ModelEsGeoPoint = TypedDict('ModelEsGeoPoint', {
     'lat': NotRequired[float],
     'lon': NotRequired[float],
+}, total=False)
+
+ModelEsGithubGeo = TypedDict('ModelEsGithubGeo', {
+    'city': NotRequired[str],
+    'country': NotRequired[str],
+    'country_code': NotRequired[str],
+    'location': NotRequired[ModelEsGithubGeoPoint],
+    'state': NotRequired[str],
+}, total=False)
+
+ModelEsGithubGeoPoint = TypedDict('ModelEsGithubGeoPoint', {
+    'lat': NotRequired[float],
+    'lon': NotRequired[float],
+}, total=False)
+
+ModelEsGithubSocialLink = TypedDict('ModelEsGithubSocialLink', {
+    'provider': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelEsGithubUserDatasetFacetItem = TypedDict('ModelEsGithubUserDatasetFacetItem', {
+    'count': NotRequired[int],
+    'value': NotRequired[str],
+}, total=False)
+
+ModelEsGithubUserDatasetItem = TypedDict('ModelEsGithubUserDatasetItem', {
+    'account_age_years': NotRequired[float],
+    'active_90d': NotRequired[bool],
+    'avatar_url': NotRequired[str],
+    'bio': NotRequired[str],
+    'blog': NotRequired[str],
+    'company': NotRequired[str],
+    'company_normalized': NotRequired[str],
+    'crawled_at': NotRequired[str],
+    'created_at': NotRequired[str],
+    'distance_m': NotRequired[float],
+    'domains': NotRequired[list[str]],
+    'email': NotRequired[str],
+    'follower_following_ratio': NotRequired[float],
+    'followers': NotRequired[int],
+    'following': NotRequired[int],
+    'geo': NotRequired[ModelEsGithubGeo],
+    'has_blog': NotRequired[bool],
+    'has_email': NotRequired[bool],
+    'has_twitter': NotRequired[bool],
+    'hireable': NotRequired[bool],
+    'html_url': NotRequired[str],
+    'id': NotRequired[int],
+    'influence_tier': NotRequired[str],
+    'is_bot': NotRequired[bool],
+    'is_org': NotRequired[bool],
+    'last_active_at': NotRequired[str],
+    'location_raw': NotRequired[str],
+    'login': NotRequired[str],
+    'name': NotRequired[str],
+    'prs_30d': NotRequired[int],
+    'public_gists': NotRequired[int],
+    'public_repos': NotRequired[int],
+    'pushes_30d': NotRequired[int],
+    'rank_score': NotRequired[int],
+    'reachable': NotRequired[bool],
+    'reviews_30d': NotRequired[int],
+    'schema_version': NotRequired[int],
+    'social_accounts': NotRequired[list[ModelEsGithubSocialLink]],
+    'social_count': NotRequired[int],
+    'twitter_username': NotRequired[str],
+    'type': NotRequired[str],
+}, total=False)
+
+ModelEsGithubUserRecord = TypedDict('ModelEsGithubUserRecord', {
+    'account_age_years': NotRequired[float],
+    'active_90d': NotRequired[bool],
+    'avatar_url': NotRequired[str],
+    'bio': NotRequired[str],
+    'blog': NotRequired[str],
+    'company': NotRequired[str],
+    'company_normalized': NotRequired[str],
+    'crawled_at': NotRequired[str],
+    'created_at': NotRequired[str],
+    'domains': NotRequired[list[str]],
+    'email': NotRequired[str],
+    'follower_following_ratio': NotRequired[float],
+    'followers': NotRequired[int],
+    'following': NotRequired[int],
+    'geo': NotRequired[ModelEsGithubGeo],
+    'has_blog': NotRequired[bool],
+    'has_email': NotRequired[bool],
+    'has_twitter': NotRequired[bool],
+    'hireable': NotRequired[bool],
+    'html_url': NotRequired[str],
+    'id': NotRequired[int],
+    'influence_tier': NotRequired[str],
+    'is_bot': NotRequired[bool],
+    'is_org': NotRequired[bool],
+    'last_active_at': NotRequired[str],
+    'location_raw': NotRequired[str],
+    'login': NotRequired[str],
+    'name': NotRequired[str],
+    'prs_30d': NotRequired[int],
+    'public_gists': NotRequired[int],
+    'public_repos': NotRequired[int],
+    'pushes_30d': NotRequired[int],
+    'rank_score': NotRequired[int],
+    'reachable': NotRequired[bool],
+    'reviews_30d': NotRequired[int],
+    'schema_version': NotRequired[int],
+    'social_accounts': NotRequired[list[ModelEsGithubSocialLink]],
+    'social_count': NotRequired[int],
+    'twitter_username': NotRequired[str],
+    'type': NotRequired[str],
 }, total=False)
 
 ModelEsGoogleBusiness = TypedDict('ModelEsGoogleBusiness', {
@@ -2880,6 +3196,37 @@ ModelEsGoogleBusinessDatasetItem = TypedDict('ModelEsGoogleBusinessDatasetItem',
     'url': NotRequired[str],
     'website': NotRequired[str],
     'website_status': NotRequired[ModelEsWebsiteStatus],
+}, total=False)
+
+ModelEsPostSound = TypedDict('ModelEsPostSound', {
+    'author': NotRequired[str],
+    'music_id': NotRequired[str],
+    'title': NotRequired[str],
+    'uses': NotRequired[int],
+}, total=False)
+
+ModelEsPostStatsAgg = TypedDict('ModelEsPostStatsAgg', {
+    'analyzed_at': NotRequired[str],
+    'avg_comments': NotRequired[int],
+    'avg_likes': NotRequired[int],
+    'avg_saves': NotRequired[int],
+    'avg_shares': NotRequired[int],
+    'avg_video_duration_sec': NotRequired[float],
+    'avg_views': NotRequired[int],
+    'best_post_id': NotRequired[str],
+    'best_post_views': NotRequired[int],
+    'engagement_rate_by_follower': NotRequired[float],
+    'engagement_rate_by_view': NotRequired[float],
+    'first_post_at': NotRequired[str],
+    'last_post_at': NotRequired[str],
+    'median_likes': NotRequired[int],
+    'median_views': NotRequired[int],
+    'original_sound_ratio': NotRequired[float],
+    'posts_per_week': NotRequired[float],
+    'sampled_posts': NotRequired[int],
+    'top_hashtags': NotRequired[list[str]],
+    'top_sounds': NotRequired[list[ModelEsPostSound]],
+    'views_to_follower_ratio': NotRequired[float],
 }, total=False)
 
 ModelEsWebsiteStatus = TypedDict('ModelEsWebsiteStatus', {
@@ -6109,13 +6456,6 @@ ModelPopularTrendCountryIndustryMetaItem = TypedDict('ModelPopularTrendCountryIn
     'value': NotRequired[str],
 }, total=False)
 
-ModelPopularTrendCreatorTrendResp = TypedDict('ModelPopularTrendCreatorTrendResp', {
-    'code': NotRequired[int],
-    'data': NotRequired[dict[str, Any]],
-    'msg': NotRequired[str],
-    'request_id': NotRequired[str],
-}, total=False)
-
 ModelPopularTrendTopAdsAnalysisPoint = TypedDict('ModelPopularTrendTopAdsAnalysisPoint', {
     'second': NotRequired[int],
     'value': NotRequired[float],
@@ -6246,12 +6586,6 @@ ModelPopularTrendTopAdsVideoInfo = TypedDict('ModelPopularTrendTopAdsVideoInfo',
 ModelPopulartrendCountryIndustryMetaResponseDoc = TypedDict('ModelPopulartrendCountryIndustryMetaResponseDoc', {
     'code': NotRequired[int],
     'data': NotRequired[ModelPopularTrendCountryIndustryMeta],
-    'msg': NotRequired[str],
-}, total=False)
-
-ModelPopulartrendCreatorTrendResponseDoc = TypedDict('ModelPopulartrendCreatorTrendResponseDoc', {
-    'code': NotRequired[int],
-    'data': NotRequired[ModelPopularTrendCreatorTrendResp],
     'msg': NotRequired[str],
 }, total=False)
 
@@ -10963,6 +11297,91 @@ ModelWebScrapeResponseDoc = TypedDict('ModelWebScrapeResponseDoc', {
     'msg': NotRequired[str],
 }, total=False)
 
+ModelXMetrics = TypedDict('ModelXMetrics', {
+    'bookmarks': NotRequired[int],
+    'likes': NotRequired[int],
+    'replies': NotRequired[int],
+    'reposts': NotRequired[int],
+    'views': NotRequired[int],
+}, total=False)
+
+ModelXPost = TypedDict('ModelXPost', {
+    'author': NotRequired[ModelXUser],
+    'created_at': NotRequired[str],
+    'id': NotRequired[str],
+    'metrics': NotRequired[ModelXMetrics],
+    'quoted': NotRequired[ModelXPostQuote],
+    'text': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelXPostQuote = TypedDict('ModelXPostQuote', {
+    'author': NotRequired[ModelXUser],
+    'created_at': NotRequired[str],
+    'id': NotRequired[str],
+    'text': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelXProfile = TypedDict('ModelXProfile', {
+    'avatar_url': NotRequired[str],
+    'banner_url': NotRequired[str],
+    'created_at': NotRequired[str],
+    'description': NotRequired[str],
+    'external_url': NotRequired[str],
+    'id': NotRequired[str],
+    'is_blue_verified': NotRequired[bool],
+    'is_protected': NotRequired[bool],
+    'is_unavailable': NotRequired[bool],
+    'location': NotRequired[str],
+    'metrics': NotRequired[ModelXProfileMetrics],
+    'name': NotRequired[str],
+    'url': NotRequired[str],
+    'username': NotRequired[str],
+}, total=False)
+
+ModelXProfileMetrics = TypedDict('ModelXProfileMetrics', {
+    'followers': NotRequired[int],
+    'following': NotRequired[int],
+    'posts': NotRequired[int],
+}, total=False)
+
+ModelXProfilePosts = TypedDict('ModelXProfilePosts', {
+    'count': NotRequired[int],
+    'posts': NotRequired[list[ModelXPost]],
+    'url': NotRequired[str],
+    'username': NotRequired[str],
+}, total=False)
+
+ModelXUser = TypedDict('ModelXUser', {
+    'avatar_url': NotRequired[str],
+    'banner_url': NotRequired[str],
+    'id': NotRequired[str],
+    'is_blue_verified': NotRequired[bool],
+    'is_protected': NotRequired[bool],
+    'name': NotRequired[str],
+    'url': NotRequired[str],
+    'username': NotRequired[str],
+}, total=False)
+
+ModelXPostResponseDoc = TypedDict('ModelXPostResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelXPost],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelXProfilePostsResponseDoc = TypedDict('ModelXProfilePostsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelXProfilePosts],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelXProfileResponseDoc = TypedDict('ModelXProfileResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelXProfile],
+    'msg': NotRequired[str],
+}, total=False)
+
 ModelYahoofinanceActionEvents = TypedDict('ModelYahoofinanceActionEvents', {
     'capital_gains': NotRequired[list[dict[str, Any]]],
     'dividends': NotRequired[list[dict[str, Any]]],
@@ -12730,6 +13149,169 @@ DatasetsListParams = TypedDict('DatasetsListParams', {
     '_headers': NotRequired[Mapping[str, str]],
 }, total=False)
 
+DatasetsAppsChartsSearchResponse = ModelDatasetsChartsSearchResponseDoc
+DatasetsAppsChartsSearchParams = TypedDict('DatasetsAppsChartsSearchParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'q': NotRequired[str],
+    'store': NotRequired[str],
+    'chart_type': NotRequired[str],
+    'collection': NotRequired[str],
+    'category': NotRequired[str],
+    'country': NotRequired[str],
+    'app_id': NotRequired[str],
+    'date': NotRequired[str],
+    'sort': NotRequired[str],
+    'page': NotRequired[int],
+    'page_size': NotRequired[int],
+}, total=False)
+
+DatasetsAppsReviewsSearchResponse = ModelDatasetsReviewsSearchResponseDoc
+DatasetsAppsReviewsSearchParams = TypedDict('DatasetsAppsReviewsSearchParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'q': NotRequired[str],
+    'store': NotRequired[str],
+    'app_id': NotRequired[str],
+    'country': NotRequired[str],
+    'min_score': NotRequired[int],
+    'sort': NotRequired[str],
+    'page': NotRequired[int],
+    'page_size': NotRequired[int],
+}, total=False)
+
+DatasetsAppsSearchResponse = ModelDatasetsAppsSearchResponseDoc
+DatasetsAppsSearchParams = TypedDict('DatasetsAppsSearchParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'q': NotRequired[str],
+    'store': NotRequired[str],
+    'category': NotRequired[str],
+    'country': NotRequired[str],
+    'developer': NotRequired[str],
+    'free': NotRequired[bool],
+    'min_rating': NotRequired[float],
+    'min_reviews': NotRequired[int],
+    'sort': NotRequired[str],
+    'page': NotRequired[int],
+    'page_size': NotRequired[int],
+}, total=False)
+
+DatasetsCreatorsSearchResponse = ModelDatasetsCreatorsSearchResponseDoc
+DatasetsCreatorsSearchParams = TypedDict('DatasetsCreatorsSearchParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'q': NotRequired[str],
+    'handle': NotRequired[str],
+    'niche': NotRequired[str],
+    'country': NotRequired[str],
+    'verified': NotRequired[bool],
+    'min_followers': NotRequired[int],
+    'has_email': NotRequired[bool],
+    'include_inactive': NotRequired[bool],
+    'sort': NotRequired[str],
+    'page': NotRequired[int],
+    'page_size': NotRequired[int],
+}, total=False)
+
+DatasetsGithubUsersFacetsResponse = ModelDatasetsGithubUsersFacetResponseDoc
+DatasetsGithubUsersFacetsParams = TypedDict('DatasetsGithubUsersFacetsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'facet': Required[str],
+    'q': NotRequired[str],
+    'login': NotRequired[str],
+    'company': NotRequired[str],
+    'influence_tier': NotRequired[str],
+    'country': NotRequired[str],
+    'country_code': NotRequired[str],
+    'state': NotRequired[str],
+    'city': NotRequired[str],
+    'domain': NotRequired[str],
+    'has_email': NotRequired[bool],
+    'has_twitter': NotRequired[bool],
+    'has_blog': NotRequired[bool],
+    'reachable': NotRequired[bool],
+    'active_90d': NotRequired[bool],
+    'hireable': NotRequired[bool],
+    'is_org': NotRequired[bool],
+    'is_bot': NotRequired[bool],
+    'min_followers': NotRequired[int],
+    'max_followers': NotRequired[int],
+    'min_repos': NotRequired[int],
+    'min_rank_score': NotRequired[int],
+    'min_account_age_years': NotRequired[float],
+    'max_account_age_years': NotRequired[float],
+    'lat': NotRequired[float],
+    'lon': NotRequired[float],
+    'radius_m': NotRequired[int],
+    'sort': NotRequired[str],
+}, total=False)
+
+DatasetsGithubUsersItemResponse = ModelDatasetsGithubUserResponseDoc
+DatasetsGithubUsersItemParams = TypedDict('DatasetsGithubUsersItemParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'login': Required[str],
+}, total=False)
+
+DatasetsGithubUsersNearbyResponse = ModelDatasetsGithubUsersSearchResponseDoc
+DatasetsGithubUsersNearbyParams = TypedDict('DatasetsGithubUsersNearbyParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'lat': Required[float],
+    'lon': Required[float],
+    'radius_m': Required[int],
+    'influence_tier': NotRequired[str],
+    'reachable': NotRequired[bool],
+    'min_followers': NotRequired[int],
+    'page': NotRequired[int],
+    'page_size': NotRequired[int],
+}, total=False)
+
+DatasetsGithubUsersSearchResponse = ModelDatasetsGithubUsersSearchResponseDoc
+DatasetsGithubUsersSearchParams = TypedDict('DatasetsGithubUsersSearchParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'q': NotRequired[str],
+    'login': NotRequired[str],
+    'company': NotRequired[str],
+    'influence_tier': NotRequired[str],
+    'country': NotRequired[str],
+    'country_code': NotRequired[str],
+    'state': NotRequired[str],
+    'city': NotRequired[str],
+    'domain': NotRequired[str],
+    'has_email': NotRequired[bool],
+    'has_twitter': NotRequired[bool],
+    'has_blog': NotRequired[bool],
+    'reachable': NotRequired[bool],
+    'active_90d': NotRequired[bool],
+    'hireable': NotRequired[bool],
+    'is_org': NotRequired[bool],
+    'is_bot': NotRequired[bool],
+    'min_followers': NotRequired[int],
+    'max_followers': NotRequired[int],
+    'min_repos': NotRequired[int],
+    'min_rank_score': NotRequired[int],
+    'min_account_age_years': NotRequired[float],
+    'max_account_age_years': NotRequired[float],
+    'lat': NotRequired[float],
+    'lon': NotRequired[float],
+    'radius_m': NotRequired[int],
+    'sort': NotRequired[str],
+    'page': NotRequired[int],
+    'page_size': NotRequired[int],
+}, total=False)
+
 DatasetsGoogleMapBusinessesFacetsResponse = ModelDatasetsGoogleMapBusinessesFacetResponseDoc
 DatasetsGoogleMapBusinessesFacetsParams = TypedDict('DatasetsGoogleMapBusinessesFacetsParams', {
     '_response_type': NotRequired[ResponseType],
@@ -12905,6 +13487,171 @@ GeocodingSearchParams = TypedDict('GeocodingSearchParams', {
     'addressdetails': NotRequired[bool],
     'extratags': NotRequired[bool],
     'namedetails': NotRequired[bool],
+}, total=False)
+
+GitHubGithubOrgResponse = ModelAppResponse
+GitHubGithubOrgParams = TypedDict('GitHubGithubOrgParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'org': Required[str],
+}, total=False)
+
+GitHubGithubOrgReposResponse = ModelAppResponse
+GitHubGithubOrgReposParams = TypedDict('GitHubGithubOrgReposParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'org': Required[str],
+    'sort': NotRequired[Literal['created', 'updated', 'pushed', 'full_name']],
+    'direction': NotRequired[Literal['asc', 'desc']],
+    'type': NotRequired[Literal['all', 'public', 'forks', 'sources', 'member']],
+    'page': NotRequired[int],
+    'per_page': NotRequired[int],
+}, total=False)
+
+GitHubGithubRepoResponse = ModelAppResponse
+GitHubGithubRepoParams = TypedDict('GitHubGithubRepoParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'owner': Required[str],
+    'repo': Required[str],
+}, total=False)
+
+GitHubGithubRepoContributorsResponse = ModelAppResponse
+GitHubGithubRepoContributorsParams = TypedDict('GitHubGithubRepoContributorsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'owner': Required[str],
+    'repo': Required[str],
+    'page': NotRequired[int],
+    'per_page': NotRequired[int],
+}, total=False)
+
+GitHubGithubRepoForksResponse = ModelAppResponse
+GitHubGithubRepoForksParams = TypedDict('GitHubGithubRepoForksParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'owner': Required[str],
+    'repo': Required[str],
+    'sort': NotRequired[Literal['newest', 'oldest', 'stargazers', 'watchers']],
+    'page': NotRequired[int],
+    'per_page': NotRequired[int],
+}, total=False)
+
+GitHubGithubRepoLanguagesResponse = ModelAppResponse
+GitHubGithubRepoLanguagesParams = TypedDict('GitHubGithubRepoLanguagesParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'owner': Required[str],
+    'repo': Required[str],
+}, total=False)
+
+GitHubGithubRepoReleasesResponse = ModelAppResponse
+GitHubGithubRepoReleasesParams = TypedDict('GitHubGithubRepoReleasesParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'owner': Required[str],
+    'repo': Required[str],
+    'page': NotRequired[int],
+    'per_page': NotRequired[int],
+}, total=False)
+
+GitHubGithubRepoStargazersResponse = ModelAppResponse
+GitHubGithubRepoStargazersParams = TypedDict('GitHubGithubRepoStargazersParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'owner': Required[str],
+    'repo': Required[str],
+    'page': NotRequired[int],
+    'per_page': NotRequired[int],
+}, total=False)
+
+GitHubGithubSearchRepositoriesResponse = ModelAppResponse
+GitHubGithubSearchRepositoriesParams = TypedDict('GitHubGithubSearchRepositoriesParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'q': Required[str],
+    'sort': NotRequired[Literal['stars', 'forks', 'help-wanted-issues', 'updated']],
+    'order': NotRequired[Literal['asc', 'desc']],
+    'page': NotRequired[int],
+    'per_page': NotRequired[int],
+}, total=False)
+
+GitHubGithubSearchUsersResponse = ModelAppResponse
+GitHubGithubSearchUsersParams = TypedDict('GitHubGithubSearchUsersParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'q': Required[str],
+    'sort': NotRequired[Literal['followers', 'repositories', 'joined']],
+    'order': NotRequired[Literal['asc', 'desc']],
+    'page': NotRequired[int],
+    'per_page': NotRequired[int],
+}, total=False)
+
+GitHubGithubTrendingResponse = ModelAppResponse
+GitHubGithubTrendingParams = TypedDict('GitHubGithubTrendingParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'language': NotRequired[str],
+    'since': NotRequired[Literal['daily', 'weekly', 'monthly']],
+}, total=False)
+
+GitHubGithubTrendingDevelopersResponse = ModelAppResponse
+GitHubGithubTrendingDevelopersParams = TypedDict('GitHubGithubTrendingDevelopersParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'language': NotRequired[str],
+    'since': NotRequired[Literal['daily', 'weekly', 'monthly']],
+}, total=False)
+
+GitHubGithubUserResponse = ModelAppResponse
+GitHubGithubUserParams = TypedDict('GitHubGithubUserParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'username': Required[str],
+}, total=False)
+
+GitHubGithubUserEventsResponse = ModelAppResponse
+GitHubGithubUserEventsParams = TypedDict('GitHubGithubUserEventsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'username': Required[str],
+    'page': NotRequired[int],
+    'per_page': NotRequired[int],
+}, total=False)
+
+GitHubGithubUserPinnedResponse = ModelAppResponse
+GitHubGithubUserPinnedParams = TypedDict('GitHubGithubUserPinnedParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'username': Required[str],
+}, total=False)
+
+GitHubGithubUserReposResponse = ModelAppResponse
+GitHubGithubUserReposParams = TypedDict('GitHubGithubUserReposParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'username': Required[str],
+    'sort': NotRequired[Literal['created', 'updated', 'pushed', 'full_name']],
+    'direction': NotRequired[Literal['asc', 'desc']],
+    'type': NotRequired[Literal['all', 'owner', 'member']],
+    'page': NotRequired[int],
+    'per_page': NotRequired[int],
 }, total=False)
 
 GoogleFinanceAnalystArticlesResponse = ModelFinanceArticlesResponseDoc
@@ -14881,6 +15628,7 @@ RedditCommentsParams = TypedDict('RedditCommentsParams', {
     'sort': NotRequired[Literal['confidence', 'top', 'new', 'controversial', 'old', 'qa']],
     'limit': NotRequired[int],
     'depth': NotRequired[int],
+    'with_scores': NotRequired[bool],
 }, total=False)
 
 RedditDomainPostsResponse = ModelRedditDomainPostsResponseDoc
@@ -14893,6 +15641,7 @@ RedditDomainPostsParams = TypedDict('RedditDomainPostsParams', {
     'time': NotRequired[Literal['hour', 'day', 'week', 'month', 'year', 'all']],
     'limit': NotRequired[int],
     'after': NotRequired[str],
+    'with_scores': NotRequired[bool],
 }, total=False)
 
 RedditPostResponse = ModelRedditPostResponseDoc
@@ -14901,6 +15650,7 @@ RedditPostParams = TypedDict('RedditPostParams', {
     '_timeout': NotRequired[float],
     '_headers': NotRequired[Mapping[str, str]],
     'id': Required[str],
+    'with_scores': NotRequired[bool],
 }, total=False)
 
 RedditSearchResponse = ModelRedditSearchResponseDoc
@@ -14914,6 +15664,7 @@ RedditSearchParams = TypedDict('RedditSearchParams', {
     'time': NotRequired[Literal['hour', 'day', 'week', 'month', 'year', 'all']],
     'limit': NotRequired[int],
     'after': NotRequired[str],
+    'with_scores': NotRequired[bool],
 }, total=False)
 
 RedditSubredditAboutResponse = ModelRedditSubredditAboutResponseDoc
@@ -14923,6 +15674,7 @@ RedditSubredditAboutParams = TypedDict('RedditSubredditAboutParams', {
     '_headers': NotRequired[Mapping[str, str]],
     'subreddit': Required[str],
     'limit': NotRequired[int],
+    'with_scores': NotRequired[bool],
 }, total=False)
 
 RedditSubredditCommentsResponse = ModelRedditSubredditCommentsResponseDoc
@@ -14933,6 +15685,7 @@ RedditSubredditCommentsParams = TypedDict('RedditSubredditCommentsParams', {
     'subreddit': Required[str],
     'limit': NotRequired[int],
     'after': NotRequired[str],
+    'with_scores': NotRequired[bool],
 }, total=False)
 
 RedditSubredditPostsResponse = ModelRedditSubredditPostsResponseDoc
@@ -14945,6 +15698,7 @@ RedditSubredditPostsParams = TypedDict('RedditSubredditPostsParams', {
     'time': NotRequired[Literal['hour', 'day', 'week', 'month', 'year', 'all']],
     'limit': NotRequired[int],
     'after': NotRequired[str],
+    'with_scores': NotRequired[bool],
 }, total=False)
 
 RedditSubredditsPostsResponse = ModelRedditMultiSubredditPostsResponseDoc
@@ -14957,6 +15711,7 @@ RedditSubredditsPostsParams = TypedDict('RedditSubredditsPostsParams', {
     'time': NotRequired[Literal['hour', 'day', 'week', 'month', 'year', 'all']],
     'limit': NotRequired[int],
     'after': NotRequired[str],
+    'with_scores': NotRequired[bool],
 }, total=False)
 
 RedditTrendsResponse = ModelRedditTrendsResponseDoc
@@ -14968,6 +15723,7 @@ RedditTrendsParams = TypedDict('RedditTrendsParams', {
     'time': NotRequired[Literal['hour', 'day', 'week', 'month', 'year', 'all']],
     'limit': NotRequired[int],
     'after': NotRequired[str],
+    'with_scores': NotRequired[bool],
 }, total=False)
 
 RedditUserCommentsResponse = ModelRedditUserCommentsResponseDoc
@@ -14978,6 +15734,7 @@ RedditUserCommentsParams = TypedDict('RedditUserCommentsParams', {
     'username': Required[str],
     'limit': NotRequired[int],
     'after': NotRequired[str],
+    'with_scores': NotRequired[bool],
 }, total=False)
 
 RedditUserPostsResponse = ModelRedditUserPostsResponseDoc
@@ -14988,6 +15745,7 @@ RedditUserPostsParams = TypedDict('RedditUserPostsParams', {
     'username': Required[str],
     'limit': NotRequired[int],
     'after': NotRequired[str],
+    'with_scores': NotRequired[bool],
 }, total=False)
 
 RedfinEstimateResponse = ModelRedfinEstimateResponse
@@ -15917,18 +16675,6 @@ TiktokPopularTrendCountryIndustryMetaParams = TypedDict('TiktokPopularTrendCount
     '_headers': NotRequired[Mapping[str, str]],
 }, total=False)
 
-TiktokPopularTrendCreatorResponse = ModelPopulartrendCreatorTrendResponseDoc
-TiktokPopularTrendCreatorParams = TypedDict('TiktokPopularTrendCreatorParams', {
-    '_response_type': NotRequired[ResponseType],
-    '_timeout': NotRequired[float],
-    '_headers': NotRequired[Mapping[str, str]],
-    'page': NotRequired[int],
-    'limit': NotRequired[int],
-    'sort_by': NotRequired[Literal['follower', 'engagement', 'avg_views']],
-    'creator_country': NotRequired[str],
-    'audience_count': NotRequired[Literal['1', '2', '3', '4']],
-}, total=False)
-
 TiktokPostResponse = ModelTiktokPostResponseDoc
 TiktokPostParams = TypedDict('TiktokPostParams', {
     '_response_type': NotRequired[ResponseType],
@@ -16331,6 +17077,32 @@ WebScrapeParams = TypedDict('WebScrapeParams', {
     '_timeout': NotRequired[float],
     '_headers': NotRequired[Mapping[str, str]],
     'scrapeOption': Required[WebScrapeBody],
+}, total=False)
+
+XPostResponse = ModelXPostResponseDoc
+XPostParams = TypedDict('XPostParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': Required[str],
+    'username': NotRequired[str],
+}, total=False)
+
+XProfileResponse = ModelXProfileResponseDoc
+XProfileParams = TypedDict('XProfileParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'username': Required[str],
+}, total=False)
+
+XProfilePostsResponse = ModelXProfilePostsResponseDoc
+XProfilePostsParams = TypedDict('XProfilePostsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'username': Required[str],
+    'limit': NotRequired[int],
 }, total=False)
 
 YahooFinanceCalendarsResponse = ModelYahoofinanceCalendarsResponseDoc
@@ -16950,6 +17722,14 @@ class WebGroup:
 
 class DatasetsGroup:
     def list(self, **params: Unpack[DatasetsListParams]) -> DatasetsListResponse: ...
+    def apps_charts_search(self, **params: Unpack[DatasetsAppsChartsSearchParams]) -> DatasetsAppsChartsSearchResponse: ...
+    def apps_reviews_search(self, **params: Unpack[DatasetsAppsReviewsSearchParams]) -> DatasetsAppsReviewsSearchResponse: ...
+    def apps_search(self, **params: Unpack[DatasetsAppsSearchParams]) -> DatasetsAppsSearchResponse: ...
+    def creators_search(self, **params: Unpack[DatasetsCreatorsSearchParams]) -> DatasetsCreatorsSearchResponse: ...
+    def github_users_facets(self, **params: Unpack[DatasetsGithubUsersFacetsParams]) -> DatasetsGithubUsersFacetsResponse: ...
+    def github_users_item(self, **params: Unpack[DatasetsGithubUsersItemParams]) -> DatasetsGithubUsersItemResponse: ...
+    def github_users_nearby(self, **params: Unpack[DatasetsGithubUsersNearbyParams]) -> DatasetsGithubUsersNearbyResponse: ...
+    def github_users_search(self, **params: Unpack[DatasetsGithubUsersSearchParams]) -> DatasetsGithubUsersSearchResponse: ...
     def google_map_businesses_facets(self, **params: Unpack[DatasetsGoogleMapBusinessesFacetsParams]) -> DatasetsGoogleMapBusinessesFacetsResponse: ...
     def google_map_businesses_item(self, **params: Unpack[DatasetsGoogleMapBusinessesItemParams]) -> DatasetsGoogleMapBusinessesItemResponse: ...
     def google_map_businesses_nearby(self, **params: Unpack[DatasetsGoogleMapBusinessesNearbyParams]) -> DatasetsGoogleMapBusinessesNearbyResponse: ...
@@ -16967,6 +17747,24 @@ class GeocodingGroup:
     def lookup(self, **params: Unpack[GeocodingLookupParams]) -> GeocodingLookupResponse: ...
     def reverse(self, **params: Unpack[GeocodingReverseParams]) -> GeocodingReverseResponse: ...
     def search(self, **params: Unpack[GeocodingSearchParams]) -> GeocodingSearchResponse: ...
+
+class GitHubGroup:
+    def github_org(self, **params: Unpack[GitHubGithubOrgParams]) -> GitHubGithubOrgResponse: ...
+    def github_org_repos(self, **params: Unpack[GitHubGithubOrgReposParams]) -> GitHubGithubOrgReposResponse: ...
+    def github_repo(self, **params: Unpack[GitHubGithubRepoParams]) -> GitHubGithubRepoResponse: ...
+    def github_repo_contributors(self, **params: Unpack[GitHubGithubRepoContributorsParams]) -> GitHubGithubRepoContributorsResponse: ...
+    def github_repo_forks(self, **params: Unpack[GitHubGithubRepoForksParams]) -> GitHubGithubRepoForksResponse: ...
+    def github_repo_languages(self, **params: Unpack[GitHubGithubRepoLanguagesParams]) -> GitHubGithubRepoLanguagesResponse: ...
+    def github_repo_releases(self, **params: Unpack[GitHubGithubRepoReleasesParams]) -> GitHubGithubRepoReleasesResponse: ...
+    def github_repo_stargazers(self, **params: Unpack[GitHubGithubRepoStargazersParams]) -> GitHubGithubRepoStargazersResponse: ...
+    def github_search_repositories(self, **params: Unpack[GitHubGithubSearchRepositoriesParams]) -> GitHubGithubSearchRepositoriesResponse: ...
+    def github_search_users(self, **params: Unpack[GitHubGithubSearchUsersParams]) -> GitHubGithubSearchUsersResponse: ...
+    def github_trending(self, **params: Unpack[GitHubGithubTrendingParams]) -> GitHubGithubTrendingResponse: ...
+    def github_trending_developers(self, **params: Unpack[GitHubGithubTrendingDevelopersParams]) -> GitHubGithubTrendingDevelopersResponse: ...
+    def github_user(self, **params: Unpack[GitHubGithubUserParams]) -> GitHubGithubUserResponse: ...
+    def github_user_events(self, **params: Unpack[GitHubGithubUserEventsParams]) -> GitHubGithubUserEventsResponse: ...
+    def github_user_pinned(self, **params: Unpack[GitHubGithubUserPinnedParams]) -> GitHubGithubUserPinnedResponse: ...
+    def github_user_repos(self, **params: Unpack[GitHubGithubUserReposParams]) -> GitHubGithubUserReposResponse: ...
 
 class GoogleGroup:
     def finance_analyst_articles(self, **params: Unpack[GoogleFinanceAnalystArticlesParams]) -> GoogleFinanceAnalystArticlesResponse: ...
@@ -17314,7 +18112,6 @@ class TiktokGroup:
     def challenge(self, **params: Unpack[TiktokChallengeParams]) -> TiktokChallengeResponse: ...
     def challenge_list(self, **params: Unpack[TiktokChallengeListParams]) -> TiktokChallengeListResponse: ...
     def popular_trend_country_industry_meta(self, **params: Unpack[TiktokPopularTrendCountryIndustryMetaParams]) -> TiktokPopularTrendCountryIndustryMetaResponse: ...
-    def popular_trend_creator(self, **params: Unpack[TiktokPopularTrendCreatorParams]) -> TiktokPopularTrendCreatorResponse: ...
     def post(self, **params: Unpack[TiktokPostParams]) -> TiktokPostResponse: ...
     def profile_post(self, **params: Unpack[TiktokProfilePostParams]) -> TiktokProfilePostResponse: ...
     def profile(self, **params: Unpack[TiktokProfileParams]) -> TiktokProfileResponse: ...
@@ -17361,6 +18158,11 @@ class UserGroup:
     def me_api_keys(self, **params: Unpack[UserMeApiKeysParams]) -> UserMeApiKeysResponse: ...
     def me_api_keys_rotate(self, **params: Unpack[UserMeApiKeysRotateParams]) -> UserMeApiKeysRotateResponse: ...
     def me_api_keys_reveal(self, **params: Unpack[UserMeApiKeysRevealParams]) -> UserMeApiKeysRevealResponse: ...
+
+class XGroup:
+    def post(self, **params: Unpack[XPostParams]) -> XPostResponse: ...
+    def profile(self, **params: Unpack[XProfileParams]) -> XProfileResponse: ...
+    def profile_posts(self, **params: Unpack[XProfilePostsParams]) -> XProfilePostsResponse: ...
 
 class YahooFinanceGroup:
     def calendars(self, **params: Unpack[YahooFinanceCalendarsParams]) -> YahooFinanceCalendarsResponse: ...
@@ -17509,6 +18311,14 @@ OperationId = Literal[
     'coingecko-trending',
     'contact',
     'datasets-list',
+    'datasets-apps-charts-search',
+    'datasets-apps-reviews-search',
+    'datasets-apps-search',
+    'datasets-creators-search',
+    'datasets-github-users-facets',
+    'datasets-github-users-item',
+    'datasets-github-users-nearby',
+    'datasets-github-users-search',
     'datasets-google-map-businesses-facets',
     'datasets-google-map-businesses-item',
     'datasets-google-map-businesses-nearby',
@@ -17523,6 +18333,22 @@ OperationId = Literal[
     'geocoding-lookup',
     'geocoding-reverse',
     'geocoding-search',
+    'github-org',
+    'github-org-repos',
+    'github-repo',
+    'github-repo-contributors',
+    'github-repo-forks',
+    'github-repo-languages',
+    'github-repo-releases',
+    'github-repo-stargazers',
+    'github-search-repositories',
+    'github-search-users',
+    'github-trending',
+    'github-trending-developers',
+    'github-user',
+    'github-user-events',
+    'github-user-pinned',
+    'github-user-repos',
     'google-finance-analyst-articles',
     'google-finance-chart',
     'google-finance-classification',
@@ -17828,7 +18654,6 @@ OperationId = Literal[
     'tiktok-challenge',
     'tiktok-challenge-list',
     'tiktok-popular-trend-country-industry-meta',
-    'tiktok-popular-trend-creator',
     'tiktok-post',
     'tiktok-profile-post',
     'tiktok-profile',
@@ -17868,6 +18693,9 @@ OperationId = Literal[
     'user-me-api-keys-rotate',
     'user-me-api-keys-reveal',
     'web-scrape',
+    'x-post',
+    'x-profile',
+    'x-profile-posts',
     'yahoo-finance-calendars',
     'yahoo-finance-calendar',
     'yahoo-finance-download',
@@ -17940,6 +18768,7 @@ class CrawloraClient:
     datasets: DatasetsGroup
     e_bay: EBayGroup
     geocoding: GeocodingGroup
+    git_hub: GitHubGroup
     google: GoogleGroup
     google_play: GooglePlayGroup
     imdb: ImdbGroup
@@ -17965,6 +18794,7 @@ class CrawloraClient:
     trustpilot: TrustpilotGroup
     usage: UsageGroup
     user: UserGroup
+    x: XGroup
     yahoo_finance: YahooFinanceGroup
     youtube: YoutubeGroup
     zillow: ZillowGroup
@@ -19071,6 +19901,102 @@ class CrawloraClient:
     @overload
     def operation(
         self,
+        operation_id: Literal['datasets-apps-charts-search'],
+        params: DatasetsAppsChartsSearchParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsAppsChartsSearchResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['datasets-apps-reviews-search'],
+        params: DatasetsAppsReviewsSearchParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsAppsReviewsSearchResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['datasets-apps-search'],
+        params: DatasetsAppsSearchParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsAppsSearchResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['datasets-creators-search'],
+        params: DatasetsCreatorsSearchParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsCreatorsSearchResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['datasets-github-users-facets'],
+        params: DatasetsGithubUsersFacetsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsGithubUsersFacetsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['datasets-github-users-item'],
+        params: DatasetsGithubUsersItemParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsGithubUsersItemResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['datasets-github-users-nearby'],
+        params: DatasetsGithubUsersNearbyParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsGithubUsersNearbyResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['datasets-github-users-search'],
+        params: DatasetsGithubUsersSearchParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsGithubUsersSearchResponse: ...
+    @overload
+    def operation(
+        self,
         operation_id: Literal['datasets-google-map-businesses-facets'],
         params: DatasetsGoogleMapBusinessesFacetsParams,
         *,
@@ -19236,6 +20162,198 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> GeocodingSearchResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['github-org'],
+        params: GitHubGithubOrgParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> GitHubGithubOrgResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['github-org-repos'],
+        params: GitHubGithubOrgReposParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> GitHubGithubOrgReposResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['github-repo'],
+        params: GitHubGithubRepoParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> GitHubGithubRepoResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['github-repo-contributors'],
+        params: GitHubGithubRepoContributorsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> GitHubGithubRepoContributorsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['github-repo-forks'],
+        params: GitHubGithubRepoForksParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> GitHubGithubRepoForksResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['github-repo-languages'],
+        params: GitHubGithubRepoLanguagesParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> GitHubGithubRepoLanguagesResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['github-repo-releases'],
+        params: GitHubGithubRepoReleasesParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> GitHubGithubRepoReleasesResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['github-repo-stargazers'],
+        params: GitHubGithubRepoStargazersParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> GitHubGithubRepoStargazersResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['github-search-repositories'],
+        params: GitHubGithubSearchRepositoriesParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> GitHubGithubSearchRepositoriesResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['github-search-users'],
+        params: GitHubGithubSearchUsersParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> GitHubGithubSearchUsersResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['github-trending'],
+        params: GitHubGithubTrendingParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> GitHubGithubTrendingResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['github-trending-developers'],
+        params: GitHubGithubTrendingDevelopersParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> GitHubGithubTrendingDevelopersResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['github-user'],
+        params: GitHubGithubUserParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> GitHubGithubUserResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['github-user-events'],
+        params: GitHubGithubUserEventsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> GitHubGithubUserEventsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['github-user-pinned'],
+        params: GitHubGithubUserPinnedParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> GitHubGithubUserPinnedResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['github-user-repos'],
+        params: GitHubGithubUserReposParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> GitHubGithubUserReposResponse: ...
     @overload
     def operation(
         self,
@@ -22899,18 +24017,6 @@ class CrawloraClient:
     @overload
     def operation(
         self,
-        operation_id: Literal['tiktok-popular-trend-creator'],
-        params: TiktokPopularTrendCreatorParams = ...,
-        *,
-        response_type: ResponseType = ...,
-        timeout: float | None = ...,
-        headers: Mapping[str, str] | None = ...,
-        retries: int | None = ...,
-        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
-    ) -> TiktokPopularTrendCreatorResponse: ...
-    @overload
-    def operation(
-        self,
         operation_id: Literal['tiktok-post'],
         params: TiktokPostParams,
         *,
@@ -23376,6 +24482,42 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> WebScrapeResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['x-post'],
+        params: XPostParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> XPostResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['x-profile'],
+        params: XProfileParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> XProfileResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['x-profile-posts'],
+        params: XProfilePostsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> XProfilePostsResponse: ...
     @overload
     def operation(
         self,
@@ -25071,6 +26213,102 @@ class CrawloraClient:
     @overload
     def request(
         self,
+        operation_id: Literal['datasets-apps-charts-search'],
+        params: DatasetsAppsChartsSearchParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsAppsChartsSearchResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['datasets-apps-reviews-search'],
+        params: DatasetsAppsReviewsSearchParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsAppsReviewsSearchResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['datasets-apps-search'],
+        params: DatasetsAppsSearchParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsAppsSearchResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['datasets-creators-search'],
+        params: DatasetsCreatorsSearchParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsCreatorsSearchResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['datasets-github-users-facets'],
+        params: DatasetsGithubUsersFacetsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsGithubUsersFacetsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['datasets-github-users-item'],
+        params: DatasetsGithubUsersItemParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsGithubUsersItemResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['datasets-github-users-nearby'],
+        params: DatasetsGithubUsersNearbyParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsGithubUsersNearbyResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['datasets-github-users-search'],
+        params: DatasetsGithubUsersSearchParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsGithubUsersSearchResponse: ...
+    @overload
+    def request(
+        self,
         operation_id: Literal['datasets-google-map-businesses-facets'],
         params: DatasetsGoogleMapBusinessesFacetsParams,
         *,
@@ -25236,6 +26474,198 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> GeocodingSearchResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['github-org'],
+        params: GitHubGithubOrgParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> GitHubGithubOrgResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['github-org-repos'],
+        params: GitHubGithubOrgReposParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> GitHubGithubOrgReposResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['github-repo'],
+        params: GitHubGithubRepoParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> GitHubGithubRepoResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['github-repo-contributors'],
+        params: GitHubGithubRepoContributorsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> GitHubGithubRepoContributorsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['github-repo-forks'],
+        params: GitHubGithubRepoForksParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> GitHubGithubRepoForksResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['github-repo-languages'],
+        params: GitHubGithubRepoLanguagesParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> GitHubGithubRepoLanguagesResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['github-repo-releases'],
+        params: GitHubGithubRepoReleasesParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> GitHubGithubRepoReleasesResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['github-repo-stargazers'],
+        params: GitHubGithubRepoStargazersParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> GitHubGithubRepoStargazersResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['github-search-repositories'],
+        params: GitHubGithubSearchRepositoriesParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> GitHubGithubSearchRepositoriesResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['github-search-users'],
+        params: GitHubGithubSearchUsersParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> GitHubGithubSearchUsersResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['github-trending'],
+        params: GitHubGithubTrendingParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> GitHubGithubTrendingResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['github-trending-developers'],
+        params: GitHubGithubTrendingDevelopersParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> GitHubGithubTrendingDevelopersResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['github-user'],
+        params: GitHubGithubUserParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> GitHubGithubUserResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['github-user-events'],
+        params: GitHubGithubUserEventsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> GitHubGithubUserEventsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['github-user-pinned'],
+        params: GitHubGithubUserPinnedParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> GitHubGithubUserPinnedResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['github-user-repos'],
+        params: GitHubGithubUserReposParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> GitHubGithubUserReposResponse: ...
     @overload
     def request(
         self,
@@ -28899,18 +30329,6 @@ class CrawloraClient:
     @overload
     def request(
         self,
-        operation_id: Literal['tiktok-popular-trend-creator'],
-        params: TiktokPopularTrendCreatorParams = ...,
-        *,
-        response_type: ResponseType = ...,
-        timeout: float | None = ...,
-        headers: Mapping[str, str] | None = ...,
-        retries: int | None = ...,
-        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
-    ) -> TiktokPopularTrendCreatorResponse: ...
-    @overload
-    def request(
-        self,
         operation_id: Literal['tiktok-post'],
         params: TiktokPostParams,
         *,
@@ -29376,6 +30794,42 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> WebScrapeResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['x-post'],
+        params: XPostParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> XPostResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['x-profile'],
+        params: XProfileParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> XProfileResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['x-profile-posts'],
+        params: XProfilePostsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> XProfilePostsResponse: ...
     @overload
     def request(
         self,
