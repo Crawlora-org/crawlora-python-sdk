@@ -2590,6 +2590,33 @@ ModelContactContactResponseDoc = TypedDict('ModelContactContactResponseDoc', {
     'msg': NotRequired[str],
 }, total=False)
 
+ModelDatasetsAirbnbMarketFacetResponse = TypedDict('ModelDatasetsAirbnbMarketFacetResponse', {
+    'dataset': NotRequired[str],
+    'facet': NotRequired[str],
+    'items': NotRequired[list[ModelEsAirbnbMarketFacetItem]],
+}, total=False)
+
+ModelDatasetsAirbnbMarketNearbyResponse = TypedDict('ModelDatasetsAirbnbMarketNearbyResponse', {
+    'cells': NotRequired[list[ModelEsAirbnbDensityCell]],
+    'dataset': NotRequired[str],
+    'lat': NotRequired[float],
+    'lon': NotRequired[float],
+    'precision': NotRequired[int],
+    'radius_m': NotRequired[int],
+    'total': NotRequired[int],
+}, total=False)
+
+ModelDatasetsAirbnbMarketSearchResponse = TypedDict('ModelDatasetsAirbnbMarketSearchResponse', {
+    'dataset': NotRequired[str],
+    'group_by': NotRequired[str],
+    'items': NotRequired[list[ModelEsAirbnbMarketCell]],
+    'min_listings': NotRequired[int],
+    'page': NotRequired[int],
+    'page_size': NotRequired[int],
+    'sort': NotRequired[str],
+    'total': NotRequired[int],
+}, total=False)
+
 ModelDatasetsAppsSearchResponse = TypedDict('ModelDatasetsAppsSearchResponse', {
     'dataset': NotRequired[str],
     'items': NotRequired[list[ModelEsAppRecord]],
@@ -2666,6 +2693,30 @@ ModelDatasetsReviewsSearchResponse = TypedDict('ModelDatasetsReviewsSearchRespon
     'page_size': NotRequired[int],
     'sort': NotRequired[str],
     'total': NotRequired[int],
+}, total=False)
+
+ModelDatasetsAirbnbMarketResponseDoc = TypedDict('ModelDatasetsAirbnbMarketResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelEsAirbnbMarketDetail],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelDatasetsAirbnbMarketsFacetResponseDoc = TypedDict('ModelDatasetsAirbnbMarketsFacetResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelDatasetsAirbnbMarketFacetResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelDatasetsAirbnbMarketsNearbyResponseDoc = TypedDict('ModelDatasetsAirbnbMarketsNearbyResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelDatasetsAirbnbMarketNearbyResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelDatasetsAirbnbMarketsSearchResponseDoc = TypedDict('ModelDatasetsAirbnbMarketsSearchResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelDatasetsAirbnbMarketSearchResponse],
+    'msg': NotRequired[str],
 }, total=False)
 
 ModelDatasetsAppsSearchResponseDoc = TypedDict('ModelDatasetsAppsSearchResponseDoc', {
@@ -2920,6 +2971,58 @@ ModelEbaySellerShopResponseDoc = TypedDict('ModelEbaySellerShopResponseDoc', {
     'code': NotRequired[int],
     'data': NotRequired[ModelEbaySearchResp],
     'msg': NotRequired[Any],
+}, total=False)
+
+ModelEsAirbnbDensityCell = TypedDict('ModelEsAirbnbDensityCell', {
+    'geohash': NotRequired[str],
+    'lat': NotRequired[float],
+    'listings': NotRequired[int],
+    'lon': NotRequired[float],
+    'superhost_listings': NotRequired[int],
+    'superhost_pct': NotRequired[float],
+}, total=False)
+
+ModelEsAirbnbGeoBounds = TypedDict('ModelEsAirbnbGeoBounds', {
+    'bottom_right': NotRequired[ModelEsGeoPoint],
+    'top_left': NotRequired[ModelEsGeoPoint],
+}, total=False)
+
+ModelEsAirbnbMarketCell = TypedDict('ModelEsAirbnbMarketCell', {
+    'avg_rating': NotRequired[float],
+    'avg_review_count': NotRequired[float],
+    'key': NotRequired[str],
+    'last_seen': NotRequired[str],
+    'listings': NotRequired[int],
+    'rated_listings': NotRequired[int],
+    'superhost_listings': NotRequired[int],
+    'superhost_pct': NotRequired[float],
+}, total=False)
+
+ModelEsAirbnbMarketDetail = TypedDict('ModelEsAirbnbMarketDetail', {
+    'avg_rating': NotRequired[float],
+    'avg_review_count': NotRequired[float],
+    'bounds': NotRequired[ModelEsAirbnbGeoBounds],
+    'country': NotRequired[str],
+    'currencies': NotRequired[list[ModelEsAirbnbPriceStats]],
+    'last_seen': NotRequired[str],
+    'listings': NotRequired[int],
+    'metros': NotRequired[list[ModelEsAirbnbMarketCell]],
+    'rated_listings': NotRequired[int],
+    'superhost_listings': NotRequired[int],
+    'superhost_pct': NotRequired[float],
+}, total=False)
+
+ModelEsAirbnbMarketFacetItem = TypedDict('ModelEsAirbnbMarketFacetItem', {
+    'count': NotRequired[int],
+    'value': NotRequired[str],
+}, total=False)
+
+ModelEsAirbnbPriceStats = TypedDict('ModelEsAirbnbPriceStats', {
+    'currency': NotRequired[str],
+    'listings': NotRequired[int],
+    'p25': NotRequired[float],
+    'p50': NotRequired[float],
+    'p75': NotRequired[float],
 }, total=False)
 
 ModelEsAppRecord = TypedDict('ModelEsAppRecord', {
@@ -13149,6 +13252,64 @@ DatasetsListParams = TypedDict('DatasetsListParams', {
     '_headers': NotRequired[Mapping[str, str]],
 }, total=False)
 
+DatasetsAirbnbMarketsFacetsResponse = ModelDatasetsAirbnbMarketsFacetResponseDoc
+DatasetsAirbnbMarketsFacetsParams = TypedDict('DatasetsAirbnbMarketsFacetsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'facet': Required[str],
+    'group_by': NotRequired[str],
+    'country': NotRequired[str],
+    'market': NotRequired[str],
+    'superhost': NotRequired[bool],
+    'min_rating': NotRequired[float],
+    'min_review_count': NotRequired[int],
+    'active_since': NotRequired[str],
+    'min_listings': NotRequired[int],
+}, total=False)
+
+DatasetsAirbnbMarketsItemResponse = ModelDatasetsAirbnbMarketResponseDoc
+DatasetsAirbnbMarketsItemParams = TypedDict('DatasetsAirbnbMarketsItemParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'country': Required[str],
+}, total=False)
+
+DatasetsAirbnbMarketsNearbyResponse = ModelDatasetsAirbnbMarketsNearbyResponseDoc
+DatasetsAirbnbMarketsNearbyParams = TypedDict('DatasetsAirbnbMarketsNearbyParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'lat': Required[float],
+    'lon': Required[float],
+    'radius_m': Required[int],
+    'precision': NotRequired[int],
+    'min_listings': NotRequired[int],
+    'country': NotRequired[str],
+    'superhost': NotRequired[bool],
+    'min_rating': NotRequired[float],
+    'active_since': NotRequired[str],
+}, total=False)
+
+DatasetsAirbnbMarketsSearchResponse = ModelDatasetsAirbnbMarketsSearchResponseDoc
+DatasetsAirbnbMarketsSearchParams = TypedDict('DatasetsAirbnbMarketsSearchParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'group_by': NotRequired[str],
+    'country': NotRequired[str],
+    'market': NotRequired[str],
+    'superhost': NotRequired[bool],
+    'min_rating': NotRequired[float],
+    'min_review_count': NotRequired[int],
+    'active_since': NotRequired[str],
+    'min_listings': NotRequired[int],
+    'sort': NotRequired[str],
+    'page': NotRequired[int],
+    'page_size': NotRequired[int],
+}, total=False)
+
 DatasetsAppsChartsSearchResponse = ModelDatasetsChartsSearchResponseDoc
 DatasetsAppsChartsSearchParams = TypedDict('DatasetsAppsChartsSearchParams', {
     '_response_type': NotRequired[ResponseType],
@@ -17722,6 +17883,10 @@ class WebGroup:
 
 class DatasetsGroup:
     def list(self, **params: Unpack[DatasetsListParams]) -> DatasetsListResponse: ...
+    def airbnb_markets_facets(self, **params: Unpack[DatasetsAirbnbMarketsFacetsParams]) -> DatasetsAirbnbMarketsFacetsResponse: ...
+    def airbnb_markets_item(self, **params: Unpack[DatasetsAirbnbMarketsItemParams]) -> DatasetsAirbnbMarketsItemResponse: ...
+    def airbnb_markets_nearby(self, **params: Unpack[DatasetsAirbnbMarketsNearbyParams]) -> DatasetsAirbnbMarketsNearbyResponse: ...
+    def airbnb_markets_search(self, **params: Unpack[DatasetsAirbnbMarketsSearchParams]) -> DatasetsAirbnbMarketsSearchResponse: ...
     def apps_charts_search(self, **params: Unpack[DatasetsAppsChartsSearchParams]) -> DatasetsAppsChartsSearchResponse: ...
     def apps_reviews_search(self, **params: Unpack[DatasetsAppsReviewsSearchParams]) -> DatasetsAppsReviewsSearchResponse: ...
     def apps_search(self, **params: Unpack[DatasetsAppsSearchParams]) -> DatasetsAppsSearchResponse: ...
@@ -18311,6 +18476,10 @@ OperationId = Literal[
     'coingecko-trending',
     'contact',
     'datasets-list',
+    'datasets-airbnb-markets-facets',
+    'datasets-airbnb-markets-item',
+    'datasets-airbnb-markets-nearby',
+    'datasets-airbnb-markets-search',
     'datasets-apps-charts-search',
     'datasets-apps-reviews-search',
     'datasets-apps-search',
@@ -19898,6 +20067,54 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> DatasetsListResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['datasets-airbnb-markets-facets'],
+        params: DatasetsAirbnbMarketsFacetsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsAirbnbMarketsFacetsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['datasets-airbnb-markets-item'],
+        params: DatasetsAirbnbMarketsItemParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsAirbnbMarketsItemResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['datasets-airbnb-markets-nearby'],
+        params: DatasetsAirbnbMarketsNearbyParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsAirbnbMarketsNearbyResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['datasets-airbnb-markets-search'],
+        params: DatasetsAirbnbMarketsSearchParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsAirbnbMarketsSearchResponse: ...
     @overload
     def operation(
         self,
@@ -26210,6 +26427,54 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> DatasetsListResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['datasets-airbnb-markets-facets'],
+        params: DatasetsAirbnbMarketsFacetsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsAirbnbMarketsFacetsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['datasets-airbnb-markets-item'],
+        params: DatasetsAirbnbMarketsItemParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsAirbnbMarketsItemResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['datasets-airbnb-markets-nearby'],
+        params: DatasetsAirbnbMarketsNearbyParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsAirbnbMarketsNearbyResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['datasets-airbnb-markets-search'],
+        params: DatasetsAirbnbMarketsSearchParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsAirbnbMarketsSearchResponse: ...
     @overload
     def request(
         self,

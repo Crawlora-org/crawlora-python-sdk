@@ -2,7 +2,7 @@
 
 Generated from `openapi/public.json`. Deprecated, admin, and internal operations are excluded from this SDK contract.
 
-Total operations: `525`
+Total operations: `529`
 
 | Group | SDK method | Operation ID | HTTP | Params | Auth | Response | Notes |
 | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -93,6 +93,10 @@ Total operations: `525`
 | web | `web.antibot_check` | `antibot-check` | `POST /diagnostics/antibot-check` | `request` (body str required) | `ApiKeyAuth` | `WebAntibotCheckResponse` |  |
 | web | `web.scrape` | `web-scrape` | `POST /web/scrape` | `scrapeOption` (body str required) | `ApiKeyAuth` | `WebScrapeResponse` |  |
 | datasets | `datasets.list` | `datasets-list` | `GET /datasets` | none | `ApiKeyAuth` | `DatasetsListResponse` |  |
+| datasets | `datasets.airbnb_markets_facets` | `datasets-airbnb-markets-facets` | `GET /datasets/airbnb-markets/facets` | `facet` (query str required)<br>`group_by` (query str)<br>`country` (query str)<br>`market` (query str)<br>`superhost` (query bool)<br>`min_rating` (query float)<br>`min_review_count` (query int)<br>`active_since` (query str)<br>`min_listings` (query int) | `ApiKeyAuth` | `DatasetsAirbnbMarketsFacetsResponse` |  |
+| datasets | `datasets.airbnb_markets_item` | `datasets-airbnb-markets-item` | `GET /datasets/airbnb-markets/items/{country}` | `country` (path str required) | `ApiKeyAuth` | `DatasetsAirbnbMarketsItemResponse` |  |
+| datasets | `datasets.airbnb_markets_nearby` | `datasets-airbnb-markets-nearby` | `GET /datasets/airbnb-markets/nearby` | `lat` (query float required)<br>`lon` (query float required)<br>`radius_m` (query int required)<br>`precision` (query int)<br>`min_listings` (query int)<br>`country` (query str)<br>`superhost` (query bool)<br>`min_rating` (query float)<br>`active_since` (query str) | `ApiKeyAuth` | `DatasetsAirbnbMarketsNearbyResponse` |  |
+| datasets | `datasets.airbnb_markets_search` | `datasets-airbnb-markets-search` | `GET /datasets/airbnb-markets/search` | `group_by` (query str)<br>`country` (query str)<br>`market` (query str)<br>`superhost` (query bool)<br>`min_rating` (query float)<br>`min_review_count` (query int)<br>`active_since` (query str)<br>`min_listings` (query int)<br>`sort` (query str)<br>`page` (query int)<br>`page_size` (query int) | `ApiKeyAuth` | `DatasetsAirbnbMarketsSearchResponse` |  |
 | datasets | `datasets.apps_charts_search` | `datasets-apps-charts-search` | `GET /datasets/apps-charts/search` | `q` (query str)<br>`store` (query str)<br>`chart_type` (query str)<br>`collection` (query str)<br>`category` (query str)<br>`country` (query str)<br>`app_id` (query str)<br>`date` (query str)<br>`sort` (query str)<br>`page` (query int)<br>`page_size` (query int) | `ApiKeyAuth` | `DatasetsAppsChartsSearchResponse` |  |
 | datasets | `datasets.apps_reviews_search` | `datasets-apps-reviews-search` | `GET /datasets/apps-reviews/search` | `q` (query str)<br>`store` (query str)<br>`app_id` (query str)<br>`country` (query str)<br>`min_score` (query int)<br>`sort` (query str)<br>`page` (query int)<br>`page_size` (query int) | `ApiKeyAuth` | `DatasetsAppsReviewsSearchResponse` |  |
 | datasets | `datasets.apps_search` | `datasets-apps-search` | `GET /datasets/apps/search` | `q` (query str)<br>`store` (query str)<br>`category` (query str)<br>`country` (query str)<br>`developer` (query str)<br>`free` (query bool)<br>`min_rating` (query float)<br>`min_reviews` (query int)<br>`sort` (query str)<br>`page` (query int)<br>`page_size` (query int) | `ApiKeyAuth` | `DatasetsAppsSearchResponse` |  |
