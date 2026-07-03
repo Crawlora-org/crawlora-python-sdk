@@ -39,6 +39,28 @@ posts = crawlora.reddit.search(q="python", subreddit="programming")
 brand = crawlora.brand.retrieve(domain="stripe.com")
 ```
 
+
+
+## Airbnb Markets Dataset
+
+Aggregate Airbnb short-term-rental market data — listing supply, ratings and nightly-price bands rolled up by country, metro and geo cell. Aggregate-only.
+
+```python
+markets = crawlora.datasets.airbnb_markets_search(group_by="country", sort="listings_desc")
+fr = crawlora.datasets.airbnb_markets_item(country="FR")
+density = crawlora.datasets.airbnb_markets_nearby(lat=48.86, lon=2.35, radius_m=5000)
+```
+
+## Airbnb Markets Dataset
+
+Aggregate Airbnb short-term-rental market data — listing supply, ratings and nightly-price bands rolled up by country, metro and geo cell. Aggregate-only.
+
+```python
+markets = crawlora.datasets.airbnb_markets_search(group_by="country", sort="listings_desc")
+fr = crawlora.datasets.airbnb_markets_item(country="FR")
+density = crawlora.datasets.airbnb_markets_nearby(lat=48.86, lon=2.35, radius_m=5000)
+```
+
 ## Retries, Timeouts, And Headers
 
 ```python
