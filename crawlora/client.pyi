@@ -49,6 +49,65 @@ ModelAirbnbCalendarResponse = TypedDict('ModelAirbnbCalendarResponse', {
     'months': NotRequired[list[ModelAirbnbCalendarMonth]],
 }, total=False)
 
+ModelAirbnbHostListing = TypedDict('ModelAirbnbHostListing', {
+    'bathrooms': NotRequired[float],
+    'bedrooms': NotRequired[int],
+    'beds': NotRequired[int],
+    'id': NotRequired[str],
+    'image': NotRequired[str],
+    'instant_book': NotRequired[bool],
+    'is_luxury': NotRequired[bool],
+    'is_new_listing': NotRequired[bool],
+    'is_superhost': NotRequired[bool],
+    'name': NotRequired[str],
+    'property_type': NotRequired[str],
+    'rating': NotRequired[float],
+    'review_count': NotRequired[int],
+    'room_category': NotRequired[str],
+    'room_type': NotRequired[str],
+}, total=False)
+
+ModelAirbnbHostListingsResponse = TypedDict('ModelAirbnbHostListingsResponse', {
+    'has_more': NotRequired[bool],
+    'id': NotRequired[str],
+    'listings': NotRequired[list[ModelAirbnbHostListing]],
+    'page': NotRequired[int],
+}, total=False)
+
+ModelAirbnbHostResponse = TypedDict('ModelAirbnbHostResponse', {
+    'about': NotRequired[str],
+    'hosting_years': NotRequired[int],
+    'id': NotRequired[str],
+    'identity_verified': NotRequired[bool],
+    'image': NotRequired[str],
+    'interests': NotRequired[list[str]],
+    'is_home_host': NotRequired[bool],
+    'is_superhost': NotRequired[bool],
+    'listing_count': NotRequired[int],
+    'location': NotRequired[str],
+    'member_years': NotRequired[int],
+    'name': NotRequired[str],
+    'review_count': NotRequired[int],
+    'url': NotRequired[str],
+    'verifications': NotRequired[list[str]],
+}, total=False)
+
+ModelAirbnbHostReview = TypedDict('ModelAirbnbHostReview', {
+    'comments': NotRequired[str],
+    'created_at': NotRequired[str],
+    'id': NotRequired[str],
+    'rating': NotRequired[float],
+    'reviewer': NotRequired[str],
+    'reviewer_location': NotRequired[str],
+}, total=False)
+
+ModelAirbnbHostReviewsResponse = TypedDict('ModelAirbnbHostReviewsResponse', {
+    'has_more': NotRequired[bool],
+    'id': NotRequired[str],
+    'page': NotRequired[int],
+    'reviews': NotRequired[list[ModelAirbnbHostReview]],
+}, total=False)
+
 ModelAirbnbListingItem = TypedDict('ModelAirbnbListingItem', {
     'host': NotRequired[str],
     'host_id': NotRequired[str],
@@ -2990,12 +3049,16 @@ ModelEsAirbnbGeoBounds = TypedDict('ModelEsAirbnbGeoBounds', {
 ModelEsAirbnbMarketCell = TypedDict('ModelEsAirbnbMarketCell', {
     'avg_rating': NotRequired[float],
     'avg_review_count': NotRequired[float],
+    'distinct_hosts': NotRequired[int],
+    'enriched_listings': NotRequired[int],
     'key': NotRequired[str],
     'last_seen': NotRequired[str],
     'listings': NotRequired[int],
+    'listings_per_host': NotRequired[float],
     'rated_listings': NotRequired[int],
     'superhost_listings': NotRequired[int],
     'superhost_pct': NotRequired[float],
+    'superhost_pct_enriched': NotRequired[float],
 }, total=False)
 
 ModelEsAirbnbMarketDetail = TypedDict('ModelEsAirbnbMarketDetail', {
@@ -3004,12 +3067,16 @@ ModelEsAirbnbMarketDetail = TypedDict('ModelEsAirbnbMarketDetail', {
     'bounds': NotRequired[ModelEsAirbnbGeoBounds],
     'country': NotRequired[str],
     'currencies': NotRequired[list[ModelEsAirbnbPriceStats]],
+    'distinct_hosts': NotRequired[int],
+    'enriched_listings': NotRequired[int],
     'last_seen': NotRequired[str],
     'listings': NotRequired[int],
+    'listings_per_host': NotRequired[float],
     'metros': NotRequired[list[ModelEsAirbnbMarketCell]],
     'rated_listings': NotRequired[int],
     'superhost_listings': NotRequired[int],
     'superhost_pct': NotRequired[float],
+    'superhost_pct_enriched': NotRequired[float],
 }, total=False)
 
 ModelEsAirbnbMarketFacetItem = TypedDict('ModelEsAirbnbMarketFacetItem', {
@@ -12402,6 +12469,32 @@ ModelZillowSearchResponse = TypedDict('ModelZillowSearchResponse', {
     'results': NotRequired[list[ModelZillowPropertyItem]],
 }, total=False)
 
+AirbnbHostResponse = ModelAirbnbHostResponse
+AirbnbHostParams = TypedDict('AirbnbHostParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': Required[str],
+}, total=False)
+
+AirbnbHostListingsResponse = ModelAirbnbHostListingsResponse
+AirbnbHostListingsParams = TypedDict('AirbnbHostListingsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': Required[str],
+    'page': NotRequired[int],
+}, total=False)
+
+AirbnbHostReviewsResponse = ModelAirbnbHostReviewsResponse
+AirbnbHostReviewsParams = TypedDict('AirbnbHostReviewsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': Required[str],
+    'page': NotRequired[int],
+}, total=False)
+
 AirbnbRoomResponse = ModelAirbnbRoomResponse
 AirbnbRoomParams = TypedDict('AirbnbRoomParams', {
     '_response_type': NotRequired[ResponseType],
@@ -13490,6 +13583,7 @@ DatasetsGoogleMapBusinessesFacetsParams = TypedDict('DatasetsGoogleMapBusinesses
     'min_review_count': NotRequired[int],
     'has_website': NotRequired[bool],
     'has_phone': NotRequired[bool],
+    'has_geo': NotRequired[bool],
     'lat': NotRequired[float],
     'lon': NotRequired[float],
     'radius_m': NotRequired[int],
@@ -13535,6 +13629,7 @@ DatasetsGoogleMapBusinessesSearchParams = TypedDict('DatasetsGoogleMapBusinesses
     'min_review_count': NotRequired[int],
     'has_website': NotRequired[bool],
     'has_phone': NotRequired[bool],
+    'has_geo': NotRequired[bool],
     'lat': NotRequired[float],
     'lon': NotRequired[float],
     'radius_m': NotRequired[int],
@@ -17774,6 +17869,9 @@ ZillowSearchParams = TypedDict('ZillowSearchParams', {
 }, total=False)
 
 class AirbnbGroup:
+    def host(self, **params: Unpack[AirbnbHostParams]) -> AirbnbHostResponse: ...
+    def host_listings(self, **params: Unpack[AirbnbHostListingsParams]) -> AirbnbHostListingsResponse: ...
+    def host_reviews(self, **params: Unpack[AirbnbHostReviewsParams]) -> AirbnbHostReviewsResponse: ...
     def room(self, **params: Unpack[AirbnbRoomParams]) -> AirbnbRoomResponse: ...
     def room_calendar(self, **params: Unpack[AirbnbRoomCalendarParams]) -> AirbnbRoomCalendarResponse: ...
     def room_reviews(self, **params: Unpack[AirbnbRoomReviewsParams]) -> AirbnbRoomReviewsResponse: ...
@@ -18391,6 +18489,9 @@ class ZillowGroup:
     def search(self, **params: Unpack[ZillowSearchParams]) -> ZillowSearchResponse: ...
 
 OperationId = Literal[
+    'airbnb-host',
+    'airbnb-host-listings',
+    'airbnb-host-reviews',
     'airbnb-room',
     'airbnb-room-calendar',
     'airbnb-room-reviews',
@@ -19047,6 +19148,42 @@ class CrawloraClient:
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
     ) -> Iterator[Any]: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['airbnb-host'],
+        params: AirbnbHostParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> AirbnbHostResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['airbnb-host-listings'],
+        params: AirbnbHostListingsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> AirbnbHostListingsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['airbnb-host-reviews'],
+        params: AirbnbHostReviewsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> AirbnbHostReviewsResponse: ...
     @overload
     def operation(
         self,
@@ -25407,6 +25544,42 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> Any: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['airbnb-host'],
+        params: AirbnbHostParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> AirbnbHostResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['airbnb-host-listings'],
+        params: AirbnbHostListingsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> AirbnbHostListingsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['airbnb-host-reviews'],
+        params: AirbnbHostReviewsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> AirbnbHostReviewsResponse: ...
     @overload
     def request(
         self,
