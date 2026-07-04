@@ -39,6 +39,16 @@ posts = crawlora.reddit.search(q="python", subreddit="programming")
 brand = crawlora.brand.retrieve(domain="stripe.com")
 ```
 
+## Airbnb Host Profiles
+
+Look up a public Airbnb host, then page through their listings and guest reviews.
+
+```python
+host = crawlora.airbnb.host(id="65056940")
+listings = crawlora.airbnb.host_listings(id="65056940", page=1)
+reviews = crawlora.airbnb.host_reviews(id="65056940", page=1)
+```
+
 
 
 ## Airbnb Markets Dataset
