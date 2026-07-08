@@ -71,6 +71,18 @@ fr = crawlora.datasets.airbnb_markets_item(country="FR")
 density = crawlora.datasets.airbnb_markets_nearby(lat=48.86, lon=2.35, radius_m=5000)
 ```
 
+## TrustMRR Verified Startup Revenues
+
+Browse verified startup revenues and the acquisition marketplace on TrustMRR: the marketplace snapshot, the revenue leaderboard, startup detail, and categories.
+
+```python
+deals = client.trust_mrr.trustmrr_marketplace()
+board = client.trust_mrr.trustmrr_leaderboard(metric="mrr")
+startup = client.trust_mrr.trustmrr_startup(slug="stan")
+cats = client.trust_mrr.trustmrr_categories()
+saas = client.trust_mrr.trustmrr_category(slug="saas")
+```
+
 ## Retries, Timeouts, And Headers
 
 ```python

@@ -113,6 +113,7 @@ ModelAirbnbListingItem = TypedDict('ModelAirbnbListingItem', {
     'host_id': NotRequired[str],
     'id': NotRequired[str],
     'image': NotRequired[str],
+    'is_guest_favorite': NotRequired[bool],
     'is_superhost': NotRequired[bool],
     'latitude': NotRequired[float],
     'location': NotRequired[str],
@@ -145,12 +146,15 @@ ModelAirbnbRoomResponse = TypedDict('ModelAirbnbRoomResponse', {
     'host_id': NotRequired[str],
     'id': NotRequired[str],
     'image': NotRequired[str],
+    'is_guest_favorite': NotRequired[bool],
     'is_superhost': NotRequired[bool],
     'latitude': NotRequired[float],
     'location': NotRequired[str],
     'longitude': NotRequired[float],
+    'person_capacity': NotRequired[int],
     'price': NotRequired[float],
     'price_per_night': NotRequired[float],
+    'property_type': NotRequired[str],
     'rating': NotRequired[float],
     'review_count': NotRequired[int],
     'title': NotRequired[str],
@@ -1947,6 +1951,144 @@ ModelBuildinfoInfo = TypedDict('ModelBuildinfoInfo', {
     'version': NotRequired[str],
 }, total=False)
 
+ModelChromewebstoreCard = TypedDict('ModelChromewebstoreCard', {
+    'category': NotRequired[str],
+    'category_id': NotRequired[int],
+    'icon': NotRequired[str],
+    'id': NotRequired[str],
+    'name': NotRequired[str],
+    'publisher': NotRequired[str],
+    'rating': NotRequired[float],
+    'rating_count': NotRequired[int],
+    'summary': NotRequired[str],
+    'tile_image': NotRequired[str],
+    'url': NotRequired[str],
+    'users': NotRequired[int],
+}, total=False)
+
+ModelChromewebstoreCategoriesResult = TypedDict('ModelChromewebstoreCategoriesResult', {
+    'categories': NotRequired[list[ModelChromewebstoreCategoryGroup]],
+    'charts': NotRequired[list[str]],
+    'collections': NotRequired[list[str]],
+}, total=False)
+
+ModelChromewebstoreCategoryGroup = TypedDict('ModelChromewebstoreCategoryGroup', {
+    'group': NotRequired[str],
+    'subcategories': NotRequired[list[str]],
+}, total=False)
+
+ModelChromewebstoreItem = TypedDict('ModelChromewebstoreItem', {
+    'category': NotRequired[str],
+    'category_id': NotRequired[int],
+    'description': NotRequired[str],
+    'developer': NotRequired[str],
+    'developer_email': NotRequired[str],
+    'header_image': NotRequired[str],
+    'icon': NotRequired[str],
+    'id': NotRequired[str],
+    'language_codes': NotRequired[list[str]],
+    'languages': NotRequired[list[str]],
+    'min_browser_version': NotRequired[str],
+    'name': NotRequired[str],
+    'privacy_policy': NotRequired[str],
+    'rating': NotRequired[float],
+    'rating_count': NotRequired[int],
+    'screenshots': NotRequired[list[str]],
+    'size': NotRequired[str],
+    'summary': NotRequired[str],
+    'support_url': NotRequired[str],
+    'tile_image': NotRequired[str],
+    'updated': NotRequired[str],
+    'updated_unix': NotRequired[int],
+    'url': NotRequired[str],
+    'users': NotRequired[int],
+    'version': NotRequired[str],
+}, total=False)
+
+ModelChromewebstoreListResult = TypedDict('ModelChromewebstoreListResult', {
+    'count': NotRequired[int],
+    'kind': NotRequired[str],
+    'results': NotRequired[list[ModelChromewebstoreCard]],
+    'value': NotRequired[str],
+}, total=False)
+
+ModelChromewebstoreReview = TypedDict('ModelChromewebstoreReview', {
+    'author': NotRequired[str],
+    'avatar': NotRequired[str],
+    'edited': NotRequired[str],
+    'id': NotRequired[str],
+    'language': NotRequired[str],
+    'posted': NotRequired[str],
+    'posted_unix': NotRequired[int],
+    'rating': NotRequired[int],
+    'text': NotRequired[str],
+    'version': NotRequired[str],
+}, total=False)
+
+ModelChromewebstoreReviewsResult = TypedDict('ModelChromewebstoreReviewsResult', {
+    'count': NotRequired[int],
+    'id': NotRequired[str],
+    'reviews': NotRequired[list[ModelChromewebstoreReview]],
+}, total=False)
+
+ModelChromewebstoreSearchResult = TypedDict('ModelChromewebstoreSearchResult', {
+    'count': NotRequired[int],
+    'query': NotRequired[str],
+    'results': NotRequired[list[ModelChromewebstoreCard]],
+}, total=False)
+
+ModelChromewebstoreSimilarResult = TypedDict('ModelChromewebstoreSimilarResult', {
+    'count': NotRequired[int],
+    'id': NotRequired[str],
+    'results': NotRequired[list[ModelChromewebstoreCard]],
+}, total=False)
+
+ModelChromewebstoreSuggestion = TypedDict('ModelChromewebstoreSuggestion', {
+    'term': NotRequired[str],
+}, total=False)
+
+ModelChromewebstoreCategoriesResponseDoc = TypedDict('ModelChromewebstoreCategoriesResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelChromewebstoreCategoriesResult],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelChromewebstoreItemResponseDoc = TypedDict('ModelChromewebstoreItemResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelChromewebstoreItem],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelChromewebstoreListResponseDoc = TypedDict('ModelChromewebstoreListResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelChromewebstoreListResult],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelChromewebstoreReviewsResponseDoc = TypedDict('ModelChromewebstoreReviewsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelChromewebstoreReviewsResult],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelChromewebstoreSearchResponseDoc = TypedDict('ModelChromewebstoreSearchResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelChromewebstoreSearchResult],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelChromewebstoreSimilarResponseDoc = TypedDict('ModelChromewebstoreSimilarResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelChromewebstoreSimilarResult],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelChromewebstoreSuggestResponseDoc = TypedDict('ModelChromewebstoreSuggestResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[list[ModelChromewebstoreSuggestion]],
+    'msg': NotRequired[str],
+}, total=False)
+
 ModelCoingeckoAnalysisResponse = TypedDict('ModelCoingeckoAnalysisResponse', {
     'absolute_change': NotRequired[float],
     'annotations': NotRequired[list[dict[str, Any]]],
@@ -2612,6 +2754,7 @@ ModelContactContactRequest = TypedDict('ModelContactContactRequest', {
     'max_pages': NotRequired[int],
     'url': Required[str],
     'verify': NotRequired[bool],
+    'verify_limit': NotRequired[int],
 }, total=False)
 
 ModelContactContactResult = TypedDict('ModelContactContactResult', {
@@ -2745,6 +2888,53 @@ ModelDatasetsGoogleBusinessSearchResponse = TypedDict('ModelDatasetsGoogleBusine
     'total': NotRequired[int],
 }, total=False)
 
+ModelDatasetsProductHuntMakersFacetResponse = TypedDict('ModelDatasetsProductHuntMakersFacetResponse', {
+    'dataset': NotRequired[str],
+    'facet': NotRequired[str],
+    'items': NotRequired[list[ModelEsProductHuntMakersFacetItem]],
+}, total=False)
+
+ModelDatasetsProductHuntMakersSearchResponse = TypedDict('ModelDatasetsProductHuntMakersSearchResponse', {
+    'dataset': NotRequired[str],
+    'items': NotRequired[list[ModelEsProductHuntMakerItem]],
+    'page': NotRequired[int],
+    'page_size': NotRequired[int],
+    'sort': NotRequired[str],
+    'total': NotRequired[int],
+}, total=False)
+
+ModelDatasetsProductHuntProductsFacetResponse = TypedDict('ModelDatasetsProductHuntProductsFacetResponse', {
+    'dataset': NotRequired[str],
+    'facet': NotRequired[str],
+    'items': NotRequired[list[ModelEsProductHuntProductsFacetItem]],
+}, total=False)
+
+ModelDatasetsProductHuntProductsSearchResponse = TypedDict('ModelDatasetsProductHuntProductsSearchResponse', {
+    'dataset': NotRequired[str],
+    'items': NotRequired[list[ModelEsProductHuntProductItem]],
+    'page': NotRequired[int],
+    'page_size': NotRequired[int],
+    'sort': NotRequired[str],
+    'total': NotRequired[int],
+}, total=False)
+
+ModelDatasetsProductHuntTrendsFacetResponse = TypedDict('ModelDatasetsProductHuntTrendsFacetResponse', {
+    'dataset': NotRequired[str],
+    'facet': NotRequired[str],
+    'items': NotRequired[list[ModelEsProductHuntTrendsFacetItem]],
+}, total=False)
+
+ModelDatasetsProductHuntTrendsSearchResponse = TypedDict('ModelDatasetsProductHuntTrendsSearchResponse', {
+    'dataset': NotRequired[str],
+    'group_by': NotRequired[str],
+    'items': NotRequired[list[ModelEsProductHuntTrendCell]],
+    'min_launches': NotRequired[int],
+    'page': NotRequired[int],
+    'page_size': NotRequired[int],
+    'sort': NotRequired[str],
+    'total': NotRequired[int],
+}, total=False)
+
 ModelDatasetsReviewsSearchResponse = TypedDict('ModelDatasetsReviewsSearchResponse', {
     'dataset': NotRequired[str],
     'items': NotRequired[list[ModelEsAppReview]],
@@ -2835,6 +3025,54 @@ ModelDatasetsGoogleMapBusinessesSearchResponseDoc = TypedDict('ModelDatasetsGoog
 ModelDatasetsListResponseDoc = TypedDict('ModelDatasetsListResponseDoc', {
     'code': NotRequired[int],
     'data': NotRequired[ModelDatasetsDatasetListResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelDatasetsProducthuntMakerResponseDoc = TypedDict('ModelDatasetsProducthuntMakerResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelEsProductHuntMakerItem],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelDatasetsProducthuntMakersFacetResponseDoc = TypedDict('ModelDatasetsProducthuntMakersFacetResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelDatasetsProductHuntMakersFacetResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelDatasetsProducthuntMakersSearchResponseDoc = TypedDict('ModelDatasetsProducthuntMakersSearchResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelDatasetsProductHuntMakersSearchResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelDatasetsProducthuntProductResponseDoc = TypedDict('ModelDatasetsProducthuntProductResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelEsProductHuntProductItem],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelDatasetsProducthuntProductsFacetResponseDoc = TypedDict('ModelDatasetsProducthuntProductsFacetResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelDatasetsProductHuntProductsFacetResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelDatasetsProducthuntProductsSearchResponseDoc = TypedDict('ModelDatasetsProducthuntProductsSearchResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelDatasetsProductHuntProductsSearchResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelDatasetsProducthuntTrendsFacetResponseDoc = TypedDict('ModelDatasetsProducthuntTrendsFacetResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelDatasetsProductHuntTrendsFacetResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelDatasetsProducthuntTrendsSearchResponseDoc = TypedDict('ModelDatasetsProducthuntTrendsSearchResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelDatasetsProductHuntTrendsSearchResponse],
     'msg': NotRequired[str],
 }, total=False)
 
@@ -3047,14 +3285,19 @@ ModelEsAirbnbGeoBounds = TypedDict('ModelEsAirbnbGeoBounds', {
 }, total=False)
 
 ModelEsAirbnbMarketCell = TypedDict('ModelEsAirbnbMarketCell', {
+    'avg_person_capacity': NotRequired[float],
     'avg_rating': NotRequired[float],
     'avg_review_count': NotRequired[float],
     'distinct_hosts': NotRequired[int],
     'enriched_listings': NotRequired[int],
+    'guest_favorite_listings': NotRequired[int],
+    'guest_favorite_pct': NotRequired[float],
+    'guest_favorite_pct_enriched': NotRequired[float],
     'key': NotRequired[str],
     'last_seen': NotRequired[str],
     'listings': NotRequired[int],
     'listings_per_host': NotRequired[float],
+    'median_price_usd': NotRequired[float],
     'rated_listings': NotRequired[int],
     'superhost_listings': NotRequired[int],
     'superhost_pct': NotRequired[float],
@@ -3062,6 +3305,7 @@ ModelEsAirbnbMarketCell = TypedDict('ModelEsAirbnbMarketCell', {
 }, total=False)
 
 ModelEsAirbnbMarketDetail = TypedDict('ModelEsAirbnbMarketDetail', {
+    'avg_person_capacity': NotRequired[float],
     'avg_rating': NotRequired[float],
     'avg_review_count': NotRequired[float],
     'bounds': NotRequired[ModelEsAirbnbGeoBounds],
@@ -3069,10 +3313,14 @@ ModelEsAirbnbMarketDetail = TypedDict('ModelEsAirbnbMarketDetail', {
     'currencies': NotRequired[list[ModelEsAirbnbPriceStats]],
     'distinct_hosts': NotRequired[int],
     'enriched_listings': NotRequired[int],
+    'guest_favorite_listings': NotRequired[int],
+    'guest_favorite_pct': NotRequired[float],
+    'guest_favorite_pct_enriched': NotRequired[float],
     'last_seen': NotRequired[str],
     'listings': NotRequired[int],
     'listings_per_host': NotRequired[float],
     'metros': NotRequired[list[ModelEsAirbnbMarketCell]],
+    'price_usd': NotRequired[ModelEsAirbnbPriceUsdstats],
     'rated_listings': NotRequired[int],
     'superhost_listings': NotRequired[int],
     'superhost_pct': NotRequired[float],
@@ -3086,6 +3334,13 @@ ModelEsAirbnbMarketFacetItem = TypedDict('ModelEsAirbnbMarketFacetItem', {
 
 ModelEsAirbnbPriceStats = TypedDict('ModelEsAirbnbPriceStats', {
     'currency': NotRequired[str],
+    'listings': NotRequired[int],
+    'p25': NotRequired[float],
+    'p50': NotRequired[float],
+    'p75': NotRequired[float],
+}, total=False)
+
+ModelEsAirbnbPriceUsdstats = TypedDict('ModelEsAirbnbPriceUsdstats', {
     'listings': NotRequired[int],
     'p25': NotRequired[float],
     'p50': NotRequired[float],
@@ -3241,6 +3496,7 @@ ModelEsGithubUserDatasetItem = TypedDict('ModelEsGithubUserDatasetItem', {
     'influence_tier': NotRequired[str],
     'is_bot': NotRequired[bool],
     'is_org': NotRequired[bool],
+    'is_suspected_automation': NotRequired[bool],
     'last_active_at': NotRequired[str],
     'location_raw': NotRequired[str],
     'login': NotRequired[str],
@@ -3284,6 +3540,7 @@ ModelEsGithubUserRecord = TypedDict('ModelEsGithubUserRecord', {
     'influence_tier': NotRequired[str],
     'is_bot': NotRequired[bool],
     'is_org': NotRequired[bool],
+    'is_suspected_automation': NotRequired[bool],
     'last_active_at': NotRequired[str],
     'location_raw': NotRequired[str],
     'login': NotRequired[str],
@@ -3399,6 +3656,119 @@ ModelEsPostStatsAgg = TypedDict('ModelEsPostStatsAgg', {
     'views_to_follower_ratio': NotRequired[float],
 }, total=False)
 
+ModelEsProductHuntLaunch = TypedDict('ModelEsProductHuntLaunch', {
+    'daily_rank': NotRequired[int],
+    'date': NotRequired[str],
+    'launch_day_score': NotRequired[int],
+    'launch_number': NotRequired[int],
+    'monthly_rank': NotRequired[int],
+    'post_id': NotRequired[str],
+    'post_slug': NotRequired[str],
+    'score': NotRequired[int],
+    'weekly_rank': NotRequired[int],
+}, total=False)
+
+ModelEsProductHuntMaker = TypedDict('ModelEsProductHuntMaker', {
+    'avatar_url': NotRequired[str],
+    'headline': NotRequired[str],
+    'maker_id': NotRequired[str],
+    'name': NotRequired[str],
+    'username': NotRequired[str],
+}, total=False)
+
+ModelEsProductHuntMakerItem = TypedDict('ModelEsProductHuntMakerItem', {
+    'avatar_url': NotRequired[str],
+    'best_product': NotRequired[ModelEsProductHuntMakerProduct],
+    'first_launch_date': NotRequired[str],
+    'followers_count': NotRequired[int],
+    'headline': NotRequired[str],
+    'latest_launch_date': NotRequired[str],
+    'made_products': NotRequired[list[ModelEsProductHuntMakerProduct]],
+    'maker_id': NotRequired[str],
+    'name': NotRequired[str],
+    'product_count': NotRequired[int],
+    'topics': NotRequired[list[str]],
+    'total_votes': NotRequired[int],
+    'username': NotRequired[str],
+}, total=False)
+
+ModelEsProductHuntMakerProduct = TypedDict('ModelEsProductHuntMakerProduct', {
+    'latest_score': NotRequired[int],
+    'name': NotRequired[str],
+    'product_id': NotRequired[str],
+    'slug': NotRequired[str],
+}, total=False)
+
+ModelEsProductHuntMakersFacetItem = TypedDict('ModelEsProductHuntMakersFacetItem', {
+    'count': NotRequired[int],
+    'value': NotRequired[str],
+}, total=False)
+
+ModelEsProductHuntProductItem = TypedDict('ModelEsProductHuntProductItem', {
+    'best_daily_rank': NotRequired[int],
+    'best_monthly_rank': NotRequired[int],
+    'best_weekly_rank': NotRequired[int],
+    'comments_count': NotRequired[int],
+    'description': NotRequired[str],
+    'first_launch_date': NotRequired[str],
+    'followers_count': NotRequired[int],
+    'is_no_longer_online': NotRequired[bool],
+    'is_top_product': NotRequired[bool],
+    'latest_launch_date': NotRequired[str],
+    'latest_score': NotRequired[int],
+    'launch_count': NotRequired[int],
+    'launch_year': NotRequired[int],
+    'launches': NotRequired[list[ModelEsProductHuntLaunch]],
+    'logo_uuid': NotRequired[str],
+    'makers': NotRequired[list[ModelEsProductHuntMaker]],
+    'name': NotRequired[str],
+    'pricing_type': NotRequired[str],
+    'primary_topic': NotRequired[str],
+    'product_id': NotRequired[str],
+    'product_state': NotRequired[str],
+    'reviews_count': NotRequired[int],
+    'reviews_rating': NotRequired[float],
+    'slug': NotRequired[str],
+    'tagline': NotRequired[str],
+    'topic_slugs': NotRequired[list[str]],
+    'topics': NotRequired[list[ModelEsProductHuntTopic]],
+    'url': NotRequired[str],
+    'website': NotRequired[str],
+    'won_daily': NotRequired[bool],
+}, total=False)
+
+ModelEsProductHuntProductsFacetItem = TypedDict('ModelEsProductHuntProductsFacetItem', {
+    'count': NotRequired[int],
+    'value': NotRequired[str],
+}, total=False)
+
+ModelEsProductHuntTopic = TypedDict('ModelEsProductHuntTopic', {
+    'id': NotRequired[str],
+    'name': NotRequired[str],
+    'slug': NotRequired[str],
+}, total=False)
+
+ModelEsProductHuntTrendCell = TypedDict('ModelEsProductHuntTrendCell', {
+    'avg_rating': NotRequired[float],
+    'avg_votes': NotRequired[float],
+    'launches': NotRequired[int],
+    'period': NotRequired[str],
+    'top_product': NotRequired[ModelEsProductHuntTrendTopProduct],
+    'topic': NotRequired[str],
+    'total_votes': NotRequired[int],
+}, total=False)
+
+ModelEsProductHuntTrendTopProduct = TypedDict('ModelEsProductHuntTrendTopProduct', {
+    'name': NotRequired[str],
+    'slug': NotRequired[str],
+    'votes': NotRequired[int],
+}, total=False)
+
+ModelEsProductHuntTrendsFacetItem = TypedDict('ModelEsProductHuntTrendsFacetItem', {
+    'count': NotRequired[int],
+    'value': NotRequired[str],
+}, total=False)
+
 ModelEsWebsiteStatus = TypedDict('ModelEsWebsiteStatus', {
     'checked_at': NotRequired[str],
     'dns_resolvable': NotRequired[bool],
@@ -3406,6 +3776,282 @@ ModelEsWebsiteStatus = TypedDict('ModelEsWebsiteStatus', {
     'http_reachable': NotRequired[bool],
     'status_code': NotRequired[int],
     'url': NotRequired[str],
+}, total=False)
+
+ModelEspnAthlete = TypedDict('ModelEspnAthlete', {
+    'age': NotRequired[int],
+    'display_height': NotRequired[str],
+    'display_name': NotRequired[str],
+    'display_weight': NotRequired[str],
+    'full_name': NotRequired[str],
+    'headshot': NotRequired[str],
+    'id': NotRequired[str],
+    'jersey': NotRequired[str],
+    'position': NotRequired[str],
+    'team': NotRequired[ModelEspnTeamRef],
+}, total=False)
+
+ModelEspnAthleteResponse = TypedDict('ModelEspnAthleteResponse', {
+    'athlete': NotRequired[ModelEspnAthlete],
+    'fetched_at': NotRequired[str],
+    'league': NotRequired[str],
+    'source_url': NotRequired[str],
+    'sport': NotRequired[str],
+}, total=False)
+
+ModelEspnBoxscoreTeam = TypedDict('ModelEspnBoxscoreTeam', {
+    'home_away': NotRequired[str],
+    'stats': NotRequired[dict[str, str]],
+    'team': NotRequired[ModelEspnTeamRef],
+}, total=False)
+
+ModelEspnCompetitor = TypedDict('ModelEspnCompetitor', {
+    'home_away': NotRequired[str],
+    'record': NotRequired[str],
+    'score': NotRequired[str],
+    'team': NotRequired[ModelEspnTeamRef],
+    'winner': NotRequired[bool],
+}, total=False)
+
+ModelEspnGame = TypedDict('ModelEspnGame', {
+    'competitors': NotRequired[list[ModelEspnCompetitor]],
+    'date': NotRequired[str],
+    'id': NotRequired[str],
+    'name': NotRequired[str],
+    'odds': NotRequired[list[ModelEspnGameOdds]],
+    'short_name': NotRequired[str],
+    'status': NotRequired[ModelEspnGameStatus],
+    'venue': NotRequired[str],
+}, total=False)
+
+ModelEspnGameOdds = TypedDict('ModelEspnGameOdds', {
+    'details': NotRequired[str],
+    'over_under': NotRequired[float],
+    'provider': NotRequired[str],
+    'spread': NotRequired[float],
+}, total=False)
+
+ModelEspnGameStatus = TypedDict('ModelEspnGameStatus', {
+    'clock': NotRequired[str],
+    'completed': NotRequired[bool],
+    'detail': NotRequired[str],
+    'period': NotRequired[int],
+    'short_detail': NotRequired[str],
+    'state': NotRequired[str],
+}, total=False)
+
+ModelEspnGameSummaryResponse = TypedDict('ModelEspnGameSummaryResponse', {
+    'boxscore_teams': NotRequired[list[ModelEspnBoxscoreTeam]],
+    'event': NotRequired[str],
+    'fetched_at': NotRequired[str],
+    'game': NotRequired[ModelEspnGame],
+    'league': NotRequired[str],
+    'odds': NotRequired[list[ModelEspnGameOdds]],
+    'source_url': NotRequired[str],
+    'sport': NotRequired[str],
+}, total=False)
+
+ModelEspnNewsArticle = TypedDict('ModelEspnNewsArticle', {
+    'byline': NotRequired[str],
+    'description': NotRequired[str],
+    'headline': NotRequired[str],
+    'link': NotRequired[str],
+    'published': NotRequired[str],
+    'type': NotRequired[str],
+}, total=False)
+
+ModelEspnNewsResponse = TypedDict('ModelEspnNewsResponse', {
+    'articles': NotRequired[list[ModelEspnNewsArticle]],
+    'count': NotRequired[int],
+    'fetched_at': NotRequired[str],
+    'league': NotRequired[str],
+    'source_url': NotRequired[str],
+    'sport': NotRequired[str],
+}, total=False)
+
+ModelEspnRankEntry = TypedDict('ModelEspnRankEntry', {
+    'current': NotRequired[int],
+    'points': NotRequired[float],
+    'previous': NotRequired[int],
+    'record': NotRequired[str],
+    'team': NotRequired[ModelEspnTeamRef],
+    'trend': NotRequired[str],
+}, total=False)
+
+ModelEspnRankingPoll = TypedDict('ModelEspnRankingPoll', {
+    'name': NotRequired[str],
+    'ranks': NotRequired[list[ModelEspnRankEntry]],
+    'short_name': NotRequired[str],
+}, total=False)
+
+ModelEspnRankingsResponse = TypedDict('ModelEspnRankingsResponse', {
+    'fetched_at': NotRequired[str],
+    'league': NotRequired[str],
+    'polls': NotRequired[list[ModelEspnRankingPoll]],
+    'season': NotRequired[ModelEspnSeason],
+    'source_url': NotRequired[str],
+    'sport': NotRequired[str],
+}, total=False)
+
+ModelEspnRosterAthlete = TypedDict('ModelEspnRosterAthlete', {
+    'age': NotRequired[int],
+    'display_height': NotRequired[str],
+    'display_weight': NotRequired[str],
+    'experience_years': NotRequired[int],
+    'full_name': NotRequired[str],
+    'id': NotRequired[str],
+    'jersey': NotRequired[str],
+    'position': NotRequired[str],
+}, total=False)
+
+ModelEspnRosterResponse = TypedDict('ModelEspnRosterResponse', {
+    'athletes': NotRequired[list[ModelEspnRosterAthlete]],
+    'coach': NotRequired[str],
+    'count': NotRequired[int],
+    'fetched_at': NotRequired[str],
+    'league': NotRequired[str],
+    'source_url': NotRequired[str],
+    'sport': NotRequired[str],
+    'team': NotRequired[ModelEspnTeamRef],
+}, total=False)
+
+ModelEspnScoreboardResponse = TypedDict('ModelEspnScoreboardResponse', {
+    'count': NotRequired[int],
+    'day': NotRequired[str],
+    'fetched_at': NotRequired[str],
+    'games': NotRequired[list[ModelEspnGame]],
+    'league': NotRequired[str],
+    'league_name': NotRequired[str],
+    'season': NotRequired[ModelEspnSeason],
+    'source_url': NotRequired[str],
+    'sport': NotRequired[str],
+}, total=False)
+
+ModelEspnSeason = TypedDict('ModelEspnSeason', {
+    'name': NotRequired[str],
+    'type': NotRequired[int],
+    'year': NotRequired[int],
+}, total=False)
+
+ModelEspnStandingsEntry = TypedDict('ModelEspnStandingsEntry', {
+    'note': NotRequired[str],
+    'stats': NotRequired[dict[str, str]],
+    'team': NotRequired[ModelEspnTeamRef],
+}, total=False)
+
+ModelEspnStandingsGroup = TypedDict('ModelEspnStandingsGroup', {
+    'abbreviation': NotRequired[str],
+    'entries': NotRequired[list[ModelEspnStandingsEntry]],
+    'name': NotRequired[str],
+}, total=False)
+
+ModelEspnStandingsResponse = TypedDict('ModelEspnStandingsResponse', {
+    'fetched_at': NotRequired[str],
+    'groups': NotRequired[list[ModelEspnStandingsGroup]],
+    'league': NotRequired[str],
+    'league_name': NotRequired[str],
+    'season': NotRequired[ModelEspnSeason],
+    'source_url': NotRequired[str],
+    'sport': NotRequired[str],
+}, total=False)
+
+ModelEspnTeamDetail = TypedDict('ModelEspnTeamDetail', {
+    'abbreviation': NotRequired[str],
+    'alternate_color': NotRequired[str],
+    'color': NotRequired[str],
+    'display_name': NotRequired[str],
+    'id': NotRequired[str],
+    'location': NotRequired[str],
+    'logo': NotRequired[str],
+    'name': NotRequired[str],
+    'record': NotRequired[str],
+    'short_display_name': NotRequired[str],
+    'standing_summary': NotRequired[str],
+    'uid': NotRequired[str],
+}, total=False)
+
+ModelEspnTeamRef = TypedDict('ModelEspnTeamRef', {
+    'abbreviation': NotRequired[str],
+    'alternate_color': NotRequired[str],
+    'color': NotRequired[str],
+    'display_name': NotRequired[str],
+    'id': NotRequired[str],
+    'location': NotRequired[str],
+    'logo': NotRequired[str],
+    'name': NotRequired[str],
+    'short_display_name': NotRequired[str],
+    'uid': NotRequired[str],
+}, total=False)
+
+ModelEspnTeamResponse = TypedDict('ModelEspnTeamResponse', {
+    'fetched_at': NotRequired[str],
+    'league': NotRequired[str],
+    'source_url': NotRequired[str],
+    'sport': NotRequired[str],
+    'team': NotRequired[ModelEspnTeamDetail],
+}, total=False)
+
+ModelEspnTeamsResponse = TypedDict('ModelEspnTeamsResponse', {
+    'count': NotRequired[int],
+    'fetched_at': NotRequired[str],
+    'league': NotRequired[str],
+    'source_url': NotRequired[str],
+    'sport': NotRequired[str],
+    'teams': NotRequired[list[ModelEspnTeamRef]],
+}, total=False)
+
+ModelEspnAthleteResponseDoc = TypedDict('ModelEspnAthleteResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelEspnAthleteResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelEspnGameSummaryResponseDoc = TypedDict('ModelEspnGameSummaryResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelEspnGameSummaryResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelEspnNewsResponseDoc = TypedDict('ModelEspnNewsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelEspnNewsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelEspnRankingsResponseDoc = TypedDict('ModelEspnRankingsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelEspnRankingsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelEspnRosterResponseDoc = TypedDict('ModelEspnRosterResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelEspnRosterResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelEspnScoreboardResponseDoc = TypedDict('ModelEspnScoreboardResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelEspnScoreboardResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelEspnStandingsResponseDoc = TypedDict('ModelEspnStandingsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelEspnStandingsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelEspnTeamResponseDoc = TypedDict('ModelEspnTeamResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelEspnTeamResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelEspnTeamsResponseDoc = TypedDict('ModelEspnTeamsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelEspnTeamsResponse],
+    'msg': NotRequired[str],
 }, total=False)
 
 ModelFinanceAbout = TypedDict('ModelFinanceAbout', {
@@ -10119,6 +10765,23 @@ ModelSpotifyUserProfileResponseDoc = TypedDict('ModelSpotifyUserProfileResponseD
     'msg': NotRequired[Any],
 }, total=False)
 
+ModelTechstackResult = TypedDict('ModelTechstackResult', {
+    'categories': NotRequired[list[str]],
+    'count': NotRequired[int],
+    'detector_version': NotRequired[str],
+    'final_url': NotRequired[str],
+    'technologies': NotRequired[list[ModelTechstackTechnology]],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelTechstackTechnology = TypedDict('ModelTechstackTechnology', {
+    'categories': NotRequired[list[str]],
+    'confidence': NotRequired[str],
+    'evidence': NotRequired[str],
+    'name': NotRequired[str],
+    'version': NotRequired[str],
+}, total=False)
+
 ModelTiktokCategory = TypedDict('ModelTiktokCategory', {
     'name': NotRequired[str],
     'type': NotRequired[str],
@@ -11461,9 +12124,20 @@ ModelWebScrapeResult = TypedDict('ModelWebScrapeResult', {
     'scrape': NotRequired[ModelWebScrapeInfo],
 }, total=False)
 
+ModelWebTechStackOption = TypedDict('ModelWebTechStackOption', {
+    'render': NotRequired[Literal['browser', 'auto', 'http']],
+    'url': Required[str],
+}, total=False)
+
 ModelWebScrapeResponseDoc = TypedDict('ModelWebScrapeResponseDoc', {
     'code': NotRequired[int],
     'data': NotRequired[ModelWebScrapeResult],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelWebTechStackResponseDoc = TypedDict('ModelWebTechStackResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelTechstackResult],
     'msg': NotRequired[str],
 }, total=False)
 
@@ -13128,6 +13802,99 @@ BraveVideosParams = TypedDict('BraveVideosParams', {
     'date_to': NotRequired[str],
 }, total=False)
 
+ChromeWebStoreChromewebstoreCategoriesResponse = ModelChromewebstoreCategoriesResponseDoc
+ChromeWebStoreChromewebstoreCategoriesParams = TypedDict('ChromeWebStoreChromewebstoreCategoriesParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+}, total=False)
+
+ChromeWebStoreChromewebstoreCategoryResponse = ModelChromewebstoreListResponseDoc
+ChromeWebStoreChromewebstoreCategoryParams = TypedDict('ChromeWebStoreChromewebstoreCategoryParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'category': Required[str],
+    'num': NotRequired[int],
+    'country': NotRequired[str],
+    'lang': NotRequired[str],
+}, total=False)
+
+ChromeWebStoreChromewebstoreChartsResponse = ModelChromewebstoreListResponseDoc
+ChromeWebStoreChromewebstoreChartsParams = TypedDict('ChromeWebStoreChromewebstoreChartsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'chart': NotRequired[Literal['trending', 'popular', 'notable']],
+    'num': NotRequired[int],
+    'country': NotRequired[str],
+    'lang': NotRequired[str],
+}, total=False)
+
+ChromeWebStoreChromewebstoreCollectionResponse = ModelChromewebstoreListResponseDoc
+ChromeWebStoreChromewebstoreCollectionParams = TypedDict('ChromeWebStoreChromewebstoreCollectionParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'collection': Required[str],
+    'num': NotRequired[int],
+    'country': NotRequired[str],
+    'lang': NotRequired[str],
+}, total=False)
+
+ChromeWebStoreChromewebstoreItemResponse = ModelChromewebstoreItemResponseDoc
+ChromeWebStoreChromewebstoreItemParams = TypedDict('ChromeWebStoreChromewebstoreItemParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': Required[str],
+    'country': NotRequired[str],
+    'lang': NotRequired[str],
+}, total=False)
+
+ChromeWebStoreChromewebstoreReviewsResponse = ModelChromewebstoreReviewsResponseDoc
+ChromeWebStoreChromewebstoreReviewsParams = TypedDict('ChromeWebStoreChromewebstoreReviewsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': Required[str],
+    'num': NotRequired[int],
+    'country': NotRequired[str],
+    'lang': NotRequired[str],
+}, total=False)
+
+ChromeWebStoreChromewebstoreSearchResponse = ModelChromewebstoreSearchResponseDoc
+ChromeWebStoreChromewebstoreSearchParams = TypedDict('ChromeWebStoreChromewebstoreSearchParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'term': Required[str],
+    'num': NotRequired[int],
+    'country': NotRequired[str],
+    'lang': NotRequired[str],
+}, total=False)
+
+ChromeWebStoreChromewebstoreSimilarResponse = ModelChromewebstoreSimilarResponseDoc
+ChromeWebStoreChromewebstoreSimilarParams = TypedDict('ChromeWebStoreChromewebstoreSimilarParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': Required[str],
+    'country': NotRequired[str],
+    'lang': NotRequired[str],
+}, total=False)
+
+ChromeWebStoreChromewebstoreSuggestResponse = ModelChromewebstoreSuggestResponseDoc
+ChromeWebStoreChromewebstoreSuggestParams = TypedDict('ChromeWebStoreChromewebstoreSuggestParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'term': Required[str],
+    'num': NotRequired[int],
+    'country': NotRequired[str],
+    'lang': NotRequired[str],
+}, total=False)
+
 CoinGeckoCategoriesResponse = ModelCoingeckoCategoriesResponseDoc
 CoinGeckoCategoriesParams = TypedDict('CoinGeckoCategoriesParams', {
     '_response_type': NotRequired[ResponseType],
@@ -13355,6 +14122,7 @@ DatasetsAirbnbMarketsFacetsParams = TypedDict('DatasetsAirbnbMarketsFacetsParams
     'country': NotRequired[str],
     'market': NotRequired[str],
     'superhost': NotRequired[bool],
+    'guest_favorite': NotRequired[bool],
     'min_rating': NotRequired[float],
     'min_review_count': NotRequired[int],
     'active_since': NotRequired[str],
@@ -13394,6 +14162,7 @@ DatasetsAirbnbMarketsSearchParams = TypedDict('DatasetsAirbnbMarketsSearchParams
     'country': NotRequired[str],
     'market': NotRequired[str],
     'superhost': NotRequired[bool],
+    'guest_favorite': NotRequired[bool],
     'min_rating': NotRequired[float],
     'min_review_count': NotRequired[int],
     'active_since': NotRequired[str],
@@ -13495,6 +14264,7 @@ DatasetsGithubUsersFacetsParams = TypedDict('DatasetsGithubUsersFacetsParams', {
     'hireable': NotRequired[bool],
     'is_org': NotRequired[bool],
     'is_bot': NotRequired[bool],
+    'is_suspected_automation': NotRequired[bool],
     'min_followers': NotRequired[int],
     'max_followers': NotRequired[int],
     'min_repos': NotRequired[int],
@@ -13552,6 +14322,7 @@ DatasetsGithubUsersSearchParams = TypedDict('DatasetsGithubUsersSearchParams', {
     'hireable': NotRequired[bool],
     'is_org': NotRequired[bool],
     'is_bot': NotRequired[bool],
+    'is_suspected_automation': NotRequired[bool],
     'min_followers': NotRequired[int],
     'max_followers': NotRequired[int],
     'min_repos': NotRequired[int],
@@ -13638,6 +14409,116 @@ DatasetsGoogleMapBusinessesSearchParams = TypedDict('DatasetsGoogleMapBusinesses
     'page_size': NotRequired[int],
 }, total=False)
 
+DatasetsProducthuntMakersFacetsResponse = ModelDatasetsProducthuntMakersFacetResponseDoc
+DatasetsProducthuntMakersFacetsParams = TypedDict('DatasetsProducthuntMakersFacetsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'facet': Required[str],
+    'q': NotRequired[str],
+    'topic': NotRequired[str],
+    'min_products': NotRequired[int],
+    'min_total_votes': NotRequired[int],
+}, total=False)
+
+DatasetsProducthuntMakersItemResponse = ModelDatasetsProducthuntMakerResponseDoc
+DatasetsProducthuntMakersItemParams = TypedDict('DatasetsProducthuntMakersItemParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'username': Required[str],
+}, total=False)
+
+DatasetsProducthuntMakersSearchResponse = ModelDatasetsProducthuntMakersSearchResponseDoc
+DatasetsProducthuntMakersSearchParams = TypedDict('DatasetsProducthuntMakersSearchParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'q': NotRequired[str],
+    'topic': NotRequired[str],
+    'min_products': NotRequired[int],
+    'min_total_votes': NotRequired[int],
+    'sort': NotRequired[str],
+    'page': NotRequired[int],
+    'page_size': NotRequired[int],
+}, total=False)
+
+DatasetsProducthuntProductsFacetsResponse = ModelDatasetsProducthuntProductsFacetResponseDoc
+DatasetsProducthuntProductsFacetsParams = TypedDict('DatasetsProducthuntProductsFacetsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'facet': Required[str],
+    'q': NotRequired[str],
+    'topic': NotRequired[str],
+    'maker': NotRequired[str],
+    'launched_after': NotRequired[str],
+    'launched_before': NotRequired[str],
+    'min_votes': NotRequired[int],
+    'min_rating': NotRequired[float],
+    'pricing_type': NotRequired[str],
+    'has_website': NotRequired[bool],
+    'is_online': NotRequired[bool],
+}, total=False)
+
+DatasetsProducthuntProductsItemResponse = ModelDatasetsProducthuntProductResponseDoc
+DatasetsProducthuntProductsItemParams = TypedDict('DatasetsProducthuntProductsItemParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'slug': Required[str],
+}, total=False)
+
+DatasetsProducthuntProductsSearchResponse = ModelDatasetsProducthuntProductsSearchResponseDoc
+DatasetsProducthuntProductsSearchParams = TypedDict('DatasetsProducthuntProductsSearchParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'q': NotRequired[str],
+    'topic': NotRequired[str],
+    'maker': NotRequired[str],
+    'launched_after': NotRequired[str],
+    'launched_before': NotRequired[str],
+    'min_votes': NotRequired[int],
+    'min_rating': NotRequired[float],
+    'pricing_type': NotRequired[str],
+    'has_website': NotRequired[bool],
+    'is_online': NotRequired[bool],
+    'sort': NotRequired[str],
+    'page': NotRequired[int],
+    'page_size': NotRequired[int],
+}, total=False)
+
+DatasetsProducthuntTrendsFacetsResponse = ModelDatasetsProducthuntTrendsFacetResponseDoc
+DatasetsProducthuntTrendsFacetsParams = TypedDict('DatasetsProducthuntTrendsFacetsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'facet': Required[str],
+    'group_by': NotRequired[str],
+    'topic': NotRequired[str],
+    'launched_after': NotRequired[str],
+    'launched_before': NotRequired[str],
+    'min_votes': NotRequired[int],
+    'min_launches': NotRequired[int],
+}, total=False)
+
+DatasetsProducthuntTrendsSearchResponse = ModelDatasetsProducthuntTrendsSearchResponseDoc
+DatasetsProducthuntTrendsSearchParams = TypedDict('DatasetsProducthuntTrendsSearchParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'group_by': NotRequired[str],
+    'topic': NotRequired[str],
+    'launched_after': NotRequired[str],
+    'launched_before': NotRequired[str],
+    'min_votes': NotRequired[int],
+    'min_launches': NotRequired[int],
+    'sort': NotRequired[str],
+    'page': NotRequired[int],
+    'page_size': NotRequired[int],
+}, total=False)
+
 WebAntibotCheckBody = ModelDiagnosticsAntibotCheckRequest
 WebAntibotCheckResponse = ModelDiagnosticsAntibotCheckResponseDoc
 WebAntibotCheckParams = TypedDict('WebAntibotCheckParams', {
@@ -13697,6 +14578,96 @@ EBayEbaySellerShopParams = TypedDict('EBayEbaySellerShopParams', {
     '_headers': NotRequired[Mapping[str, str]],
     'seller': Required[str],
     'page': NotRequired[int],
+}, total=False)
+
+EspnAthleteResponse = ModelEspnAthleteResponseDoc
+EspnAthleteParams = TypedDict('EspnAthleteParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'sport': Required[Literal['football', 'basketball', 'baseball', 'hockey', 'soccer']],
+    'league': Required[Literal['nfl', 'college-football', 'nba', 'wnba', 'mens-college-basketball', 'womens-college-basketball', 'mlb', 'nhl', 'eng.1', 'esp.1', 'ita.1', 'ger.1', 'fra.1', 'usa.1', 'uefa.champions']],
+    'athlete': Required[str],
+}, total=False)
+
+EspnGameSummaryResponse = ModelEspnGameSummaryResponseDoc
+EspnGameSummaryParams = TypedDict('EspnGameSummaryParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'sport': Required[Literal['football', 'basketball', 'baseball', 'hockey', 'soccer']],
+    'league': Required[Literal['nfl', 'college-football', 'nba', 'wnba', 'mens-college-basketball', 'womens-college-basketball', 'mlb', 'nhl', 'eng.1', 'esp.1', 'ita.1', 'ger.1', 'fra.1', 'usa.1', 'uefa.champions']],
+    'event': Required[str],
+}, total=False)
+
+EspnNewsResponse = ModelEspnNewsResponseDoc
+EspnNewsParams = TypedDict('EspnNewsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'sport': Required[Literal['football', 'basketball', 'baseball', 'hockey', 'soccer']],
+    'league': Required[Literal['nfl', 'college-football', 'nba', 'wnba', 'mens-college-basketball', 'womens-college-basketball', 'mlb', 'nhl', 'eng.1', 'esp.1', 'ita.1', 'ger.1', 'fra.1', 'usa.1', 'uefa.champions']],
+}, total=False)
+
+EspnRankingsResponse = ModelEspnRankingsResponseDoc
+EspnRankingsParams = TypedDict('EspnRankingsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'sport': Required[Literal['football', 'basketball']],
+    'league': Required[Literal['college-football', 'mens-college-basketball', 'womens-college-basketball']],
+}, total=False)
+
+EspnScoreboardResponse = ModelEspnScoreboardResponseDoc
+EspnScoreboardParams = TypedDict('EspnScoreboardParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'sport': Required[Literal['football', 'basketball', 'baseball', 'hockey', 'soccer']],
+    'league': Required[Literal['nfl', 'college-football', 'nba', 'wnba', 'mens-college-basketball', 'womens-college-basketball', 'mlb', 'nhl', 'eng.1', 'esp.1', 'ita.1', 'ger.1', 'fra.1', 'usa.1', 'uefa.champions']],
+    'dates': NotRequired[str],
+    'week': NotRequired[int],
+    'seasontype': NotRequired[Literal['1', '2', '3', '4']],
+}, total=False)
+
+EspnStandingsResponse = ModelEspnStandingsResponseDoc
+EspnStandingsParams = TypedDict('EspnStandingsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'sport': Required[Literal['football', 'basketball', 'baseball', 'hockey', 'soccer']],
+    'league': Required[Literal['nfl', 'college-football', 'nba', 'wnba', 'mens-college-basketball', 'womens-college-basketball', 'mlb', 'nhl', 'eng.1', 'esp.1', 'ita.1', 'ger.1', 'fra.1', 'usa.1', 'uefa.champions']],
+    'season': NotRequired[int],
+    'seasontype': NotRequired[Literal['1', '2', '3']],
+}, total=False)
+
+EspnTeamResponse = ModelEspnTeamResponseDoc
+EspnTeamParams = TypedDict('EspnTeamParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'sport': Required[Literal['football', 'basketball', 'baseball', 'hockey', 'soccer']],
+    'league': Required[Literal['nfl', 'college-football', 'nba', 'wnba', 'mens-college-basketball', 'womens-college-basketball', 'mlb', 'nhl', 'eng.1', 'esp.1', 'ita.1', 'ger.1', 'fra.1', 'usa.1', 'uefa.champions']],
+    'team': Required[str],
+}, total=False)
+
+EspnTeamRosterResponse = ModelEspnRosterResponseDoc
+EspnTeamRosterParams = TypedDict('EspnTeamRosterParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'sport': Required[Literal['football', 'basketball', 'baseball', 'hockey', 'soccer']],
+    'league': Required[Literal['nfl', 'college-football', 'nba', 'wnba', 'mens-college-basketball', 'womens-college-basketball', 'mlb', 'nhl', 'eng.1', 'esp.1', 'ita.1', 'ger.1', 'fra.1', 'usa.1', 'uefa.champions']],
+    'team': Required[str],
+}, total=False)
+
+EspnTeamsResponse = ModelEspnTeamsResponseDoc
+EspnTeamsParams = TypedDict('EspnTeamsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'sport': Required[Literal['football', 'basketball', 'baseball', 'hockey', 'soccer']],
+    'league': Required[Literal['nfl', 'college-football', 'nba', 'wnba', 'mens-college-basketball', 'womens-college-basketball', 'mlb', 'nhl', 'eng.1', 'esp.1', 'ita.1', 'ger.1', 'fra.1', 'usa.1', 'uefa.champions']],
 }, total=False)
 
 GeocodingLookupResponse = ModelGeocodingLookupResponseDoc
@@ -15767,10 +16738,11 @@ ProductHuntCategoryProductsParams = TypedDict('ProductHuntCategoryProductsParams
     '_timeout': NotRequired[float],
     '_headers': NotRequired[Mapping[str, str]],
     'slug': Required[str],
+    'cursor': NotRequired[str],
+    'page_size': NotRequired[int],
     'featured_only': NotRequired[bool],
     'order': NotRequired[str],
     'page': NotRequired[int],
-    'page_size': NotRequired[int],
     'tags': NotRequired[str],
 }, total=False)
 
@@ -15884,7 +16856,6 @@ RedditCommentsParams = TypedDict('RedditCommentsParams', {
     'sort': NotRequired[Literal['confidence', 'top', 'new', 'controversial', 'old', 'qa']],
     'limit': NotRequired[int],
     'depth': NotRequired[int],
-    'with_scores': NotRequired[bool],
 }, total=False)
 
 RedditDomainPostsResponse = ModelRedditDomainPostsResponseDoc
@@ -15897,7 +16868,6 @@ RedditDomainPostsParams = TypedDict('RedditDomainPostsParams', {
     'time': NotRequired[Literal['hour', 'day', 'week', 'month', 'year', 'all']],
     'limit': NotRequired[int],
     'after': NotRequired[str],
-    'with_scores': NotRequired[bool],
 }, total=False)
 
 RedditPostResponse = ModelRedditPostResponseDoc
@@ -15906,7 +16876,6 @@ RedditPostParams = TypedDict('RedditPostParams', {
     '_timeout': NotRequired[float],
     '_headers': NotRequired[Mapping[str, str]],
     'id': Required[str],
-    'with_scores': NotRequired[bool],
 }, total=False)
 
 RedditSearchResponse = ModelRedditSearchResponseDoc
@@ -15920,7 +16889,6 @@ RedditSearchParams = TypedDict('RedditSearchParams', {
     'time': NotRequired[Literal['hour', 'day', 'week', 'month', 'year', 'all']],
     'limit': NotRequired[int],
     'after': NotRequired[str],
-    'with_scores': NotRequired[bool],
 }, total=False)
 
 RedditSubredditAboutResponse = ModelRedditSubredditAboutResponseDoc
@@ -15930,7 +16898,6 @@ RedditSubredditAboutParams = TypedDict('RedditSubredditAboutParams', {
     '_headers': NotRequired[Mapping[str, str]],
     'subreddit': Required[str],
     'limit': NotRequired[int],
-    'with_scores': NotRequired[bool],
 }, total=False)
 
 RedditSubredditCommentsResponse = ModelRedditSubredditCommentsResponseDoc
@@ -15941,7 +16908,6 @@ RedditSubredditCommentsParams = TypedDict('RedditSubredditCommentsParams', {
     'subreddit': Required[str],
     'limit': NotRequired[int],
     'after': NotRequired[str],
-    'with_scores': NotRequired[bool],
 }, total=False)
 
 RedditSubredditPostsResponse = ModelRedditSubredditPostsResponseDoc
@@ -15954,7 +16920,6 @@ RedditSubredditPostsParams = TypedDict('RedditSubredditPostsParams', {
     'time': NotRequired[Literal['hour', 'day', 'week', 'month', 'year', 'all']],
     'limit': NotRequired[int],
     'after': NotRequired[str],
-    'with_scores': NotRequired[bool],
 }, total=False)
 
 RedditSubredditsPostsResponse = ModelRedditMultiSubredditPostsResponseDoc
@@ -15967,7 +16932,6 @@ RedditSubredditsPostsParams = TypedDict('RedditSubredditsPostsParams', {
     'time': NotRequired[Literal['hour', 'day', 'week', 'month', 'year', 'all']],
     'limit': NotRequired[int],
     'after': NotRequired[str],
-    'with_scores': NotRequired[bool],
 }, total=False)
 
 RedditTrendsResponse = ModelRedditTrendsResponseDoc
@@ -15979,7 +16943,6 @@ RedditTrendsParams = TypedDict('RedditTrendsParams', {
     'time': NotRequired[Literal['hour', 'day', 'week', 'month', 'year', 'all']],
     'limit': NotRequired[int],
     'after': NotRequired[str],
-    'with_scores': NotRequired[bool],
 }, total=False)
 
 RedditUserCommentsResponse = ModelRedditUserCommentsResponseDoc
@@ -15990,7 +16953,6 @@ RedditUserCommentsParams = TypedDict('RedditUserCommentsParams', {
     'username': Required[str],
     'limit': NotRequired[int],
     'after': NotRequired[str],
-    'with_scores': NotRequired[bool],
 }, total=False)
 
 RedditUserPostsResponse = ModelRedditUserPostsResponseDoc
@@ -16001,7 +16963,6 @@ RedditUserPostsParams = TypedDict('RedditUserPostsParams', {
     'username': Required[str],
     'limit': NotRequired[int],
     'after': NotRequired[str],
-    'with_scores': NotRequired[bool],
 }, total=False)
 
 RedfinEstimateResponse = ModelRedfinEstimateResponse
@@ -17335,6 +18296,15 @@ WebScrapeParams = TypedDict('WebScrapeParams', {
     'scrapeOption': Required[WebScrapeBody],
 }, total=False)
 
+WebTechstackBody = ModelWebTechStackOption
+WebTechstackResponse = ModelWebTechStackResponseDoc
+WebTechstackParams = TypedDict('WebTechstackParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'request': Required[WebTechstackBody],
+}, total=False)
+
 XPostResponse = ModelXPostResponseDoc
 XPostParams = TypedDict('XPostParams', {
     '_response_type': NotRequired[ResponseType],
@@ -17951,6 +18921,17 @@ class BraveGroup:
     def suggest(self, **params: Unpack[BraveSuggestParams]) -> BraveSuggestResponse: ...
     def videos(self, **params: Unpack[BraveVideosParams]) -> BraveVideosResponse: ...
 
+class ChromeWebStoreGroup:
+    def chromewebstore_categories(self, **params: Unpack[ChromeWebStoreChromewebstoreCategoriesParams]) -> ChromeWebStoreChromewebstoreCategoriesResponse: ...
+    def chromewebstore_category(self, **params: Unpack[ChromeWebStoreChromewebstoreCategoryParams]) -> ChromeWebStoreChromewebstoreCategoryResponse: ...
+    def chromewebstore_charts(self, **params: Unpack[ChromeWebStoreChromewebstoreChartsParams]) -> ChromeWebStoreChromewebstoreChartsResponse: ...
+    def chromewebstore_collection(self, **params: Unpack[ChromeWebStoreChromewebstoreCollectionParams]) -> ChromeWebStoreChromewebstoreCollectionResponse: ...
+    def chromewebstore_item(self, **params: Unpack[ChromeWebStoreChromewebstoreItemParams]) -> ChromeWebStoreChromewebstoreItemResponse: ...
+    def chromewebstore_reviews(self, **params: Unpack[ChromeWebStoreChromewebstoreReviewsParams]) -> ChromeWebStoreChromewebstoreReviewsResponse: ...
+    def chromewebstore_search(self, **params: Unpack[ChromeWebStoreChromewebstoreSearchParams]) -> ChromeWebStoreChromewebstoreSearchResponse: ...
+    def chromewebstore_similar(self, **params: Unpack[ChromeWebStoreChromewebstoreSimilarParams]) -> ChromeWebStoreChromewebstoreSimilarResponse: ...
+    def chromewebstore_suggest(self, **params: Unpack[ChromeWebStoreChromewebstoreSuggestParams]) -> ChromeWebStoreChromewebstoreSuggestResponse: ...
+
 class CoinGeckoGroup:
     def categories(self, **params: Unpack[CoinGeckoCategoriesParams]) -> CoinGeckoCategoriesResponse: ...
     def category_coins(self, **params: Unpack[CoinGeckoCategoryCoinsParams]) -> CoinGeckoCategoryCoinsResponse: ...
@@ -17978,6 +18959,7 @@ class WebGroup:
     def contact(self, **params: Unpack[WebContactParams]) -> WebContactResponse: ...
     def antibot_check(self, **params: Unpack[WebAntibotCheckParams]) -> WebAntibotCheckResponse: ...
     def scrape(self, **params: Unpack[WebScrapeParams]) -> WebScrapeResponse: ...
+    def techstack(self, **params: Unpack[WebTechstackParams]) -> WebTechstackResponse: ...
 
 class DatasetsGroup:
     def list(self, **params: Unpack[DatasetsListParams]) -> DatasetsListResponse: ...
@@ -17997,6 +18979,14 @@ class DatasetsGroup:
     def google_map_businesses_item(self, **params: Unpack[DatasetsGoogleMapBusinessesItemParams]) -> DatasetsGoogleMapBusinessesItemResponse: ...
     def google_map_businesses_nearby(self, **params: Unpack[DatasetsGoogleMapBusinessesNearbyParams]) -> DatasetsGoogleMapBusinessesNearbyResponse: ...
     def google_map_businesses_search(self, **params: Unpack[DatasetsGoogleMapBusinessesSearchParams]) -> DatasetsGoogleMapBusinessesSearchResponse: ...
+    def producthunt_makers_facets(self, **params: Unpack[DatasetsProducthuntMakersFacetsParams]) -> DatasetsProducthuntMakersFacetsResponse: ...
+    def producthunt_makers_item(self, **params: Unpack[DatasetsProducthuntMakersItemParams]) -> DatasetsProducthuntMakersItemResponse: ...
+    def producthunt_makers_search(self, **params: Unpack[DatasetsProducthuntMakersSearchParams]) -> DatasetsProducthuntMakersSearchResponse: ...
+    def producthunt_products_facets(self, **params: Unpack[DatasetsProducthuntProductsFacetsParams]) -> DatasetsProducthuntProductsFacetsResponse: ...
+    def producthunt_products_item(self, **params: Unpack[DatasetsProducthuntProductsItemParams]) -> DatasetsProducthuntProductsItemResponse: ...
+    def producthunt_products_search(self, **params: Unpack[DatasetsProducthuntProductsSearchParams]) -> DatasetsProducthuntProductsSearchResponse: ...
+    def producthunt_trends_facets(self, **params: Unpack[DatasetsProducthuntTrendsFacetsParams]) -> DatasetsProducthuntTrendsFacetsResponse: ...
+    def producthunt_trends_search(self, **params: Unpack[DatasetsProducthuntTrendsSearchParams]) -> DatasetsProducthuntTrendsSearchResponse: ...
 
 class EBayGroup:
     def ebay_item(self, **params: Unpack[EBayEbayItemParams]) -> EBayEbayItemResponse: ...
@@ -18005,6 +18995,17 @@ class EBayGroup:
     def ebay_seller_about(self, **params: Unpack[EBayEbaySellerAboutParams]) -> EBayEbaySellerAboutResponse: ...
     def ebay_seller_feedback(self, **params: Unpack[EBayEbaySellerFeedbackParams]) -> EBayEbaySellerFeedbackResponse: ...
     def ebay_seller_shop(self, **params: Unpack[EBayEbaySellerShopParams]) -> EBayEbaySellerShopResponse: ...
+
+class EspnGroup:
+    def athlete(self, **params: Unpack[EspnAthleteParams]) -> EspnAthleteResponse: ...
+    def game_summary(self, **params: Unpack[EspnGameSummaryParams]) -> EspnGameSummaryResponse: ...
+    def news(self, **params: Unpack[EspnNewsParams]) -> EspnNewsResponse: ...
+    def rankings(self, **params: Unpack[EspnRankingsParams]) -> EspnRankingsResponse: ...
+    def scoreboard(self, **params: Unpack[EspnScoreboardParams]) -> EspnScoreboardResponse: ...
+    def standings(self, **params: Unpack[EspnStandingsParams]) -> EspnStandingsResponse: ...
+    def team(self, **params: Unpack[EspnTeamParams]) -> EspnTeamResponse: ...
+    def team_roster(self, **params: Unpack[EspnTeamRosterParams]) -> EspnTeamRosterResponse: ...
+    def teams(self, **params: Unpack[EspnTeamsParams]) -> EspnTeamsResponse: ...
 
 class GeocodingGroup:
     def lookup(self, **params: Unpack[GeocodingLookupParams]) -> GeocodingLookupResponse: ...
@@ -18554,6 +19555,15 @@ OperationId = Literal[
     'brave-search',
     'brave-suggest',
     'brave-videos',
+    'chromewebstore-categories',
+    'chromewebstore-category',
+    'chromewebstore-charts',
+    'chromewebstore-collection',
+    'chromewebstore-item',
+    'chromewebstore-reviews',
+    'chromewebstore-search',
+    'chromewebstore-similar',
+    'chromewebstore-suggest',
     'coingecko-categories',
     'coingecko-category-coins',
     'coingecko-chains',
@@ -18593,6 +19603,14 @@ OperationId = Literal[
     'datasets-google-map-businesses-item',
     'datasets-google-map-businesses-nearby',
     'datasets-google-map-businesses-search',
+    'datasets-producthunt-makers-facets',
+    'datasets-producthunt-makers-item',
+    'datasets-producthunt-makers-search',
+    'datasets-producthunt-products-facets',
+    'datasets-producthunt-products-item',
+    'datasets-producthunt-products-search',
+    'datasets-producthunt-trends-facets',
+    'datasets-producthunt-trends-search',
     'antibot-check',
     'ebay-item',
     'ebay-search',
@@ -18600,6 +19618,15 @@ OperationId = Literal[
     'ebay-seller-about',
     'ebay-seller-feedback',
     'ebay-seller-shop',
+    'espn-athlete',
+    'espn-game-summary',
+    'espn-news',
+    'espn-rankings',
+    'espn-scoreboard',
+    'espn-standings',
+    'espn-team',
+    'espn-team-roster',
+    'espn-teams',
     'geocoding-lookup',
     'geocoding-reverse',
     'geocoding-search',
@@ -18963,6 +19990,7 @@ OperationId = Literal[
     'user-me-api-keys-rotate',
     'user-me-api-keys-reveal',
     'web-scrape',
+    'web-techstack',
     'x-post',
     'x-profile',
     'x-profile-posts',
@@ -19033,10 +20061,12 @@ class CrawloraClient:
     box_office_mojo: BoxOfficeMojoGroup
     brand: BrandGroup
     brave: BraveGroup
+    chrome_web_store: ChromeWebStoreGroup
     coin_gecko: CoinGeckoGroup
     web: WebGroup
     datasets: DatasetsGroup
     e_bay: EBayGroup
+    espn: EspnGroup
     geocoding: GeocodingGroup
     git_hub: GitHubGroup
     google: GoogleGroup
@@ -19931,6 +20961,114 @@ class CrawloraClient:
     @overload
     def operation(
         self,
+        operation_id: Literal['chromewebstore-categories'],
+        params: ChromeWebStoreChromewebstoreCategoriesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ChromeWebStoreChromewebstoreCategoriesResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['chromewebstore-category'],
+        params: ChromeWebStoreChromewebstoreCategoryParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ChromeWebStoreChromewebstoreCategoryResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['chromewebstore-charts'],
+        params: ChromeWebStoreChromewebstoreChartsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ChromeWebStoreChromewebstoreChartsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['chromewebstore-collection'],
+        params: ChromeWebStoreChromewebstoreCollectionParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ChromeWebStoreChromewebstoreCollectionResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['chromewebstore-item'],
+        params: ChromeWebStoreChromewebstoreItemParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ChromeWebStoreChromewebstoreItemResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['chromewebstore-reviews'],
+        params: ChromeWebStoreChromewebstoreReviewsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ChromeWebStoreChromewebstoreReviewsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['chromewebstore-search'],
+        params: ChromeWebStoreChromewebstoreSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ChromeWebStoreChromewebstoreSearchResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['chromewebstore-similar'],
+        params: ChromeWebStoreChromewebstoreSimilarParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ChromeWebStoreChromewebstoreSimilarResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['chromewebstore-suggest'],
+        params: ChromeWebStoreChromewebstoreSuggestParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ChromeWebStoreChromewebstoreSuggestResponse: ...
+    @overload
+    def operation(
+        self,
         operation_id: Literal['coingecko-categories'],
         params: CoinGeckoCategoriesParams = ...,
         *,
@@ -20399,6 +21537,102 @@ class CrawloraClient:
     @overload
     def operation(
         self,
+        operation_id: Literal['datasets-producthunt-makers-facets'],
+        params: DatasetsProducthuntMakersFacetsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsProducthuntMakersFacetsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['datasets-producthunt-makers-item'],
+        params: DatasetsProducthuntMakersItemParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsProducthuntMakersItemResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['datasets-producthunt-makers-search'],
+        params: DatasetsProducthuntMakersSearchParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsProducthuntMakersSearchResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['datasets-producthunt-products-facets'],
+        params: DatasetsProducthuntProductsFacetsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsProducthuntProductsFacetsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['datasets-producthunt-products-item'],
+        params: DatasetsProducthuntProductsItemParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsProducthuntProductsItemResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['datasets-producthunt-products-search'],
+        params: DatasetsProducthuntProductsSearchParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsProducthuntProductsSearchResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['datasets-producthunt-trends-facets'],
+        params: DatasetsProducthuntTrendsFacetsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsProducthuntTrendsFacetsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['datasets-producthunt-trends-search'],
+        params: DatasetsProducthuntTrendsSearchParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsProducthuntTrendsSearchResponse: ...
+    @overload
+    def operation(
+        self,
         operation_id: Literal['antibot-check'],
         params: WebAntibotCheckParams,
         *,
@@ -20480,6 +21714,114 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> EBayEbaySellerShopResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['espn-athlete'],
+        params: EspnAthleteParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> EspnAthleteResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['espn-game-summary'],
+        params: EspnGameSummaryParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> EspnGameSummaryResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['espn-news'],
+        params: EspnNewsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> EspnNewsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['espn-rankings'],
+        params: EspnRankingsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> EspnRankingsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['espn-scoreboard'],
+        params: EspnScoreboardParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> EspnScoreboardResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['espn-standings'],
+        params: EspnStandingsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> EspnStandingsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['espn-team'],
+        params: EspnTeamParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> EspnTeamResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['espn-team-roster'],
+        params: EspnTeamRosterParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> EspnTeamRosterResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['espn-teams'],
+        params: EspnTeamsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> EspnTeamsResponse: ...
     @overload
     def operation(
         self,
@@ -24836,6 +26178,18 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> WebScrapeResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['web-techstack'],
+        params: WebTechstackParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> WebTechstackResponse: ...
     @overload
     def operation(
         self,
@@ -26327,6 +27681,114 @@ class CrawloraClient:
     @overload
     def request(
         self,
+        operation_id: Literal['chromewebstore-categories'],
+        params: ChromeWebStoreChromewebstoreCategoriesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ChromeWebStoreChromewebstoreCategoriesResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['chromewebstore-category'],
+        params: ChromeWebStoreChromewebstoreCategoryParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ChromeWebStoreChromewebstoreCategoryResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['chromewebstore-charts'],
+        params: ChromeWebStoreChromewebstoreChartsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ChromeWebStoreChromewebstoreChartsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['chromewebstore-collection'],
+        params: ChromeWebStoreChromewebstoreCollectionParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ChromeWebStoreChromewebstoreCollectionResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['chromewebstore-item'],
+        params: ChromeWebStoreChromewebstoreItemParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ChromeWebStoreChromewebstoreItemResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['chromewebstore-reviews'],
+        params: ChromeWebStoreChromewebstoreReviewsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ChromeWebStoreChromewebstoreReviewsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['chromewebstore-search'],
+        params: ChromeWebStoreChromewebstoreSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ChromeWebStoreChromewebstoreSearchResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['chromewebstore-similar'],
+        params: ChromeWebStoreChromewebstoreSimilarParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ChromeWebStoreChromewebstoreSimilarResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['chromewebstore-suggest'],
+        params: ChromeWebStoreChromewebstoreSuggestParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ChromeWebStoreChromewebstoreSuggestResponse: ...
+    @overload
+    def request(
+        self,
         operation_id: Literal['coingecko-categories'],
         params: CoinGeckoCategoriesParams = ...,
         *,
@@ -26795,6 +28257,102 @@ class CrawloraClient:
     @overload
     def request(
         self,
+        operation_id: Literal['datasets-producthunt-makers-facets'],
+        params: DatasetsProducthuntMakersFacetsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsProducthuntMakersFacetsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['datasets-producthunt-makers-item'],
+        params: DatasetsProducthuntMakersItemParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsProducthuntMakersItemResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['datasets-producthunt-makers-search'],
+        params: DatasetsProducthuntMakersSearchParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsProducthuntMakersSearchResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['datasets-producthunt-products-facets'],
+        params: DatasetsProducthuntProductsFacetsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsProducthuntProductsFacetsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['datasets-producthunt-products-item'],
+        params: DatasetsProducthuntProductsItemParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsProducthuntProductsItemResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['datasets-producthunt-products-search'],
+        params: DatasetsProducthuntProductsSearchParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsProducthuntProductsSearchResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['datasets-producthunt-trends-facets'],
+        params: DatasetsProducthuntTrendsFacetsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsProducthuntTrendsFacetsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['datasets-producthunt-trends-search'],
+        params: DatasetsProducthuntTrendsSearchParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsProducthuntTrendsSearchResponse: ...
+    @overload
+    def request(
+        self,
         operation_id: Literal['antibot-check'],
         params: WebAntibotCheckParams,
         *,
@@ -26876,6 +28434,114 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> EBayEbaySellerShopResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['espn-athlete'],
+        params: EspnAthleteParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> EspnAthleteResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['espn-game-summary'],
+        params: EspnGameSummaryParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> EspnGameSummaryResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['espn-news'],
+        params: EspnNewsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> EspnNewsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['espn-rankings'],
+        params: EspnRankingsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> EspnRankingsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['espn-scoreboard'],
+        params: EspnScoreboardParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> EspnScoreboardResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['espn-standings'],
+        params: EspnStandingsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> EspnStandingsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['espn-team'],
+        params: EspnTeamParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> EspnTeamResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['espn-team-roster'],
+        params: EspnTeamRosterParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> EspnTeamRosterResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['espn-teams'],
+        params: EspnTeamsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> EspnTeamsResponse: ...
     @overload
     def request(
         self,
@@ -31232,6 +32898,18 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> WebScrapeResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['web-techstack'],
+        params: WebTechstackParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> WebTechstackResponse: ...
     @overload
     def request(
         self,
