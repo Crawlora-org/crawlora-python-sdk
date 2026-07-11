@@ -5701,6 +5701,98 @@ ModelInstagramReelsResponseDoc = TypedDict('ModelInstagramReelsResponseDoc', {
     'msg': NotRequired[str],
 }, total=False)
 
+ModelJobsBoardResponse = TypedDict('ModelJobsBoardResponse', {
+    'company': NotRequired[str],
+    'count': NotRequired[int],
+    'jobs': NotRequired[list[ModelJobsJob]],
+    'provider': NotRequired[str],
+    'source_url': NotRequired[str],
+    'total': NotRequired[int],
+}, total=False)
+
+ModelJobsCompanySearchResponse = TypedDict('ModelJobsCompanySearchResponse', {
+    'count': NotRequired[int],
+    'found': NotRequired[list[ModelJobsProviderHit]],
+    'slug': NotRequired[str],
+}, total=False)
+
+ModelJobsCount = TypedDict('ModelJobsCount', {
+    'count': NotRequired[int],
+    'name': NotRequired[str],
+}, total=False)
+
+ModelJobsHiringSignals = TypedDict('ModelJobsHiringSignals', {
+    'as_of': NotRequired[str],
+    'by_department': NotRequired[list[ModelJobsCount]],
+    'by_location': NotRequired[list[ModelJobsCount]],
+    'company': NotRequired[str],
+    'new_last_30d': NotRequired[int],
+    'new_last_7d': NotRequired[int],
+    'provider': NotRequired[str],
+    'remote_count': NotRequired[int],
+    'remote_pct': NotRequired[float],
+    'sampled_roles': NotRequired[int],
+    'source_url': NotRequired[str],
+    'top_titles': NotRequired[list[ModelJobsCount]],
+    'total_open_roles': NotRequired[int],
+}, total=False)
+
+ModelJobsJob = TypedDict('ModelJobsJob', {
+    'apply_url': NotRequired[str],
+    'company': NotRequired[str],
+    'compensation': NotRequired[str],
+    'compensation_currency': NotRequired[str],
+    'compensation_max': NotRequired[float],
+    'compensation_min': NotRequired[float],
+    'department': NotRequired[str],
+    'description_html': NotRequired[str],
+    'description_text': NotRequired[str],
+    'employment_type': NotRequired[str],
+    'id': NotRequired[str],
+    'location': NotRequired[str],
+    'locations': NotRequired[list[str]],
+    'posted_age_text': NotRequired[str],
+    'posted_at': NotRequired[str],
+    'provider': NotRequired[str],
+    'remote': NotRequired[bool],
+    'req_id': NotRequired[str],
+    'team': NotRequired[str],
+    'title': NotRequired[str],
+    'url': NotRequired[str],
+    'workplace_type': NotRequired[str],
+}, total=False)
+
+ModelJobsProviderHit = TypedDict('ModelJobsProviderHit', {
+    'board_url': NotRequired[str],
+    'company': NotRequired[str],
+    'provider': NotRequired[str],
+    'total_open_roles': NotRequired[int],
+}, total=False)
+
+ModelJobsBoardResponseDoc = TypedDict('ModelJobsBoardResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelJobsBoardResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelJobsJobResponseDoc = TypedDict('ModelJobsJobResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelJobsJob],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelJobsSearchResponseDoc = TypedDict('ModelJobsSearchResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelJobsCompanySearchResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelJobsSignalsResponseDoc = TypedDict('ModelJobsSignalsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelJobsHiringSignals],
+    'msg': NotRequired[str],
+}, total=False)
+
 ModelJustwatchAgeCertification = TypedDict('ModelJustwatchAgeCertification', {
     'technical_name': NotRequired[str],
 }, total=False)
@@ -9524,10 +9616,14 @@ ModelRottentomatoesSeriesResponseDoc = TypedDict('ModelRottentomatoesSeriesRespo
 }, total=False)
 
 ModelSecCompanyIntelligenceResponse = TypedDict('ModelSecCompanyIntelligenceResponse', {
+    'degraded': NotRequired[list[str]],
     'financial_snapshot': NotRequired[dict[str, float]],
+    'hiring': NotRequired[ModelSecHiringBlock],
     'latest_8k': NotRequired[ModelSecFiling],
     'latest_annual_10k': NotRequired[ModelSecFiling],
     'latest_quarterly_10q': NotRequired[ModelSecFiling],
+    'market': NotRequired[ModelSecMarketBlock],
+    'news': NotRequired[list[ModelSecNewsItem]],
     'profile': NotRequired[ModelSecCompanyProfile],
     'recent_events': NotRequired[list[ModelSecEventFiling]],
     'snapshot_fiscal_year': NotRequired[int],
@@ -9681,6 +9777,15 @@ ModelSecFullTextSearchResponse = TypedDict('ModelSecFullTextSearchResponse', {
     'total': NotRequired[int],
 }, total=False)
 
+ModelSecHiringBlock = TypedDict('ModelSecHiringBlock', {
+    'new_last_30d': NotRequired[int],
+    'provider': NotRequired[str],
+    'remote_pct': NotRequired[float],
+    'source_url': NotRequired[str],
+    'top_departments': NotRequired[list[ModelSecNameCount]],
+    'total_open_roles': NotRequired[int],
+}, total=False)
+
 ModelSecHolding = TypedDict('ModelSecHolding', {
     'cusip': NotRequired[str],
     'investment_discretion': NotRequired[str],
@@ -9731,6 +9836,29 @@ ModelSecInsiderTransaction = TypedDict('ModelSecInsiderTransaction', {
     'shares': NotRequired[float],
     'shares_owned_after': NotRequired[float],
     'transaction_date': NotRequired[str],
+}, total=False)
+
+ModelSecMarketBlock = TypedDict('ModelSecMarketBlock', {
+    'change_percent': NotRequired[float],
+    'currency': NotRequired[str],
+    'day_high': NotRequired[float],
+    'day_low': NotRequired[float],
+    'market_cap': NotRequired[float],
+    'name': NotRequired[str],
+    'price': NotRequired[float],
+    'symbol': NotRequired[str],
+}, total=False)
+
+ModelSecNameCount = TypedDict('ModelSecNameCount', {
+    'count': NotRequired[int],
+    'name': NotRequired[str],
+}, total=False)
+
+ModelSecNewsItem = TypedDict('ModelSecNewsItem', {
+    'published_at': NotRequired[str],
+    'publisher': NotRequired[str],
+    'title': NotRequired[str],
+    'url': NotRequired[str],
 }, total=False)
 
 ModelSecSubmissionsResponse = TypedDict('ModelSecSubmissionsResponse', {
@@ -11774,6 +11902,359 @@ ModelSpotifyUserProfileResponseDoc = TypedDict('ModelSpotifyUserProfileResponseD
     'code': NotRequired[int],
     'data': NotRequired[ModelSpotifyUserProfileResponse],
     'msg': NotRequired[Any],
+}, total=False)
+
+ModelSteamAchievementsResponse = TypedDict('ModelSteamAchievementsResponse', {
+    'achievements': NotRequired[list[ModelSteamGlobalAchievement]],
+    'appid': NotRequired[str],
+    'count': NotRequired[int],
+    'source_url': NotRequired[str],
+}, total=False)
+
+ModelSteamAppDetails = TypedDict('ModelSteamAppDetails', {
+    'achievements_total': NotRequired[int],
+    'appid': NotRequired[int],
+    'capsule_image': NotRequired[str],
+    'categories': NotRequired[list[ModelSteamIdname]],
+    'controller_support': NotRequired[str],
+    'developers': NotRequired[list[str]],
+    'dlc': NotRequired[list[int]],
+    'genres': NotRequired[list[ModelSteamIdname]],
+    'header_image': NotRequired[str],
+    'is_free': NotRequired[bool],
+    'metacritic': NotRequired[ModelSteamMetacritic],
+    'movies': NotRequired[int],
+    'name': NotRequired[str],
+    'platforms': NotRequired[ModelSteamPlatforms],
+    'price_overview': NotRequired[ModelSteamPrice],
+    'publishers': NotRequired[list[str]],
+    'recommendations': NotRequired[int],
+    'release_date': NotRequired[ModelSteamAppRelease],
+    'required_age': NotRequired[int],
+    'screenshots': NotRequired[int],
+    'short_description': NotRequired[str],
+    'source_url': NotRequired[str],
+    'supported_languages': NotRequired[str],
+    'type': NotRequired[str],
+    'website': NotRequired[str],
+}, total=False)
+
+ModelSteamAppRelease = TypedDict('ModelSteamAppRelease', {
+    'coming_soon': NotRequired[bool],
+    'date': NotRequired[str],
+}, total=False)
+
+ModelSteamFeaturedBucket = TypedDict('ModelSteamFeaturedBucket', {
+    'count': NotRequired[int],
+    'id': NotRequired[str],
+    'items': NotRequired[list[ModelSteamFeaturedItem]],
+    'name': NotRequired[str],
+}, total=False)
+
+ModelSteamFeaturedCategoriesResponse = TypedDict('ModelSteamFeaturedCategoriesResponse', {
+    'coming_soon': NotRequired[ModelSteamFeaturedBucket],
+    'new_releases': NotRequired[ModelSteamFeaturedBucket],
+    'source_url': NotRequired[str],
+    'specials': NotRequired[ModelSteamFeaturedBucket],
+    'top_sellers': NotRequired[ModelSteamFeaturedBucket],
+}, total=False)
+
+ModelSteamFeaturedItem = TypedDict('ModelSteamFeaturedItem', {
+    'currency': NotRequired[str],
+    'discount_percent': NotRequired[int],
+    'discounted': NotRequired[bool],
+    'final_price': NotRequired[int],
+    'header_image': NotRequired[str],
+    'id': NotRequired[int],
+    'linux_available': NotRequired[bool],
+    'mac_available': NotRequired[bool],
+    'name': NotRequired[str],
+    'original_price': NotRequired[int],
+    'type': NotRequired[int],
+    'windows_available': NotRequired[bool],
+}, total=False)
+
+ModelSteamFeaturedResponse = TypedDict('ModelSteamFeaturedResponse', {
+    'featured_linux': NotRequired[list[ModelSteamFeaturedItem]],
+    'featured_mac': NotRequired[list[ModelSteamFeaturedItem]],
+    'featured_win': NotRequired[list[ModelSteamFeaturedItem]],
+    'large_capsules': NotRequired[list[ModelSteamFeaturedItem]],
+    'source_url': NotRequired[str],
+}, total=False)
+
+ModelSteamGlobalAchievement = TypedDict('ModelSteamGlobalAchievement', {
+    'name': NotRequired[str],
+    'percent': NotRequired[float],
+}, total=False)
+
+ModelSteamHistogramBucket = TypedDict('ModelSteamHistogramBucket', {
+    'date': NotRequired[int],
+    'recommendations_down': NotRequired[int],
+    'recommendations_up': NotRequired[int],
+}, total=False)
+
+ModelSteamIdname = TypedDict('ModelSteamIdname', {
+    'description': NotRequired[str],
+    'id': NotRequired[str],
+}, total=False)
+
+ModelSteamMetacritic = TypedDict('ModelSteamMetacritic', {
+    'score': NotRequired[int],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelSteamNewsItem = TypedDict('ModelSteamNewsItem', {
+    'author': NotRequired[str],
+    'contents': NotRequired[str],
+    'date': NotRequired[int],
+    'feedlabel': NotRequired[str],
+    'feedname': NotRequired[str],
+    'gid': NotRequired[str],
+    'is_external_url': NotRequired[bool],
+    'tags': NotRequired[list[str]],
+    'title': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelSteamNewsResponse = TypedDict('ModelSteamNewsResponse', {
+    'appid': NotRequired[str],
+    'count': NotRequired[int],
+    'items': NotRequired[list[ModelSteamNewsItem]],
+    'source_url': NotRequired[str],
+}, total=False)
+
+ModelSteamPackageDetails = TypedDict('ModelSteamPackageDetails', {
+    'apps': NotRequired[list[ModelSteamIdname]],
+    'header_image': NotRequired[str],
+    'name': NotRequired[str],
+    'packageid': NotRequired[int],
+    'platforms': NotRequired[ModelSteamPlatforms],
+    'price': NotRequired[ModelSteamPackagePrice],
+    'release_date': NotRequired[ModelSteamAppRelease],
+    'source_url': NotRequired[str],
+}, total=False)
+
+ModelSteamPackagePrice = TypedDict('ModelSteamPackagePrice', {
+    'currency': NotRequired[str],
+    'discount_percent': NotRequired[int],
+    'final': NotRequired[int],
+    'individual': NotRequired[int],
+    'initial': NotRequired[int],
+}, total=False)
+
+ModelSteamPlatforms = TypedDict('ModelSteamPlatforms', {
+    'linux': NotRequired[bool],
+    'mac': NotRequired[bool],
+    'windows': NotRequired[bool],
+}, total=False)
+
+ModelSteamPlayersResponse = TypedDict('ModelSteamPlayersResponse', {
+    'appid': NotRequired[str],
+    'player_count': NotRequired[int],
+    'source_url': NotRequired[str],
+}, total=False)
+
+ModelSteamPrice = TypedDict('ModelSteamPrice', {
+    'currency': NotRequired[str],
+    'discount_percent': NotRequired[int],
+    'final': NotRequired[int],
+    'final_formatted': NotRequired[str],
+    'initial': NotRequired[int],
+    'initial_formatted': NotRequired[str],
+}, total=False)
+
+ModelSteamReview = TypedDict('ModelSteamReview', {
+    'author': NotRequired[ModelSteamReviewAuthor],
+    'comment_count': NotRequired[int],
+    'language': NotRequired[str],
+    'received_for_free': NotRequired[bool],
+    'recommendation_id': NotRequired[str],
+    'review': NotRequired[str],
+    'steam_purchase': NotRequired[bool],
+    'timestamp_created': NotRequired[int],
+    'timestamp_updated': NotRequired[int],
+    'voted_up': NotRequired[bool],
+    'votes_funny': NotRequired[int],
+    'votes_up': NotRequired[int],
+    'weighted_vote_score': NotRequired[str],
+    'written_during_early_access': NotRequired[bool],
+}, total=False)
+
+ModelSteamReviewAuthor = TypedDict('ModelSteamReviewAuthor', {
+    'last_played': NotRequired[int],
+    'num_games_owned': NotRequired[int],
+    'num_reviews': NotRequired[int],
+    'playtime_at_review': NotRequired[int],
+    'playtime_forever': NotRequired[int],
+    'playtime_last_two_weeks': NotRequired[int],
+    'steamid': NotRequired[str],
+}, total=False)
+
+ModelSteamReviewSummary = TypedDict('ModelSteamReviewSummary', {
+    'num_reviews': NotRequired[int],
+    'review_score': NotRequired[int],
+    'review_score_desc': NotRequired[str],
+    'total_negative': NotRequired[int],
+    'total_positive': NotRequired[int],
+    'total_reviews': NotRequired[int],
+}, total=False)
+
+ModelSteamReviewsHistogramResponse = TypedDict('ModelSteamReviewsHistogramResponse', {
+    'appid': NotRequired[str],
+    'count_all_reviews': NotRequired[int],
+    'end_date': NotRequired[int],
+    'recent': NotRequired[list[ModelSteamHistogramBucket]],
+    'rollup_type': NotRequired[str],
+    'rollups': NotRequired[list[ModelSteamHistogramBucket]],
+    'source_url': NotRequired[str],
+    'start_date': NotRequired[int],
+}, total=False)
+
+ModelSteamReviewsResponse = TypedDict('ModelSteamReviewsResponse', {
+    'appid': NotRequired[str],
+    'count': NotRequired[int],
+    'cursor': NotRequired[str],
+    'query_summary': NotRequired[ModelSteamReviewSummary],
+    'reviews': NotRequired[list[ModelSteamReview]],
+    'source_url': NotRequired[str],
+}, total=False)
+
+ModelSteamSearchItem = TypedDict('ModelSteamSearchItem', {
+    'controller_support': NotRequired[str],
+    'id': NotRequired[int],
+    'metascore': NotRequired[str],
+    'name': NotRequired[str],
+    'platforms': NotRequired[ModelSteamPlatforms],
+    'price': NotRequired[ModelSteamPrice],
+    'streamingvideo': NotRequired[bool],
+    'tiny_image': NotRequired[str],
+    'type': NotRequired[str],
+}, total=False)
+
+ModelSteamSearchResponse = TypedDict('ModelSteamSearchResponse', {
+    'count': NotRequired[int],
+    'items': NotRequired[list[ModelSteamSearchItem]],
+    'source_url': NotRequired[str],
+    'term': NotRequired[str],
+    'total': NotRequired[int],
+}, total=False)
+
+ModelSteamSearchResultRow = TypedDict('ModelSteamSearchResultRow', {
+    'appid': NotRequired[str],
+    'bundleid': NotRequired[str],
+    'discount_pct': NotRequired[str],
+    'name': NotRequired[str],
+    'packageid': NotRequired[str],
+    'platforms': NotRequired[ModelSteamPlatforms],
+    'price': NotRequired[str],
+    'release_date': NotRequired[str],
+    'review_summary': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelSteamSearchResultsResponse = TypedDict('ModelSteamSearchResultsResponse', {
+    'count': NotRequired[int],
+    'results': NotRequired[list[ModelSteamSearchResultRow]],
+    'source_url': NotRequired[str],
+    'start': NotRequired[int],
+    'term': NotRequired[str],
+    'total': NotRequired[int],
+}, total=False)
+
+ModelSteamSteamSpyResponse = TypedDict('ModelSteamSteamSpyResponse', {
+    'appid': NotRequired[int],
+    'average_2weeks': NotRequired[int],
+    'average_forever': NotRequired[int],
+    'ccu': NotRequired[int],
+    'developer': NotRequired[str],
+    'discount': NotRequired[str],
+    'genre': NotRequired[str],
+    'initialprice': NotRequired[str],
+    'languages': NotRequired[str],
+    'median_2weeks': NotRequired[int],
+    'median_forever': NotRequired[int],
+    'name': NotRequired[str],
+    'negative': NotRequired[int],
+    'owners': NotRequired[str],
+    'positive': NotRequired[int],
+    'price': NotRequired[str],
+    'publisher': NotRequired[str],
+    'source': NotRequired[str],
+    'source_url': NotRequired[str],
+    'tags': NotRequired[dict[str, int]],
+    'userscore': NotRequired[int],
+}, total=False)
+
+ModelSteamAchievementsResponseDoc = TypedDict('ModelSteamAchievementsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelSteamAchievementsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelSteamAppResponseDoc = TypedDict('ModelSteamAppResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelSteamAppDetails],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelSteamFeaturedCategoriesResponseDoc = TypedDict('ModelSteamFeaturedCategoriesResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelSteamFeaturedCategoriesResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelSteamFeaturedResponseDoc = TypedDict('ModelSteamFeaturedResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelSteamFeaturedResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelSteamHistogramResponseDoc = TypedDict('ModelSteamHistogramResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelSteamReviewsHistogramResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelSteamNewsResponseDoc = TypedDict('ModelSteamNewsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelSteamNewsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelSteamPackageResponseDoc = TypedDict('ModelSteamPackageResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelSteamPackageDetails],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelSteamPlayersResponseDoc = TypedDict('ModelSteamPlayersResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelSteamPlayersResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelSteamReviewsResponseDoc = TypedDict('ModelSteamReviewsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelSteamReviewsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelSteamSearchResponseDoc = TypedDict('ModelSteamSearchResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelSteamSearchResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelSteamSearchResultsResponseDoc = TypedDict('ModelSteamSearchResultsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelSteamSearchResultsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelSteamSteamspyResponseDoc = TypedDict('ModelSteamSteamspyResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelSteamSteamSpyResponse],
+    'msg': NotRequired[str],
 }, total=False)
 
 ModelTechstackResult = TypedDict('ModelTechstackResult', {
@@ -16249,17 +16730,6 @@ GitHubGithubRepoReleasesParams = TypedDict('GitHubGithubRepoReleasesParams', {
     'per_page': NotRequired[int],
 }, total=False)
 
-GitHubGithubRepoStargazersResponse = ModelAppResponse
-GitHubGithubRepoStargazersParams = TypedDict('GitHubGithubRepoStargazersParams', {
-    '_response_type': NotRequired[ResponseType],
-    '_timeout': NotRequired[float],
-    '_headers': NotRequired[Mapping[str, str]],
-    'owner': Required[str],
-    'repo': Required[str],
-    'page': NotRequired[int],
-    'per_page': NotRequired[int],
-}, total=False)
-
 GitHubGithubSearchRepositoriesResponse = ModelAppResponse
 GitHubGithubSearchRepositoriesParams = TypedDict('GitHubGithubSearchRepositoriesParams', {
     '_response_type': NotRequired[ResponseType],
@@ -16987,6 +17457,118 @@ InstagramReelsParams = TypedDict('InstagramReelsParams', {
     '_headers': NotRequired[Mapping[str, str]],
     'id': Required[str],
     'max_id': NotRequired[str],
+}, total=False)
+
+JobsAshbyBoardResponse = ModelJobsBoardResponseDoc
+JobsAshbyBoardParams = TypedDict('JobsAshbyBoardParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'org': Required[str],
+    'include_compensation': NotRequired[bool],
+}, total=False)
+
+JobsCompanySearchResponse = ModelJobsSearchResponseDoc
+JobsCompanySearchParams = TypedDict('JobsCompanySearchParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'slug': Required[str],
+}, total=False)
+
+JobsGreenhouseBoardResponse = ModelJobsBoardResponseDoc
+JobsGreenhouseBoardParams = TypedDict('JobsGreenhouseBoardParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'token': Required[str],
+    'content': NotRequired[bool],
+}, total=False)
+
+JobsGreenhouseJobResponse = ModelJobsJobResponseDoc
+JobsGreenhouseJobParams = TypedDict('JobsGreenhouseJobParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'token': Required[str],
+    'id': Required[str],
+}, total=False)
+
+JobsHiringSignalsResponse = ModelJobsSignalsResponseDoc
+JobsHiringSignalsParams = TypedDict('JobsHiringSignalsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'provider': Required[Literal['greenhouse', 'lever', 'ashby', 'workday', 'smartrecruiters']],
+    'token': NotRequired[str],
+    'company': NotRequired[str],
+    'org': NotRequired[str],
+    'tenant': NotRequired[str],
+    'datacenter': NotRequired[str],
+    'site': NotRequired[str],
+}, total=False)
+
+JobsLeverPostingResponse = ModelJobsJobResponseDoc
+JobsLeverPostingParams = TypedDict('JobsLeverPostingParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'company': Required[str],
+    'id': Required[str],
+}, total=False)
+
+JobsLeverPostingsResponse = ModelJobsBoardResponseDoc
+JobsLeverPostingsParams = TypedDict('JobsLeverPostingsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'company': Required[str],
+    'department': NotRequired[str],
+    'location': NotRequired[str],
+    'remote': NotRequired[bool],
+}, total=False)
+
+JobsSmartrecruitersPostingResponse = ModelJobsJobResponseDoc
+JobsSmartrecruitersPostingParams = TypedDict('JobsSmartrecruitersPostingParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'company': Required[str],
+    'id': Required[str],
+}, total=False)
+
+JobsSmartrecruitersPostingsResponse = ModelJobsBoardResponseDoc
+JobsSmartrecruitersPostingsParams = TypedDict('JobsSmartrecruitersPostingsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'company': Required[str],
+    'limit': NotRequired[int],
+    'offset': NotRequired[int],
+}, total=False)
+
+JobsWorkdayBoardResponse = ModelJobsBoardResponseDoc
+JobsWorkdayBoardParams = TypedDict('JobsWorkdayBoardParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'tenant': Required[str],
+    'datacenter': Required[str],
+    'site': Required[str],
+    'search': NotRequired[str],
+    'limit': NotRequired[int],
+    'offset': NotRequired[int],
+}, total=False)
+
+JobsWorkdayJobResponse = ModelJobsJobResponseDoc
+JobsWorkdayJobParams = TypedDict('JobsWorkdayJobParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'tenant': Required[str],
+    'datacenter': Required[str],
+    'site': Required[str],
+    'path': Required[str],
 }, total=False)
 
 JustWatchJustwatchAgeCertificationsResponse = ModelJustwatchAgeCertificationsResponseDoc
@@ -18620,6 +19202,12 @@ SecEdgarSecCompanyIntelligenceParams = TypedDict('SecEdgarSecCompanyIntelligence
     '_headers': NotRequired[Mapping[str, str]],
     'cik': NotRequired[str],
     'ticker': NotRequired[str],
+    'enrich': NotRequired[Literal['market', 'news', 'hiring']],
+    'ats': NotRequired[Literal['greenhouse', 'lever', 'ashby', 'workday', 'smartrecruiters']],
+    'careers_slug': NotRequired[str],
+    'tenant': NotRequired[str],
+    'datacenter': NotRequired[str],
+    'site': NotRequired[str],
 }, total=False)
 
 SecEdgarSecCompanySearchResponse = ModelSecCompanySearchResponseDoc
@@ -19563,6 +20151,126 @@ SpotifyTracksSearchParams = TypedDict('SpotifyTracksSearchParams', {
     'include_album_pre_releases': NotRequired[bool],
     'include_authors': NotRequired[bool],
     'include_episode_content_ratings_v2': NotRequired[bool],
+}, total=False)
+
+SteamAchievementsResponse = ModelSteamAchievementsResponseDoc
+SteamAchievementsParams = TypedDict('SteamAchievementsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'appid': Required[str],
+}, total=False)
+
+SteamAppResponse = ModelSteamAppResponseDoc
+SteamAppParams = TypedDict('SteamAppParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'appid': Required[str],
+    'cc': NotRequired[str],
+    'l': NotRequired[str],
+    'filters': NotRequired[str],
+}, total=False)
+
+SteamFeaturedResponse = ModelSteamFeaturedResponseDoc
+SteamFeaturedParams = TypedDict('SteamFeaturedParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'cc': NotRequired[str],
+    'l': NotRequired[str],
+}, total=False)
+
+SteamFeaturedCategoriesResponse = ModelSteamFeaturedCategoriesResponseDoc
+SteamFeaturedCategoriesParams = TypedDict('SteamFeaturedCategoriesParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'cc': NotRequired[str],
+    'l': NotRequired[str],
+}, total=False)
+
+SteamNewsResponse = ModelSteamNewsResponseDoc
+SteamNewsParams = TypedDict('SteamNewsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'appid': Required[str],
+    'count': NotRequired[int],
+    'maxlength': NotRequired[int],
+}, total=False)
+
+SteamPackageResponse = ModelSteamPackageResponseDoc
+SteamPackageParams = TypedDict('SteamPackageParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'packageid': Required[str],
+    'cc': NotRequired[str],
+    'l': NotRequired[str],
+}, total=False)
+
+SteamPlayersResponse = ModelSteamPlayersResponseDoc
+SteamPlayersParams = TypedDict('SteamPlayersParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'appid': Required[str],
+}, total=False)
+
+SteamReviewsResponse = ModelSteamReviewsResponseDoc
+SteamReviewsParams = TypedDict('SteamReviewsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'appid': Required[str],
+    'filter': NotRequired[Literal['recent', 'updated', 'all']],
+    'language': NotRequired[str],
+    'review_type': NotRequired[Literal['all', 'positive', 'negative']],
+    'purchase_type': NotRequired[Literal['all', 'steam', 'non_steam_purchase']],
+    'day_range': NotRequired[int],
+    'num_per_page': NotRequired[int],
+    'cursor': NotRequired[str],
+}, total=False)
+
+SteamReviewsHistogramResponse = ModelSteamHistogramResponseDoc
+SteamReviewsHistogramParams = TypedDict('SteamReviewsHistogramParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'appid': Required[str],
+    'language': NotRequired[str],
+}, total=False)
+
+SteamSearchResponse = ModelSteamSearchResponseDoc
+SteamSearchParams = TypedDict('SteamSearchParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'term': Required[str],
+    'cc': NotRequired[str],
+    'l': NotRequired[str],
+}, total=False)
+
+SteamSearchResultsResponse = ModelSteamSearchResultsResponseDoc
+SteamSearchResultsParams = TypedDict('SteamSearchResultsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'term': Required[str],
+    'start': NotRequired[int],
+    'count': NotRequired[int],
+    'sort_by': NotRequired[Literal['Relevance', 'Released_DESC', 'Name_ASC', 'Price_ASC', 'Price_DESC', 'Reviews_DESC']],
+    'cc': NotRequired[str],
+    'l': NotRequired[str],
+}, total=False)
+
+SteamSteamspyResponse = ModelSteamSteamspyResponseDoc
+SteamSteamspyParams = TypedDict('SteamSteamspyParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'appid': Required[str],
 }, total=False)
 
 TiktokCategoryResponse = ModelTiktokCategoryResponseDoc
@@ -20804,7 +21512,6 @@ class GitHubGroup:
     def github_repo_forks(self, **params: Unpack[GitHubGithubRepoForksParams]) -> GitHubGithubRepoForksResponse: ...
     def github_repo_languages(self, **params: Unpack[GitHubGithubRepoLanguagesParams]) -> GitHubGithubRepoLanguagesResponse: ...
     def github_repo_releases(self, **params: Unpack[GitHubGithubRepoReleasesParams]) -> GitHubGithubRepoReleasesResponse: ...
-    def github_repo_stargazers(self, **params: Unpack[GitHubGithubRepoStargazersParams]) -> GitHubGithubRepoStargazersResponse: ...
     def github_search_repositories(self, **params: Unpack[GitHubGithubSearchRepositoriesParams]) -> GitHubGithubSearchRepositoriesResponse: ...
     def github_search_users(self, **params: Unpack[GitHubGithubSearchUsersParams]) -> GitHubGithubSearchUsersResponse: ...
     def github_trending(self, **params: Unpack[GitHubGithubTrendingParams]) -> GitHubGithubTrendingResponse: ...
@@ -20891,6 +21598,19 @@ class InstagramGroup:
     def post(self, **params: Unpack[InstagramPostParams]) -> InstagramPostResponse: ...
     def profile(self, **params: Unpack[InstagramProfileParams]) -> InstagramProfileResponse: ...
     def reels(self, **params: Unpack[InstagramReelsParams]) -> InstagramReelsResponse: ...
+
+class JobsGroup:
+    def ashby_board(self, **params: Unpack[JobsAshbyBoardParams]) -> JobsAshbyBoardResponse: ...
+    def company_search(self, **params: Unpack[JobsCompanySearchParams]) -> JobsCompanySearchResponse: ...
+    def greenhouse_board(self, **params: Unpack[JobsGreenhouseBoardParams]) -> JobsGreenhouseBoardResponse: ...
+    def greenhouse_job(self, **params: Unpack[JobsGreenhouseJobParams]) -> JobsGreenhouseJobResponse: ...
+    def hiring_signals(self, **params: Unpack[JobsHiringSignalsParams]) -> JobsHiringSignalsResponse: ...
+    def lever_posting(self, **params: Unpack[JobsLeverPostingParams]) -> JobsLeverPostingResponse: ...
+    def lever_postings(self, **params: Unpack[JobsLeverPostingsParams]) -> JobsLeverPostingsResponse: ...
+    def smartrecruiters_posting(self, **params: Unpack[JobsSmartrecruitersPostingParams]) -> JobsSmartrecruitersPostingResponse: ...
+    def smartrecruiters_postings(self, **params: Unpack[JobsSmartrecruitersPostingsParams]) -> JobsSmartrecruitersPostingsResponse: ...
+    def workday_board(self, **params: Unpack[JobsWorkdayBoardParams]) -> JobsWorkdayBoardResponse: ...
+    def workday_job(self, **params: Unpack[JobsWorkdayJobParams]) -> JobsWorkdayJobResponse: ...
 
 class JustWatchGroup:
     def justwatch_age_certifications(self, **params: Unpack[JustWatchJustwatchAgeCertificationsParams]) -> JustWatchJustwatchAgeCertificationsResponse: ...
@@ -21187,6 +21907,20 @@ class SpotifyGroup:
     def track_similar_albums(self, **params: Unpack[SpotifyTrackSimilarAlbumsParams]) -> SpotifyTrackSimilarAlbumsResponse: ...
     def tracks_search(self, **params: Unpack[SpotifyTracksSearchParams]) -> SpotifyTracksSearchResponse: ...
 
+class SteamGroup:
+    def achievements(self, **params: Unpack[SteamAchievementsParams]) -> SteamAchievementsResponse: ...
+    def app(self, **params: Unpack[SteamAppParams]) -> SteamAppResponse: ...
+    def featured(self, **params: Unpack[SteamFeaturedParams]) -> SteamFeaturedResponse: ...
+    def featured_categories(self, **params: Unpack[SteamFeaturedCategoriesParams]) -> SteamFeaturedCategoriesResponse: ...
+    def news(self, **params: Unpack[SteamNewsParams]) -> SteamNewsResponse: ...
+    def package(self, **params: Unpack[SteamPackageParams]) -> SteamPackageResponse: ...
+    def players(self, **params: Unpack[SteamPlayersParams]) -> SteamPlayersResponse: ...
+    def reviews(self, **params: Unpack[SteamReviewsParams]) -> SteamReviewsResponse: ...
+    def reviews_histogram(self, **params: Unpack[SteamReviewsHistogramParams]) -> SteamReviewsHistogramResponse: ...
+    def search(self, **params: Unpack[SteamSearchParams]) -> SteamSearchResponse: ...
+    def search_results(self, **params: Unpack[SteamSearchResultsParams]) -> SteamSearchResultsResponse: ...
+    def steamspy(self, **params: Unpack[SteamSteamspyParams]) -> SteamSteamspyResponse: ...
+
 class TiktokGroup:
     def category(self, **params: Unpack[TiktokCategoryParams]) -> TiktokCategoryResponse: ...
     def video_comments(self, **params: Unpack[TiktokVideoCommentsParams]) -> TiktokVideoCommentsResponse: ...
@@ -21473,7 +22207,6 @@ OperationId = Literal[
     'github-repo-forks',
     'github-repo-languages',
     'github-repo-releases',
-    'github-repo-stargazers',
     'github-search-repositories',
     'github-search-users',
     'github-trending',
@@ -21552,6 +22285,17 @@ OperationId = Literal[
     'instagram-post',
     'instagram-profile',
     'instagram-reels',
+    'jobs-ashby-board',
+    'jobs-company-search',
+    'jobs-greenhouse-board',
+    'jobs-greenhouse-job',
+    'jobs-hiring-signals',
+    'jobs-lever-posting',
+    'jobs-lever-postings',
+    'jobs-smartrecruiters-posting',
+    'jobs-smartrecruiters-postings',
+    'jobs-workday-board',
+    'jobs-workday-job',
     'justwatch-age-certifications',
     'justwatch-discover',
     'justwatch-episode-by-id',
@@ -21809,6 +22553,18 @@ OperationId = Literal[
     'spotify-track-recommended',
     'spotify-track-similar-albums',
     'spotify-tracks-search',
+    'steam-achievements',
+    'steam-app',
+    'steam-featured',
+    'steam-featured-categories',
+    'steam-news',
+    'steam-package',
+    'steam-players',
+    'steam-reviews',
+    'steam-reviews-histogram',
+    'steam-search',
+    'steam-search-results',
+    'steam-steamspy',
     'tiktok-category',
     'tiktok-video-comments',
     'tiktok-explore',
@@ -21944,6 +22700,7 @@ class CrawloraClient:
     google_play: GooglePlayGroup
     imdb: ImdbGroup
     instagram: InstagramGroup
+    jobs: JobsGroup
     just_watch: JustWatchGroup
     kalshi: KalshiGroup
     linked_in: LinkedInGroup
@@ -21963,6 +22720,7 @@ class CrawloraClient:
     sofa_score: SofaScoreGroup
     spotify_podcasts: SpotifyPodcastsGroup
     spotify: SpotifyGroup
+    steam: SteamGroup
     tiktok: TiktokGroup
     trip_advisor: TripAdvisorGroup
     trust_mrr: TrustMrrGroup
@@ -23928,18 +24686,6 @@ class CrawloraClient:
     @overload
     def operation(
         self,
-        operation_id: Literal['github-repo-stargazers'],
-        params: GitHubGithubRepoStargazersParams,
-        *,
-        response_type: ResponseType = ...,
-        timeout: float | None = ...,
-        headers: Mapping[str, str] | None = ...,
-        retries: int | None = ...,
-        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
-    ) -> GitHubGithubRepoStargazersResponse: ...
-    @overload
-    def operation(
-        self,
         operation_id: Literal['github-search-repositories'],
         params: GitHubGithubSearchRepositoriesParams,
         *,
@@ -24873,6 +25619,138 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> InstagramReelsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['jobs-ashby-board'],
+        params: JobsAshbyBoardParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> JobsAshbyBoardResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['jobs-company-search'],
+        params: JobsCompanySearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> JobsCompanySearchResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['jobs-greenhouse-board'],
+        params: JobsGreenhouseBoardParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> JobsGreenhouseBoardResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['jobs-greenhouse-job'],
+        params: JobsGreenhouseJobParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> JobsGreenhouseJobResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['jobs-hiring-signals'],
+        params: JobsHiringSignalsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> JobsHiringSignalsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['jobs-lever-posting'],
+        params: JobsLeverPostingParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> JobsLeverPostingResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['jobs-lever-postings'],
+        params: JobsLeverPostingsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> JobsLeverPostingsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['jobs-smartrecruiters-posting'],
+        params: JobsSmartrecruitersPostingParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> JobsSmartrecruitersPostingResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['jobs-smartrecruiters-postings'],
+        params: JobsSmartrecruitersPostingsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> JobsSmartrecruitersPostingsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['jobs-workday-board'],
+        params: JobsWorkdayBoardParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> JobsWorkdayBoardResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['jobs-workday-job'],
+        params: JobsWorkdayJobParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> JobsWorkdayJobResponse: ...
     @overload
     def operation(
         self,
@@ -27957,6 +28835,150 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> SpotifyTracksSearchResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['steam-achievements'],
+        params: SteamAchievementsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> SteamAchievementsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['steam-app'],
+        params: SteamAppParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> SteamAppResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['steam-featured'],
+        params: SteamFeaturedParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> SteamFeaturedResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['steam-featured-categories'],
+        params: SteamFeaturedCategoriesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> SteamFeaturedCategoriesResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['steam-news'],
+        params: SteamNewsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> SteamNewsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['steam-package'],
+        params: SteamPackageParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> SteamPackageResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['steam-players'],
+        params: SteamPlayersParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> SteamPlayersResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['steam-reviews'],
+        params: SteamReviewsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> SteamReviewsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['steam-reviews-histogram'],
+        params: SteamReviewsHistogramParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> SteamReviewsHistogramResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['steam-search'],
+        params: SteamSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> SteamSearchResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['steam-search-results'],
+        params: SteamSearchResultsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> SteamSearchResultsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['steam-steamspy'],
+        params: SteamSteamspyParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> SteamSteamspyResponse: ...
     @overload
     def operation(
         self,
@@ -31176,18 +32198,6 @@ class CrawloraClient:
     @overload
     def request(
         self,
-        operation_id: Literal['github-repo-stargazers'],
-        params: GitHubGithubRepoStargazersParams,
-        *,
-        response_type: ResponseType = ...,
-        timeout: float | None = ...,
-        headers: Mapping[str, str] | None = ...,
-        retries: int | None = ...,
-        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
-    ) -> GitHubGithubRepoStargazersResponse: ...
-    @overload
-    def request(
-        self,
         operation_id: Literal['github-search-repositories'],
         params: GitHubGithubSearchRepositoriesParams,
         *,
@@ -32121,6 +33131,138 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> InstagramReelsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['jobs-ashby-board'],
+        params: JobsAshbyBoardParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> JobsAshbyBoardResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['jobs-company-search'],
+        params: JobsCompanySearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> JobsCompanySearchResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['jobs-greenhouse-board'],
+        params: JobsGreenhouseBoardParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> JobsGreenhouseBoardResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['jobs-greenhouse-job'],
+        params: JobsGreenhouseJobParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> JobsGreenhouseJobResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['jobs-hiring-signals'],
+        params: JobsHiringSignalsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> JobsHiringSignalsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['jobs-lever-posting'],
+        params: JobsLeverPostingParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> JobsLeverPostingResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['jobs-lever-postings'],
+        params: JobsLeverPostingsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> JobsLeverPostingsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['jobs-smartrecruiters-posting'],
+        params: JobsSmartrecruitersPostingParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> JobsSmartrecruitersPostingResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['jobs-smartrecruiters-postings'],
+        params: JobsSmartrecruitersPostingsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> JobsSmartrecruitersPostingsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['jobs-workday-board'],
+        params: JobsWorkdayBoardParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> JobsWorkdayBoardResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['jobs-workday-job'],
+        params: JobsWorkdayJobParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> JobsWorkdayJobResponse: ...
     @overload
     def request(
         self,
@@ -35205,6 +36347,150 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> SpotifyTracksSearchResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['steam-achievements'],
+        params: SteamAchievementsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> SteamAchievementsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['steam-app'],
+        params: SteamAppParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> SteamAppResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['steam-featured'],
+        params: SteamFeaturedParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> SteamFeaturedResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['steam-featured-categories'],
+        params: SteamFeaturedCategoriesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> SteamFeaturedCategoriesResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['steam-news'],
+        params: SteamNewsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> SteamNewsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['steam-package'],
+        params: SteamPackageParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> SteamPackageResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['steam-players'],
+        params: SteamPlayersParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> SteamPlayersResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['steam-reviews'],
+        params: SteamReviewsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> SteamReviewsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['steam-reviews-histogram'],
+        params: SteamReviewsHistogramParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> SteamReviewsHistogramResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['steam-search'],
+        params: SteamSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> SteamSearchResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['steam-search-results'],
+        params: SteamSearchResultsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> SteamSearchResultsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['steam-steamspy'],
+        params: SteamSteamspyParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> SteamSteamspyResponse: ...
     @overload
     def request(
         self,
