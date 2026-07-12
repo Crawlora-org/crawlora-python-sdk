@@ -2946,6 +2946,36 @@ ModelDatasetsGoogleBusinessSearchResponse = TypedDict('ModelDatasetsGoogleBusine
     'total': NotRequired[int],
 }, total=False)
 
+ModelDatasetsHousingFacetResponse = TypedDict('ModelDatasetsHousingFacetResponse', {
+    'dataset': NotRequired[str],
+    'facet': NotRequired[str],
+    'items': NotRequired[list[ModelEsHousingMarketDatasetFacetItem]],
+}, total=False)
+
+ModelDatasetsHousingSearchResponse = TypedDict('ModelDatasetsHousingSearchResponse', {
+    'dataset': NotRequired[str],
+    'items': NotRequired[list[ModelEsHousingMarketRecord]],
+    'page': NotRequired[int],
+    'page_size': NotRequired[int],
+    'sort': NotRequired[str],
+    'total': NotRequired[int],
+}, total=False)
+
+ModelDatasetsPlaystationFacetResponse = TypedDict('ModelDatasetsPlaystationFacetResponse', {
+    'dataset': NotRequired[str],
+    'facet': NotRequired[str],
+    'items': NotRequired[list[ModelEsPlaystationGameDatasetFacetItem]],
+}, total=False)
+
+ModelDatasetsPlaystationSearchResponse = TypedDict('ModelDatasetsPlaystationSearchResponse', {
+    'dataset': NotRequired[str],
+    'items': NotRequired[list[ModelEsPlaystationGameRecord]],
+    'page': NotRequired[int],
+    'page_size': NotRequired[int],
+    'sort': NotRequired[str],
+    'total': NotRequired[int],
+}, total=False)
+
 ModelDatasetsProductHuntMakersFacetResponse = TypedDict('ModelDatasetsProductHuntMakersFacetResponse', {
     'dataset': NotRequired[str],
     'facet': NotRequired[str],
@@ -2996,6 +3026,76 @@ ModelDatasetsProductHuntTrendsSearchResponse = TypedDict('ModelDatasetsProductHu
 ModelDatasetsReviewsSearchResponse = TypedDict('ModelDatasetsReviewsSearchResponse', {
     'dataset': NotRequired[str],
     'items': NotRequired[list[ModelEsAppReview]],
+    'page': NotRequired[int],
+    'page_size': NotRequired[int],
+    'sort': NotRequired[str],
+    'total': NotRequired[int],
+}, total=False)
+
+ModelDatasetsSteamAchievementsSearchResponse = TypedDict('ModelDatasetsSteamAchievementsSearchResponse', {
+    'dataset': NotRequired[str],
+    'items': NotRequired[list[ModelEsSteamAchievementRecord]],
+    'page': NotRequired[int],
+    'page_size': NotRequired[int],
+    'sort': NotRequired[str],
+    'total': NotRequired[int],
+}, total=False)
+
+ModelDatasetsSteamChartsSearchResponse = TypedDict('ModelDatasetsSteamChartsSearchResponse', {
+    'dataset': NotRequired[str],
+    'items': NotRequired[list[ModelEsSteamChartEntry]],
+    'page': NotRequired[int],
+    'page_size': NotRequired[int],
+    'snapshot_date': NotRequired[str],
+    'sort': NotRequired[str],
+    'total': NotRequired[int],
+}, total=False)
+
+ModelDatasetsSteamFacetResponse = TypedDict('ModelDatasetsSteamFacetResponse', {
+    'dataset': NotRequired[str],
+    'facet': NotRequired[str],
+    'items': NotRequired[list[ModelEsSteamGameDatasetFacetItem]],
+}, total=False)
+
+ModelDatasetsSteamNewsSearchResponse = TypedDict('ModelDatasetsSteamNewsSearchResponse', {
+    'dataset': NotRequired[str],
+    'items': NotRequired[list[ModelEsSteamNewsRecord]],
+    'page': NotRequired[int],
+    'page_size': NotRequired[int],
+    'sort': NotRequired[str],
+    'total': NotRequired[int],
+}, total=False)
+
+ModelDatasetsSteamPlayerCountsSearchResponse = TypedDict('ModelDatasetsSteamPlayerCountsSearchResponse', {
+    'dataset': NotRequired[str],
+    'items': NotRequired[list[ModelEsSteamPlayerCountRecord]],
+    'page': NotRequired[int],
+    'page_size': NotRequired[int],
+    'sort': NotRequired[str],
+    'total': NotRequired[int],
+}, total=False)
+
+ModelDatasetsSteamPricesSearchResponse = TypedDict('ModelDatasetsSteamPricesSearchResponse', {
+    'dataset': NotRequired[str],
+    'items': NotRequired[list[ModelEsSteamPriceRecord]],
+    'page': NotRequired[int],
+    'page_size': NotRequired[int],
+    'sort': NotRequired[str],
+    'total': NotRequired[int],
+}, total=False)
+
+ModelDatasetsSteamReviewsSearchResponse = TypedDict('ModelDatasetsSteamReviewsSearchResponse', {
+    'dataset': NotRequired[str],
+    'items': NotRequired[list[ModelEsSteamReviewRecord]],
+    'page': NotRequired[int],
+    'page_size': NotRequired[int],
+    'sort': NotRequired[str],
+    'total': NotRequired[int],
+}, total=False)
+
+ModelDatasetsSteamSearchResponse = TypedDict('ModelDatasetsSteamSearchResponse', {
+    'dataset': NotRequired[str],
+    'items': NotRequired[list[ModelEsSteamGameRecord]],
     'page': NotRequired[int],
     'page_size': NotRequired[int],
     'sort': NotRequired[str],
@@ -3110,9 +3210,45 @@ ModelDatasetsGoogleMapBusinessesSearchResponseDoc = TypedDict('ModelDatasetsGoog
     'msg': NotRequired[str],
 }, total=False)
 
+ModelDatasetsHousingMarketItemResponseDoc = TypedDict('ModelDatasetsHousingMarketItemResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelEsHousingMarketRecord],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelDatasetsHousingMarketsFacetResponseDoc = TypedDict('ModelDatasetsHousingMarketsFacetResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelDatasetsHousingFacetResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelDatasetsHousingMarketsSearchResponseDoc = TypedDict('ModelDatasetsHousingMarketsSearchResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelDatasetsHousingSearchResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
 ModelDatasetsListResponseDoc = TypedDict('ModelDatasetsListResponseDoc', {
     'code': NotRequired[int],
     'data': NotRequired[ModelDatasetsDatasetListResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelDatasetsPlaystationGameResponseDoc = TypedDict('ModelDatasetsPlaystationGameResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelEsPlaystationGameRecord],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelDatasetsPlaystationGamesFacetResponseDoc = TypedDict('ModelDatasetsPlaystationGamesFacetResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelDatasetsPlaystationFacetResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelDatasetsPlaystationGamesSearchResponseDoc = TypedDict('ModelDatasetsPlaystationGamesSearchResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelDatasetsPlaystationSearchResponse],
     'msg': NotRequired[str],
 }, total=False)
 
@@ -3167,6 +3303,60 @@ ModelDatasetsProducthuntTrendsSearchResponseDoc = TypedDict('ModelDatasetsProduc
 ModelDatasetsReviewsSearchResponseDoc = TypedDict('ModelDatasetsReviewsSearchResponseDoc', {
     'code': NotRequired[int],
     'data': NotRequired[ModelDatasetsReviewsSearchResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelDatasetsSteamAchievementsSearchResponseDoc = TypedDict('ModelDatasetsSteamAchievementsSearchResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelDatasetsSteamAchievementsSearchResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelDatasetsSteamChartsSearchResponseDoc = TypedDict('ModelDatasetsSteamChartsSearchResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelDatasetsSteamChartsSearchResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelDatasetsSteamGameResponseDoc = TypedDict('ModelDatasetsSteamGameResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelEsSteamGameRecord],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelDatasetsSteamGamesFacetResponseDoc = TypedDict('ModelDatasetsSteamGamesFacetResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelDatasetsSteamFacetResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelDatasetsSteamGamesSearchResponseDoc = TypedDict('ModelDatasetsSteamGamesSearchResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelDatasetsSteamSearchResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelDatasetsSteamNewsSearchResponseDoc = TypedDict('ModelDatasetsSteamNewsSearchResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelDatasetsSteamNewsSearchResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelDatasetsSteamPlayerCountsSearchResponseDoc = TypedDict('ModelDatasetsSteamPlayerCountsSearchResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelDatasetsSteamPlayerCountsSearchResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelDatasetsSteamPricesSearchResponseDoc = TypedDict('ModelDatasetsSteamPricesSearchResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelDatasetsSteamPricesSearchResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelDatasetsSteamReviewsSearchResponseDoc = TypedDict('ModelDatasetsSteamReviewsSearchResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelDatasetsSteamReviewsSearchResponse],
     'msg': NotRequired[str],
 }, total=False)
 
@@ -3749,6 +3939,110 @@ ModelEsGoogleBusinessDatasetItem = TypedDict('ModelEsGoogleBusinessDatasetItem',
     'website_status': NotRequired[ModelEsWebsiteStatus],
 }, total=False)
 
+ModelEsHousingMarketDatasetFacetItem = TypedDict('ModelEsHousingMarketDatasetFacetItem', {
+    'count': NotRequired[int],
+    'value': NotRequired[str],
+}, total=False)
+
+ModelEsHousingMarketRecord = TypedDict('ModelEsHousingMarketRecord', {
+    'affordability_gap': NotRequired[int],
+    'avg_sale_to_list': NotRequired[float],
+    'city': NotRequired[str],
+    'homes_sold': NotRequired[int],
+    'income_geo_id': NotRequired[str],
+    'income_vintage': NotRequired[str],
+    'inventory': NotRequired[int],
+    'is_latest': NotRequired[bool],
+    'last_updated': NotRequired[str],
+    'list_price_to_income': NotRequired[float],
+    'loaded_at': NotRequired[str],
+    'median_dom': NotRequired[float],
+    'median_household_income': NotRequired[int],
+    'median_list_ppsf': NotRequired[float],
+    'median_list_ppsf_mom': NotRequired[float],
+    'median_list_ppsf_yoy': NotRequired[float],
+    'median_list_price': NotRequired[float],
+    'median_list_price_mom': NotRequired[float],
+    'median_list_price_yoy': NotRequired[float],
+    'median_ppsf': NotRequired[float],
+    'median_ppsf_mom': NotRequired[float],
+    'median_ppsf_yoy': NotRequired[float],
+    'median_sale_price': NotRequired[float],
+    'median_sale_price_mom': NotRequired[float],
+    'median_sale_price_yoy': NotRequired[float],
+    'months_of_supply': NotRequired[float],
+    'mortgage_rate_pct': NotRequired[float],
+    'new_listings': NotRequired[int],
+    'off_market_in_two_weeks': NotRequired[float],
+    'parent_metro': NotRequired[str],
+    'parent_metro_code': NotRequired[str],
+    'pending_sales': NotRequired[int],
+    'period_begin': NotRequired[str],
+    'period_end': NotRequired[str],
+    'price_drops': NotRequired[float],
+    'price_to_income': NotRequired[float],
+    'property_type': NotRequired[str],
+    'property_type_id': NotRequired[int],
+    'region': NotRequired[str],
+    'region_type': NotRequired[str],
+    'region_type_id': NotRequired[int],
+    'run_id': NotRequired[str],
+    'salary_to_buy': NotRequired[int],
+    'schema_version': NotRequired[int],
+    'sold_above_list': NotRequired[float],
+    'source': NotRequired[str],
+    'state': NotRequired[str],
+    'state_code': NotRequired[str],
+    'table_id': NotRequired[int],
+    'zip_code': NotRequired[str],
+}, total=False)
+
+ModelEsPlaystationGameDatasetFacetItem = TypedDict('ModelEsPlaystationGameDatasetFacetItem', {
+    'count': NotRequired[int],
+    'value': NotRequired[str],
+}, total=False)
+
+ModelEsPlaystationGameRecord = TypedDict('ModelEsPlaystationGameRecord', {
+    'addon_count': NotRequired[int],
+    'base_price_value': NotRequired[int],
+    'classification': NotRequired[str],
+    'coming_soon': NotRequired[bool],
+    'concept_id': NotRequired[str],
+    'content_descriptors': NotRequired[list[str]],
+    'content_rating_authority': NotRequired[str],
+    'content_rating_desc': NotRequired[str],
+    'content_rating_name': NotRequired[str],
+    'crawled_at': NotRequired[str],
+    'currency': NotRequired[str],
+    'description': NotRequired[str],
+    'discount_end_time': NotRequired[str],
+    'discount_pct': NotRequired[int],
+    'discount_text': NotRequired[str],
+    'discounted_value': NotRequired[int],
+    'edition_count': NotRequired[int],
+    'genres': NotRequired[list[str]],
+    'header_image': NotRequired[str],
+    'is_addon': NotRequired[bool],
+    'is_free': NotRequired[bool],
+    'is_tied_to_subscription': NotRequired[bool],
+    'name': NotRequired[str],
+    'np_title_id': NotRequired[str],
+    'platforms': NotRequired[list[str]],
+    'price_tier': NotRequired[str],
+    'product_id': NotRequired[str],
+    'publisher': NotRequired[str],
+    'region': NotRequired[str],
+    'release_date': NotRequired[str],
+    'release_year': NotRequired[int],
+    'run_id': NotRequired[str],
+    'schema_version': NotRequired[int],
+    'seed_rank': NotRequired[int],
+    'service_branding': NotRequired[list[str]],
+    'source_url': NotRequired[str],
+    'star_rating_avg': NotRequired[float],
+    'star_rating_count': NotRequired[int],
+}, total=False)
+
 ModelEsPostSound = TypedDict('ModelEsPostSound', {
     'author': NotRequired[str],
     'music_id': NotRequired[str],
@@ -3891,6 +4185,161 @@ ModelEsProductHuntTrendTopProduct = TypedDict('ModelEsProductHuntTrendTopProduct
 ModelEsProductHuntTrendsFacetItem = TypedDict('ModelEsProductHuntTrendsFacetItem', {
     'count': NotRequired[int],
     'value': NotRequired[str],
+}, total=False)
+
+ModelEsSteamAchievementRecord = TypedDict('ModelEsSteamAchievementRecord', {
+    'appid': NotRequired[int],
+    'crawled_at': NotRequired[str],
+    'name': NotRequired[str],
+    'percent': NotRequired[float],
+    'rank': NotRequired[int],
+    'schema_version': NotRequired[int],
+}, total=False)
+
+ModelEsSteamChartEntry = TypedDict('ModelEsSteamChartEntry', {
+    'app_id': NotRequired[str],
+    'chart': NotRequired[str],
+    'chart_uid': NotRequired[str],
+    'concurrent_in_game': NotRequired[int],
+    'country': NotRequired[str],
+    'crawled_at': NotRequired[str],
+    'final_price_cents': NotRequired[int],
+    'last_week_rank': NotRequired[int],
+    'name': NotRequired[str],
+    'peak_in_game': NotRequired[int],
+    'rank': NotRequired[int],
+    'review_summary': NotRequired[str],
+    'snapshot_date': NotRequired[str],
+}, total=False)
+
+ModelEsSteamGameDatasetFacetItem = TypedDict('ModelEsSteamGameDatasetFacetItem', {
+    'count': NotRequired[int],
+    'value': NotRequired[str],
+}, total=False)
+
+ModelEsSteamGameRecord = TypedDict('ModelEsSteamGameRecord', {
+    'achievements_count': NotRequired[int],
+    'appid': NotRequired[int],
+    'available': NotRequired[bool],
+    'average_2weeks_min': NotRequired[int],
+    'average_forever_min': NotRequired[int],
+    'background': NotRequired[str],
+    'categories': NotRequired[list[str]],
+    'ccu': NotRequired[int],
+    'coming_soon': NotRequired[bool],
+    'content_descriptor_ids': NotRequired[list[int]],
+    'controller_support': NotRequired[str],
+    'crawled_at': NotRequired[str],
+    'developer': NotRequired[str],
+    'developers': NotRequired[list[str]],
+    'discount_pct': NotRequired[int],
+    'dlc_count': NotRequired[int],
+    'genres': NotRequired[list[str]],
+    'has_owner_estimate': NotRequired[bool],
+    'header_image': NotRequired[str],
+    'initial_price_cents': NotRequired[int],
+    'is_free': NotRequired[bool],
+    'language_count': NotRequired[int],
+    'languages': NotRequired[list[str]],
+    'median_2weeks_min': NotRequired[int],
+    'median_forever_min': NotRequired[int],
+    'metacritic': NotRequired[int],
+    'movie_count': NotRequired[int],
+    'name': NotRequired[str],
+    'negative': NotRequired[int],
+    'owners_bucket': NotRequired[str],
+    'owners_max': NotRequired[int],
+    'owners_midpoint': NotRequired[int],
+    'owners_min': NotRequired[int],
+    'package_count': NotRequired[int],
+    'platform_linux': NotRequired[bool],
+    'platform_mac': NotRequired[bool],
+    'platform_windows': NotRequired[bool],
+    'positive': NotRequired[int],
+    'price_cents': NotRequired[int],
+    'price_tier': NotRequired[str],
+    'primary_tag': NotRequired[str],
+    'publisher': NotRequired[str],
+    'publishers': NotRequired[list[str]],
+    'recommendations': NotRequired[int],
+    'release_date': NotRequired[str],
+    'release_year': NotRequired[int],
+    'required_age': NotRequired[int],
+    'review_score': NotRequired[float],
+    'review_tier': NotRequired[str],
+    'run_id': NotRequired[str],
+    'schema_version': NotRequired[int],
+    'screenshot_count': NotRequired[int],
+    'seed_rank': NotRequired[int],
+    'short_description': NotRequired[str],
+    'tag_ids': NotRequired[list[int]],
+    'tag_schema_version': NotRequired[int],
+    'tags': NotRequired[list[str]],
+    'tags_enriched_at': NotRequired[str],
+    'total_reviews': NotRequired[int],
+    'type': NotRequired[str],
+    'website': NotRequired[str],
+}, total=False)
+
+ModelEsSteamNewsRecord = TypedDict('ModelEsSteamNewsRecord', {
+    'appid': NotRequired[int],
+    'author': NotRequired[str],
+    'contents': NotRequired[str],
+    'crawled_at': NotRequired[str],
+    'date': NotRequired[int],
+    'feed_label': NotRequired[str],
+    'feed_name': NotRequired[str],
+    'gid': NotRequired[str],
+    'is_external_url': NotRequired[bool],
+    'published_at': NotRequired[str],
+    'schema_version': NotRequired[int],
+    'tags': NotRequired[list[str]],
+    'title': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelEsSteamPlayerCountRecord = TypedDict('ModelEsSteamPlayerCountRecord', {
+    'appid': NotRequired[int],
+    'crawled_at': NotRequired[str],
+    'name': NotRequired[str],
+    'player_count': NotRequired[int],
+    'schema_version': NotRequired[int],
+    'snapshot_date': NotRequired[str],
+}, total=False)
+
+ModelEsSteamPriceRecord = TypedDict('ModelEsSteamPriceRecord', {
+    'appid': NotRequired[int],
+    'crawled_at': NotRequired[str],
+    'currency': NotRequired[str],
+    'discount_pct': NotRequired[int],
+    'initial_price_cents': NotRequired[int],
+    'is_free': NotRequired[bool],
+    'name': NotRequired[str],
+    'price_cents': NotRequired[int],
+    'schema_version': NotRequired[int],
+    'snapshot_date': NotRequired[str],
+}, total=False)
+
+ModelEsSteamReviewRecord = TypedDict('ModelEsSteamReviewRecord', {
+    'appid': NotRequired[int],
+    'author_playtime_forever_min': NotRequired[int],
+    'comment_count': NotRequired[int],
+    'crawled_at': NotRequired[str],
+    'created_at': NotRequired[str],
+    'language': NotRequired[str],
+    'playtime_at_review_min': NotRequired[int],
+    'received_for_free': NotRequired[bool],
+    'recommendation_id': NotRequired[str],
+    'review': NotRequired[str],
+    'schema_version': NotRequired[int],
+    'steam_purchase': NotRequired[bool],
+    'timestamp_created': NotRequired[int],
+    'timestamp_updated': NotRequired[int],
+    'voted_up': NotRequired[bool],
+    'votes_funny': NotRequired[int],
+    'votes_up': NotRequired[int],
+    'weighted_vote_score': NotRequired[float],
+    'written_during_early_access': NotRequired[bool],
 }, total=False)
 
 ModelEsTechstackDatasetFacetItem = TypedDict('ModelEsTechstackDatasetFacetItem', {
@@ -4295,6 +4744,33 @@ ModelEspnTeamResponseDoc = TypedDict('ModelEspnTeamResponseDoc', {
 ModelEspnTeamsResponseDoc = TypedDict('ModelEspnTeamsResponseDoc', {
     'code': NotRequired[int],
     'data': NotRequired[ModelEspnTeamsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelExtractOption = TypedDict('ModelExtractOption', {
+    'instructions': NotRequired[str],
+    'render': NotRequired[Literal['auto', 'http', 'browser']],
+    'schema': Required[dict[str, Any]],
+    'url': Required[str],
+}, total=False)
+
+ModelExtractResult = TypedDict('ModelExtractResult', {
+    'data': NotRequired[Any],
+    'final_url': NotRequired[str],
+    'model': NotRequired[str],
+    'url': NotRequired[str],
+    'usage': NotRequired[ModelExtractUsage],
+}, total=False)
+
+ModelExtractUsage = TypedDict('ModelExtractUsage', {
+    'input_tokens': NotRequired[int],
+    'output_tokens': NotRequired[int],
+    'total_tokens': NotRequired[int],
+}, total=False)
+
+ModelExtractResponseDoc = TypedDict('ModelExtractResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelExtractResult],
     'msg': NotRequired[str],
 }, total=False)
 
@@ -5842,6 +6318,7 @@ ModelJustwatchDiscoverResponse = TypedDict('ModelJustwatchDiscoverResponse', {
     'genres': NotRequired[list[str]],
     'language': NotRequired[str],
     'monetization_types': NotRequired[list[str]],
+    'production_countries': NotRequired[list[str]],
     'providers': NotRequired[list[str]],
     'results': NotRequired[list[ModelJustwatchSearchTitle]],
     'type': NotRequired[str],
@@ -5988,6 +6465,7 @@ ModelJustwatchSearchTitle = TypedDict('ModelJustwatchSearchTitle', {
     'offers': NotRequired[list[ModelJustwatchOffer]],
     'path': NotRequired[str],
     'poster_url': NotRequired[str],
+    'production_countries': NotRequired[list[str]],
     'title': NotRequired[str],
     'url': NotRequired[str],
     'year': NotRequired[int],
@@ -6859,7 +7337,7 @@ ModelMetaculusQuestionRow = TypedDict('ModelMetaculusQuestionRow', {
 }, total=False)
 
 ModelMetaculusQuestionScaling = TypedDict('ModelMetaculusQuestionScaling', {
-    'continuous_range': NotRequired[list[str]],
+    'continuous_range': NotRequired[list[float]],
     'inbound_outcome_count': NotRequired[int],
     'nominal_max': NotRequired[float],
     'nominal_min': NotRequired[float],
@@ -6954,6 +7432,209 @@ ModelPitchbookFundResponseDoc = TypedDict('ModelPitchbookFundResponseDoc', {
 ModelPitchbookInvestorResponseDoc = TypedDict('ModelPitchbookInvestorResponseDoc', {
     'code': NotRequired[int],
     'data': NotRequired[ModelPitchbookProfileResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelPlaystationAddOn = TypedDict('ModelPlaystationAddOn', {
+    'classification': NotRequired[str],
+    'name': NotRequired[str],
+    'price': NotRequired[ModelPlaystationDetailPrice],
+    'product_id': NotRequired[str],
+}, total=False)
+
+ModelPlaystationCollectionLink = TypedDict('ModelPlaystationCollectionLink', {
+    'category_id': NotRequired[str],
+    'link_type': NotRequired[str],
+    'name': NotRequired[str],
+}, total=False)
+
+ModelPlaystationConceptDetail = TypedDict('ModelPlaystationConceptDetail', {
+    'add_ons': NotRequired[list[ModelPlaystationAddOn]],
+    'content_rating': NotRequired[ModelPlaystationContentRating],
+    'default_product_id': NotRequired[str],
+    'description': NotRequired[str],
+    'editions': NotRequired[list[ModelPlaystationEdition]],
+    'genres': NotRequired[list[str]],
+    'id': NotRequired[str],
+    'invariant_name': NotRequired[str],
+    'media': NotRequired[list[ModelPlaystationMedia]],
+    'name': NotRequired[str],
+    'platforms': NotRequired[list[str]],
+    'price': NotRequired[ModelPlaystationDetailPrice],
+    'publisher': NotRequired[str],
+    'release_date': NotRequired[str],
+    'source_url': NotRequired[str],
+    'star_rating': NotRequired[ModelPlaystationStarRating],
+}, total=False)
+
+ModelPlaystationContentRating = TypedDict('ModelPlaystationContentRating', {
+    'authority': NotRequired[str],
+    'description': NotRequired[str],
+    'descriptors': NotRequired[list[str]],
+    'name': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelPlaystationDetailPrice = TypedDict('ModelPlaystationDetailPrice', {
+    'applicability': NotRequired[str],
+    'base_price': NotRequired[str],
+    'base_price_value': NotRequired[int],
+    'currency_code': NotRequired[str],
+    'discount_text': NotRequired[str],
+    'discounted_price': NotRequired[str],
+    'discounted_value': NotRequired[int],
+    'end_time': NotRequired[str],
+    'is_exclusive': NotRequired[bool],
+    'is_free': NotRequired[bool],
+    'is_tied_to_subscription': NotRequired[bool],
+    'service_branding': NotRequired[list[str]],
+    'upsell_text': NotRequired[str],
+}, total=False)
+
+ModelPlaystationEdition = TypedDict('ModelPlaystationEdition', {
+    'classification': NotRequired[str],
+    'name': NotRequired[str],
+    'platforms': NotRequired[list[str]],
+    'price': NotRequired[ModelPlaystationDetailPrice],
+    'product_id': NotRequired[str],
+}, total=False)
+
+ModelPlaystationFacet = TypedDict('ModelPlaystationFacet', {
+    'display_name': NotRequired[str],
+    'name': NotRequired[str],
+    'values': NotRequired[list[ModelPlaystationFacetValue]],
+}, total=False)
+
+ModelPlaystationFacetValue = TypedDict('ModelPlaystationFacetValue', {
+    'count': NotRequired[int],
+    'display_name': NotRequired[str],
+    'key': NotRequired[str],
+}, total=False)
+
+ModelPlaystationGridResponse = TypedDict('ModelPlaystationGridResponse', {
+    'count': NotRequired[int],
+    'facets': NotRequired[list[ModelPlaystationFacet]],
+    'id': NotRequired[str],
+    'items': NotRequired[list[ModelPlaystationStoreItem]],
+    'name': NotRequired[str],
+    'next_page': NotRequired[int],
+    'page_info': NotRequired[ModelPlaystationPageInfo],
+    'source_url': NotRequired[str],
+}, total=False)
+
+ModelPlaystationListPrice = TypedDict('ModelPlaystationListPrice', {
+    'base_price': NotRequired[str],
+    'discount_text': NotRequired[str],
+    'discounted_price': NotRequired[str],
+    'is_exclusive': NotRequired[bool],
+    'is_free': NotRequired[bool],
+    'is_tied_to_subscription': NotRequired[bool],
+    'service_branding': NotRequired[list[str]],
+    'upsell_service_branding': NotRequired[list[str]],
+    'upsell_text': NotRequired[str],
+}, total=False)
+
+ModelPlaystationMedia = TypedDict('ModelPlaystationMedia', {
+    'role': NotRequired[str],
+    'type': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelPlaystationMerchResponse = TypedDict('ModelPlaystationMerchResponse', {
+    'collections': NotRequired[list[ModelPlaystationCollectionLink]],
+    'count': NotRequired[int],
+    'items': NotRequired[list[ModelPlaystationStoreItem]],
+    'sections': NotRequired[list[ModelPlaystationSection]],
+    'source_url': NotRequired[str],
+}, total=False)
+
+ModelPlaystationPageInfo = TypedDict('ModelPlaystationPageInfo', {
+    'is_last': NotRequired[bool],
+    'offset': NotRequired[int],
+    'size': NotRequired[int],
+    'total_count': NotRequired[int],
+}, total=False)
+
+ModelPlaystationProductDetail = TypedDict('ModelPlaystationProductDetail', {
+    'classification': NotRequired[str],
+    'concept_id': NotRequired[str],
+    'content_rating': NotRequired[ModelPlaystationContentRating],
+    'edition_name': NotRequired[str],
+    'genres': NotRequired[list[str]],
+    'id': NotRequired[str],
+    'media': NotRequired[list[ModelPlaystationMedia]],
+    'name': NotRequired[str],
+    'np_title_id': NotRequired[str],
+    'platforms': NotRequired[list[str]],
+    'price': NotRequired[ModelPlaystationDetailPrice],
+    'publisher': NotRequired[str],
+    'release_date': NotRequired[str],
+    'screen_languages': NotRequired[list[str]],
+    'source_url': NotRequired[str],
+    'spoken_languages': NotRequired[list[str]],
+    'star_rating': NotRequired[ModelPlaystationStarRating],
+    'type': NotRequired[str],
+}, total=False)
+
+ModelPlaystationSearchResponse = TypedDict('ModelPlaystationSearchResponse', {
+    'count': NotRequired[int],
+    'items': NotRequired[list[ModelPlaystationStoreItem]],
+    'next_page': NotRequired[int],
+    'page_info': NotRequired[ModelPlaystationPageInfo],
+    'source_url': NotRequired[str],
+    'term': NotRequired[str],
+}, total=False)
+
+ModelPlaystationSection = TypedDict('ModelPlaystationSection', {
+    'count': NotRequired[int],
+    'id': NotRequired[str],
+    'items': NotRequired[list[ModelPlaystationStoreItem]],
+    'name': NotRequired[str],
+}, total=False)
+
+ModelPlaystationStarRating = TypedDict('ModelPlaystationStarRating', {
+    'average': NotRequired[float],
+    'count': NotRequired[int],
+}, total=False)
+
+ModelPlaystationStoreItem = TypedDict('ModelPlaystationStoreItem', {
+    'classification': NotRequired[str],
+    'id': NotRequired[str],
+    'kind': NotRequired[str],
+    'media': NotRequired[list[ModelPlaystationMedia]],
+    'name': NotRequired[str],
+    'np_title_id': NotRequired[str],
+    'platforms': NotRequired[list[str]],
+    'price': NotRequired[ModelPlaystationListPrice],
+}, total=False)
+
+ModelPlaystationConceptResponseDoc = TypedDict('ModelPlaystationConceptResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelPlaystationConceptDetail],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelPlaystationGridResponseDoc = TypedDict('ModelPlaystationGridResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelPlaystationGridResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelPlaystationMerchResponseDoc = TypedDict('ModelPlaystationMerchResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelPlaystationMerchResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelPlaystationProductResponseDoc = TypedDict('ModelPlaystationProductResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelPlaystationProductDetail],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelPlaystationSearchResponseDoc = TypedDict('ModelPlaystationSearchResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelPlaystationSearchResponse],
     'msg': NotRequired[str],
 }, total=False)
 
@@ -11914,8 +12595,10 @@ ModelSteamAchievementsResponse = TypedDict('ModelSteamAchievementsResponse', {
 ModelSteamAppDetails = TypedDict('ModelSteamAppDetails', {
     'achievements_total': NotRequired[int],
     'appid': NotRequired[int],
+    'background': NotRequired[str],
     'capsule_image': NotRequired[str],
     'categories': NotRequired[list[ModelSteamIdname]],
+    'content_descriptor_ids': NotRequired[list[int]],
     'controller_support': NotRequired[str],
     'developers': NotRequired[list[str]],
     'dlc': NotRequired[list[int]],
@@ -11925,6 +12608,7 @@ ModelSteamAppDetails = TypedDict('ModelSteamAppDetails', {
     'metacritic': NotRequired[ModelSteamMetacritic],
     'movies': NotRequired[int],
     'name': NotRequired[str],
+    'packages': NotRequired[list[int]],
     'platforms': NotRequired[ModelSteamPlatforms],
     'price_overview': NotRequired[ModelSteamPrice],
     'publishers': NotRequired[list[str]],
@@ -11942,6 +12626,71 @@ ModelSteamAppDetails = TypedDict('ModelSteamAppDetails', {
 ModelSteamAppRelease = TypedDict('ModelSteamAppRelease', {
     'coming_soon': NotRequired[bool],
     'date': NotRequired[str],
+}, total=False)
+
+ModelSteamCategoryBrowseResponse = TypedDict('ModelSteamCategoryBrowseResponse', {
+    'count': NotRequired[int],
+    'items': NotRequired[list[ModelSteamCategoryItem]],
+    'slug': NotRequired[str],
+    'source_url': NotRequired[str],
+    'start': NotRequired[int],
+    'tag_id': NotRequired[int],
+    'tag_name': NotRequired[str],
+    'total': NotRequired[int],
+}, total=False)
+
+ModelSteamCategoryItem = TypedDict('ModelSteamCategoryItem', {
+    'appid': NotRequired[int],
+    'developers': NotRequired[list[str]],
+    'name': NotRequired[str],
+    'platforms': NotRequired[ModelSteamPlatforms],
+    'price_overview': NotRequired[ModelSteamPrice],
+    'publishers': NotRequired[list[str]],
+    'release_date_unix': NotRequired[int],
+    'review_count': NotRequired[int],
+    'review_percent_positive': NotRequired[int],
+    'review_summary': NotRequired[str],
+    'short_description': NotRequired[str],
+    'tags': NotRequired[list[ModelSteamWeightedTag]],
+    'type': NotRequired[int],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelSteamChartRank = TypedDict('ModelSteamChartRank', {
+    'appid': NotRequired[int],
+    'concurrent_in_game': NotRequired[int],
+    'last_week_rank': NotRequired[int],
+    'name': NotRequired[str],
+    'peak_in_game': NotRequired[int],
+    'rank': NotRequired[int],
+    'review_summary': NotRequired[str],
+}, total=False)
+
+ModelSteamChartResponse = TypedDict('ModelSteamChartResponse', {
+    'chart': NotRequired[str],
+    'count': NotRequired[int],
+    'enriched': NotRequired[bool],
+    'ranks': NotRequired[list[ModelSteamChartRank]],
+    'source_url': NotRequired[str],
+    'updated_unix': NotRequired[int],
+}, total=False)
+
+ModelSteamCommunityRecommendationsResponse = TypedDict('ModelSteamCommunityRecommendationsResponse', {
+    'count': NotRequired[int],
+    'review_filter': NotRequired[str],
+    'reviews': NotRequired[list[ModelSteamCommunityReview]],
+    'source_url': NotRequired[str],
+}, total=False)
+
+ModelSteamCommunityReview = TypedDict('ModelSteamCommunityReview', {
+    'appid': NotRequired[str],
+    'author_name': NotRequired[str],
+    'author_profile_url': NotRequired[str],
+    'helpful': NotRequired[str],
+    'playtime': NotRequired[str],
+    'recommendation_id': NotRequired[str],
+    'review_excerpt': NotRequired[str],
+    'review_url': NotRequired[str],
 }, total=False)
 
 ModelSteamFeaturedBucket = TypedDict('ModelSteamFeaturedBucket', {
@@ -11996,6 +12745,12 @@ ModelSteamHistogramBucket = TypedDict('ModelSteamHistogramBucket', {
 ModelSteamIdname = TypedDict('ModelSteamIdname', {
     'description': NotRequired[str],
     'id': NotRequired[str],
+}, total=False)
+
+ModelSteamItemsResponse = TypedDict('ModelSteamItemsResponse', {
+    'count': NotRequired[int],
+    'items': NotRequired[list[ModelSteamCategoryItem]],
+    'source_url': NotRequired[str],
 }, total=False)
 
 ModelSteamMetacritic = TypedDict('ModelSteamMetacritic', {
@@ -12149,6 +12904,7 @@ ModelSteamSearchResultRow = TypedDict('ModelSteamSearchResultRow', {
     'price': NotRequired[str],
     'release_date': NotRequired[str],
     'review_summary': NotRequired[str],
+    'tag_ids': NotRequired[list[int]],
     'url': NotRequired[str],
 }, total=False)
 
@@ -12185,6 +12941,50 @@ ModelSteamSteamSpyResponse = TypedDict('ModelSteamSteamSpyResponse', {
     'userscore': NotRequired[int],
 }, total=False)
 
+ModelSteamTagEntry = TypedDict('ModelSteamTagEntry', {
+    'name': NotRequired[str],
+    'tagid': NotRequired[int],
+}, total=False)
+
+ModelSteamTagsListResponse = TypedDict('ModelSteamTagsListResponse', {
+    'count': NotRequired[int],
+    'language': NotRequired[str],
+    'source_url': NotRequired[str],
+    'tags': NotRequired[list[ModelSteamTagEntry]],
+}, total=False)
+
+ModelSteamTopReleasePage = TypedDict('ModelSteamTopReleasePage', {
+    'appids': NotRequired[list[int]],
+    'name': NotRequired[str],
+    'start_of_month_unix': NotRequired[int],
+    'url_path': NotRequired[str],
+}, total=False)
+
+ModelSteamTopReleasesResponse = TypedDict('ModelSteamTopReleasesResponse', {
+    'count': NotRequired[int],
+    'pages': NotRequired[list[ModelSteamTopReleasePage]],
+    'source_url': NotRequired[str],
+}, total=False)
+
+ModelSteamTopSellerRank = TypedDict('ModelSteamTopSellerRank', {
+    'appid': NotRequired[int],
+    'item': NotRequired[ModelSteamCategoryItem],
+    'rank': NotRequired[int],
+}, total=False)
+
+ModelSteamTopSellersResponse = TypedDict('ModelSteamTopSellersResponse', {
+    'count': NotRequired[int],
+    'country_code': NotRequired[str],
+    'ranks': NotRequired[list[ModelSteamTopSellerRank]],
+    'source_url': NotRequired[str],
+    'start_date_unix': NotRequired[int],
+}, total=False)
+
+ModelSteamWeightedTag = TypedDict('ModelSteamWeightedTag', {
+    'tagid': NotRequired[int],
+    'weight': NotRequired[int],
+}, total=False)
+
 ModelSteamAchievementsResponseDoc = TypedDict('ModelSteamAchievementsResponseDoc', {
     'code': NotRequired[int],
     'data': NotRequired[ModelSteamAchievementsResponse],
@@ -12194,6 +12994,24 @@ ModelSteamAchievementsResponseDoc = TypedDict('ModelSteamAchievementsResponseDoc
 ModelSteamAppResponseDoc = TypedDict('ModelSteamAppResponseDoc', {
     'code': NotRequired[int],
     'data': NotRequired[ModelSteamAppDetails],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelSteamCategoryBrowseResponseDoc = TypedDict('ModelSteamCategoryBrowseResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelSteamCategoryBrowseResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelSteamChartResponseDoc = TypedDict('ModelSteamChartResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelSteamChartResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelSteamCommunityRecommendationsResponseDoc = TypedDict('ModelSteamCommunityRecommendationsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelSteamCommunityRecommendationsResponse],
     'msg': NotRequired[str],
 }, total=False)
 
@@ -12212,6 +13030,12 @@ ModelSteamFeaturedResponseDoc = TypedDict('ModelSteamFeaturedResponseDoc', {
 ModelSteamHistogramResponseDoc = TypedDict('ModelSteamHistogramResponseDoc', {
     'code': NotRequired[int],
     'data': NotRequired[ModelSteamReviewsHistogramResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelSteamItemsResponseDoc = TypedDict('ModelSteamItemsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelSteamItemsResponse],
     'msg': NotRequired[str],
 }, total=False)
 
@@ -12254,6 +13078,24 @@ ModelSteamSearchResultsResponseDoc = TypedDict('ModelSteamSearchResultsResponseD
 ModelSteamSteamspyResponseDoc = TypedDict('ModelSteamSteamspyResponseDoc', {
     'code': NotRequired[int],
     'data': NotRequired[ModelSteamSteamSpyResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelSteamTagsListResponseDoc = TypedDict('ModelSteamTagsListResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelSteamTagsListResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelSteamTopReleasesResponseDoc = TypedDict('ModelSteamTopReleasesResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelSteamTopReleasesResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelSteamTopSellersResponseDoc = TypedDict('ModelSteamTopSellersResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelSteamTopSellersResponse],
     'msg': NotRequired[str],
 }, total=False)
 
@@ -16235,6 +17077,154 @@ DatasetsGoogleMapBusinessesSearchParams = TypedDict('DatasetsGoogleMapBusinesses
     'page_size': NotRequired[int],
 }, total=False)
 
+DatasetsHousingMarketsFacetsResponse = ModelDatasetsHousingMarketsFacetResponseDoc
+DatasetsHousingMarketsFacetsParams = TypedDict('DatasetsHousingMarketsFacetsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'facet': Required[str],
+    'q': NotRequired[str],
+    'region_type': NotRequired[str],
+    'state_code': NotRequired[str],
+    'property_type': NotRequired[str],
+    'parent_metro_code': NotRequired[str],
+    'zip_code': NotRequired[str],
+    'period': NotRequired[str],
+    'latest': NotRequired[bool],
+    'min_median_sale_price': NotRequired[float],
+    'max_median_sale_price': NotRequired[float],
+    'min_median_list_price': NotRequired[float],
+    'max_median_list_price': NotRequired[float],
+    'min_price_to_income': NotRequired[float],
+    'max_price_to_income': NotRequired[float],
+    'min_salary_to_buy': NotRequired[int],
+    'max_salary_to_buy': NotRequired[int],
+    'min_median_dom': NotRequired[float],
+    'max_median_dom': NotRequired[float],
+    'min_inventory': NotRequired[int],
+    'max_inventory': NotRequired[int],
+    'min_homes_sold': NotRequired[int],
+}, total=False)
+
+DatasetsHousingMarketsItemResponse = ModelDatasetsHousingMarketItemResponseDoc
+DatasetsHousingMarketsItemParams = TypedDict('DatasetsHousingMarketsItemParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'region_type': Required[str],
+    'table_id': Required[int],
+    'period': NotRequired[str],
+    'property_type': NotRequired[str],
+    'history': NotRequired[bool],
+}, total=False)
+
+DatasetsHousingMarketsSearchResponse = ModelDatasetsHousingMarketsSearchResponseDoc
+DatasetsHousingMarketsSearchParams = TypedDict('DatasetsHousingMarketsSearchParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'q': NotRequired[str],
+    'region_type': NotRequired[str],
+    'state_code': NotRequired[str],
+    'property_type': NotRequired[str],
+    'parent_metro_code': NotRequired[str],
+    'zip_code': NotRequired[str],
+    'period': NotRequired[str],
+    'latest': NotRequired[bool],
+    'min_median_sale_price': NotRequired[float],
+    'max_median_sale_price': NotRequired[float],
+    'min_median_list_price': NotRequired[float],
+    'max_median_list_price': NotRequired[float],
+    'min_price_to_income': NotRequired[float],
+    'max_price_to_income': NotRequired[float],
+    'min_salary_to_buy': NotRequired[int],
+    'max_salary_to_buy': NotRequired[int],
+    'min_median_dom': NotRequired[float],
+    'max_median_dom': NotRequired[float],
+    'min_inventory': NotRequired[int],
+    'max_inventory': NotRequired[int],
+    'min_homes_sold': NotRequired[int],
+    'sort': NotRequired[str],
+    'page': NotRequired[int],
+    'page_size': NotRequired[int],
+}, total=False)
+
+DatasetsPlaystationGamesFacetsResponse = ModelDatasetsPlaystationGamesFacetResponseDoc
+DatasetsPlaystationGamesFacetsParams = TypedDict('DatasetsPlaystationGamesFacetsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'facet': Required[str],
+    'q': NotRequired[str],
+    'publisher': NotRequired[str],
+    'classification': NotRequired[str],
+    'genre': NotRequired[str],
+    'platform': NotRequired[str],
+    'content_rating': NotRequired[str],
+    'content_descriptor': NotRequired[str],
+    'price_tier': NotRequired[str],
+    'branding': NotRequired[str],
+    'region': NotRequired[str],
+    'concept_id': NotRequired[str],
+    'np_title_id': NotRequired[str],
+    'run_id': NotRequired[str],
+    'is_free': NotRequired[bool],
+    'is_addon': NotRequired[bool],
+    'is_tied_to_subscription': NotRequired[bool],
+    'coming_soon': NotRequired[bool],
+    'on_sale': NotRequired[bool],
+    'min_price_value': NotRequired[int],
+    'max_price_value': NotRequired[int],
+    'min_star_rating': NotRequired[float],
+    'min_star_count': NotRequired[int],
+    'min_discount_pct': NotRequired[int],
+    'min_release_year': NotRequired[int],
+    'max_release_year': NotRequired[int],
+}, total=False)
+
+DatasetsPlaystationGamesItemResponse = ModelDatasetsPlaystationGameResponseDoc
+DatasetsPlaystationGamesItemParams = TypedDict('DatasetsPlaystationGamesItemParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'product_id': Required[str],
+}, total=False)
+
+DatasetsPlaystationGamesSearchResponse = ModelDatasetsPlaystationGamesSearchResponseDoc
+DatasetsPlaystationGamesSearchParams = TypedDict('DatasetsPlaystationGamesSearchParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'q': NotRequired[str],
+    'publisher': NotRequired[str],
+    'classification': NotRequired[str],
+    'genre': NotRequired[str],
+    'platform': NotRequired[str],
+    'content_rating': NotRequired[str],
+    'content_descriptor': NotRequired[str],
+    'price_tier': NotRequired[str],
+    'branding': NotRequired[str],
+    'region': NotRequired[str],
+    'concept_id': NotRequired[str],
+    'np_title_id': NotRequired[str],
+    'run_id': NotRequired[str],
+    'is_free': NotRequired[bool],
+    'is_addon': NotRequired[bool],
+    'is_tied_to_subscription': NotRequired[bool],
+    'coming_soon': NotRequired[bool],
+    'on_sale': NotRequired[bool],
+    'min_price_value': NotRequired[int],
+    'max_price_value': NotRequired[int],
+    'min_star_rating': NotRequired[float],
+    'min_star_count': NotRequired[int],
+    'min_discount_pct': NotRequired[int],
+    'min_release_year': NotRequired[int],
+    'max_release_year': NotRequired[int],
+    'sort': NotRequired[str],
+    'page': NotRequired[int],
+    'page_size': NotRequired[int],
+}, total=False)
+
 DatasetsProducthuntMakersFacetsResponse = ModelDatasetsProducthuntMakersFacetResponseDoc
 DatasetsProducthuntMakersFacetsParams = TypedDict('DatasetsProducthuntMakersFacetsParams', {
     '_response_type': NotRequired[ResponseType],
@@ -16340,6 +17330,160 @@ DatasetsProducthuntTrendsSearchParams = TypedDict('DatasetsProducthuntTrendsSear
     'launched_before': NotRequired[str],
     'min_votes': NotRequired[int],
     'min_launches': NotRequired[int],
+    'sort': NotRequired[str],
+    'page': NotRequired[int],
+    'page_size': NotRequired[int],
+}, total=False)
+
+DatasetsSteamAchievementsSearchResponse = ModelDatasetsSteamAchievementsSearchResponseDoc
+DatasetsSteamAchievementsSearchParams = TypedDict('DatasetsSteamAchievementsSearchParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'app_id': NotRequired[str],
+    'sort': NotRequired[str],
+    'page': NotRequired[int],
+    'page_size': NotRequired[int],
+}, total=False)
+
+DatasetsSteamChartsSearchResponse = ModelDatasetsSteamChartsSearchResponseDoc
+DatasetsSteamChartsSearchParams = TypedDict('DatasetsSteamChartsSearchParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'q': NotRequired[str],
+    'chart': NotRequired[str],
+    'country': NotRequired[str],
+    'app_id': NotRequired[str],
+    'date': NotRequired[str],
+    'sort': NotRequired[str],
+    'page': NotRequired[int],
+    'page_size': NotRequired[int],
+}, total=False)
+
+DatasetsSteamGamesFacetsResponse = ModelDatasetsSteamGamesFacetResponseDoc
+DatasetsSteamGamesFacetsParams = TypedDict('DatasetsSteamGamesFacetsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'facet': Required[str],
+    'q': NotRequired[str],
+    'type': NotRequired[str],
+    'developer': NotRequired[str],
+    'publisher': NotRequired[str],
+    'genre': NotRequired[str],
+    'category': NotRequired[str],
+    'tag': NotRequired[str],
+    'price_tier': NotRequired[str],
+    'review_tier': NotRequired[str],
+    'owners_bucket': NotRequired[str],
+    'run_id': NotRequired[str],
+    'is_free': NotRequired[bool],
+    'windows': NotRequired[bool],
+    'mac': NotRequired[bool],
+    'linux': NotRequired[bool],
+    'on_sale': NotRequired[bool],
+    'min_price_cents': NotRequired[int],
+    'max_price_cents': NotRequired[int],
+    'min_owners': NotRequired[int],
+    'min_positive': NotRequired[int],
+    'min_total_reviews': NotRequired[int],
+    'min_review_score': NotRequired[float],
+    'min_metacritic': NotRequired[int],
+    'min_ccu': NotRequired[int],
+    'min_release_year': NotRequired[int],
+    'max_release_year': NotRequired[int],
+}, total=False)
+
+DatasetsSteamGamesItemResponse = ModelDatasetsSteamGameResponseDoc
+DatasetsSteamGamesItemParams = TypedDict('DatasetsSteamGamesItemParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'appid': Required[int],
+}, total=False)
+
+DatasetsSteamGamesSearchResponse = ModelDatasetsSteamGamesSearchResponseDoc
+DatasetsSteamGamesSearchParams = TypedDict('DatasetsSteamGamesSearchParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'q': NotRequired[str],
+    'type': NotRequired[str],
+    'developer': NotRequired[str],
+    'publisher': NotRequired[str],
+    'genre': NotRequired[str],
+    'category': NotRequired[str],
+    'tag': NotRequired[str],
+    'price_tier': NotRequired[str],
+    'review_tier': NotRequired[str],
+    'owners_bucket': NotRequired[str],
+    'run_id': NotRequired[str],
+    'is_free': NotRequired[bool],
+    'windows': NotRequired[bool],
+    'mac': NotRequired[bool],
+    'linux': NotRequired[bool],
+    'on_sale': NotRequired[bool],
+    'min_price_cents': NotRequired[int],
+    'max_price_cents': NotRequired[int],
+    'min_owners': NotRequired[int],
+    'min_positive': NotRequired[int],
+    'min_total_reviews': NotRequired[int],
+    'min_review_score': NotRequired[float],
+    'min_metacritic': NotRequired[int],
+    'min_ccu': NotRequired[int],
+    'min_release_year': NotRequired[int],
+    'max_release_year': NotRequired[int],
+    'sort': NotRequired[str],
+    'page': NotRequired[int],
+    'page_size': NotRequired[int],
+}, total=False)
+
+DatasetsSteamNewsSearchResponse = ModelDatasetsSteamNewsSearchResponseDoc
+DatasetsSteamNewsSearchParams = TypedDict('DatasetsSteamNewsSearchParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'q': NotRequired[str],
+    'app_id': NotRequired[str],
+    'sort': NotRequired[str],
+    'page': NotRequired[int],
+    'page_size': NotRequired[int],
+}, total=False)
+
+DatasetsSteamPlayercountsSearchResponse = ModelDatasetsSteamPlayerCountsSearchResponseDoc
+DatasetsSteamPlayercountsSearchParams = TypedDict('DatasetsSteamPlayercountsSearchParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'app_id': NotRequired[str],
+    'date': NotRequired[str],
+    'sort': NotRequired[str],
+    'page': NotRequired[int],
+    'page_size': NotRequired[int],
+}, total=False)
+
+DatasetsSteamPricesSearchResponse = ModelDatasetsSteamPricesSearchResponseDoc
+DatasetsSteamPricesSearchParams = TypedDict('DatasetsSteamPricesSearchParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'app_id': NotRequired[str],
+    'date': NotRequired[str],
+    'sort': NotRequired[str],
+    'page': NotRequired[int],
+    'page_size': NotRequired[int],
+}, total=False)
+
+DatasetsSteamReviewsSearchResponse = ModelDatasetsSteamReviewsSearchResponseDoc
+DatasetsSteamReviewsSearchParams = TypedDict('DatasetsSteamReviewsSearchParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'q': NotRequired[str],
+    'app_id': NotRequired[str],
+    'language': NotRequired[str],
+    'voted_up': NotRequired[str],
     'sort': NotRequired[str],
     'page': NotRequired[int],
     'page_size': NotRequired[int],
@@ -16609,6 +17753,15 @@ EspnTeamsParams = TypedDict('EspnTeamsParams', {
     '_headers': NotRequired[Mapping[str, str]],
     'sport': Required[Literal['football', 'basketball', 'baseball', 'hockey', 'soccer']],
     'league': Required[Literal['nfl', 'college-football', 'nba', 'wnba', 'mens-college-basketball', 'womens-college-basketball', 'mlb', 'nhl', 'eng.1', 'esp.1', 'ita.1', 'ger.1', 'fra.1', 'usa.1', 'uefa.champions']],
+}, total=False)
+
+WebExtractBody = ModelExtractOption
+WebExtractResponse = ModelExtractResponseDoc
+WebExtractParams = TypedDict('WebExtractParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'extractOption': Required[WebExtractBody],
 }, total=False)
 
 GeocodingLookupResponse = ModelGeocodingLookupResponseDoc
@@ -17590,6 +18743,7 @@ JustWatchJustwatchDiscoverParams = TypedDict('JustWatchJustwatchDiscoverParams',
     'type': NotRequired[Literal['all', 'movie', 'show']],
     'genres': NotRequired[str],
     'providers': NotRequired[str],
+    'production_countries': NotRequired[str],
     'monetization_types': NotRequired[Literal['FLATRATE', 'FREE', 'ADS', 'RENT', 'BUY']],
     'year_min': NotRequired[int],
     'year_max': NotRequired[int],
@@ -18152,6 +19306,86 @@ PitchBookPitchbookInvestorParams = TypedDict('PitchBookPitchbookInvestorParams',
     '_headers': NotRequired[Mapping[str, str]],
     'id': NotRequired[str],
     'url': NotRequired[str],
+}, total=False)
+
+PlayStationPlaystationBrowseResponse = ModelPlaystationGridResponseDoc
+PlayStationPlaystationBrowseParams = TypedDict('PlayStationPlaystationBrowseParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'page': NotRequired[int],
+    'cc': NotRequired[str],
+    'l': NotRequired[str],
+}, total=False)
+
+PlayStationPlaystationCategoryResponse = ModelPlaystationGridResponseDoc
+PlayStationPlaystationCategoryParams = TypedDict('PlayStationPlaystationCategoryParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': Required[str],
+    'page': NotRequired[int],
+    'cc': NotRequired[str],
+    'l': NotRequired[str],
+}, total=False)
+
+PlayStationPlaystationConceptResponse = ModelPlaystationConceptResponseDoc
+PlayStationPlaystationConceptParams = TypedDict('PlayStationPlaystationConceptParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': Required[str],
+    'cc': NotRequired[str],
+    'l': NotRequired[str],
+}, total=False)
+
+PlayStationPlaystationDealsResponse = ModelPlaystationMerchResponseDoc
+PlayStationPlaystationDealsParams = TypedDict('PlayStationPlaystationDealsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'cc': NotRequired[str],
+    'l': NotRequired[str],
+}, total=False)
+
+PlayStationPlaystationLatestResponse = ModelPlaystationMerchResponseDoc
+PlayStationPlaystationLatestParams = TypedDict('PlayStationPlaystationLatestParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'cc': NotRequired[str],
+    'l': NotRequired[str],
+}, total=False)
+
+PlayStationPlaystationPageResponse = ModelPlaystationMerchResponseDoc
+PlayStationPlaystationPageParams = TypedDict('PlayStationPlaystationPageParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'alias': Required[str],
+    'cc': NotRequired[str],
+    'l': NotRequired[str],
+}, total=False)
+
+PlayStationPlaystationProductResponse = ModelPlaystationProductResponseDoc
+PlayStationPlaystationProductParams = TypedDict('PlayStationPlaystationProductParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': Required[str],
+    'cc': NotRequired[str],
+    'l': NotRequired[str],
+}, total=False)
+
+PlayStationPlaystationSearchResponse = ModelPlaystationSearchResponseDoc
+PlayStationPlaystationSearchParams = TypedDict('PlayStationPlaystationSearchParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'term': Required[str],
+    'page': NotRequired[int],
+    'cc': NotRequired[str],
+    'l': NotRequired[str],
 }, total=False)
 
 PolymarketActivityTradesResponse = ModelPolymarketActivityTradesResponseDoc
@@ -20172,6 +21406,61 @@ SteamAppParams = TypedDict('SteamAppParams', {
     'filters': NotRequired[str],
 }, total=False)
 
+SteamCategoryResponse = ModelSteamCategoryBrowseResponseDoc
+SteamCategoryParams = TypedDict('SteamCategoryParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'slug': Required[str],
+    'free': NotRequired[bool],
+    'released_only': NotRequired[bool],
+    'coming_soon_only': NotRequired[bool],
+    'start': NotRequired[int],
+    'count': NotRequired[int],
+    'cc': NotRequired[str],
+    'l': NotRequired[str],
+}, total=False)
+
+SteamChartsConcurrentResponse = ModelSteamChartResponseDoc
+SteamChartsConcurrentParams = TypedDict('SteamChartsConcurrentParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'enrich': NotRequired[bool],
+    'cc': NotRequired[str],
+    'l': NotRequired[str],
+}, total=False)
+
+SteamChartsMostPlayedResponse = ModelSteamChartResponseDoc
+SteamChartsMostPlayedParams = TypedDict('SteamChartsMostPlayedParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'enrich': NotRequired[bool],
+    'cc': NotRequired[str],
+    'l': NotRequired[str],
+}, total=False)
+
+SteamChartsTopReleasesResponse = ModelSteamTopReleasesResponseDoc
+SteamChartsTopReleasesParams = TypedDict('SteamChartsTopReleasesParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+}, total=False)
+
+SteamCommunityRecommendationsResponse = ModelSteamCommunityRecommendationsResponseDoc
+SteamCommunityRecommendationsParams = TypedDict('SteamCommunityRecommendationsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'review_filter': NotRequired[Literal['helpful', 'recent', 'funny']],
+    'playtime_min': NotRequired[int],
+    'playtime_max': NotRequired[int],
+    'review_language': NotRequired[str],
+    'cc': NotRequired[str],
+    'l': NotRequired[str],
+}, total=False)
+
 SteamFeaturedResponse = ModelSteamFeaturedResponseDoc
 SteamFeaturedParams = TypedDict('SteamFeaturedParams', {
     '_response_type': NotRequired[ResponseType],
@@ -20186,6 +21475,16 @@ SteamFeaturedCategoriesParams = TypedDict('SteamFeaturedCategoriesParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
     '_headers': NotRequired[Mapping[str, str]],
+    'cc': NotRequired[str],
+    'l': NotRequired[str],
+}, total=False)
+
+SteamItemsResponse = ModelSteamItemsResponseDoc
+SteamItemsParams = TypedDict('SteamItemsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'appids': Required[str],
     'cc': NotRequired[str],
     'l': NotRequired[str],
 }, total=False)
@@ -20271,6 +21570,48 @@ SteamSteamspyParams = TypedDict('SteamSteamspyParams', {
     '_timeout': NotRequired[float],
     '_headers': NotRequired[Mapping[str, str]],
     'appid': Required[str],
+}, total=False)
+
+SteamTagsResponse = ModelSteamSearchResultsResponseDoc
+SteamTagsParams = TypedDict('SteamTagsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'tags': NotRequired[str],
+    'untags': NotRequired[str],
+    'category1': NotRequired[str],
+    'category2': NotRequired[str],
+    'category3': NotRequired[str],
+    'os': NotRequired[str],
+    'maxprice': NotRequired[str],
+    'specials': NotRequired[bool],
+    'hidef2p': NotRequired[bool],
+    'deck_compatibility': NotRequired[Literal['1', '2', '3']],
+    'vrsupport': NotRequired[str],
+    'filter': NotRequired[Literal['globaltopsellers', 'topsellers', 'popularnew', 'comingsoon']],
+    'supportedlang': NotRequired[str],
+    'sort_by': NotRequired[Literal['Relevance', 'Released_DESC', 'Name_ASC', 'Price_ASC', 'Price_DESC', 'Reviews_DESC']],
+    'start': NotRequired[int],
+    'count': NotRequired[int],
+    'cc': NotRequired[str],
+    'l': NotRequired[str],
+}, total=False)
+
+SteamTagsListResponse = ModelSteamTagsListResponseDoc
+SteamTagsListParams = TypedDict('SteamTagsListParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'l': NotRequired[str],
+}, total=False)
+
+SteamTopSellersResponse = ModelSteamTopSellersResponseDoc
+SteamTopSellersParams = TypedDict('SteamTopSellersParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'cc': NotRequired[str],
+    'l': NotRequired[str],
 }, total=False)
 
 TiktokCategoryResponse = ModelTiktokCategoryResponseDoc
@@ -21444,6 +22785,7 @@ class CoinGeckoGroup:
 class WebGroup:
     def contact(self, **params: Unpack[WebContactParams]) -> WebContactResponse: ...
     def antibot_check(self, **params: Unpack[WebAntibotCheckParams]) -> WebAntibotCheckResponse: ...
+    def extract(self, **params: Unpack[WebExtractParams]) -> WebExtractResponse: ...
     def scrape(self, **params: Unpack[WebScrapeParams]) -> WebScrapeResponse: ...
     def techstack(self, **params: Unpack[WebTechstackParams]) -> WebTechstackResponse: ...
 
@@ -21465,6 +22807,12 @@ class DatasetsGroup:
     def google_map_businesses_item(self, **params: Unpack[DatasetsGoogleMapBusinessesItemParams]) -> DatasetsGoogleMapBusinessesItemResponse: ...
     def google_map_businesses_nearby(self, **params: Unpack[DatasetsGoogleMapBusinessesNearbyParams]) -> DatasetsGoogleMapBusinessesNearbyResponse: ...
     def google_map_businesses_search(self, **params: Unpack[DatasetsGoogleMapBusinessesSearchParams]) -> DatasetsGoogleMapBusinessesSearchResponse: ...
+    def housing_markets_facets(self, **params: Unpack[DatasetsHousingMarketsFacetsParams]) -> DatasetsHousingMarketsFacetsResponse: ...
+    def housing_markets_item(self, **params: Unpack[DatasetsHousingMarketsItemParams]) -> DatasetsHousingMarketsItemResponse: ...
+    def housing_markets_search(self, **params: Unpack[DatasetsHousingMarketsSearchParams]) -> DatasetsHousingMarketsSearchResponse: ...
+    def playstation_games_facets(self, **params: Unpack[DatasetsPlaystationGamesFacetsParams]) -> DatasetsPlaystationGamesFacetsResponse: ...
+    def playstation_games_item(self, **params: Unpack[DatasetsPlaystationGamesItemParams]) -> DatasetsPlaystationGamesItemResponse: ...
+    def playstation_games_search(self, **params: Unpack[DatasetsPlaystationGamesSearchParams]) -> DatasetsPlaystationGamesSearchResponse: ...
     def producthunt_makers_facets(self, **params: Unpack[DatasetsProducthuntMakersFacetsParams]) -> DatasetsProducthuntMakersFacetsResponse: ...
     def producthunt_makers_item(self, **params: Unpack[DatasetsProducthuntMakersItemParams]) -> DatasetsProducthuntMakersItemResponse: ...
     def producthunt_makers_search(self, **params: Unpack[DatasetsProducthuntMakersSearchParams]) -> DatasetsProducthuntMakersSearchResponse: ...
@@ -21473,6 +22821,15 @@ class DatasetsGroup:
     def producthunt_products_search(self, **params: Unpack[DatasetsProducthuntProductsSearchParams]) -> DatasetsProducthuntProductsSearchResponse: ...
     def producthunt_trends_facets(self, **params: Unpack[DatasetsProducthuntTrendsFacetsParams]) -> DatasetsProducthuntTrendsFacetsResponse: ...
     def producthunt_trends_search(self, **params: Unpack[DatasetsProducthuntTrendsSearchParams]) -> DatasetsProducthuntTrendsSearchResponse: ...
+    def steam_achievements_search(self, **params: Unpack[DatasetsSteamAchievementsSearchParams]) -> DatasetsSteamAchievementsSearchResponse: ...
+    def steam_charts_search(self, **params: Unpack[DatasetsSteamChartsSearchParams]) -> DatasetsSteamChartsSearchResponse: ...
+    def steam_games_facets(self, **params: Unpack[DatasetsSteamGamesFacetsParams]) -> DatasetsSteamGamesFacetsResponse: ...
+    def steam_games_item(self, **params: Unpack[DatasetsSteamGamesItemParams]) -> DatasetsSteamGamesItemResponse: ...
+    def steam_games_search(self, **params: Unpack[DatasetsSteamGamesSearchParams]) -> DatasetsSteamGamesSearchResponse: ...
+    def steam_news_search(self, **params: Unpack[DatasetsSteamNewsSearchParams]) -> DatasetsSteamNewsSearchResponse: ...
+    def steam_playercounts_search(self, **params: Unpack[DatasetsSteamPlayercountsSearchParams]) -> DatasetsSteamPlayercountsSearchResponse: ...
+    def steam_prices_search(self, **params: Unpack[DatasetsSteamPricesSearchParams]) -> DatasetsSteamPricesSearchResponse: ...
+    def steam_reviews_search(self, **params: Unpack[DatasetsSteamReviewsSearchParams]) -> DatasetsSteamReviewsSearchResponse: ...
     def techstack_facets(self, **params: Unpack[DatasetsTechstackFacetsParams]) -> DatasetsTechstackFacetsResponse: ...
     def techstack_item(self, **params: Unpack[DatasetsTechstackItemParams]) -> DatasetsTechstackItemResponse: ...
     def techstack_search(self, **params: Unpack[DatasetsTechstackSearchParams]) -> DatasetsTechstackSearchResponse: ...
@@ -21684,6 +23041,16 @@ class PitchBookGroup:
     def pitchbook_company(self, **params: Unpack[PitchBookPitchbookCompanyParams]) -> PitchBookPitchbookCompanyResponse: ...
     def pitchbook_fund(self, **params: Unpack[PitchBookPitchbookFundParams]) -> PitchBookPitchbookFundResponse: ...
     def pitchbook_investor(self, **params: Unpack[PitchBookPitchbookInvestorParams]) -> PitchBookPitchbookInvestorResponse: ...
+
+class PlayStationGroup:
+    def playstation_browse(self, **params: Unpack[PlayStationPlaystationBrowseParams]) -> PlayStationPlaystationBrowseResponse: ...
+    def playstation_category(self, **params: Unpack[PlayStationPlaystationCategoryParams]) -> PlayStationPlaystationCategoryResponse: ...
+    def playstation_concept(self, **params: Unpack[PlayStationPlaystationConceptParams]) -> PlayStationPlaystationConceptResponse: ...
+    def playstation_deals(self, **params: Unpack[PlayStationPlaystationDealsParams]) -> PlayStationPlaystationDealsResponse: ...
+    def playstation_latest(self, **params: Unpack[PlayStationPlaystationLatestParams]) -> PlayStationPlaystationLatestResponse: ...
+    def playstation_page(self, **params: Unpack[PlayStationPlaystationPageParams]) -> PlayStationPlaystationPageResponse: ...
+    def playstation_product(self, **params: Unpack[PlayStationPlaystationProductParams]) -> PlayStationPlaystationProductResponse: ...
+    def playstation_search(self, **params: Unpack[PlayStationPlaystationSearchParams]) -> PlayStationPlaystationSearchResponse: ...
 
 class PolymarketGroup:
     def activity_trades(self, **params: Unpack[PolymarketActivityTradesParams]) -> PolymarketActivityTradesResponse: ...
@@ -21910,8 +23277,14 @@ class SpotifyGroup:
 class SteamGroup:
     def achievements(self, **params: Unpack[SteamAchievementsParams]) -> SteamAchievementsResponse: ...
     def app(self, **params: Unpack[SteamAppParams]) -> SteamAppResponse: ...
+    def category(self, **params: Unpack[SteamCategoryParams]) -> SteamCategoryResponse: ...
+    def charts_concurrent(self, **params: Unpack[SteamChartsConcurrentParams]) -> SteamChartsConcurrentResponse: ...
+    def charts_most_played(self, **params: Unpack[SteamChartsMostPlayedParams]) -> SteamChartsMostPlayedResponse: ...
+    def charts_top_releases(self, **params: Unpack[SteamChartsTopReleasesParams]) -> SteamChartsTopReleasesResponse: ...
+    def community_recommendations(self, **params: Unpack[SteamCommunityRecommendationsParams]) -> SteamCommunityRecommendationsResponse: ...
     def featured(self, **params: Unpack[SteamFeaturedParams]) -> SteamFeaturedResponse: ...
     def featured_categories(self, **params: Unpack[SteamFeaturedCategoriesParams]) -> SteamFeaturedCategoriesResponse: ...
+    def items(self, **params: Unpack[SteamItemsParams]) -> SteamItemsResponse: ...
     def news(self, **params: Unpack[SteamNewsParams]) -> SteamNewsResponse: ...
     def package(self, **params: Unpack[SteamPackageParams]) -> SteamPackageResponse: ...
     def players(self, **params: Unpack[SteamPlayersParams]) -> SteamPlayersResponse: ...
@@ -21920,6 +23293,9 @@ class SteamGroup:
     def search(self, **params: Unpack[SteamSearchParams]) -> SteamSearchResponse: ...
     def search_results(self, **params: Unpack[SteamSearchResultsParams]) -> SteamSearchResultsResponse: ...
     def steamspy(self, **params: Unpack[SteamSteamspyParams]) -> SteamSteamspyResponse: ...
+    def tags(self, **params: Unpack[SteamTagsParams]) -> SteamTagsResponse: ...
+    def tags_list(self, **params: Unpack[SteamTagsListParams]) -> SteamTagsListResponse: ...
+    def top_sellers(self, **params: Unpack[SteamTopSellersParams]) -> SteamTopSellersResponse: ...
 
 class TiktokGroup:
     def category(self, **params: Unpack[TiktokCategoryParams]) -> TiktokCategoryResponse: ...
@@ -22167,6 +23543,12 @@ OperationId = Literal[
     'datasets-google-map-businesses-item',
     'datasets-google-map-businesses-nearby',
     'datasets-google-map-businesses-search',
+    'datasets-housing-markets-facets',
+    'datasets-housing-markets-item',
+    'datasets-housing-markets-search',
+    'datasets-playstation-games-facets',
+    'datasets-playstation-games-item',
+    'datasets-playstation-games-search',
     'datasets-producthunt-makers-facets',
     'datasets-producthunt-makers-item',
     'datasets-producthunt-makers-search',
@@ -22175,6 +23557,15 @@ OperationId = Literal[
     'datasets-producthunt-products-search',
     'datasets-producthunt-trends-facets',
     'datasets-producthunt-trends-search',
+    'datasets-steam-achievements-search',
+    'datasets-steam-charts-search',
+    'datasets-steam-games-facets',
+    'datasets-steam-games-item',
+    'datasets-steam-games-search',
+    'datasets-steam-news-search',
+    'datasets-steam-playercounts-search',
+    'datasets-steam-prices-search',
+    'datasets-steam-reviews-search',
     'datasets-techstack-facets',
     'datasets-techstack-item',
     'datasets-techstack-search',
@@ -22197,6 +23588,7 @@ OperationId = Literal[
     'espn-team',
     'espn-team-roster',
     'espn-teams',
+    'extract',
     'geocoding-lookup',
     'geocoding-reverse',
     'geocoding-search',
@@ -22356,6 +23748,14 @@ OperationId = Literal[
     'pitchbook-company',
     'pitchbook-fund',
     'pitchbook-investor',
+    'playstation-browse',
+    'playstation-category',
+    'playstation-concept',
+    'playstation-deals',
+    'playstation-latest',
+    'playstation-page',
+    'playstation-product',
+    'playstation-search',
     'polymarket-activity-trades',
     'polymarket-clob-market',
     'polymarket-dashboard-macro',
@@ -22555,8 +23955,14 @@ OperationId = Literal[
     'spotify-tracks-search',
     'steam-achievements',
     'steam-app',
+    'steam-category',
+    'steam-charts-concurrent',
+    'steam-charts-most-played',
+    'steam-charts-top-releases',
+    'steam-community-recommendations',
     'steam-featured',
     'steam-featured-categories',
+    'steam-items',
     'steam-news',
     'steam-package',
     'steam-players',
@@ -22565,6 +23971,9 @@ OperationId = Literal[
     'steam-search',
     'steam-search-results',
     'steam-steamspy',
+    'steam-tags',
+    'steam-tags-list',
+    'steam-top-sellers',
     'tiktok-category',
     'tiktok-video-comments',
     'tiktok-explore',
@@ -22707,6 +24116,7 @@ class CrawloraClient:
     metaculus: MetaculusGroup
     meta: MetaGroup
     pitch_book: PitchBookGroup
+    play_station: PlayStationGroup
     polymarket: PolymarketGroup
     product_hunt: ProductHuntGroup
     reddit: RedditGroup
@@ -24206,6 +25616,78 @@ class CrawloraClient:
     @overload
     def operation(
         self,
+        operation_id: Literal['datasets-housing-markets-facets'],
+        params: DatasetsHousingMarketsFacetsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsHousingMarketsFacetsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['datasets-housing-markets-item'],
+        params: DatasetsHousingMarketsItemParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsHousingMarketsItemResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['datasets-housing-markets-search'],
+        params: DatasetsHousingMarketsSearchParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsHousingMarketsSearchResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['datasets-playstation-games-facets'],
+        params: DatasetsPlaystationGamesFacetsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsPlaystationGamesFacetsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['datasets-playstation-games-item'],
+        params: DatasetsPlaystationGamesItemParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsPlaystationGamesItemResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['datasets-playstation-games-search'],
+        params: DatasetsPlaystationGamesSearchParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsPlaystationGamesSearchResponse: ...
+    @overload
+    def operation(
+        self,
         operation_id: Literal['datasets-producthunt-makers-facets'],
         params: DatasetsProducthuntMakersFacetsParams,
         *,
@@ -24299,6 +25781,114 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> DatasetsProducthuntTrendsSearchResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['datasets-steam-achievements-search'],
+        params: DatasetsSteamAchievementsSearchParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsSteamAchievementsSearchResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['datasets-steam-charts-search'],
+        params: DatasetsSteamChartsSearchParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsSteamChartsSearchResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['datasets-steam-games-facets'],
+        params: DatasetsSteamGamesFacetsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsSteamGamesFacetsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['datasets-steam-games-item'],
+        params: DatasetsSteamGamesItemParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsSteamGamesItemResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['datasets-steam-games-search'],
+        params: DatasetsSteamGamesSearchParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsSteamGamesSearchResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['datasets-steam-news-search'],
+        params: DatasetsSteamNewsSearchParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsSteamNewsSearchResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['datasets-steam-playercounts-search'],
+        params: DatasetsSteamPlayercountsSearchParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsSteamPlayercountsSearchResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['datasets-steam-prices-search'],
+        params: DatasetsSteamPricesSearchParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsSteamPricesSearchResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['datasets-steam-reviews-search'],
+        params: DatasetsSteamReviewsSearchParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsSteamReviewsSearchResponse: ...
     @overload
     def operation(
         self,
@@ -24563,6 +26153,18 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> EspnTeamsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['extract'],
+        params: WebExtractParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> WebExtractResponse: ...
     @overload
     def operation(
         self,
@@ -26471,6 +28073,102 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> PitchBookPitchbookInvestorResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['playstation-browse'],
+        params: PlayStationPlaystationBrowseParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> PlayStationPlaystationBrowseResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['playstation-category'],
+        params: PlayStationPlaystationCategoryParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> PlayStationPlaystationCategoryResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['playstation-concept'],
+        params: PlayStationPlaystationConceptParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> PlayStationPlaystationConceptResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['playstation-deals'],
+        params: PlayStationPlaystationDealsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> PlayStationPlaystationDealsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['playstation-latest'],
+        params: PlayStationPlaystationLatestParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> PlayStationPlaystationLatestResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['playstation-page'],
+        params: PlayStationPlaystationPageParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> PlayStationPlaystationPageResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['playstation-product'],
+        params: PlayStationPlaystationProductParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> PlayStationPlaystationProductResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['playstation-search'],
+        params: PlayStationPlaystationSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> PlayStationPlaystationSearchResponse: ...
     @overload
     def operation(
         self,
@@ -28862,6 +30560,66 @@ class CrawloraClient:
     @overload
     def operation(
         self,
+        operation_id: Literal['steam-category'],
+        params: SteamCategoryParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> SteamCategoryResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['steam-charts-concurrent'],
+        params: SteamChartsConcurrentParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> SteamChartsConcurrentResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['steam-charts-most-played'],
+        params: SteamChartsMostPlayedParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> SteamChartsMostPlayedResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['steam-charts-top-releases'],
+        params: SteamChartsTopReleasesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> SteamChartsTopReleasesResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['steam-community-recommendations'],
+        params: SteamCommunityRecommendationsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> SteamCommunityRecommendationsResponse: ...
+    @overload
+    def operation(
+        self,
         operation_id: Literal['steam-featured'],
         params: SteamFeaturedParams = ...,
         *,
@@ -28883,6 +30641,18 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> SteamFeaturedCategoriesResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['steam-items'],
+        params: SteamItemsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> SteamItemsResponse: ...
     @overload
     def operation(
         self,
@@ -28979,6 +30749,42 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> SteamSteamspyResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['steam-tags'],
+        params: SteamTagsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> SteamTagsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['steam-tags-list'],
+        params: SteamTagsListParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> SteamTagsListResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['steam-top-sellers'],
+        params: SteamTopSellersParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> SteamTopSellersResponse: ...
     @overload
     def operation(
         self,
@@ -31718,6 +33524,78 @@ class CrawloraClient:
     @overload
     def request(
         self,
+        operation_id: Literal['datasets-housing-markets-facets'],
+        params: DatasetsHousingMarketsFacetsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsHousingMarketsFacetsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['datasets-housing-markets-item'],
+        params: DatasetsHousingMarketsItemParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsHousingMarketsItemResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['datasets-housing-markets-search'],
+        params: DatasetsHousingMarketsSearchParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsHousingMarketsSearchResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['datasets-playstation-games-facets'],
+        params: DatasetsPlaystationGamesFacetsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsPlaystationGamesFacetsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['datasets-playstation-games-item'],
+        params: DatasetsPlaystationGamesItemParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsPlaystationGamesItemResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['datasets-playstation-games-search'],
+        params: DatasetsPlaystationGamesSearchParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsPlaystationGamesSearchResponse: ...
+    @overload
+    def request(
+        self,
         operation_id: Literal['datasets-producthunt-makers-facets'],
         params: DatasetsProducthuntMakersFacetsParams,
         *,
@@ -31811,6 +33689,114 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> DatasetsProducthuntTrendsSearchResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['datasets-steam-achievements-search'],
+        params: DatasetsSteamAchievementsSearchParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsSteamAchievementsSearchResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['datasets-steam-charts-search'],
+        params: DatasetsSteamChartsSearchParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsSteamChartsSearchResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['datasets-steam-games-facets'],
+        params: DatasetsSteamGamesFacetsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsSteamGamesFacetsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['datasets-steam-games-item'],
+        params: DatasetsSteamGamesItemParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsSteamGamesItemResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['datasets-steam-games-search'],
+        params: DatasetsSteamGamesSearchParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsSteamGamesSearchResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['datasets-steam-news-search'],
+        params: DatasetsSteamNewsSearchParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsSteamNewsSearchResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['datasets-steam-playercounts-search'],
+        params: DatasetsSteamPlayercountsSearchParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsSteamPlayercountsSearchResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['datasets-steam-prices-search'],
+        params: DatasetsSteamPricesSearchParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsSteamPricesSearchResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['datasets-steam-reviews-search'],
+        params: DatasetsSteamReviewsSearchParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsSteamReviewsSearchResponse: ...
     @overload
     def request(
         self,
@@ -32075,6 +34061,18 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> EspnTeamsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['extract'],
+        params: WebExtractParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> WebExtractResponse: ...
     @overload
     def request(
         self,
@@ -33983,6 +35981,102 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> PitchBookPitchbookInvestorResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['playstation-browse'],
+        params: PlayStationPlaystationBrowseParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> PlayStationPlaystationBrowseResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['playstation-category'],
+        params: PlayStationPlaystationCategoryParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> PlayStationPlaystationCategoryResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['playstation-concept'],
+        params: PlayStationPlaystationConceptParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> PlayStationPlaystationConceptResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['playstation-deals'],
+        params: PlayStationPlaystationDealsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> PlayStationPlaystationDealsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['playstation-latest'],
+        params: PlayStationPlaystationLatestParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> PlayStationPlaystationLatestResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['playstation-page'],
+        params: PlayStationPlaystationPageParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> PlayStationPlaystationPageResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['playstation-product'],
+        params: PlayStationPlaystationProductParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> PlayStationPlaystationProductResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['playstation-search'],
+        params: PlayStationPlaystationSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> PlayStationPlaystationSearchResponse: ...
     @overload
     def request(
         self,
@@ -36374,6 +38468,66 @@ class CrawloraClient:
     @overload
     def request(
         self,
+        operation_id: Literal['steam-category'],
+        params: SteamCategoryParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> SteamCategoryResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['steam-charts-concurrent'],
+        params: SteamChartsConcurrentParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> SteamChartsConcurrentResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['steam-charts-most-played'],
+        params: SteamChartsMostPlayedParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> SteamChartsMostPlayedResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['steam-charts-top-releases'],
+        params: SteamChartsTopReleasesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> SteamChartsTopReleasesResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['steam-community-recommendations'],
+        params: SteamCommunityRecommendationsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> SteamCommunityRecommendationsResponse: ...
+    @overload
+    def request(
+        self,
         operation_id: Literal['steam-featured'],
         params: SteamFeaturedParams = ...,
         *,
@@ -36395,6 +38549,18 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> SteamFeaturedCategoriesResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['steam-items'],
+        params: SteamItemsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> SteamItemsResponse: ...
     @overload
     def request(
         self,
@@ -36491,6 +38657,42 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> SteamSteamspyResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['steam-tags'],
+        params: SteamTagsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> SteamTagsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['steam-tags-list'],
+        params: SteamTagsListParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> SteamTagsListResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['steam-top-sellers'],
+        params: SteamTopSellersParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> SteamTopSellersResponse: ...
     @overload
     def request(
         self,
