@@ -253,6 +253,259 @@ ModelAmazonSuggestResponseDoc = TypedDict('ModelAmazonSuggestResponseDoc', {
     'msg': NotRequired[str],
 }, total=False)
 
+ModelAnimeAiringEntry = TypedDict('ModelAnimeAiringEntry', {
+    'airing_at': NotRequired[int],
+    'episode': NotRequired[int],
+    'media': NotRequired[ModelAnimeMedia],
+    'time_until_airing': NotRequired[int],
+}, total=False)
+
+ModelAnimeAiringScheduleResponse = TypedDict('ModelAnimeAiringScheduleResponse', {
+    'has_next_page': NotRequired[bool],
+    'page': NotRequired[int],
+    'per_page': NotRequired[int],
+    'results': NotRequired[list[ModelAnimeAiringEntry]],
+}, total=False)
+
+ModelAnimeCharacter = TypedDict('ModelAnimeCharacter', {
+    'age': NotRequired[str],
+    'alternative_names': NotRequired[list[str]],
+    'blood_type': NotRequired[str],
+    'date_of_birth': NotRequired[ModelAnimeFuzzyDate],
+    'description': NotRequired[str],
+    'favourites': NotRequired[int],
+    'gender': NotRequired[str],
+    'id': NotRequired[int],
+    'image': NotRequired[str],
+    'media': NotRequired[list[ModelAnimeCharacterMediaRole]],
+    'name': NotRequired[str],
+    'native_name': NotRequired[str],
+    'site_url': NotRequired[str],
+}, total=False)
+
+ModelAnimeCharacterEntry = TypedDict('ModelAnimeCharacterEntry', {
+    'favourites': NotRequired[int],
+    'id': NotRequired[int],
+    'image': NotRequired[str],
+    'name': NotRequired[str],
+    'native_name': NotRequired[str],
+    'role': NotRequired[str],
+    'site_url': NotRequired[str],
+}, total=False)
+
+ModelAnimeCharacterMediaRole = TypedDict('ModelAnimeCharacterMediaRole', {
+    'cover_image': NotRequired[str],
+    'format': NotRequired[str],
+    'id': NotRequired[int],
+    'role': NotRequired[str],
+    'site_url': NotRequired[str],
+    'title': NotRequired[ModelAnimeMediaTitle],
+    'type': NotRequired[str],
+}, total=False)
+
+ModelAnimeCharacterSearchResponse = TypedDict('ModelAnimeCharacterSearchResponse', {
+    'has_next_page': NotRequired[bool],
+    'page': NotRequired[int],
+    'per_page': NotRequired[int],
+    'query': NotRequired[str],
+    'results': NotRequired[list[ModelAnimeCharacter]],
+    'total': NotRequired[int],
+}, total=False)
+
+ModelAnimeCharactersResponse = TypedDict('ModelAnimeCharactersResponse', {
+    'has_next_page': NotRequired[bool],
+    'id': NotRequired[int],
+    'page': NotRequired[int],
+    'per_page': NotRequired[int],
+    'results': NotRequired[list[ModelAnimeCharacterEntry]],
+    'total': NotRequired[int],
+}, total=False)
+
+ModelAnimeFuzzyDate = TypedDict('ModelAnimeFuzzyDate', {
+    'day': NotRequired[int],
+    'month': NotRequired[int],
+    'year': NotRequired[int],
+}, total=False)
+
+ModelAnimeMangaRankingsResponse = TypedDict('ModelAnimeMangaRankingsResponse', {
+    'format': NotRequired[str],
+    'genre': NotRequired[str],
+    'has_next_page': NotRequired[bool],
+    'page': NotRequired[int],
+    'per_page': NotRequired[int],
+    'results': NotRequired[list[ModelAnimeMedia]],
+    'sort': NotRequired[str],
+    'status': NotRequired[str],
+    'total': NotRequired[int],
+}, total=False)
+
+ModelAnimeMedia = TypedDict('ModelAnimeMedia', {
+    'average_score': NotRequired[int],
+    'banner_image': NotRequired[str],
+    'chapters': NotRequired[int],
+    'country_of_origin': NotRequired[str],
+    'cover_image': NotRequired[str],
+    'description': NotRequired[str],
+    'duration': NotRequired[int],
+    'end_date': NotRequired[ModelAnimeFuzzyDate],
+    'episodes': NotRequired[int],
+    'favourites': NotRequired[int],
+    'format': NotRequired[str],
+    'genres': NotRequired[list[str]],
+    'id': NotRequired[int],
+    'id_mal': NotRequired[int],
+    'is_adult': NotRequired[bool],
+    'mean_score': NotRequired[int],
+    'next_airing_episode': NotRequired[ModelAnimeNextAiringEpisode],
+    'popularity': NotRequired[int],
+    'season': NotRequired[str],
+    'season_year': NotRequired[int],
+    'site_url': NotRequired[str],
+    'start_date': NotRequired[ModelAnimeFuzzyDate],
+    'status': NotRequired[str],
+    'studios': NotRequired[list[str]],
+    'tags': NotRequired[list[ModelAnimeMediaTag]],
+    'title': NotRequired[ModelAnimeMediaTitle],
+    'trending': NotRequired[int],
+    'type': NotRequired[str],
+    'volumes': NotRequired[int],
+}, total=False)
+
+ModelAnimeMediaTag = TypedDict('ModelAnimeMediaTag', {
+    'category': NotRequired[str],
+    'is_spoiler': NotRequired[bool],
+    'name': NotRequired[str],
+    'rank': NotRequired[int],
+}, total=False)
+
+ModelAnimeMediaTitle = TypedDict('ModelAnimeMediaTitle', {
+    'english': NotRequired[str],
+    'native': NotRequired[str],
+    'romaji': NotRequired[str],
+}, total=False)
+
+ModelAnimeNextAiringEpisode = TypedDict('ModelAnimeNextAiringEpisode', {
+    'airing_at': NotRequired[int],
+    'episode': NotRequired[int],
+    'time_until_airing': NotRequired[int],
+}, total=False)
+
+ModelAnimeRankingsResponse = TypedDict('ModelAnimeRankingsResponse', {
+    'format': NotRequired[str],
+    'genre': NotRequired[str],
+    'has_next_page': NotRequired[bool],
+    'page': NotRequired[int],
+    'per_page': NotRequired[int],
+    'results': NotRequired[list[ModelAnimeMedia]],
+    'season': NotRequired[str],
+    'season_year': NotRequired[int],
+    'sort': NotRequired[str],
+    'status': NotRequired[str],
+    'total': NotRequired[int],
+}, total=False)
+
+ModelAnimeRecommendationEntry = TypedDict('ModelAnimeRecommendationEntry', {
+    'media': NotRequired[ModelAnimeMedia],
+    'rating': NotRequired[int],
+}, total=False)
+
+ModelAnimeRecommendationsResponse = TypedDict('ModelAnimeRecommendationsResponse', {
+    'has_next_page': NotRequired[bool],
+    'id': NotRequired[int],
+    'page': NotRequired[int],
+    'per_page': NotRequired[int],
+    'results': NotRequired[list[ModelAnimeRecommendationEntry]],
+    'total': NotRequired[int],
+}, total=False)
+
+ModelAnimeSearchResponse = TypedDict('ModelAnimeSearchResponse', {
+    'has_next_page': NotRequired[bool],
+    'page': NotRequired[int],
+    'per_page': NotRequired[int],
+    'query': NotRequired[str],
+    'results': NotRequired[list[ModelAnimeMedia]],
+    'total': NotRequired[int],
+}, total=False)
+
+ModelAnimeStaffEntry = TypedDict('ModelAnimeStaffEntry', {
+    'id': NotRequired[int],
+    'image': NotRequired[str],
+    'name': NotRequired[str],
+    'native_name': NotRequired[str],
+    'occupations': NotRequired[list[str]],
+    'role': NotRequired[str],
+    'site_url': NotRequired[str],
+}, total=False)
+
+ModelAnimeStaffResponse = TypedDict('ModelAnimeStaffResponse', {
+    'has_next_page': NotRequired[bool],
+    'id': NotRequired[int],
+    'page': NotRequired[int],
+    'per_page': NotRequired[int],
+    'results': NotRequired[list[ModelAnimeStaffEntry]],
+    'total': NotRequired[int],
+}, total=False)
+
+ModelAnimeAiringScheduleResponseDoc = TypedDict('ModelAnimeAiringScheduleResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelAnimeAiringScheduleResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelAnimeCharacterResponseDoc = TypedDict('ModelAnimeCharacterResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelAnimeCharacter],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelAnimeCharacterSearchResponseDoc = TypedDict('ModelAnimeCharacterSearchResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelAnimeCharacterSearchResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelAnimeCharactersResponseDoc = TypedDict('ModelAnimeCharactersResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelAnimeCharactersResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelAnimeMangaRankingsResponseDoc = TypedDict('ModelAnimeMangaRankingsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelAnimeMangaRankingsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelAnimeMediaResponseDoc = TypedDict('ModelAnimeMediaResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelAnimeMedia],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelAnimeRankingsResponseDoc = TypedDict('ModelAnimeRankingsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelAnimeRankingsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelAnimeRecommendationsResponseDoc = TypedDict('ModelAnimeRecommendationsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelAnimeRecommendationsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelAnimeSearchResponseDoc = TypedDict('ModelAnimeSearchResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelAnimeSearchResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelAnimeStaffResponseDoc = TypedDict('ModelAnimeStaffResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelAnimeStaffResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
 ModelAntibotBand = Literal['easy', 'medium', 'hard', 'very_hard', 'blocked', 'unknown']
 
 ModelAntibotProtection = TypedDict('ModelAntibotProtection', {
@@ -16620,6 +16873,97 @@ AmazonSuggestParams = TypedDict('AmazonSuggestParams', {
     'keyword': Required[str],
 }, total=False)
 
+AnimeAiringScheduleResponse = ModelAnimeAiringScheduleResponseDoc
+AnimeAiringScheduleParams = TypedDict('AnimeAiringScheduleParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'page': NotRequired[int],
+    'per_page': NotRequired[int],
+}, total=False)
+
+AnimeCharacterSearchResponse = ModelAnimeCharacterSearchResponseDoc
+AnimeCharacterSearchParams = TypedDict('AnimeCharacterSearchParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'query': Required[str],
+    'page': NotRequired[int],
+    'per_page': NotRequired[int],
+}, total=False)
+
+AnimeCharacterResponse = ModelAnimeCharacterResponseDoc
+AnimeCharacterParams = TypedDict('AnimeCharacterParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': Required[str],
+}, total=False)
+
+AnimeRankingsResponse = ModelAnimeRankingsResponseDoc
+AnimeRankingsParams = TypedDict('AnimeRankingsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'sort': NotRequired[str],
+    'season': NotRequired[str],
+    'season_year': NotRequired[int],
+    'format': NotRequired[str],
+    'genre': NotRequired[str],
+    'status': NotRequired[str],
+    'page': NotRequired[int],
+    'per_page': NotRequired[int],
+}, total=False)
+
+AnimeSearchResponse = ModelAnimeSearchResponseDoc
+AnimeSearchParams = TypedDict('AnimeSearchParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'query': Required[str],
+    'sort': NotRequired[str],
+    'page': NotRequired[int],
+    'per_page': NotRequired[int],
+}, total=False)
+
+AnimeTitleResponse = ModelAnimeMediaResponseDoc
+AnimeTitleParams = TypedDict('AnimeTitleParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': Required[str],
+}, total=False)
+
+AnimeTitleCharactersResponse = ModelAnimeCharactersResponseDoc
+AnimeTitleCharactersParams = TypedDict('AnimeTitleCharactersParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': Required[str],
+    'page': NotRequired[int],
+    'per_page': NotRequired[int],
+}, total=False)
+
+AnimeTitleRecommendationsResponse = ModelAnimeRecommendationsResponseDoc
+AnimeTitleRecommendationsParams = TypedDict('AnimeTitleRecommendationsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': Required[str],
+    'page': NotRequired[int],
+    'per_page': NotRequired[int],
+}, total=False)
+
+AnimeTitleStaffResponse = ModelAnimeStaffResponseDoc
+AnimeTitleStaffParams = TypedDict('AnimeTitleStaffParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': Required[str],
+    'page': NotRequired[int],
+    'per_page': NotRequired[int],
+}, total=False)
+
 ApplePodcastsChartsResponse = ModelApplepodcastsChartsResponseDoc
 ApplePodcastsChartsParams = TypedDict('ApplePodcastsChartsParams', {
     '_response_type': NotRequired[ResponseType],
@@ -20103,6 +20447,38 @@ LinkedInLinkedinProductParams = TypedDict('LinkedInLinkedinProductParams', {
 
 LinkedInLinkedinShowcaseResponse = ModelLinkedinShowcaseResponseDoc
 LinkedInLinkedinShowcaseParams = TypedDict('LinkedInLinkedinShowcaseParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': Required[str],
+}, total=False)
+
+MangaRankingsResponse = ModelAnimeMangaRankingsResponseDoc
+MangaRankingsParams = TypedDict('MangaRankingsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'sort': NotRequired[str],
+    'format': NotRequired[str],
+    'genre': NotRequired[str],
+    'status': NotRequired[str],
+    'page': NotRequired[int],
+    'per_page': NotRequired[int],
+}, total=False)
+
+MangaSearchResponse = ModelAnimeSearchResponseDoc
+MangaSearchParams = TypedDict('MangaSearchParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'query': Required[str],
+    'sort': NotRequired[str],
+    'page': NotRequired[int],
+    'per_page': NotRequired[int],
+}, total=False)
+
+MangaTitleResponse = ModelAnimeMediaResponseDoc
+MangaTitleParams = TypedDict('MangaTitleParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
     '_headers': NotRequired[Mapping[str, str]],
@@ -23661,6 +24037,17 @@ class AmazonGroup:
     def search(self, **params: Unpack[AmazonSearchParams]) -> AmazonSearchResponse: ...
     def suggest(self, **params: Unpack[AmazonSuggestParams]) -> AmazonSuggestResponse: ...
 
+class AnimeGroup:
+    def airing_schedule(self, **params: Unpack[AnimeAiringScheduleParams]) -> AnimeAiringScheduleResponse: ...
+    def character_search(self, **params: Unpack[AnimeCharacterSearchParams]) -> AnimeCharacterSearchResponse: ...
+    def character(self, **params: Unpack[AnimeCharacterParams]) -> AnimeCharacterResponse: ...
+    def rankings(self, **params: Unpack[AnimeRankingsParams]) -> AnimeRankingsResponse: ...
+    def search(self, **params: Unpack[AnimeSearchParams]) -> AnimeSearchResponse: ...
+    def title(self, **params: Unpack[AnimeTitleParams]) -> AnimeTitleResponse: ...
+    def title_characters(self, **params: Unpack[AnimeTitleCharactersParams]) -> AnimeTitleCharactersResponse: ...
+    def title_recommendations(self, **params: Unpack[AnimeTitleRecommendationsParams]) -> AnimeTitleRecommendationsResponse: ...
+    def title_staff(self, **params: Unpack[AnimeTitleStaffParams]) -> AnimeTitleStaffResponse: ...
+
 class ApplePodcastsGroup:
     def charts(self, **params: Unpack[ApplePodcastsChartsParams]) -> ApplePodcastsChartsResponse: ...
     def episodes_search(self, **params: Unpack[ApplePodcastsEpisodesSearchParams]) -> ApplePodcastsEpisodesSearchResponse: ...
@@ -24031,6 +24418,11 @@ class LinkedInGroup:
     def linkedin_company(self, **params: Unpack[LinkedInLinkedinCompanyParams]) -> LinkedInLinkedinCompanyResponse: ...
     def linkedin_product(self, **params: Unpack[LinkedInLinkedinProductParams]) -> LinkedInLinkedinProductResponse: ...
     def linkedin_showcase(self, **params: Unpack[LinkedInLinkedinShowcaseParams]) -> LinkedInLinkedinShowcaseResponse: ...
+
+class MangaGroup:
+    def rankings(self, **params: Unpack[MangaRankingsParams]) -> MangaRankingsResponse: ...
+    def search(self, **params: Unpack[MangaSearchParams]) -> MangaSearchResponse: ...
+    def title(self, **params: Unpack[MangaTitleParams]) -> MangaTitleResponse: ...
 
 class MetaculusGroup:
     def category_questions(self, **params: Unpack[MetaculusCategoryQuestionsParams]) -> MetaculusCategoryQuestionsResponse: ...
@@ -24457,6 +24849,15 @@ OperationId = Literal[
     'amazon-product',
     'amazon-search',
     'amazon-suggest',
+    'anime-airing-schedule',
+    'anime-character-search',
+    'anime-character',
+    'anime-rankings',
+    'anime-search',
+    'anime-title',
+    'anime-title-characters',
+    'anime-title-recommendations',
+    'anime-title-staff',
     'apple-podcasts-charts',
     'apple-podcasts-episodes-search',
     'apple-podcasts-search',
@@ -24774,6 +25175,9 @@ OperationId = Literal[
     'linkedin-company',
     'linkedin-product',
     'linkedin-showcase',
+    'manga-rankings',
+    'manga-search',
+    'manga-title',
     'metaculus-category-questions',
     'metaculus-comments-feed',
     'metaculus-project-questions',
@@ -25137,6 +25541,7 @@ OperationId = Literal[
 class CrawloraClient:
     airbnb: AirbnbGroup
     amazon: AmazonGroup
+    anime: AnimeGroup
     apple_podcasts: ApplePodcastsGroup
     app_store: AppStoreGroup
     billing: BillingGroup
@@ -25163,6 +25568,7 @@ class CrawloraClient:
     kalshi: KalshiGroup
     letterboxd: LetterboxdGroup
     linked_in: LinkedInGroup
+    manga: MangaGroup
     metaculus: MetaculusGroup
     meta: MetaGroup
     pitch_book: PitchBookGroup
@@ -25392,6 +25798,114 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> AmazonSuggestResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['anime-airing-schedule'],
+        params: AnimeAiringScheduleParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> AnimeAiringScheduleResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['anime-character-search'],
+        params: AnimeCharacterSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> AnimeCharacterSearchResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['anime-character'],
+        params: AnimeCharacterParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> AnimeCharacterResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['anime-rankings'],
+        params: AnimeRankingsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> AnimeRankingsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['anime-search'],
+        params: AnimeSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> AnimeSearchResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['anime-title'],
+        params: AnimeTitleParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> AnimeTitleResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['anime-title-characters'],
+        params: AnimeTitleCharactersParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> AnimeTitleCharactersResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['anime-title-recommendations'],
+        params: AnimeTitleRecommendationsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> AnimeTitleRecommendationsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['anime-title-staff'],
+        params: AnimeTitleStaffParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> AnimeTitleStaffResponse: ...
     @overload
     def operation(
         self,
@@ -29196,6 +29710,42 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> LinkedInLinkedinShowcaseResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['manga-rankings'],
+        params: MangaRankingsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> MangaRankingsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['manga-search'],
+        params: MangaSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> MangaSearchResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['manga-title'],
+        params: MangaTitleParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> MangaTitleResponse: ...
     @overload
     def operation(
         self,
@@ -33627,6 +34177,114 @@ class CrawloraClient:
     @overload
     def request(
         self,
+        operation_id: Literal['anime-airing-schedule'],
+        params: AnimeAiringScheduleParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> AnimeAiringScheduleResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['anime-character-search'],
+        params: AnimeCharacterSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> AnimeCharacterSearchResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['anime-character'],
+        params: AnimeCharacterParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> AnimeCharacterResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['anime-rankings'],
+        params: AnimeRankingsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> AnimeRankingsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['anime-search'],
+        params: AnimeSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> AnimeSearchResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['anime-title'],
+        params: AnimeTitleParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> AnimeTitleResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['anime-title-characters'],
+        params: AnimeTitleCharactersParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> AnimeTitleCharactersResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['anime-title-recommendations'],
+        params: AnimeTitleRecommendationsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> AnimeTitleRecommendationsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['anime-title-staff'],
+        params: AnimeTitleStaffParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> AnimeTitleStaffResponse: ...
+    @overload
+    def request(
+        self,
         operation_id: Literal['apple-podcasts-charts'],
         params: ApplePodcastsChartsParams = ...,
         *,
@@ -37428,6 +38086,42 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> LinkedInLinkedinShowcaseResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['manga-rankings'],
+        params: MangaRankingsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> MangaRankingsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['manga-search'],
+        params: MangaSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> MangaSearchResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['manga-title'],
+        params: MangaTitleParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> MangaTitleResponse: ...
     @overload
     def request(
         self,

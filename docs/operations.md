@@ -2,7 +2,7 @@
 
 Generated from `openapi/public.json`. Deprecated, admin, and internal operations are excluded from this SDK contract.
 
-Total operations: `685`
+Total operations: `697`
 
 | Group | SDK method | Operation ID | HTTP | Params | Auth | Response | Notes |
 | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -16,6 +16,15 @@ Total operations: `685`
 | amazon | `amazon.product` | `amazon-product` | `GET /amazon/product/{asin}` | `asin` (path str required)<br>`language` (query Literal['en_US'])<br>`currency` (query Literal['USD']) | `ApiKeyAuth` | `AmazonProductResponse` |  |
 | amazon | `amazon.search` | `amazon-search` | `GET /amazon/search` | `k` (query str required)<br>`s` (query str)<br>`page` (query int) | `ApiKeyAuth` | `AmazonSearchResponse` |  |
 | amazon | `amazon.suggest` | `amazon-suggest` | `GET /amazon/suggest/{keyword}` | `keyword` (path str required) | `ApiKeyAuth` | `AmazonSuggestResponse` |  |
+| anime | `anime.airing_schedule` | `anime-airing-schedule` | `GET /anime/airing-schedule` | `page` (query int)<br>`per_page` (query int) | `ApiKeyAuth` | `AnimeAiringScheduleResponse` |  |
+| anime | `anime.character_search` | `anime-character-search` | `GET /anime/character/search` | `query` (query str required)<br>`page` (query int)<br>`per_page` (query int) | `ApiKeyAuth` | `AnimeCharacterSearchResponse` |  |
+| anime | `anime.character` | `anime-character` | `GET /anime/character/{id}` | `id` (path str required) | `ApiKeyAuth` | `AnimeCharacterResponse` |  |
+| anime | `anime.rankings` | `anime-rankings` | `GET /anime/rankings` | `sort` (query str)<br>`season` (query str)<br>`season_year` (query int)<br>`format` (query str)<br>`genre` (query str)<br>`status` (query str)<br>`page` (query int)<br>`per_page` (query int) | `ApiKeyAuth` | `AnimeRankingsResponse` |  |
+| anime | `anime.search` | `anime-search` | `GET /anime/search` | `query` (query str required)<br>`sort` (query str)<br>`page` (query int)<br>`per_page` (query int) | `ApiKeyAuth` | `AnimeSearchResponse` |  |
+| anime | `anime.title` | `anime-title` | `GET /anime/title/{id}` | `id` (path str required) | `ApiKeyAuth` | `AnimeTitleResponse` |  |
+| anime | `anime.title_characters` | `anime-title-characters` | `GET /anime/title/{id}/characters` | `id` (path str required)<br>`page` (query int)<br>`per_page` (query int) | `ApiKeyAuth` | `AnimeTitleCharactersResponse` |  |
+| anime | `anime.title_recommendations` | `anime-title-recommendations` | `GET /anime/title/{id}/recommendations` | `id` (path str required)<br>`page` (query int)<br>`per_page` (query int) | `ApiKeyAuth` | `AnimeTitleRecommendationsResponse` |  |
+| anime | `anime.title_staff` | `anime-title-staff` | `GET /anime/title/{id}/staff` | `id` (path str required)<br>`page` (query int)<br>`per_page` (query int) | `ApiKeyAuth` | `AnimeTitleStaffResponse` |  |
 | apple_podcasts | `apple_podcasts.charts` | `apple-podcasts-charts` | `GET /apple-podcasts/charts` | `collection` (query str)<br>`category` (query int)<br>`country` (query str)<br>`limit` (query int) | `ApiKeyAuth` | `ApplePodcastsChartsResponse` |  |
 | apple_podcasts | `apple_podcasts.episodes_search` | `apple-podcasts-episodes-search` | `GET /apple-podcasts/episodes/search` | `term` (query str required)<br>`country` (query str)<br>`lang` (query str)<br>`limit` (query int)<br>`page` (query int) | `ApiKeyAuth` | `ApplePodcastsEpisodesSearchResponse` |  |
 | apple_podcasts | `apple_podcasts.search` | `apple-podcasts-search` | `GET /apple-podcasts/search` | `term` (query str required)<br>`country` (query str)<br>`lang` (query str)<br>`limit` (query int)<br>`page` (query int) | `ApiKeyAuth` | `ApplePodcastsSearchResponse` |  |
@@ -335,6 +344,9 @@ Total operations: `685`
 | linked_in | `linked_in.linkedin_company` | `linkedin-company` | `GET /linkedin/company/{id}` | `id` (path str required) | `ApiKeyAuth` | `LinkedInLinkedinCompanyResponse` |  |
 | linked_in | `linked_in.linkedin_product` | `linkedin-product` | `GET /linkedin/product/{id}` | `id` (path str required) | `ApiKeyAuth` | `LinkedInLinkedinProductResponse` |  |
 | linked_in | `linked_in.linkedin_showcase` | `linkedin-showcase` | `GET /linkedin/showcase/{id}` | `id` (path str required) | `ApiKeyAuth` | `LinkedInLinkedinShowcaseResponse` |  |
+| manga | `manga.rankings` | `manga-rankings` | `GET /manga/rankings` | `sort` (query str)<br>`format` (query str)<br>`genre` (query str)<br>`status` (query str)<br>`page` (query int)<br>`per_page` (query int) | `ApiKeyAuth` | `MangaRankingsResponse` |  |
+| manga | `manga.search` | `manga-search` | `GET /manga/search` | `query` (query str required)<br>`sort` (query str)<br>`page` (query int)<br>`per_page` (query int) | `ApiKeyAuth` | `MangaSearchResponse` |  |
+| manga | `manga.title` | `manga-title` | `GET /manga/title/{id}` | `id` (path str required) | `ApiKeyAuth` | `MangaTitleResponse` |  |
 | metaculus | `metaculus.category_questions` | `metaculus-category-questions` | `GET /metaculus/category/{slug}/questions` | `slug` (path Literal['artificial-intelligence', 'computing-and-math', 'cryptocurrencies', 'economy-business', 'elections', 'environment-climate', 'geopolitics', 'health-pandemics', 'law', 'metaculus', 'natural-sciences', 'nuclear', 'politics', 'social-sciences', 'space', 'sports-entertainment', 'technology'] required)<br>`limit` (query int) | `ApiKeyAuth` | `MetaculusCategoryQuestionsResponse` |  |
 | metaculus | `metaculus.comments_feed` | `metaculus-comments-feed` | `GET /metaculus/comments-feed` | `limit` (query int)<br>`topic` (query str) | `ApiKeyAuth` | `MetaculusCommentsFeedResponse` |  |
 | metaculus | `metaculus.project_questions` | `metaculus-project-questions` | `GET /metaculus/project/{slug}/questions` | `slug` (path str required)<br>`limit` (query int) | `ApiKeyAuth` | `MetaculusProjectQuestionsResponse` |  |
