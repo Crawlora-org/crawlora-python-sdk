@@ -1,7 +1,8 @@
 # Crawlora Python SDK
 
 Python client for the public Crawlora API. Use it to call Crawlora scraping,
-search, social, developer, marketplace, travel, media, books, maps, finance, prediction-market, brand, and usage endpoints
+search, social, developer, marketplace, datasets, reviews, travel, media, books,
+maps, finance, prediction-market, brand, and usage endpoints
 with generated type stubs for editor and type-checker support.
 
 - Runtime: Python 3.10+
@@ -12,7 +13,7 @@ with generated type stubs for editor and type-checker support.
 ## Install
 
 Published on [PyPI](https://pypi.org/project/crawlora/). The current release is a
-prerelease (`1.7.0.dev1`), so install it with `--pre`:
+prerelease (`1.18.0.dev1`), so install it with `--pre`:
 
 ```sh
 pip install --pre crawlora

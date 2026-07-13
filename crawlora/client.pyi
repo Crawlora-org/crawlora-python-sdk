@@ -327,6 +327,13 @@ ModelAnimeFuzzyDate = TypedDict('ModelAnimeFuzzyDate', {
     'year': NotRequired[int],
 }, total=False)
 
+ModelAnimeMalscore = TypedDict('ModelAnimeMalscore', {
+    'max': NotRequired[int],
+    'score': NotRequired[float],
+    'scored_by': NotRequired[int],
+    'url': NotRequired[str],
+}, total=False)
+
 ModelAnimeMangaRankingsResponse = TypedDict('ModelAnimeMangaRankingsResponse', {
     'format': NotRequired[str],
     'genre': NotRequired[str],
@@ -355,6 +362,7 @@ ModelAnimeMedia = TypedDict('ModelAnimeMedia', {
     'id': NotRequired[int],
     'id_mal': NotRequired[int],
     'is_adult': NotRequired[bool],
+    'mal': NotRequired[ModelAnimeMalscore],
     'mean_score': NotRequired[int],
     'next_airing_episode': NotRequired[ModelAnimeNextAiringEpisode],
     'popularity': NotRequired[int],
@@ -2204,6 +2212,65 @@ ModelBuildinfoInfo = TypedDict('ModelBuildinfoInfo', {
     'version': NotRequired[str],
 }, total=False)
 
+ModelCapterraProduct = TypedDict('ModelCapterraProduct', {
+    'best_rating': NotRequired[float],
+    'category': NotRequired[str],
+    'description': NotRequired[str],
+    'name': NotRequired[str],
+    'product_id': NotRequired[str],
+    'rating': NotRequired[float],
+    'review_count': NotRequired[int],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelCapterraReview = TypedDict('ModelCapterraReview', {
+    'author': NotRequired[str],
+    'best_rating': NotRequired[float],
+    'headline': NotRequired[str],
+    'rating': NotRequired[float],
+}, total=False)
+
+ModelCapterraReviewsResponse = TypedDict('ModelCapterraReviewsResponse', {
+    'has_next_page': NotRequired[bool],
+    'page': NotRequired[int],
+    'product_id': NotRequired[str],
+    'rating': NotRequired[float],
+    'review_count': NotRequired[int],
+    'reviews': NotRequired[list[ModelCapterraReview]],
+}, total=False)
+
+ModelCapterraSearchResponse = TypedDict('ModelCapterraSearchResponse', {
+    'items': NotRequired[list[ModelCapterraSearchResult]],
+    'query': NotRequired[str],
+}, total=False)
+
+ModelCapterraSearchResult = TypedDict('ModelCapterraSearchResult', {
+    'description': NotRequired[str],
+    'name': NotRequired[str],
+    'product_id': NotRequired[str],
+    'rating': NotRequired[float],
+    'review_count': NotRequired[int],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelCapterraProductResponseDoc = TypedDict('ModelCapterraProductResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelCapterraProduct],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelCapterraReviewsResponseDoc = TypedDict('ModelCapterraReviewsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelCapterraReviewsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelCapterraSearchResponseDoc = TypedDict('ModelCapterraSearchResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelCapterraSearchResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
 ModelChromewebstoreCard = TypedDict('ModelChromewebstoreCard', {
     'category': NotRequired[str],
     'category_id': NotRequired[int],
@@ -2283,6 +2350,7 @@ ModelChromewebstoreListResult = TypedDict('ModelChromewebstoreListResult', {
 ModelChromewebstorePermissions = TypedDict('ModelChromewebstorePermissions', {
     'host_permissions': NotRequired[list[str]],
     'id': NotRequired[str],
+    'item_type': NotRequired[str],
     'manifest_version': NotRequired[int],
     'min_browser_version': NotRequired[str],
     'name': NotRequired[str],
@@ -3149,6 +3217,51 @@ ModelDatasetsChartsSearchResponse = TypedDict('ModelDatasetsChartsSearchResponse
     'total': NotRequired[int],
 }, total=False)
 
+ModelDatasetsChromeExtensionChangesResponse = TypedDict('ModelDatasetsChromeExtensionChangesResponse', {
+    'count': NotRequired[int],
+    'dataset': NotRequired[str],
+    'items': NotRequired[list[ModelEsChromeExtensionHistoryPoint]],
+}, total=False)
+
+ModelDatasetsChromeExtensionFacetResponse = TypedDict('ModelDatasetsChromeExtensionFacetResponse', {
+    'dataset': NotRequired[str],
+    'facet': NotRequired[str],
+    'items': NotRequired[list[ModelEsChromeExtensionFacetItem]],
+}, total=False)
+
+ModelDatasetsChromeExtensionHistoryResponse = TypedDict('ModelDatasetsChromeExtensionHistoryResponse', {
+    'count': NotRequired[int],
+    'dataset': NotRequired[str],
+    'id': NotRequired[str],
+    'points': NotRequired[list[ModelEsChromeExtensionHistoryPoint]],
+}, total=False)
+
+ModelDatasetsChromeExtensionMetricsResponse = TypedDict('ModelDatasetsChromeExtensionMetricsResponse', {
+    'changes': NotRequired[ModelEsChromeExtensionChangeMetrics],
+    'dataset': NotRequired[str],
+    'days': NotRequired[int],
+    'generated_at': NotRequired[str],
+    'item_types': NotRequired[list[ModelEsChromeExtensionMetricBucket]],
+    'manifest_versions': NotRequired[list[ModelEsChromeExtensionMetricBucket]],
+    'rating_bands': NotRequired[list[ModelEsChromeExtensionMetricBucket]],
+    'review_bands': NotRequired[list[ModelEsChromeExtensionMetricBucket]],
+    'risk_signals': NotRequired[list[ModelEsChromeExtensionMetricBucket]],
+    'statuses': NotRequired[list[ModelEsChromeExtensionMetricBucket]],
+    'summary': NotRequired[ModelEsChromeExtensionMetricSummary],
+    'top_categories': NotRequired[list[ModelEsChromeExtensionMetricBucket]],
+    'top_permissions': NotRequired[list[ModelEsChromeExtensionMetricBucket]],
+    'user_bands': NotRequired[list[ModelEsChromeExtensionMetricBucket]],
+}, total=False)
+
+ModelDatasetsChromeExtensionSearchResponse = TypedDict('ModelDatasetsChromeExtensionSearchResponse', {
+    'dataset': NotRequired[str],
+    'items': NotRequired[list[ModelEsChromeExtensionRecord]],
+    'page': NotRequired[int],
+    'page_size': NotRequired[int],
+    'sort': NotRequired[str],
+    'total': NotRequired[int],
+}, total=False)
+
 ModelDatasetsCreatorsSearchResponse = TypedDict('ModelDatasetsCreatorsSearchResponse', {
     'dataset': NotRequired[str],
     'items': NotRequired[list[ModelEsCreatorRecord]],
@@ -3208,6 +3321,45 @@ ModelDatasetsHousingFacetResponse = TypedDict('ModelDatasetsHousingFacetResponse
 ModelDatasetsHousingSearchResponse = TypedDict('ModelDatasetsHousingSearchResponse', {
     'dataset': NotRequired[str],
     'items': NotRequired[list[ModelEsHousingMarketRecord]],
+    'page': NotRequired[int],
+    'page_size': NotRequired[int],
+    'sort': NotRequired[str],
+    'total': NotRequired[int],
+}, total=False)
+
+ModelDatasetsJournalistsFacetResponse = TypedDict('ModelDatasetsJournalistsFacetResponse', {
+    'dataset': NotRequired[str],
+    'facet': NotRequired[str],
+    'items': NotRequired[list[ModelEsJournalistsFacetItem]],
+}, total=False)
+
+ModelDatasetsJournalistsSearchResponse = TypedDict('ModelDatasetsJournalistsSearchResponse', {
+    'dataset': NotRequired[str],
+    'items': NotRequired[list[ModelEsJournalistRecord]],
+    'page': NotRequired[int],
+    'page_size': NotRequired[int],
+    'sort': NotRequired[str],
+    'total': NotRequired[int],
+}, total=False)
+
+ModelDatasetsNumbeoCityFacetResponse = TypedDict('ModelDatasetsNumbeoCityFacetResponse', {
+    'dataset': NotRequired[str],
+    'facet': NotRequired[str],
+    'items': NotRequired[list[ModelEsNumbeoDatasetFacetItem]],
+}, total=False)
+
+ModelDatasetsNumbeoCitySearchResponse = TypedDict('ModelDatasetsNumbeoCitySearchResponse', {
+    'dataset': NotRequired[str],
+    'items': NotRequired[list[ModelEsNumbeoCityRecord]],
+    'page': NotRequired[int],
+    'page_size': NotRequired[int],
+    'sort': NotRequired[str],
+    'total': NotRequired[int],
+}, total=False)
+
+ModelDatasetsNumbeoCountrySearchResponse = TypedDict('ModelDatasetsNumbeoCountrySearchResponse', {
+    'dataset': NotRequired[str],
+    'items': NotRequired[list[ModelEsNumbeoCountryRecord]],
     'page': NotRequired[int],
     'page_size': NotRequired[int],
     'sort': NotRequired[str],
@@ -3376,6 +3528,13 @@ ModelDatasetsTrustmrrFacetResponse = TypedDict('ModelDatasetsTrustmrrFacetRespon
     'items': NotRequired[list[ModelEsTrustmrrDatasetFacetItem]],
 }, total=False)
 
+ModelDatasetsTrustmrrHistoryResponse = TypedDict('ModelDatasetsTrustmrrHistoryResponse', {
+    'count': NotRequired[int],
+    'dataset': NotRequired[str],
+    'points': NotRequired[list[ModelEsTrustmrrHistoryPoint]],
+    'slug': NotRequired[str],
+}, total=False)
+
 ModelDatasetsTrustmrrSearchResponse = TypedDict('ModelDatasetsTrustmrrSearchResponse', {
     'dataset': NotRequired[str],
     'items': NotRequired[list[ModelEsTrustmrrStartupRecord]],
@@ -3418,6 +3577,42 @@ ModelDatasetsAppsSearchResponseDoc = TypedDict('ModelDatasetsAppsSearchResponseD
 ModelDatasetsChartsSearchResponseDoc = TypedDict('ModelDatasetsChartsSearchResponseDoc', {
     'code': NotRequired[int],
     'data': NotRequired[ModelDatasetsChartsSearchResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelDatasetsChromeExtensionChangesResponseDoc = TypedDict('ModelDatasetsChromeExtensionChangesResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelDatasetsChromeExtensionChangesResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelDatasetsChromeExtensionFacetResponseDoc = TypedDict('ModelDatasetsChromeExtensionFacetResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelDatasetsChromeExtensionFacetResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelDatasetsChromeExtensionHistoryResponseDoc = TypedDict('ModelDatasetsChromeExtensionHistoryResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelDatasetsChromeExtensionHistoryResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelDatasetsChromeExtensionItemResponseDoc = TypedDict('ModelDatasetsChromeExtensionItemResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelEsChromeExtensionRecord],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelDatasetsChromeExtensionMetricsResponseDoc = TypedDict('ModelDatasetsChromeExtensionMetricsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelDatasetsChromeExtensionMetricsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelDatasetsChromeExtensionsSearchResponseDoc = TypedDict('ModelDatasetsChromeExtensionsSearchResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelDatasetsChromeExtensionSearchResponse],
     'msg': NotRequired[str],
 }, total=False)
 
@@ -3481,9 +3676,57 @@ ModelDatasetsHousingMarketsSearchResponseDoc = TypedDict('ModelDatasetsHousingMa
     'msg': NotRequired[str],
 }, total=False)
 
+ModelDatasetsJournalistsFacetResponseDoc = TypedDict('ModelDatasetsJournalistsFacetResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelDatasetsJournalistsFacetResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelDatasetsJournalistsItemResponseDoc = TypedDict('ModelDatasetsJournalistsItemResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelEsJournalistRecord],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelDatasetsJournalistsSearchResponseDoc = TypedDict('ModelDatasetsJournalistsSearchResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelDatasetsJournalistsSearchResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
 ModelDatasetsListResponseDoc = TypedDict('ModelDatasetsListResponseDoc', {
     'code': NotRequired[int],
     'data': NotRequired[ModelDatasetsDatasetListResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelDatasetsNumbeoCitiesFacetResponseDoc = TypedDict('ModelDatasetsNumbeoCitiesFacetResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelDatasetsNumbeoCityFacetResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelDatasetsNumbeoCitiesSearchResponseDoc = TypedDict('ModelDatasetsNumbeoCitiesSearchResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelDatasetsNumbeoCitySearchResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelDatasetsNumbeoCityResponseDoc = TypedDict('ModelDatasetsNumbeoCityResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelEsNumbeoCityRecord],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelDatasetsNumbeoCountriesSearchResponseDoc = TypedDict('ModelDatasetsNumbeoCountriesSearchResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelDatasetsNumbeoCountrySearchResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelDatasetsNumbeoCountryResponseDoc = TypedDict('ModelDatasetsNumbeoCountryResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelEsNumbeoCountryRecord],
     'msg': NotRequired[str],
 }, total=False)
 
@@ -3634,6 +3877,12 @@ ModelDatasetsTechstackSearchResponseDoc = TypedDict('ModelDatasetsTechstackSearc
 ModelDatasetsTrustmrrFacetResponseDoc = TypedDict('ModelDatasetsTrustmrrFacetResponseDoc', {
     'code': NotRequired[int],
     'data': NotRequired[ModelDatasetsTrustmrrFacetResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelDatasetsTrustmrrHistoryResponseDoc = TypedDict('ModelDatasetsTrustmrrHistoryResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelDatasetsTrustmrrHistoryResponse],
     'msg': NotRequired[str],
 }, total=False)
 
@@ -4251,6 +4500,100 @@ ModelEsChartEntry = TypedDict('ModelEsChartEntry', {
     'url': NotRequired[str],
 }, total=False)
 
+ModelEsChromeExtensionChangeDay = TypedDict('ModelEsChromeExtensionChangeDay', {
+    'count': NotRequired[int],
+    'date': NotRequired[str],
+    'rating_count_delta': NotRequired[int],
+    'users_delta': NotRequired[int],
+}, total=False)
+
+ModelEsChromeExtensionChangeMetrics = TypedDict('ModelEsChromeExtensionChangeMetrics', {
+    'daily': NotRequired[list[ModelEsChromeExtensionChangeDay]],
+    'total': NotRequired[int],
+    'types': NotRequired[list[ModelEsChromeExtensionMetricBucket]],
+}, total=False)
+
+ModelEsChromeExtensionFacetItem = TypedDict('ModelEsChromeExtensionFacetItem', {
+    'count': NotRequired[int],
+    'value': NotRequired[str],
+}, total=False)
+
+ModelEsChromeExtensionHistoryPoint = TypedDict('ModelEsChromeExtensionHistoryPoint', {
+    'change_types': NotRequired[list[str]],
+    'collects_data': NotRequired[bool],
+    'data_collected': NotRequired[list[str]],
+    'host_permissions': NotRequired[list[str]],
+    'id': NotRequired[str],
+    'manifest_version': NotRequired[int],
+    'observed_at': NotRequired[str],
+    'optional_host_permissions': NotRequired[list[str]],
+    'optional_permissions': NotRequired[list[str]],
+    'permissions': NotRequired[list[str]],
+    'privacy_declarations': NotRequired[list[str]],
+    'privacy_policy': NotRequired[str],
+    'rating': NotRequired[float],
+    'rating_count': NotRequired[int],
+    'rating_count_delta': NotRequired[int],
+    'status': NotRequired[str],
+    'users': NotRequired[int],
+    'users_delta': NotRequired[int],
+    'version': NotRequired[str],
+}, total=False)
+
+ModelEsChromeExtensionMetricBucket = TypedDict('ModelEsChromeExtensionMetricBucket', {
+    'count': NotRequired[int],
+    'users': NotRequired[int],
+    'value': NotRequired[str],
+}, total=False)
+
+ModelEsChromeExtensionMetricSummary = TypedDict('ModelEsChromeExtensionMetricSummary', {
+    'average_rating': NotRequired[float],
+    'last_crawled_at': NotRequired[str],
+    'privacy_policies': NotRequired[int],
+    'total': NotRequired[int],
+    'total_ratings': NotRequired[int],
+    'total_users': NotRequired[int],
+}, total=False)
+
+ModelEsChromeExtensionRecord = TypedDict('ModelEsChromeExtensionRecord', {
+    'all_permissions': NotRequired[list[str]],
+    'category': NotRequired[str],
+    'collects_data': NotRequired[bool],
+    'data_collected': NotRequired[list[str]],
+    'description': NotRequired[str],
+    'developer': NotRequired[str],
+    'first_seen': NotRequired[str],
+    'has_broad_host_access': NotRequired[bool],
+    'host_permissions': NotRequired[list[str]],
+    'icon': NotRequired[str],
+    'id': NotRequired[str],
+    'item_type': NotRequired[str],
+    'last_crawled_at': NotRequired[str],
+    'last_seen': NotRequired[str],
+    'manifest_version': NotRequired[int],
+    'min_browser_version': NotRequired[str],
+    'name': NotRequired[str],
+    'optional_host_permissions': NotRequired[list[str]],
+    'optional_permissions': NotRequired[list[str]],
+    'permissions': NotRequired[list[str]],
+    'privacy_declarations': NotRequired[list[str]],
+    'privacy_policy': NotRequired[str],
+    'rating': NotRequired[float],
+    'rating_count': NotRequired[int],
+    'rating_count_delta': NotRequired[int],
+    'schema_version': NotRequired[int],
+    'screenshots': NotRequired[list[str]],
+    'size': NotRequired[str],
+    'status': NotRequired[str],
+    'summary': NotRequired[str],
+    'trend_score': NotRequired[float],
+    'updated': NotRequired[str],
+    'url': NotRequired[str],
+    'users': NotRequired[int],
+    'users_delta': NotRequired[int],
+    'version': NotRequired[str],
+}, total=False)
+
 ModelEsCreatorRecord = TypedDict('ModelEsCreatorRecord', {
     'avatar_url': NotRequired[str],
     'avg_views': NotRequired[int],
@@ -4520,6 +4863,108 @@ ModelEsHousingMarketRecord = TypedDict('ModelEsHousingMarketRecord', {
     'state_code': NotRequired[str],
     'table_id': NotRequired[int],
     'zip_code': NotRequired[str],
+}, total=False)
+
+ModelEsJournalistRecord = TypedDict('ModelEsJournalistRecord', {
+    'bio': NotRequired[str],
+    'contact_email': NotRequired[str],
+    'contact_type': NotRequired[str],
+    'crawled_at': NotRequired[str],
+    'name': NotRequired[str],
+    'outlet': NotRequired[str],
+    'outlet_domain': NotRequired[str],
+    'outlet_id': NotRequired[str],
+    'profile_url': NotRequired[str],
+    'slug': NotRequired[str],
+    'social_links': NotRequired[dict[str, str]],
+    'title': NotRequired[str],
+    'topics': NotRequired[list[str]],
+    'vertical': NotRequired[str],
+}, total=False)
+
+ModelEsJournalistsFacetItem = TypedDict('ModelEsJournalistsFacetItem', {
+    'count': NotRequired[int],
+    'value': NotRequired[str],
+}, total=False)
+
+ModelEsNumbeoCityRecord = TypedDict('ModelEsNumbeoCityRecord', {
+    'city': NotRequired[str],
+    'city_slug': NotRequired[str],
+    'climate_index': NotRequired[float],
+    'cost_of_living_index': NotRequired[float],
+    'cost_of_living_plus_rent_index': NotRequired[float],
+    'country': NotRequired[str],
+    'coverage': NotRequired[list[str]],
+    'crime_index': NotRequired[float],
+    'extra_indices': NotRequired[list[ModelEsNumbeoNamedValue]],
+    'groceries_index': NotRequired[float],
+    'health_care_exp_index': NotRequired[float],
+    'health_care_index': NotRequired[float],
+    'local_purchasing_power_index': NotRequired[float],
+    'pollution_exp_index': NotRequired[float],
+    'pollution_index': NotRequired[float],
+    'property_affordability_index': NotRequired[float],
+    'property_gross_rental_yield_city_centre': NotRequired[float],
+    'property_gross_rental_yield_outside_centre': NotRequired[float],
+    'property_mortgage_pct_of_income': NotRequired[float],
+    'property_price_to_income_ratio': NotRequired[float],
+    'property_price_to_rent_ratio_city_centre': NotRequired[float],
+    'property_price_to_rent_ratio_outside_centre': NotRequired[float],
+    'quality_of_life_index': NotRequired[float],
+    'rent_index': NotRequired[float],
+    'restaurant_price_index': NotRequired[float],
+    'safety_index': NotRequired[float],
+    'schema_version': NotRequired[int],
+    'synced_at': NotRequired[str],
+    'traffic_co2_emission_index': NotRequired[float],
+    'traffic_index': NotRequired[float],
+    'traffic_inefficiency_index': NotRequired[float],
+    'traffic_time_exp_index': NotRequired[float],
+    'traffic_time_index_minutes': NotRequired[float],
+}, total=False)
+
+ModelEsNumbeoCountryRecord = TypedDict('ModelEsNumbeoCountryRecord', {
+    'climate_index': NotRequired[float],
+    'cost_of_living_index': NotRequired[float],
+    'cost_of_living_plus_rent_index': NotRequired[float],
+    'country': NotRequired[str],
+    'coverage': NotRequired[list[str]],
+    'crime_index': NotRequired[float],
+    'extra_indices': NotRequired[list[ModelEsNumbeoNamedValue]],
+    'groceries_index': NotRequired[float],
+    'health_care_exp_index': NotRequired[float],
+    'health_care_index': NotRequired[float],
+    'local_purchasing_power_index': NotRequired[float],
+    'pollution_exp_index': NotRequired[float],
+    'pollution_index': NotRequired[float],
+    'property_affordability_index': NotRequired[float],
+    'property_gross_rental_yield_city_centre': NotRequired[float],
+    'property_gross_rental_yield_outside_centre': NotRequired[float],
+    'property_mortgage_pct_of_income': NotRequired[float],
+    'property_price_to_income_ratio': NotRequired[float],
+    'property_price_to_rent_ratio_city_centre': NotRequired[float],
+    'property_price_to_rent_ratio_outside_centre': NotRequired[float],
+    'quality_of_life_index': NotRequired[float],
+    'rent_index': NotRequired[float],
+    'restaurant_price_index': NotRequired[float],
+    'safety_index': NotRequired[float],
+    'schema_version': NotRequired[int],
+    'synced_at': NotRequired[str],
+    'traffic_co2_emission_index': NotRequired[float],
+    'traffic_index': NotRequired[float],
+    'traffic_inefficiency_index': NotRequired[float],
+    'traffic_time_exp_index': NotRequired[float],
+    'traffic_time_index_minutes': NotRequired[float],
+}, total=False)
+
+ModelEsNumbeoDatasetFacetItem = TypedDict('ModelEsNumbeoDatasetFacetItem', {
+    'count': NotRequired[int],
+    'value': NotRequired[str],
+}, total=False)
+
+ModelEsNumbeoNamedValue = TypedDict('ModelEsNumbeoNamedValue', {
+    'name': NotRequired[str],
+    'value': NotRequired[float],
 }, total=False)
 
 ModelEsPlaystationGameDatasetFacetItem = TypedDict('ModelEsPlaystationGameDatasetFacetItem', {
@@ -4915,6 +5360,22 @@ ModelEsTechstackTechnology = TypedDict('ModelEsTechstackTechnology', {
 ModelEsTrustmrrDatasetFacetItem = TypedDict('ModelEsTrustmrrDatasetFacetItem', {
     'count': NotRequired[int],
     'value': NotRequired[str],
+}, total=False)
+
+ModelEsTrustmrrHistoryPoint = TypedDict('ModelEsTrustmrrHistoryPoint', {
+    'asking_price': NotRequired[float],
+    'date': NotRequired[str],
+    'deal_score': NotRequired[float],
+    'growth_30d': NotRequired[float],
+    'mrr': NotRequired[float],
+    'multiple': NotRequired[float],
+    'offer_count': NotRequired[int],
+    'on_sale': NotRequired[bool],
+    'revenue_30d': NotRequired[float],
+    'slug': NotRequired[str],
+    'total_revenue': NotRequired[float],
+    'traffic_12mo': NotRequired[float],
+    'traffic_30d': NotRequired[float],
 }, total=False)
 
 ModelEsTrustmrrStartupRecord = TypedDict('ModelEsTrustmrrStartupRecord', {
@@ -8041,6 +8502,169 @@ ModelLinkedinShowcaseResponseDoc = TypedDict('ModelLinkedinShowcaseResponseDoc',
     'msg': NotRequired[str],
 }, total=False)
 
+ModelMetacriticBrowseItem = TypedDict('ModelMetacriticBrowseItem', {
+    'description': NotRequired[str],
+    'genres': NotRequired[list[ModelMetacriticGenre]],
+    'id': NotRequired[int],
+    'image': NotRequired[str],
+    'metascore': NotRequired[ModelMetacriticScoreSummary],
+    'premiere_year': NotRequired[int],
+    'rating': NotRequired[str],
+    'release_date': NotRequired[str],
+    'season_count': NotRequired[int],
+    'slug': NotRequired[str],
+    'title': NotRequired[str],
+    'type': NotRequired[str],
+    'url': NotRequired[str],
+    'user_score': NotRequired[float],
+}, total=False)
+
+ModelMetacriticBrowseResponse = TypedDict('ModelMetacriticBrowseResponse', {
+    'genre': NotRequired[str],
+    'items': NotRequired[list[ModelMetacriticBrowseItem]],
+    'page': NotRequired[int],
+    'per_page': NotRequired[int],
+    'sort': NotRequired[str],
+    'total': NotRequired[int],
+    'type': NotRequired[str],
+}, total=False)
+
+ModelMetacriticCredit = TypedDict('ModelMetacriticCredit', {
+    'name': NotRequired[str],
+    'role': NotRequired[str],
+}, total=False)
+
+ModelMetacriticCriticReview = TypedDict('ModelMetacriticCriticReview', {
+    'author': NotRequired[str],
+    'date': NotRequired[str],
+    'platform': NotRequired[str],
+    'publication': NotRequired[str],
+    'publication_slug': NotRequired[str],
+    'quote': NotRequired[str],
+    'score': NotRequired[int],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelMetacriticCriticReviewsResponse = TypedDict('ModelMetacriticCriticReviewsResponse', {
+    'page': NotRequired[int],
+    'per_page': NotRequired[int],
+    'reviews': NotRequired[list[ModelMetacriticCriticReview]],
+    'slug': NotRequired[str],
+    'sort': NotRequired[str],
+    'total': NotRequired[int],
+    'type': NotRequired[str],
+}, total=False)
+
+ModelMetacriticGenre = TypedDict('ModelMetacriticGenre', {
+    'id': NotRequired[int],
+    'name': NotRequired[str],
+}, total=False)
+
+ModelMetacriticPlatform = TypedDict('ModelMetacriticPlatform', {
+    'id': NotRequired[int],
+    'is_lead': NotRequired[bool],
+    'metascore': NotRequired[ModelMetacriticScoreSummary],
+    'name': NotRequired[str],
+    'release_date': NotRequired[str],
+}, total=False)
+
+ModelMetacriticProduct = TypedDict('ModelMetacriticProduct', {
+    'countries': NotRequired[list[str]],
+    'description': NotRequired[str],
+    'duration': NotRequired[int],
+    'genres': NotRequired[list[ModelMetacriticGenre]],
+    'id': NotRequired[int],
+    'image': NotRequired[str],
+    'imdb_id': NotRequired[str],
+    'imdb_url': NotRequired[str],
+    'in_theaters': NotRequired[bool],
+    'metascore': NotRequired[ModelMetacriticScoreSummary],
+    'networks': NotRequired[list[str]],
+    'platforms': NotRequired[list[ModelMetacriticPlatform]],
+    'premiere_year': NotRequired[int],
+    'production': NotRequired[ModelMetacriticProduction],
+    'rating': NotRequired[str],
+    'release_date': NotRequired[str],
+    'season_count': NotRequired[int],
+    'slug': NotRequired[str],
+    'tagline': NotRequired[str],
+    'title': NotRequired[str],
+    'type': NotRequired[str],
+    'url': NotRequired[str],
+    'user_score': NotRequired[ModelMetacriticScoreSummary],
+    'video': NotRequired[ModelMetacriticVideo],
+}, total=False)
+
+ModelMetacriticProduction = TypedDict('ModelMetacriticProduction', {
+    'companies': NotRequired[list[str]],
+    'crew': NotRequired[list[ModelMetacriticCredit]],
+    'official_site': NotRequired[str],
+}, total=False)
+
+ModelMetacriticScoreSummary = TypedDict('ModelMetacriticScoreSummary', {
+    'max': NotRequired[int],
+    'negative_count': NotRequired[int],
+    'neutral_count': NotRequired[int],
+    'positive_count': NotRequired[int],
+    'review_count': NotRequired[int],
+    'score': NotRequired[float],
+    'sentiment': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelMetacriticUserReview = TypedDict('ModelMetacriticUserReview', {
+    'author': NotRequired[str],
+    'date': NotRequired[str],
+    'id': NotRequired[str],
+    'platform': NotRequired[str],
+    'quote': NotRequired[str],
+    'score': NotRequired[int],
+    'spoiler': NotRequired[bool],
+    'thumbs_down': NotRequired[int],
+    'thumbs_up': NotRequired[int],
+}, total=False)
+
+ModelMetacriticUserReviewsResponse = TypedDict('ModelMetacriticUserReviewsResponse', {
+    'page': NotRequired[int],
+    'per_page': NotRequired[int],
+    'reviews': NotRequired[list[ModelMetacriticUserReview]],
+    'slug': NotRequired[str],
+    'sort': NotRequired[str],
+    'total': NotRequired[int],
+    'type': NotRequired[str],
+}, total=False)
+
+ModelMetacriticVideo = TypedDict('ModelMetacriticVideo', {
+    'duration': NotRequired[int],
+    'embed_url': NotRequired[str],
+    'title': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelMetacriticBrowseResponseDoc = TypedDict('ModelMetacriticBrowseResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelMetacriticBrowseResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelMetacriticCriticReviewsResponseDoc = TypedDict('ModelMetacriticCriticReviewsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelMetacriticCriticReviewsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelMetacriticProductResponseDoc = TypedDict('ModelMetacriticProductResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelMetacriticProduct],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelMetacriticUserReviewsResponseDoc = TypedDict('ModelMetacriticUserReviewsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelMetacriticUserReviewsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
 ModelMetaculusForecastHistoryPoint = TypedDict('ModelMetaculusForecastHistoryPoint', {
     'center': NotRequired[float],
     'centers': NotRequired[list[float]],
@@ -8233,6 +8857,184 @@ ModelMetaculusQuestionResponseDoc = TypedDict('ModelMetaculusQuestionResponseDoc
 ModelMetaculusQuestionsResponseDoc = TypedDict('ModelMetaculusQuestionsResponseDoc', {
     'code': NotRequired[int],
     'data': NotRequired[ModelMetaculusQuestionsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelNumbeoCityIndexEntry = TypedDict('ModelNumbeoCityIndexEntry', {
+    'city': NotRequired[str],
+    'city_slug': NotRequired[str],
+    'cost_of_living_index': NotRequired[float],
+    'cost_of_living_plus_rent_index': NotRequired[float],
+    'groceries_index': NotRequired[float],
+    'local_purchasing_power_index': NotRequired[float],
+    'rank': NotRequired[int],
+    'rent_index': NotRequired[float],
+    'restaurant_price_index': NotRequired[float],
+}, total=False)
+
+ModelNumbeoCostOfLivingCityResponse = TypedDict('ModelNumbeoCostOfLivingCityResponse', {
+    'categories': NotRequired[list[ModelNumbeoPriceCategory]],
+    'city': NotRequired[str],
+    'city_slug': NotRequired[str],
+    'contributors_12mo': NotRequired[int],
+    'country': NotRequired[str],
+    'last_update': NotRequired[str],
+    'source_url': NotRequired[str],
+}, total=False)
+
+ModelNumbeoCostOfLivingCountryResponse = TypedDict('ModelNumbeoCostOfLivingCountryResponse', {
+    'categories': NotRequired[list[ModelNumbeoPriceCategory]],
+    'cities': NotRequired[list[ModelNumbeoCityIndexEntry]],
+    'contributors_12mo': NotRequired[int],
+    'country': NotRequired[str],
+    'last_update': NotRequired[str],
+    'source_url': NotRequired[str],
+}, total=False)
+
+ModelNumbeoCountryIndexEntry = TypedDict('ModelNumbeoCountryIndexEntry', {
+    'cost_of_living_index': NotRequired[float],
+    'cost_of_living_plus_rent_index': NotRequired[float],
+    'country': NotRequired[str],
+    'groceries_index': NotRequired[float],
+    'local_purchasing_power_index': NotRequired[float],
+    'rank': NotRequired[int],
+    'rent_index': NotRequired[float],
+    'restaurant_price_index': NotRequired[float],
+}, total=False)
+
+ModelNumbeoIndexRankingEntry = TypedDict('ModelNumbeoIndexRankingEntry', {
+    'city': NotRequired[str],
+    'city_slug': NotRequired[str],
+    'country': NotRequired[str],
+    'indices': NotRequired[list[ModelNumbeoNamedValue]],
+    'rank': NotRequired[int],
+}, total=False)
+
+ModelNumbeoIndexRow = TypedDict('ModelNumbeoIndexRow', {
+    'name': NotRequired[str],
+    'qualifier': NotRequired[str],
+    'value': NotRequired[float],
+}, total=False)
+
+ModelNumbeoIndexSection = TypedDict('ModelNumbeoIndexSection', {
+    'rows': NotRequired[list[ModelNumbeoIndexRow]],
+    'title': NotRequired[str],
+}, total=False)
+
+ModelNumbeoIndicesCityResponse = TypedDict('ModelNumbeoIndicesCityResponse', {
+    'city': NotRequired[str],
+    'city_slug': NotRequired[str],
+    'contributors_note': NotRequired[str],
+    'country': NotRequired[str],
+    'headline_indices': NotRequired[list[ModelNumbeoNamedValue]],
+    'index': NotRequired[str],
+    'last_update': NotRequired[str],
+    'price_categories': NotRequired[list[ModelNumbeoPriceCategory]],
+    'sections': NotRequired[list[ModelNumbeoIndexSection]],
+    'source_url': NotRequired[str],
+}, total=False)
+
+ModelNumbeoIndicesCountryResponse = TypedDict('ModelNumbeoIndicesCountryResponse', {
+    'cities': NotRequired[list[ModelNumbeoIndexRankingEntry]],
+    'contributors_note': NotRequired[str],
+    'country': NotRequired[str],
+    'headline_indices': NotRequired[list[ModelNumbeoNamedValue]],
+    'index': NotRequired[str],
+    'last_update': NotRequired[str],
+    'price_categories': NotRequired[list[ModelNumbeoPriceCategory]],
+    'sections': NotRequired[list[ModelNumbeoIndexSection]],
+    'source_url': NotRequired[str],
+}, total=False)
+
+ModelNumbeoIndicesRankingsByCountryResponse = TypedDict('ModelNumbeoIndicesRankingsByCountryResponse', {
+    'countries': NotRequired[list[ModelNumbeoIndexRankingEntry]],
+    'index': NotRequired[str],
+    'source_url': NotRequired[str],
+}, total=False)
+
+ModelNumbeoIndicesRankingsResponse = TypedDict('ModelNumbeoIndicesRankingsResponse', {
+    'cities': NotRequired[list[ModelNumbeoIndexRankingEntry]],
+    'index': NotRequired[str],
+    'period': NotRequired[str],
+    'scope': NotRequired[str],
+    'source_url': NotRequired[str],
+}, total=False)
+
+ModelNumbeoNamedValue = TypedDict('ModelNumbeoNamedValue', {
+    'name': NotRequired[str],
+    'value': NotRequired[float],
+}, total=False)
+
+ModelNumbeoPriceCategory = TypedDict('ModelNumbeoPriceCategory', {
+    'category': NotRequired[str],
+    'items': NotRequired[list[ModelNumbeoPriceItem]],
+}, total=False)
+
+ModelNumbeoPriceItem = TypedDict('ModelNumbeoPriceItem', {
+    'currency_symbol': NotRequired[str],
+    'name': NotRequired[str],
+    'price': NotRequired[float],
+    'range_high': NotRequired[float],
+    'range_low': NotRequired[float],
+}, total=False)
+
+ModelNumbeoRankingsByCountryResponse = TypedDict('ModelNumbeoRankingsByCountryResponse', {
+    'countries': NotRequired[list[ModelNumbeoCountryIndexEntry]],
+    'source_url': NotRequired[str],
+}, total=False)
+
+ModelNumbeoRankingsResponse = TypedDict('ModelNumbeoRankingsResponse', {
+    'cities': NotRequired[list[ModelNumbeoCityIndexEntry]],
+    'period': NotRequired[str],
+    'scope': NotRequired[str],
+    'source_url': NotRequired[str],
+}, total=False)
+
+ModelNumbeoCostOfLivingCityResponseDoc = TypedDict('ModelNumbeoCostOfLivingCityResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelNumbeoCostOfLivingCityResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelNumbeoCostOfLivingCountryResponseDoc = TypedDict('ModelNumbeoCostOfLivingCountryResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelNumbeoCostOfLivingCountryResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelNumbeoIndicesCityResponseDoc = TypedDict('ModelNumbeoIndicesCityResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelNumbeoIndicesCityResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelNumbeoIndicesCountryResponseDoc = TypedDict('ModelNumbeoIndicesCountryResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelNumbeoIndicesCountryResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelNumbeoIndicesRankingsByCountryResponseDoc = TypedDict('ModelNumbeoIndicesRankingsByCountryResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelNumbeoIndicesRankingsByCountryResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelNumbeoIndicesRankingsResponseDoc = TypedDict('ModelNumbeoIndicesRankingsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelNumbeoIndicesRankingsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelNumbeoRankingsByCountryResponseDoc = TypedDict('ModelNumbeoRankingsByCountryResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelNumbeoRankingsByCountryResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelNumbeoRankingsResponseDoc = TypedDict('ModelNumbeoRankingsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelNumbeoRankingsResponse],
     'msg': NotRequired[str],
 }, total=False)
 
@@ -15704,6 +16506,103 @@ ModelUserUserRotateApikeyResponseDoc = TypedDict('ModelUserUserRotateApikeyRespo
     'msg': NotRequired[str],
 }, total=False)
 
+ModelWalmartProduct = TypedDict('ModelWalmartProduct', {
+    'attributes': NotRequired[dict[str, str]],
+    'availability': NotRequired[str],
+    'brand': NotRequired[str],
+    'canonical_url': NotRequired[str],
+    'category': NotRequired[str],
+    'currency': NotRequired[str],
+    'description': NotRequired[str],
+    'highlights': NotRequired[list[str]],
+    'image': NotRequired[str],
+    'images': NotRequired[list[str]],
+    'is_sponsored': NotRequired[bool],
+    'item_id': NotRequired[str],
+    'price': NotRequired[float],
+    'price_text': NotRequired[str],
+    'product_id': NotRequired[str],
+    'rating': NotRequired[float],
+    'review_count': NotRequired[int],
+    'seller_name': NotRequired[str],
+    'title': NotRequired[str],
+    'variants': NotRequired[list[ModelWalmartProductSummary]],
+}, total=False)
+
+ModelWalmartProductSummary = TypedDict('ModelWalmartProductSummary', {
+    'availability': NotRequired[str],
+    'brand': NotRequired[str],
+    'canonical_url': NotRequired[str],
+    'currency': NotRequired[str],
+    'image': NotRequired[str],
+    'images': NotRequired[list[str]],
+    'is_sponsored': NotRequired[bool],
+    'item_id': NotRequired[str],
+    'price': NotRequired[float],
+    'price_text': NotRequired[str],
+    'product_id': NotRequired[str],
+    'rating': NotRequired[float],
+    'review_count': NotRequired[int],
+    'seller_name': NotRequired[str],
+    'title': NotRequired[str],
+}, total=False)
+
+ModelWalmartRatingBreakdown = TypedDict('ModelWalmartRatingBreakdown', {
+    'five_star': NotRequired[int],
+    'four_star': NotRequired[int],
+    'one_star': NotRequired[int],
+    'three_star': NotRequired[int],
+    'two_star': NotRequired[int],
+}, total=False)
+
+ModelWalmartReview = TypedDict('ModelWalmartReview', {
+    'author': NotRequired[str],
+    'negative_feedback': NotRequired[int],
+    'positive_feedback': NotRequired[int],
+    'rating': NotRequired[float],
+    'review_id': NotRequired[str],
+    'submission_date': NotRequired[str],
+    'text': NotRequired[str],
+    'title': NotRequired[str],
+}, total=False)
+
+ModelWalmartReviewsResponse = TypedDict('ModelWalmartReviewsResponse', {
+    'average_rating': NotRequired[float],
+    'item_id': NotRequired[str],
+    'rating_counts': NotRequired[ModelWalmartRatingBreakdown],
+    'recommended_percent': NotRequired[float],
+    'reviews': NotRequired[list[ModelWalmartReview]],
+    'reviews_with_text_count': NotRequired[int],
+    'top_negative_review': NotRequired[ModelWalmartReview],
+    'top_positive_review': NotRequired[ModelWalmartReview],
+    'total_review_count': NotRequired[int],
+}, total=False)
+
+ModelWalmartSearchResponse = TypedDict('ModelWalmartSearchResponse', {
+    'items': NotRequired[list[ModelWalmartProductSummary]],
+    'page': NotRequired[int],
+    'query': NotRequired[str],
+    'total_results': NotRequired[int],
+}, total=False)
+
+ModelWalmartProductResponseDoc = TypedDict('ModelWalmartProductResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelWalmartProduct],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelWalmartReviewsResponseDoc = TypedDict('ModelWalmartReviewsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelWalmartReviewsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelWalmartSearchResponseDoc = TypedDict('ModelWalmartSearchResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelWalmartSearchResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
 ModelWebScrapeInfo = TypedDict('ModelWebScrapeInfo', {
     'backend': NotRequired[str],
     'cache_state': NotRequired[str],
@@ -16932,6 +17831,7 @@ AnimeTitleParams = TypedDict('AnimeTitleParams', {
     '_timeout': NotRequired[float],
     '_headers': NotRequired[Mapping[str, str]],
     'id': Required[str],
+    'mal': NotRequired[bool],
 }, total=False)
 
 AnimeTitleCharactersResponse = ModelAnimeCharactersResponseDoc
@@ -17526,6 +18426,31 @@ BraveVideosParams = TypedDict('BraveVideosParams', {
     'date_to': NotRequired[str],
 }, total=False)
 
+CapterraProductResponse = ModelCapterraProductResponseDoc
+CapterraProductParams = TypedDict('CapterraProductParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'product_id': Required[str],
+}, total=False)
+
+CapterraReviewsResponse = ModelCapterraReviewsResponseDoc
+CapterraReviewsParams = TypedDict('CapterraReviewsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'product_id': Required[str],
+    'page': NotRequired[int],
+}, total=False)
+
+CapterraSearchResponse = ModelCapterraSearchResponseDoc
+CapterraSearchParams = TypedDict('CapterraSearchParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'q': Required[str],
+}, total=False)
+
 ChromeWebStoreChromewebstoreCategoriesResponse = ModelChromewebstoreCategoriesResponseDoc
 ChromeWebStoreChromewebstoreCategoriesParams = TypedDict('ChromeWebStoreChromewebstoreCategoriesParams', {
     '_response_type': NotRequired[ResponseType],
@@ -17979,6 +18904,107 @@ DatasetsAppsSearchParams = TypedDict('DatasetsAppsSearchParams', {
     'page_size': NotRequired[int],
 }, total=False)
 
+DatasetsChromeExtensionsChangesResponse = ModelDatasetsChromeExtensionChangesResponseDoc
+DatasetsChromeExtensionsChangesParams = TypedDict('DatasetsChromeExtensionsChangesParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'change_type': NotRequired[str],
+    'limit': NotRequired[int],
+}, total=False)
+
+DatasetsChromeExtensionsFacetsResponse = ModelDatasetsChromeExtensionFacetResponseDoc
+DatasetsChromeExtensionsFacetsParams = TypedDict('DatasetsChromeExtensionsFacetsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'facet': Required[str],
+    'q': NotRequired[str],
+    'item_type': NotRequired[str],
+    'category': NotRequired[str],
+    'developer': NotRequired[str],
+    'permission': NotRequired[str],
+    'status': NotRequired[str],
+    'manifest_version': NotRequired[int],
+    'collects_data': NotRequired[bool],
+    'has_broad_host_access': NotRequired[bool],
+    'min_users': NotRequired[int],
+    'min_rating': NotRequired[float],
+    'min_rating_count': NotRequired[int],
+    'sort': NotRequired[str],
+}, total=False)
+
+DatasetsChromeExtensionsHistoryResponse = ModelDatasetsChromeExtensionHistoryResponseDoc
+DatasetsChromeExtensionsHistoryParams = TypedDict('DatasetsChromeExtensionsHistoryParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': Required[str],
+    'from': NotRequired[str],
+    'to': NotRequired[str],
+    'limit': NotRequired[int],
+}, total=False)
+
+DatasetsChromeExtensionsItemResponse = ModelDatasetsChromeExtensionItemResponseDoc
+DatasetsChromeExtensionsItemParams = TypedDict('DatasetsChromeExtensionsItemParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': Required[str],
+}, total=False)
+
+DatasetsChromeExtensionsMetricsResponse = ModelDatasetsChromeExtensionMetricsResponseDoc
+DatasetsChromeExtensionsMetricsParams = TypedDict('DatasetsChromeExtensionsMetricsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'days': NotRequired[int],
+    'limit': NotRequired[int],
+}, total=False)
+
+DatasetsChromeExtensionsSearchResponse = ModelDatasetsChromeExtensionsSearchResponseDoc
+DatasetsChromeExtensionsSearchParams = TypedDict('DatasetsChromeExtensionsSearchParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'q': NotRequired[str],
+    'item_type': NotRequired[str],
+    'category': NotRequired[str],
+    'developer': NotRequired[str],
+    'permission': NotRequired[str],
+    'status': NotRequired[str],
+    'manifest_version': NotRequired[int],
+    'collects_data': NotRequired[bool],
+    'has_broad_host_access': NotRequired[bool],
+    'min_users': NotRequired[int],
+    'min_rating': NotRequired[float],
+    'min_rating_count': NotRequired[int],
+    'sort': NotRequired[str],
+    'page': NotRequired[int],
+    'page_size': NotRequired[int],
+}, total=False)
+
+DatasetsChromeExtensionsTrendingResponse = ModelDatasetsChromeExtensionsSearchResponseDoc
+DatasetsChromeExtensionsTrendingParams = TypedDict('DatasetsChromeExtensionsTrendingParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'q': NotRequired[str],
+    'item_type': NotRequired[str],
+    'category': NotRequired[str],
+    'developer': NotRequired[str],
+    'permission': NotRequired[str],
+    'status': NotRequired[str],
+    'manifest_version': NotRequired[int],
+    'collects_data': NotRequired[bool],
+    'has_broad_host_access': NotRequired[bool],
+    'min_users': NotRequired[int],
+    'min_rating': NotRequired[float],
+    'min_rating_count': NotRequired[int],
+    'page': NotRequired[int],
+    'page_size': NotRequired[int],
+}, total=False)
+
 DatasetsCreatorsSearchResponse = ModelDatasetsCreatorsSearchResponseDoc
 DatasetsCreatorsSearchParams = TypedDict('DatasetsCreatorsSearchParams', {
     '_response_type': NotRequired[ResponseType],
@@ -18232,6 +19258,119 @@ DatasetsHousingMarketsSearchParams = TypedDict('DatasetsHousingMarketsSearchPara
     'min_inventory': NotRequired[int],
     'max_inventory': NotRequired[int],
     'min_homes_sold': NotRequired[int],
+    'sort': NotRequired[str],
+    'page': NotRequired[int],
+    'page_size': NotRequired[int],
+}, total=False)
+
+DatasetsJournalistsFacetsResponse = ModelDatasetsJournalistsFacetResponseDoc
+DatasetsJournalistsFacetsParams = TypedDict('DatasetsJournalistsFacetsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'facet': Required[str],
+    'q': NotRequired[str],
+    'outlet': NotRequired[str],
+    'vertical': NotRequired[str],
+    'topic': NotRequired[str],
+    'contact_type': NotRequired[str],
+}, total=False)
+
+DatasetsJournalistsItemResponse = ModelDatasetsJournalistsItemResponseDoc
+DatasetsJournalistsItemParams = TypedDict('DatasetsJournalistsItemParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'outlet': Required[str],
+    'slug': Required[str],
+}, total=False)
+
+DatasetsJournalistsSearchResponse = ModelDatasetsJournalistsSearchResponseDoc
+DatasetsJournalistsSearchParams = TypedDict('DatasetsJournalistsSearchParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'q': NotRequired[str],
+    'outlet': NotRequired[str],
+    'vertical': NotRequired[str],
+    'topic': NotRequired[str],
+    'contact_type': NotRequired[str],
+    'sort': NotRequired[str],
+    'page': NotRequired[int],
+    'page_size': NotRequired[int],
+}, total=False)
+
+DatasetsNumbeoCitiesFacetsResponse = ModelDatasetsNumbeoCitiesFacetResponseDoc
+DatasetsNumbeoCitiesFacetsParams = TypedDict('DatasetsNumbeoCitiesFacetsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'facet': Required[str],
+    'q': NotRequired[str],
+    'country': NotRequired[str],
+    'min_cost_of_living_index': NotRequired[float],
+    'max_cost_of_living_index': NotRequired[float],
+    'min_quality_of_life_index': NotRequired[float],
+    'min_crime_index': NotRequired[float],
+    'max_crime_index': NotRequired[float],
+    'min_safety_index': NotRequired[float],
+    'min_health_care_index': NotRequired[float],
+    'max_pollution_index': NotRequired[float],
+    'max_traffic_index': NotRequired[float],
+}, total=False)
+
+DatasetsNumbeoCitiesItemResponse = ModelDatasetsNumbeoCityResponseDoc
+DatasetsNumbeoCitiesItemParams = TypedDict('DatasetsNumbeoCitiesItemParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'slug': Required[str],
+}, total=False)
+
+DatasetsNumbeoCitiesSearchResponse = ModelDatasetsNumbeoCitiesSearchResponseDoc
+DatasetsNumbeoCitiesSearchParams = TypedDict('DatasetsNumbeoCitiesSearchParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'q': NotRequired[str],
+    'country': NotRequired[str],
+    'min_cost_of_living_index': NotRequired[float],
+    'max_cost_of_living_index': NotRequired[float],
+    'min_quality_of_life_index': NotRequired[float],
+    'min_crime_index': NotRequired[float],
+    'max_crime_index': NotRequired[float],
+    'min_safety_index': NotRequired[float],
+    'min_health_care_index': NotRequired[float],
+    'max_pollution_index': NotRequired[float],
+    'max_traffic_index': NotRequired[float],
+    'sort': NotRequired[str],
+    'page': NotRequired[int],
+    'page_size': NotRequired[int],
+}, total=False)
+
+DatasetsNumbeoCountriesItemResponse = ModelDatasetsNumbeoCountryResponseDoc
+DatasetsNumbeoCountriesItemParams = TypedDict('DatasetsNumbeoCountriesItemParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'country': Required[str],
+}, total=False)
+
+DatasetsNumbeoCountriesSearchResponse = ModelDatasetsNumbeoCountriesSearchResponseDoc
+DatasetsNumbeoCountriesSearchParams = TypedDict('DatasetsNumbeoCountriesSearchParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'q': NotRequired[str],
+    'min_cost_of_living_index': NotRequired[float],
+    'max_cost_of_living_index': NotRequired[float],
+    'min_quality_of_life_index': NotRequired[float],
+    'min_crime_index': NotRequired[float],
+    'max_crime_index': NotRequired[float],
+    'min_safety_index': NotRequired[float],
+    'min_health_care_index': NotRequired[float],
+    'max_pollution_index': NotRequired[float],
+    'max_traffic_index': NotRequired[float],
     'sort': NotRequired[str],
     'page': NotRequired[int],
     'page_size': NotRequired[int],
@@ -18649,6 +19788,17 @@ DatasetsTrustmrrFacetsParams = TypedDict('DatasetsTrustmrrFacetsParams', {
     'payment_provider': NotRequired[str],
     'on_sale': NotRequired[bool],
     'min_mrr': NotRequired[float],
+}, total=False)
+
+DatasetsTrustmrrHistoryResponse = ModelDatasetsTrustmrrHistoryResponseDoc
+DatasetsTrustmrrHistoryParams = TypedDict('DatasetsTrustmrrHistoryParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'slug': Required[str],
+    'from': NotRequired[str],
+    'to': NotRequired[str],
+    'limit': NotRequired[int],
 }, total=False)
 
 DatasetsTrustmrrItemResponse = ModelDatasetsTrustmrrItemResponseDoc
@@ -20483,6 +21633,109 @@ MangaTitleParams = TypedDict('MangaTitleParams', {
     '_timeout': NotRequired[float],
     '_headers': NotRequired[Mapping[str, str]],
     'id': Required[str],
+    'mal': NotRequired[bool],
+}, total=False)
+
+MetacriticBrowseResponse = ModelMetacriticBrowseResponseDoc
+MetacriticBrowseParams = TypedDict('MetacriticBrowseParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'type': Required[Literal['game', 'movie', 'tv']],
+    'genre': NotRequired[str],
+    'sort': NotRequired[Literal['score', 'popularity', 'release_date', 'oldest']],
+    'page': NotRequired[int],
+    'per_page': NotRequired[int],
+}, total=False)
+
+MetacriticGameResponse = ModelMetacriticProductResponseDoc
+MetacriticGameParams = TypedDict('MetacriticGameParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'slug': Required[str],
+}, total=False)
+
+MetacriticGameCriticReviewsResponse = ModelMetacriticCriticReviewsResponseDoc
+MetacriticGameCriticReviewsParams = TypedDict('MetacriticGameCriticReviewsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'slug': Required[str],
+    'page': NotRequired[int],
+    'per_page': NotRequired[int],
+    'sort': NotRequired[Literal['date', 'score', 'publication']],
+}, total=False)
+
+MetacriticGameUserReviewsResponse = ModelMetacriticUserReviewsResponseDoc
+MetacriticGameUserReviewsParams = TypedDict('MetacriticGameUserReviewsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'slug': Required[str],
+    'page': NotRequired[int],
+    'per_page': NotRequired[int],
+    'sort': NotRequired[Literal['date', 'score', 'helpful']],
+}, total=False)
+
+MetacriticMovieResponse = ModelMetacriticProductResponseDoc
+MetacriticMovieParams = TypedDict('MetacriticMovieParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'slug': Required[str],
+}, total=False)
+
+MetacriticMovieCriticReviewsResponse = ModelMetacriticCriticReviewsResponseDoc
+MetacriticMovieCriticReviewsParams = TypedDict('MetacriticMovieCriticReviewsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'slug': Required[str],
+    'page': NotRequired[int],
+    'per_page': NotRequired[int],
+    'sort': NotRequired[Literal['date', 'score', 'publication']],
+}, total=False)
+
+MetacriticMovieUserReviewsResponse = ModelMetacriticUserReviewsResponseDoc
+MetacriticMovieUserReviewsParams = TypedDict('MetacriticMovieUserReviewsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'slug': Required[str],
+    'page': NotRequired[int],
+    'per_page': NotRequired[int],
+    'sort': NotRequired[Literal['date', 'score', 'helpful']],
+}, total=False)
+
+MetacriticTvResponse = ModelMetacriticProductResponseDoc
+MetacriticTvParams = TypedDict('MetacriticTvParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'slug': Required[str],
+}, total=False)
+
+MetacriticTvCriticReviewsResponse = ModelMetacriticCriticReviewsResponseDoc
+MetacriticTvCriticReviewsParams = TypedDict('MetacriticTvCriticReviewsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'slug': Required[str],
+    'page': NotRequired[int],
+    'per_page': NotRequired[int],
+    'sort': NotRequired[Literal['date', 'score', 'publication']],
+}, total=False)
+
+MetacriticTvUserReviewsResponse = ModelMetacriticUserReviewsResponseDoc
+MetacriticTvUserReviewsParams = TypedDict('MetacriticTvUserReviewsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'slug': Required[str],
+    'page': NotRequired[int],
+    'per_page': NotRequired[int],
+    'sort': NotRequired[Literal['date', 'score', 'helpful']],
 }, total=False)
 
 MetaculusCategoryQuestionsResponse = ModelMetaculusQuestionsResponseDoc
@@ -20580,6 +21833,74 @@ MetaculusTournamentQuestionsParams = TypedDict('MetaculusTournamentQuestionsPara
     '_headers': NotRequired[Mapping[str, str]],
     'slug': Required[str],
     'limit': NotRequired[int],
+}, total=False)
+
+NumbeoCostOfLivingCityResponse = ModelNumbeoCostOfLivingCityResponseDoc
+NumbeoCostOfLivingCityParams = TypedDict('NumbeoCostOfLivingCityParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'slug': Required[str],
+}, total=False)
+
+NumbeoCostOfLivingCountryResponse = ModelNumbeoCostOfLivingCountryResponseDoc
+NumbeoCostOfLivingCountryParams = TypedDict('NumbeoCostOfLivingCountryParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'country': Required[str],
+}, total=False)
+
+NumbeoCostOfLivingRankingsResponse = ModelNumbeoRankingsResponseDoc
+NumbeoCostOfLivingRankingsParams = TypedDict('NumbeoCostOfLivingRankingsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'scope': NotRequired[Literal['current', 'historical']],
+    'period': NotRequired[str],
+}, total=False)
+
+NumbeoCostOfLivingRankingsByCountryResponse = ModelNumbeoRankingsByCountryResponseDoc
+NumbeoCostOfLivingRankingsByCountryParams = TypedDict('NumbeoCostOfLivingRankingsByCountryParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+}, total=False)
+
+NumbeoIndicesCityResponse = ModelNumbeoIndicesCityResponseDoc
+NumbeoIndicesCityParams = TypedDict('NumbeoIndicesCityParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'slug': Required[str],
+    'index': Required[Literal['quality-of-life', 'crime', 'health-care', 'pollution', 'traffic', 'property-investment']],
+}, total=False)
+
+NumbeoIndicesCountryResponse = ModelNumbeoIndicesCountryResponseDoc
+NumbeoIndicesCountryParams = TypedDict('NumbeoIndicesCountryParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'country': Required[str],
+    'index': Required[Literal['quality-of-life', 'crime', 'health-care', 'pollution', 'traffic', 'property-investment']],
+}, total=False)
+
+NumbeoIndicesRankingsResponse = ModelNumbeoIndicesRankingsResponseDoc
+NumbeoIndicesRankingsParams = TypedDict('NumbeoIndicesRankingsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'index': Required[Literal['quality-of-life', 'crime', 'health-care', 'pollution', 'traffic', 'property-investment']],
+    'scope': NotRequired[Literal['current', 'historical']],
+    'period': NotRequired[str],
+}, total=False)
+
+NumbeoIndicesRankingsByCountryResponse = ModelNumbeoIndicesRankingsByCountryResponseDoc
+NumbeoIndicesRankingsByCountryParams = TypedDict('NumbeoIndicesRankingsByCountryParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'index': Required[Literal['quality-of-life', 'crime', 'health-care', 'pollution', 'traffic', 'property-investment']],
 }, total=False)
 
 MetaPingResponse = ModelApiPingResponseDoc
@@ -23472,6 +24793,32 @@ UserMeApiKeysRevealParams = TypedDict('UserMeApiKeysRevealParams', {
     'id': Required[str],
 }, total=False)
 
+WalmartProductResponse = ModelWalmartProductResponseDoc
+WalmartProductParams = TypedDict('WalmartProductParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'item_id': Required[str],
+}, total=False)
+
+WalmartProductReviewsResponse = ModelWalmartReviewsResponseDoc
+WalmartProductReviewsParams = TypedDict('WalmartProductReviewsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'item_id': Required[str],
+}, total=False)
+
+WalmartSearchResponse = ModelWalmartSearchResponseDoc
+WalmartSearchParams = TypedDict('WalmartSearchParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'q': Required[str],
+    'page': NotRequired[int],
+    'sort': NotRequired[Literal['best_match', 'price_low', 'price_high', 'best_seller', 'new_arrivals', 'rating_high']],
+}, total=False)
+
 WebScrapeBody = ModelWebScrapeOption
 WebScrapeResponse = ModelWebScrapeResponseDoc
 WebScrapeParams = TypedDict('WebScrapeParams', {
@@ -24117,6 +25464,11 @@ class BraveGroup:
     def suggest(self, **params: Unpack[BraveSuggestParams]) -> BraveSuggestResponse: ...
     def videos(self, **params: Unpack[BraveVideosParams]) -> BraveVideosResponse: ...
 
+class CapterraGroup:
+    def product(self, **params: Unpack[CapterraProductParams]) -> CapterraProductResponse: ...
+    def reviews(self, **params: Unpack[CapterraReviewsParams]) -> CapterraReviewsResponse: ...
+    def search(self, **params: Unpack[CapterraSearchParams]) -> CapterraSearchResponse: ...
+
 class ChromeWebStoreGroup:
     def chromewebstore_categories(self, **params: Unpack[ChromeWebStoreChromewebstoreCategoriesParams]) -> ChromeWebStoreChromewebstoreCategoriesResponse: ...
     def chromewebstore_category(self, **params: Unpack[ChromeWebStoreChromewebstoreCategoryParams]) -> ChromeWebStoreChromewebstoreCategoryResponse: ...
@@ -24170,6 +25522,13 @@ class DatasetsGroup:
     def apps_charts_search(self, **params: Unpack[DatasetsAppsChartsSearchParams]) -> DatasetsAppsChartsSearchResponse: ...
     def apps_reviews_search(self, **params: Unpack[DatasetsAppsReviewsSearchParams]) -> DatasetsAppsReviewsSearchResponse: ...
     def apps_search(self, **params: Unpack[DatasetsAppsSearchParams]) -> DatasetsAppsSearchResponse: ...
+    def chrome_extensions_changes(self, **params: Unpack[DatasetsChromeExtensionsChangesParams]) -> DatasetsChromeExtensionsChangesResponse: ...
+    def chrome_extensions_facets(self, **params: Unpack[DatasetsChromeExtensionsFacetsParams]) -> DatasetsChromeExtensionsFacetsResponse: ...
+    def chrome_extensions_history(self, **params: Unpack[DatasetsChromeExtensionsHistoryParams]) -> DatasetsChromeExtensionsHistoryResponse: ...
+    def chrome_extensions_item(self, **params: Unpack[DatasetsChromeExtensionsItemParams]) -> DatasetsChromeExtensionsItemResponse: ...
+    def chrome_extensions_metrics(self, **params: Unpack[DatasetsChromeExtensionsMetricsParams]) -> DatasetsChromeExtensionsMetricsResponse: ...
+    def chrome_extensions_search(self, **params: Unpack[DatasetsChromeExtensionsSearchParams]) -> DatasetsChromeExtensionsSearchResponse: ...
+    def chrome_extensions_trending(self, **params: Unpack[DatasetsChromeExtensionsTrendingParams]) -> DatasetsChromeExtensionsTrendingResponse: ...
     def creators_search(self, **params: Unpack[DatasetsCreatorsSearchParams]) -> DatasetsCreatorsSearchResponse: ...
     def github_users_facets(self, **params: Unpack[DatasetsGithubUsersFacetsParams]) -> DatasetsGithubUsersFacetsResponse: ...
     def github_users_item(self, **params: Unpack[DatasetsGithubUsersItemParams]) -> DatasetsGithubUsersItemResponse: ...
@@ -24182,6 +25541,14 @@ class DatasetsGroup:
     def housing_markets_facets(self, **params: Unpack[DatasetsHousingMarketsFacetsParams]) -> DatasetsHousingMarketsFacetsResponse: ...
     def housing_markets_item(self, **params: Unpack[DatasetsHousingMarketsItemParams]) -> DatasetsHousingMarketsItemResponse: ...
     def housing_markets_search(self, **params: Unpack[DatasetsHousingMarketsSearchParams]) -> DatasetsHousingMarketsSearchResponse: ...
+    def journalists_facets(self, **params: Unpack[DatasetsJournalistsFacetsParams]) -> DatasetsJournalistsFacetsResponse: ...
+    def journalists_item(self, **params: Unpack[DatasetsJournalistsItemParams]) -> DatasetsJournalistsItemResponse: ...
+    def journalists_search(self, **params: Unpack[DatasetsJournalistsSearchParams]) -> DatasetsJournalistsSearchResponse: ...
+    def numbeo_cities_facets(self, **params: Unpack[DatasetsNumbeoCitiesFacetsParams]) -> DatasetsNumbeoCitiesFacetsResponse: ...
+    def numbeo_cities_item(self, **params: Unpack[DatasetsNumbeoCitiesItemParams]) -> DatasetsNumbeoCitiesItemResponse: ...
+    def numbeo_cities_search(self, **params: Unpack[DatasetsNumbeoCitiesSearchParams]) -> DatasetsNumbeoCitiesSearchResponse: ...
+    def numbeo_countries_item(self, **params: Unpack[DatasetsNumbeoCountriesItemParams]) -> DatasetsNumbeoCountriesItemResponse: ...
+    def numbeo_countries_search(self, **params: Unpack[DatasetsNumbeoCountriesSearchParams]) -> DatasetsNumbeoCountriesSearchResponse: ...
     def playstation_games_facets(self, **params: Unpack[DatasetsPlaystationGamesFacetsParams]) -> DatasetsPlaystationGamesFacetsResponse: ...
     def playstation_games_item(self, **params: Unpack[DatasetsPlaystationGamesItemParams]) -> DatasetsPlaystationGamesItemResponse: ...
     def playstation_games_search(self, **params: Unpack[DatasetsPlaystationGamesSearchParams]) -> DatasetsPlaystationGamesSearchResponse: ...
@@ -24206,6 +25573,7 @@ class DatasetsGroup:
     def techstack_item(self, **params: Unpack[DatasetsTechstackItemParams]) -> DatasetsTechstackItemResponse: ...
     def techstack_search(self, **params: Unpack[DatasetsTechstackSearchParams]) -> DatasetsTechstackSearchResponse: ...
     def trustmrr_facets(self, **params: Unpack[DatasetsTrustmrrFacetsParams]) -> DatasetsTrustmrrFacetsResponse: ...
+    def trustmrr_history(self, **params: Unpack[DatasetsTrustmrrHistoryParams]) -> DatasetsTrustmrrHistoryResponse: ...
     def trustmrr_item(self, **params: Unpack[DatasetsTrustmrrItemParams]) -> DatasetsTrustmrrItemResponse: ...
     def trustmrr_search(self, **params: Unpack[DatasetsTrustmrrSearchParams]) -> DatasetsTrustmrrSearchResponse: ...
 
@@ -24424,6 +25792,18 @@ class MangaGroup:
     def search(self, **params: Unpack[MangaSearchParams]) -> MangaSearchResponse: ...
     def title(self, **params: Unpack[MangaTitleParams]) -> MangaTitleResponse: ...
 
+class MetacriticGroup:
+    def browse(self, **params: Unpack[MetacriticBrowseParams]) -> MetacriticBrowseResponse: ...
+    def game(self, **params: Unpack[MetacriticGameParams]) -> MetacriticGameResponse: ...
+    def game_critic_reviews(self, **params: Unpack[MetacriticGameCriticReviewsParams]) -> MetacriticGameCriticReviewsResponse: ...
+    def game_user_reviews(self, **params: Unpack[MetacriticGameUserReviewsParams]) -> MetacriticGameUserReviewsResponse: ...
+    def movie(self, **params: Unpack[MetacriticMovieParams]) -> MetacriticMovieResponse: ...
+    def movie_critic_reviews(self, **params: Unpack[MetacriticMovieCriticReviewsParams]) -> MetacriticMovieCriticReviewsResponse: ...
+    def movie_user_reviews(self, **params: Unpack[MetacriticMovieUserReviewsParams]) -> MetacriticMovieUserReviewsResponse: ...
+    def tv(self, **params: Unpack[MetacriticTvParams]) -> MetacriticTvResponse: ...
+    def tv_critic_reviews(self, **params: Unpack[MetacriticTvCriticReviewsParams]) -> MetacriticTvCriticReviewsResponse: ...
+    def tv_user_reviews(self, **params: Unpack[MetacriticTvUserReviewsParams]) -> MetacriticTvUserReviewsResponse: ...
+
 class MetaculusGroup:
     def category_questions(self, **params: Unpack[MetaculusCategoryQuestionsParams]) -> MetaculusCategoryQuestionsResponse: ...
     def comments_feed(self, **params: Unpack[MetaculusCommentsFeedParams]) -> MetaculusCommentsFeedResponse: ...
@@ -24436,6 +25816,16 @@ class MetaculusGroup:
     def questions(self, **params: Unpack[MetaculusQuestionsParams]) -> MetaculusQuestionsResponse: ...
     def top_comments(self, **params: Unpack[MetaculusTopCommentsParams]) -> MetaculusTopCommentsResponse: ...
     def tournament_questions(self, **params: Unpack[MetaculusTournamentQuestionsParams]) -> MetaculusTournamentQuestionsResponse: ...
+
+class NumbeoGroup:
+    def cost_of_living_city(self, **params: Unpack[NumbeoCostOfLivingCityParams]) -> NumbeoCostOfLivingCityResponse: ...
+    def cost_of_living_country(self, **params: Unpack[NumbeoCostOfLivingCountryParams]) -> NumbeoCostOfLivingCountryResponse: ...
+    def cost_of_living_rankings(self, **params: Unpack[NumbeoCostOfLivingRankingsParams]) -> NumbeoCostOfLivingRankingsResponse: ...
+    def cost_of_living_rankings_by_country(self, **params: Unpack[NumbeoCostOfLivingRankingsByCountryParams]) -> NumbeoCostOfLivingRankingsByCountryResponse: ...
+    def indices_city(self, **params: Unpack[NumbeoIndicesCityParams]) -> NumbeoIndicesCityResponse: ...
+    def indices_country(self, **params: Unpack[NumbeoIndicesCountryParams]) -> NumbeoIndicesCountryResponse: ...
+    def indices_rankings(self, **params: Unpack[NumbeoIndicesRankingsParams]) -> NumbeoIndicesRankingsResponse: ...
+    def indices_rankings_by_country(self, **params: Unpack[NumbeoIndicesRankingsByCountryParams]) -> NumbeoIndicesRankingsByCountryResponse: ...
 
 class MetaGroup:
     def ping(self, **params: Unpack[MetaPingParams]) -> MetaPingResponse: ...
@@ -24772,6 +26162,11 @@ class UserGroup:
     def me_api_keys_rotate(self, **params: Unpack[UserMeApiKeysRotateParams]) -> UserMeApiKeysRotateResponse: ...
     def me_api_keys_reveal(self, **params: Unpack[UserMeApiKeysRevealParams]) -> UserMeApiKeysRevealResponse: ...
 
+class WalmartGroup:
+    def product(self, **params: Unpack[WalmartProductParams]) -> WalmartProductResponse: ...
+    def product_reviews(self, **params: Unpack[WalmartProductReviewsParams]) -> WalmartProductReviewsResponse: ...
+    def search(self, **params: Unpack[WalmartSearchParams]) -> WalmartSearchResponse: ...
+
 class XGroup:
     def post(self, **params: Unpack[XPostParams]) -> XPostResponse: ...
     def profile(self, **params: Unpack[XProfileParams]) -> XProfileResponse: ...
@@ -24913,6 +26308,9 @@ OperationId = Literal[
     'brave-search',
     'brave-suggest',
     'brave-videos',
+    'capterra-product',
+    'capterra-reviews',
+    'capterra-search',
     'chromewebstore-categories',
     'chromewebstore-category',
     'chromewebstore-charts',
@@ -24955,6 +26353,13 @@ OperationId = Literal[
     'datasets-apps-charts-search',
     'datasets-apps-reviews-search',
     'datasets-apps-search',
+    'datasets-chrome-extensions-changes',
+    'datasets-chrome-extensions-facets',
+    'datasets-chrome-extensions-history',
+    'datasets-chrome-extensions-item',
+    'datasets-chrome-extensions-metrics',
+    'datasets-chrome-extensions-search',
+    'datasets-chrome-extensions-trending',
     'datasets-creators-search',
     'datasets-github-users-facets',
     'datasets-github-users-item',
@@ -24967,6 +26372,14 @@ OperationId = Literal[
     'datasets-housing-markets-facets',
     'datasets-housing-markets-item',
     'datasets-housing-markets-search',
+    'datasets-journalists-facets',
+    'datasets-journalists-item',
+    'datasets-journalists-search',
+    'datasets-numbeo-cities-facets',
+    'datasets-numbeo-cities-item',
+    'datasets-numbeo-cities-search',
+    'datasets-numbeo-countries-item',
+    'datasets-numbeo-countries-search',
     'datasets-playstation-games-facets',
     'datasets-playstation-games-item',
     'datasets-playstation-games-search',
@@ -24991,6 +26404,7 @@ OperationId = Literal[
     'datasets-techstack-item',
     'datasets-techstack-search',
     'datasets-trustmrr-facets',
+    'datasets-trustmrr-history',
     'datasets-trustmrr-item',
     'datasets-trustmrr-search',
     'antibot-check',
@@ -25178,6 +26592,16 @@ OperationId = Literal[
     'manga-rankings',
     'manga-search',
     'manga-title',
+    'metacritic-browse',
+    'metacritic-game',
+    'metacritic-game-critic-reviews',
+    'metacritic-game-user-reviews',
+    'metacritic-movie',
+    'metacritic-movie-critic-reviews',
+    'metacritic-movie-user-reviews',
+    'metacritic-tv',
+    'metacritic-tv-critic-reviews',
+    'metacritic-tv-user-reviews',
     'metaculus-category-questions',
     'metaculus-comments-feed',
     'metaculus-project-questions',
@@ -25189,6 +26613,14 @@ OperationId = Literal[
     'metaculus-questions',
     'metaculus-top-comments',
     'metaculus-tournament-questions',
+    'numbeo-cost-of-living-city',
+    'numbeo-cost-of-living-country',
+    'numbeo-cost-of-living-rankings',
+    'numbeo-cost-of-living-rankings-by-country',
+    'numbeo-indices-city',
+    'numbeo-indices-country',
+    'numbeo-indices-rankings',
+    'numbeo-indices-rankings-by-country',
     'ping',
     'pitchbook-company',
     'pitchbook-fund',
@@ -25476,6 +26908,9 @@ OperationId = Literal[
     'user-me-api-keys',
     'user-me-api-keys-rotate',
     'user-me-api-keys-reveal',
+    'walmart-product',
+    'walmart-product-reviews',
+    'walmart-search',
     'web-scrape',
     'web-techstack',
     'x-post',
@@ -25549,6 +26984,7 @@ class CrawloraClient:
     box_office_mojo: BoxOfficeMojoGroup
     brand: BrandGroup
     brave: BraveGroup
+    capterra: CapterraGroup
     chrome_web_store: ChromeWebStoreGroup
     coin_gecko: CoinGeckoGroup
     web: WebGroup
@@ -25569,7 +27005,9 @@ class CrawloraClient:
     letterboxd: LetterboxdGroup
     linked_in: LinkedInGroup
     manga: MangaGroup
+    metacritic: MetacriticGroup
     metaculus: MetaculusGroup
+    numbeo: NumbeoGroup
     meta: MetaGroup
     pitch_book: PitchBookGroup
     play_station: PlayStationGroup
@@ -25594,6 +27032,7 @@ class CrawloraClient:
     trustpilot: TrustpilotGroup
     usage: UsageGroup
     user: UserGroup
+    walmart: WalmartGroup
     x: XGroup
     yahoo_finance: YahooFinanceGroup
     youtube: YoutubeGroup
@@ -26569,6 +28008,42 @@ class CrawloraClient:
     @overload
     def operation(
         self,
+        operation_id: Literal['capterra-product'],
+        params: CapterraProductParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> CapterraProductResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['capterra-reviews'],
+        params: CapterraReviewsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> CapterraReviewsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['capterra-search'],
+        params: CapterraSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> CapterraSearchResponse: ...
+    @overload
+    def operation(
+        self,
         operation_id: Literal['chromewebstore-categories'],
         params: ChromeWebStoreChromewebstoreCategoriesParams = ...,
         *,
@@ -27073,6 +28548,90 @@ class CrawloraClient:
     @overload
     def operation(
         self,
+        operation_id: Literal['datasets-chrome-extensions-changes'],
+        params: DatasetsChromeExtensionsChangesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsChromeExtensionsChangesResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['datasets-chrome-extensions-facets'],
+        params: DatasetsChromeExtensionsFacetsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsChromeExtensionsFacetsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['datasets-chrome-extensions-history'],
+        params: DatasetsChromeExtensionsHistoryParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsChromeExtensionsHistoryResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['datasets-chrome-extensions-item'],
+        params: DatasetsChromeExtensionsItemParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsChromeExtensionsItemResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['datasets-chrome-extensions-metrics'],
+        params: DatasetsChromeExtensionsMetricsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsChromeExtensionsMetricsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['datasets-chrome-extensions-search'],
+        params: DatasetsChromeExtensionsSearchParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsChromeExtensionsSearchResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['datasets-chrome-extensions-trending'],
+        params: DatasetsChromeExtensionsTrendingParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsChromeExtensionsTrendingResponse: ...
+    @overload
+    def operation(
+        self,
         operation_id: Literal['datasets-creators-search'],
         params: DatasetsCreatorsSearchParams = ...,
         *,
@@ -27214,6 +28773,102 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> DatasetsHousingMarketsSearchResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['datasets-journalists-facets'],
+        params: DatasetsJournalistsFacetsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsJournalistsFacetsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['datasets-journalists-item'],
+        params: DatasetsJournalistsItemParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsJournalistsItemResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['datasets-journalists-search'],
+        params: DatasetsJournalistsSearchParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsJournalistsSearchResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['datasets-numbeo-cities-facets'],
+        params: DatasetsNumbeoCitiesFacetsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsNumbeoCitiesFacetsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['datasets-numbeo-cities-item'],
+        params: DatasetsNumbeoCitiesItemParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsNumbeoCitiesItemResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['datasets-numbeo-cities-search'],
+        params: DatasetsNumbeoCitiesSearchParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsNumbeoCitiesSearchResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['datasets-numbeo-countries-item'],
+        params: DatasetsNumbeoCountriesItemParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsNumbeoCountriesItemResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['datasets-numbeo-countries-search'],
+        params: DatasetsNumbeoCountriesSearchParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsNumbeoCountriesSearchResponse: ...
     @overload
     def operation(
         self,
@@ -27502,6 +29157,18 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> DatasetsTrustmrrFacetsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['datasets-trustmrr-history'],
+        params: DatasetsTrustmrrHistoryParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsTrustmrrHistoryResponse: ...
     @overload
     def operation(
         self,
@@ -29749,6 +31416,126 @@ class CrawloraClient:
     @overload
     def operation(
         self,
+        operation_id: Literal['metacritic-browse'],
+        params: MetacriticBrowseParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> MetacriticBrowseResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['metacritic-game'],
+        params: MetacriticGameParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> MetacriticGameResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['metacritic-game-critic-reviews'],
+        params: MetacriticGameCriticReviewsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> MetacriticGameCriticReviewsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['metacritic-game-user-reviews'],
+        params: MetacriticGameUserReviewsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> MetacriticGameUserReviewsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['metacritic-movie'],
+        params: MetacriticMovieParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> MetacriticMovieResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['metacritic-movie-critic-reviews'],
+        params: MetacriticMovieCriticReviewsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> MetacriticMovieCriticReviewsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['metacritic-movie-user-reviews'],
+        params: MetacriticMovieUserReviewsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> MetacriticMovieUserReviewsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['metacritic-tv'],
+        params: MetacriticTvParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> MetacriticTvResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['metacritic-tv-critic-reviews'],
+        params: MetacriticTvCriticReviewsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> MetacriticTvCriticReviewsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['metacritic-tv-user-reviews'],
+        params: MetacriticTvUserReviewsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> MetacriticTvUserReviewsResponse: ...
+    @overload
+    def operation(
+        self,
         operation_id: Literal['metaculus-category-questions'],
         params: MetaculusCategoryQuestionsParams,
         *,
@@ -29878,6 +31665,102 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> MetaculusTournamentQuestionsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['numbeo-cost-of-living-city'],
+        params: NumbeoCostOfLivingCityParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> NumbeoCostOfLivingCityResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['numbeo-cost-of-living-country'],
+        params: NumbeoCostOfLivingCountryParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> NumbeoCostOfLivingCountryResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['numbeo-cost-of-living-rankings'],
+        params: NumbeoCostOfLivingRankingsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> NumbeoCostOfLivingRankingsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['numbeo-cost-of-living-rankings-by-country'],
+        params: NumbeoCostOfLivingRankingsByCountryParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> NumbeoCostOfLivingRankingsByCountryResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['numbeo-indices-city'],
+        params: NumbeoIndicesCityParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> NumbeoIndicesCityResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['numbeo-indices-country'],
+        params: NumbeoIndicesCountryParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> NumbeoIndicesCountryResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['numbeo-indices-rankings'],
+        params: NumbeoIndicesRankingsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> NumbeoIndicesRankingsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['numbeo-indices-rankings-by-country'],
+        params: NumbeoIndicesRankingsByCountryParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> NumbeoIndicesRankingsByCountryResponse: ...
     @overload
     def operation(
         self,
@@ -33322,6 +35205,42 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> UserMeApiKeysRevealResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['walmart-product'],
+        params: WalmartProductParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> WalmartProductResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['walmart-product-reviews'],
+        params: WalmartProductReviewsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> WalmartProductReviewsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['walmart-search'],
+        params: WalmartSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> WalmartSearchResponse: ...
     @overload
     def operation(
         self,
@@ -34945,6 +36864,42 @@ class CrawloraClient:
     @overload
     def request(
         self,
+        operation_id: Literal['capterra-product'],
+        params: CapterraProductParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> CapterraProductResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['capterra-reviews'],
+        params: CapterraReviewsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> CapterraReviewsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['capterra-search'],
+        params: CapterraSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> CapterraSearchResponse: ...
+    @overload
+    def request(
+        self,
         operation_id: Literal['chromewebstore-categories'],
         params: ChromeWebStoreChromewebstoreCategoriesParams = ...,
         *,
@@ -35449,6 +37404,90 @@ class CrawloraClient:
     @overload
     def request(
         self,
+        operation_id: Literal['datasets-chrome-extensions-changes'],
+        params: DatasetsChromeExtensionsChangesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsChromeExtensionsChangesResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['datasets-chrome-extensions-facets'],
+        params: DatasetsChromeExtensionsFacetsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsChromeExtensionsFacetsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['datasets-chrome-extensions-history'],
+        params: DatasetsChromeExtensionsHistoryParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsChromeExtensionsHistoryResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['datasets-chrome-extensions-item'],
+        params: DatasetsChromeExtensionsItemParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsChromeExtensionsItemResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['datasets-chrome-extensions-metrics'],
+        params: DatasetsChromeExtensionsMetricsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsChromeExtensionsMetricsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['datasets-chrome-extensions-search'],
+        params: DatasetsChromeExtensionsSearchParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsChromeExtensionsSearchResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['datasets-chrome-extensions-trending'],
+        params: DatasetsChromeExtensionsTrendingParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsChromeExtensionsTrendingResponse: ...
+    @overload
+    def request(
+        self,
         operation_id: Literal['datasets-creators-search'],
         params: DatasetsCreatorsSearchParams = ...,
         *,
@@ -35590,6 +37629,102 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> DatasetsHousingMarketsSearchResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['datasets-journalists-facets'],
+        params: DatasetsJournalistsFacetsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsJournalistsFacetsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['datasets-journalists-item'],
+        params: DatasetsJournalistsItemParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsJournalistsItemResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['datasets-journalists-search'],
+        params: DatasetsJournalistsSearchParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsJournalistsSearchResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['datasets-numbeo-cities-facets'],
+        params: DatasetsNumbeoCitiesFacetsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsNumbeoCitiesFacetsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['datasets-numbeo-cities-item'],
+        params: DatasetsNumbeoCitiesItemParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsNumbeoCitiesItemResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['datasets-numbeo-cities-search'],
+        params: DatasetsNumbeoCitiesSearchParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsNumbeoCitiesSearchResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['datasets-numbeo-countries-item'],
+        params: DatasetsNumbeoCountriesItemParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsNumbeoCountriesItemResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['datasets-numbeo-countries-search'],
+        params: DatasetsNumbeoCountriesSearchParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsNumbeoCountriesSearchResponse: ...
     @overload
     def request(
         self,
@@ -35878,6 +38013,18 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> DatasetsTrustmrrFacetsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['datasets-trustmrr-history'],
+        params: DatasetsTrustmrrHistoryParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsTrustmrrHistoryResponse: ...
     @overload
     def request(
         self,
@@ -38125,6 +40272,126 @@ class CrawloraClient:
     @overload
     def request(
         self,
+        operation_id: Literal['metacritic-browse'],
+        params: MetacriticBrowseParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> MetacriticBrowseResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['metacritic-game'],
+        params: MetacriticGameParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> MetacriticGameResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['metacritic-game-critic-reviews'],
+        params: MetacriticGameCriticReviewsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> MetacriticGameCriticReviewsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['metacritic-game-user-reviews'],
+        params: MetacriticGameUserReviewsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> MetacriticGameUserReviewsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['metacritic-movie'],
+        params: MetacriticMovieParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> MetacriticMovieResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['metacritic-movie-critic-reviews'],
+        params: MetacriticMovieCriticReviewsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> MetacriticMovieCriticReviewsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['metacritic-movie-user-reviews'],
+        params: MetacriticMovieUserReviewsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> MetacriticMovieUserReviewsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['metacritic-tv'],
+        params: MetacriticTvParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> MetacriticTvResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['metacritic-tv-critic-reviews'],
+        params: MetacriticTvCriticReviewsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> MetacriticTvCriticReviewsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['metacritic-tv-user-reviews'],
+        params: MetacriticTvUserReviewsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> MetacriticTvUserReviewsResponse: ...
+    @overload
+    def request(
+        self,
         operation_id: Literal['metaculus-category-questions'],
         params: MetaculusCategoryQuestionsParams,
         *,
@@ -38254,6 +40521,102 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> MetaculusTournamentQuestionsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['numbeo-cost-of-living-city'],
+        params: NumbeoCostOfLivingCityParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> NumbeoCostOfLivingCityResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['numbeo-cost-of-living-country'],
+        params: NumbeoCostOfLivingCountryParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> NumbeoCostOfLivingCountryResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['numbeo-cost-of-living-rankings'],
+        params: NumbeoCostOfLivingRankingsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> NumbeoCostOfLivingRankingsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['numbeo-cost-of-living-rankings-by-country'],
+        params: NumbeoCostOfLivingRankingsByCountryParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> NumbeoCostOfLivingRankingsByCountryResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['numbeo-indices-city'],
+        params: NumbeoIndicesCityParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> NumbeoIndicesCityResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['numbeo-indices-country'],
+        params: NumbeoIndicesCountryParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> NumbeoIndicesCountryResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['numbeo-indices-rankings'],
+        params: NumbeoIndicesRankingsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> NumbeoIndicesRankingsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['numbeo-indices-rankings-by-country'],
+        params: NumbeoIndicesRankingsByCountryParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> NumbeoIndicesRankingsByCountryResponse: ...
     @overload
     def request(
         self,
@@ -41698,6 +44061,42 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> UserMeApiKeysRevealResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['walmart-product'],
+        params: WalmartProductParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> WalmartProductResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['walmart-product-reviews'],
+        params: WalmartProductReviewsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> WalmartProductReviewsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['walmart-search'],
+        params: WalmartSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> WalmartSearchResponse: ...
     @overload
     def request(
         self,

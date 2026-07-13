@@ -39,6 +39,15 @@ posts = crawlora.reddit.search(q="python", subreddit="programming")
 brand = crawlora.brand.retrieve(domain="stripe.com")
 ```
 
+## Software, Reviews, And Market Datasets
+
+```python
+extensions = crawlora.datasets.chrome_extensions_search(q="productivity", min_users=10000)
+cities = crawlora.datasets.numbeo_cities_search(country="Portugal", sort="quality_of_life_desc")
+software = crawlora.capterra.search(q="project management")
+games = crawlora.metacritic.browse(type="game", sort="score")
+```
+
 ## Airbnb Host Profiles
 
 Look up a public Airbnb host, then page through their listings and guest reviews.
