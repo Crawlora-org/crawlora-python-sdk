@@ -41,8 +41,17 @@ brand = crawlora.brand.retrieve(domain="stripe.com")
 
 ## Software, Reviews, And Market Datasets
 
+Build a Chrome extension competitive-intelligence view without downloading the
+whole catalog: create a high-adoption shortlist, load chart-ready market
+metrics, watch movers, and audit permission changes or one item's history.
+
 ```python
-extensions = crawlora.datasets.chrome_extensions_search(q="productivity", min_users=10000)
+extensions = crawlora.datasets.chrome_extensions_search(q="productivity", min_users=10000, sort="users_desc", page_size=20)
+metrics = crawlora.datasets.chrome_extensions_metrics(days=30, limit=10)
+movers = crawlora.datasets.chrome_extensions_trending(item_type="extension", page_size=20)
+permission_changes = crawlora.datasets.chrome_extensions_changes(change_type="permissions", limit=25)
+history = crawlora.datasets.chrome_extensions_history(id="fjgncogppolhfdpijihbpfmeohpaadpc", limit=90)
+
 cities = crawlora.datasets.numbeo_cities_search(country="Portugal", sort="quality_of_life_desc")
 software = crawlora.capterra.search(q="project management")
 games = crawlora.metacritic.browse(type="game", sort="score")
