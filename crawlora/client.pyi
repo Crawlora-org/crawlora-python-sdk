@@ -3249,6 +3249,7 @@ ModelDatasetsChromeExtensionMetricsResponse = TypedDict('ModelDatasetsChromeExte
     'statuses': NotRequired[list[ModelEsChromeExtensionMetricBucket]],
     'summary': NotRequired[ModelEsChromeExtensionMetricSummary],
     'top_categories': NotRequired[list[ModelEsChromeExtensionMetricBucket]],
+    'top_developers': NotRequired[list[ModelEsChromeExtensionMetricBucket]],
     'top_permissions': NotRequired[list[ModelEsChromeExtensionMetricBucket]],
     'user_bands': NotRequired[list[ModelEsChromeExtensionMetricBucket]],
 }, total=False)
@@ -3324,6 +3325,24 @@ ModelDatasetsHousingSearchResponse = TypedDict('ModelDatasetsHousingSearchRespon
     'page': NotRequired[int],
     'page_size': NotRequired[int],
     'sort': NotRequired[str],
+    'total': NotRequired[int],
+}, total=False)
+
+ModelDatasetsJobCompaniesResponse = TypedDict('ModelDatasetsJobCompaniesResponse', {
+    'companies': NotRequired[list[dict[str, Any]]],
+    'page': NotRequired[int],
+    'page_size': NotRequired[int],
+    'total': NotRequired[int],
+}, total=False)
+
+ModelDatasetsJobsFacetResponse = TypedDict('ModelDatasetsJobsFacetResponse', {
+    'facets': NotRequired[ModelEsJobPostingFacets],
+}, total=False)
+
+ModelDatasetsJobsSearchResponse = TypedDict('ModelDatasetsJobsSearchResponse', {
+    'jobs': NotRequired[list[dict[str, Any]]],
+    'page': NotRequired[int],
+    'page_size': NotRequired[int],
     'total': NotRequired[int],
 }, total=False)
 
@@ -3437,6 +3456,50 @@ ModelDatasetsReviewsSearchResponse = TypedDict('ModelDatasetsReviewsSearchRespon
     'total': NotRequired[int],
 }, total=False)
 
+ModelDatasetsSecCompanyFacetResponse = TypedDict('ModelDatasetsSecCompanyFacetResponse', {
+    'dataset': NotRequired[str],
+    'facet': NotRequired[str],
+    'items': NotRequired[list[ModelEsSecCompanyFacetItem]],
+}, total=False)
+
+ModelDatasetsSecCompanyFinancialsResponse = TypedDict('ModelDatasetsSecCompanyFinancialsResponse', {
+    'cik': NotRequired[int],
+    'count': NotRequired[int],
+    'dataset': NotRequired[str],
+    'points': NotRequired[list[ModelEsSecFinancialsHistoryPoint]],
+}, total=False)
+
+ModelDatasetsSecCompanyInsiderResponse = TypedDict('ModelDatasetsSecCompanyInsiderResponse', {
+    'cik': NotRequired[int],
+    'count': NotRequired[int],
+    'dataset': NotRequired[str],
+    'items': NotRequired[list[ModelEsSecInsiderTransactionRecord]],
+}, total=False)
+
+ModelDatasetsSecCompanySearchResponse = TypedDict('ModelDatasetsSecCompanySearchResponse', {
+    'dataset': NotRequired[str],
+    'items': NotRequired[list[ModelEsSecCompanyRecord]],
+    'page': NotRequired[int],
+    'page_size': NotRequired[int],
+    'sort': NotRequired[str],
+    'total': NotRequired[int],
+}, total=False)
+
+ModelDatasetsSecInstitutionalPositionsFacetResponse = TypedDict('ModelDatasetsSecInstitutionalPositionsFacetResponse', {
+    'dataset': NotRequired[str],
+    'facet': NotRequired[str],
+    'items': NotRequired[list[ModelEsSecInstitutionalPositionsFacetItem]],
+}, total=False)
+
+ModelDatasetsSecInstitutionalPositionsSearchResponse = TypedDict('ModelDatasetsSecInstitutionalPositionsSearchResponse', {
+    'dataset': NotRequired[str],
+    'items': NotRequired[list[ModelEsSecInstitutionalPositionRecord]],
+    'page': NotRequired[int],
+    'page_size': NotRequired[int],
+    'sort': NotRequired[str],
+    'total': NotRequired[int],
+}, total=False)
+
 ModelDatasetsSteamAchievementsSearchResponse = TypedDict('ModelDatasetsSteamAchievementsSearchResponse', {
     'dataset': NotRequired[str],
     'items': NotRequired[list[ModelEsSteamAchievementRecord]],
@@ -3538,6 +3601,21 @@ ModelDatasetsTrustmrrHistoryResponse = TypedDict('ModelDatasetsTrustmrrHistoryRe
 ModelDatasetsTrustmrrSearchResponse = TypedDict('ModelDatasetsTrustmrrSearchResponse', {
     'dataset': NotRequired[str],
     'items': NotRequired[list[ModelEsTrustmrrStartupRecord]],
+    'page': NotRequired[int],
+    'page_size': NotRequired[int],
+    'sort': NotRequired[str],
+    'total': NotRequired[int],
+}, total=False)
+
+ModelDatasetsXuserFacetResponse = TypedDict('ModelDatasetsXuserFacetResponse', {
+    'dataset': NotRequired[str],
+    'facet': NotRequired[str],
+    'items': NotRequired[list[ModelEsXuserDatasetFacetItem]],
+}, total=False)
+
+ModelDatasetsXuserSearchResponse = TypedDict('ModelDatasetsXuserSearchResponse', {
+    'dataset': NotRequired[str],
+    'items': NotRequired[list[ModelEsXuserDatasetItem]],
     'page': NotRequired[int],
     'page_size': NotRequired[int],
     'sort': NotRequired[str],
@@ -3676,6 +3754,30 @@ ModelDatasetsHousingMarketsSearchResponseDoc = TypedDict('ModelDatasetsHousingMa
     'msg': NotRequired[str],
 }, total=False)
 
+ModelDatasetsJobsCompaniesResponseDoc = TypedDict('ModelDatasetsJobsCompaniesResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelDatasetsJobCompaniesResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelDatasetsJobsFacetResponseDoc = TypedDict('ModelDatasetsJobsFacetResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelDatasetsJobsFacetResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelDatasetsJobsItemResponseDoc = TypedDict('ModelDatasetsJobsItemResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[dict[str, Any]],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelDatasetsJobsSearchResponseDoc = TypedDict('ModelDatasetsJobsSearchResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelDatasetsJobsSearchResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
 ModelDatasetsJournalistsFacetResponseDoc = TypedDict('ModelDatasetsJournalistsFacetResponseDoc', {
     'code': NotRequired[int],
     'data': NotRequired[ModelDatasetsJournalistsFacetResponse],
@@ -3802,6 +3904,48 @@ ModelDatasetsReviewsSearchResponseDoc = TypedDict('ModelDatasetsReviewsSearchRes
     'msg': NotRequired[str],
 }, total=False)
 
+ModelDatasetsSecCompaniesFacetResponseDoc = TypedDict('ModelDatasetsSecCompaniesFacetResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelDatasetsSecCompanyFacetResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelDatasetsSecCompaniesFinancialsResponseDoc = TypedDict('ModelDatasetsSecCompaniesFinancialsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelDatasetsSecCompanyFinancialsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelDatasetsSecCompaniesInsiderResponseDoc = TypedDict('ModelDatasetsSecCompaniesInsiderResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelDatasetsSecCompanyInsiderResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelDatasetsSecCompaniesItemResponseDoc = TypedDict('ModelDatasetsSecCompaniesItemResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelEsSecCompanyRecord],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelDatasetsSecCompaniesSearchResponseDoc = TypedDict('ModelDatasetsSecCompaniesSearchResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelDatasetsSecCompanySearchResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelDatasetsSecInstitutionalPositionsFacetResponseDoc = TypedDict('ModelDatasetsSecInstitutionalPositionsFacetResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelDatasetsSecInstitutionalPositionsFacetResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelDatasetsSecInstitutionalPositionsSearchResponseDoc = TypedDict('ModelDatasetsSecInstitutionalPositionsSearchResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelDatasetsSecInstitutionalPositionsSearchResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
 ModelDatasetsSteamAchievementsSearchResponseDoc = TypedDict('ModelDatasetsSteamAchievementsSearchResponseDoc', {
     'code': NotRequired[int],
     'data': NotRequired[ModelDatasetsSteamAchievementsSearchResponse],
@@ -3895,6 +4039,24 @@ ModelDatasetsTrustmrrItemResponseDoc = TypedDict('ModelDatasetsTrustmrrItemRespo
 ModelDatasetsTrustmrrSearchResponseDoc = TypedDict('ModelDatasetsTrustmrrSearchResponseDoc', {
     'code': NotRequired[int],
     'data': NotRequired[ModelDatasetsTrustmrrSearchResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelDatasetsXUserResponseDoc = TypedDict('ModelDatasetsXUserResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelEsXuserRecord],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelDatasetsXUsersFacetResponseDoc = TypedDict('ModelDatasetsXUsersFacetResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelDatasetsXuserFacetResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelDatasetsXUsersSearchResponseDoc = TypedDict('ModelDatasetsXUsersSearchResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelDatasetsXuserSearchResponse],
     'msg': NotRequired[str],
 }, total=False)
 
@@ -4519,12 +4681,17 @@ ModelEsChromeExtensionFacetItem = TypedDict('ModelEsChromeExtensionFacetItem', {
 }, total=False)
 
 ModelEsChromeExtensionHistoryPoint = TypedDict('ModelEsChromeExtensionHistoryPoint', {
+    'category': NotRequired[str],
     'change_types': NotRequired[list[str]],
     'collects_data': NotRequired[bool],
     'data_collected': NotRequired[list[str]],
+    'developer': NotRequired[str],
+    'developer_email': NotRequired[str],
     'host_permissions': NotRequired[list[str]],
     'id': NotRequired[str],
+    'item_type': NotRequired[str],
     'manifest_version': NotRequired[int],
+    'name': NotRequired[str],
     'observed_at': NotRequired[str],
     'optional_host_permissions': NotRequired[list[str]],
     'optional_permissions': NotRequired[list[str]],
@@ -4548,7 +4715,9 @@ ModelEsChromeExtensionMetricBucket = TypedDict('ModelEsChromeExtensionMetricBuck
 
 ModelEsChromeExtensionMetricSummary = TypedDict('ModelEsChromeExtensionMetricSummary', {
     'average_rating': NotRequired[float],
+    'developer_emails': NotRequired[int],
     'last_crawled_at': NotRequired[str],
+    'named_developers': NotRequired[int],
     'privacy_policies': NotRequired[int],
     'total': NotRequired[int],
     'total_ratings': NotRequired[int],
@@ -4562,6 +4731,7 @@ ModelEsChromeExtensionRecord = TypedDict('ModelEsChromeExtensionRecord', {
     'data_collected': NotRequired[list[str]],
     'description': NotRequired[str],
     'developer': NotRequired[str],
+    'developer_email': NotRequired[str],
     'first_seen': NotRequired[str],
     'has_broad_host_access': NotRequired[bool],
     'host_permissions': NotRequired[list[str]],
@@ -4622,6 +4792,11 @@ ModelEsCreatorRecord = TypedDict('ModelEsCreatorRecord', {
     'unique_id': NotRequired[str],
     'verified': NotRequired[bool],
     'video_count': NotRequired[int],
+}, total=False)
+
+ModelEsFacetItem = TypedDict('ModelEsFacetItem', {
+    'count': NotRequired[int],
+    'key': NotRequired[str],
 }, total=False)
 
 ModelEsGeoPoint = TypedDict('ModelEsGeoPoint', {
@@ -4863,6 +5038,16 @@ ModelEsHousingMarketRecord = TypedDict('ModelEsHousingMarketRecord', {
     'state_code': NotRequired[str],
     'table_id': NotRequired[int],
     'zip_code': NotRequired[str],
+}, total=False)
+
+ModelEsJobPostingFacets = TypedDict('ModelEsJobPostingFacets', {
+    'by_department': NotRequired[list[ModelEsFacetItem]],
+    'by_employment_type': NotRequired[list[ModelEsFacetItem]],
+    'by_location': NotRequired[list[ModelEsFacetItem]],
+    'by_provider': NotRequired[list[ModelEsFacetItem]],
+    'remote_open': NotRequired[int],
+    'top_companies': NotRequired[list[ModelEsFacetItem]],
+    'total_open': NotRequired[int],
 }, total=False)
 
 ModelEsJournalistRecord = TypedDict('ModelEsJournalistRecord', {
@@ -5153,6 +5338,109 @@ ModelEsProductHuntTrendTopProduct = TypedDict('ModelEsProductHuntTrendTopProduct
 }, total=False)
 
 ModelEsProductHuntTrendsFacetItem = TypedDict('ModelEsProductHuntTrendsFacetItem', {
+    'count': NotRequired[int],
+    'value': NotRequired[str],
+}, total=False)
+
+ModelEsSecCompanyFacetItem = TypedDict('ModelEsSecCompanyFacetItem', {
+    'count': NotRequired[int],
+    'value': NotRequired[str],
+}, total=False)
+
+ModelEsSecCompanyRecord = TypedDict('ModelEsSecCompanyRecord', {
+    'cik': NotRequired[int],
+    'cik_padded': NotRequired[str],
+    'crawled_at': NotRequired[str],
+    'entity_type': NotRequired[str],
+    'exchange': NotRequired[list[str]],
+    'filing_count': NotRequired[int],
+    'financials_synced_at': NotRequired[str],
+    'fiscal_year_end': NotRequired[str],
+    'former_names': NotRequired[list[str]],
+    'forms_filed': NotRequired[list[str]],
+    'insider_last_transaction_at': NotRequired[str],
+    'insider_net_shares_90d': NotRequired[float],
+    'insider_txn_count_90d': NotRequired[int],
+    'latest_annual_fiscal_year': NotRequired[int],
+    'latest_annual_net_income': NotRequired[float],
+    'latest_annual_revenue': NotRequired[float],
+    'latest_annual_total_assets': NotRequired[float],
+    'latest_filing_date': NotRequired[str],
+    'latest_quarterly_fiscal_year': NotRequired[int],
+    'latest_quarterly_revenue': NotRequired[float],
+    'name': NotRequired[str],
+    'primary_ticker': NotRequired[str],
+    'recent_filings': NotRequired[list[ModelEsSecFilingSummary]],
+    'revenue_band': NotRequired[str],
+    'schema_version': NotRequired[int],
+    'seed_source': NotRequired[str],
+    'sic': NotRequired[str],
+    'sic_description': NotRequired[str],
+    'state_of_incorporation': NotRequired[str],
+    'submissions_synced_at': NotRequired[str],
+    'tickers': NotRequired[list[str]],
+}, total=False)
+
+ModelEsSecFilingSummary = TypedDict('ModelEsSecFilingSummary', {
+    'accession_number': NotRequired[str],
+    'filing_date': NotRequired[str],
+    'form': NotRequired[str],
+    'primary_doc_url': NotRequired[str],
+}, total=False)
+
+ModelEsSecFinancialsHistoryPoint = TypedDict('ModelEsSecFinancialsHistoryPoint', {
+    'cik': NotRequired[int],
+    'currency': NotRequired[str],
+    'end_date': NotRequired[str],
+    'fiscal_period': NotRequired[str],
+    'fiscal_year': NotRequired[int],
+    'form': NotRequired[str],
+    'lines': NotRequired[dict[str, float]],
+    'period': NotRequired[str],
+    'ratios': NotRequired[dict[str, float]],
+    'statement': NotRequired[str],
+    'synced_at': NotRequired[str],
+}, total=False)
+
+ModelEsSecInsiderTransactionRecord = TypedDict('ModelEsSecInsiderTransactionRecord', {
+    'accession_number': NotRequired[str],
+    'acquired_or_disposed': NotRequired[str],
+    'cik': NotRequired[int],
+    'code': NotRequired[str],
+    'filing_date': NotRequired[str],
+    'filing_url': NotRequired[str],
+    'form': NotRequired[str],
+    'is_director': NotRequired[bool],
+    'is_officer': NotRequired[bool],
+    'is_ten_percent_owner': NotRequired[bool],
+    'owner_name': NotRequired[str],
+    'owner_title': NotRequired[str],
+    'price_per_share': NotRequired[float],
+    'security_title': NotRequired[str],
+    'shares': NotRequired[float],
+    'shares_owned_after': NotRequired[float],
+    'synced_at': NotRequired[str],
+    'transaction_date': NotRequired[str],
+}, total=False)
+
+ModelEsSecInstitutionalPositionRecord = TypedDict('ModelEsSecInstitutionalPositionRecord', {
+    'accession_number': NotRequired[str],
+    'cusip': NotRequired[str],
+    'filing_date': NotRequired[str],
+    'investment_discretion': NotRequired[str],
+    'issuer_name': NotRequired[str],
+    'manager_cik': NotRequired[int],
+    'manager_name': NotRequired[str],
+    'put_call': NotRequired[str],
+    'report_date': NotRequired[str],
+    'share_type': NotRequired[str],
+    'shares': NotRequired[float],
+    'synced_at': NotRequired[str],
+    'title_of_class': NotRequired[str],
+    'value': NotRequired[float],
+}, total=False)
+
+ModelEsSecInstitutionalPositionsFacetItem = TypedDict('ModelEsSecInstitutionalPositionsFacetItem', {
     'count': NotRequired[int],
     'value': NotRequired[str],
 }, total=False)
@@ -5455,6 +5743,55 @@ ModelEsWebsiteStatus = TypedDict('ModelEsWebsiteStatus', {
     'http_reachable': NotRequired[bool],
     'status_code': NotRequired[int],
     'url': NotRequired[str],
+}, total=False)
+
+ModelEsXuserDatasetFacetItem = TypedDict('ModelEsXuserDatasetFacetItem', {
+    'count': NotRequired[int],
+    'value': NotRequired[str],
+}, total=False)
+
+ModelEsXuserDatasetItem = TypedDict('ModelEsXuserDatasetItem', {
+    'avatar_url': NotRequired[str],
+    'banner_url': NotRequired[str],
+    'bio': NotRequired[str],
+    'crawled_at': NotRequired[str],
+    'created_at': NotRequired[str],
+    'external_url': NotRequired[str],
+    'follower_following_ratio': NotRequired[float],
+    'followers': NotRequired[int],
+    'following': NotRequired[int],
+    'has_bio': NotRequired[bool],
+    'has_external_url': NotRequired[bool],
+    'id': NotRequired[str],
+    'is_blue_verified': NotRequired[bool],
+    'location_raw': NotRequired[str],
+    'name': NotRequired[str],
+    'posts': NotRequired[int],
+    'schema_version': NotRequired[int],
+    'source_tier': NotRequired[str],
+    'username': NotRequired[str],
+}, total=False)
+
+ModelEsXuserRecord = TypedDict('ModelEsXuserRecord', {
+    'avatar_url': NotRequired[str],
+    'banner_url': NotRequired[str],
+    'bio': NotRequired[str],
+    'crawled_at': NotRequired[str],
+    'created_at': NotRequired[str],
+    'external_url': NotRequired[str],
+    'follower_following_ratio': NotRequired[float],
+    'followers': NotRequired[int],
+    'following': NotRequired[int],
+    'has_bio': NotRequired[bool],
+    'has_external_url': NotRequired[bool],
+    'id': NotRequired[str],
+    'is_blue_verified': NotRequired[bool],
+    'location_raw': NotRequired[str],
+    'name': NotRequired[str],
+    'posts': NotRequired[int],
+    'schema_version': NotRequired[int],
+    'source_tier': NotRequired[str],
+    'username': NotRequired[str],
 }, total=False)
 
 ModelEspnAthlete = TypedDict('ModelEspnAthlete', {
@@ -12189,14 +12526,20 @@ ModelSecNewsItem = TypedDict('ModelSecNewsItem', {
 }, total=False)
 
 ModelSecSubmissionsResponse = TypedDict('ModelSecSubmissionsResponse', {
+    'category': NotRequired[str],
     'cik': NotRequired[int],
     'cik_padded': NotRequired[str],
     'count': NotRequired[int],
+    'entity_type': NotRequired[str],
+    'exchanges': NotRequired[list[str]],
     'filings': NotRequired[list[ModelSecFiling]],
+    'fiscal_year_end': NotRequired[str],
+    'former_names': NotRequired[list[str]],
     'name': NotRequired[str],
     'sic': NotRequired[str],
     'sic_description': NotRequired[str],
     'source_url': NotRequired[str],
+    'state_of_incorporation': NotRequired[str],
     'tickers': NotRequired[list[str]],
 }, total=False)
 
@@ -14745,6 +15088,296 @@ ModelSteamTopSellersResponseDoc = TypedDict('ModelSteamTopSellersResponseDoc', {
     'msg': NotRequired[str],
 }, total=False)
 
+ModelTcdbBirthdaysResponse = TypedDict('ModelTcdbBirthdaysResponse', {
+    'day': NotRequired[int],
+    'fetched_at': NotRequired[str],
+    'label': NotRequired[str],
+    'month': NotRequired[int],
+    'people': NotRequired[list[ModelTcdbPersonRef]],
+    'public_page_derived': NotRequired[bool],
+    'source_url': NotRequired[str],
+}, total=False)
+
+ModelTcdbCardList = TypedDict('ModelTcdbCardList', {
+    'card_id': NotRequired[str],
+    'image_urls': NotRequired[list[str]],
+    'name': NotRequired[str],
+    'number': NotRequired[str],
+    'path': NotRequired[str],
+    'person_urls': NotRequired[list[str]],
+    'set_id': NotRequired[str],
+    'team': NotRequired[str],
+    'team_url': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelTcdbCardOfTheDayResponse = TypedDict('ModelTcdbCardOfTheDayResponse', {
+    'cards': NotRequired[list[ModelTcdbDailyCard]],
+    'fetched_at': NotRequired[str],
+    'page': NotRequired[int],
+    'public_page_derived': NotRequired[bool],
+    'source_url': NotRequired[str],
+}, total=False)
+
+ModelTcdbCardResponse = TypedDict('ModelTcdbCardResponse', {
+    'back_image_url': NotRequired[str],
+    'card_id': NotRequired[str],
+    'category': NotRequired[str],
+    'fetched_at': NotRequired[str],
+    'front_image_url': NotRequired[str],
+    'image_urls': NotRequired[list[str]],
+    'name': NotRequired[str],
+    'number': NotRequired[str],
+    'public_page_derived': NotRequired[bool],
+    'set_id': NotRequired[str],
+    'set_path': NotRequired[str],
+    'set_title': NotRequired[str],
+    'set_url': NotRequired[str],
+    'source_url': NotRequired[str],
+    'tags': NotRequired[list[str]],
+    'team': NotRequired[str],
+    'title': NotRequired[str],
+    'year': NotRequired[str],
+}, total=False)
+
+ModelTcdbCompaniesResponse = TypedDict('ModelTcdbCompaniesResponse', {
+    'companies': NotRequired[list[ModelTcdbCompany]],
+    'fetched_at': NotRequired[str],
+    'public_page_derived': NotRequired[bool],
+    'source_url': NotRequired[str],
+}, total=False)
+
+ModelTcdbCompany = TypedDict('ModelTcdbCompany', {
+    'links': NotRequired[list[ModelTcdbCompanyLink]],
+    'name': NotRequired[str],
+}, total=False)
+
+ModelTcdbCompanyLink = TypedDict('ModelTcdbCompanyLink', {
+    'label': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelTcdbDailyCard = TypedDict('ModelTcdbDailyCard', {
+    'card_id': NotRequired[str],
+    'comment': NotRequired[str],
+    'date': NotRequired[str],
+    'image_url': NotRequired[str],
+    'path': NotRequired[str],
+    'set_id': NotRequired[str],
+    'set_path': NotRequired[str],
+    'set_title': NotRequired[str],
+    'set_url': NotRequired[str],
+    'title': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelTcdbEntityCard = TypedDict('ModelTcdbEntityCard', {
+    'card_id': NotRequired[str],
+    'image_urls': NotRequired[list[str]],
+    'path': NotRequired[str],
+    'set_id': NotRequired[str],
+    'title': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelTcdbPersonRef = TypedDict('ModelTcdbPersonRef', {
+    'id': NotRequired[str],
+    'name': NotRequired[str],
+    'path': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelTcdbPersonResponse = TypedDict('ModelTcdbPersonResponse', {
+    'cards': NotRequired[list[ModelTcdbEntityCard]],
+    'category': NotRequired[str],
+    'fetched_at': NotRequired[str],
+    'id': NotRequired[str],
+    'name': NotRequired[str],
+    'public_page_derived': NotRequired[bool],
+    'source_url': NotRequired[str],
+}, total=False)
+
+ModelTcdbReleaseEntry = TypedDict('ModelTcdbReleaseEntry', {
+    'date': NotRequired[str],
+    'month': NotRequired[str],
+    'path': NotRequired[str],
+    'set_id': NotRequired[str],
+    'title': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelTcdbReleasesResponse = TypedDict('ModelTcdbReleasesResponse', {
+    'fetched_at': NotRequired[str],
+    'public_page_derived': NotRequired[bool],
+    'releases': NotRequired[list[ModelTcdbReleaseEntry]],
+    'source_url': NotRequired[str],
+}, total=False)
+
+ModelTcdbSearchGroup = TypedDict('ModelTcdbSearchGroup', {
+    'kind': NotRequired[str],
+    'label': NotRequired[str],
+    'results': NotRequired[list[ModelTcdbSearchResult]],
+    'total_count': NotRequired[int],
+}, total=False)
+
+ModelTcdbSearchResponse = TypedDict('ModelTcdbSearchResponse', {
+    'category': NotRequired[str],
+    'fetched_at': NotRequired[str],
+    'groups': NotRequired[list[ModelTcdbSearchGroup]],
+    'limit': NotRequired[int],
+    'public_page_derived': NotRequired[bool],
+    'query': NotRequired[str],
+    'source_url': NotRequired[str],
+    'top_match': NotRequired[ModelTcdbSearchResult],
+}, total=False)
+
+ModelTcdbSearchResult = TypedDict('ModelTcdbSearchResult', {
+    'id': NotRequired[str],
+    'kind': NotRequired[str],
+    'path': NotRequired[str],
+    'title': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelTcdbSetResponse = TypedDict('ModelTcdbSetResponse', {
+    'cards': NotRequired[list[ModelTcdbCardList]],
+    'category': NotRequired[str],
+    'fetched_at': NotRequired[str],
+    'id': NotRequired[str],
+    'public_page_derived': NotRequired[bool],
+    'rating': NotRequired[str],
+    'source_url': NotRequired[str],
+    'title': NotRequired[str],
+    'total_cards': NotRequired[int],
+    'year': NotRequired[str],
+}, total=False)
+
+ModelTcdbSetsListing = TypedDict('ModelTcdbSetsListing', {
+    'id': NotRequired[str],
+    'path': NotRequired[str],
+    'title': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelTcdbSetsResponse = TypedDict('ModelTcdbSetsResponse', {
+    'fetched_at': NotRequired[str],
+    'public_page_derived': NotRequired[bool],
+    'sets': NotRequired[list[ModelTcdbSetsListing]],
+    'source_url': NotRequired[str],
+    'sport': NotRequired[str],
+    'year': NotRequired[str],
+}, total=False)
+
+ModelTcdbTaggedResponse = TypedDict('ModelTcdbTaggedResponse', {
+    'cards': NotRequired[list[ModelTcdbEntityCard]],
+    'fetched_at': NotRequired[str],
+    'id': NotRequired[str],
+    'page': NotRequired[int],
+    'public_page_derived': NotRequired[bool],
+    'source_url': NotRequired[str],
+    'sport': NotRequired[str],
+    'tag': NotRequired[str],
+}, total=False)
+
+ModelTcdbTeamResponse = TypedDict('ModelTcdbTeamResponse', {
+    'cards': NotRequired[list[ModelTcdbEntityCard]],
+    'category': NotRequired[str],
+    'fetched_at': NotRequired[str],
+    'id': NotRequired[str],
+    'name': NotRequired[str],
+    'public_page_derived': NotRequired[bool],
+    'source_url': NotRequired[str],
+}, total=False)
+
+ModelTcdbTopSetEntry = TypedDict('ModelTcdbTopSetEntry', {
+    'path': NotRequired[str],
+    'rank': NotRequired[int],
+    'rating': NotRequired[str],
+    'set_id': NotRequired[str],
+    'title': NotRequired[str],
+    'url': NotRequired[str],
+    'votes': NotRequired[int],
+}, total=False)
+
+ModelTcdbTopSetsResponse = TypedDict('ModelTcdbTopSetsResponse', {
+    'fetched_at': NotRequired[str],
+    'public_page_derived': NotRequired[bool],
+    'sets': NotRequired[list[ModelTcdbTopSetEntry]],
+    'source_url': NotRequired[str],
+}, total=False)
+
+ModelTcdbBirthdaysResponseDoc = TypedDict('ModelTcdbBirthdaysResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelTcdbBirthdaysResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelTcdbCardOfTheDayResponseDoc = TypedDict('ModelTcdbCardOfTheDayResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelTcdbCardOfTheDayResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelTcdbCardResponseDoc = TypedDict('ModelTcdbCardResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelTcdbCardResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelTcdbCompaniesResponseDoc = TypedDict('ModelTcdbCompaniesResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelTcdbCompaniesResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelTcdbPersonResponseDoc = TypedDict('ModelTcdbPersonResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelTcdbPersonResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelTcdbReleasesResponseDoc = TypedDict('ModelTcdbReleasesResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelTcdbReleasesResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelTcdbSearchResponseDoc = TypedDict('ModelTcdbSearchResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelTcdbSearchResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelTcdbSetResponseDoc = TypedDict('ModelTcdbSetResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelTcdbSetResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelTcdbSetsResponseDoc = TypedDict('ModelTcdbSetsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelTcdbSetsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelTcdbTaggedResponseDoc = TypedDict('ModelTcdbTaggedResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelTcdbTaggedResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelTcdbTeamResponseDoc = TypedDict('ModelTcdbTeamResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelTcdbTeamResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelTcdbTopSetsResponseDoc = TypedDict('ModelTcdbTopSetsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelTcdbTopSetsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
 ModelTechstackResult = TypedDict('ModelTechstackResult', {
     'categories': NotRequired[list[str]],
     'count': NotRequired[int],
@@ -16659,6 +17292,31 @@ ModelWebScrapeResult = TypedDict('ModelWebScrapeResult', {
 ModelWebTechStackOption = TypedDict('ModelWebTechStackOption', {
     'render': NotRequired[Literal['browser', 'auto', 'http']],
     'url': Required[str],
+}, total=False)
+
+ModelWebBillingRejectionDoc = TypedDict('ModelWebBillingRejectionDoc', {
+    'credit_cost': NotRequired[int],
+    'credits_included': NotRequired[int],
+    'credits_remaining': NotRequired[int],
+    'credits_used': NotRequired[int],
+    'daily_credit_limit': NotRequired[int],
+    'daily_credits_remaining': NotRequired[int],
+    'daily_credits_used': NotRequired[int],
+    'message': NotRequired[str],
+    'plan': NotRequired[str],
+    'rate_limit_per_minute': NotRequired[int],
+    'reason': NotRequired[Literal['insufficient_credits', 'daily_credit_limit', 'rate_limited']],
+    'reset_scope': NotRequired[Literal['daily', 'monthly', 'minute']],
+    'resets_at': NotRequired[str],
+    'retry_after_seconds': NotRequired[int],
+    'suggested_plan': NotRequired[str],
+    'upgrade_url': NotRequired[str],
+}, total=False)
+
+ModelWebBillingRejectionResponseDoc = TypedDict('ModelWebBillingRejectionResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelWebBillingRejectionDoc],
+    'msg': NotRequired[str],
 }, total=False)
 
 ModelWebScrapeResponseDoc = TypedDict('ModelWebScrapeResponseDoc', {
@@ -18923,6 +19581,7 @@ DatasetsChromeExtensionsFacetsParams = TypedDict('DatasetsChromeExtensionsFacets
     'item_type': NotRequired[str],
     'category': NotRequired[str],
     'developer': NotRequired[str],
+    'developer_email': NotRequired[str],
     'permission': NotRequired[str],
     'status': NotRequired[str],
     'manifest_version': NotRequired[int],
@@ -18971,6 +19630,7 @@ DatasetsChromeExtensionsSearchParams = TypedDict('DatasetsChromeExtensionsSearch
     'item_type': NotRequired[str],
     'category': NotRequired[str],
     'developer': NotRequired[str],
+    'developer_email': NotRequired[str],
     'permission': NotRequired[str],
     'status': NotRequired[str],
     'manifest_version': NotRequired[int],
@@ -18993,6 +19653,7 @@ DatasetsChromeExtensionsTrendingParams = TypedDict('DatasetsChromeExtensionsTren
     'item_type': NotRequired[str],
     'category': NotRequired[str],
     'developer': NotRequired[str],
+    'developer_email': NotRequired[str],
     'permission': NotRequired[str],
     'status': NotRequired[str],
     'manifest_version': NotRequired[int],
@@ -19258,6 +19919,54 @@ DatasetsHousingMarketsSearchParams = TypedDict('DatasetsHousingMarketsSearchPara
     'min_inventory': NotRequired[int],
     'max_inventory': NotRequired[int],
     'min_homes_sold': NotRequired[int],
+    'sort': NotRequired[str],
+    'page': NotRequired[int],
+    'page_size': NotRequired[int],
+}, total=False)
+
+DatasetsJobsCompaniesResponse = ModelDatasetsJobsCompaniesResponseDoc
+DatasetsJobsCompaniesParams = TypedDict('DatasetsJobsCompaniesParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'q': NotRequired[str],
+    'provider': NotRequired[str],
+    'status': NotRequired[str],
+    'min_open_roles': NotRequired[int],
+    'sort': NotRequired[str],
+    'page': NotRequired[int],
+    'page_size': NotRequired[int],
+}, total=False)
+
+DatasetsJobsFacetsResponse = ModelDatasetsJobsFacetResponseDoc
+DatasetsJobsFacetsParams = TypedDict('DatasetsJobsFacetsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'size': NotRequired[int],
+}, total=False)
+
+DatasetsJobsItemResponse = ModelDatasetsJobsItemResponseDoc
+DatasetsJobsItemParams = TypedDict('DatasetsJobsItemParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': Required[str],
+}, total=False)
+
+DatasetsJobsSearchResponse = ModelDatasetsJobsSearchResponseDoc
+DatasetsJobsSearchParams = TypedDict('DatasetsJobsSearchParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'q': NotRequired[str],
+    'company': NotRequired[str],
+    'provider': NotRequired[str],
+    'department': NotRequired[str],
+    'location': NotRequired[str],
+    'employment_type': NotRequired[str],
+    'remote': NotRequired[bool],
+    'include_closed': NotRequired[bool],
     'sort': NotRequired[str],
     'page': NotRequired[int],
     'page_size': NotRequired[int],
@@ -19562,6 +20271,103 @@ DatasetsProducthuntTrendsSearchParams = TypedDict('DatasetsProducthuntTrendsSear
     'page_size': NotRequired[int],
 }, total=False)
 
+DatasetsSecCompaniesFacetsResponse = ModelDatasetsSecCompaniesFacetResponseDoc
+DatasetsSecCompaniesFacetsParams = TypedDict('DatasetsSecCompaniesFacetsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'facet': Required[str],
+    'q': NotRequired[str],
+    'ticker': NotRequired[str],
+    'sic': NotRequired[str],
+    'exchange': NotRequired[str],
+    'state_of_incorporation': NotRequired[str],
+    'entity_type': NotRequired[str],
+    'min_revenue': NotRequired[float],
+    'form_filed': NotRequired[str],
+}, total=False)
+
+DatasetsSecCompaniesFinancialsResponse = ModelDatasetsSecCompaniesFinancialsResponseDoc
+DatasetsSecCompaniesFinancialsParams = TypedDict('DatasetsSecCompaniesFinancialsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'cik': Required[str],
+    'statement': NotRequired[str],
+    'period': NotRequired[str],
+    'from': NotRequired[int],
+    'to': NotRequired[int],
+    'limit': NotRequired[int],
+}, total=False)
+
+DatasetsSecCompaniesInsiderResponse = ModelDatasetsSecCompaniesInsiderResponseDoc
+DatasetsSecCompaniesInsiderParams = TypedDict('DatasetsSecCompaniesInsiderParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'cik': Required[str],
+    'from': NotRequired[str],
+    'to': NotRequired[str],
+    'code': NotRequired[str],
+    'limit': NotRequired[int],
+}, total=False)
+
+DatasetsSecCompaniesItemResponse = ModelDatasetsSecCompaniesItemResponseDoc
+DatasetsSecCompaniesItemParams = TypedDict('DatasetsSecCompaniesItemParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'cik': Required[str],
+}, total=False)
+
+DatasetsSecCompaniesSearchResponse = ModelDatasetsSecCompaniesSearchResponseDoc
+DatasetsSecCompaniesSearchParams = TypedDict('DatasetsSecCompaniesSearchParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'q': NotRequired[str],
+    'ticker': NotRequired[str],
+    'cik': NotRequired[str],
+    'sic': NotRequired[str],
+    'sic_description': NotRequired[str],
+    'exchange': NotRequired[str],
+    'state_of_incorporation': NotRequired[str],
+    'entity_type': NotRequired[str],
+    'min_revenue': NotRequired[float],
+    'max_revenue': NotRequired[float],
+    'min_net_income': NotRequired[float],
+    'min_total_assets': NotRequired[float],
+    'form_filed': NotRequired[str],
+    'min_insider_txn_count_90d': NotRequired[int],
+    'sort': NotRequired[str],
+    'page': NotRequired[int],
+    'page_size': NotRequired[int],
+}, total=False)
+
+DatasetsSecInstitutionalPositionsFacetsResponse = ModelDatasetsSecInstitutionalPositionsFacetResponseDoc
+DatasetsSecInstitutionalPositionsFacetsParams = TypedDict('DatasetsSecInstitutionalPositionsFacetsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'facet': Required[str],
+    'manager_cik': NotRequired[str],
+    'issuer_name': NotRequired[str],
+    'cusip': NotRequired[str],
+}, total=False)
+
+DatasetsSecInstitutionalPositionsSearchResponse = ModelDatasetsSecInstitutionalPositionsSearchResponseDoc
+DatasetsSecInstitutionalPositionsSearchParams = TypedDict('DatasetsSecInstitutionalPositionsSearchParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'manager_cik': NotRequired[str],
+    'issuer_name': NotRequired[str],
+    'cusip': NotRequired[str],
+    'sort': NotRequired[str],
+    'page': NotRequired[int],
+    'page_size': NotRequired[int],
+}, total=False)
+
 DatasetsSteamAchievementsSearchResponse = ModelDatasetsSteamAchievementsSearchResponseDoc
 DatasetsSteamAchievementsSearchParams = TypedDict('DatasetsSteamAchievementsSearchParams', {
     '_response_type': NotRequired[ResponseType],
@@ -19837,6 +20643,61 @@ DatasetsTrustmrrSearchParams = TypedDict('DatasetsTrustmrrSearchParams', {
     'min_asking_price': NotRequired[float],
     'max_asking_price': NotRequired[float],
     'min_ahrefs_dr': NotRequired[int],
+    'sort': NotRequired[str],
+    'page': NotRequired[int],
+    'page_size': NotRequired[int],
+}, total=False)
+
+DatasetsXUsersFacetsResponse = ModelDatasetsXUsersFacetResponseDoc
+DatasetsXUsersFacetsParams = TypedDict('DatasetsXUsersFacetsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'facet': Required[str],
+    'q': NotRequired[str],
+    'username': NotRequired[str],
+    'source_tier': NotRequired[str],
+    'is_blue_verified': NotRequired[bool],
+    'has_bio': NotRequired[bool],
+    'has_external_url': NotRequired[bool],
+    'min_followers': NotRequired[int],
+    'max_followers': NotRequired[int],
+    'min_ratio': NotRequired[float],
+    'max_ratio': NotRequired[float],
+    'created_after': NotRequired[str],
+    'created_before': NotRequired[str],
+    'crawled_after': NotRequired[str],
+    'crawled_before': NotRequired[str],
+    'sort': NotRequired[str],
+}, total=False)
+
+DatasetsXUsersItemResponse = ModelDatasetsXUserResponseDoc
+DatasetsXUsersItemParams = TypedDict('DatasetsXUsersItemParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'username': Required[str],
+}, total=False)
+
+DatasetsXUsersSearchResponse = ModelDatasetsXUsersSearchResponseDoc
+DatasetsXUsersSearchParams = TypedDict('DatasetsXUsersSearchParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'q': NotRequired[str],
+    'username': NotRequired[str],
+    'source_tier': NotRequired[str],
+    'is_blue_verified': NotRequired[bool],
+    'has_bio': NotRequired[bool],
+    'has_external_url': NotRequired[bool],
+    'min_followers': NotRequired[int],
+    'max_followers': NotRequired[int],
+    'min_ratio': NotRequired[float],
+    'max_ratio': NotRequired[float],
+    'created_after': NotRequired[str],
+    'created_before': NotRequired[str],
+    'crawled_after': NotRequired[str],
+    'crawled_before': NotRequired[str],
     'sort': NotRequired[str],
     'page': NotRequired[int],
     'page_size': NotRequired[int],
@@ -20236,6 +21097,26 @@ GitHubGithubUserParams = TypedDict('GitHubGithubUserParams', {
 
 GitHubGithubUserEventsResponse = ModelAppResponse
 GitHubGithubUserEventsParams = TypedDict('GitHubGithubUserEventsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'username': Required[str],
+    'page': NotRequired[int],
+    'per_page': NotRequired[int],
+}, total=False)
+
+GitHubGithubUserFollowersResponse = ModelAppResponse
+GitHubGithubUserFollowersParams = TypedDict('GitHubGithubUserFollowersParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'username': Required[str],
+    'page': NotRequired[int],
+    'per_page': NotRequired[int],
+}, total=False)
+
+GitHubGithubUserFollowingResponse = ModelAppResponse
+GitHubGithubUserFollowingParams = TypedDict('GitHubGithubUserFollowingParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
     '_headers': NotRequired[Mapping[str, str]],
@@ -21005,13 +21886,15 @@ JobsHiringSignalsParams = TypedDict('JobsHiringSignalsParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
     '_headers': NotRequired[Mapping[str, str]],
-    'provider': Required[Literal['greenhouse', 'lever', 'ashby', 'workday', 'smartrecruiters']],
+    'provider': Required[Literal['greenhouse', 'lever', 'ashby', 'workday', 'smartrecruiters', 'workable', 'recruitee', 'rippling', 'personio', 'teamtailor', 'oracle', 'ukg']],
     'token': NotRequired[str],
     'company': NotRequired[str],
     'org': NotRequired[str],
     'tenant': NotRequired[str],
     'datacenter': NotRequired[str],
     'site': NotRequired[str],
+    'host': NotRequired[str],
+    'board': NotRequired[str],
 }, total=False)
 
 JobsLeverPostingResponse = ModelJobsJobResponseDoc
@@ -21034,6 +21917,79 @@ JobsLeverPostingsParams = TypedDict('JobsLeverPostingsParams', {
     'remote': NotRequired[bool],
 }, total=False)
 
+JobsOracleBoardResponse = ModelJobsBoardResponseDoc
+JobsOracleBoardParams = TypedDict('JobsOracleBoardParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'host': Required[str],
+    'site': Required[str],
+    'search': NotRequired[str],
+    'limit': NotRequired[int],
+    'offset': NotRequired[int],
+}, total=False)
+
+JobsOracleJobResponse = ModelJobsJobResponseDoc
+JobsOracleJobParams = TypedDict('JobsOracleJobParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'host': Required[str],
+    'site': Required[str],
+    'id': Required[str],
+}, total=False)
+
+JobsPersonioFeedResponse = ModelJobsBoardResponseDoc
+JobsPersonioFeedParams = TypedDict('JobsPersonioFeedParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'company': Required[str],
+    'department': NotRequired[str],
+    'location': NotRequired[str],
+    'remote': NotRequired[bool],
+}, total=False)
+
+JobsRecruiteeOfferResponse = ModelJobsJobResponseDoc
+JobsRecruiteeOfferParams = TypedDict('JobsRecruiteeOfferParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'company': Required[str],
+    'id': Required[str],
+}, total=False)
+
+JobsRecruiteeOffersResponse = ModelJobsBoardResponseDoc
+JobsRecruiteeOffersParams = TypedDict('JobsRecruiteeOffersParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'company': Required[str],
+    'department': NotRequired[str],
+    'location': NotRequired[str],
+    'remote': NotRequired[bool],
+}, total=False)
+
+JobsRipplingBoardResponse = ModelJobsBoardResponseDoc
+JobsRipplingBoardParams = TypedDict('JobsRipplingBoardParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'company': Required[str],
+    'department': NotRequired[str],
+    'location': NotRequired[str],
+    'remote': NotRequired[bool],
+}, total=False)
+
+JobsRipplingJobResponse = ModelJobsJobResponseDoc
+JobsRipplingJobParams = TypedDict('JobsRipplingJobParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'company': Required[str],
+    'id': Required[str],
+}, total=False)
+
 JobsSmartrecruitersPostingResponse = ModelJobsJobResponseDoc
 JobsSmartrecruitersPostingParams = TypedDict('JobsSmartrecruitersPostingParams', {
     '_response_type': NotRequired[ResponseType],
@@ -21051,6 +22007,50 @@ JobsSmartrecruitersPostingsParams = TypedDict('JobsSmartrecruitersPostingsParams
     'company': Required[str],
     'limit': NotRequired[int],
     'offset': NotRequired[int],
+}, total=False)
+
+JobsTeamtailorJobsResponse = ModelJobsBoardResponseDoc
+JobsTeamtailorJobsParams = TypedDict('JobsTeamtailorJobsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'company': Required[str],
+    'department': NotRequired[str],
+    'location': NotRequired[str],
+    'remote': NotRequired[bool],
+}, total=False)
+
+JobsUkgBoardResponse = ModelJobsBoardResponseDoc
+JobsUkgBoardParams = TypedDict('JobsUkgBoardParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'tenant': Required[str],
+    'board': Required[str],
+    'search': NotRequired[str],
+    'limit': NotRequired[int],
+    'offset': NotRequired[int],
+}, total=False)
+
+JobsWorkablePostingResponse = ModelJobsJobResponseDoc
+JobsWorkablePostingParams = TypedDict('JobsWorkablePostingParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'company': Required[str],
+    'id': Required[str],
+}, total=False)
+
+JobsWorkablePostingsResponse = ModelJobsBoardResponseDoc
+JobsWorkablePostingsParams = TypedDict('JobsWorkablePostingsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'company': Required[str],
+    'search': NotRequired[str],
+    'department': NotRequired[str],
+    'location': NotRequired[str],
+    'remote': NotRequired[bool],
 }, total=False)
 
 JobsWorkdayBoardResponse = ModelJobsBoardResponseDoc
@@ -24243,6 +25243,126 @@ SteamTopSellersParams = TypedDict('SteamTopSellersParams', {
     'l': NotRequired[str],
 }, total=False)
 
+TcdbBirthdaysResponse = ModelTcdbBirthdaysResponseDoc
+TcdbBirthdaysParams = TypedDict('TcdbBirthdaysParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'month': Required[int],
+    'day': Required[int],
+    'limit': NotRequired[int],
+}, total=False)
+
+TcdbCardResponse = ModelTcdbCardResponseDoc
+TcdbCardParams = TypedDict('TcdbCardParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'set_id': NotRequired[str],
+    'card_id': NotRequired[str],
+    'path': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+TcdbCardOfTheDayResponse = ModelTcdbCardOfTheDayResponseDoc
+TcdbCardOfTheDayParams = TypedDict('TcdbCardOfTheDayParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'page': NotRequired[int],
+    'limit': NotRequired[int],
+}, total=False)
+
+TcdbCompaniesResponse = ModelTcdbCompaniesResponseDoc
+TcdbCompaniesParams = TypedDict('TcdbCompaniesParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'limit': NotRequired[int],
+}, total=False)
+
+TcdbPersonResponse = ModelTcdbPersonResponseDoc
+TcdbPersonParams = TypedDict('TcdbPersonParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': NotRequired[str],
+    'path': NotRequired[str],
+    'url': NotRequired[str],
+    'limit': NotRequired[int],
+}, total=False)
+
+TcdbReleasesResponse = ModelTcdbReleasesResponseDoc
+TcdbReleasesParams = TypedDict('TcdbReleasesParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'limit': NotRequired[int],
+}, total=False)
+
+TcdbSearchResponse = ModelTcdbSearchResponseDoc
+TcdbSearchParams = TypedDict('TcdbSearchParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'q': Required[str],
+    'category': NotRequired[Literal['Baseball', 'Basketball', 'Boxing', 'Cricket', 'Football', 'Gaming', 'Golf', 'Hockey', 'Misc Sports', 'MMA', 'Multi-Sport', 'Non-Sport', 'Racing', 'Soccer', 'Tennis', 'Wrestling']],
+    'limit': NotRequired[int],
+}, total=False)
+
+TcdbSetResponse = ModelTcdbSetResponseDoc
+TcdbSetParams = TypedDict('TcdbSetParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': NotRequired[str],
+    'path': NotRequired[str],
+    'url': NotRequired[str],
+    'limit': NotRequired[int],
+}, total=False)
+
+TcdbSetsResponse = ModelTcdbSetsResponseDoc
+TcdbSetsParams = TypedDict('TcdbSetsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'sport': Required[Literal['Baseball', 'Basketball', 'Boxing', 'Cricket', 'Football', 'Gaming', 'Golf', 'Hockey', 'Misc Sports', 'MMA', 'Multi-Sport', 'Non-Sport', 'Racing', 'Soccer', 'Tennis', 'Wrestling']],
+    'year': Required[str],
+    'limit': NotRequired[int],
+}, total=False)
+
+TcdbTaggedResponse = ModelTcdbTaggedResponseDoc
+TcdbTaggedParams = TypedDict('TcdbTaggedParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': NotRequired[str],
+    'path': NotRequired[str],
+    'url': NotRequired[str],
+    'sport': NotRequired[Literal['Baseball', 'Basketball', 'Boxing', 'Cricket', 'Football', 'Gaming', 'Golf', 'Hockey', 'Misc Sports', 'MMA', 'Multi-Sport', 'Non-Sport', 'Racing', 'Soccer', 'Tennis', 'Wrestling']],
+    'page': NotRequired[int],
+    'limit': NotRequired[int],
+}, total=False)
+
+TcdbTeamResponse = ModelTcdbTeamResponseDoc
+TcdbTeamParams = TypedDict('TcdbTeamParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': NotRequired[str],
+    'path': NotRequired[str],
+    'url': NotRequired[str],
+    'limit': NotRequired[int],
+}, total=False)
+
+TcdbTopSetsResponse = ModelTcdbTopSetsResponseDoc
+TcdbTopSetsParams = TypedDict('TcdbTopSetsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'limit': NotRequired[int],
+}, total=False)
+
 TiktokCategoryResponse = ModelTiktokCategoryResponseDoc
 TiktokCategoryParams = TypedDict('TiktokCategoryParams', {
     '_response_type': NotRequired[ResponseType],
@@ -25541,6 +26661,10 @@ class DatasetsGroup:
     def housing_markets_facets(self, **params: Unpack[DatasetsHousingMarketsFacetsParams]) -> DatasetsHousingMarketsFacetsResponse: ...
     def housing_markets_item(self, **params: Unpack[DatasetsHousingMarketsItemParams]) -> DatasetsHousingMarketsItemResponse: ...
     def housing_markets_search(self, **params: Unpack[DatasetsHousingMarketsSearchParams]) -> DatasetsHousingMarketsSearchResponse: ...
+    def jobs_companies(self, **params: Unpack[DatasetsJobsCompaniesParams]) -> DatasetsJobsCompaniesResponse: ...
+    def jobs_facets(self, **params: Unpack[DatasetsJobsFacetsParams]) -> DatasetsJobsFacetsResponse: ...
+    def jobs_item(self, **params: Unpack[DatasetsJobsItemParams]) -> DatasetsJobsItemResponse: ...
+    def jobs_search(self, **params: Unpack[DatasetsJobsSearchParams]) -> DatasetsJobsSearchResponse: ...
     def journalists_facets(self, **params: Unpack[DatasetsJournalistsFacetsParams]) -> DatasetsJournalistsFacetsResponse: ...
     def journalists_item(self, **params: Unpack[DatasetsJournalistsItemParams]) -> DatasetsJournalistsItemResponse: ...
     def journalists_search(self, **params: Unpack[DatasetsJournalistsSearchParams]) -> DatasetsJournalistsSearchResponse: ...
@@ -25560,6 +26684,13 @@ class DatasetsGroup:
     def producthunt_products_search(self, **params: Unpack[DatasetsProducthuntProductsSearchParams]) -> DatasetsProducthuntProductsSearchResponse: ...
     def producthunt_trends_facets(self, **params: Unpack[DatasetsProducthuntTrendsFacetsParams]) -> DatasetsProducthuntTrendsFacetsResponse: ...
     def producthunt_trends_search(self, **params: Unpack[DatasetsProducthuntTrendsSearchParams]) -> DatasetsProducthuntTrendsSearchResponse: ...
+    def sec_companies_facets(self, **params: Unpack[DatasetsSecCompaniesFacetsParams]) -> DatasetsSecCompaniesFacetsResponse: ...
+    def sec_companies_financials(self, **params: Unpack[DatasetsSecCompaniesFinancialsParams]) -> DatasetsSecCompaniesFinancialsResponse: ...
+    def sec_companies_insider(self, **params: Unpack[DatasetsSecCompaniesInsiderParams]) -> DatasetsSecCompaniesInsiderResponse: ...
+    def sec_companies_item(self, **params: Unpack[DatasetsSecCompaniesItemParams]) -> DatasetsSecCompaniesItemResponse: ...
+    def sec_companies_search(self, **params: Unpack[DatasetsSecCompaniesSearchParams]) -> DatasetsSecCompaniesSearchResponse: ...
+    def sec_institutional_positions_facets(self, **params: Unpack[DatasetsSecInstitutionalPositionsFacetsParams]) -> DatasetsSecInstitutionalPositionsFacetsResponse: ...
+    def sec_institutional_positions_search(self, **params: Unpack[DatasetsSecInstitutionalPositionsSearchParams]) -> DatasetsSecInstitutionalPositionsSearchResponse: ...
     def steam_achievements_search(self, **params: Unpack[DatasetsSteamAchievementsSearchParams]) -> DatasetsSteamAchievementsSearchResponse: ...
     def steam_charts_search(self, **params: Unpack[DatasetsSteamChartsSearchParams]) -> DatasetsSteamChartsSearchResponse: ...
     def steam_games_facets(self, **params: Unpack[DatasetsSteamGamesFacetsParams]) -> DatasetsSteamGamesFacetsResponse: ...
@@ -25576,6 +26707,9 @@ class DatasetsGroup:
     def trustmrr_history(self, **params: Unpack[DatasetsTrustmrrHistoryParams]) -> DatasetsTrustmrrHistoryResponse: ...
     def trustmrr_item(self, **params: Unpack[DatasetsTrustmrrItemParams]) -> DatasetsTrustmrrItemResponse: ...
     def trustmrr_search(self, **params: Unpack[DatasetsTrustmrrSearchParams]) -> DatasetsTrustmrrSearchResponse: ...
+    def x_users_facets(self, **params: Unpack[DatasetsXUsersFacetsParams]) -> DatasetsXUsersFacetsResponse: ...
+    def x_users_item(self, **params: Unpack[DatasetsXUsersItemParams]) -> DatasetsXUsersItemResponse: ...
+    def x_users_search(self, **params: Unpack[DatasetsXUsersSearchParams]) -> DatasetsXUsersSearchResponse: ...
 
 class DiscogsGroup:
     def artist(self, **params: Unpack[DiscogsArtistParams]) -> DiscogsArtistResponse: ...
@@ -25624,6 +26758,8 @@ class GitHubGroup:
     def github_trending_developers(self, **params: Unpack[GitHubGithubTrendingDevelopersParams]) -> GitHubGithubTrendingDevelopersResponse: ...
     def github_user(self, **params: Unpack[GitHubGithubUserParams]) -> GitHubGithubUserResponse: ...
     def github_user_events(self, **params: Unpack[GitHubGithubUserEventsParams]) -> GitHubGithubUserEventsResponse: ...
+    def github_user_followers(self, **params: Unpack[GitHubGithubUserFollowersParams]) -> GitHubGithubUserFollowersResponse: ...
+    def github_user_following(self, **params: Unpack[GitHubGithubUserFollowingParams]) -> GitHubGithubUserFollowingResponse: ...
     def github_user_pinned(self, **params: Unpack[GitHubGithubUserPinnedParams]) -> GitHubGithubUserPinnedResponse: ...
     def github_user_repos(self, **params: Unpack[GitHubGithubUserReposParams]) -> GitHubGithubUserReposResponse: ...
 
@@ -25721,8 +26857,19 @@ class JobsGroup:
     def hiring_signals(self, **params: Unpack[JobsHiringSignalsParams]) -> JobsHiringSignalsResponse: ...
     def lever_posting(self, **params: Unpack[JobsLeverPostingParams]) -> JobsLeverPostingResponse: ...
     def lever_postings(self, **params: Unpack[JobsLeverPostingsParams]) -> JobsLeverPostingsResponse: ...
+    def oracle_board(self, **params: Unpack[JobsOracleBoardParams]) -> JobsOracleBoardResponse: ...
+    def oracle_job(self, **params: Unpack[JobsOracleJobParams]) -> JobsOracleJobResponse: ...
+    def personio_feed(self, **params: Unpack[JobsPersonioFeedParams]) -> JobsPersonioFeedResponse: ...
+    def recruitee_offer(self, **params: Unpack[JobsRecruiteeOfferParams]) -> JobsRecruiteeOfferResponse: ...
+    def recruitee_offers(self, **params: Unpack[JobsRecruiteeOffersParams]) -> JobsRecruiteeOffersResponse: ...
+    def rippling_board(self, **params: Unpack[JobsRipplingBoardParams]) -> JobsRipplingBoardResponse: ...
+    def rippling_job(self, **params: Unpack[JobsRipplingJobParams]) -> JobsRipplingJobResponse: ...
     def smartrecruiters_posting(self, **params: Unpack[JobsSmartrecruitersPostingParams]) -> JobsSmartrecruitersPostingResponse: ...
     def smartrecruiters_postings(self, **params: Unpack[JobsSmartrecruitersPostingsParams]) -> JobsSmartrecruitersPostingsResponse: ...
+    def teamtailor_jobs(self, **params: Unpack[JobsTeamtailorJobsParams]) -> JobsTeamtailorJobsResponse: ...
+    def ukg_board(self, **params: Unpack[JobsUkgBoardParams]) -> JobsUkgBoardResponse: ...
+    def workable_posting(self, **params: Unpack[JobsWorkablePostingParams]) -> JobsWorkablePostingResponse: ...
+    def workable_postings(self, **params: Unpack[JobsWorkablePostingsParams]) -> JobsWorkablePostingsResponse: ...
     def workday_board(self, **params: Unpack[JobsWorkdayBoardParams]) -> JobsWorkdayBoardResponse: ...
     def workday_job(self, **params: Unpack[JobsWorkdayJobParams]) -> JobsWorkdayJobResponse: ...
 
@@ -26091,6 +27238,20 @@ class SteamGroup:
     def tags_list(self, **params: Unpack[SteamTagsListParams]) -> SteamTagsListResponse: ...
     def top_sellers(self, **params: Unpack[SteamTopSellersParams]) -> SteamTopSellersResponse: ...
 
+class TcdbGroup:
+    def birthdays(self, **params: Unpack[TcdbBirthdaysParams]) -> TcdbBirthdaysResponse: ...
+    def card(self, **params: Unpack[TcdbCardParams]) -> TcdbCardResponse: ...
+    def card_of_the_day(self, **params: Unpack[TcdbCardOfTheDayParams]) -> TcdbCardOfTheDayResponse: ...
+    def companies(self, **params: Unpack[TcdbCompaniesParams]) -> TcdbCompaniesResponse: ...
+    def person(self, **params: Unpack[TcdbPersonParams]) -> TcdbPersonResponse: ...
+    def releases(self, **params: Unpack[TcdbReleasesParams]) -> TcdbReleasesResponse: ...
+    def search(self, **params: Unpack[TcdbSearchParams]) -> TcdbSearchResponse: ...
+    def set(self, **params: Unpack[TcdbSetParams]) -> TcdbSetResponse: ...
+    def sets(self, **params: Unpack[TcdbSetsParams]) -> TcdbSetsResponse: ...
+    def tagged(self, **params: Unpack[TcdbTaggedParams]) -> TcdbTaggedResponse: ...
+    def team(self, **params: Unpack[TcdbTeamParams]) -> TcdbTeamResponse: ...
+    def top_sets(self, **params: Unpack[TcdbTopSetsParams]) -> TcdbTopSetsResponse: ...
+
 class TiktokGroup:
     def category(self, **params: Unpack[TiktokCategoryParams]) -> TiktokCategoryResponse: ...
     def video_comments(self, **params: Unpack[TiktokVideoCommentsParams]) -> TiktokVideoCommentsResponse: ...
@@ -26372,6 +27533,10 @@ OperationId = Literal[
     'datasets-housing-markets-facets',
     'datasets-housing-markets-item',
     'datasets-housing-markets-search',
+    'datasets-jobs-companies',
+    'datasets-jobs-facets',
+    'datasets-jobs-item',
+    'datasets-jobs-search',
     'datasets-journalists-facets',
     'datasets-journalists-item',
     'datasets-journalists-search',
@@ -26391,6 +27556,13 @@ OperationId = Literal[
     'datasets-producthunt-products-search',
     'datasets-producthunt-trends-facets',
     'datasets-producthunt-trends-search',
+    'datasets-sec-companies-facets',
+    'datasets-sec-companies-financials',
+    'datasets-sec-companies-insider',
+    'datasets-sec-companies-item',
+    'datasets-sec-companies-search',
+    'datasets-sec-institutional-positions-facets',
+    'datasets-sec-institutional-positions-search',
     'datasets-steam-achievements-search',
     'datasets-steam-charts-search',
     'datasets-steam-games-facets',
@@ -26407,6 +27579,9 @@ OperationId = Literal[
     'datasets-trustmrr-history',
     'datasets-trustmrr-item',
     'datasets-trustmrr-search',
+    'datasets-x-users-facets',
+    'datasets-x-users-item',
+    'datasets-x-users-search',
     'antibot-check',
     'discogs-artist',
     'discogs-artist-releases',
@@ -26447,6 +27622,8 @@ OperationId = Literal[
     'github-trending-developers',
     'github-user',
     'github-user-events',
+    'github-user-followers',
+    'github-user-following',
     'github-user-pinned',
     'github-user-repos',
     'goodreads-author',
@@ -26532,8 +27709,19 @@ OperationId = Literal[
     'jobs-hiring-signals',
     'jobs-lever-posting',
     'jobs-lever-postings',
+    'jobs-oracle-board',
+    'jobs-oracle-job',
+    'jobs-personio-feed',
+    'jobs-recruitee-offer',
+    'jobs-recruitee-offers',
+    'jobs-rippling-board',
+    'jobs-rippling-job',
     'jobs-smartrecruiters-posting',
     'jobs-smartrecruiters-postings',
+    'jobs-teamtailor-jobs',
+    'jobs-ukg-board',
+    'jobs-workable-posting',
+    'jobs-workable-postings',
     'jobs-workday-board',
     'jobs-workday-job',
     'justwatch-age-certifications',
@@ -26851,6 +28039,18 @@ OperationId = Literal[
     'steam-tags',
     'steam-tags-list',
     'steam-top-sellers',
+    'tcdb-birthdays',
+    'tcdb-card',
+    'tcdb-card-of-the-day',
+    'tcdb-companies',
+    'tcdb-person',
+    'tcdb-releases',
+    'tcdb-search',
+    'tcdb-set',
+    'tcdb-sets',
+    'tcdb-tagged',
+    'tcdb-team',
+    'tcdb-top-sets',
     'tiktok-category',
     'tiktok-video-comments',
     'tiktok-explore',
@@ -27025,6 +28225,7 @@ class CrawloraClient:
     spotify_podcasts: SpotifyPodcastsGroup
     spotify: SpotifyGroup
     steam: SteamGroup
+    tcdb: TcdbGroup
     tiktok: TiktokGroup
     tmdb: TmdbGroup
     trip_advisor: TripAdvisorGroup
@@ -28776,6 +29977,54 @@ class CrawloraClient:
     @overload
     def operation(
         self,
+        operation_id: Literal['datasets-jobs-companies'],
+        params: DatasetsJobsCompaniesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsJobsCompaniesResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['datasets-jobs-facets'],
+        params: DatasetsJobsFacetsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsJobsFacetsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['datasets-jobs-item'],
+        params: DatasetsJobsItemParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsJobsItemResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['datasets-jobs-search'],
+        params: DatasetsJobsSearchParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsJobsSearchResponse: ...
+    @overload
+    def operation(
+        self,
         operation_id: Literal['datasets-journalists-facets'],
         params: DatasetsJournalistsFacetsParams,
         *,
@@ -29004,6 +30253,90 @@ class CrawloraClient:
     @overload
     def operation(
         self,
+        operation_id: Literal['datasets-sec-companies-facets'],
+        params: DatasetsSecCompaniesFacetsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsSecCompaniesFacetsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['datasets-sec-companies-financials'],
+        params: DatasetsSecCompaniesFinancialsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsSecCompaniesFinancialsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['datasets-sec-companies-insider'],
+        params: DatasetsSecCompaniesInsiderParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsSecCompaniesInsiderResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['datasets-sec-companies-item'],
+        params: DatasetsSecCompaniesItemParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsSecCompaniesItemResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['datasets-sec-companies-search'],
+        params: DatasetsSecCompaniesSearchParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsSecCompaniesSearchResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['datasets-sec-institutional-positions-facets'],
+        params: DatasetsSecInstitutionalPositionsFacetsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsSecInstitutionalPositionsFacetsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['datasets-sec-institutional-positions-search'],
+        params: DatasetsSecInstitutionalPositionsSearchParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsSecInstitutionalPositionsSearchResponse: ...
+    @overload
+    def operation(
+        self,
         operation_id: Literal['datasets-steam-achievements-search'],
         params: DatasetsSteamAchievementsSearchParams = ...,
         *,
@@ -29193,6 +30526,42 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> DatasetsTrustmrrSearchResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['datasets-x-users-facets'],
+        params: DatasetsXUsersFacetsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsXUsersFacetsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['datasets-x-users-item'],
+        params: DatasetsXUsersItemParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsXUsersItemResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['datasets-x-users-search'],
+        params: DatasetsXUsersSearchParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsXUsersSearchResponse: ...
     @overload
     def operation(
         self,
@@ -29673,6 +31042,30 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> GitHubGithubUserEventsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['github-user-followers'],
+        params: GitHubGithubUserFollowersParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> GitHubGithubUserFollowersResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['github-user-following'],
+        params: GitHubGithubUserFollowingParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> GitHubGithubUserFollowingResponse: ...
     @overload
     def operation(
         self,
@@ -30696,6 +32089,90 @@ class CrawloraClient:
     @overload
     def operation(
         self,
+        operation_id: Literal['jobs-oracle-board'],
+        params: JobsOracleBoardParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> JobsOracleBoardResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['jobs-oracle-job'],
+        params: JobsOracleJobParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> JobsOracleJobResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['jobs-personio-feed'],
+        params: JobsPersonioFeedParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> JobsPersonioFeedResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['jobs-recruitee-offer'],
+        params: JobsRecruiteeOfferParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> JobsRecruiteeOfferResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['jobs-recruitee-offers'],
+        params: JobsRecruiteeOffersParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> JobsRecruiteeOffersResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['jobs-rippling-board'],
+        params: JobsRipplingBoardParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> JobsRipplingBoardResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['jobs-rippling-job'],
+        params: JobsRipplingJobParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> JobsRipplingJobResponse: ...
+    @overload
+    def operation(
+        self,
         operation_id: Literal['jobs-smartrecruiters-posting'],
         params: JobsSmartrecruitersPostingParams,
         *,
@@ -30717,6 +32194,54 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> JobsSmartrecruitersPostingsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['jobs-teamtailor-jobs'],
+        params: JobsTeamtailorJobsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> JobsTeamtailorJobsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['jobs-ukg-board'],
+        params: JobsUkgBoardParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> JobsUkgBoardResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['jobs-workable-posting'],
+        params: JobsWorkablePostingParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> JobsWorkablePostingResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['jobs-workable-postings'],
+        params: JobsWorkablePostingsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> JobsWorkablePostingsResponse: ...
     @overload
     def operation(
         self,
@@ -34521,6 +36046,150 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> SteamTopSellersResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['tcdb-birthdays'],
+        params: TcdbBirthdaysParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TcdbBirthdaysResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['tcdb-card'],
+        params: TcdbCardParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TcdbCardResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['tcdb-card-of-the-day'],
+        params: TcdbCardOfTheDayParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TcdbCardOfTheDayResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['tcdb-companies'],
+        params: TcdbCompaniesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TcdbCompaniesResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['tcdb-person'],
+        params: TcdbPersonParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TcdbPersonResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['tcdb-releases'],
+        params: TcdbReleasesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TcdbReleasesResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['tcdb-search'],
+        params: TcdbSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TcdbSearchResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['tcdb-set'],
+        params: TcdbSetParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TcdbSetResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['tcdb-sets'],
+        params: TcdbSetsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TcdbSetsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['tcdb-tagged'],
+        params: TcdbTaggedParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TcdbTaggedResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['tcdb-team'],
+        params: TcdbTeamParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TcdbTeamResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['tcdb-top-sets'],
+        params: TcdbTopSetsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TcdbTopSetsResponse: ...
     @overload
     def operation(
         self,
@@ -37632,6 +39301,54 @@ class CrawloraClient:
     @overload
     def request(
         self,
+        operation_id: Literal['datasets-jobs-companies'],
+        params: DatasetsJobsCompaniesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsJobsCompaniesResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['datasets-jobs-facets'],
+        params: DatasetsJobsFacetsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsJobsFacetsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['datasets-jobs-item'],
+        params: DatasetsJobsItemParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsJobsItemResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['datasets-jobs-search'],
+        params: DatasetsJobsSearchParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsJobsSearchResponse: ...
+    @overload
+    def request(
+        self,
         operation_id: Literal['datasets-journalists-facets'],
         params: DatasetsJournalistsFacetsParams,
         *,
@@ -37860,6 +39577,90 @@ class CrawloraClient:
     @overload
     def request(
         self,
+        operation_id: Literal['datasets-sec-companies-facets'],
+        params: DatasetsSecCompaniesFacetsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsSecCompaniesFacetsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['datasets-sec-companies-financials'],
+        params: DatasetsSecCompaniesFinancialsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsSecCompaniesFinancialsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['datasets-sec-companies-insider'],
+        params: DatasetsSecCompaniesInsiderParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsSecCompaniesInsiderResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['datasets-sec-companies-item'],
+        params: DatasetsSecCompaniesItemParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsSecCompaniesItemResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['datasets-sec-companies-search'],
+        params: DatasetsSecCompaniesSearchParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsSecCompaniesSearchResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['datasets-sec-institutional-positions-facets'],
+        params: DatasetsSecInstitutionalPositionsFacetsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsSecInstitutionalPositionsFacetsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['datasets-sec-institutional-positions-search'],
+        params: DatasetsSecInstitutionalPositionsSearchParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsSecInstitutionalPositionsSearchResponse: ...
+    @overload
+    def request(
+        self,
         operation_id: Literal['datasets-steam-achievements-search'],
         params: DatasetsSteamAchievementsSearchParams = ...,
         *,
@@ -38049,6 +39850,42 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> DatasetsTrustmrrSearchResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['datasets-x-users-facets'],
+        params: DatasetsXUsersFacetsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsXUsersFacetsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['datasets-x-users-item'],
+        params: DatasetsXUsersItemParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsXUsersItemResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['datasets-x-users-search'],
+        params: DatasetsXUsersSearchParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsXUsersSearchResponse: ...
     @overload
     def request(
         self,
@@ -38529,6 +40366,30 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> GitHubGithubUserEventsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['github-user-followers'],
+        params: GitHubGithubUserFollowersParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> GitHubGithubUserFollowersResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['github-user-following'],
+        params: GitHubGithubUserFollowingParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> GitHubGithubUserFollowingResponse: ...
     @overload
     def request(
         self,
@@ -39552,6 +41413,90 @@ class CrawloraClient:
     @overload
     def request(
         self,
+        operation_id: Literal['jobs-oracle-board'],
+        params: JobsOracleBoardParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> JobsOracleBoardResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['jobs-oracle-job'],
+        params: JobsOracleJobParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> JobsOracleJobResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['jobs-personio-feed'],
+        params: JobsPersonioFeedParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> JobsPersonioFeedResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['jobs-recruitee-offer'],
+        params: JobsRecruiteeOfferParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> JobsRecruiteeOfferResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['jobs-recruitee-offers'],
+        params: JobsRecruiteeOffersParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> JobsRecruiteeOffersResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['jobs-rippling-board'],
+        params: JobsRipplingBoardParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> JobsRipplingBoardResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['jobs-rippling-job'],
+        params: JobsRipplingJobParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> JobsRipplingJobResponse: ...
+    @overload
+    def request(
+        self,
         operation_id: Literal['jobs-smartrecruiters-posting'],
         params: JobsSmartrecruitersPostingParams,
         *,
@@ -39573,6 +41518,54 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> JobsSmartrecruitersPostingsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['jobs-teamtailor-jobs'],
+        params: JobsTeamtailorJobsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> JobsTeamtailorJobsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['jobs-ukg-board'],
+        params: JobsUkgBoardParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> JobsUkgBoardResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['jobs-workable-posting'],
+        params: JobsWorkablePostingParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> JobsWorkablePostingResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['jobs-workable-postings'],
+        params: JobsWorkablePostingsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> JobsWorkablePostingsResponse: ...
     @overload
     def request(
         self,
@@ -43377,6 +45370,150 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> SteamTopSellersResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['tcdb-birthdays'],
+        params: TcdbBirthdaysParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TcdbBirthdaysResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['tcdb-card'],
+        params: TcdbCardParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TcdbCardResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['tcdb-card-of-the-day'],
+        params: TcdbCardOfTheDayParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TcdbCardOfTheDayResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['tcdb-companies'],
+        params: TcdbCompaniesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TcdbCompaniesResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['tcdb-person'],
+        params: TcdbPersonParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TcdbPersonResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['tcdb-releases'],
+        params: TcdbReleasesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TcdbReleasesResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['tcdb-search'],
+        params: TcdbSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TcdbSearchResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['tcdb-set'],
+        params: TcdbSetParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TcdbSetResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['tcdb-sets'],
+        params: TcdbSetsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TcdbSetsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['tcdb-tagged'],
+        params: TcdbTaggedParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TcdbTaggedResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['tcdb-team'],
+        params: TcdbTeamParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TcdbTeamResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['tcdb-top-sets'],
+        params: TcdbTopSetsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TcdbTopSetsResponse: ...
     @overload
     def request(
         self,
