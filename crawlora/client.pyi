@@ -15421,6 +15421,7 @@ ModelTechstackTechnology = TypedDict('ModelTechstackTechnology', {
 }, total=False)
 
 ModelThreadsAuthor = TypedDict('ModelThreadsAuthor', {
+    'id': NotRequired[str],
     'name': NotRequired[str],
     'username': NotRequired[str],
 }, total=False)
@@ -15443,15 +15444,73 @@ ModelThreadsProfile = TypedDict('ModelThreadsProfile', {
     'username': NotRequired[str],
 }, total=False)
 
+ModelThreadsProfilePostsResult = TypedDict('ModelThreadsProfilePostsResult', {
+    'has_more': NotRequired[bool],
+    'items': NotRequired[list[ModelThreadsThread]],
+    'next_cursor': NotRequired[str],
+    'username': NotRequired[str],
+}, total=False)
+
+ModelThreadsRepliesResult = TypedDict('ModelThreadsRepliesResult', {
+    'code': NotRequired[str],
+    'has_more': NotRequired[bool],
+    'items': NotRequired[list[ModelThreadsThread]],
+    'next_cursor': NotRequired[str],
+    'pagination_limited': NotRequired[bool],
+    'username': NotRequired[str],
+}, total=False)
+
+ModelThreadsSearchResult = TypedDict('ModelThreadsSearchResult', {
+    'has_more': NotRequired[bool],
+    'items': NotRequired[list[ModelThreadsThread]],
+    'next_cursor': NotRequired[str],
+    'query': NotRequired[str],
+}, total=False)
+
+ModelThreadsThread = TypedDict('ModelThreadsThread', {
+    'author': NotRequired[ModelThreadsAuthor],
+    'code': NotRequired[str],
+    'created_at': NotRequired[str],
+    'id': NotRequired[str],
+    'image_urls': NotRequired[list[str]],
+    'is_reply': NotRequired[bool],
+    'like_count': NotRequired[int],
+    'quote_count': NotRequired[int],
+    'reply_count': NotRequired[int],
+    'reply_to': NotRequired[str],
+    'repost_count': NotRequired[int],
+    'text': NotRequired[str],
+    'url': NotRequired[str],
+    'video_urls': NotRequired[list[str]],
+}, total=False)
+
 ModelThreadsPostResponseDoc = TypedDict('ModelThreadsPostResponseDoc', {
     'code': NotRequired[int],
     'data': NotRequired[ModelThreadsPost],
     'msg': NotRequired[str],
 }, total=False)
 
+ModelThreadsProfilePostsResponseDoc = TypedDict('ModelThreadsProfilePostsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelThreadsProfilePostsResult],
+    'msg': NotRequired[str],
+}, total=False)
+
 ModelThreadsProfileResponseDoc = TypedDict('ModelThreadsProfileResponseDoc', {
     'code': NotRequired[int],
     'data': NotRequired[ModelThreadsProfile],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelThreadsRepliesResponseDoc = TypedDict('ModelThreadsRepliesResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelThreadsRepliesResult],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelThreadsSearchResponseDoc = TypedDict('ModelThreadsSearchResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelThreadsSearchResult],
     'msg': NotRequired[str],
 }, total=False)
 
@@ -25512,12 +25571,38 @@ ThreadsPostParams = TypedDict('ThreadsPostParams', {
     'code': Required[str],
 }, total=False)
 
+ThreadsPostRepliesResponse = ModelThreadsRepliesResponseDoc
+ThreadsPostRepliesParams = TypedDict('ThreadsPostRepliesParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'username': Required[str],
+    'code': Required[str],
+}, total=False)
+
 ThreadsProfileResponse = ModelThreadsProfileResponseDoc
 ThreadsProfileParams = TypedDict('ThreadsProfileParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
     '_headers': NotRequired[Mapping[str, str]],
     'username': Required[str],
+}, total=False)
+
+ThreadsProfilePostsResponse = ModelThreadsProfilePostsResponseDoc
+ThreadsProfilePostsParams = TypedDict('ThreadsProfilePostsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'username': Required[str],
+    'cursor': NotRequired[str],
+}, total=False)
+
+ThreadsSearchResponse = ModelThreadsSearchResponseDoc
+ThreadsSearchParams = TypedDict('ThreadsSearchParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'q': Required[str],
 }, total=False)
 
 TiktokCategoryResponse = ModelTiktokCategoryResponseDoc
@@ -27417,7 +27502,10 @@ class TcdbGroup:
 
 class ThreadsGroup:
     def post(self, **params: Unpack[ThreadsPostParams]) -> ThreadsPostResponse: ...
+    def post_replies(self, **params: Unpack[ThreadsPostRepliesParams]) -> ThreadsPostRepliesResponse: ...
     def profile(self, **params: Unpack[ThreadsProfileParams]) -> ThreadsProfileResponse: ...
+    def profile_posts(self, **params: Unpack[ThreadsProfilePostsParams]) -> ThreadsProfilePostsResponse: ...
+    def search(self, **params: Unpack[ThreadsSearchParams]) -> ThreadsSearchResponse: ...
 
 class TiktokGroup:
     def category(self, **params: Unpack[TiktokCategoryParams]) -> TiktokCategoryResponse: ...
@@ -28225,7 +28313,10 @@ OperationId = Literal[
     'tcdb-team',
     'tcdb-top-sets',
     'threads-post',
+    'threads-post-replies',
     'threads-profile',
+    'threads-profile-posts',
+    'threads-search',
     'tiktok-category',
     'tiktok-video-comments',
     'tiktok-explore',
@@ -36453,6 +36544,18 @@ class CrawloraClient:
     @overload
     def operation(
         self,
+        operation_id: Literal['threads-post-replies'],
+        params: ThreadsPostRepliesParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ThreadsPostRepliesResponse: ...
+    @overload
+    def operation(
+        self,
         operation_id: Literal['threads-profile'],
         params: ThreadsProfileParams,
         *,
@@ -36462,6 +36565,30 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> ThreadsProfileResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['threads-profile-posts'],
+        params: ThreadsProfilePostsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ThreadsProfilePostsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['threads-search'],
+        params: ThreadsSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ThreadsSearchResponse: ...
     @overload
     def operation(
         self,
@@ -45873,6 +46000,18 @@ class CrawloraClient:
     @overload
     def request(
         self,
+        operation_id: Literal['threads-post-replies'],
+        params: ThreadsPostRepliesParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ThreadsPostRepliesResponse: ...
+    @overload
+    def request(
+        self,
         operation_id: Literal['threads-profile'],
         params: ThreadsProfileParams,
         *,
@@ -45882,6 +46021,30 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> ThreadsProfileResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['threads-profile-posts'],
+        params: ThreadsProfilePostsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ThreadsProfilePostsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['threads-search'],
+        params: ThreadsSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ThreadsSearchResponse: ...
     @overload
     def request(
         self,

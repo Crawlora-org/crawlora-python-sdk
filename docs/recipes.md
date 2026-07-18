@@ -44,6 +44,9 @@ brand = crawlora.brand.retrieve(domain="stripe.com")
 ```python
 profile = crawlora.threads.profile(username="zuck")
 post = crawlora.threads.post(username="zuck", code="DakyAavlKLZ")
+results = crawlora.threads.search(q="openai")
+posts = crawlora.threads.profile_posts(username="zuck")
+replies = crawlora.threads.post_replies(username="zuck", code="DakyAavlKLZ")
 ```
 
 ## Software, Reviews, And Market Datasets

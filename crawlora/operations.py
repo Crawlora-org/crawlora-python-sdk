@@ -11660,6 +11660,17 @@ OPERATIONS = {'airbnb-host': {'bodyParam': None,
                   'produces': ['application/json'],
                   'queryParams': [],
                   'security': ['ApiKeyAuth']},
+ 'threads-post-replies': {'bodyParam': None,
+                          'bodyRequired': False,
+                          'consumes': [],
+                          'formParams': [],
+                          'id': 'threads-post-replies',
+                          'method': 'GET',
+                          'path': '/threads/post/{username}/{code}/replies',
+                          'pathParams': ['username', 'code'],
+                          'produces': ['application/json'],
+                          'queryParams': [],
+                          'security': ['ApiKeyAuth']},
  'threads-profile': {'bodyParam': None,
                      'bodyRequired': False,
                      'consumes': [],
@@ -11671,6 +11682,30 @@ OPERATIONS = {'airbnb-host': {'bodyParam': None,
                      'produces': ['application/json'],
                      'queryParams': [],
                      'security': ['ApiKeyAuth']},
+ 'threads-profile-posts': {'bodyParam': None,
+                           'bodyRequired': False,
+                           'consumes': [],
+                           'cursorParams': ['cursor'],
+                           'formParams': [],
+                           'id': 'threads-profile-posts',
+                           'method': 'GET',
+                           'paginatable': True,
+                           'path': '/threads/profile/{username}/posts',
+                           'pathParams': ['username'],
+                           'produces': ['application/json'],
+                           'queryParams': [{'in': 'query', 'name': 'cursor', 'type': 'string'}],
+                           'security': ['ApiKeyAuth']},
+ 'threads-search': {'bodyParam': None,
+                    'bodyRequired': False,
+                    'consumes': [],
+                    'formParams': [],
+                    'id': 'threads-search',
+                    'method': 'GET',
+                    'path': '/threads/search',
+                    'pathParams': [],
+                    'produces': ['application/json'],
+                    'queryParams': [{'in': 'query', 'name': 'q', 'required': True, 'type': 'string'}],
+                    'security': ['ApiKeyAuth']},
  'tiktok-category': {'bodyParam': None,
                      'bodyRequired': False,
                      'consumes': ['application/json'],
@@ -13938,7 +13973,11 @@ GROUPS = {'airbnb': {'host': 'airbnb-host',
           'tagged': 'tcdb-tagged',
           'team': 'tcdb-team',
           'top_sets': 'tcdb-top-sets'},
- 'threads': {'post': 'threads-post', 'profile': 'threads-profile'},
+ 'threads': {'post': 'threads-post',
+             'post_replies': 'threads-post-replies',
+             'profile': 'threads-profile',
+             'profile_posts': 'threads-profile-posts',
+             'search': 'threads-search'},
  'tiktok': {'category': 'tiktok-category',
             'challenge': 'tiktok-challenge',
             'challenge_list': 'tiktok-challenge-list',
@@ -14057,7 +14096,7 @@ GROUPS = {'airbnb': {'host': 'airbnb-host',
              'video': 'youtube-video'},
  'zillow': {'autocomplete': 'zillow-autocomplete', 'property': 'zillow-property', 'search': 'zillow-search'}}
 
-OPERATION_COUNT = 784
+OPERATION_COUNT = 787
 
 class OperationId:
     AIRBNB_HOST = 'airbnb-host'
@@ -14720,7 +14759,10 @@ class OperationId:
     TCDB_TEAM = 'tcdb-team'
     TCDB_TOP_SETS = 'tcdb-top-sets'
     THREADS_POST = 'threads-post'
+    THREADS_POST_REPLIES = 'threads-post-replies'
     THREADS_PROFILE = 'threads-profile'
+    THREADS_PROFILE_POSTS = 'threads-profile-posts'
+    THREADS_SEARCH = 'threads-search'
     TIKTOK_CATEGORY = 'tiktok-category'
     TIKTOK_CHALLENGE = 'tiktok-challenge'
     TIKTOK_CHALLENGE_LIST = 'tiktok-challenge-list'

@@ -2,7 +2,7 @@
 
 Generated from `openapi/public.json`. Deprecated, admin, and internal operations are excluded from this SDK contract.
 
-Total operations: `784`
+Total operations: `787`
 
 | Group | SDK method | Operation ID | HTTP | Params | Auth | Response | Notes |
 | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -671,7 +671,10 @@ Total operations: `784`
 | tcdb | `tcdb.team` | `tcdb-team` | `GET /tcdb/team` | `id` (query str)<br>`path` (query str)<br>`url` (query str)<br>`limit` (query int) | `ApiKeyAuth` | `TcdbTeamResponse` |  |
 | tcdb | `tcdb.top_sets` | `tcdb-top-sets` | `GET /tcdb/top-sets` | `limit` (query int) | `ApiKeyAuth` | `TcdbTopSetsResponse` |  |
 | threads | `threads.post` | `threads-post` | `GET /threads/post/{username}/{code}` | `username` (path str required)<br>`code` (path str required) | `ApiKeyAuth` | `ThreadsPostResponse` |  |
+| threads | `threads.post_replies` | `threads-post-replies` | `GET /threads/post/{username}/{code}/replies` | `username` (path str required)<br>`code` (path str required) | `ApiKeyAuth` | `ThreadsPostRepliesResponse` |  |
 | threads | `threads.profile` | `threads-profile` | `GET /threads/profile/{username}` | `username` (path str required) | `ApiKeyAuth` | `ThreadsProfileResponse` |  |
+| threads | `threads.profile_posts` | `threads-profile-posts` | `GET /threads/profile/{username}/posts` | `username` (path str required)<br>`cursor` (query str) | `ApiKeyAuth` | `ThreadsProfilePostsResponse` |  |
+| threads | `threads.search` | `threads-search` | `GET /threads/search` | `q` (query str required) | `ApiKeyAuth` | `ThreadsSearchResponse` |  |
 | tiktok | `tiktok.category` | `tiktok-category` | `GET /tiktok/category` | none | `ApiKeyAuth` | `TiktokCategoryResponse` |  |
 | tiktok | `tiktok.video_comments` | `tiktok-video-comments` | `GET /tiktok/comments` | `aweme_id` (query str required)<br>`cursor` (query int) | `ApiKeyAuth` | `TiktokVideoCommentsResponse` |  |
 | tiktok | `tiktok.explore` | `tiktok-explore` | `GET /tiktok/explore/{id}` | `id` (path int required) | `ApiKeyAuth` | `TiktokExploreResponse` |  |
