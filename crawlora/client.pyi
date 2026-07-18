@@ -17383,6 +17383,7 @@ ModelXPostQuote = TypedDict('ModelXPostQuote', {
 }, total=False)
 
 ModelXProfile = TypedDict('ModelXProfile', {
+    'affiliate_label': NotRequired[str],
     'avatar_url': NotRequired[str],
     'banner_url': NotRequired[str],
     'bio_urls': NotRequired[list[str]],
@@ -19962,7 +19963,7 @@ DatasetsJobsCompaniesParams = TypedDict('DatasetsJobsCompaniesParams', {
     '_timeout': NotRequired[float],
     '_headers': NotRequired[Mapping[str, str]],
     'q': NotRequired[str],
-    'provider': NotRequired[str],
+    'provider': NotRequired[Literal['greenhouse', 'lever', 'ashby', 'workday', 'smartrecruiters', 'workable', 'recruitee', 'rippling', 'personio', 'teamtailor', 'oracle', 'ukg', 'icims', 'eightfold']],
     'status': NotRequired[str],
     'min_open_roles': NotRequired[int],
     'sort': NotRequired[str],
@@ -20002,7 +20003,7 @@ DatasetsJobsNearbyParams = TypedDict('DatasetsJobsNearbyParams', {
     'lat': Required[float],
     'lon': Required[float],
     'radius_km': NotRequired[float],
-    'provider': NotRequired[str],
+    'provider': NotRequired[Literal['greenhouse', 'lever', 'ashby', 'workday', 'smartrecruiters', 'workable', 'recruitee', 'rippling', 'personio', 'teamtailor', 'oracle', 'ukg', 'icims', 'eightfold']],
     'include_closed': NotRequired[bool],
     'page': NotRequired[int],
     'page_size': NotRequired[int],
@@ -20015,7 +20016,7 @@ DatasetsJobsSearchParams = TypedDict('DatasetsJobsSearchParams', {
     '_headers': NotRequired[Mapping[str, str]],
     'q': NotRequired[str],
     'company': NotRequired[str],
-    'provider': NotRequired[str],
+    'provider': NotRequired[Literal['greenhouse', 'lever', 'ashby', 'workday', 'smartrecruiters', 'workable', 'recruitee', 'rippling', 'personio', 'teamtailor', 'oracle', 'ukg', 'icims', 'eightfold']],
     'department': NotRequired[str],
     'location': NotRequired[str],
     'employment_type': NotRequired[str],
