@@ -39,6 +39,13 @@ posts = crawlora.reddit.search(q="python", subreddit="programming")
 brand = crawlora.brand.retrieve(domain="stripe.com")
 ```
 
+## Threads Public Lookups
+
+```python
+profile = crawlora.threads.profile(username="zuck")
+post = crawlora.threads.post(username="zuck", code="DakyAavlKLZ")
+```
+
 ## Software, Reviews, And Market Datasets
 
 Build a Chrome extension competitive-intelligence view without downloading the

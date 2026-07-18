@@ -15420,6 +15420,41 @@ ModelTechstackTechnology = TypedDict('ModelTechstackTechnology', {
     'version': NotRequired[str],
 }, total=False)
 
+ModelThreadsAuthor = TypedDict('ModelThreadsAuthor', {
+    'name': NotRequired[str],
+    'username': NotRequired[str],
+}, total=False)
+
+ModelThreadsPost = TypedDict('ModelThreadsPost', {
+    'author': NotRequired[ModelThreadsAuthor],
+    'code': NotRequired[str],
+    'image_url': NotRequired[str],
+    'text': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelThreadsProfile = TypedDict('ModelThreadsProfile', {
+    'avatar_url': NotRequired[str],
+    'biography': NotRequired[str],
+    'followers_count': NotRequired[int],
+    'name': NotRequired[str],
+    'threads_count': NotRequired[int],
+    'url': NotRequired[str],
+    'username': NotRequired[str],
+}, total=False)
+
+ModelThreadsPostResponseDoc = TypedDict('ModelThreadsPostResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelThreadsPost],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelThreadsProfileResponseDoc = TypedDict('ModelThreadsProfileResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelThreadsProfile],
+    'msg': NotRequired[str],
+}, total=False)
+
 ModelTiktokCategory = TypedDict('ModelTiktokCategory', {
     'name': NotRequired[str],
     'type': NotRequired[str],
@@ -17383,6 +17418,7 @@ ModelXPostQuote = TypedDict('ModelXPostQuote', {
 }, total=False)
 
 ModelXProfile = TypedDict('ModelXProfile', {
+    'affiliate_label': NotRequired[str],
     'avatar_url': NotRequired[str],
     'banner_url': NotRequired[str],
     'bio_urls': NotRequired[list[str]],
@@ -25467,6 +25503,23 @@ TcdbTopSetsParams = TypedDict('TcdbTopSetsParams', {
     'limit': NotRequired[int],
 }, total=False)
 
+ThreadsPostResponse = ModelThreadsPostResponseDoc
+ThreadsPostParams = TypedDict('ThreadsPostParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'username': Required[str],
+    'code': Required[str],
+}, total=False)
+
+ThreadsProfileResponse = ModelThreadsProfileResponseDoc
+ThreadsProfileParams = TypedDict('ThreadsProfileParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'username': Required[str],
+}, total=False)
+
 TiktokCategoryResponse = ModelTiktokCategoryResponseDoc
 TiktokCategoryParams = TypedDict('TiktokCategoryParams', {
     '_response_type': NotRequired[ResponseType],
@@ -27362,6 +27415,10 @@ class TcdbGroup:
     def team(self, **params: Unpack[TcdbTeamParams]) -> TcdbTeamResponse: ...
     def top_sets(self, **params: Unpack[TcdbTopSetsParams]) -> TcdbTopSetsResponse: ...
 
+class ThreadsGroup:
+    def post(self, **params: Unpack[ThreadsPostParams]) -> ThreadsPostResponse: ...
+    def profile(self, **params: Unpack[ThreadsProfileParams]) -> ThreadsProfileResponse: ...
+
 class TiktokGroup:
     def category(self, **params: Unpack[TiktokCategoryParams]) -> TiktokCategoryResponse: ...
     def video_comments(self, **params: Unpack[TiktokVideoCommentsParams]) -> TiktokVideoCommentsResponse: ...
@@ -28167,6 +28224,8 @@ OperationId = Literal[
     'tcdb-tagged',
     'tcdb-team',
     'tcdb-top-sets',
+    'threads-post',
+    'threads-profile',
     'tiktok-category',
     'tiktok-video-comments',
     'tiktok-explore',
@@ -28342,6 +28401,7 @@ class CrawloraClient:
     spotify: SpotifyGroup
     steam: SteamGroup
     tcdb: TcdbGroup
+    threads: ThreadsGroup
     tiktok: TiktokGroup
     tmdb: TmdbGroup
     trip_advisor: TripAdvisorGroup
@@ -36378,6 +36438,30 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> TcdbTopSetsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['threads-post'],
+        params: ThreadsPostParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ThreadsPostResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['threads-profile'],
+        params: ThreadsProfileParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ThreadsProfileResponse: ...
     @overload
     def operation(
         self,
@@ -45774,6 +45858,30 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> TcdbTopSetsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['threads-post'],
+        params: ThreadsPostParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ThreadsPostResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['threads-profile'],
+        params: ThreadsProfileParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ThreadsProfileResponse: ...
     @overload
     def request(
         self,

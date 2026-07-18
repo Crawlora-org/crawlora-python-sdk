@@ -11649,6 +11649,28 @@ OPERATIONS = {'airbnb-host': {'bodyParam': None,
                    'produces': ['application/json'],
                    'queryParams': [{'in': 'query', 'name': 'limit', 'type': 'integer'}],
                    'security': ['ApiKeyAuth']},
+ 'threads-post': {'bodyParam': None,
+                  'bodyRequired': False,
+                  'consumes': [],
+                  'formParams': [],
+                  'id': 'threads-post',
+                  'method': 'GET',
+                  'path': '/threads/post/{username}/{code}',
+                  'pathParams': ['username', 'code'],
+                  'produces': ['application/json'],
+                  'queryParams': [],
+                  'security': ['ApiKeyAuth']},
+ 'threads-profile': {'bodyParam': None,
+                     'bodyRequired': False,
+                     'consumes': [],
+                     'formParams': [],
+                     'id': 'threads-profile',
+                     'method': 'GET',
+                     'path': '/threads/profile/{username}',
+                     'pathParams': ['username'],
+                     'produces': ['application/json'],
+                     'queryParams': [],
+                     'security': ['ApiKeyAuth']},
  'tiktok-category': {'bodyParam': None,
                      'bodyRequired': False,
                      'consumes': ['application/json'],
@@ -13916,6 +13938,7 @@ GROUPS = {'airbnb': {'host': 'airbnb-host',
           'tagged': 'tcdb-tagged',
           'team': 'tcdb-team',
           'top_sets': 'tcdb-top-sets'},
+ 'threads': {'post': 'threads-post', 'profile': 'threads-profile'},
  'tiktok': {'category': 'tiktok-category',
             'challenge': 'tiktok-challenge',
             'challenge_list': 'tiktok-challenge-list',
@@ -14034,7 +14057,7 @@ GROUPS = {'airbnb': {'host': 'airbnb-host',
              'video': 'youtube-video'},
  'zillow': {'autocomplete': 'zillow-autocomplete', 'property': 'zillow-property', 'search': 'zillow-search'}}
 
-OPERATION_COUNT = 782
+OPERATION_COUNT = 784
 
 class OperationId:
     AIRBNB_HOST = 'airbnb-host'
@@ -14696,6 +14719,8 @@ class OperationId:
     TCDB_TAGGED = 'tcdb-tagged'
     TCDB_TEAM = 'tcdb-team'
     TCDB_TOP_SETS = 'tcdb-top-sets'
+    THREADS_POST = 'threads-post'
+    THREADS_PROFILE = 'threads-profile'
     TIKTOK_CATEGORY = 'tiktok-category'
     TIKTOK_CHALLENGE = 'tiktok-challenge'
     TIKTOK_CHALLENGE_LIST = 'tiktok-challenge-list'
