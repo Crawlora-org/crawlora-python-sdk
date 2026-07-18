@@ -4743,6 +4743,7 @@ ModelEsChromeExtensionRecord = TypedDict('ModelEsChromeExtensionRecord', {
     'manifest_version': NotRequired[int],
     'min_browser_version': NotRequired[str],
     'name': NotRequired[str],
+    'not_found_streak': NotRequired[int],
     'optional_host_permissions': NotRequired[list[str]],
     'optional_permissions': NotRequired[list[str]],
     'permissions': NotRequired[list[str]],
@@ -5363,14 +5364,18 @@ ModelEsSecCompanyRecord = TypedDict('ModelEsSecCompanyRecord', {
     'insider_txn_count_90d': NotRequired[int],
     'latest_annual_fiscal_year': NotRequired[int],
     'latest_annual_net_income': NotRequired[float],
+    'latest_annual_net_income_usd': NotRequired[float],
     'latest_annual_revenue': NotRequired[float],
+    'latest_annual_revenue_usd': NotRequired[float],
     'latest_annual_total_assets': NotRequired[float],
+    'latest_annual_total_assets_usd': NotRequired[float],
     'latest_filing_date': NotRequired[str],
     'latest_quarterly_fiscal_year': NotRequired[int],
     'latest_quarterly_revenue': NotRequired[float],
     'name': NotRequired[str],
     'primary_ticker': NotRequired[str],
     'recent_filings': NotRequired[list[ModelEsSecFilingSummary]],
+    'reporting_currency': NotRequired[str],
     'revenue_band': NotRequired[str],
     'schema_version': NotRequired[int],
     'seed_source': NotRequired[str],
@@ -5754,44 +5759,64 @@ ModelEsXuserDatasetItem = TypedDict('ModelEsXuserDatasetItem', {
     'avatar_url': NotRequired[str],
     'banner_url': NotRequired[str],
     'bio': NotRequired[str],
+    'bio_url_host': NotRequired[list[str]],
+    'bio_urls': NotRequired[list[str]],
     'crawled_at': NotRequired[str],
     'created_at': NotRequired[str],
+    'email': NotRequired[str],
     'external_url': NotRequired[str],
     'follower_following_ratio': NotRequired[float],
     'followers': NotRequired[int],
     'following': NotRequired[int],
     'has_bio': NotRequired[bool],
+    'has_bio_url': NotRequired[bool],
+    'has_email': NotRequired[bool],
     'has_external_url': NotRequired[bool],
     'id': NotRequired[str],
     'is_blue_verified': NotRequired[bool],
+    'is_default_profile_image': NotRequired[bool],
+    'likes': NotRequired[int],
+    'listed': NotRequired[int],
     'location_raw': NotRequired[str],
+    'media': NotRequired[int],
     'name': NotRequired[str],
     'posts': NotRequired[int],
     'schema_version': NotRequired[int],
     'source_tier': NotRequired[str],
     'username': NotRequired[str],
+    'verified_type': NotRequired[str],
 }, total=False)
 
 ModelEsXuserRecord = TypedDict('ModelEsXuserRecord', {
     'avatar_url': NotRequired[str],
     'banner_url': NotRequired[str],
     'bio': NotRequired[str],
+    'bio_url_host': NotRequired[list[str]],
+    'bio_urls': NotRequired[list[str]],
     'crawled_at': NotRequired[str],
     'created_at': NotRequired[str],
+    'email': NotRequired[str],
     'external_url': NotRequired[str],
     'follower_following_ratio': NotRequired[float],
     'followers': NotRequired[int],
     'following': NotRequired[int],
     'has_bio': NotRequired[bool],
+    'has_bio_url': NotRequired[bool],
+    'has_email': NotRequired[bool],
     'has_external_url': NotRequired[bool],
     'id': NotRequired[str],
     'is_blue_verified': NotRequired[bool],
+    'is_default_profile_image': NotRequired[bool],
+    'likes': NotRequired[int],
+    'listed': NotRequired[int],
     'location_raw': NotRequired[str],
+    'media': NotRequired[int],
     'name': NotRequired[str],
     'posts': NotRequired[int],
     'schema_version': NotRequired[int],
     'source_tier': NotRequired[str],
     'username': NotRequired[str],
+    'verified_type': NotRequired[str],
 }, total=False)
 
 ModelEspnAthlete = TypedDict('ModelEspnAthlete', {
@@ -17360,11 +17385,14 @@ ModelXPostQuote = TypedDict('ModelXPostQuote', {
 ModelXProfile = TypedDict('ModelXProfile', {
     'avatar_url': NotRequired[str],
     'banner_url': NotRequired[str],
+    'bio_urls': NotRequired[list[str]],
     'created_at': NotRequired[str],
     'description': NotRequired[str],
+    'email': NotRequired[str],
     'external_url': NotRequired[str],
     'id': NotRequired[str],
     'is_blue_verified': NotRequired[bool],
+    'is_default_profile_image': NotRequired[bool],
     'is_protected': NotRequired[bool],
     'is_unavailable': NotRequired[bool],
     'location': NotRequired[str],
@@ -17372,11 +17400,15 @@ ModelXProfile = TypedDict('ModelXProfile', {
     'name': NotRequired[str],
     'url': NotRequired[str],
     'username': NotRequired[str],
+    'verified_type': NotRequired[str],
 }, total=False)
 
 ModelXProfileMetrics = TypedDict('ModelXProfileMetrics', {
     'followers': NotRequired[int],
     'following': NotRequired[int],
+    'likes': NotRequired[int],
+    'listed': NotRequired[int],
+    'media': NotRequired[int],
     'posts': NotRequired[int],
 }, total=False)
 
@@ -19938,6 +19970,14 @@ DatasetsJobsCompaniesParams = TypedDict('DatasetsJobsCompaniesParams', {
     'page_size': NotRequired[int],
 }, total=False)
 
+DatasetsJobsCompanyItemResponse = ModelDatasetsJobsItemResponseDoc
+DatasetsJobsCompanyItemParams = TypedDict('DatasetsJobsCompanyItemParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': Required[str],
+}, total=False)
+
 DatasetsJobsFacetsResponse = ModelDatasetsJobsFacetResponseDoc
 DatasetsJobsFacetsParams = TypedDict('DatasetsJobsFacetsParams', {
     '_response_type': NotRequired[ResponseType],
@@ -19952,6 +19992,20 @@ DatasetsJobsItemParams = TypedDict('DatasetsJobsItemParams', {
     '_timeout': NotRequired[float],
     '_headers': NotRequired[Mapping[str, str]],
     'id': Required[str],
+}, total=False)
+
+DatasetsJobsNearbyResponse = ModelDatasetsJobsSearchResponseDoc
+DatasetsJobsNearbyParams = TypedDict('DatasetsJobsNearbyParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'lat': Required[float],
+    'lon': Required[float],
+    'radius_km': NotRequired[float],
+    'provider': NotRequired[str],
+    'include_closed': NotRequired[bool],
+    'page': NotRequired[int],
+    'page_size': NotRequired[int],
 }, total=False)
 
 DatasetsJobsSearchResponse = ModelDatasetsJobsSearchResponseDoc
@@ -20283,6 +20337,8 @@ DatasetsSecCompaniesFacetsParams = TypedDict('DatasetsSecCompaniesFacetsParams',
     'exchange': NotRequired[str],
     'state_of_incorporation': NotRequired[str],
     'entity_type': NotRequired[str],
+    'reporting_currency': NotRequired[str],
+    'has_financials': NotRequired[bool],
     'min_revenue': NotRequired[float],
     'form_filed': NotRequired[str],
 }, total=False)
@@ -20333,6 +20389,8 @@ DatasetsSecCompaniesSearchParams = TypedDict('DatasetsSecCompaniesSearchParams',
     'exchange': NotRequired[str],
     'state_of_incorporation': NotRequired[str],
     'entity_type': NotRequired[str],
+    'reporting_currency': NotRequired[str],
+    'has_financials': NotRequired[bool],
     'min_revenue': NotRequired[float],
     'max_revenue': NotRequired[float],
     'min_net_income': NotRequired[float],
@@ -21863,6 +21921,29 @@ JobsCompanySearchParams = TypedDict('JobsCompanySearchParams', {
     'slug': Required[str],
 }, total=False)
 
+JobsEightfoldBoardResponse = ModelJobsBoardResponseDoc
+JobsEightfoldBoardParams = TypedDict('JobsEightfoldBoardParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'tenant': Required[str],
+    'domain': Required[str],
+    'query': NotRequired[str],
+    'location': NotRequired[str],
+    'limit': NotRequired[int],
+    'offset': NotRequired[int],
+}, total=False)
+
+JobsEightfoldJobResponse = ModelJobsJobResponseDoc
+JobsEightfoldJobParams = TypedDict('JobsEightfoldJobParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'tenant': Required[str],
+    'domain': Required[str],
+    'id': Required[str],
+}, total=False)
+
 JobsGreenhouseBoardResponse = ModelJobsBoardResponseDoc
 JobsGreenhouseBoardParams = TypedDict('JobsGreenhouseBoardParams', {
     '_response_type': NotRequired[ResponseType],
@@ -21886,7 +21967,7 @@ JobsHiringSignalsParams = TypedDict('JobsHiringSignalsParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
     '_headers': NotRequired[Mapping[str, str]],
-    'provider': Required[Literal['greenhouse', 'lever', 'ashby', 'workday', 'smartrecruiters', 'workable', 'recruitee', 'rippling', 'personio', 'teamtailor', 'oracle', 'ukg']],
+    'provider': Required[Literal['greenhouse', 'lever', 'ashby', 'workday', 'smartrecruiters', 'workable', 'recruitee', 'rippling', 'personio', 'teamtailor', 'oracle', 'ukg', 'icims', 'eightfold']],
     'token': NotRequired[str],
     'company': NotRequired[str],
     'org': NotRequired[str],
@@ -21895,6 +21976,29 @@ JobsHiringSignalsParams = TypedDict('JobsHiringSignalsParams', {
     'site': NotRequired[str],
     'host': NotRequired[str],
     'board': NotRequired[str],
+    'domain': NotRequired[str],
+}, total=False)
+
+JobsIcimsBoardResponse = ModelJobsBoardResponseDoc
+JobsIcimsBoardParams = TypedDict('JobsIcimsBoardParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'domain': Required[str],
+    'keywords': NotRequired[str],
+    'location': NotRequired[str],
+    'page': NotRequired[int],
+    'limit': NotRequired[int],
+}, total=False)
+
+JobsIcimsJobResponse = ModelJobsJobResponseDoc
+JobsIcimsJobParams = TypedDict('JobsIcimsJobParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'domain': Required[str],
+    'id': Required[str],
+    'lang': NotRequired[str],
 }, total=False)
 
 JobsLeverPostingResponse = ModelJobsJobResponseDoc
@@ -26662,8 +26766,10 @@ class DatasetsGroup:
     def housing_markets_item(self, **params: Unpack[DatasetsHousingMarketsItemParams]) -> DatasetsHousingMarketsItemResponse: ...
     def housing_markets_search(self, **params: Unpack[DatasetsHousingMarketsSearchParams]) -> DatasetsHousingMarketsSearchResponse: ...
     def jobs_companies(self, **params: Unpack[DatasetsJobsCompaniesParams]) -> DatasetsJobsCompaniesResponse: ...
+    def jobs_company_item(self, **params: Unpack[DatasetsJobsCompanyItemParams]) -> DatasetsJobsCompanyItemResponse: ...
     def jobs_facets(self, **params: Unpack[DatasetsJobsFacetsParams]) -> DatasetsJobsFacetsResponse: ...
     def jobs_item(self, **params: Unpack[DatasetsJobsItemParams]) -> DatasetsJobsItemResponse: ...
+    def jobs_nearby(self, **params: Unpack[DatasetsJobsNearbyParams]) -> DatasetsJobsNearbyResponse: ...
     def jobs_search(self, **params: Unpack[DatasetsJobsSearchParams]) -> DatasetsJobsSearchResponse: ...
     def journalists_facets(self, **params: Unpack[DatasetsJournalistsFacetsParams]) -> DatasetsJournalistsFacetsResponse: ...
     def journalists_item(self, **params: Unpack[DatasetsJournalistsItemParams]) -> DatasetsJournalistsItemResponse: ...
@@ -26852,9 +26958,13 @@ class InstagramGroup:
 class JobsGroup:
     def ashby_board(self, **params: Unpack[JobsAshbyBoardParams]) -> JobsAshbyBoardResponse: ...
     def company_search(self, **params: Unpack[JobsCompanySearchParams]) -> JobsCompanySearchResponse: ...
+    def eightfold_board(self, **params: Unpack[JobsEightfoldBoardParams]) -> JobsEightfoldBoardResponse: ...
+    def eightfold_job(self, **params: Unpack[JobsEightfoldJobParams]) -> JobsEightfoldJobResponse: ...
     def greenhouse_board(self, **params: Unpack[JobsGreenhouseBoardParams]) -> JobsGreenhouseBoardResponse: ...
     def greenhouse_job(self, **params: Unpack[JobsGreenhouseJobParams]) -> JobsGreenhouseJobResponse: ...
     def hiring_signals(self, **params: Unpack[JobsHiringSignalsParams]) -> JobsHiringSignalsResponse: ...
+    def icims_board(self, **params: Unpack[JobsIcimsBoardParams]) -> JobsIcimsBoardResponse: ...
+    def icims_job(self, **params: Unpack[JobsIcimsJobParams]) -> JobsIcimsJobResponse: ...
     def lever_posting(self, **params: Unpack[JobsLeverPostingParams]) -> JobsLeverPostingResponse: ...
     def lever_postings(self, **params: Unpack[JobsLeverPostingsParams]) -> JobsLeverPostingsResponse: ...
     def oracle_board(self, **params: Unpack[JobsOracleBoardParams]) -> JobsOracleBoardResponse: ...
@@ -27534,8 +27644,10 @@ OperationId = Literal[
     'datasets-housing-markets-item',
     'datasets-housing-markets-search',
     'datasets-jobs-companies',
+    'datasets-jobs-company-item',
     'datasets-jobs-facets',
     'datasets-jobs-item',
+    'datasets-jobs-nearby',
     'datasets-jobs-search',
     'datasets-journalists-facets',
     'datasets-journalists-item',
@@ -27704,9 +27816,13 @@ OperationId = Literal[
     'instagram-reels',
     'jobs-ashby-board',
     'jobs-company-search',
+    'jobs-eightfold-board',
+    'jobs-eightfold-job',
     'jobs-greenhouse-board',
     'jobs-greenhouse-job',
     'jobs-hiring-signals',
+    'jobs-icims-board',
+    'jobs-icims-job',
     'jobs-lever-posting',
     'jobs-lever-postings',
     'jobs-oracle-board',
@@ -29989,6 +30105,18 @@ class CrawloraClient:
     @overload
     def operation(
         self,
+        operation_id: Literal['datasets-jobs-company-item'],
+        params: DatasetsJobsCompanyItemParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsJobsCompanyItemResponse: ...
+    @overload
+    def operation(
+        self,
         operation_id: Literal['datasets-jobs-facets'],
         params: DatasetsJobsFacetsParams = ...,
         *,
@@ -30010,6 +30138,18 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> DatasetsJobsItemResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['datasets-jobs-nearby'],
+        params: DatasetsJobsNearbyParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsJobsNearbyResponse: ...
     @overload
     def operation(
         self,
@@ -32029,6 +32169,30 @@ class CrawloraClient:
     @overload
     def operation(
         self,
+        operation_id: Literal['jobs-eightfold-board'],
+        params: JobsEightfoldBoardParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> JobsEightfoldBoardResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['jobs-eightfold-job'],
+        params: JobsEightfoldJobParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> JobsEightfoldJobResponse: ...
+    @overload
+    def operation(
+        self,
         operation_id: Literal['jobs-greenhouse-board'],
         params: JobsGreenhouseBoardParams,
         *,
@@ -32062,6 +32226,30 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> JobsHiringSignalsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['jobs-icims-board'],
+        params: JobsIcimsBoardParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> JobsIcimsBoardResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['jobs-icims-job'],
+        params: JobsIcimsJobParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> JobsIcimsJobResponse: ...
     @overload
     def operation(
         self,
@@ -39313,6 +39501,18 @@ class CrawloraClient:
     @overload
     def request(
         self,
+        operation_id: Literal['datasets-jobs-company-item'],
+        params: DatasetsJobsCompanyItemParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsJobsCompanyItemResponse: ...
+    @overload
+    def request(
+        self,
         operation_id: Literal['datasets-jobs-facets'],
         params: DatasetsJobsFacetsParams = ...,
         *,
@@ -39334,6 +39534,18 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> DatasetsJobsItemResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['datasets-jobs-nearby'],
+        params: DatasetsJobsNearbyParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsJobsNearbyResponse: ...
     @overload
     def request(
         self,
@@ -41353,6 +41565,30 @@ class CrawloraClient:
     @overload
     def request(
         self,
+        operation_id: Literal['jobs-eightfold-board'],
+        params: JobsEightfoldBoardParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> JobsEightfoldBoardResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['jobs-eightfold-job'],
+        params: JobsEightfoldJobParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> JobsEightfoldJobResponse: ...
+    @overload
+    def request(
+        self,
         operation_id: Literal['jobs-greenhouse-board'],
         params: JobsGreenhouseBoardParams,
         *,
@@ -41386,6 +41622,30 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> JobsHiringSignalsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['jobs-icims-board'],
+        params: JobsIcimsBoardParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> JobsIcimsBoardResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['jobs-icims-job'],
+        params: JobsIcimsJobParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> JobsIcimsJobResponse: ...
     @overload
     def request(
         self,
