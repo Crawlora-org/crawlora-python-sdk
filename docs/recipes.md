@@ -49,6 +49,16 @@ posts = crawlora.threads.profile_posts(username="zuck")
 replies = crawlora.threads.post_replies(username="zuck", code="DakyAavlKLZ")
 ```
 
+## Box Office Mojo Dataset
+
+Search theatrical box-office records, fetch one title, and facet the same filter set.
+
+```python
+titles = crawlora.datasets.boxofficemojo_search(q="avatar", sort="worldwide_desc")
+avatar = crawlora.datasets.boxofficemojo_item(title_id="tt0499549")
+years = crawlora.datasets.boxofficemojo_facets(facet="years_active", gross_band="over_1b")
+```
+
 ## Software, Reviews, And Market Datasets
 
 Build a Chrome extension competitive-intelligence view without downloading the
