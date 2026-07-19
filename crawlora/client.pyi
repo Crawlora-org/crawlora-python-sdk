@@ -1593,9 +1593,6 @@ ModelBoxofficemojoReleaseGroupResponse = TypedDict('ModelBoxofficemojoReleaseGro
     'release_group_id': NotRequired[str],
     'source_url': NotRequired[str],
     'title': NotRequired[str],
-    'title_id': NotRequired[str],
-    'title_path': NotRequired[str],
-    'title_url': NotRequired[str],
     'url': NotRequired[str],
 }, total=False)
 
@@ -1848,9 +1845,6 @@ ModelBoxofficemojoWorldwideYearRow = TypedDict('ModelBoxofficemojoWorldwideYearR
     'foreign_share': NotRequired[float],
     'rank': NotRequired[int],
     'release_group': NotRequired[str],
-    'release_group_id': NotRequired[str],
-    'release_group_path': NotRequired[str],
-    'release_group_url': NotRequired[str],
     'title_id': NotRequired[str],
     'title_path': NotRequired[str],
     'title_url': NotRequired[str],
@@ -3213,21 +3207,6 @@ ModelDatasetsAppsSearchResponse = TypedDict('ModelDatasetsAppsSearchResponse', {
     'total': NotRequired[int],
 }, total=False)
 
-ModelDatasetsBoxOfficeMojoFacetResponse = TypedDict('ModelDatasetsBoxOfficeMojoFacetResponse', {
-    'dataset': NotRequired[str],
-    'facet': NotRequired[str],
-    'items': NotRequired[list[ModelEsBoxOfficeMojoDatasetFacetItem]],
-}, total=False)
-
-ModelDatasetsBoxOfficeMojoSearchResponse = TypedDict('ModelDatasetsBoxOfficeMojoSearchResponse', {
-    'dataset': NotRequired[str],
-    'items': NotRequired[list[ModelEsBoxOfficeMojoTitleRecord]],
-    'page': NotRequired[int],
-    'page_size': NotRequired[int],
-    'sort': NotRequired[str],
-    'total': NotRequired[int],
-}, total=False)
-
 ModelDatasetsChartsSearchResponse = TypedDict('ModelDatasetsChartsSearchResponse', {
     'dataset': NotRequired[str],
     'items': NotRequired[list[ModelEsChartEntry]],
@@ -3670,24 +3649,6 @@ ModelDatasetsAirbnbMarketsSearchResponseDoc = TypedDict('ModelDatasetsAirbnbMark
 ModelDatasetsAppsSearchResponseDoc = TypedDict('ModelDatasetsAppsSearchResponseDoc', {
     'code': NotRequired[int],
     'data': NotRequired[ModelDatasetsAppsSearchResponse],
-    'msg': NotRequired[str],
-}, total=False)
-
-ModelDatasetsBoxOfficeMojoFacetResponseDoc = TypedDict('ModelDatasetsBoxOfficeMojoFacetResponseDoc', {
-    'code': NotRequired[int],
-    'data': NotRequired[ModelDatasetsBoxOfficeMojoFacetResponse],
-    'msg': NotRequired[str],
-}, total=False)
-
-ModelDatasetsBoxOfficeMojoItemResponseDoc = TypedDict('ModelDatasetsBoxOfficeMojoItemResponseDoc', {
-    'code': NotRequired[int],
-    'data': NotRequired[ModelEsBoxOfficeMojoTitleRecord],
-    'msg': NotRequired[str],
-}, total=False)
-
-ModelDatasetsBoxOfficeMojoSearchResponseDoc = TypedDict('ModelDatasetsBoxOfficeMojoSearchResponseDoc', {
-    'code': NotRequired[int],
-    'data': NotRequired[ModelDatasetsBoxOfficeMojoSearchResponse],
     'msg': NotRequired[str],
 }, total=False)
 
@@ -4681,77 +4642,6 @@ ModelEsAppReview = TypedDict('ModelEsAppReview', {
     'url': NotRequired[str],
     'user_name': NotRequired[str],
     'version': NotRequired[str],
-}, total=False)
-
-ModelEsBoxOfficeMojoDatasetFacetItem = TypedDict('ModelEsBoxOfficeMojoDatasetFacetItem', {
-    'count': NotRequired[int],
-    'value': NotRequired[str],
-}, total=False)
-
-ModelEsBoxOfficeMojoReleaseGroup = TypedDict('ModelEsBoxOfficeMojoReleaseGroup', {
-    'domestic': NotRequired[int],
-    'international': NotRequired[int],
-    'markets': NotRequired[str],
-    'name': NotRequired[str],
-    'path': NotRequired[str],
-    'rollout': NotRequired[str],
-    'url': NotRequired[str],
-    'worldwide': NotRequired[int],
-}, total=False)
-
-ModelEsBoxOfficeMojoTitleRecord = TypedDict('ModelEsBoxOfficeMojoTitleRecord', {
-    'brand_ids': NotRequired[list[str]],
-    'brand_names': NotRequired[list[str]],
-    'domestic_share': NotRequired[float],
-    'first_seen_at': NotRequired[str],
-    'foreign_share': NotRequired[float],
-    'franchise_ids': NotRequired[list[str]],
-    'franchise_names': NotRequired[list[str]],
-    'genre_ids': NotRequired[list[str]],
-    'genre_names': NotRequired[list[str]],
-    'gross_band': NotRequired[str],
-    'hydrate_attempts': NotRequired[int],
-    'hydrate_failed': NotRequired[bool],
-    'hydrated': NotRequired[bool],
-    'in_lifetime_top_1000_dom': NotRequired[bool],
-    'in_lifetime_top_1000_ww': NotRequired[bool],
-    'is_billion_dollar': NotRequired[bool],
-    'last_crawled_at': NotRequired[str],
-    'last_hydrated_at': NotRequired[str],
-    'lifetime_gross_domestic': NotRequired[int],
-    'lifetime_gross_worldwide': NotRequired[int],
-    'lifetime_rank_domestic': NotRequired[int],
-    'lifetime_rank_worldwide': NotRequired[int],
-    'lifetime_year': NotRequired[int],
-    'market_count': NotRequired[int],
-    'market_grosses': NotRequired[list[dict[str, Any]]],
-    'peak_worldwide_gross': NotRequired[int],
-    'peak_worldwide_year': NotRequired[int],
-    'primary_release_group_id': NotRequired[str],
-    'primary_release_group_name': NotRequired[str],
-    'release_group_count': NotRequired[int],
-    'release_group_ids': NotRequired[list[str]],
-    'release_groups': NotRequired[list[ModelEsBoxOfficeMojoReleaseGroup]],
-    'schema_version': NotRequired[int],
-    'sources': NotRequired[list[str]],
-    'title': NotRequired[str],
-    'title_id': NotRequired[str],
-    'title_path': NotRequired[str],
-    'title_url': NotRequired[str],
-    'year_grosses': NotRequired[list[ModelEsBoxOfficeMojoYearGross]],
-    'years_active': NotRequired[list[int]],
-}, total=False)
-
-ModelEsBoxOfficeMojoYearGross = TypedDict('ModelEsBoxOfficeMojoYearGross', {
-    'domestic': NotRequired[int],
-    'domestic_share': NotRequired[float],
-    'foreign': NotRequired[int],
-    'foreign_share': NotRequired[float],
-    'rank_worldwide': NotRequired[int],
-    'release_group_id': NotRequired[str],
-    'release_group_name': NotRequired[str],
-    'worldwide': NotRequired[int],
-    'year': NotRequired[int],
 }, total=False)
 
 ModelEsChartEntry = TypedDict('ModelEsChartEntry', {
@@ -9233,7 +9123,7 @@ ModelMetaculusQuestionMetadataResponse = TypedDict('ModelMetaculusQuestionMetada
     'options': NotRequired[list[str]],
     'options_history': NotRequired[list[ModelMetaculusOptionsChange]],
     'options_order': NotRequired[str],
-    'possibilities': NotRequired[Any],
+    'possibilities': NotRequired[str],
     'public_page_derived': NotRequired[bool],
     'question': NotRequired[ModelMetaculusQuestionRow],
     'resolution': NotRequired[str],
@@ -9277,7 +9167,7 @@ ModelMetaculusQuestionRow = TypedDict('ModelMetaculusQuestionRow', {
 }, total=False)
 
 ModelMetaculusQuestionScaling = TypedDict('ModelMetaculusQuestionScaling', {
-    'continuous_range': NotRequired[list[Any]],
+    'continuous_range': NotRequired[list[float]],
     'inbound_outcome_count': NotRequired[int],
     'nominal_max': NotRequired[float],
     'nominal_min': NotRequired[float],
@@ -19799,53 +19689,6 @@ DatasetsAppsSearchParams = TypedDict('DatasetsAppsSearchParams', {
     'page_size': NotRequired[int],
 }, total=False)
 
-DatasetsBoxofficemojoFacetsResponse = ModelDatasetsBoxOfficeMojoFacetResponseDoc
-DatasetsBoxofficemojoFacetsParams = TypedDict('DatasetsBoxofficemojoFacetsParams', {
-    '_response_type': NotRequired[ResponseType],
-    '_timeout': NotRequired[float],
-    '_headers': NotRequired[Mapping[str, str]],
-    'facet': Required[str],
-    'q': NotRequired[str],
-    'year': NotRequired[int],
-    'gross_band': NotRequired[str],
-    'min_worldwide': NotRequired[int],
-    'hydrated': NotRequired[bool],
-}, total=False)
-
-DatasetsBoxofficemojoItemResponse = ModelDatasetsBoxOfficeMojoItemResponseDoc
-DatasetsBoxofficemojoItemParams = TypedDict('DatasetsBoxofficemojoItemParams', {
-    '_response_type': NotRequired[ResponseType],
-    '_timeout': NotRequired[float],
-    '_headers': NotRequired[Mapping[str, str]],
-    'title_id': Required[str],
-}, total=False)
-
-DatasetsBoxofficemojoSearchResponse = ModelDatasetsBoxOfficeMojoSearchResponseDoc
-DatasetsBoxofficemojoSearchParams = TypedDict('DatasetsBoxofficemojoSearchParams', {
-    '_response_type': NotRequired[ResponseType],
-    '_timeout': NotRequired[float],
-    '_headers': NotRequired[Mapping[str, str]],
-    'q': NotRequired[str],
-    'title_id': NotRequired[str],
-    'year': NotRequired[int],
-    'lifetime_year': NotRequired[int],
-    'gross_band': NotRequired[str],
-    'franchise': NotRequired[str],
-    'brand': NotRequired[str],
-    'genre': NotRequired[str],
-    'in_lifetime_top_1000': NotRequired[bool],
-    'hydrated': NotRequired[bool],
-    'is_billion_dollar': NotRequired[bool],
-    'min_worldwide': NotRequired[int],
-    'max_worldwide': NotRequired[int],
-    'min_domestic': NotRequired[int],
-    'min_foreign_share': NotRequired[float],
-    'max_domestic_share': NotRequired[float],
-    'sort': NotRequired[str],
-    'page': NotRequired[int],
-    'page_size': NotRequired[int],
-}, total=False)
-
 DatasetsChromeExtensionsChangesResponse = ModelDatasetsChromeExtensionChangesResponseDoc
 DatasetsChromeExtensionsChangesParams = TypedDict('DatasetsChromeExtensionsChangesParams', {
     '_response_type': NotRequired[ResponseType],
@@ -27041,9 +26884,6 @@ class DatasetsGroup:
     def apps_charts_search(self, **params: Unpack[DatasetsAppsChartsSearchParams]) -> DatasetsAppsChartsSearchResponse: ...
     def apps_reviews_search(self, **params: Unpack[DatasetsAppsReviewsSearchParams]) -> DatasetsAppsReviewsSearchResponse: ...
     def apps_search(self, **params: Unpack[DatasetsAppsSearchParams]) -> DatasetsAppsSearchResponse: ...
-    def boxofficemojo_facets(self, **params: Unpack[DatasetsBoxofficemojoFacetsParams]) -> DatasetsBoxofficemojoFacetsResponse: ...
-    def boxofficemojo_item(self, **params: Unpack[DatasetsBoxofficemojoItemParams]) -> DatasetsBoxofficemojoItemResponse: ...
-    def boxofficemojo_search(self, **params: Unpack[DatasetsBoxofficemojoSearchParams]) -> DatasetsBoxofficemojoSearchResponse: ...
     def chrome_extensions_changes(self, **params: Unpack[DatasetsChromeExtensionsChangesParams]) -> DatasetsChromeExtensionsChangesResponse: ...
     def chrome_extensions_facets(self, **params: Unpack[DatasetsChromeExtensionsFacetsParams]) -> DatasetsChromeExtensionsFacetsResponse: ...
     def chrome_extensions_history(self, **params: Unpack[DatasetsChromeExtensionsHistoryParams]) -> DatasetsChromeExtensionsHistoryResponse: ...
@@ -27929,9 +27769,6 @@ OperationId = Literal[
     'datasets-apps-charts-search',
     'datasets-apps-reviews-search',
     'datasets-apps-search',
-    'datasets-boxofficemojo-facets',
-    'datasets-boxofficemojo-item',
-    'datasets-boxofficemojo-search',
     'datasets-chrome-extensions-changes',
     'datasets-chrome-extensions-facets',
     'datasets-chrome-extensions-history',
@@ -30176,42 +30013,6 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> DatasetsAppsSearchResponse: ...
-    @overload
-    def operation(
-        self,
-        operation_id: Literal['datasets-boxofficemojo-facets'],
-        params: DatasetsBoxofficemojoFacetsParams,
-        *,
-        response_type: ResponseType = ...,
-        timeout: float | None = ...,
-        headers: Mapping[str, str] | None = ...,
-        retries: int | None = ...,
-        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
-    ) -> DatasetsBoxofficemojoFacetsResponse: ...
-    @overload
-    def operation(
-        self,
-        operation_id: Literal['datasets-boxofficemojo-item'],
-        params: DatasetsBoxofficemojoItemParams,
-        *,
-        response_type: ResponseType = ...,
-        timeout: float | None = ...,
-        headers: Mapping[str, str] | None = ...,
-        retries: int | None = ...,
-        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
-    ) -> DatasetsBoxofficemojoItemResponse: ...
-    @overload
-    def operation(
-        self,
-        operation_id: Literal['datasets-boxofficemojo-search'],
-        params: DatasetsBoxofficemojoSearchParams = ...,
-        *,
-        response_type: ResponseType = ...,
-        timeout: float | None = ...,
-        headers: Mapping[str, str] | None = ...,
-        retries: int | None = ...,
-        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
-    ) -> DatasetsBoxofficemojoSearchResponse: ...
     @overload
     def operation(
         self,
@@ -39668,42 +39469,6 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> DatasetsAppsSearchResponse: ...
-    @overload
-    def request(
-        self,
-        operation_id: Literal['datasets-boxofficemojo-facets'],
-        params: DatasetsBoxofficemojoFacetsParams,
-        *,
-        response_type: ResponseType = ...,
-        timeout: float | None = ...,
-        headers: Mapping[str, str] | None = ...,
-        retries: int | None = ...,
-        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
-    ) -> DatasetsBoxofficemojoFacetsResponse: ...
-    @overload
-    def request(
-        self,
-        operation_id: Literal['datasets-boxofficemojo-item'],
-        params: DatasetsBoxofficemojoItemParams,
-        *,
-        response_type: ResponseType = ...,
-        timeout: float | None = ...,
-        headers: Mapping[str, str] | None = ...,
-        retries: int | None = ...,
-        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
-    ) -> DatasetsBoxofficemojoItemResponse: ...
-    @overload
-    def request(
-        self,
-        operation_id: Literal['datasets-boxofficemojo-search'],
-        params: DatasetsBoxofficemojoSearchParams = ...,
-        *,
-        response_type: ResponseType = ...,
-        timeout: float | None = ...,
-        headers: Mapping[str, str] | None = ...,
-        retries: int | None = ...,
-        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
-    ) -> DatasetsBoxofficemojoSearchResponse: ...
     @overload
     def request(
         self,
