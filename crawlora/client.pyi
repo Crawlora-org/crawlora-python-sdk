@@ -594,6 +594,175 @@ ModelAppResponse = TypedDict('ModelAppResponse', {
     'msg': NotRequired[Any],
 }, total=False)
 
+ModelApplebooksAudiobook = TypedDict('ModelApplebooksAudiobook', {
+    'artist_id': NotRequired[int],
+    'artist_name': NotRequired[str],
+    'artist_url': NotRequired[str],
+    'artwork_url': NotRequired[str],
+    'book_id': NotRequired[int],
+    'currency': NotRequired[str],
+    'description': NotRequired[str],
+    'duration_seconds': NotRequired[int],
+    'free': NotRequired[bool],
+    'genres': NotRequired[list[str]],
+    'id': NotRequired[int],
+    'name': NotRequired[str],
+    'narrator': NotRequired[str],
+    'preview_url': NotRequired[str],
+    'price': NotRequired[float],
+    'provider': NotRequired[str],
+    'rating': NotRequired[float],
+    'rating_count': NotRequired[int],
+    'rating_histogram': NotRequired[dict[str, int]],
+    'release_date': NotRequired[str],
+    'series_id': NotRequired[int],
+    'series_name': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelApplebooksAudiobookSeries = TypedDict('ModelApplebooksAudiobookSeries', {
+    'audiobooks': NotRequired[list[ModelApplebooksAudiobook]],
+    'id': NotRequired[int],
+    'name': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelApplebooksAuthor = TypedDict('ModelApplebooksAuthor', {
+    'audio_books': NotRequired[list[ModelApplebooksAudiobook]],
+    'books': NotRequired[list[ModelApplebooksBook]],
+    'genres': NotRequired[list[str]],
+    'id': NotRequired[int],
+    'name': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelApplebooksBook = TypedDict('ModelApplebooksBook', {
+    'artist_id': NotRequired[int],
+    'artist_name': NotRequired[str],
+    'artist_url': NotRequired[str],
+    'artwork_url': NotRequired[str],
+    'audience': NotRequired[str],
+    'audiobook_id': NotRequired[int],
+    'currency': NotRequired[str],
+    'description': NotRequired[str],
+    'free': NotRequired[bool],
+    'genres': NotRequired[list[str]],
+    'id': NotRequired[int],
+    'isbn': NotRequired[str],
+    'name': NotRequired[str],
+    'page_count': NotRequired[int],
+    'price': NotRequired[float],
+    'publisher': NotRequired[str],
+    'rating': NotRequired[float],
+    'rating_count': NotRequired[int],
+    'rating_histogram': NotRequired[dict[str, int]],
+    'release_date': NotRequired[str],
+    'series_id': NotRequired[int],
+    'series_name': NotRequired[str],
+    'series_sequence': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelApplebooksChartItem = TypedDict('ModelApplebooksChartItem', {
+    'artist_id': NotRequired[int],
+    'artist_name': NotRequired[str],
+    'artist_url': NotRequired[str],
+    'artwork_url': NotRequired[str],
+    'genres': NotRequired[list[str]],
+    'id': NotRequired[int],
+    'name': NotRequired[str],
+    'release_date': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelApplebooksReview = TypedDict('ModelApplebooksReview', {
+    'date': NotRequired[str],
+    'id': NotRequired[str],
+    'rating': NotRequired[int],
+    'text': NotRequired[str],
+    'title': NotRequired[str],
+    'user_name': NotRequired[str],
+}, total=False)
+
+ModelApplebooksSeries = TypedDict('ModelApplebooksSeries', {
+    'books': NotRequired[list[ModelApplebooksBook]],
+    'id': NotRequired[int],
+    'name': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelApplebooksAudiobookResponseDoc = TypedDict('ModelApplebooksAudiobookResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelApplebooksAudiobook],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelApplebooksAudiobookReviewsResponseDoc = TypedDict('ModelApplebooksAudiobookReviewsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[list[ModelApplebooksReview]],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelApplebooksAudiobookSearchResponseDoc = TypedDict('ModelApplebooksAudiobookSearchResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[list[ModelApplebooksAudiobook]],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelApplebooksAudiobookSeriesResponseDoc = TypedDict('ModelApplebooksAudiobookSeriesResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelApplebooksAudiobookSeries],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelApplebooksAudiobookSimilarResponseDoc = TypedDict('ModelApplebooksAudiobookSimilarResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[list[ModelApplebooksAudiobook]],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelApplebooksAuthorResponseDoc = TypedDict('ModelApplebooksAuthorResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelApplebooksAuthor],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelApplebooksBookResponseDoc = TypedDict('ModelApplebooksBookResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelApplebooksBook],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelApplebooksChartsResponseDoc = TypedDict('ModelApplebooksChartsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[list[ModelApplebooksChartItem]],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelApplebooksReviewsResponseDoc = TypedDict('ModelApplebooksReviewsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[list[ModelApplebooksReview]],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelApplebooksSearchResponseDoc = TypedDict('ModelApplebooksSearchResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[list[ModelApplebooksBook]],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelApplebooksSeriesResponseDoc = TypedDict('ModelApplebooksSeriesResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelApplebooksSeries],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelApplebooksSimilarResponseDoc = TypedDict('ModelApplebooksSimilarResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[list[ModelApplebooksBook]],
+    'msg': NotRequired[str],
+}, total=False)
+
 ModelApplepodcastsGenre = TypedDict('ModelApplepodcastsGenre', {
     'id': NotRequired[str],
     'name': NotRequired[str],
@@ -1714,12 +1883,16 @@ ModelBoxofficemojoShowdownsResponse = TypedDict('ModelBoxofficemojoShowdownsResp
 
 ModelBoxofficemojoTaxonomyDetailResponse = TypedDict('ModelBoxofficemojoTaxonomyDetailResponse', {
     'fetched_at': NotRequired[str],
+    'has_more': NotRequired[bool],
     'id': NotRequired[str],
     'kind': NotRequired[str],
     'name': NotRequired[str],
+    'offset': NotRequired[int],
     'path': NotRequired[str],
     'public_page_derived': NotRequired[bool],
     'results': NotRequired[list[ModelBoxofficemojoTaxonomyMovieRow]],
+    'sort': NotRequired[str],
+    'sort_dir': NotRequired[str],
     'source_url': NotRequired[str],
     'summary': NotRequired[ModelBoxofficemojoTaxonomySummary],
     'url': NotRequired[str],
@@ -1730,6 +1903,8 @@ ModelBoxofficemojoTaxonomyListResponse = TypedDict('ModelBoxofficemojoTaxonomyLi
     'kind': NotRequired[str],
     'public_page_derived': NotRequired[bool],
     'results': NotRequired[list[ModelBoxofficemojoTaxonomyListRow]],
+    'sort': NotRequired[str],
+    'sort_dir': NotRequired[str],
     'source_url': NotRequired[str],
 }, total=False)
 
@@ -3332,6 +3507,36 @@ ModelDatasetsGithubUserSearchResponse = TypedDict('ModelDatasetsGithubUserSearch
     'total': NotRequired[int],
 }, total=False)
 
+ModelDatasetsGoodreadsAuthorFacetResponse = TypedDict('ModelDatasetsGoodreadsAuthorFacetResponse', {
+    'dataset': NotRequired[str],
+    'facet': NotRequired[str],
+    'items': NotRequired[list[ModelEsGoodreadsAuthorDatasetFacetItem]],
+}, total=False)
+
+ModelDatasetsGoodreadsAuthorSearchResponse = TypedDict('ModelDatasetsGoodreadsAuthorSearchResponse', {
+    'dataset': NotRequired[str],
+    'items': NotRequired[list[ModelEsGoodreadsAuthorRecord]],
+    'page': NotRequired[int],
+    'page_size': NotRequired[int],
+    'sort': NotRequired[str],
+    'total': NotRequired[int],
+}, total=False)
+
+ModelDatasetsGoodreadsFacetResponse = TypedDict('ModelDatasetsGoodreadsFacetResponse', {
+    'dataset': NotRequired[str],
+    'facet': NotRequired[str],
+    'items': NotRequired[list[ModelEsGoodreadsBookDatasetFacetItem]],
+}, total=False)
+
+ModelDatasetsGoodreadsSearchResponse = TypedDict('ModelDatasetsGoodreadsSearchResponse', {
+    'dataset': NotRequired[str],
+    'items': NotRequired[list[ModelEsGoodreadsBookRecord]],
+    'page': NotRequired[int],
+    'page_size': NotRequired[int],
+    'sort': NotRequired[str],
+    'total': NotRequired[int],
+}, total=False)
+
 ModelDatasetsGoogleBusinessFacetResponse = TypedDict('ModelDatasetsGoogleBusinessFacetResponse', {
     'dataset': NotRequired[str],
     'facet': NotRequired[str],
@@ -3413,6 +3618,81 @@ ModelDatasetsNumbeoCitySearchResponse = TypedDict('ModelDatasetsNumbeoCitySearch
 ModelDatasetsNumbeoCountrySearchResponse = TypedDict('ModelDatasetsNumbeoCountrySearchResponse', {
     'dataset': NotRequired[str],
     'items': NotRequired[list[ModelEsNumbeoCountryRecord]],
+    'page': NotRequired[int],
+    'page_size': NotRequired[int],
+    'sort': NotRequired[str],
+    'total': NotRequired[int],
+}, total=False)
+
+ModelDatasetsPitchbookAdvisorsFacetResponse = TypedDict('ModelDatasetsPitchbookAdvisorsFacetResponse', {
+    'dataset': NotRequired[str],
+    'facet': NotRequired[str],
+    'items': NotRequired[list[ModelEsPitchbookFacetItem]],
+}, total=False)
+
+ModelDatasetsPitchbookAdvisorsSearchResponse = TypedDict('ModelDatasetsPitchbookAdvisorsSearchResponse', {
+    'dataset': NotRequired[str],
+    'items': NotRequired[list[ModelEsPitchbookRecord]],
+    'page': NotRequired[int],
+    'page_size': NotRequired[int],
+    'sort': NotRequired[str],
+    'total': NotRequired[int],
+}, total=False)
+
+ModelDatasetsPitchbookCompaniesFacetResponse = TypedDict('ModelDatasetsPitchbookCompaniesFacetResponse', {
+    'dataset': NotRequired[str],
+    'facet': NotRequired[str],
+    'items': NotRequired[list[ModelEsPitchbookFacetItem]],
+}, total=False)
+
+ModelDatasetsPitchbookCompaniesSearchResponse = TypedDict('ModelDatasetsPitchbookCompaniesSearchResponse', {
+    'dataset': NotRequired[str],
+    'items': NotRequired[list[ModelEsPitchbookRecord]],
+    'page': NotRequired[int],
+    'page_size': NotRequired[int],
+    'sort': NotRequired[str],
+    'total': NotRequired[int],
+}, total=False)
+
+ModelDatasetsPitchbookFundsFacetResponse = TypedDict('ModelDatasetsPitchbookFundsFacetResponse', {
+    'dataset': NotRequired[str],
+    'facet': NotRequired[str],
+    'items': NotRequired[list[ModelEsPitchbookFacetItem]],
+}, total=False)
+
+ModelDatasetsPitchbookFundsSearchResponse = TypedDict('ModelDatasetsPitchbookFundsSearchResponse', {
+    'dataset': NotRequired[str],
+    'items': NotRequired[list[ModelEsPitchbookRecord]],
+    'page': NotRequired[int],
+    'page_size': NotRequired[int],
+    'sort': NotRequired[str],
+    'total': NotRequired[int],
+}, total=False)
+
+ModelDatasetsPitchbookInvestorsFacetResponse = TypedDict('ModelDatasetsPitchbookInvestorsFacetResponse', {
+    'dataset': NotRequired[str],
+    'facet': NotRequired[str],
+    'items': NotRequired[list[ModelEsPitchbookFacetItem]],
+}, total=False)
+
+ModelDatasetsPitchbookInvestorsSearchResponse = TypedDict('ModelDatasetsPitchbookInvestorsSearchResponse', {
+    'dataset': NotRequired[str],
+    'items': NotRequired[list[ModelEsPitchbookRecord]],
+    'page': NotRequired[int],
+    'page_size': NotRequired[int],
+    'sort': NotRequired[str],
+    'total': NotRequired[int],
+}, total=False)
+
+ModelDatasetsPitchbookLimitedPartnersFacetResponse = TypedDict('ModelDatasetsPitchbookLimitedPartnersFacetResponse', {
+    'dataset': NotRequired[str],
+    'facet': NotRequired[str],
+    'items': NotRequired[list[ModelEsPitchbookFacetItem]],
+}, total=False)
+
+ModelDatasetsPitchbookLimitedPartnersSearchResponse = TypedDict('ModelDatasetsPitchbookLimitedPartnersSearchResponse', {
+    'dataset': NotRequired[str],
+    'items': NotRequired[list[ModelEsPitchbookRecord]],
     'page': NotRequired[int],
     'page_size': NotRequired[int],
     'sort': NotRequired[str],
@@ -3770,6 +4050,42 @@ ModelDatasetsGithubUsersSearchResponseDoc = TypedDict('ModelDatasetsGithubUsersS
     'msg': NotRequired[str],
 }, total=False)
 
+ModelDatasetsGoodreadsAuthorResponseDoc = TypedDict('ModelDatasetsGoodreadsAuthorResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelEsGoodreadsAuthorRecord],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelDatasetsGoodreadsAuthorsFacetResponseDoc = TypedDict('ModelDatasetsGoodreadsAuthorsFacetResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelDatasetsGoodreadsAuthorFacetResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelDatasetsGoodreadsAuthorsSearchResponseDoc = TypedDict('ModelDatasetsGoodreadsAuthorsSearchResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelDatasetsGoodreadsAuthorSearchResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelDatasetsGoodreadsBookResponseDoc = TypedDict('ModelDatasetsGoodreadsBookResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelEsGoodreadsBookRecord],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelDatasetsGoodreadsBooksFacetResponseDoc = TypedDict('ModelDatasetsGoodreadsBooksFacetResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelDatasetsGoodreadsFacetResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelDatasetsGoodreadsBooksSearchResponseDoc = TypedDict('ModelDatasetsGoodreadsBooksSearchResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelDatasetsGoodreadsSearchResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
 ModelDatasetsGoogleMapBusinessResponseDoc = TypedDict('ModelDatasetsGoogleMapBusinessResponseDoc', {
     'code': NotRequired[int],
     'data': NotRequired[ModelEsGoogleBusiness],
@@ -3881,6 +4197,96 @@ ModelDatasetsNumbeoCountriesSearchResponseDoc = TypedDict('ModelDatasetsNumbeoCo
 ModelDatasetsNumbeoCountryResponseDoc = TypedDict('ModelDatasetsNumbeoCountryResponseDoc', {
     'code': NotRequired[int],
     'data': NotRequired[ModelEsNumbeoCountryRecord],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelDatasetsPitchbookAdvisorResponseDoc = TypedDict('ModelDatasetsPitchbookAdvisorResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelEsPitchbookRecord],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelDatasetsPitchbookAdvisorsFacetResponseDoc = TypedDict('ModelDatasetsPitchbookAdvisorsFacetResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelDatasetsPitchbookAdvisorsFacetResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelDatasetsPitchbookAdvisorsSearchResponseDoc = TypedDict('ModelDatasetsPitchbookAdvisorsSearchResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelDatasetsPitchbookAdvisorsSearchResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelDatasetsPitchbookCompaniesFacetResponseDoc = TypedDict('ModelDatasetsPitchbookCompaniesFacetResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelDatasetsPitchbookCompaniesFacetResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelDatasetsPitchbookCompaniesSearchResponseDoc = TypedDict('ModelDatasetsPitchbookCompaniesSearchResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelDatasetsPitchbookCompaniesSearchResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelDatasetsPitchbookCompanyResponseDoc = TypedDict('ModelDatasetsPitchbookCompanyResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelEsPitchbookRecord],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelDatasetsPitchbookFundResponseDoc = TypedDict('ModelDatasetsPitchbookFundResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelEsPitchbookRecord],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelDatasetsPitchbookFundsFacetResponseDoc = TypedDict('ModelDatasetsPitchbookFundsFacetResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelDatasetsPitchbookFundsFacetResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelDatasetsPitchbookFundsSearchResponseDoc = TypedDict('ModelDatasetsPitchbookFundsSearchResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelDatasetsPitchbookFundsSearchResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelDatasetsPitchbookInvestorResponseDoc = TypedDict('ModelDatasetsPitchbookInvestorResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelEsPitchbookRecord],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelDatasetsPitchbookInvestorsFacetResponseDoc = TypedDict('ModelDatasetsPitchbookInvestorsFacetResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelDatasetsPitchbookInvestorsFacetResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelDatasetsPitchbookInvestorsSearchResponseDoc = TypedDict('ModelDatasetsPitchbookInvestorsSearchResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelDatasetsPitchbookInvestorsSearchResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelDatasetsPitchbookLimitedPartnerResponseDoc = TypedDict('ModelDatasetsPitchbookLimitedPartnerResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelEsPitchbookRecord],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelDatasetsPitchbookLimitedPartnersFacetResponseDoc = TypedDict('ModelDatasetsPitchbookLimitedPartnersFacetResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelDatasetsPitchbookLimitedPartnersFacetResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelDatasetsPitchbookLimitedPartnersSearchResponseDoc = TypedDict('ModelDatasetsPitchbookLimitedPartnersSearchResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelDatasetsPitchbookLimitedPartnersSearchResponse],
     'msg': NotRequired[str],
 }, total=False)
 
@@ -5040,6 +5446,74 @@ ModelEsGithubUserRecord = TypedDict('ModelEsGithubUserRecord', {
     'type': NotRequired[str],
 }, total=False)
 
+ModelEsGoodreadsAuthorDatasetFacetItem = TypedDict('ModelEsGoodreadsAuthorDatasetFacetItem', {
+    'count': NotRequired[int],
+    'value': NotRequired[str],
+}, total=False)
+
+ModelEsGoodreadsAuthorRecord = TypedDict('ModelEsGoodreadsAuthorRecord', {
+    'about': NotRequired[str],
+    'average_rating': NotRequired[float],
+    'birth_date': NotRequired[str],
+    'crawled_at': NotRequired[str],
+    'death_date': NotRequired[str],
+    'discovery_source': NotRequired[str],
+    'genres': NotRequired[list[str]],
+    'id': NotRequired[str],
+    'image_url': NotRequired[str],
+    'name': NotRequired[str],
+    'ratings_count': NotRequired[int],
+    'reviews_count': NotRequired[int],
+    'run_id': NotRequired[str],
+    'schema_version': NotRequired[int],
+    'seed_rank': NotRequired[int],
+    'source_url': NotRequired[str],
+    'uri': NotRequired[str],
+    'website': NotRequired[str],
+}, total=False)
+
+ModelEsGoodreadsBookDatasetFacetItem = TypedDict('ModelEsGoodreadsBookDatasetFacetItem', {
+    'count': NotRequired[int],
+    'value': NotRequired[str],
+}, total=False)
+
+ModelEsGoodreadsBookRecord = TypedDict('ModelEsGoodreadsBookRecord', {
+    'author_ids': NotRequired[list[str]],
+    'authors': NotRequired[list[str]],
+    'crawled_at': NotRequired[str],
+    'description': NotRequired[str],
+    'discovery_source': NotRequired[str],
+    'format': NotRequired[str],
+    'genres': NotRequired[list[str]],
+    'id': NotRequired[str],
+    'image_url': NotRequired[str],
+    'isbn': NotRequired[str],
+    'isbn13': NotRequired[str],
+    'language': NotRequired[str],
+    'pages': NotRequired[int],
+    'primary_author': NotRequired[str],
+    'primary_author_id': NotRequired[str],
+    'publication_date': NotRequired[str],
+    'publication_year': NotRequired[int],
+    'publisher': NotRequired[str],
+    'rating_average': NotRequired[float],
+    'rating_five_star': NotRequired[int],
+    'rating_four_star': NotRequired[int],
+    'rating_one_star': NotRequired[int],
+    'rating_three_star': NotRequired[int],
+    'rating_two_star': NotRequired[int],
+    'ratings_count': NotRequired[int],
+    'reviews_count': NotRequired[int],
+    'run_id': NotRequired[str],
+    'schema_version': NotRequired[int],
+    'seed_rank': NotRequired[int],
+    'series': NotRequired[str],
+    'series_name': NotRequired[str],
+    'source_url': NotRequired[str],
+    'title': NotRequired[str],
+    'uri': NotRequired[str],
+}, total=False)
+
 ModelEsGoogleBusiness = TypedDict('ModelEsGoogleBusiness', {
     'address': NotRequired[str],
     'amenities': NotRequired[list[str]],
@@ -5276,6 +5750,73 @@ ModelEsNumbeoNamedValue = TypedDict('ModelEsNumbeoNamedValue', {
     'value': NotRequired[float],
 }, total=False)
 
+ModelEsPitchbookFaqrecord = TypedDict('ModelEsPitchbookFaqrecord', {
+    'answer': NotRequired[str],
+    'question': NotRequired[str],
+}, total=False)
+
+ModelEsPitchbookFacetItem = TypedDict('ModelEsPitchbookFacetItem', {
+    'count': NotRequired[int],
+    'value': NotRequired[str],
+}, total=False)
+
+ModelEsPitchbookRecord = TypedDict('ModelEsPitchbookRecord', {
+    'commitments_count': NotRequired[int],
+    'contact': NotRequired[dict[str, str]],
+    'contact_title': NotRequired[str],
+    'crawled_at': NotRequired[str],
+    'crawled_at_ms': NotRequired[int],
+    'description': NotRequired[str],
+    'discovery_source': NotRequired[str],
+    'employees': NotRequired[int],
+    'exits_count': NotRequired[int],
+    'faqs': NotRequired[list[ModelEsPitchbookFaqrecord]],
+    'financing_status': NotRequired[str],
+    'formerly_known_as': NotRequired[list[str]],
+    'fund_size': NotRequired[str],
+    'fund_status': NotRequired[str],
+    'fund_strategy': NotRequired[str],
+    'hq_city': NotRequired[str],
+    'hq_country': NotRequired[str],
+    'hq_state': NotRequired[str],
+    'id': NotRequired[str],
+    'institution_type': NotRequired[str],
+    'investments_count': NotRequired[int],
+    'investor_count': NotRequired[int],
+    'investor_type': NotRequired[str],
+    'kind': NotRequired[str],
+    'latest_deal_type': NotRequired[str],
+    'managing_firm_name': NotRequired[str],
+    'name': NotRequired[str],
+    'other_industries': NotRequired[list[str]],
+    'overview': NotRequired[dict[str, str]],
+    'ownership_status': NotRequired[str],
+    'portfolio_count': NotRequired[int],
+    'primary_industry': NotRequired[str],
+    'run_id': NotRequired[str],
+    'schema_version': NotRequired[int],
+    'seed_rank': NotRequired[int],
+    'service_type': NotRequired[str],
+    'serviced_companies': NotRequired[int],
+    'serviced_deals': NotRequired[int],
+    'sitemap_lastmod': NotRequired[str],
+    'source_url': NotRequired[str],
+    'status': NotRequired[str],
+    'tables': NotRequired[list[ModelEsPitchbookTableRecord]],
+    'verticals': NotRequired[list[str]],
+    'vintage_year': NotRequired[int],
+    'website': NotRequired[str],
+    'year_founded': NotRequired[int],
+}, total=False)
+
+ModelEsPitchbookTableRecord = TypedDict('ModelEsPitchbookTableRecord', {
+    'columns': NotRequired[list[str]],
+    'name': NotRequired[str],
+    'row_ids': NotRequired[list[list[str]]],
+    'rows': NotRequired[list[list[str]]],
+    'total': NotRequired[int],
+}, total=False)
+
 ModelEsPlaystationGameDatasetFacetItem = TypedDict('ModelEsPlaystationGameDatasetFacetItem', {
     'count': NotRequired[int],
     'value': NotRequired[str],
@@ -5429,6 +5970,7 @@ ModelEsProductHuntProductItem = TypedDict('ModelEsProductHuntProductItem', {
     'tagline': NotRequired[str],
     'topic_slugs': NotRequired[list[str]],
     'topics': NotRequired[list[ModelEsProductHuntTopic]],
+    'twitter_url': NotRequired[str],
     'url': NotRequired[str],
     'website': NotRequired[str],
     'won_daily': NotRequired[bool],
@@ -6681,6 +7223,13 @@ ModelGoodreadsAuthorBooksResponse = TypedDict('ModelGoodreadsAuthorBooksResponse
     'source_url': NotRequired[str],
 }, total=False)
 
+ModelGoodreadsAuthorQuotesResponse = TypedDict('ModelGoodreadsAuthorQuotesResponse', {
+    'author_id': NotRequired[str],
+    'page': NotRequired[int],
+    'quotes': NotRequired[list[ModelGoodreadsQuote]],
+    'source_url': NotRequired[str],
+}, total=False)
+
 ModelGoodreadsAuthorResponse = TypedDict('ModelGoodreadsAuthorResponse', {
     'about': NotRequired[str],
     'average_rating': NotRequired[float],
@@ -6747,12 +7296,78 @@ ModelGoodreadsBookResponse = TypedDict('ModelGoodreadsBookResponse', {
     'uri': NotRequired[str],
 }, total=False)
 
+ModelGoodreadsEdition = TypedDict('ModelGoodreadsEdition', {
+    'asin': NotRequired[str],
+    'authors': NotRequired[list[str]],
+    'average_rating': NotRequired[float],
+    'book_id': NotRequired[str],
+    'format': NotRequired[str],
+    'isbn': NotRequired[str],
+    'isbn13': NotRequired[str],
+    'language': NotRequired[str],
+    'pages': NotRequired[int],
+    'publication_date': NotRequired[str],
+    'publisher': NotRequired[str],
+    'ratings_count': NotRequired[int],
+    'title': NotRequired[str],
+    'uri': NotRequired[str],
+}, total=False)
+
+ModelGoodreadsEditionsResponse = TypedDict('ModelGoodreadsEditionsResponse', {
+    'book_id': NotRequired[str],
+    'editions': NotRequired[list[ModelGoodreadsEdition]],
+    'page': NotRequired[int],
+    'source_url': NotRequired[str],
+    'title': NotRequired[str],
+    'work_id': NotRequired[str],
+}, total=False)
+
+ModelGoodreadsGenreBookItem = TypedDict('ModelGoodreadsGenreBookItem', {
+    'author': NotRequired[str],
+    'author_id': NotRequired[str],
+    'average_rating': NotRequired[float],
+    'id': NotRequired[str],
+    'publication_year': NotRequired[int],
+    'ratings_count': NotRequired[int],
+    'shelved_count': NotRequired[int],
+    'title': NotRequired[str],
+    'uri': NotRequired[str],
+}, total=False)
+
+ModelGoodreadsGenreResponse = TypedDict('ModelGoodreadsGenreResponse', {
+    'books': NotRequired[list[ModelGoodreadsGenreBookItem]],
+    'name': NotRequired[str],
+    'source_url': NotRequired[str],
+}, total=False)
+
+ModelGoodreadsListDirectoryItem = TypedDict('ModelGoodreadsListDirectoryItem', {
+    'category': NotRequired[str],
+    'id': NotRequired[str],
+    'name': NotRequired[str],
+}, total=False)
+
 ModelGoodreadsListResponse = TypedDict('ModelGoodreadsListResponse', {
     'books': NotRequired[list[ModelGoodreadsBookListItem]],
     'id': NotRequired[str],
     'page': NotRequired[int],
     'source_url': NotRequired[str],
     'title': NotRequired[str],
+}, total=False)
+
+ModelGoodreadsListsResponse = TypedDict('ModelGoodreadsListsResponse', {
+    'lists': NotRequired[list[ModelGoodreadsListDirectoryItem]],
+}, total=False)
+
+ModelGoodreadsQuote = TypedDict('ModelGoodreadsQuote', {
+    'author': NotRequired[str],
+    'book_id': NotRequired[str],
+    'book_title': NotRequired[str],
+    'id': NotRequired[str],
+    'likes': NotRequired[int],
+    'tags': NotRequired[list[str]],
+    'text': NotRequired[str],
+    'uri': NotRequired[str],
+    'work_id': NotRequired[str],
 }, total=False)
 
 ModelGoodreadsReview = TypedDict('ModelGoodreadsReview', {
@@ -6797,6 +7412,12 @@ ModelGoodreadsAuthorBooksResponseDoc = TypedDict('ModelGoodreadsAuthorBooksRespo
     'msg': NotRequired[str],
 }, total=False)
 
+ModelGoodreadsAuthorQuotesResponseDoc = TypedDict('ModelGoodreadsAuthorQuotesResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelGoodreadsAuthorQuotesResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
 ModelGoodreadsAuthorResponseDoc = TypedDict('ModelGoodreadsAuthorResponseDoc', {
     'code': NotRequired[int],
     'data': NotRequired[ModelGoodreadsAuthorResponse],
@@ -6809,9 +7430,27 @@ ModelGoodreadsBookResponseDoc = TypedDict('ModelGoodreadsBookResponseDoc', {
     'msg': NotRequired[str],
 }, total=False)
 
+ModelGoodreadsEditionsResponseDoc = TypedDict('ModelGoodreadsEditionsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelGoodreadsEditionsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelGoodreadsGenreResponseDoc = TypedDict('ModelGoodreadsGenreResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelGoodreadsGenreResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
 ModelGoodreadsListResponseDoc = TypedDict('ModelGoodreadsListResponseDoc', {
     'code': NotRequired[int],
     'data': NotRequired[ModelGoodreadsListResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelGoodreadsListsResponseDoc = TypedDict('ModelGoodreadsListsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelGoodreadsListsResponse],
     'msg': NotRequired[str],
 }, total=False)
 
@@ -6912,6 +7551,27 @@ ModelGooglePlace = TypedDict('ModelGooglePlace', {
     'website': NotRequired[str],
 }, total=False)
 
+ModelGooglePlacePhoto = TypedDict('ModelGooglePlacePhoto', {
+    'height': NotRequired[int],
+    'url': NotRequired[str],
+    'width': NotRequired[int],
+}, total=False)
+
+ModelGooglePlaceReview = TypedDict('ModelGooglePlaceReview', {
+    'author_id': NotRequired[str],
+    'author_name': NotRequired[str],
+    'author_photo': NotRequired[str],
+    'author_review_count': NotRequired[int],
+    'author_url': NotRequired[str],
+    'id': NotRequired[str],
+    'photos': NotRequired[list[ModelGooglePlacePhoto]],
+    'published_at': NotRequired[str],
+    'rating': NotRequired[int],
+    'relative_time': NotRequired[str],
+    'source': NotRequired[str],
+    'text': NotRequired[str],
+}, total=False)
+
 ModelGoogleSearchItem = TypedDict('ModelGoogleSearchItem', {
     'Snippet': NotRequired[str],
     'icon': NotRequired[str],
@@ -6970,9 +7630,21 @@ ModelGoogleVideosResponse = TypedDict('ModelGoogleVideosResponse', {
     'results': NotRequired[list[ModelGoogleVideoResult]],
 }, total=False)
 
+ModelGoogleMapPlacePhotosResponseDoc = TypedDict('ModelGoogleMapPlacePhotosResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[list[ModelGooglePlacePhoto]],
+    'msg': NotRequired[str],
+}, total=False)
+
 ModelGoogleMapPlaceResponseDoc = TypedDict('ModelGoogleMapPlaceResponseDoc', {
     'code': NotRequired[int],
     'data': NotRequired[ModelGooglePlace],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelGoogleMapPlaceReviewsResponseDoc = TypedDict('ModelGoogleMapPlaceReviewsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[list[ModelGooglePlaceReview]],
     'msg': NotRequired[str],
 }, total=False)
 
@@ -7844,6 +8516,7 @@ ModelJobsJob = TypedDict('ModelJobsJob', {
     'compensation_currency': NotRequired[str],
     'compensation_max': NotRequired[float],
     'compensation_min': NotRequired[float],
+    'compensation_period': NotRequired[str],
     'department': NotRequired[str],
     'description_html': NotRequired[str],
     'description_text': NotRequired[str],
@@ -9526,6 +10199,7 @@ ModelNumbeoRankingsResponseDoc = TypedDict('ModelNumbeoRankingsResponseDoc', {
 ModelPitchbookDataTable = TypedDict('ModelPitchbookDataTable', {
     'columns': NotRequired[list[str]],
     'name': NotRequired[str],
+    'row_ids': NotRequired[list[list[str]]],
     'rows': NotRequired[list[list[str]]],
     'total': NotRequired[int],
 }, total=False)
@@ -9548,6 +10222,12 @@ ModelPitchbookProfileResponse = TypedDict('ModelPitchbookProfileResponse', {
     'tables': NotRequired[list[ModelPitchbookDataTable]],
 }, total=False)
 
+ModelPitchbookAdvisorResponseDoc = TypedDict('ModelPitchbookAdvisorResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelPitchbookProfileResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
 ModelPitchbookCompanyResponseDoc = TypedDict('ModelPitchbookCompanyResponseDoc', {
     'code': NotRequired[int],
     'data': NotRequired[ModelPitchbookProfileResponse],
@@ -9561,6 +10241,12 @@ ModelPitchbookFundResponseDoc = TypedDict('ModelPitchbookFundResponseDoc', {
 }, total=False)
 
 ModelPitchbookInvestorResponseDoc = TypedDict('ModelPitchbookInvestorResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelPitchbookProfileResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelPitchbookLimitedPartnerResponseDoc = TypedDict('ModelPitchbookLimitedPartnerResponseDoc', {
     'code': NotRequired[int],
     'data': NotRequired[ModelPitchbookProfileResponse],
     'msg': NotRequired[str],
@@ -10939,6 +11625,7 @@ ModelProducthuntProductAboutLaunchProduct = TypedDict('ModelProducthuntProductAb
     'reviews_rating': NotRequired[float],
     'slug': NotRequired[str],
     'tagline': NotRequired[str],
+    'twitter_url': NotRequired[str],
     'viewer_pending_team_request': NotRequired[dict[str, Any]],
     'website_domain': NotRequired[str],
     'website_url': NotRequired[str],
@@ -17191,6 +17878,106 @@ ModelTrustpilotCategorySearchResponseDoc = TypedDict('ModelTrustpilotCategorySea
     'msg': NotRequired[str],
 }, total=False)
 
+ModelUbereatsAddress = TypedDict('ModelUbereatsAddress', {
+    'city': NotRequired[str],
+    'country': NotRequired[str],
+    'postalCode': NotRequired[str],
+    'region': NotRequired[str],
+    'street': NotRequired[str],
+}, total=False)
+
+ModelUbereatsMenuItem = TypedDict('ModelUbereatsMenuItem', {
+    'description': NotRequired[str],
+    'imageUrl': NotRequired[str],
+    'isSoldOut': NotRequired[bool],
+    'price': NotRequired[float],
+    'title': NotRequired[str],
+    'uuid': NotRequired[str],
+}, total=False)
+
+ModelUbereatsMenuSection = TypedDict('ModelUbereatsMenuSection', {
+    'items': NotRequired[list[ModelUbereatsMenuItem]],
+    'title': NotRequired[str],
+}, total=False)
+
+ModelUbereatsRestaurant = TypedDict('ModelUbereatsRestaurant', {
+    'cuisineTags': NotRequired[list[str]],
+    'currencyCode': NotRequired[str],
+    'deliveryEtaText': NotRequired[str],
+    'imageUrl': NotRequired[str],
+    'isSponsored': NotRequired[bool],
+    'latitude': NotRequired[float],
+    'longitude': NotRequired[float],
+    'name': NotRequired[str],
+    'rating': NotRequired[float],
+    'reviewCount': NotRequired[int],
+    'slug': NotRequired[str],
+    'storeUuid': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelUbereatsReview = TypedDict('ModelUbereatsReview', {
+    'createdAt': NotRequired[str],
+    'eaterName': NotRequired[str],
+    'formattedDate': NotRequired[str],
+    'text': NotRequired[str],
+    'timeSinceReview': NotRequired[str],
+}, total=False)
+
+ModelUbereatsSearchResponse = TypedDict('ModelUbereatsSearchResponse', {
+    'cityName': NotRequired[str],
+    'cursor': NotRequired[str],
+    'hasMore': NotRequired[bool],
+    'offset': NotRequired[int],
+    'restaurants': NotRequired[list[ModelUbereatsRestaurant]],
+}, total=False)
+
+ModelUbereatsStoreDetail = TypedDict('ModelUbereatsStoreDetail', {
+    'address': NotRequired[ModelUbereatsAddress],
+    'cuisineTags': NotRequired[list[str]],
+    'currencyCode': NotRequired[str],
+    'heroImageUrl': NotRequired[str],
+    'isOpen': NotRequired[bool],
+    'isOrderable': NotRequired[bool],
+    'latitude': NotRequired[float],
+    'longitude': NotRequired[float],
+    'menu': NotRequired[list[ModelUbereatsMenuSection]],
+    'phoneNumber': NotRequired[str],
+    'priceBucket': NotRequired[str],
+    'rating': NotRequired[float],
+    'reviewCount': NotRequired[int],
+    'slug': NotRequired[str],
+    'storeUuid': NotRequired[str],
+    'title': NotRequired[str],
+    'url': NotRequired[str],
+    'workingHoursTagline': NotRequired[str],
+}, total=False)
+
+ModelUbereatsStoreReviewsResponse = TypedDict('ModelUbereatsStoreReviewsResponse', {
+    'rating': NotRequired[float],
+    'reviewCount': NotRequired[int],
+    'reviews': NotRequired[list[ModelUbereatsReview]],
+    'storeUuid': NotRequired[str],
+}, total=False)
+
+ModelUbereatsSearchResponseDoc = TypedDict('ModelUbereatsSearchResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelUbereatsSearchResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelUbereatsStoreResponseDoc = TypedDict('ModelUbereatsStoreResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelUbereatsStoreDetail],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelUbereatsStoreReviewsResponseDoc = TypedDict('ModelUbereatsStoreReviewsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelUbereatsStoreReviewsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
 ModelUsageUsageBillingStateDoc = TypedDict('ModelUsageUsageBillingStateDoc', {
     'allow_overage': NotRequired[bool],
     'created_at': NotRequired[str],
@@ -18772,6 +19559,131 @@ AnimeTitleStaffParams = TypedDict('AnimeTitleStaffParams', {
     'per_page': NotRequired[int],
 }, total=False)
 
+AppleBooksAudiobookSeriesResponse = ModelApplebooksAudiobookSeriesResponseDoc
+AppleBooksAudiobookSeriesParams = TypedDict('AppleBooksAudiobookSeriesParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': Required[str],
+    'country': NotRequired[str],
+    'lang': NotRequired[str],
+}, total=False)
+
+AppleBooksAudiobookSearchResponse = ModelApplebooksAudiobookSearchResponseDoc
+AppleBooksAudiobookSearchParams = TypedDict('AppleBooksAudiobookSearchParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'term': Required[str],
+    'country': NotRequired[str],
+    'lang': NotRequired[str],
+    'limit': NotRequired[int],
+    'page': NotRequired[int],
+}, total=False)
+
+AppleBooksAudiobookResponse = ModelApplebooksAudiobookResponseDoc
+AppleBooksAudiobookParams = TypedDict('AppleBooksAudiobookParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': Required[str],
+    'country': NotRequired[str],
+    'lang': NotRequired[str],
+}, total=False)
+
+AppleBooksAudiobookReviewsResponse = ModelApplebooksAudiobookReviewsResponseDoc
+AppleBooksAudiobookReviewsParams = TypedDict('AppleBooksAudiobookReviewsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': Required[str],
+    'country': NotRequired[str],
+    'lang': NotRequired[str],
+}, total=False)
+
+AppleBooksAudiobookSimilarResponse = ModelApplebooksAudiobookSimilarResponseDoc
+AppleBooksAudiobookSimilarParams = TypedDict('AppleBooksAudiobookSimilarParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': Required[str],
+    'country': NotRequired[str],
+    'lang': NotRequired[str],
+}, total=False)
+
+AppleBooksAuthorResponse = ModelApplebooksAuthorResponseDoc
+AppleBooksAuthorParams = TypedDict('AppleBooksAuthorParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': Required[str],
+    'country': NotRequired[str],
+    'lang': NotRequired[str],
+}, total=False)
+
+AppleBooksBookResponse = ModelApplebooksBookResponseDoc
+AppleBooksBookParams = TypedDict('AppleBooksBookParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': Required[str],
+    'country': NotRequired[str],
+    'lang': NotRequired[str],
+}, total=False)
+
+AppleBooksBookReviewsResponse = ModelApplebooksReviewsResponseDoc
+AppleBooksBookReviewsParams = TypedDict('AppleBooksBookReviewsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': Required[str],
+    'country': NotRequired[str],
+    'lang': NotRequired[str],
+}, total=False)
+
+AppleBooksBookSimilarResponse = ModelApplebooksSimilarResponseDoc
+AppleBooksBookSimilarParams = TypedDict('AppleBooksBookSimilarParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': Required[str],
+    'country': NotRequired[str],
+    'lang': NotRequired[str],
+}, total=False)
+
+AppleBooksChartsResponse = ModelApplebooksChartsResponseDoc
+AppleBooksChartsParams = TypedDict('AppleBooksChartsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'collection': NotRequired[str],
+    'genre': NotRequired[int],
+    'country': NotRequired[str],
+    'limit': NotRequired[int],
+}, total=False)
+
+AppleBooksSearchResponse = ModelApplebooksSearchResponseDoc
+AppleBooksSearchParams = TypedDict('AppleBooksSearchParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'term': Required[str],
+    'country': NotRequired[str],
+    'lang': NotRequired[str],
+    'limit': NotRequired[int],
+    'page': NotRequired[int],
+}, total=False)
+
+AppleBooksSeriesResponse = ModelApplebooksSeriesResponseDoc
+AppleBooksSeriesParams = TypedDict('AppleBooksSeriesParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': Required[str],
+    'country': NotRequired[str],
+    'lang': NotRequired[str],
+}, total=False)
+
 ApplePodcastsChartsResponse = ModelApplepodcastsChartsResponseDoc
 ApplePodcastsChartsParams = TypedDict('ApplePodcastsChartsParams', {
     '_response_type': NotRequired[ResponseType],
@@ -19080,6 +19992,9 @@ BoxOfficeMojoBoxofficemojoBrandParams = TypedDict('BoxOfficeMojoBoxofficemojoBra
     'id': NotRequired[str],
     'path': NotRequired[str],
     'url': NotRequired[str],
+    'sort': NotRequired[Literal['grossToDate', 'maxNumTheaters', 'openingWeekendGross', 'openingNumTheaters', 'releaseDate']],
+    'sortDir': NotRequired[Literal['asc', 'desc']],
+    'offset': NotRequired[int],
 }, total=False)
 
 BoxOfficeMojoBoxofficemojoBrandsResponse = ModelBoxofficemojoTaxonomyListResponseDoc
@@ -19087,6 +20002,8 @@ BoxOfficeMojoBoxofficemojoBrandsParams = TypedDict('BoxOfficeMojoBoxofficemojoBr
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
     '_headers': NotRequired[Mapping[str, str]],
+    'sort': NotRequired[Literal['totalGross', 'numReleases', 'grossToDate']],
+    'sortDir': NotRequired[Literal['asc', 'desc']],
 }, total=False)
 
 BoxOfficeMojoBoxofficemojoCalendarResponse = ModelBoxofficemojoCalendarResponseDoc
@@ -19130,6 +20047,9 @@ BoxOfficeMojoBoxofficemojoFranchiseParams = TypedDict('BoxOfficeMojoBoxofficemoj
     'id': NotRequired[str],
     'path': NotRequired[str],
     'url': NotRequired[str],
+    'sort': NotRequired[Literal['grossToDate', 'maxNumTheaters', 'openingWeekendGross', 'openingNumTheaters', 'releaseDate']],
+    'sortDir': NotRequired[Literal['asc', 'desc']],
+    'offset': NotRequired[int],
 }, total=False)
 
 BoxOfficeMojoBoxofficemojoFranchisesResponse = ModelBoxofficemojoTaxonomyListResponseDoc
@@ -19137,6 +20057,8 @@ BoxOfficeMojoBoxofficemojoFranchisesParams = TypedDict('BoxOfficeMojoBoxofficemo
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
     '_headers': NotRequired[Mapping[str, str]],
+    'sort': NotRequired[Literal['totalGross', 'numReleases', 'grossToDate']],
+    'sortDir': NotRequired[Literal['asc', 'desc']],
 }, total=False)
 
 BoxOfficeMojoBoxofficemojoGenreResponse = ModelBoxofficemojoTaxonomyDetailResponseDoc
@@ -19147,6 +20069,9 @@ BoxOfficeMojoBoxofficemojoGenreParams = TypedDict('BoxOfficeMojoBoxofficemojoGen
     'id': NotRequired[str],
     'path': NotRequired[str],
     'url': NotRequired[str],
+    'sort': NotRequired[Literal['grossToDate', 'maxNumTheaters', 'openingWeekendGross', 'openingNumTheaters', 'releaseDate']],
+    'sortDir': NotRequired[Literal['asc', 'desc']],
+    'offset': NotRequired[int],
 }, total=False)
 
 BoxOfficeMojoBoxofficemojoGenresResponse = ModelBoxofficemojoTaxonomyListResponseDoc
@@ -19154,6 +20079,8 @@ BoxOfficeMojoBoxofficemojoGenresParams = TypedDict('BoxOfficeMojoBoxofficemojoGe
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
     '_headers': NotRequired[Mapping[str, str]],
+    'sort': NotRequired[Literal['totalGross', 'numTitles', 'grossToDate']],
+    'sortDir': NotRequired[Literal['asc', 'desc']],
 }, total=False)
 
 BoxOfficeMojoBoxofficemojoLifetimeGrossesResponse = ModelBoxofficemojoLifetimeGrossesResponseDoc
@@ -20088,6 +21015,104 @@ DatasetsGithubUsersSearchParams = TypedDict('DatasetsGithubUsersSearchParams', {
     'page_size': NotRequired[int],
 }, total=False)
 
+DatasetsGoodreadsAuthorsFacetsResponse = ModelDatasetsGoodreadsAuthorsFacetResponseDoc
+DatasetsGoodreadsAuthorsFacetsParams = TypedDict('DatasetsGoodreadsAuthorsFacetsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'facet': Required[str],
+    'q': NotRequired[str],
+    'name': NotRequired[str],
+    'genre': NotRequired[str],
+    'run_id': NotRequired[str],
+    'min_rating': NotRequired[float],
+    'min_ratings_count': NotRequired[int],
+}, total=False)
+
+DatasetsGoodreadsAuthorsItemResponse = ModelDatasetsGoodreadsAuthorResponseDoc
+DatasetsGoodreadsAuthorsItemParams = TypedDict('DatasetsGoodreadsAuthorsItemParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': Required[str],
+}, total=False)
+
+DatasetsGoodreadsAuthorsSearchResponse = ModelDatasetsGoodreadsAuthorsSearchResponseDoc
+DatasetsGoodreadsAuthorsSearchParams = TypedDict('DatasetsGoodreadsAuthorsSearchParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'q': NotRequired[str],
+    'name': NotRequired[str],
+    'genre': NotRequired[str],
+    'run_id': NotRequired[str],
+    'min_rating': NotRequired[float],
+    'min_ratings_count': NotRequired[int],
+    'sort': NotRequired[str],
+    'page': NotRequired[int],
+    'page_size': NotRequired[int],
+}, total=False)
+
+DatasetsGoodreadsBooksFacetsResponse = ModelDatasetsGoodreadsBooksFacetResponseDoc
+DatasetsGoodreadsBooksFacetsParams = TypedDict('DatasetsGoodreadsBooksFacetsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'facet': Required[str],
+    'q': NotRequired[str],
+    'genre': NotRequired[str],
+    'format': NotRequired[str],
+    'language': NotRequired[str],
+    'publisher': NotRequired[str],
+    'author': NotRequired[str],
+    'author_id': NotRequired[str],
+    'series': NotRequired[str],
+    'isbn': NotRequired[str],
+    'isbn13': NotRequired[str],
+    'run_id': NotRequired[str],
+    'min_rating': NotRequired[float],
+    'min_ratings_count': NotRequired[int],
+    'min_pages': NotRequired[int],
+    'max_pages': NotRequired[int],
+    'min_publication_year': NotRequired[int],
+    'max_publication_year': NotRequired[int],
+}, total=False)
+
+DatasetsGoodreadsBooksItemResponse = ModelDatasetsGoodreadsBookResponseDoc
+DatasetsGoodreadsBooksItemParams = TypedDict('DatasetsGoodreadsBooksItemParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': Required[str],
+}, total=False)
+
+DatasetsGoodreadsBooksSearchResponse = ModelDatasetsGoodreadsBooksSearchResponseDoc
+DatasetsGoodreadsBooksSearchParams = TypedDict('DatasetsGoodreadsBooksSearchParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'q': NotRequired[str],
+    'genre': NotRequired[str],
+    'format': NotRequired[str],
+    'language': NotRequired[str],
+    'publisher': NotRequired[str],
+    'author': NotRequired[str],
+    'author_id': NotRequired[str],
+    'series': NotRequired[str],
+    'isbn': NotRequired[str],
+    'isbn13': NotRequired[str],
+    'run_id': NotRequired[str],
+    'min_rating': NotRequired[float],
+    'min_ratings_count': NotRequired[int],
+    'min_pages': NotRequired[int],
+    'max_pages': NotRequired[int],
+    'min_publication_year': NotRequired[int],
+    'max_publication_year': NotRequired[int],
+    'sort': NotRequired[str],
+    'page': NotRequired[int],
+    'page_size': NotRequired[int],
+}, total=False)
+
 DatasetsGoogleMapBusinessesFacetsResponse = ModelDatasetsGoogleMapBusinessesFacetResponseDoc
 DatasetsGoogleMapBusinessesFacetsParams = TypedDict('DatasetsGoogleMapBusinessesFacetsParams', {
     '_response_type': NotRequired[ResponseType],
@@ -20238,7 +21263,7 @@ DatasetsJobsCompaniesParams = TypedDict('DatasetsJobsCompaniesParams', {
     '_timeout': NotRequired[float],
     '_headers': NotRequired[Mapping[str, str]],
     'q': NotRequired[str],
-    'provider': NotRequired[Literal['greenhouse', 'lever', 'ashby', 'workday', 'smartrecruiters', 'workable', 'recruitee', 'rippling', 'personio', 'teamtailor', 'oracle', 'ukg', 'icims', 'eightfold']],
+    'provider': NotRequired[Literal['greenhouse', 'lever', 'ashby', 'workday', 'smartrecruiters', 'workable', 'recruitee', 'rippling', 'personio', 'teamtailor', 'oracle', 'ukg', 'icims', 'eightfold', 'gem', 'pinpoint']],
     'status': NotRequired[str],
     'min_open_roles': NotRequired[int],
     'sort': NotRequired[str],
@@ -20278,7 +21303,7 @@ DatasetsJobsNearbyParams = TypedDict('DatasetsJobsNearbyParams', {
     'lat': Required[float],
     'lon': Required[float],
     'radius_km': NotRequired[float],
-    'provider': NotRequired[Literal['greenhouse', 'lever', 'ashby', 'workday', 'smartrecruiters', 'workable', 'recruitee', 'rippling', 'personio', 'teamtailor', 'oracle', 'ukg', 'icims', 'eightfold']],
+    'provider': NotRequired[Literal['greenhouse', 'lever', 'ashby', 'workday', 'smartrecruiters', 'workable', 'recruitee', 'rippling', 'personio', 'teamtailor', 'oracle', 'ukg', 'icims', 'eightfold', 'gem', 'pinpoint']],
     'include_closed': NotRequired[bool],
     'page': NotRequired[int],
     'page_size': NotRequired[int],
@@ -20291,12 +21316,15 @@ DatasetsJobsSearchParams = TypedDict('DatasetsJobsSearchParams', {
     '_headers': NotRequired[Mapping[str, str]],
     'q': NotRequired[str],
     'company': NotRequired[str],
-    'provider': NotRequired[Literal['greenhouse', 'lever', 'ashby', 'workday', 'smartrecruiters', 'workable', 'recruitee', 'rippling', 'personio', 'teamtailor', 'oracle', 'ukg', 'icims', 'eightfold']],
+    'provider': NotRequired[Literal['greenhouse', 'lever', 'ashby', 'workday', 'smartrecruiters', 'workable', 'recruitee', 'rippling', 'personio', 'teamtailor', 'oracle', 'ukg', 'icims', 'eightfold', 'gem', 'pinpoint']],
     'department': NotRequired[str],
     'location': NotRequired[str],
     'employment_type': NotRequired[str],
     'remote': NotRequired[bool],
     'include_closed': NotRequired[bool],
+    'min_salary': NotRequired[float],
+    'max_salary': NotRequired[float],
+    'salary_currency': NotRequired[str],
     'sort': NotRequired[str],
     'page': NotRequired[int],
     'page_size': NotRequired[int],
@@ -20410,6 +21438,214 @@ DatasetsNumbeoCountriesSearchParams = TypedDict('DatasetsNumbeoCountriesSearchPa
     'min_health_care_index': NotRequired[float],
     'max_pollution_index': NotRequired[float],
     'max_traffic_index': NotRequired[float],
+    'sort': NotRequired[str],
+    'page': NotRequired[int],
+    'page_size': NotRequired[int],
+}, total=False)
+
+DatasetsPitchbookAdvisorsFacetsResponse = ModelDatasetsPitchbookAdvisorsFacetResponseDoc
+DatasetsPitchbookAdvisorsFacetsParams = TypedDict('DatasetsPitchbookAdvisorsFacetsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'facet': Required[str],
+    'q': NotRequired[str],
+    'service_type': NotRequired[str],
+    'hq_country': NotRequired[str],
+    'hq_state': NotRequired[str],
+    'run_id': NotRequired[str],
+    'min_year_founded': NotRequired[int],
+    'max_year_founded': NotRequired[int],
+}, total=False)
+
+DatasetsPitchbookAdvisorsItemResponse = ModelDatasetsPitchbookAdvisorResponseDoc
+DatasetsPitchbookAdvisorsItemParams = TypedDict('DatasetsPitchbookAdvisorsItemParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': Required[str],
+}, total=False)
+
+DatasetsPitchbookAdvisorsSearchResponse = ModelDatasetsPitchbookAdvisorsSearchResponseDoc
+DatasetsPitchbookAdvisorsSearchParams = TypedDict('DatasetsPitchbookAdvisorsSearchParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'q': NotRequired[str],
+    'service_type': NotRequired[str],
+    'hq_country': NotRequired[str],
+    'hq_state': NotRequired[str],
+    'run_id': NotRequired[str],
+    'min_year_founded': NotRequired[int],
+    'max_year_founded': NotRequired[int],
+    'sort': NotRequired[str],
+    'page': NotRequired[int],
+    'page_size': NotRequired[int],
+}, total=False)
+
+DatasetsPitchbookCompaniesFacetsResponse = ModelDatasetsPitchbookCompaniesFacetResponseDoc
+DatasetsPitchbookCompaniesFacetsParams = TypedDict('DatasetsPitchbookCompaniesFacetsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'facet': Required[str],
+    'q': NotRequired[str],
+    'status': NotRequired[str],
+    'primary_industry': NotRequired[str],
+    'financing_status': NotRequired[str],
+    'ownership_status': NotRequired[str],
+    'hq_country': NotRequired[str],
+    'hq_state': NotRequired[str],
+    'run_id': NotRequired[str],
+    'min_year_founded': NotRequired[int],
+    'max_year_founded': NotRequired[int],
+    'min_investor_count': NotRequired[int],
+}, total=False)
+
+DatasetsPitchbookCompaniesItemResponse = ModelDatasetsPitchbookCompanyResponseDoc
+DatasetsPitchbookCompaniesItemParams = TypedDict('DatasetsPitchbookCompaniesItemParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': Required[str],
+}, total=False)
+
+DatasetsPitchbookCompaniesSearchResponse = ModelDatasetsPitchbookCompaniesSearchResponseDoc
+DatasetsPitchbookCompaniesSearchParams = TypedDict('DatasetsPitchbookCompaniesSearchParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'q': NotRequired[str],
+    'status': NotRequired[str],
+    'primary_industry': NotRequired[str],
+    'financing_status': NotRequired[str],
+    'ownership_status': NotRequired[str],
+    'hq_country': NotRequired[str],
+    'hq_state': NotRequired[str],
+    'run_id': NotRequired[str],
+    'min_year_founded': NotRequired[int],
+    'max_year_founded': NotRequired[int],
+    'min_investor_count': NotRequired[int],
+    'sort': NotRequired[str],
+    'page': NotRequired[int],
+    'page_size': NotRequired[int],
+}, total=False)
+
+DatasetsPitchbookFundsFacetsResponse = ModelDatasetsPitchbookFundsFacetResponseDoc
+DatasetsPitchbookFundsFacetsParams = TypedDict('DatasetsPitchbookFundsFacetsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'facet': Required[str],
+    'q': NotRequired[str],
+    'fund_strategy': NotRequired[str],
+    'fund_status': NotRequired[str],
+    'run_id': NotRequired[str],
+    'min_vintage_year': NotRequired[int],
+    'max_vintage_year': NotRequired[int],
+}, total=False)
+
+DatasetsPitchbookFundsItemResponse = ModelDatasetsPitchbookFundResponseDoc
+DatasetsPitchbookFundsItemParams = TypedDict('DatasetsPitchbookFundsItemParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': Required[str],
+}, total=False)
+
+DatasetsPitchbookFundsSearchResponse = ModelDatasetsPitchbookFundsSearchResponseDoc
+DatasetsPitchbookFundsSearchParams = TypedDict('DatasetsPitchbookFundsSearchParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'q': NotRequired[str],
+    'fund_strategy': NotRequired[str],
+    'fund_status': NotRequired[str],
+    'run_id': NotRequired[str],
+    'min_vintage_year': NotRequired[int],
+    'max_vintage_year': NotRequired[int],
+    'sort': NotRequired[str],
+    'page': NotRequired[int],
+    'page_size': NotRequired[int],
+}, total=False)
+
+DatasetsPitchbookInvestorsFacetsResponse = ModelDatasetsPitchbookInvestorsFacetResponseDoc
+DatasetsPitchbookInvestorsFacetsParams = TypedDict('DatasetsPitchbookInvestorsFacetsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'facet': Required[str],
+    'q': NotRequired[str],
+    'status': NotRequired[str],
+    'investor_type': NotRequired[str],
+    'hq_country': NotRequired[str],
+    'hq_state': NotRequired[str],
+    'run_id': NotRequired[str],
+    'min_portfolio_count': NotRequired[int],
+    'min_exits_count': NotRequired[int],
+}, total=False)
+
+DatasetsPitchbookInvestorsItemResponse = ModelDatasetsPitchbookInvestorResponseDoc
+DatasetsPitchbookInvestorsItemParams = TypedDict('DatasetsPitchbookInvestorsItemParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': Required[str],
+}, total=False)
+
+DatasetsPitchbookInvestorsSearchResponse = ModelDatasetsPitchbookInvestorsSearchResponseDoc
+DatasetsPitchbookInvestorsSearchParams = TypedDict('DatasetsPitchbookInvestorsSearchParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'q': NotRequired[str],
+    'status': NotRequired[str],
+    'investor_type': NotRequired[str],
+    'hq_country': NotRequired[str],
+    'hq_state': NotRequired[str],
+    'run_id': NotRequired[str],
+    'min_portfolio_count': NotRequired[int],
+    'min_exits_count': NotRequired[int],
+    'sort': NotRequired[str],
+    'page': NotRequired[int],
+    'page_size': NotRequired[int],
+}, total=False)
+
+DatasetsPitchbookLimitedPartnersFacetsResponse = ModelDatasetsPitchbookLimitedPartnersFacetResponseDoc
+DatasetsPitchbookLimitedPartnersFacetsParams = TypedDict('DatasetsPitchbookLimitedPartnersFacetsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'facet': Required[str],
+    'q': NotRequired[str],
+    'institution_type': NotRequired[str],
+    'hq_country': NotRequired[str],
+    'hq_state': NotRequired[str],
+    'run_id': NotRequired[str],
+    'min_year_founded': NotRequired[int],
+    'max_year_founded': NotRequired[int],
+}, total=False)
+
+DatasetsPitchbookLimitedPartnersItemResponse = ModelDatasetsPitchbookLimitedPartnerResponseDoc
+DatasetsPitchbookLimitedPartnersItemParams = TypedDict('DatasetsPitchbookLimitedPartnersItemParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': Required[str],
+}, total=False)
+
+DatasetsPitchbookLimitedPartnersSearchResponse = ModelDatasetsPitchbookLimitedPartnersSearchResponseDoc
+DatasetsPitchbookLimitedPartnersSearchParams = TypedDict('DatasetsPitchbookLimitedPartnersSearchParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'q': NotRequired[str],
+    'institution_type': NotRequired[str],
+    'hq_country': NotRequired[str],
+    'hq_state': NotRequired[str],
+    'run_id': NotRequired[str],
+    'min_year_founded': NotRequired[int],
+    'max_year_founded': NotRequired[int],
     'sort': NotRequired[str],
     'page': NotRequired[int],
     'page_size': NotRequired[int],
@@ -21497,12 +22733,30 @@ GoodreadsAuthorBooksParams = TypedDict('GoodreadsAuthorBooksParams', {
     'page': NotRequired[int],
 }, total=False)
 
+GoodreadsAuthorQuotesResponse = ModelGoodreadsAuthorQuotesResponseDoc
+GoodreadsAuthorQuotesParams = TypedDict('GoodreadsAuthorQuotesParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': Required[str],
+    'page': NotRequired[int],
+}, total=False)
+
 GoodreadsBookResponse = ModelGoodreadsBookResponseDoc
 GoodreadsBookParams = TypedDict('GoodreadsBookParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
     '_headers': NotRequired[Mapping[str, str]],
     'id': Required[str],
+}, total=False)
+
+GoodreadsBookEditionsResponse = ModelGoodreadsEditionsResponseDoc
+GoodreadsBookEditionsParams = TypedDict('GoodreadsBookEditionsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': Required[str],
+    'page': NotRequired[int],
 }, total=False)
 
 GoodreadsBookReviewsResponse = ModelGoodreadsReviewsResponseDoc
@@ -21514,6 +22768,14 @@ GoodreadsBookReviewsParams = TypedDict('GoodreadsBookReviewsParams', {
     'limit': NotRequired[int],
 }, total=False)
 
+GoodreadsGenreResponse = ModelGoodreadsGenreResponseDoc
+GoodreadsGenreParams = TypedDict('GoodreadsGenreParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'name': Required[str],
+}, total=False)
+
 GoodreadsListResponse = ModelGoodreadsListResponseDoc
 GoodreadsListParams = TypedDict('GoodreadsListParams', {
     '_response_type': NotRequired[ResponseType],
@@ -21521,6 +22783,13 @@ GoodreadsListParams = TypedDict('GoodreadsListParams', {
     '_headers': NotRequired[Mapping[str, str]],
     'id': Required[str],
     'page': NotRequired[int],
+}, total=False)
+
+GoodreadsListsResponse = ModelGoodreadsListsResponseDoc
+GoodreadsListsParams = TypedDict('GoodreadsListsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
 }, total=False)
 
 GoodreadsSearchResponse = ModelGoodreadsSearchResponseDoc
@@ -21711,6 +22980,24 @@ GoogleMapPlaceParams = TypedDict('GoogleMapPlaceParams', {
     '_timeout': NotRequired[float],
     '_headers': NotRequired[Mapping[str, str]],
     'place_id': Required[str],
+}, total=False)
+
+GoogleMapPlacePhotosResponse = ModelGoogleMapPlacePhotosResponseDoc
+GoogleMapPlacePhotosParams = TypedDict('GoogleMapPlacePhotosParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'place_id': Required[str],
+    'limit': NotRequired[int],
+}, total=False)
+
+GoogleMapPlaceReviewsResponse = ModelGoogleMapPlaceReviewsResponseDoc
+GoogleMapPlaceReviewsParams = TypedDict('GoogleMapPlaceReviewsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'place_id': Required[str],
+    'limit': NotRequired[int],
 }, total=False)
 
 GoogleMapSearchBody = ModelGoogleMapSearchOption
@@ -22220,6 +23507,14 @@ JobsEightfoldJobParams = TypedDict('JobsEightfoldJobParams', {
     'id': Required[str],
 }, total=False)
 
+JobsGemBoardResponse = ModelJobsBoardResponseDoc
+JobsGemBoardParams = TypedDict('JobsGemBoardParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'company': Required[str],
+}, total=False)
+
 JobsGreenhouseBoardResponse = ModelJobsBoardResponseDoc
 JobsGreenhouseBoardParams = TypedDict('JobsGreenhouseBoardParams', {
     '_response_type': NotRequired[ResponseType],
@@ -22243,7 +23538,7 @@ JobsHiringSignalsParams = TypedDict('JobsHiringSignalsParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
     '_headers': NotRequired[Mapping[str, str]],
-    'provider': Required[Literal['greenhouse', 'lever', 'ashby', 'workday', 'smartrecruiters', 'workable', 'recruitee', 'rippling', 'personio', 'teamtailor', 'oracle', 'ukg', 'icims', 'eightfold']],
+    'provider': Required[Literal['greenhouse', 'lever', 'ashby', 'workday', 'smartrecruiters', 'workable', 'recruitee', 'rippling', 'personio', 'teamtailor', 'oracle', 'ukg', 'icims', 'eightfold', 'gem', 'pinpoint']],
     'token': NotRequired[str],
     'company': NotRequired[str],
     'org': NotRequired[str],
@@ -22328,6 +23623,14 @@ JobsPersonioFeedParams = TypedDict('JobsPersonioFeedParams', {
     'department': NotRequired[str],
     'location': NotRequired[str],
     'remote': NotRequired[bool],
+}, total=False)
+
+JobsPinpointBoardResponse = ModelJobsBoardResponseDoc
+JobsPinpointBoardParams = TypedDict('JobsPinpointBoardParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'company': Required[str],
 }, total=False)
 
 JobsRecruiteeOfferResponse = ModelJobsJobResponseDoc
@@ -23290,6 +24593,15 @@ MetaPingParams = TypedDict('MetaPingParams', {
     '_headers': NotRequired[Mapping[str, str]],
 }, total=False)
 
+PitchBookPitchbookAdvisorResponse = ModelPitchbookAdvisorResponseDoc
+PitchBookPitchbookAdvisorParams = TypedDict('PitchBookPitchbookAdvisorParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
 PitchBookPitchbookCompanyResponse = ModelPitchbookCompanyResponseDoc
 PitchBookPitchbookCompanyParams = TypedDict('PitchBookPitchbookCompanyParams', {
     '_response_type': NotRequired[ResponseType],
@@ -23310,6 +24622,15 @@ PitchBookPitchbookFundParams = TypedDict('PitchBookPitchbookFundParams', {
 
 PitchBookPitchbookInvestorResponse = ModelPitchbookInvestorResponseDoc
 PitchBookPitchbookInvestorParams = TypedDict('PitchBookPitchbookInvestorParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+PitchBookPitchbookLimitedPartnerResponse = ModelPitchbookLimitedPartnerResponseDoc
+PitchBookPitchbookLimitedPartnerParams = TypedDict('PitchBookPitchbookLimitedPartnerParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
     '_headers': NotRequired[Mapping[str, str]],
@@ -26263,6 +27584,35 @@ TrustpilotCategoryParams = TypedDict('TrustpilotCategoryParams', {
     'page': NotRequired[int],
 }, total=False)
 
+UberEatsUbereatsSearchResponse = ModelUbereatsSearchResponseDoc
+UberEatsUbereatsSearchParams = TypedDict('UberEatsUbereatsSearchParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'latitude': Required[float],
+    'longitude': Required[float],
+    'query': NotRequired[str],
+    'offset': NotRequired[int],
+    'limit': NotRequired[int],
+    'cursor': NotRequired[str],
+}, total=False)
+
+UberEatsUbereatsStoreResponse = ModelUbereatsStoreResponseDoc
+UberEatsUbereatsStoreParams = TypedDict('UberEatsUbereatsStoreParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'store_id': Required[str],
+}, total=False)
+
+UberEatsUbereatsStoreReviewsResponse = ModelUbereatsStoreReviewsResponseDoc
+UberEatsUbereatsStoreReviewsParams = TypedDict('UberEatsUbereatsStoreReviewsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'store_id': Required[str],
+}, total=False)
+
 UsageMeEndpointsResponse = ModelUsageUsageEndpointsResponseDoc
 UsageMeEndpointsParams = TypedDict('UsageMeEndpointsParams', {
     '_response_type': NotRequired[ResponseType],
@@ -26938,6 +28288,20 @@ class AnimeGroup:
     def title_recommendations(self, **params: Unpack[AnimeTitleRecommendationsParams]) -> AnimeTitleRecommendationsResponse: ...
     def title_staff(self, **params: Unpack[AnimeTitleStaffParams]) -> AnimeTitleStaffResponse: ...
 
+class AppleBooksGroup:
+    def audiobook_series(self, **params: Unpack[AppleBooksAudiobookSeriesParams]) -> AppleBooksAudiobookSeriesResponse: ...
+    def audiobook_search(self, **params: Unpack[AppleBooksAudiobookSearchParams]) -> AppleBooksAudiobookSearchResponse: ...
+    def audiobook(self, **params: Unpack[AppleBooksAudiobookParams]) -> AppleBooksAudiobookResponse: ...
+    def audiobook_reviews(self, **params: Unpack[AppleBooksAudiobookReviewsParams]) -> AppleBooksAudiobookReviewsResponse: ...
+    def audiobook_similar(self, **params: Unpack[AppleBooksAudiobookSimilarParams]) -> AppleBooksAudiobookSimilarResponse: ...
+    def author(self, **params: Unpack[AppleBooksAuthorParams]) -> AppleBooksAuthorResponse: ...
+    def book(self, **params: Unpack[AppleBooksBookParams]) -> AppleBooksBookResponse: ...
+    def book_reviews(self, **params: Unpack[AppleBooksBookReviewsParams]) -> AppleBooksBookReviewsResponse: ...
+    def book_similar(self, **params: Unpack[AppleBooksBookSimilarParams]) -> AppleBooksBookSimilarResponse: ...
+    def charts(self, **params: Unpack[AppleBooksChartsParams]) -> AppleBooksChartsResponse: ...
+    def search(self, **params: Unpack[AppleBooksSearchParams]) -> AppleBooksSearchResponse: ...
+    def series(self, **params: Unpack[AppleBooksSeriesParams]) -> AppleBooksSeriesResponse: ...
+
 class ApplePodcastsGroup:
     def charts(self, **params: Unpack[ApplePodcastsChartsParams]) -> ApplePodcastsChartsResponse: ...
     def episodes_search(self, **params: Unpack[ApplePodcastsEpisodesSearchParams]) -> ApplePodcastsEpisodesSearchResponse: ...
@@ -27080,6 +28444,12 @@ class DatasetsGroup:
     def github_users_item(self, **params: Unpack[DatasetsGithubUsersItemParams]) -> DatasetsGithubUsersItemResponse: ...
     def github_users_nearby(self, **params: Unpack[DatasetsGithubUsersNearbyParams]) -> DatasetsGithubUsersNearbyResponse: ...
     def github_users_search(self, **params: Unpack[DatasetsGithubUsersSearchParams]) -> DatasetsGithubUsersSearchResponse: ...
+    def goodreads_authors_facets(self, **params: Unpack[DatasetsGoodreadsAuthorsFacetsParams]) -> DatasetsGoodreadsAuthorsFacetsResponse: ...
+    def goodreads_authors_item(self, **params: Unpack[DatasetsGoodreadsAuthorsItemParams]) -> DatasetsGoodreadsAuthorsItemResponse: ...
+    def goodreads_authors_search(self, **params: Unpack[DatasetsGoodreadsAuthorsSearchParams]) -> DatasetsGoodreadsAuthorsSearchResponse: ...
+    def goodreads_books_facets(self, **params: Unpack[DatasetsGoodreadsBooksFacetsParams]) -> DatasetsGoodreadsBooksFacetsResponse: ...
+    def goodreads_books_item(self, **params: Unpack[DatasetsGoodreadsBooksItemParams]) -> DatasetsGoodreadsBooksItemResponse: ...
+    def goodreads_books_search(self, **params: Unpack[DatasetsGoodreadsBooksSearchParams]) -> DatasetsGoodreadsBooksSearchResponse: ...
     def google_map_businesses_facets(self, **params: Unpack[DatasetsGoogleMapBusinessesFacetsParams]) -> DatasetsGoogleMapBusinessesFacetsResponse: ...
     def google_map_businesses_item(self, **params: Unpack[DatasetsGoogleMapBusinessesItemParams]) -> DatasetsGoogleMapBusinessesItemResponse: ...
     def google_map_businesses_nearby(self, **params: Unpack[DatasetsGoogleMapBusinessesNearbyParams]) -> DatasetsGoogleMapBusinessesNearbyResponse: ...
@@ -27101,6 +28471,21 @@ class DatasetsGroup:
     def numbeo_cities_search(self, **params: Unpack[DatasetsNumbeoCitiesSearchParams]) -> DatasetsNumbeoCitiesSearchResponse: ...
     def numbeo_countries_item(self, **params: Unpack[DatasetsNumbeoCountriesItemParams]) -> DatasetsNumbeoCountriesItemResponse: ...
     def numbeo_countries_search(self, **params: Unpack[DatasetsNumbeoCountriesSearchParams]) -> DatasetsNumbeoCountriesSearchResponse: ...
+    def pitchbook_advisors_facets(self, **params: Unpack[DatasetsPitchbookAdvisorsFacetsParams]) -> DatasetsPitchbookAdvisorsFacetsResponse: ...
+    def pitchbook_advisors_item(self, **params: Unpack[DatasetsPitchbookAdvisorsItemParams]) -> DatasetsPitchbookAdvisorsItemResponse: ...
+    def pitchbook_advisors_search(self, **params: Unpack[DatasetsPitchbookAdvisorsSearchParams]) -> DatasetsPitchbookAdvisorsSearchResponse: ...
+    def pitchbook_companies_facets(self, **params: Unpack[DatasetsPitchbookCompaniesFacetsParams]) -> DatasetsPitchbookCompaniesFacetsResponse: ...
+    def pitchbook_companies_item(self, **params: Unpack[DatasetsPitchbookCompaniesItemParams]) -> DatasetsPitchbookCompaniesItemResponse: ...
+    def pitchbook_companies_search(self, **params: Unpack[DatasetsPitchbookCompaniesSearchParams]) -> DatasetsPitchbookCompaniesSearchResponse: ...
+    def pitchbook_funds_facets(self, **params: Unpack[DatasetsPitchbookFundsFacetsParams]) -> DatasetsPitchbookFundsFacetsResponse: ...
+    def pitchbook_funds_item(self, **params: Unpack[DatasetsPitchbookFundsItemParams]) -> DatasetsPitchbookFundsItemResponse: ...
+    def pitchbook_funds_search(self, **params: Unpack[DatasetsPitchbookFundsSearchParams]) -> DatasetsPitchbookFundsSearchResponse: ...
+    def pitchbook_investors_facets(self, **params: Unpack[DatasetsPitchbookInvestorsFacetsParams]) -> DatasetsPitchbookInvestorsFacetsResponse: ...
+    def pitchbook_investors_item(self, **params: Unpack[DatasetsPitchbookInvestorsItemParams]) -> DatasetsPitchbookInvestorsItemResponse: ...
+    def pitchbook_investors_search(self, **params: Unpack[DatasetsPitchbookInvestorsSearchParams]) -> DatasetsPitchbookInvestorsSearchResponse: ...
+    def pitchbook_limited_partners_facets(self, **params: Unpack[DatasetsPitchbookLimitedPartnersFacetsParams]) -> DatasetsPitchbookLimitedPartnersFacetsResponse: ...
+    def pitchbook_limited_partners_item(self, **params: Unpack[DatasetsPitchbookLimitedPartnersItemParams]) -> DatasetsPitchbookLimitedPartnersItemResponse: ...
+    def pitchbook_limited_partners_search(self, **params: Unpack[DatasetsPitchbookLimitedPartnersSearchParams]) -> DatasetsPitchbookLimitedPartnersSearchResponse: ...
     def playstation_games_facets(self, **params: Unpack[DatasetsPlaystationGamesFacetsParams]) -> DatasetsPlaystationGamesFacetsResponse: ...
     def playstation_games_item(self, **params: Unpack[DatasetsPlaystationGamesItemParams]) -> DatasetsPlaystationGamesItemResponse: ...
     def playstation_games_search(self, **params: Unpack[DatasetsPlaystationGamesSearchParams]) -> DatasetsPlaystationGamesSearchResponse: ...
@@ -27194,9 +28579,13 @@ class GitHubGroup:
 class GoodreadsGroup:
     def author(self, **params: Unpack[GoodreadsAuthorParams]) -> GoodreadsAuthorResponse: ...
     def author_books(self, **params: Unpack[GoodreadsAuthorBooksParams]) -> GoodreadsAuthorBooksResponse: ...
+    def author_quotes(self, **params: Unpack[GoodreadsAuthorQuotesParams]) -> GoodreadsAuthorQuotesResponse: ...
     def book(self, **params: Unpack[GoodreadsBookParams]) -> GoodreadsBookResponse: ...
+    def book_editions(self, **params: Unpack[GoodreadsBookEditionsParams]) -> GoodreadsBookEditionsResponse: ...
     def book_reviews(self, **params: Unpack[GoodreadsBookReviewsParams]) -> GoodreadsBookReviewsResponse: ...
+    def genre(self, **params: Unpack[GoodreadsGenreParams]) -> GoodreadsGenreResponse: ...
     def list(self, **params: Unpack[GoodreadsListParams]) -> GoodreadsListResponse: ...
+    def lists(self, **params: Unpack[GoodreadsListsParams]) -> GoodreadsListsResponse: ...
     def search(self, **params: Unpack[GoodreadsSearchParams]) -> GoodreadsSearchResponse: ...
 
 class GoogleGroup:
@@ -27222,6 +28611,8 @@ class GoogleGroup:
     def finance_ticker(self, **params: Unpack[GoogleFinanceTickerParams]) -> GoogleFinanceTickerResponse: ...
     def jobs(self, **params: Unpack[GoogleJobsParams]) -> GoogleJobsResponse: ...
     def map_place(self, **params: Unpack[GoogleMapPlaceParams]) -> GoogleMapPlaceResponse: ...
+    def map_place_photos(self, **params: Unpack[GoogleMapPlacePhotosParams]) -> GoogleMapPlacePhotosResponse: ...
+    def map_place_reviews(self, **params: Unpack[GoogleMapPlaceReviewsParams]) -> GoogleMapPlaceReviewsResponse: ...
     def map_search(self, **params: Unpack[GoogleMapSearchParams]) -> GoogleMapSearchResponse: ...
     def news(self, **params: Unpack[GoogleNewsParams]) -> GoogleNewsResponse: ...
     def search(self, **params: Unpack[GoogleSearchParams]) -> GoogleSearchResponse: ...
@@ -27282,6 +28673,7 @@ class JobsGroup:
     def company_search(self, **params: Unpack[JobsCompanySearchParams]) -> JobsCompanySearchResponse: ...
     def eightfold_board(self, **params: Unpack[JobsEightfoldBoardParams]) -> JobsEightfoldBoardResponse: ...
     def eightfold_job(self, **params: Unpack[JobsEightfoldJobParams]) -> JobsEightfoldJobResponse: ...
+    def gem_board(self, **params: Unpack[JobsGemBoardParams]) -> JobsGemBoardResponse: ...
     def greenhouse_board(self, **params: Unpack[JobsGreenhouseBoardParams]) -> JobsGreenhouseBoardResponse: ...
     def greenhouse_job(self, **params: Unpack[JobsGreenhouseJobParams]) -> JobsGreenhouseJobResponse: ...
     def hiring_signals(self, **params: Unpack[JobsHiringSignalsParams]) -> JobsHiringSignalsResponse: ...
@@ -27292,6 +28684,7 @@ class JobsGroup:
     def oracle_board(self, **params: Unpack[JobsOracleBoardParams]) -> JobsOracleBoardResponse: ...
     def oracle_job(self, **params: Unpack[JobsOracleJobParams]) -> JobsOracleJobResponse: ...
     def personio_feed(self, **params: Unpack[JobsPersonioFeedParams]) -> JobsPersonioFeedResponse: ...
+    def pinpoint_board(self, **params: Unpack[JobsPinpointBoardParams]) -> JobsPinpointBoardResponse: ...
     def recruitee_offer(self, **params: Unpack[JobsRecruiteeOfferParams]) -> JobsRecruiteeOfferResponse: ...
     def recruitee_offers(self, **params: Unpack[JobsRecruiteeOffersParams]) -> JobsRecruiteeOffersResponse: ...
     def rippling_board(self, **params: Unpack[JobsRipplingBoardParams]) -> JobsRipplingBoardResponse: ...
@@ -27411,9 +28804,11 @@ class MetaGroup:
     def ready(self, **params: Unpack[MetaReadyParams]) -> MetaReadyResponse: ...
 
 class PitchBookGroup:
+    def pitchbook_advisor(self, **params: Unpack[PitchBookPitchbookAdvisorParams]) -> PitchBookPitchbookAdvisorResponse: ...
     def pitchbook_company(self, **params: Unpack[PitchBookPitchbookCompanyParams]) -> PitchBookPitchbookCompanyResponse: ...
     def pitchbook_fund(self, **params: Unpack[PitchBookPitchbookFundParams]) -> PitchBookPitchbookFundResponse: ...
     def pitchbook_investor(self, **params: Unpack[PitchBookPitchbookInvestorParams]) -> PitchBookPitchbookInvestorResponse: ...
+    def pitchbook_limited_partner(self, **params: Unpack[PitchBookPitchbookLimitedPartnerParams]) -> PitchBookPitchbookLimitedPartnerResponse: ...
 
 class PlayStationGroup:
     def playstation_browse(self, **params: Unpack[PlayStationPlaystationBrowseParams]) -> PlayStationPlaystationBrowseResponse: ...
@@ -27750,6 +29145,11 @@ class TrustpilotGroup:
     def category_search(self, **params: Unpack[TrustpilotCategorySearchParams]) -> TrustpilotCategorySearchResponse: ...
     def category(self, **params: Unpack[TrustpilotCategoryParams]) -> TrustpilotCategoryResponse: ...
 
+class UberEatsGroup:
+    def ubereats_search(self, **params: Unpack[UberEatsUbereatsSearchParams]) -> UberEatsUbereatsSearchResponse: ...
+    def ubereats_store(self, **params: Unpack[UberEatsUbereatsStoreParams]) -> UberEatsUbereatsStoreResponse: ...
+    def ubereats_store_reviews(self, **params: Unpack[UberEatsUbereatsStoreReviewsParams]) -> UberEatsUbereatsStoreReviewsResponse: ...
+
 class UsageGroup:
     def me_endpoints(self, **params: Unpack[UsageMeEndpointsParams]) -> UsageMeEndpointsResponse: ...
     def me_overview(self, **params: Unpack[UsageMeOverviewParams]) -> UsageMeOverviewResponse: ...
@@ -27853,6 +29253,18 @@ OperationId = Literal[
     'anime-title-characters',
     'anime-title-recommendations',
     'anime-title-staff',
+    'apple-books-audiobook-series',
+    'apple-books-audiobook-search',
+    'apple-books-audiobook',
+    'apple-books-audiobook-reviews',
+    'apple-books-audiobook-similar',
+    'apple-books-author',
+    'apple-books-book',
+    'apple-books-book-reviews',
+    'apple-books-book-similar',
+    'apple-books-charts',
+    'apple-books-search',
+    'apple-books-series',
     'apple-podcasts-charts',
     'apple-podcasts-episodes-search',
     'apple-podcasts-search',
@@ -27968,6 +29380,12 @@ OperationId = Literal[
     'datasets-github-users-item',
     'datasets-github-users-nearby',
     'datasets-github-users-search',
+    'datasets-goodreads-authors-facets',
+    'datasets-goodreads-authors-item',
+    'datasets-goodreads-authors-search',
+    'datasets-goodreads-books-facets',
+    'datasets-goodreads-books-item',
+    'datasets-goodreads-books-search',
     'datasets-google-map-businesses-facets',
     'datasets-google-map-businesses-item',
     'datasets-google-map-businesses-nearby',
@@ -27989,6 +29407,21 @@ OperationId = Literal[
     'datasets-numbeo-cities-search',
     'datasets-numbeo-countries-item',
     'datasets-numbeo-countries-search',
+    'datasets-pitchbook-advisors-facets',
+    'datasets-pitchbook-advisors-item',
+    'datasets-pitchbook-advisors-search',
+    'datasets-pitchbook-companies-facets',
+    'datasets-pitchbook-companies-item',
+    'datasets-pitchbook-companies-search',
+    'datasets-pitchbook-funds-facets',
+    'datasets-pitchbook-funds-item',
+    'datasets-pitchbook-funds-search',
+    'datasets-pitchbook-investors-facets',
+    'datasets-pitchbook-investors-item',
+    'datasets-pitchbook-investors-search',
+    'datasets-pitchbook-limited-partners-facets',
+    'datasets-pitchbook-limited-partners-item',
+    'datasets-pitchbook-limited-partners-search',
     'datasets-playstation-games-facets',
     'datasets-playstation-games-item',
     'datasets-playstation-games-search',
@@ -28072,9 +29505,13 @@ OperationId = Literal[
     'github-user-repos',
     'goodreads-author',
     'goodreads-author-books',
+    'goodreads-author-quotes',
     'goodreads-book',
+    'goodreads-book-editions',
     'goodreads-book-reviews',
+    'goodreads-genre',
     'goodreads-list',
+    'goodreads-lists',
     'goodreads-search',
     'google-finance-analyst-articles',
     'google-finance-chart',
@@ -28098,6 +29535,8 @@ OperationId = Literal[
     'google-finance-ticker',
     'google-jobs',
     'google-map-place',
+    'google-map-place-photos',
+    'google-map-place-reviews',
     'google-map-search',
     'google-news',
     'google-search',
@@ -28150,6 +29589,7 @@ OperationId = Literal[
     'jobs-company-search',
     'jobs-eightfold-board',
     'jobs-eightfold-job',
+    'jobs-gem-board',
     'jobs-greenhouse-board',
     'jobs-greenhouse-job',
     'jobs-hiring-signals',
@@ -28160,6 +29600,7 @@ OperationId = Literal[
     'jobs-oracle-board',
     'jobs-oracle-job',
     'jobs-personio-feed',
+    'jobs-pinpoint-board',
     'jobs-recruitee-offer',
     'jobs-recruitee-offers',
     'jobs-rippling-board',
@@ -28258,9 +29699,11 @@ OperationId = Literal[
     'numbeo-indices-rankings',
     'numbeo-indices-rankings-by-country',
     'ping',
+    'pitchbook-advisor',
     'pitchbook-company',
     'pitchbook-fund',
     'pitchbook-investor',
+    'pitchbook-limited-partner',
     'playstation-browse',
     'playstation-category',
     'playstation-concept',
@@ -28553,6 +29996,9 @@ OperationId = Literal[
     'trustpilot-categories',
     'trustpilot-category-search',
     'trustpilot-category',
+    'ubereats-search',
+    'ubereats-store',
+    'ubereats-store-reviews',
     'usage-me-endpoints',
     'usage-me-overview',
     'usage-me-recent-ips',
@@ -28630,6 +30076,7 @@ class CrawloraClient:
     airbnb: AirbnbGroup
     amazon: AmazonGroup
     anime: AnimeGroup
+    apple_books: AppleBooksGroup
     apple_podcasts: ApplePodcastsGroup
     app_store: AppStoreGroup
     billing: BillingGroup
@@ -28685,6 +30132,7 @@ class CrawloraClient:
     trip_advisor: TripAdvisorGroup
     trust_mrr: TrustMrrGroup
     trustpilot: TrustpilotGroup
+    uber_eats: UberEatsGroup
     usage: UsageGroup
     user: UserGroup
     walmart: WalmartGroup
@@ -29000,6 +30448,150 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> AnimeTitleStaffResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['apple-books-audiobook-series'],
+        params: AppleBooksAudiobookSeriesParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> AppleBooksAudiobookSeriesResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['apple-books-audiobook-search'],
+        params: AppleBooksAudiobookSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> AppleBooksAudiobookSearchResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['apple-books-audiobook'],
+        params: AppleBooksAudiobookParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> AppleBooksAudiobookResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['apple-books-audiobook-reviews'],
+        params: AppleBooksAudiobookReviewsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> AppleBooksAudiobookReviewsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['apple-books-audiobook-similar'],
+        params: AppleBooksAudiobookSimilarParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> AppleBooksAudiobookSimilarResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['apple-books-author'],
+        params: AppleBooksAuthorParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> AppleBooksAuthorResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['apple-books-book'],
+        params: AppleBooksBookParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> AppleBooksBookResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['apple-books-book-reviews'],
+        params: AppleBooksBookReviewsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> AppleBooksBookReviewsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['apple-books-book-similar'],
+        params: AppleBooksBookSimilarParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> AppleBooksBookSimilarResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['apple-books-charts'],
+        params: AppleBooksChartsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> AppleBooksChartsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['apple-books-search'],
+        params: AppleBooksSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> AppleBooksSearchResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['apple-books-series'],
+        params: AppleBooksSeriesParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> AppleBooksSeriesResponse: ...
     @overload
     def operation(
         self,
@@ -30383,6 +31975,78 @@ class CrawloraClient:
     @overload
     def operation(
         self,
+        operation_id: Literal['datasets-goodreads-authors-facets'],
+        params: DatasetsGoodreadsAuthorsFacetsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsGoodreadsAuthorsFacetsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['datasets-goodreads-authors-item'],
+        params: DatasetsGoodreadsAuthorsItemParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsGoodreadsAuthorsItemResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['datasets-goodreads-authors-search'],
+        params: DatasetsGoodreadsAuthorsSearchParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsGoodreadsAuthorsSearchResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['datasets-goodreads-books-facets'],
+        params: DatasetsGoodreadsBooksFacetsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsGoodreadsBooksFacetsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['datasets-goodreads-books-item'],
+        params: DatasetsGoodreadsBooksItemParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsGoodreadsBooksItemResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['datasets-goodreads-books-search'],
+        params: DatasetsGoodreadsBooksSearchParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsGoodreadsBooksSearchResponse: ...
+    @overload
+    def operation(
+        self,
         operation_id: Literal['datasets-google-map-businesses-facets'],
         params: DatasetsGoogleMapBusinessesFacetsParams,
         *,
@@ -30632,6 +32296,186 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> DatasetsNumbeoCountriesSearchResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['datasets-pitchbook-advisors-facets'],
+        params: DatasetsPitchbookAdvisorsFacetsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsPitchbookAdvisorsFacetsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['datasets-pitchbook-advisors-item'],
+        params: DatasetsPitchbookAdvisorsItemParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsPitchbookAdvisorsItemResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['datasets-pitchbook-advisors-search'],
+        params: DatasetsPitchbookAdvisorsSearchParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsPitchbookAdvisorsSearchResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['datasets-pitchbook-companies-facets'],
+        params: DatasetsPitchbookCompaniesFacetsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsPitchbookCompaniesFacetsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['datasets-pitchbook-companies-item'],
+        params: DatasetsPitchbookCompaniesItemParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsPitchbookCompaniesItemResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['datasets-pitchbook-companies-search'],
+        params: DatasetsPitchbookCompaniesSearchParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsPitchbookCompaniesSearchResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['datasets-pitchbook-funds-facets'],
+        params: DatasetsPitchbookFundsFacetsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsPitchbookFundsFacetsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['datasets-pitchbook-funds-item'],
+        params: DatasetsPitchbookFundsItemParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsPitchbookFundsItemResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['datasets-pitchbook-funds-search'],
+        params: DatasetsPitchbookFundsSearchParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsPitchbookFundsSearchResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['datasets-pitchbook-investors-facets'],
+        params: DatasetsPitchbookInvestorsFacetsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsPitchbookInvestorsFacetsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['datasets-pitchbook-investors-item'],
+        params: DatasetsPitchbookInvestorsItemParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsPitchbookInvestorsItemResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['datasets-pitchbook-investors-search'],
+        params: DatasetsPitchbookInvestorsSearchParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsPitchbookInvestorsSearchResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['datasets-pitchbook-limited-partners-facets'],
+        params: DatasetsPitchbookLimitedPartnersFacetsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsPitchbookLimitedPartnersFacetsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['datasets-pitchbook-limited-partners-item'],
+        params: DatasetsPitchbookLimitedPartnersItemParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsPitchbookLimitedPartnersItemResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['datasets-pitchbook-limited-partners-search'],
+        params: DatasetsPitchbookLimitedPartnersSearchParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsPitchbookLimitedPartnersSearchResponse: ...
     @overload
     def operation(
         self,
@@ -31631,6 +33475,18 @@ class CrawloraClient:
     @overload
     def operation(
         self,
+        operation_id: Literal['goodreads-author-quotes'],
+        params: GoodreadsAuthorQuotesParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> GoodreadsAuthorQuotesResponse: ...
+    @overload
+    def operation(
+        self,
         operation_id: Literal['goodreads-book'],
         params: GoodreadsBookParams,
         *,
@@ -31640,6 +33496,18 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> GoodreadsBookResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['goodreads-book-editions'],
+        params: GoodreadsBookEditionsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> GoodreadsBookEditionsResponse: ...
     @overload
     def operation(
         self,
@@ -31655,6 +33523,18 @@ class CrawloraClient:
     @overload
     def operation(
         self,
+        operation_id: Literal['goodreads-genre'],
+        params: GoodreadsGenreParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> GoodreadsGenreResponse: ...
+    @overload
+    def operation(
+        self,
         operation_id: Literal['goodreads-list'],
         params: GoodreadsListParams,
         *,
@@ -31664,6 +33544,18 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> GoodreadsListResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['goodreads-lists'],
+        params: GoodreadsListsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> GoodreadsListsResponse: ...
     @overload
     def operation(
         self,
@@ -31940,6 +33832,30 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> GoogleMapPlaceResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['google-map-place-photos'],
+        params: GoogleMapPlacePhotosParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> GoogleMapPlacePhotosResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['google-map-place-reviews'],
+        params: GoogleMapPlaceReviewsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> GoogleMapPlaceReviewsResponse: ...
     @overload
     def operation(
         self,
@@ -32567,6 +34483,18 @@ class CrawloraClient:
     @overload
     def operation(
         self,
+        operation_id: Literal['jobs-gem-board'],
+        params: JobsGemBoardParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> JobsGemBoardResponse: ...
+    @overload
+    def operation(
+        self,
         operation_id: Literal['jobs-greenhouse-board'],
         params: JobsGreenhouseBoardParams,
         *,
@@ -32684,6 +34612,18 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> JobsPersonioFeedResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['jobs-pinpoint-board'],
+        params: JobsPinpointBoardParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> JobsPinpointBoardResponse: ...
     @overload
     def operation(
         self,
@@ -33863,6 +35803,18 @@ class CrawloraClient:
     @overload
     def operation(
         self,
+        operation_id: Literal['pitchbook-advisor'],
+        params: PitchBookPitchbookAdvisorParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> PitchBookPitchbookAdvisorResponse: ...
+    @overload
+    def operation(
+        self,
         operation_id: Literal['pitchbook-company'],
         params: PitchBookPitchbookCompanyParams = ...,
         *,
@@ -33896,6 +35848,18 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> PitchBookPitchbookInvestorResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['pitchbook-limited-partner'],
+        params: PitchBookPitchbookLimitedPartnerParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> PitchBookPitchbookLimitedPartnerResponse: ...
     @overload
     def operation(
         self,
@@ -37400,6 +39364,42 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> TrustpilotCategoryResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['ubereats-search'],
+        params: UberEatsUbereatsSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> UberEatsUbereatsSearchResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['ubereats-store'],
+        params: UberEatsUbereatsStoreParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> UberEatsUbereatsStoreResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['ubereats-store-reviews'],
+        params: UberEatsUbereatsStoreReviewsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> UberEatsUbereatsStoreReviewsResponse: ...
     @overload
     def operation(
         self,
@@ -38495,6 +40495,150 @@ class CrawloraClient:
     @overload
     def request(
         self,
+        operation_id: Literal['apple-books-audiobook-series'],
+        params: AppleBooksAudiobookSeriesParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> AppleBooksAudiobookSeriesResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['apple-books-audiobook-search'],
+        params: AppleBooksAudiobookSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> AppleBooksAudiobookSearchResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['apple-books-audiobook'],
+        params: AppleBooksAudiobookParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> AppleBooksAudiobookResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['apple-books-audiobook-reviews'],
+        params: AppleBooksAudiobookReviewsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> AppleBooksAudiobookReviewsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['apple-books-audiobook-similar'],
+        params: AppleBooksAudiobookSimilarParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> AppleBooksAudiobookSimilarResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['apple-books-author'],
+        params: AppleBooksAuthorParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> AppleBooksAuthorResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['apple-books-book'],
+        params: AppleBooksBookParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> AppleBooksBookResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['apple-books-book-reviews'],
+        params: AppleBooksBookReviewsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> AppleBooksBookReviewsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['apple-books-book-similar'],
+        params: AppleBooksBookSimilarParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> AppleBooksBookSimilarResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['apple-books-charts'],
+        params: AppleBooksChartsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> AppleBooksChartsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['apple-books-search'],
+        params: AppleBooksSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> AppleBooksSearchResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['apple-books-series'],
+        params: AppleBooksSeriesParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> AppleBooksSeriesResponse: ...
+    @overload
+    def request(
+        self,
         operation_id: Literal['apple-podcasts-charts'],
         params: ApplePodcastsChartsParams = ...,
         *,
@@ -39875,6 +42019,78 @@ class CrawloraClient:
     @overload
     def request(
         self,
+        operation_id: Literal['datasets-goodreads-authors-facets'],
+        params: DatasetsGoodreadsAuthorsFacetsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsGoodreadsAuthorsFacetsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['datasets-goodreads-authors-item'],
+        params: DatasetsGoodreadsAuthorsItemParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsGoodreadsAuthorsItemResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['datasets-goodreads-authors-search'],
+        params: DatasetsGoodreadsAuthorsSearchParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsGoodreadsAuthorsSearchResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['datasets-goodreads-books-facets'],
+        params: DatasetsGoodreadsBooksFacetsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsGoodreadsBooksFacetsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['datasets-goodreads-books-item'],
+        params: DatasetsGoodreadsBooksItemParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsGoodreadsBooksItemResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['datasets-goodreads-books-search'],
+        params: DatasetsGoodreadsBooksSearchParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsGoodreadsBooksSearchResponse: ...
+    @overload
+    def request(
+        self,
         operation_id: Literal['datasets-google-map-businesses-facets'],
         params: DatasetsGoogleMapBusinessesFacetsParams,
         *,
@@ -40124,6 +42340,186 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> DatasetsNumbeoCountriesSearchResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['datasets-pitchbook-advisors-facets'],
+        params: DatasetsPitchbookAdvisorsFacetsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsPitchbookAdvisorsFacetsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['datasets-pitchbook-advisors-item'],
+        params: DatasetsPitchbookAdvisorsItemParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsPitchbookAdvisorsItemResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['datasets-pitchbook-advisors-search'],
+        params: DatasetsPitchbookAdvisorsSearchParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsPitchbookAdvisorsSearchResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['datasets-pitchbook-companies-facets'],
+        params: DatasetsPitchbookCompaniesFacetsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsPitchbookCompaniesFacetsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['datasets-pitchbook-companies-item'],
+        params: DatasetsPitchbookCompaniesItemParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsPitchbookCompaniesItemResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['datasets-pitchbook-companies-search'],
+        params: DatasetsPitchbookCompaniesSearchParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsPitchbookCompaniesSearchResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['datasets-pitchbook-funds-facets'],
+        params: DatasetsPitchbookFundsFacetsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsPitchbookFundsFacetsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['datasets-pitchbook-funds-item'],
+        params: DatasetsPitchbookFundsItemParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsPitchbookFundsItemResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['datasets-pitchbook-funds-search'],
+        params: DatasetsPitchbookFundsSearchParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsPitchbookFundsSearchResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['datasets-pitchbook-investors-facets'],
+        params: DatasetsPitchbookInvestorsFacetsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsPitchbookInvestorsFacetsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['datasets-pitchbook-investors-item'],
+        params: DatasetsPitchbookInvestorsItemParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsPitchbookInvestorsItemResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['datasets-pitchbook-investors-search'],
+        params: DatasetsPitchbookInvestorsSearchParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsPitchbookInvestorsSearchResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['datasets-pitchbook-limited-partners-facets'],
+        params: DatasetsPitchbookLimitedPartnersFacetsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsPitchbookLimitedPartnersFacetsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['datasets-pitchbook-limited-partners-item'],
+        params: DatasetsPitchbookLimitedPartnersItemParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsPitchbookLimitedPartnersItemResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['datasets-pitchbook-limited-partners-search'],
+        params: DatasetsPitchbookLimitedPartnersSearchParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsPitchbookLimitedPartnersSearchResponse: ...
     @overload
     def request(
         self,
@@ -41123,6 +43519,18 @@ class CrawloraClient:
     @overload
     def request(
         self,
+        operation_id: Literal['goodreads-author-quotes'],
+        params: GoodreadsAuthorQuotesParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> GoodreadsAuthorQuotesResponse: ...
+    @overload
+    def request(
+        self,
         operation_id: Literal['goodreads-book'],
         params: GoodreadsBookParams,
         *,
@@ -41132,6 +43540,18 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> GoodreadsBookResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['goodreads-book-editions'],
+        params: GoodreadsBookEditionsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> GoodreadsBookEditionsResponse: ...
     @overload
     def request(
         self,
@@ -41147,6 +43567,18 @@ class CrawloraClient:
     @overload
     def request(
         self,
+        operation_id: Literal['goodreads-genre'],
+        params: GoodreadsGenreParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> GoodreadsGenreResponse: ...
+    @overload
+    def request(
+        self,
         operation_id: Literal['goodreads-list'],
         params: GoodreadsListParams,
         *,
@@ -41156,6 +43588,18 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> GoodreadsListResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['goodreads-lists'],
+        params: GoodreadsListsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> GoodreadsListsResponse: ...
     @overload
     def request(
         self,
@@ -41432,6 +43876,30 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> GoogleMapPlaceResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['google-map-place-photos'],
+        params: GoogleMapPlacePhotosParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> GoogleMapPlacePhotosResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['google-map-place-reviews'],
+        params: GoogleMapPlaceReviewsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> GoogleMapPlaceReviewsResponse: ...
     @overload
     def request(
         self,
@@ -42059,6 +44527,18 @@ class CrawloraClient:
     @overload
     def request(
         self,
+        operation_id: Literal['jobs-gem-board'],
+        params: JobsGemBoardParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> JobsGemBoardResponse: ...
+    @overload
+    def request(
+        self,
         operation_id: Literal['jobs-greenhouse-board'],
         params: JobsGreenhouseBoardParams,
         *,
@@ -42176,6 +44656,18 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> JobsPersonioFeedResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['jobs-pinpoint-board'],
+        params: JobsPinpointBoardParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> JobsPinpointBoardResponse: ...
     @overload
     def request(
         self,
@@ -43355,6 +45847,18 @@ class CrawloraClient:
     @overload
     def request(
         self,
+        operation_id: Literal['pitchbook-advisor'],
+        params: PitchBookPitchbookAdvisorParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> PitchBookPitchbookAdvisorResponse: ...
+    @overload
+    def request(
+        self,
         operation_id: Literal['pitchbook-company'],
         params: PitchBookPitchbookCompanyParams = ...,
         *,
@@ -43388,6 +45892,18 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> PitchBookPitchbookInvestorResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['pitchbook-limited-partner'],
+        params: PitchBookPitchbookLimitedPartnerParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> PitchBookPitchbookLimitedPartnerResponse: ...
     @overload
     def request(
         self,
@@ -46892,6 +49408,42 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> TrustpilotCategoryResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['ubereats-search'],
+        params: UberEatsUbereatsSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> UberEatsUbereatsSearchResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['ubereats-store'],
+        params: UberEatsUbereatsStoreParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> UberEatsUbereatsStoreResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['ubereats-store-reviews'],
+        params: UberEatsUbereatsStoreReviewsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> UberEatsUbereatsStoreReviewsResponse: ...
     @overload
     def request(
         self,
