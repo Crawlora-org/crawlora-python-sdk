@@ -24,7 +24,7 @@ pip install --pre crawlora
 
 ## API Key
 
-Create or sign in to your Crawlora account at [crawlora.net](https://crawlora.net),
+Create or sign in to your Crawlora account at [crawlora.net](https://crawlora.net?utm_source=github&utm_medium=referral&utm_campaign=crawlora-python-sdk),
 then create an API key in the dashboard.
 
 ```sh
