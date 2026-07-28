@@ -36,8 +36,13 @@ Newer platforms are grouped like every other endpoint:
 
 ```python
 posts = crawlora.reddit.search(q="python", subreddit="programming")
+post_with_metrics = crawlora.reddit.post(id="1v8hy3q", include_metrics=True)
+comments_with_metrics = crawlora.reddit.comments(id="1v8hy3q", include_metrics=True, limit=25)
 brand = crawlora.brand.retrieve(domain="stripe.com")
 ```
+
+Omit `include_metrics` for the 1-credit feed mode. Set it to `True` for the
+3-credit anonymous HTML mode with public post and comment engagement metrics.
 
 ## Threads Public Lookups
 

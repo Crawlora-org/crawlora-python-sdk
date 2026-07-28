@@ -3696,6 +3696,21 @@ ModelDatasetsHousingSearchResponse = TypedDict('ModelDatasetsHousingSearchRespon
     'total': NotRequired[int],
 }, total=False)
 
+ModelDatasetsInstagramUserFacetResponse = TypedDict('ModelDatasetsInstagramUserFacetResponse', {
+    'dataset': NotRequired[str],
+    'facet': NotRequired[str],
+    'items': NotRequired[list[ModelEsInstagramUserDatasetFacetItem]],
+}, total=False)
+
+ModelDatasetsInstagramUserSearchResponse = TypedDict('ModelDatasetsInstagramUserSearchResponse', {
+    'dataset': NotRequired[str],
+    'items': NotRequired[list[ModelEsInstagramUserDatasetItem]],
+    'page': NotRequired[int],
+    'page_size': NotRequired[int],
+    'sort': NotRequired[str],
+    'total': NotRequired[int],
+}, total=False)
+
 ModelDatasetsJobCompaniesResponse = TypedDict('ModelDatasetsJobCompaniesResponse', {
     'companies': NotRequired[list[dict[str, Any]]],
     'page': NotRequired[int],
@@ -3886,6 +3901,16 @@ ModelDatasetsProductHuntTrendsSearchResponse = TypedDict('ModelDatasetsProductHu
     'min_launches': NotRequired[int],
     'page': NotRequired[int],
     'page_size': NotRequired[int],
+    'sort': NotRequired[str],
+    'total': NotRequired[int],
+}, total=False)
+
+ModelDatasetsRedditTrendingSearchResponse = TypedDict('ModelDatasetsRedditTrendingSearchResponse', {
+    'dataset': NotRequired[str],
+    'items': NotRequired[list[ModelEsRedditTrendingEntry]],
+    'page': NotRequired[int],
+    'page_size': NotRequired[int],
+    'snapshot_date': NotRequired[str],
     'sort': NotRequired[str],
     'total': NotRequired[int],
 }, total=False)
@@ -4269,6 +4294,24 @@ ModelDatasetsHousingMarketsSearchResponseDoc = TypedDict('ModelDatasetsHousingMa
     'msg': NotRequired[str],
 }, total=False)
 
+ModelDatasetsInstagramUserResponseDoc = TypedDict('ModelDatasetsInstagramUserResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelEsInstagramUserRecord],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelDatasetsInstagramUsersFacetResponseDoc = TypedDict('ModelDatasetsInstagramUsersFacetResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelDatasetsInstagramUserFacetResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelDatasetsInstagramUsersSearchResponseDoc = TypedDict('ModelDatasetsInstagramUsersSearchResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelDatasetsInstagramUserSearchResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
 ModelDatasetsJobsCompaniesResponseDoc = TypedDict('ModelDatasetsJobsCompaniesResponseDoc', {
     'code': NotRequired[int],
     'data': NotRequired[ModelDatasetsJobCompaniesResponse],
@@ -4500,6 +4543,12 @@ ModelDatasetsProducthuntTrendsFacetResponseDoc = TypedDict('ModelDatasetsProduct
 ModelDatasetsProducthuntTrendsSearchResponseDoc = TypedDict('ModelDatasetsProducthuntTrendsSearchResponseDoc', {
     'code': NotRequired[int],
     'data': NotRequired[ModelDatasetsProductHuntTrendsSearchResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelDatasetsRedditTrendingSearchResponseDoc = TypedDict('ModelDatasetsRedditTrendingSearchResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelDatasetsRedditTrendingSearchResponse],
     'msg': NotRequired[str],
 }, total=False)
 
@@ -5212,6 +5261,7 @@ ModelEsAppRecord = TypedDict('ModelEsAppRecord', {
     'currency': NotRequired[str],
     'developer': NotRequired[str],
     'developer_id': NotRequired[str],
+    'discovery_sources': NotRequired[list[str]],
     'first_seen': NotRequired[str],
     'free': NotRequired[bool],
     'icon_url': NotRequired[str],
@@ -5443,6 +5493,7 @@ ModelEsChromeExtensionRecord = TypedDict('ModelEsChromeExtensionRecord', {
     'description': NotRequired[str],
     'developer': NotRequired[str],
     'developer_email': NotRequired[str],
+    'discovery_sources': NotRequired[list[str]],
     'first_seen': NotRequired[str],
     'has_broad_host_access': NotRequired[bool],
     'host_permissions': NotRequired[list[str]],
@@ -5820,6 +5871,55 @@ ModelEsHousingMarketRecord = TypedDict('ModelEsHousingMarketRecord', {
     'zip_code': NotRequired[str],
 }, total=False)
 
+ModelEsInstagramUserDatasetFacetItem = TypedDict('ModelEsInstagramUserDatasetFacetItem', {
+    'count': NotRequired[int],
+    'value': NotRequired[str],
+}, total=False)
+
+ModelEsInstagramUserDatasetItem = TypedDict('ModelEsInstagramUserDatasetItem', {
+    'avatar_url': NotRequired[str],
+    'biography': NotRequired[str],
+    'category_name': NotRequired[str],
+    'crawled_at': NotRequired[str],
+    'created_at': NotRequired[str],
+    'external_url': NotRequired[str],
+    'follower_following_ratio': NotRequired[float],
+    'followers': NotRequired[int],
+    'following': NotRequired[int],
+    'full_name': NotRequired[str],
+    'has_bio': NotRequired[bool],
+    'has_external_url': NotRequired[bool],
+    'id': NotRequired[str],
+    'is_business_account': NotRequired[bool],
+    'is_verified': NotRequired[bool],
+    'posts': NotRequired[int],
+    'schema_version': NotRequired[int],
+    'source_tier': NotRequired[str],
+    'username': NotRequired[str],
+}, total=False)
+
+ModelEsInstagramUserRecord = TypedDict('ModelEsInstagramUserRecord', {
+    'avatar_url': NotRequired[str],
+    'biography': NotRequired[str],
+    'category_name': NotRequired[str],
+    'crawled_at': NotRequired[str],
+    'created_at': NotRequired[str],
+    'external_url': NotRequired[str],
+    'follower_following_ratio': NotRequired[float],
+    'followers': NotRequired[int],
+    'following': NotRequired[int],
+    'full_name': NotRequired[str],
+    'has_bio': NotRequired[bool],
+    'has_external_url': NotRequired[bool],
+    'id': NotRequired[str],
+    'is_business_account': NotRequired[bool],
+    'is_verified': NotRequired[bool],
+    'posts': NotRequired[int],
+    'schema_version': NotRequired[int],
+    'source_tier': NotRequired[str],
+    'username': NotRequired[str],
+}, total=False)
+
 ModelEsJobPostingFacets = TypedDict('ModelEsJobPostingFacets', {
     'by_department': NotRequired[list[ModelEsFacetItem]],
     'by_employment_type': NotRequired[list[ModelEsFacetItem]],
@@ -6188,6 +6288,21 @@ ModelEsProductHuntTrendTopProduct = TypedDict('ModelEsProductHuntTrendTopProduct
 ModelEsProductHuntTrendsFacetItem = TypedDict('ModelEsProductHuntTrendsFacetItem', {
     'count': NotRequired[int],
     'value': NotRequired[str],
+}, total=False)
+
+ModelEsRedditTrendingEntry = TypedDict('ModelEsRedditTrendingEntry', {
+    'author': NotRequired[str],
+    'crawled_at': NotRequired[str],
+    'created_utc': NotRequired[int],
+    'domain': NotRequired[str],
+    'permalink': NotRequired[str],
+    'post_id': NotRequired[str],
+    'post_uid': NotRequired[str],
+    'rank': NotRequired[int],
+    'snapshot_date': NotRequired[str],
+    'subreddit': NotRequired[str],
+    'title': NotRequired[str],
+    'url': NotRequired[str],
 }, total=False)
 
 ModelEsSecCompanyFacetItem = TypedDict('ModelEsSecCompanyFacetItem', {
@@ -7898,6 +8013,7 @@ ModelGoogleplayApp = TypedDict('ModelGoogleplayApp', {
     'is_available_in_play_pass': NotRequired[bool],
     'max_installs': NotRequired[int],
     'min_installs': NotRequired[int],
+    'more_by_developer': NotRequired[list[ModelGoogleplayListApp]],
     'offers_iap': NotRequired[bool],
     'original_price': NotRequired[float],
     'preregister': NotRequired[bool],
@@ -7912,6 +8028,7 @@ ModelGoogleplayApp = TypedDict('ModelGoogleplayApp', {
     'score': NotRequired[float],
     'score_text': NotRequired[str],
     'screenshots': NotRequired[list[str]],
+    'similar_apps': NotRequired[list[ModelGoogleplayListApp]],
     'summary': NotRequired[str],
     'title': NotRequired[str],
     'updated': NotRequired[int],
@@ -7946,9 +8063,34 @@ ModelGoogleplayDataSafetyResult = TypedDict('ModelGoogleplayDataSafetyResult', {
     'shared_data': NotRequired[list[ModelGoogleplayDataSafetyEntry]],
 }, total=False)
 
+ModelGoogleplayDeviceRating = TypedDict('ModelGoogleplayDeviceRating', {
+    'device': NotRequired[str],
+    'histogram': NotRequired[dict[str, Any]],
+    'ratings': NotRequired[int],
+    'reviews': NotRequired[int],
+    'score': NotRequired[float],
+    'score_text': NotRequired[str],
+}, total=False)
+
 ModelGoogleplayFeature = TypedDict('ModelGoogleplayFeature', {
     'description': NotRequired[str],
     'title': NotRequired[str],
+}, total=False)
+
+ModelGoogleplayListApp = TypedDict('ModelGoogleplayListApp', {
+    'app_id': NotRequired[str],
+    'currency': NotRequired[str],
+    'developer': NotRequired[str],
+    'developer_id': NotRequired[str],
+    'free': NotRequired[bool],
+    'icon': NotRequired[str],
+    'price': NotRequired[float],
+    'price_text': NotRequired[str],
+    'score': NotRequired[float],
+    'score_text': NotRequired[str],
+    'summary': NotRequired[str],
+    'title': NotRequired[str],
+    'url': NotRequired[str],
 }, total=False)
 
 ModelGoogleplayReview = TypedDict('ModelGoogleplayReview', {
@@ -8014,6 +8156,12 @@ ModelGoogleplayListResultsResponseDoc = TypedDict('ModelGoogleplayListResultsRes
 ModelGoogleplayPermissionsResultsResponseDoc = TypedDict('ModelGoogleplayPermissionsResultsResponseDoc', {
     'code': NotRequired[int],
     'data': NotRequired[list[Any]],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelGoogleplayRatingsResponseDoc = TypedDict('ModelGoogleplayRatingsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[list[ModelGoogleplayDeviceRating]],
     'msg': NotRequired[str],
 }, total=False)
 
@@ -12611,6 +12759,7 @@ ModelRedditAuthor = TypedDict('ModelRedditAuthor', {
 
 ModelRedditComment = TypedDict('ModelRedditComment', {
     'author': NotRequired[ModelRedditAuthor],
+    'award_count': NotRequired[int],
     'body': NotRequired[str],
     'created': NotRequired[str],
     'created_utc': NotRequired[int],
@@ -12625,6 +12774,7 @@ ModelRedditComment = TypedDict('ModelRedditComment', {
 
 ModelRedditCommentsResponse = TypedDict('ModelRedditCommentsResponse', {
     'comments': NotRequired[list[ModelRedditComment]],
+    'metrics_source': NotRequired[ModelRedditSourceDetail],
     'post': NotRequired[ModelRedditPost],
     'source': NotRequired[ModelRedditSourceDetail],
 }, total=False)
@@ -12654,10 +12804,13 @@ ModelRedditPagination = TypedDict('ModelRedditPagination', {
 
 ModelRedditPost = TypedDict('ModelRedditPost', {
     'author': NotRequired[ModelRedditAuthor],
+    'award_count': NotRequired[int],
     'comment_count': NotRequired[int],
     'created': NotRequired[str],
     'created_utc': NotRequired[int],
     'domain': NotRequired[str],
+    'estimated_downvotes': NotRequired[int],
+    'estimated_upvotes': NotRequired[int],
     'flair': NotRequired[str],
     'id': NotRequired[str],
     'is_self': NotRequired[bool],
@@ -12675,9 +12828,11 @@ ModelRedditPost = TypedDict('ModelRedditPost', {
     'title': NotRequired[str],
     'upvote_ratio': NotRequired[float],
     'url': NotRequired[str],
+    'vote_counts_estimated': NotRequired[bool],
 }, total=False)
 
 ModelRedditPostResponse = TypedDict('ModelRedditPostResponse', {
+    'metrics_source': NotRequired[ModelRedditSourceDetail],
     'post': NotRequired[ModelRedditPost],
     'source': NotRequired[ModelRedditSourceDetail],
 }, total=False)
@@ -21273,6 +21428,67 @@ DatasetsHousingMarketsSearchParams = TypedDict('DatasetsHousingMarketsSearchPara
     'page_size': NotRequired[int],
 }, total=False)
 
+DatasetsInstagramUsersFacetsResponse = ModelDatasetsInstagramUsersFacetResponseDoc
+DatasetsInstagramUsersFacetsParams = TypedDict('DatasetsInstagramUsersFacetsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'facet': Required[Literal['is_verified', 'is_business_account', 'has_bio', 'has_external_url', 'category_name', 'source_tier']],
+    'q': NotRequired[str],
+    'username': NotRequired[str],
+    'category_name': NotRequired[str],
+    'source_tier': NotRequired[str],
+    'is_verified': NotRequired[bool],
+    'is_business_account': NotRequired[bool],
+    'has_bio': NotRequired[bool],
+    'has_external_url': NotRequired[bool],
+    'min_followers': NotRequired[int],
+    'max_followers': NotRequired[int],
+    'min_ratio': NotRequired[float],
+    'max_ratio': NotRequired[float],
+    'created_after': NotRequired[str],
+    'created_before': NotRequired[str],
+    'crawled_after': NotRequired[str],
+    'crawled_before': NotRequired[str],
+    'sort': NotRequired[Literal['relevance', 'followers_desc', 'followers_asc', 'crawled_at_desc', 'crawled_at_asc', 'created_at_desc', 'created_at_asc']],
+    'page': NotRequired[int],
+    'page_size': NotRequired[int],
+}, total=False)
+
+DatasetsInstagramUsersItemResponse = ModelDatasetsInstagramUserResponseDoc
+DatasetsInstagramUsersItemParams = TypedDict('DatasetsInstagramUsersItemParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'username': Required[str],
+}, total=False)
+
+DatasetsInstagramUsersSearchResponse = ModelDatasetsInstagramUsersSearchResponseDoc
+DatasetsInstagramUsersSearchParams = TypedDict('DatasetsInstagramUsersSearchParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'q': NotRequired[str],
+    'username': NotRequired[str],
+    'category_name': NotRequired[str],
+    'source_tier': NotRequired[str],
+    'is_verified': NotRequired[bool],
+    'is_business_account': NotRequired[bool],
+    'has_bio': NotRequired[bool],
+    'has_external_url': NotRequired[bool],
+    'min_followers': NotRequired[int],
+    'max_followers': NotRequired[int],
+    'min_ratio': NotRequired[float],
+    'max_ratio': NotRequired[float],
+    'created_after': NotRequired[str],
+    'created_before': NotRequired[str],
+    'crawled_after': NotRequired[str],
+    'crawled_before': NotRequired[str],
+    'sort': NotRequired[Literal['relevance', 'followers_desc', 'followers_asc', 'crawled_at_desc', 'crawled_at_asc', 'created_at_desc', 'created_at_asc']],
+    'page': NotRequired[int],
+    'page_size': NotRequired[int],
+}, total=False)
+
 DatasetsJobsCompaniesResponse = ModelDatasetsJobsCompaniesResponseDoc
 DatasetsJobsCompaniesParams = TypedDict('DatasetsJobsCompaniesParams', {
     '_response_type': NotRequired[ResponseType],
@@ -21853,6 +22069,19 @@ DatasetsProducthuntTrendsSearchParams = TypedDict('DatasetsProducthuntTrendsSear
     'min_votes': NotRequired[int],
     'min_launches': NotRequired[int],
     'sort': NotRequired[Literal['period_desc', 'period_asc', 'launch_count_desc', 'sum_votes_desc']],
+    'page': NotRequired[int],
+    'page_size': NotRequired[int],
+}, total=False)
+
+DatasetsRedditTrendingSearchResponse = ModelDatasetsRedditTrendingSearchResponseDoc
+DatasetsRedditTrendingSearchParams = TypedDict('DatasetsRedditTrendingSearchParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'q': NotRequired[str],
+    'subreddit': NotRequired[str],
+    'date': NotRequired[str],
+    'sort': NotRequired[Literal['rank', 'date_desc']],
     'page': NotRequired[int],
     'page_size': NotRequired[int],
 }, total=False)
@@ -23220,6 +23449,7 @@ GooglePlayListParams = TypedDict('GooglePlayListParams', {
     '_headers': NotRequired[Mapping[str, str]],
     'collection': NotRequired[Literal['TOP_FREE', 'TOP_PAID', 'GROSSING', 'NEW_FREE', 'NEW_PAID']],
     'category': NotRequired[str],
+    'device': NotRequired[Literal['phone', 'tablet', 'tv', 'chromebook', 'watch', 'xr', 'car']],
     'age': NotRequired[str],
     'num': NotRequired[int],
     'country': NotRequired[str],
@@ -23236,6 +23466,16 @@ GooglePlayPermissionsParams = TypedDict('GooglePlayPermissionsParams', {
     'country': NotRequired[str],
     'lang': NotRequired[str],
     'short': NotRequired[bool],
+}, total=False)
+
+GooglePlayRatingsResponse = ModelGoogleplayRatingsResponseDoc
+GooglePlayRatingsParams = TypedDict('GooglePlayRatingsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'app_id': Required[str],
+    'country': NotRequired[str],
+    'lang': NotRequired[str],
 }, total=False)
 
 GooglePlayReviewsResponse = ModelGoogleplayReviewsResponseDoc
@@ -25509,6 +25749,7 @@ RedditCommentsParams = TypedDict('RedditCommentsParams', {
     'sort': NotRequired[Literal['confidence', 'top', 'new', 'controversial', 'old', 'qa']],
     'limit': NotRequired[int],
     'depth': NotRequired[int],
+    'include_metrics': NotRequired[bool],
 }, total=False)
 
 RedditDomainPostsResponse = ModelRedditDomainPostsResponseDoc
@@ -25529,6 +25770,7 @@ RedditPostParams = TypedDict('RedditPostParams', {
     '_timeout': NotRequired[float],
     '_headers': NotRequired[Mapping[str, str]],
     'id': Required[str],
+    'include_metrics': NotRequired[bool],
 }, total=False)
 
 RedditSearchResponse = ModelRedditSearchResponseDoc
@@ -28365,6 +28607,9 @@ class DatasetsGroup:
     def housing_markets_facets(self, **params: Unpack[DatasetsHousingMarketsFacetsParams]) -> DatasetsHousingMarketsFacetsResponse: ...
     def housing_markets_item(self, **params: Unpack[DatasetsHousingMarketsItemParams]) -> DatasetsHousingMarketsItemResponse: ...
     def housing_markets_search(self, **params: Unpack[DatasetsHousingMarketsSearchParams]) -> DatasetsHousingMarketsSearchResponse: ...
+    def instagram_users_facets(self, **params: Unpack[DatasetsInstagramUsersFacetsParams]) -> DatasetsInstagramUsersFacetsResponse: ...
+    def instagram_users_item(self, **params: Unpack[DatasetsInstagramUsersItemParams]) -> DatasetsInstagramUsersItemResponse: ...
+    def instagram_users_search(self, **params: Unpack[DatasetsInstagramUsersSearchParams]) -> DatasetsInstagramUsersSearchResponse: ...
     def jobs_companies(self, **params: Unpack[DatasetsJobsCompaniesParams]) -> DatasetsJobsCompaniesResponse: ...
     def jobs_company_item(self, **params: Unpack[DatasetsJobsCompanyItemParams]) -> DatasetsJobsCompanyItemResponse: ...
     def jobs_facets(self, **params: Unpack[DatasetsJobsFacetsParams]) -> DatasetsJobsFacetsResponse: ...
@@ -28405,6 +28650,7 @@ class DatasetsGroup:
     def producthunt_products_search(self, **params: Unpack[DatasetsProducthuntProductsSearchParams]) -> DatasetsProducthuntProductsSearchResponse: ...
     def producthunt_trends_facets(self, **params: Unpack[DatasetsProducthuntTrendsFacetsParams]) -> DatasetsProducthuntTrendsFacetsResponse: ...
     def producthunt_trends_search(self, **params: Unpack[DatasetsProducthuntTrendsSearchParams]) -> DatasetsProducthuntTrendsSearchResponse: ...
+    def reddit_trending_search(self, **params: Unpack[DatasetsRedditTrendingSearchParams]) -> DatasetsRedditTrendingSearchResponse: ...
     def sec_companies_facets(self, **params: Unpack[DatasetsSecCompaniesFacetsParams]) -> DatasetsSecCompaniesFacetsResponse: ...
     def sec_companies_financials(self, **params: Unpack[DatasetsSecCompaniesFinancialsParams]) -> DatasetsSecCompaniesFinancialsResponse: ...
     def sec_companies_insider(self, **params: Unpack[DatasetsSecCompaniesInsiderParams]) -> DatasetsSecCompaniesInsiderResponse: ...
@@ -28545,6 +28791,7 @@ class GooglePlayGroup:
     def developer(self, **params: Unpack[GooglePlayDeveloperParams]) -> GooglePlayDeveloperResponse: ...
     def list(self, **params: Unpack[GooglePlayListParams]) -> GooglePlayListResponse: ...
     def permissions(self, **params: Unpack[GooglePlayPermissionsParams]) -> GooglePlayPermissionsResponse: ...
+    def ratings(self, **params: Unpack[GooglePlayRatingsParams]) -> GooglePlayRatingsResponse: ...
     def reviews(self, **params: Unpack[GooglePlayReviewsParams]) -> GooglePlayReviewsResponse: ...
     def search(self, **params: Unpack[GooglePlaySearchParams]) -> GooglePlaySearchResponse: ...
     def similar(self, **params: Unpack[GooglePlaySimilarParams]) -> GooglePlaySimilarResponse: ...
@@ -29295,6 +29542,9 @@ OperationId = Literal[
     'datasets-housing-markets-facets',
     'datasets-housing-markets-item',
     'datasets-housing-markets-search',
+    'datasets-instagram-users-facets',
+    'datasets-instagram-users-item',
+    'datasets-instagram-users-search',
     'datasets-jobs-companies',
     'datasets-jobs-company-item',
     'datasets-jobs-facets',
@@ -29335,6 +29585,7 @@ OperationId = Literal[
     'datasets-producthunt-products-search',
     'datasets-producthunt-trends-facets',
     'datasets-producthunt-trends-search',
+    'datasets-reddit-trending-search',
     'datasets-sec-companies-facets',
     'datasets-sec-companies-financials',
     'datasets-sec-companies-insider',
@@ -29461,6 +29712,7 @@ OperationId = Literal[
     'googleplay-developer',
     'googleplay-list',
     'googleplay-permissions',
+    'googleplay-ratings',
     'googleplay-reviews',
     'googleplay-search',
     'googleplay-similar',
@@ -32116,6 +32368,42 @@ class CrawloraClient:
     @overload
     def operation(
         self,
+        operation_id: Literal['datasets-instagram-users-facets'],
+        params: DatasetsInstagramUsersFacetsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsInstagramUsersFacetsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['datasets-instagram-users-item'],
+        params: DatasetsInstagramUsersItemParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsInstagramUsersItemResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['datasets-instagram-users-search'],
+        params: DatasetsInstagramUsersSearchParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsInstagramUsersSearchResponse: ...
+    @overload
+    def operation(
+        self,
         operation_id: Literal['datasets-jobs-companies'],
         params: DatasetsJobsCompaniesParams = ...,
         *,
@@ -32593,6 +32881,18 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> DatasetsProducthuntTrendsSearchResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['datasets-reddit-trending-search'],
+        params: DatasetsRedditTrendingSearchParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsRedditTrendingSearchResponse: ...
     @overload
     def operation(
         self,
@@ -34105,6 +34405,18 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> GooglePlayPermissionsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['googleplay-ratings'],
+        params: GooglePlayRatingsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> GooglePlayRatingsResponse: ...
     @overload
     def operation(
         self,
@@ -42112,6 +42424,42 @@ class CrawloraClient:
     @overload
     def request(
         self,
+        operation_id: Literal['datasets-instagram-users-facets'],
+        params: DatasetsInstagramUsersFacetsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsInstagramUsersFacetsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['datasets-instagram-users-item'],
+        params: DatasetsInstagramUsersItemParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsInstagramUsersItemResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['datasets-instagram-users-search'],
+        params: DatasetsInstagramUsersSearchParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsInstagramUsersSearchResponse: ...
+    @overload
+    def request(
+        self,
         operation_id: Literal['datasets-jobs-companies'],
         params: DatasetsJobsCompaniesParams = ...,
         *,
@@ -42589,6 +42937,18 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> DatasetsProducthuntTrendsSearchResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['datasets-reddit-trending-search'],
+        params: DatasetsRedditTrendingSearchParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsRedditTrendingSearchResponse: ...
     @overload
     def request(
         self,
@@ -44101,6 +44461,18 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> GooglePlayPermissionsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['googleplay-ratings'],
+        params: GooglePlayRatingsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> GooglePlayRatingsResponse: ...
     @overload
     def request(
         self,
