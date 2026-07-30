@@ -6000,10 +6000,15 @@ ModelEsInstagramUserRecord = TypedDict('ModelEsInstagramUserRecord', {
 }, total=False)
 
 ModelEsJobPostingFacets = TypedDict('ModelEsJobPostingFacets', {
+    'by_ai_tool': NotRequired[list[ModelEsFacetItem]],
+    'by_benefit': NotRequired[list[ModelEsFacetItem]],
     'by_department': NotRequired[list[ModelEsFacetItem]],
+    'by_education_level': NotRequired[list[ModelEsFacetItem]],
     'by_employment_type': NotRequired[list[ModelEsFacetItem]],
     'by_location': NotRequired[list[ModelEsFacetItem]],
     'by_provider': NotRequired[list[ModelEsFacetItem]],
+    'by_security_clearance': NotRequired[list[ModelEsFacetItem]],
+    'by_skill': NotRequired[list[ModelEsFacetItem]],
     'remote_open': NotRequired[int],
     'top_companies': NotRequired[list[ModelEsFacetItem]],
     'total_open': NotRequired[int],
@@ -7160,6 +7165,35 @@ ModelExtractUsage = TypedDict('ModelExtractUsage', {
 ModelExtractResponseDoc = TypedDict('ModelExtractResponseDoc', {
     'code': NotRequired[int],
     'data': NotRequired[ModelExtractResult],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelFacebookPage = TypedDict('ModelFacebookPage', {
+    'address': NotRequired[str],
+    'category': NotRequired[str],
+    'company': NotRequired[str],
+    'email': NotRequired[str],
+    'emails': NotRequired[list[str]],
+    'hours': NotRequired[str],
+    'intro': NotRequired[str],
+    'latestPostAt': NotRequired[str],
+    'og': NotRequired[dict[str, Any]],
+    'pageId': NotRequired[str],
+    'phones': NotRequired[list[str]],
+    'priceRange': NotRequired[str],
+    'reviewCount': NotRequired[int],
+    'sourceUrl': NotRequired[str],
+    'stats': NotRequired[dict[str, Any]],
+    'talking': NotRequired[int],
+    'title': NotRequired[str],
+    'website': NotRequired[str],
+    'wereHere': NotRequired[int],
+    'whatsapp': NotRequired[str],
+}, total=False)
+
+ModelFacebookPageResponseDoc = TypedDict('ModelFacebookPageResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelFacebookPage],
     'msg': NotRequired[str],
 }, total=False)
 
@@ -8976,7 +9010,9 @@ ModelJobsHiringSignals = TypedDict('ModelJobsHiringSignals', {
 }, total=False)
 
 ModelJobsJob = TypedDict('ModelJobsJob', {
+    'ai_tools_mentioned': NotRequired[list[str]],
     'apply_url': NotRequired[str],
+    'benefits_mentioned': NotRequired[list[str]],
     'company': NotRequired[str],
     'company_logo_url': NotRequired[str],
     'compensation': NotRequired[str],
@@ -8987,6 +9023,7 @@ ModelJobsJob = TypedDict('ModelJobsJob', {
     'department': NotRequired[str],
     'description_html': NotRequired[str],
     'description_text': NotRequired[str],
+    'education_level_required': NotRequired[list[str]],
     'employment_type': NotRequired[str],
     'id': NotRequired[str],
     'location': NotRequired[str],
@@ -8999,6 +9036,8 @@ ModelJobsJob = TypedDict('ModelJobsJob', {
     'provider': NotRequired[str],
     'remote': NotRequired[bool],
     'req_id': NotRequired[str],
+    'security_clearance_required': NotRequired[list[str]],
+    'skills_mentioned': NotRequired[list[str]],
     'team': NotRequired[str],
     'title': NotRequired[str],
     'url': NotRequired[str],
@@ -21757,9 +21796,10 @@ DatasetsJobsCompaniesParams = TypedDict('DatasetsJobsCompaniesParams', {
     '_timeout': NotRequired[float],
     '_headers': NotRequired[Mapping[str, str]],
     'q': NotRequired[str],
-    'provider': NotRequired[Literal['greenhouse', 'lever', 'ashby', 'workday', 'smartrecruiters', 'workable', 'recruitee', 'rippling', 'personio', 'teamtailor', 'oracle', 'ukg', 'icims', 'eightfold', 'gem', 'pinpoint']],
+    'provider': NotRequired[Literal['greenhouse', 'lever', 'ashby', 'workday', 'smartrecruiters', 'workable', 'recruitee', 'rippling', 'personio', 'teamtailor', 'oracle', 'ukg', 'icims', 'eightfold', 'gem', 'pinpoint', 'amazon-jobs', 'apple-jobs', 'google-jobs', 'meta-jobs', 'tesla-jobs']],
     'status': NotRequired[Literal['active', 'empty', 'gone', 'blocked', 'pending', 'invalid']],
     'min_open_roles': NotRequired[int],
+    'sponsors_visa': NotRequired[bool],
     'sort': NotRequired[Literal['open_desc', 'company_asc', 'crawled_desc']],
     'page': NotRequired[int],
     'page_size': NotRequired[int],
@@ -21797,7 +21837,7 @@ DatasetsJobsNearbyParams = TypedDict('DatasetsJobsNearbyParams', {
     'lat': Required[float],
     'lon': Required[float],
     'radius_km': NotRequired[float],
-    'provider': NotRequired[Literal['greenhouse', 'lever', 'ashby', 'workday', 'smartrecruiters', 'workable', 'recruitee', 'rippling', 'personio', 'teamtailor', 'oracle', 'ukg', 'icims', 'eightfold', 'gem', 'pinpoint']],
+    'provider': NotRequired[Literal['greenhouse', 'lever', 'ashby', 'workday', 'smartrecruiters', 'workable', 'recruitee', 'rippling', 'personio', 'teamtailor', 'oracle', 'ukg', 'icims', 'eightfold', 'gem', 'pinpoint', 'amazon-jobs', 'apple-jobs', 'google-jobs', 'meta-jobs', 'tesla-jobs']],
     'include_closed': NotRequired[bool],
     'page': NotRequired[int],
     'page_size': NotRequired[int],
@@ -21810,7 +21850,7 @@ DatasetsJobsSearchParams = TypedDict('DatasetsJobsSearchParams', {
     '_headers': NotRequired[Mapping[str, str]],
     'q': NotRequired[str],
     'company': NotRequired[str],
-    'provider': NotRequired[Literal['greenhouse', 'lever', 'ashby', 'workday', 'smartrecruiters', 'workable', 'recruitee', 'rippling', 'personio', 'teamtailor', 'oracle', 'ukg', 'icims', 'eightfold', 'gem', 'pinpoint']],
+    'provider': NotRequired[Literal['greenhouse', 'lever', 'ashby', 'workday', 'smartrecruiters', 'workable', 'recruitee', 'rippling', 'personio', 'teamtailor', 'oracle', 'ukg', 'icims', 'eightfold', 'gem', 'pinpoint', 'amazon-jobs', 'apple-jobs', 'google-jobs', 'meta-jobs', 'tesla-jobs']],
     'department': NotRequired[str],
     'location': NotRequired[str],
     'city': NotRequired[str],
@@ -23005,6 +23045,14 @@ WebExtractParams = TypedDict('WebExtractParams', {
     '_timeout': NotRequired[float],
     '_headers': NotRequired[Mapping[str, str]],
     'extractOption': Required[WebExtractBody],
+}, total=False)
+
+FacebookPageResponse = ModelFacebookPageResponseDoc
+FacebookPageParams = TypedDict('FacebookPageParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'page': Required[str],
 }, total=False)
 
 GeocodingLookupResponse = ModelGeocodingLookupResponseDoc
@@ -29044,6 +29092,9 @@ class EspnGroup:
     def team_roster(self, **params: Unpack[EspnTeamRosterParams]) -> EspnTeamRosterResponse: ...
     def teams(self, **params: Unpack[EspnTeamsParams]) -> EspnTeamsResponse: ...
 
+class FacebookGroup:
+    def page(self, **params: Unpack[FacebookPageParams]) -> FacebookPageResponse: ...
+
 class GeocodingGroup:
     def lookup(self, **params: Unpack[GeocodingLookupParams]) -> GeocodingLookupResponse: ...
     def reverse(self, **params: Unpack[GeocodingReverseParams]) -> GeocodingReverseResponse: ...
@@ -29991,6 +30042,7 @@ OperationId = Literal[
     'espn-team-roster',
     'espn-teams',
     'extract',
+    'facebook-page',
     'geocoding-lookup',
     'geocoding-reverse',
     'geocoding-search',
@@ -30598,6 +30650,7 @@ class CrawloraClient:
     discogs: DiscogsGroup
     e_bay: EBayGroup
     espn: EspnGroup
+    facebook: FacebookGroup
     geocoding: GeocodingGroup
     git_hub: GitHubGroup
     goodreads: GoodreadsGroup
@@ -33908,6 +33961,18 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> WebExtractResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['facebook-page'],
+        params: FacebookPageParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FacebookPageResponse: ...
     @overload
     def operation(
         self,
@@ -44096,6 +44161,18 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> WebExtractResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['facebook-page'],
+        params: FacebookPageParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FacebookPageResponse: ...
     @overload
     def request(
         self,
