@@ -44,6 +44,18 @@ brand = crawlora.brand.retrieve(domain="stripe.com")
 Omit `include_metrics` for the 1-credit feed mode. Set it to `True` for the
 3-credit anonymous HTML mode with public post and comment engagement metrics.
 
+## Company Job Searches
+
+Search public job listings directly from employer career sites:
+
+```python
+amazon = crawlora.amazon_jobs.search(q="software engineer", country="US")
+apple = crawlora.apple_jobs.search(q="machine learning", location="United States")
+google = crawlora.google_jobs.search(q="data scientist", location="Singapore")
+meta = crawlora.meta_jobs.search(q="product manager", is_remote_only=True)
+tesla = crawlora.tesla_jobs.list(query="manufacturing", location="Texas")
+```
+
 ## Threads Public Lookups
 
 ```python

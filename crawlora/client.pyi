@@ -253,6 +253,47 @@ ModelAmazonSuggestResponseDoc = TypedDict('ModelAmazonSuggestResponseDoc', {
     'msg': NotRequired[str],
 }, total=False)
 
+ModelAmazonjobsAmazonJob = TypedDict('ModelAmazonjobsAmazonJob', {
+    'apply_url': NotRequired[str],
+    'basic_qualifications': NotRequired[str],
+    'category': NotRequired[str],
+    'city': NotRequired[str],
+    'company': NotRequired[str],
+    'country': NotRequired[str],
+    'description': NotRequired[str],
+    'id': NotRequired[str],
+    'location': NotRequired[str],
+    'posted_at': NotRequired[str],
+    'preferred_qualifications': NotRequired[str],
+    'schedule_type': NotRequired[str],
+    'state': NotRequired[str],
+    'title': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelAmazonjobsSearchResponse = TypedDict('ModelAmazonjobsSearchResponse', {
+    'category': NotRequired[str],
+    'country': NotRequired[str],
+    'jobs': NotRequired[list[ModelAmazonjobsAmazonJob]],
+    'limit': NotRequired[int],
+    'page': NotRequired[int],
+    'query': NotRequired[str],
+    'source_url': NotRequired[str],
+    'total': NotRequired[int],
+}, total=False)
+
+ModelAmazonjobsJobResponseDoc = TypedDict('ModelAmazonjobsJobResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelAmazonjobsAmazonJob],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelAmazonjobsSearchResponseDoc = TypedDict('ModelAmazonjobsSearchResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelAmazonjobsSearchResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
 ModelAnimeAiringEntry = TypedDict('ModelAnimeAiringEntry', {
     'airing_at': NotRequired[int],
     'episode': NotRequired[int],
@@ -760,6 +801,44 @@ ModelApplebooksSeriesResponseDoc = TypedDict('ModelApplebooksSeriesResponseDoc',
 ModelApplebooksSimilarResponseDoc = TypedDict('ModelApplebooksSimilarResponseDoc', {
     'code': NotRequired[int],
     'data': NotRequired[list[ModelApplebooksBook]],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelApplejobsAppleJob = TypedDict('ModelApplejobsAppleJob', {
+    'country': NotRequired[str],
+    'description': NotRequired[str],
+    'employment_type': NotRequired[str],
+    'id': NotRequired[str],
+    'location': NotRequired[str],
+    'locations': NotRequired[list[str]],
+    'minimum_qualifications': NotRequired[str],
+    'position_id': NotRequired[str],
+    'posted_at': NotRequired[str],
+    'preferred_qualifications': NotRequired[str],
+    'responsibilities': NotRequired[str],
+    'team': NotRequired[str],
+    'title': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelApplejobsSearchResponse = TypedDict('ModelApplejobsSearchResponse', {
+    'jobs': NotRequired[list[ModelApplejobsAppleJob]],
+    'location': NotRequired[str],
+    'page': NotRequired[int],
+    'query': NotRequired[str],
+    'source_url': NotRequired[str],
+    'total': NotRequired[int],
+}, total=False)
+
+ModelApplejobsJobResponseDoc = TypedDict('ModelApplejobsJobResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelApplejobsAppleJob],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelApplejobsSearchResponseDoc = TypedDict('ModelApplejobsSearchResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelApplejobsSearchResponse],
     'msg': NotRequired[str],
 }, total=False)
 
@@ -5766,8 +5845,8 @@ ModelEsGoogleBusiness = TypedDict('ModelEsGoogleBusiness', {
     'name': NotRequired[str],
     'phone': NotRequired[str],
     'place_id': NotRequired[str],
-    'rating': NotRequired[float],
-    'review_count': NotRequired[int],
+    'rating': NotRequired[float | None],
+    'review_count': NotRequired[int | None],
     'similarweb': NotRequired[ModelSimilarwebSimilarWebResp],
     'state': NotRequired[str],
     'town': NotRequired[str],
@@ -5802,8 +5881,8 @@ ModelEsGoogleBusinessDatasetItem = TypedDict('ModelEsGoogleBusinessDatasetItem',
     'name': NotRequired[str],
     'phone': NotRequired[str],
     'place_id': NotRequired[str],
-    'rating': NotRequired[float],
-    'review_count': NotRequired[int],
+    'rating': NotRequired[float | None],
+    'review_count': NotRequired[int | None],
     'similarweb': NotRequired[ModelSimilarwebSimilarWebResp],
     'state': NotRequired[str],
     'town': NotRequired[str],
@@ -7842,7 +7921,7 @@ ModelGooglePlace = TypedDict('ModelGooglePlace', {
     'name': NotRequired[str],
     'phone': NotRequired[str],
     'place_id': NotRequired[str],
-    'rating': NotRequired[float],
+    'rating': NotRequired[float | None],
     'review_count': NotRequired[int],
     'url': NotRequired[str],
     'website': NotRequired[str],
@@ -7972,6 +8051,43 @@ ModelGoogleSuggestResponseDoc = TypedDict('ModelGoogleSuggestResponseDoc', {
 ModelGoogleVideosResponseDoc = TypedDict('ModelGoogleVideosResponseDoc', {
     'code': NotRequired[int],
     'data': NotRequired[ModelGoogleVideosResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelGooglejobsGoogleJob = TypedDict('ModelGooglejobsGoogleJob', {
+    'apply_url': NotRequired[str],
+    'company': NotRequired[str],
+    'country': NotRequired[str],
+    'description': NotRequired[str],
+    'id': NotRequired[str],
+    'location': NotRequired[str],
+    'locations': NotRequired[list[str]],
+    'minimum_qualifications': NotRequired[str],
+    'posted_at': NotRequired[str],
+    'preferred_qualifications': NotRequired[str],
+    'responsibilities': NotRequired[str],
+    'title': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelGooglejobsSearchResponse = TypedDict('ModelGooglejobsSearchResponse', {
+    'jobs': NotRequired[list[ModelGooglejobsGoogleJob]],
+    'location': NotRequired[str],
+    'page': NotRequired[int],
+    'query': NotRequired[str],
+    'source_url': NotRequired[str],
+    'total': NotRequired[int],
+}, total=False)
+
+ModelGooglejobsJobResponseDoc = TypedDict('ModelGooglejobsJobResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelGooglejobsGoogleJob],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelGooglejobsSearchResponseDoc = TypedDict('ModelGooglejobsSearchResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelGooglejobsSearchResponse],
     'msg': NotRequired[str],
 }, total=False)
 
@@ -10369,6 +10485,68 @@ ModelMetaculusQuestionResponseDoc = TypedDict('ModelMetaculusQuestionResponseDoc
 ModelMetaculusQuestionsResponseDoc = TypedDict('ModelMetaculusQuestionsResponseDoc', {
     'code': NotRequired[int],
     'data': NotRequired[ModelMetaculusQuestionsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelMetajobsListResponse = TypedDict('ModelMetajobsListResponse', {
+    'listings': NotRequired[list[ModelMetajobsMetaJobListing]],
+    'page': NotRequired[int],
+    'page_size': NotRequired[int],
+    'source_url': NotRequired[str],
+    'total': NotRequired[int],
+}, total=False)
+
+ModelMetajobsMetaJob = TypedDict('ModelMetajobsMetaJob', {
+    'compensation_country': NotRequired[str],
+    'compensation_max': NotRequired[str],
+    'compensation_min': NotRequired[str],
+    'departments': NotRequired[list[str]],
+    'description': NotRequired[str],
+    'id': NotRequired[str],
+    'locations': NotRequired[list[str]],
+    'minimum_qualifications': NotRequired[list[str]],
+    'preferred_qualifications': NotRequired[list[str]],
+    'responsibilities': NotRequired[list[str]],
+    'title': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelMetajobsMetaJobListing = TypedDict('ModelMetajobsMetaJobListing', {
+    'id': NotRequired[str],
+    'last_modified': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelMetajobsMetaJobSearchResult = TypedDict('ModelMetajobsMetaJobSearchResult', {
+    'id': NotRequired[str],
+    'locations': NotRequired[list[str]],
+    'sub_teams': NotRequired[list[str]],
+    'teams': NotRequired[list[str]],
+    'title': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelMetajobsSearchResponse = TypedDict('ModelMetajobsSearchResponse', {
+    'jobs': NotRequired[list[ModelMetajobsMetaJobSearchResult]],
+    'source_url': NotRequired[str],
+    'total': NotRequired[int],
+}, total=False)
+
+ModelMetajobsJobResponseDoc = TypedDict('ModelMetajobsJobResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelMetajobsMetaJob],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelMetajobsListResponseDoc = TypedDict('ModelMetajobsListResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelMetajobsListResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelMetajobsSearchResponseDoc = TypedDict('ModelMetajobsSearchResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelMetajobsSearchResponse],
     'msg': NotRequired[str],
 }, total=False)
 
@@ -16301,6 +16479,51 @@ ModelTechstackTechnology = TypedDict('ModelTechstackTechnology', {
     'version': NotRequired[str],
 }, total=False)
 
+ModelTeslajobsListResponse = TypedDict('ModelTeslajobsListResponse', {
+    'jobs': NotRequired[list[ModelTeslajobsTeslaJobListing]],
+    'location': NotRequired[str],
+    'page': NotRequired[int],
+    'page_size': NotRequired[int],
+    'query': NotRequired[str],
+    'total': NotRequired[int],
+}, total=False)
+
+ModelTeslajobsTeslaJob = TypedDict('ModelTeslajobsTeslaJob', {
+    'apply_url': NotRequired[str],
+    'compensation_text': NotRequired[str],
+    'country': NotRequired[str],
+    'department': NotRequired[str],
+    'description': NotRequired[str],
+    'employment_type': NotRequired[str],
+    'id': NotRequired[str],
+    'job_family': NotRequired[str],
+    'location': NotRequired[str],
+    'requirements': NotRequired[str],
+    'responsibilities': NotRequired[str],
+    'state': NotRequired[str],
+    'title': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelTeslajobsTeslaJobListing = TypedDict('ModelTeslajobsTeslaJobListing', {
+    'department': NotRequired[str],
+    'id': NotRequired[str],
+    'location': NotRequired[str],
+    'title': NotRequired[str],
+}, total=False)
+
+ModelTeslajobsJobResponseDoc = TypedDict('ModelTeslajobsJobResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelTeslajobsTeslaJob],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelTeslajobsListResponseDoc = TypedDict('ModelTeslajobsListResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelTeslajobsListResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
 ModelThreadsAuthor = TypedDict('ModelThreadsAuthor', {
     'id': NotRequired[str],
     'name': NotRequired[str],
@@ -19510,6 +19733,27 @@ AirbnbSearchParams = TypedDict('AirbnbSearchParams', {
     'zoom': NotRequired[int],
 }, total=False)
 
+AmazonJobsJobResponse = ModelAmazonjobsJobResponseDoc
+AmazonJobsJobParams = TypedDict('AmazonJobsJobParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': Required[str],
+}, total=False)
+
+AmazonJobsSearchResponse = ModelAmazonjobsSearchResponseDoc
+AmazonJobsSearchParams = TypedDict('AmazonJobsSearchParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'q': NotRequired[str],
+    'category': NotRequired[Literal['administrative-support', 'applied-science', 'audio-video-photography-production', 'business-intelligence-data-engineering', 'business-merchant-development', 'buying-planning-instock-management', 'customer-service', 'data-science', 'database-administration', 'design', 'economics', 'editorial-writing-content-management', 'facilities-maintenance-real-estate', 'fgbs', 'fulfillment-center-warehouse-associate', 'fulfillment-operations-management', 'hardware-development', 'human-resources', 'investigation-loss-prevention', 'leadership-development-training', 'legal', 'marketing', 'medical-health-safety', 'operations-it-support-engineering', 'project-program-product-management-non-tech', 'project-program-product-management-technical', 'public-policy', 'public-relations-communications', 'research-science', 'sales-advertising-account-management', 'software-development', 'solutions-architecture', 'supply-chain-transportation-management', 'systems-quality-security-engineering']],
+    'country': NotRequired[str],
+    'page': NotRequired[int],
+    'limit': NotRequired[int],
+    'sort': NotRequired[Literal['relevant', 'recent']],
+}, total=False)
+
 AmazonProductResponse = ModelAmazonProductResponseDoc
 AmazonProductParams = TypedDict('AmazonProductParams', {
     '_response_type': NotRequired[ResponseType],
@@ -19757,6 +20001,24 @@ AppleBooksSeriesParams = TypedDict('AppleBooksSeriesParams', {
     'id': Required[str],
     'country': NotRequired[str],
     'lang': NotRequired[str],
+}, total=False)
+
+AppleJobsJobResponse = ModelApplejobsJobResponseDoc
+AppleJobsJobParams = TypedDict('AppleJobsJobParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': Required[str],
+}, total=False)
+
+AppleJobsSearchResponse = ModelApplejobsSearchResponseDoc
+AppleJobsSearchParams = TypedDict('AppleJobsSearchParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'q': Required[str],
+    'location': NotRequired[str],
+    'page': NotRequired[int],
 }, total=False)
 
 ApplePodcastsChartsResponse = ModelApplepodcastsChartsResponseDoc
@@ -23050,6 +23312,24 @@ GoodreadsSearchParams = TypedDict('GoodreadsSearchParams', {
     'limit': NotRequired[int],
 }, total=False)
 
+GoogleJobsJobResponse = ModelGooglejobsJobResponseDoc
+GoogleJobsJobParams = TypedDict('GoogleJobsJobParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': Required[str],
+}, total=False)
+
+GoogleJobsSearchResponse = ModelGooglejobsSearchResponseDoc
+GoogleJobsSearchParams = TypedDict('GoogleJobsSearchParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'q': Required[str],
+    'location': NotRequired[str],
+    'page': NotRequired[int],
+}, total=False)
+
 GoogleFinanceAnalystArticlesResponse = ModelFinanceArticlesResponseDoc
 GoogleFinanceAnalystArticlesParams = TypedDict('GoogleFinanceAnalystArticlesParams', {
     '_response_type': NotRequired[ResponseType],
@@ -24577,6 +24857,37 @@ MangaTitleParams = TypedDict('MangaTitleParams', {
     '_headers': NotRequired[Mapping[str, str]],
     'id': Required[str],
     'mal': NotRequired[bool],
+}, total=False)
+
+MetaJobsJobResponse = ModelMetajobsJobResponseDoc
+MetaJobsJobParams = TypedDict('MetaJobsJobParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': Required[str],
+}, total=False)
+
+MetaJobsListResponse = ModelMetajobsListResponseDoc
+MetaJobsListParams = TypedDict('MetaJobsListParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'page': NotRequired[int],
+    'page_size': NotRequired[int],
+}, total=False)
+
+MetaJobsSearchResponse = ModelMetajobsSearchResponseDoc
+MetaJobsSearchParams = TypedDict('MetaJobsSearchParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'q': NotRequired[str],
+    'teams': NotRequired[list[str]],
+    'roles': NotRequired[list[str]],
+    'offices': NotRequired[list[str]],
+    'is_remote_only': NotRequired[bool],
+    'sort_by_new': NotRequired[bool],
+    'results_per_page': NotRequired[Literal['all', 'five', 'ten']],
 }, total=False)
 
 MetacriticBrowseResponse = ModelMetacriticBrowseResponseDoc
@@ -27206,6 +27517,25 @@ SteamTopSellersParams = TypedDict('SteamTopSellersParams', {
     'l': NotRequired[str],
 }, total=False)
 
+TeslaJobsJobResponse = ModelTeslajobsJobResponseDoc
+TeslaJobsJobParams = TypedDict('TeslaJobsJobParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': Required[str],
+}, total=False)
+
+TeslaJobsListResponse = ModelTeslajobsListResponseDoc
+TeslaJobsListParams = TypedDict('TeslaJobsListParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'query': NotRequired[str],
+    'location': NotRequired[str],
+    'page': NotRequired[int],
+    'page_size': NotRequired[int],
+}, total=False)
+
 ThreadsPostResponse = ModelThreadsPostResponseDoc
 ThreadsPostParams = TypedDict('ThreadsPostParams', {
     '_response_type': NotRequired[ResponseType],
@@ -28414,6 +28744,10 @@ class AirbnbGroup:
     def room_reviews(self, **params: Unpack[AirbnbRoomReviewsParams]) -> AirbnbRoomReviewsResponse: ...
     def search(self, **params: Unpack[AirbnbSearchParams]) -> AirbnbSearchResponse: ...
 
+class AmazonJobsGroup:
+    def job(self, **params: Unpack[AmazonJobsJobParams]) -> AmazonJobsJobResponse: ...
+    def search(self, **params: Unpack[AmazonJobsSearchParams]) -> AmazonJobsSearchResponse: ...
+
 class AmazonGroup:
     def product(self, **params: Unpack[AmazonProductParams]) -> AmazonProductResponse: ...
     def search(self, **params: Unpack[AmazonSearchParams]) -> AmazonSearchResponse: ...
@@ -28443,6 +28777,10 @@ class AppleBooksGroup:
     def charts(self, **params: Unpack[AppleBooksChartsParams]) -> AppleBooksChartsResponse: ...
     def search(self, **params: Unpack[AppleBooksSearchParams]) -> AppleBooksSearchResponse: ...
     def series(self, **params: Unpack[AppleBooksSeriesParams]) -> AppleBooksSeriesResponse: ...
+
+class AppleJobsGroup:
+    def job(self, **params: Unpack[AppleJobsJobParams]) -> AppleJobsJobResponse: ...
+    def search(self, **params: Unpack[AppleJobsSearchParams]) -> AppleJobsSearchResponse: ...
 
 class ApplePodcastsGroup:
     def charts(self, **params: Unpack[ApplePodcastsChartsParams]) -> ApplePodcastsChartsResponse: ...
@@ -28742,6 +29080,10 @@ class GoodreadsGroup:
     def lists(self, **params: Unpack[GoodreadsListsParams]) -> GoodreadsListsResponse: ...
     def search(self, **params: Unpack[GoodreadsSearchParams]) -> GoodreadsSearchResponse: ...
 
+class GoogleJobsGroup:
+    def job(self, **params: Unpack[GoogleJobsJobParams]) -> GoogleJobsJobResponse: ...
+    def search(self, **params: Unpack[GoogleJobsSearchParams]) -> GoogleJobsSearchResponse: ...
+
 class GoogleGroup:
     def finance_analyst_articles(self, **params: Unpack[GoogleFinanceAnalystArticlesParams]) -> GoogleFinanceAnalystArticlesResponse: ...
     def finance_chart(self, **params: Unpack[GoogleFinanceChartParams]) -> GoogleFinanceChartResponse: ...
@@ -28918,6 +29260,11 @@ class MangaGroup:
     def rankings(self, **params: Unpack[MangaRankingsParams]) -> MangaRankingsResponse: ...
     def search(self, **params: Unpack[MangaSearchParams]) -> MangaSearchResponse: ...
     def title(self, **params: Unpack[MangaTitleParams]) -> MangaTitleResponse: ...
+
+class MetaJobsGroup:
+    def job(self, **params: Unpack[MetaJobsJobParams]) -> MetaJobsJobResponse: ...
+    def list(self, **params: Unpack[MetaJobsListParams]) -> MetaJobsListResponse: ...
+    def search(self, **params: Unpack[MetaJobsSearchParams]) -> MetaJobsSearchResponse: ...
 
 class MetacriticGroup:
     def browse(self, **params: Unpack[MetacriticBrowseParams]) -> MetacriticBrowseResponse: ...
@@ -29220,6 +29567,10 @@ class SteamGroup:
     def tags_list(self, **params: Unpack[SteamTagsListParams]) -> SteamTagsListResponse: ...
     def top_sellers(self, **params: Unpack[SteamTopSellersParams]) -> SteamTopSellersResponse: ...
 
+class TeslaJobsGroup:
+    def job(self, **params: Unpack[TeslaJobsJobParams]) -> TeslaJobsJobResponse: ...
+    def list(self, **params: Unpack[TeslaJobsListParams]) -> TeslaJobsListResponse: ...
+
 class ThreadsGroup:
     def post(self, **params: Unpack[ThreadsPostParams]) -> ThreadsPostResponse: ...
     def post_replies(self, **params: Unpack[ThreadsPostRepliesParams]) -> ThreadsPostRepliesResponse: ...
@@ -29382,6 +29733,8 @@ OperationId = Literal[
     'airbnb-room-calendar',
     'airbnb-room-reviews',
     'airbnb-search',
+    'amazon-jobs-job',
+    'amazon-jobs-search',
     'amazon-product',
     'amazon-search',
     'amazon-suggest',
@@ -29406,6 +29759,8 @@ OperationId = Literal[
     'apple-books-charts',
     'apple-books-search',
     'apple-books-series',
+    'apple-jobs-job',
+    'apple-jobs-search',
     'apple-podcasts-charts',
     'apple-podcasts-charts-rankings',
     'apple-podcasts-episodes-search',
@@ -29666,6 +30021,8 @@ OperationId = Literal[
     'goodreads-list',
     'goodreads-lists',
     'goodreads-search',
+    'google-jobs-job',
+    'google-jobs-search',
     'google-finance-analyst-articles',
     'google-finance-chart',
     'google-finance-classification',
@@ -29823,6 +30180,9 @@ OperationId = Literal[
     'manga-rankings',
     'manga-search',
     'manga-title',
+    'meta-jobs-job',
+    'meta-jobs-list',
+    'meta-jobs-search',
     'metacritic-browse',
     'metacritic-game',
     'metacritic-game-critic-reviews',
@@ -30084,6 +30444,8 @@ OperationId = Literal[
     'steam-tags',
     'steam-tags-list',
     'steam-top-sellers',
+    'tesla-jobs-job',
+    'tesla-jobs-list',
     'threads-post',
     'threads-post-replies',
     'threads-profile',
@@ -30216,9 +30578,11 @@ OperationId = Literal[
 
 class CrawloraClient:
     airbnb: AirbnbGroup
+    amazon_jobs: AmazonJobsGroup
     amazon: AmazonGroup
     anime: AnimeGroup
     apple_books: AppleBooksGroup
+    apple_jobs: AppleJobsGroup
     apple_podcasts: ApplePodcastsGroup
     app_store: AppStoreGroup
     billing: BillingGroup
@@ -30237,6 +30601,7 @@ class CrawloraClient:
     geocoding: GeocodingGroup
     git_hub: GitHubGroup
     goodreads: GoodreadsGroup
+    google_jobs: GoogleJobsGroup
     google: GoogleGroup
     google_play: GooglePlayGroup
     imdb: ImdbGroup
@@ -30247,6 +30612,7 @@ class CrawloraClient:
     letterboxd: LetterboxdGroup
     linked_in: LinkedInGroup
     manga: MangaGroup
+    meta_jobs: MetaJobsGroup
     metacritic: MetacriticGroup
     metaculus: MetaculusGroup
     numbeo: NumbeoGroup
@@ -30267,6 +30633,7 @@ class CrawloraClient:
     spotify_podcasts: SpotifyPodcastsGroup
     spotify: SpotifyGroup
     steam: SteamGroup
+    tesla_jobs: TeslaJobsGroup
     threads: ThreadsGroup
     tiktok: TiktokGroup
     tmdb: TmdbGroup
@@ -30445,6 +30812,30 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> AirbnbSearchResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['amazon-jobs-job'],
+        params: AmazonJobsJobParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> AmazonJobsJobResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['amazon-jobs-search'],
+        params: AmazonJobsSearchParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> AmazonJobsSearchResponse: ...
     @overload
     def operation(
         self,
@@ -30733,6 +31124,30 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> AppleBooksSeriesResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['apple-jobs-job'],
+        params: AppleJobsJobParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> AppleJobsJobResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['apple-jobs-search'],
+        params: AppleJobsSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> AppleJobsSearchResponse: ...
     @overload
     def operation(
         self,
@@ -33856,6 +34271,30 @@ class CrawloraClient:
     @overload
     def operation(
         self,
+        operation_id: Literal['google-jobs-job'],
+        params: GoogleJobsJobParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> GoogleJobsJobResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['google-jobs-search'],
+        params: GoogleJobsSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> GoogleJobsSearchResponse: ...
+    @overload
+    def operation(
+        self,
         operation_id: Literal['google-finance-analyst-articles'],
         params: GoogleFinanceAnalystArticlesParams,
         *,
@@ -35737,6 +36176,42 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> MangaTitleResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['meta-jobs-job'],
+        params: MetaJobsJobParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> MetaJobsJobResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['meta-jobs-list'],
+        params: MetaJobsListParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> MetaJobsListResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['meta-jobs-search'],
+        params: MetaJobsSearchParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> MetaJobsSearchResponse: ...
     @overload
     def operation(
         self,
@@ -38869,6 +39344,30 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> SteamTopSellersResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['tesla-jobs-job'],
+        params: TeslaJobsJobParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TeslaJobsJobResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['tesla-jobs-list'],
+        params: TeslaJobsListParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TeslaJobsListResponse: ...
     @overload
     def operation(
         self,
@@ -40504,6 +41003,30 @@ class CrawloraClient:
     @overload
     def request(
         self,
+        operation_id: Literal['amazon-jobs-job'],
+        params: AmazonJobsJobParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> AmazonJobsJobResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['amazon-jobs-search'],
+        params: AmazonJobsSearchParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> AmazonJobsSearchResponse: ...
+    @overload
+    def request(
+        self,
         operation_id: Literal['amazon-product'],
         params: AmazonProductParams,
         *,
@@ -40789,6 +41312,30 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> AppleBooksSeriesResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['apple-jobs-job'],
+        params: AppleJobsJobParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> AppleJobsJobResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['apple-jobs-search'],
+        params: AppleJobsSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> AppleJobsSearchResponse: ...
     @overload
     def request(
         self,
@@ -43912,6 +44459,30 @@ class CrawloraClient:
     @overload
     def request(
         self,
+        operation_id: Literal['google-jobs-job'],
+        params: GoogleJobsJobParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> GoogleJobsJobResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['google-jobs-search'],
+        params: GoogleJobsSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> GoogleJobsSearchResponse: ...
+    @overload
+    def request(
+        self,
         operation_id: Literal['google-finance-analyst-articles'],
         params: GoogleFinanceAnalystArticlesParams,
         *,
@@ -45793,6 +46364,42 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> MangaTitleResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['meta-jobs-job'],
+        params: MetaJobsJobParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> MetaJobsJobResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['meta-jobs-list'],
+        params: MetaJobsListParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> MetaJobsListResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['meta-jobs-search'],
+        params: MetaJobsSearchParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> MetaJobsSearchResponse: ...
     @overload
     def request(
         self,
@@ -48925,6 +49532,30 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> SteamTopSellersResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['tesla-jobs-job'],
+        params: TeslaJobsJobParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TeslaJobsJobResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['tesla-jobs-list'],
+        params: TeslaJobsListParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TeslaJobsListResponse: ...
     @overload
     def request(
         self,

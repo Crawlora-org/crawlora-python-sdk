@@ -47,7 +47,7 @@ def schema_ref_name(schema):
     return ref.rsplit("/", 1)[-1] if ref else ""
 
 
-def py_schema_type(schema):
+def _py_schema_type(schema):
     if not schema:
         return "Any"
     if "$ref" in schema:
@@ -77,6 +77,13 @@ def py_schema_type(schema):
             return f"dict[str, {value_type}]"
         return "dict[str, Any]"
     return "Any"
+
+
+def py_schema_type(schema):
+    rendered = _py_schema_type(schema)
+    if schema and schema.get("x-nullable") and rendered != "Any":
+        return f"{rendered} | None"
+    return rendered
 
 
 def py_type(param):

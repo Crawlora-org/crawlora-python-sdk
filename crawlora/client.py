@@ -20,7 +20,7 @@ from ._transport_sync import KeepAliveTransport
 from .operations import GROUPS, OPERATIONS
 
 DEFAULT_BASE_URL = "https://api.crawlora.net/api/v1"
-VERSION = "1.26.0-sdk.1"
+VERSION = "1.27.0-sdk.1"
 DEFAULT_USER_AGENT = f"crawlora-python-sdk/{VERSION}"
 DEFAULT_MAX_RETRY_DELAY = 30.0
 DEFAULT_RETRY_STATUSES = (408, 409, 425, 429)
