@@ -2,7 +2,7 @@
 
 Python client for the public Crawlora API. Use it to call Crawlora scraping,
 search, social, developer, marketplace, datasets, reviews, travel, media, books,
-maps, jobs, finance, prediction-market, brand, and usage endpoints
+maps, retail, ticketing, baseball, jobs, finance, prediction-market, brand, and usage endpoints
 with generated type stubs for editor and type-checker support.
 
 - Runtime: Python 3.10+

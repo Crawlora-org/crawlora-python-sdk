@@ -3558,6 +3558,85 @@ ModelContactContactResponseDoc = TypedDict('ModelContactContactResponseDoc', {
     'msg': NotRequired[str],
 }, total=False)
 
+ModelCreativecenterHashtagTopCreator = TypedDict('ModelCreativecenterHashtagTopCreator', {
+    'avatar_url': NotRequired[str],
+    'country_code': NotRequired[str],
+    'creator_id': NotRequired[str],
+    'follower_count': NotRequired[int],
+    'handle': NotRequired[str],
+    'nickname': NotRequired[str],
+    'rank': NotRequired[int],
+    'tiktok_uid': NotRequired[str],
+}, total=False)
+
+ModelCreativecenterHashtagTrendPoint = TypedDict('ModelCreativecenterHashtagTrendPoint', {
+    'timestamp': NotRequired[int],
+    'value': NotRequired[float],
+}, total=False)
+
+ModelCreativecenterTrendingHashtag = TypedDict('ModelCreativecenterTrendingHashtag', {
+    'hashtag_id': NotRequired[str],
+    'hashtag_name': NotRequired[str],
+    'industry_ids': NotRequired[list[int]],
+    'popularity_curve': NotRequired[list[ModelCreativecenterHashtagTrendPoint]],
+    'publish_count': NotRequired[int],
+    'rank': NotRequired[int],
+    'top_creators': NotRequired[list[ModelCreativecenterHashtagTopCreator]],
+    'video_views': NotRequired[int],
+}, total=False)
+
+ModelCreativecenterTrendingHashtagsResp = TypedDict('ModelCreativecenterTrendingHashtagsResp', {
+    'hashtags': NotRequired[list[ModelCreativecenterTrendingHashtag]],
+    'total_count': NotRequired[int],
+}, total=False)
+
+ModelCreativecenterTrendingVideo = TypedDict('ModelCreativecenterTrendingVideo', {
+    'author_avatar_url': NotRequired[str],
+    'author_bio': NotRequired[str],
+    'author_follower_count': NotRequired[int],
+    'author_handle': NotRequired[str],
+    'author_id': NotRequired[str],
+    'author_nickname': NotRequired[str],
+    'content_tags': NotRequired[list[ModelCreativecenterTrendingVideoContentTag]],
+    'content_type': NotRequired[int],
+    'cover_url': NotRequired[str],
+    'create_time': NotRequired[int],
+    'engagement_rate': NotRequired[float],
+    'engagement_rate_lifetime': NotRequired[float],
+    'item_id': NotRequired[str],
+    'organic_video_views': NotRequired[int],
+    'organic_video_views_lifetime': NotRequired[int],
+    'six_seconds_vtr': NotRequired[float],
+    'six_seconds_vtr_lifetime': NotRequired[float],
+    'title': NotRequired[str],
+    'video_url': NotRequired[str],
+    'video_views': NotRequired[int],
+    'video_views_lifetime': NotRequired[int],
+}, total=False)
+
+ModelCreativecenterTrendingVideoContentTag = TypedDict('ModelCreativecenterTrendingVideoContentTag', {
+    'id': NotRequired[str],
+    'name': NotRequired[str],
+}, total=False)
+
+ModelCreativecenterTrendingVideosResp = TypedDict('ModelCreativecenterTrendingVideosResp', {
+    'page_count': NotRequired[int],
+    'total_count': NotRequired[int],
+    'videos': NotRequired[list[ModelCreativecenterTrendingVideo]],
+}, total=False)
+
+ModelCreativecenterTrendingHashtagsResponseDoc = TypedDict('ModelCreativecenterTrendingHashtagsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelCreativecenterTrendingHashtagsResp],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelCreativecenterTrendingVideosResponseDoc = TypedDict('ModelCreativecenterTrendingVideosResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelCreativecenterTrendingVideosResp],
+    'msg': NotRequired[str],
+}, total=False)
+
 ModelDatasetsAirbnbMarketFacetResponse = TypedDict('ModelDatasetsAirbnbMarketFacetResponse', {
     'dataset': NotRequired[str],
     'facet': NotRequired[str],
@@ -6005,9 +6084,11 @@ ModelEsJobPostingFacets = TypedDict('ModelEsJobPostingFacets', {
     'by_department': NotRequired[list[ModelEsFacetItem]],
     'by_education_level': NotRequired[list[ModelEsFacetItem]],
     'by_employment_type': NotRequired[list[ModelEsFacetItem]],
+    'by_job_family': NotRequired[list[ModelEsFacetItem]],
     'by_location': NotRequired[list[ModelEsFacetItem]],
     'by_provider': NotRequired[list[ModelEsFacetItem]],
     'by_security_clearance': NotRequired[list[ModelEsFacetItem]],
+    'by_seniority': NotRequired[list[ModelEsFacetItem]],
     'by_skill': NotRequired[list[ModelEsFacetItem]],
     'remote_open': NotRequired[int],
     'top_companies': NotRequired[list[ModelEsFacetItem]],
@@ -10586,6 +10667,365 @@ ModelMetajobsListResponseDoc = TypedDict('ModelMetajobsListResponseDoc', {
 ModelMetajobsSearchResponseDoc = TypedDict('ModelMetajobsSearchResponseDoc', {
     'code': NotRequired[int],
     'data': NotRequired[ModelMetajobsSearchResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelMlbBoxscorePlayer = TypedDict('ModelMlbBoxscorePlayer', {
+    'batting_order': NotRequired[str],
+    'person': NotRequired[ModelMlbNamedRef],
+    'position': NotRequired[str],
+    'stats': NotRequired[dict[str, dict[str, Any]]],
+}, total=False)
+
+ModelMlbBoxscoreResponse = TypedDict('ModelMlbBoxscoreResponse', {
+    'away': NotRequired[ModelMlbBoxscoreTeam],
+    'fetched_at': NotRequired[str],
+    'game_id': NotRequired[int],
+    'home': NotRequired[ModelMlbBoxscoreTeam],
+    'source_url': NotRequired[str],
+}, total=False)
+
+ModelMlbBoxscoreTeam = TypedDict('ModelMlbBoxscoreTeam', {
+    'players': NotRequired[list[ModelMlbBoxscorePlayer]],
+    'team': NotRequired[ModelMlbTeamRef],
+    'team_stats': NotRequired[dict[str, dict[str, Any]]],
+}, total=False)
+
+ModelMlbDecision = TypedDict('ModelMlbDecision', {
+    'loser': NotRequired[ModelMlbNamedRef],
+    'save': NotRequired[ModelMlbNamedRef],
+    'winner': NotRequired[ModelMlbNamedRef],
+}, total=False)
+
+ModelMlbGameResponse = TypedDict('ModelMlbGameResponse', {
+    'away_boxscore': NotRequired[ModelMlbTeamBoxscore],
+    'decisions': NotRequired[ModelMlbDecision],
+    'fetched_at': NotRequired[str],
+    'game': NotRequired[ModelMlbGameSummary],
+    'home_boxscore': NotRequired[ModelMlbTeamBoxscore],
+    'linescore': NotRequired[ModelMlbLinescore],
+    'source_url': NotRequired[str],
+}, total=False)
+
+ModelMlbGameSide = TypedDict('ModelMlbGameSide', {
+    'losses': NotRequired[int],
+    'probable_pitcher': NotRequired[ModelMlbNamedRef],
+    'score': NotRequired[int],
+    'team': NotRequired[ModelMlbTeamRef],
+    'wins': NotRequired[int],
+}, total=False)
+
+ModelMlbGameStatus = TypedDict('ModelMlbGameStatus', {
+    'abstract': NotRequired[str],
+    'code': NotRequired[str],
+    'detailed': NotRequired[str],
+    'reason': NotRequired[str],
+}, total=False)
+
+ModelMlbGameSummary = TypedDict('ModelMlbGameSummary', {
+    'away': NotRequired[ModelMlbGameSide],
+    'day_night': NotRequired[str],
+    'double_header': NotRequired[str],
+    'game_date': NotRequired[str],
+    'game_number': NotRequired[int],
+    'game_type': NotRequired[str],
+    'home': NotRequired[ModelMlbGameSide],
+    'id': NotRequired[int],
+    'official_date': NotRequired[str],
+    'scheduled_innings': NotRequired[int],
+    'season': NotRequired[str],
+    'series_description': NotRequired[str],
+    'status': NotRequired[ModelMlbGameStatus],
+    'venue': NotRequired[ModelMlbVenueRef],
+}, total=False)
+
+ModelMlbInning = TypedDict('ModelMlbInning', {
+    'away_errors': NotRequired[int],
+    'away_hits': NotRequired[int],
+    'away_runs': NotRequired[int],
+    'home_errors': NotRequired[int],
+    'home_hits': NotRequired[int],
+    'home_runs': NotRequired[int],
+    'number': NotRequired[int],
+}, total=False)
+
+ModelMlbLinescore = TypedDict('ModelMlbLinescore', {
+    'away_errors': NotRequired[int],
+    'away_hits': NotRequired[int],
+    'away_runs': NotRequired[int],
+    'current_inning': NotRequired[int],
+    'home_errors': NotRequired[int],
+    'home_hits': NotRequired[int],
+    'home_runs': NotRequired[int],
+    'inning_state': NotRequired[str],
+    'innings': NotRequired[list[ModelMlbInning]],
+    'scheduled_innings': NotRequired[int],
+}, total=False)
+
+ModelMlbNamedRef = TypedDict('ModelMlbNamedRef', {
+    'id': NotRequired[int],
+    'name': NotRequired[str],
+}, total=False)
+
+ModelMlbPlay = TypedDict('ModelMlbPlay', {
+    'at_bat_index': NotRequired[int],
+    'batter': NotRequired[ModelMlbNamedRef],
+    'description': NotRequired[str],
+    'event': NotRequired[str],
+    'event_type': NotRequired[str],
+    'events': NotRequired[list[ModelMlbPlayEvent]],
+    'half_inning': NotRequired[str],
+    'inning': NotRequired[int],
+    'is_complete': NotRequired[bool],
+    'pitcher': NotRequired[ModelMlbNamedRef],
+}, total=False)
+
+ModelMlbPlayByPlayResponse = TypedDict('ModelMlbPlayByPlayResponse', {
+    'fetched_at': NotRequired[str],
+    'game_id': NotRequired[int],
+    'plays': NotRequired[list[ModelMlbPlay]],
+    'source_url': NotRequired[str],
+    'total': NotRequired[int],
+}, total=False)
+
+ModelMlbPlayEvent = TypedDict('ModelMlbPlayEvent', {
+    'description': NotRequired[str],
+    'details': NotRequired[dict[str, Any]],
+    'end_time': NotRequired[str],
+    'index': NotRequired[int],
+    'is_pitch': NotRequired[bool],
+    'pitch_data': NotRequired[dict[str, Any]],
+    'pitch_number': NotRequired[int],
+    'start_time': NotRequired[str],
+    'type': NotRequired[str],
+}, total=False)
+
+ModelMlbPlayer = TypedDict('ModelMlbPlayer', {
+    'active': NotRequired[bool],
+    'bat_side': NotRequired[str],
+    'birth_city': NotRequired[str],
+    'birth_country': NotRequired[str],
+    'birth_date': NotRequired[str],
+    'current_age': NotRequired[int],
+    'current_team': NotRequired[ModelMlbTeamRef],
+    'full_name': NotRequired[str],
+    'height': NotRequired[str],
+    'id': NotRequired[int],
+    'mlb_debut_date': NotRequired[str],
+    'pitch_hand': NotRequired[str],
+    'position': NotRequired[str],
+    'position_code': NotRequired[str],
+    'primary_number': NotRequired[str],
+    'weight': NotRequired[int],
+}, total=False)
+
+ModelMlbPlayerResponse = TypedDict('ModelMlbPlayerResponse', {
+    'fetched_at': NotRequired[str],
+    'player': NotRequired[ModelMlbPlayer],
+    'source_url': NotRequired[str],
+}, total=False)
+
+ModelMlbRosterPlayer = TypedDict('ModelMlbRosterPlayer', {
+    'jersey_number': NotRequired[str],
+    'person': NotRequired[ModelMlbNamedRef],
+    'position': NotRequired[str],
+    'position_code': NotRequired[str],
+    'status': NotRequired[str],
+}, total=False)
+
+ModelMlbRosterResponse = TypedDict('ModelMlbRosterResponse', {
+    'count': NotRequired[int],
+    'fetched_at': NotRequired[str],
+    'players': NotRequired[list[ModelMlbRosterPlayer]],
+    'roster_type': NotRequired[str],
+    'season': NotRequired[int],
+    'source_url': NotRequired[str],
+    'team_id': NotRequired[int],
+}, total=False)
+
+ModelMlbScheduleResponse = TypedDict('ModelMlbScheduleResponse', {
+    'date': NotRequired[str],
+    'end_date': NotRequired[str],
+    'fetched_at': NotRequired[str],
+    'games': NotRequired[list[ModelMlbGameSummary]],
+    'source_url': NotRequired[str],
+    'start_date': NotRequired[str],
+    'team_id': NotRequired[int],
+    'total_games': NotRequired[int],
+}, total=False)
+
+ModelMlbStandingsGroup = TypedDict('ModelMlbStandingsGroup', {
+    'division': NotRequired[ModelMlbNamedRef],
+    'league': NotRequired[ModelMlbNamedRef],
+    'teams': NotRequired[list[ModelMlbStandingsTeam]],
+    'type': NotRequired[str],
+}, total=False)
+
+ModelMlbStandingsResponse = TypedDict('ModelMlbStandingsResponse', {
+    'fetched_at': NotRequired[str],
+    'groups': NotRequired[list[ModelMlbStandingsGroup]],
+    'season': NotRequired[int],
+    'source_url': NotRequired[str],
+    'type': NotRequired[str],
+}, total=False)
+
+ModelMlbStandingsTeam = TypedDict('ModelMlbStandingsTeam', {
+    'clinched': NotRequired[bool],
+    'division_leader': NotRequired[bool],
+    'division_rank': NotRequired[str],
+    'games_back': NotRequired[str],
+    'league_rank': NotRequired[str],
+    'losses': NotRequired[int],
+    'run_differential': NotRequired[int],
+    'runs_allowed': NotRequired[int],
+    'runs_scored': NotRequired[int],
+    'streak': NotRequired[str],
+    'team': NotRequired[ModelMlbTeamRef],
+    'wild_card_games_back': NotRequired[str],
+    'winning_percentage': NotRequired[str],
+    'wins': NotRequired[int],
+}, total=False)
+
+ModelMlbStatSplit = TypedDict('ModelMlbStatSplit', {
+    'league': NotRequired[ModelMlbNamedRef],
+    'player': NotRequired[ModelMlbNamedRef],
+    'position': NotRequired[str],
+    'rank': NotRequired[int],
+    'season': NotRequired[str],
+    'stats': NotRequired[dict[str, Any]],
+    'team': NotRequired[ModelMlbTeamRef],
+}, total=False)
+
+ModelMlbStatsResponse = TypedDict('ModelMlbStatsResponse', {
+    'fetched_at': NotRequired[str],
+    'group': NotRequired[str],
+    'player_id': NotRequired[int],
+    'season': NotRequired[int],
+    'source_url': NotRequired[str],
+    'splits': NotRequired[list[ModelMlbStatSplit]],
+    'team_id': NotRequired[int],
+    'total': NotRequired[int],
+    'type': NotRequired[str],
+}, total=False)
+
+ModelMlbTeam = TypedDict('ModelMlbTeam', {
+    'abbreviation': NotRequired[str],
+    'active': NotRequired[bool],
+    'club_name': NotRequired[str],
+    'division': NotRequired[ModelMlbNamedRef],
+    'first_year_of_play': NotRequired[str],
+    'id': NotRequired[int],
+    'league': NotRequired[ModelMlbNamedRef],
+    'location_name': NotRequired[str],
+    'name': NotRequired[str],
+    'season': NotRequired[int],
+    'venue': NotRequired[ModelMlbVenueRef],
+}, total=False)
+
+ModelMlbTeamBoxscore = TypedDict('ModelMlbTeamBoxscore', {
+    'batters': NotRequired[list[int]],
+    'pitchers': NotRequired[list[int]],
+    'players_used': NotRequired[int],
+    'team': NotRequired[ModelMlbTeamRef],
+    'team_stats': NotRequired[dict[str, dict[str, Any]]],
+}, total=False)
+
+ModelMlbTeamRef = TypedDict('ModelMlbTeamRef', {
+    'abbreviation': NotRequired[str],
+    'id': NotRequired[int],
+    'name': NotRequired[str],
+}, total=False)
+
+ModelMlbTeamsResponse = TypedDict('ModelMlbTeamsResponse', {
+    'count': NotRequired[int],
+    'fetched_at': NotRequired[str],
+    'season': NotRequired[int],
+    'source_url': NotRequired[str],
+    'teams': NotRequired[list[ModelMlbTeam]],
+}, total=False)
+
+ModelMlbTransaction = TypedDict('ModelMlbTransaction', {
+    'date': NotRequired[str],
+    'description': NotRequired[str],
+    'effective_date': NotRequired[str],
+    'from_team': NotRequired[ModelMlbTeamRef],
+    'id': NotRequired[int],
+    'player': NotRequired[ModelMlbNamedRef],
+    'to_team': NotRequired[ModelMlbTeamRef],
+    'type': NotRequired[str],
+}, total=False)
+
+ModelMlbTransactionsResponse = TypedDict('ModelMlbTransactionsResponse', {
+    'count': NotRequired[int],
+    'end_date': NotRequired[str],
+    'fetched_at': NotRequired[str],
+    'source_url': NotRequired[str],
+    'start_date': NotRequired[str],
+    'transactions': NotRequired[list[ModelMlbTransaction]],
+}, total=False)
+
+ModelMlbVenueRef = TypedDict('ModelMlbVenueRef', {
+    'id': NotRequired[int],
+    'name': NotRequired[str],
+}, total=False)
+
+ModelMlbBoxscoreResponseDoc = TypedDict('ModelMlbBoxscoreResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelMlbBoxscoreResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelMlbGameResponseDoc = TypedDict('ModelMlbGameResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelMlbGameResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelMlbPlayByPlayResponseDoc = TypedDict('ModelMlbPlayByPlayResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelMlbPlayByPlayResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelMlbPlayerResponseDoc = TypedDict('ModelMlbPlayerResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelMlbPlayerResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelMlbRosterResponseDoc = TypedDict('ModelMlbRosterResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelMlbRosterResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelMlbScheduleResponseDoc = TypedDict('ModelMlbScheduleResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelMlbScheduleResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelMlbStandingsResponseDoc = TypedDict('ModelMlbStandingsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelMlbStandingsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelMlbStatsResponseDoc = TypedDict('ModelMlbStatsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelMlbStatsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelMlbTeamsResponseDoc = TypedDict('ModelMlbTeamsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelMlbTeamsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelMlbTransactionsResponseDoc = TypedDict('ModelMlbTransactionsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelMlbTransactionsResponse],
     'msg': NotRequired[str],
 }, total=False)
 
@@ -16501,6 +16941,251 @@ ModelSteamTopSellersResponseDoc = TypedDict('ModelSteamTopSellersResponseDoc', {
     'msg': NotRequired[str],
 }, total=False)
 
+ModelTargetAnswer = TypedDict('ModelTargetAnswer', {
+    'author': NotRequired[str],
+    'helpful': NotRequired[int],
+    'id': NotRequired[str],
+    'submitted_at': NotRequired[str],
+    'text': NotRequired[str],
+}, total=False)
+
+ModelTargetAvailability = TypedDict('ModelTargetAvailability', {
+    'backup_store': NotRequired[bool],
+    'primary_store': NotRequired[bool],
+    'scheduled_delivery': NotRequired[bool],
+    'shipping': NotRequired[bool],
+    'sold_out': NotRequired[bool],
+}, total=False)
+
+ModelTargetBreadcrumb = TypedDict('ModelTargetBreadcrumb', {
+    'id': NotRequired[str],
+    'name': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelTargetCategoriesResponse = TypedDict('ModelTargetCategoriesResponse', {
+    'categories': NotRequired[list[ModelTargetCategory]],
+    'count': NotRequired[int],
+    'fetched_at': NotRequired[str],
+    'group_count': NotRequired[int],
+    'groups': NotRequired[list[ModelTargetCategoryGroup]],
+    'source_url': NotRequired[str],
+}, total=False)
+
+ModelTargetCategory = TypedDict('ModelTargetCategory', {
+    'id': NotRequired[str],
+    'image_url': NotRequired[str],
+    'name': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelTargetCategoryGroup = TypedDict('ModelTargetCategoryGroup', {
+    'categories': NotRequired[list[ModelTargetCategory]],
+    'name': NotRequired[str],
+}, total=False)
+
+ModelTargetCategoryProductsResponse = TypedDict('ModelTargetCategoryProductsResponse', {
+    'applied_filter_ids': NotRequired[list[str]],
+    'category_id': NotRequired[str],
+    'count': NotRequired[int],
+    'fetched_at': NotRequired[str],
+    'filter_groups': NotRequired[list[ModelTargetFilterGroup]],
+    'page': NotRequired[int],
+    'page_size': NotRequired[int],
+    'products': NotRequired[list[ModelTargetProductSummary]],
+    'sort': NotRequired[str],
+    'source_url': NotRequired[str],
+    'store_id': NotRequired[int],
+    'total': NotRequired[int],
+    'total_pages': NotRequired[int],
+}, total=False)
+
+ModelTargetFilterGroup = TypedDict('ModelTargetFilterGroup', {
+    'display_name': NotRequired[str],
+    'expanded': NotRequired[bool],
+    'id': NotRequired[str],
+    'options': NotRequired[list[ModelTargetFilterOption]],
+    'type': NotRequired[str],
+}, total=False)
+
+ModelTargetFilterOption = TypedDict('ModelTargetFilterOption', {
+    'display_name': NotRequired[str],
+    'id': NotRequired[str],
+    'selected': NotRequired[bool],
+    'url': NotRequired[str],
+    'value': NotRequired[str],
+}, total=False)
+
+ModelTargetFilterOptionsResponse = TypedDict('ModelTargetFilterOptionsResponse', {
+    'applied_filter_ids': NotRequired[list[str]],
+    'category_id': NotRequired[str],
+    'count': NotRequired[int],
+    'fetched_at': NotRequired[str],
+    'filter_groups': NotRequired[list[ModelTargetFilterGroup]],
+    'query': NotRequired[str],
+    'source_url': NotRequired[str],
+    'store_id': NotRequired[int],
+    'total': NotRequired[int],
+}, total=False)
+
+ModelTargetPrice = TypedDict('ModelTargetPrice', {
+    'current': NotRequired[float],
+    'formatted': NotRequired[str],
+    'regular': NotRequired[float],
+    'store_id': NotRequired[int],
+    'unit_formatted': NotRequired[str],
+}, total=False)
+
+ModelTargetProduct = TypedDict('ModelTargetProduct', {
+    'availability': NotRequired[ModelTargetAvailability],
+    'brand': NotRequired[str],
+    'breadcrumbs': NotRequired[list[ModelTargetBreadcrumb]],
+    'bullets': NotRequired[list[str]],
+    'category': NotRequired[str],
+    'category_id': NotRequired[str],
+    'description': NotRequired[str],
+    'dpci': NotRequired[str],
+    'images': NotRequired[list[str]],
+    'item_type': NotRequired[str],
+    'parent_category_id': NotRequired[str],
+    'parent_tcin': NotRequired[str],
+    'price': NotRequired[ModelTargetPrice],
+    'primary_image_url': NotRequired[str],
+    'rating': NotRequired[ModelTargetRating],
+    'specifications': NotRequired[list[str]],
+    'tcin': NotRequired[str],
+    'title': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelTargetProductResponse = TypedDict('ModelTargetProductResponse', {
+    'fetched_at': NotRequired[str],
+    'product': NotRequired[ModelTargetProduct],
+    'source_url': NotRequired[str],
+    'store_id': NotRequired[int],
+}, total=False)
+
+ModelTargetProductSummary = TypedDict('ModelTargetProductSummary', {
+    'brand': NotRequired[str],
+    'category_id': NotRequired[str],
+    'parent_category_id': NotRequired[str],
+    'parent_tcin': NotRequired[str],
+    'price': NotRequired[ModelTargetPrice],
+    'primary_image_url': NotRequired[str],
+    'rating': NotRequired[ModelTargetRating],
+    'tcin': NotRequired[str],
+    'title': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelTargetQuestion = TypedDict('ModelTargetQuestion', {
+    'answers': NotRequired[list[ModelTargetAnswer]],
+    'author': NotRequired[str],
+    'helpful': NotRequired[int],
+    'id': NotRequired[str],
+    'submitted_at': NotRequired[str],
+    'text': NotRequired[str],
+}, total=False)
+
+ModelTargetQuestionsResponse = TypedDict('ModelTargetQuestionsResponse', {
+    'count': NotRequired[int],
+    'fetched_at': NotRequired[str],
+    'page': NotRequired[int],
+    'per_page': NotRequired[int],
+    'questions': NotRequired[list[ModelTargetQuestion]],
+    'source_url': NotRequired[str],
+    'tcin': NotRequired[str],
+    'total_pages': NotRequired[int],
+}, total=False)
+
+ModelTargetRating = TypedDict('ModelTargetRating', {
+    'average': NotRequired[float],
+    'rating_count': NotRequired[int],
+    'review_count': NotRequired[int],
+}, total=False)
+
+ModelTargetReview = TypedDict('ModelTargetReview', {
+    'author': NotRequired[str],
+    'helpful': NotRequired[int],
+    'id': NotRequired[str],
+    'rating': NotRequired[int],
+    'submitted_at': NotRequired[str],
+    'syndicated': NotRequired[bool],
+    'text': NotRequired[str],
+    'title': NotRequired[str],
+    'verified': NotRequired[bool],
+}, total=False)
+
+ModelTargetReviewsResponse = TypedDict('ModelTargetReviewsResponse', {
+    'count': NotRequired[int],
+    'fetched_at': NotRequired[str],
+    'page': NotRequired[int],
+    'per_page': NotRequired[int],
+    'reviews': NotRequired[list[ModelTargetReview]],
+    'source_url': NotRequired[str],
+    'tcin': NotRequired[str],
+    'total': NotRequired[int],
+    'total_pages': NotRequired[int],
+}, total=False)
+
+ModelTargetSearchResponse = TypedDict('ModelTargetSearchResponse', {
+    'applied_filter_ids': NotRequired[list[str]],
+    'count': NotRequired[int],
+    'fetched_at': NotRequired[str],
+    'filter_groups': NotRequired[list[ModelTargetFilterGroup]],
+    'page': NotRequired[int],
+    'page_size': NotRequired[int],
+    'products': NotRequired[list[ModelTargetProductSummary]],
+    'query': NotRequired[str],
+    'sort': NotRequired[str],
+    'source_url': NotRequired[str],
+    'store_id': NotRequired[int],
+    'total': NotRequired[int],
+    'total_pages': NotRequired[int],
+}, total=False)
+
+ModelTargetCategoriesResponseDoc = TypedDict('ModelTargetCategoriesResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelTargetCategoriesResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelTargetCategoryProductsResponseDoc = TypedDict('ModelTargetCategoryProductsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelTargetCategoryProductsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelTargetFilterOptionsResponseDoc = TypedDict('ModelTargetFilterOptionsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelTargetFilterOptionsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelTargetProductResponseDoc = TypedDict('ModelTargetProductResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelTargetProductResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelTargetQuestionsResponseDoc = TypedDict('ModelTargetQuestionsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelTargetQuestionsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelTargetReviewsResponseDoc = TypedDict('ModelTargetReviewsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelTargetReviewsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelTargetSearchResponseDoc = TypedDict('ModelTargetSearchResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelTargetSearchResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
 ModelTechstackResult = TypedDict('ModelTechstackResult', {
     'categories': NotRequired[list[str]],
     'count': NotRequired[int],
@@ -16654,6 +17339,256 @@ ModelThreadsRepliesResponseDoc = TypedDict('ModelThreadsRepliesResponseDoc', {
 ModelThreadsSearchResponseDoc = TypedDict('ModelThreadsSearchResponseDoc', {
     'code': NotRequired[int],
     'data': NotRequired[ModelThreadsSearchResult],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelTicketmasterAttraction = TypedDict('ModelTicketmasterAttraction', {
+    'classification': NotRequired[ModelTicketmasterClassification],
+    'discovery_id': NotRequired[str],
+    'id': NotRequired[str],
+    'image_url': NotRequired[str],
+    'name': NotRequired[str],
+    'synopsis': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelTicketmasterAttractionRef = TypedDict('ModelTicketmasterAttractionRef', {
+    'discovery_id': NotRequired[str],
+    'id': NotRequired[str],
+    'image_url': NotRequired[str],
+    'name': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelTicketmasterAttractionResponse = TypedDict('ModelTicketmasterAttractionResponse', {
+    'attraction': NotRequired[ModelTicketmasterAttraction],
+    'fetched_at': NotRequired[str],
+    'source_url': NotRequired[str],
+}, total=False)
+
+ModelTicketmasterClassification = TypedDict('ModelTicketmasterClassification', {
+    'genre': NotRequired[str],
+    'segment': NotRequired[str],
+    'sub_genre': NotRequired[str],
+    'sub_type': NotRequired[str],
+    'type': NotRequired[str],
+}, total=False)
+
+ModelTicketmasterDiscoverCategoriesResponse = TypedDict('ModelTicketmasterDiscoverCategoriesResponse', {
+    'categories': NotRequired[list[ModelTicketmasterDiscoverCategory]],
+    'count': NotRequired[int],
+    'fetched_at': NotRequired[str],
+    'page': NotRequired[int],
+    'per_page': NotRequired[int],
+    'section': NotRequired[str],
+    'source_urls': NotRequired[list[str]],
+    'total': NotRequired[int],
+}, total=False)
+
+ModelTicketmasterDiscoverCategory = TypedDict('ModelTicketmasterDiscoverCategory', {
+    'id': NotRequired[str],
+    'major': NotRequired[bool],
+    'name': NotRequired[str],
+    'section': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelTicketmasterDiscoverCitiesResponse = TypedDict('ModelTicketmasterDiscoverCitiesResponse', {
+    'cities': NotRequired[list[ModelTicketmasterDiscoverCity]],
+    'count': NotRequired[int],
+    'country': NotRequired[str],
+    'fetched_at': NotRequired[str],
+    'page': NotRequired[int],
+    'per_page': NotRequired[int],
+    'source_url': NotRequired[str],
+    'total': NotRequired[int],
+}, total=False)
+
+ModelTicketmasterDiscoverCity = TypedDict('ModelTicketmasterDiscoverCity', {
+    'country': NotRequired[str],
+    'image_url': NotRequired[str],
+    'locale': NotRequired[str],
+    'name': NotRequired[str],
+    'slug': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelTicketmasterEventDetail = TypedDict('ModelTicketmasterEventDetail', {
+    'attractions': NotRequired[list[ModelTicketmasterAttractionRef]],
+    'cancelled': NotRequired[bool],
+    'classification': NotRequired[ModelTicketmasterClassification],
+    'currency': NotRequired[str],
+    'description': NotRequired[str],
+    'discovery_id': NotRequired[str],
+    'event_change_status': NotRequired[str],
+    'event_type': NotRequired[str],
+    'id': NotRequired[str],
+    'image_url': NotRequired[str],
+    'limited_availability': NotRequired[bool],
+    'onsale_time': NotRequired[str],
+    'postponed': NotRequired[bool],
+    'presales': NotRequired[list[ModelTicketmasterPresale]],
+    'product_type': NotRequired[str],
+    'rescheduled': NotRequired[bool],
+    'seatmap_url': NotRequired[str],
+    'sold_out': NotRequired[bool],
+    'start_time': NotRequired[str],
+    'tba': NotRequired[bool],
+    'ticketing_status': NotRequired[str],
+    'time_zone': NotRequired[str],
+    'title': NotRequired[str],
+    'url': NotRequired[str],
+    'venue': NotRequired[ModelTicketmasterVenueRef],
+    'virtual': NotRequired[bool],
+}, total=False)
+
+ModelTicketmasterEventResponse = TypedDict('ModelTicketmasterEventResponse', {
+    'event': NotRequired[ModelTicketmasterEventDetail],
+    'fetched_at': NotRequired[str],
+    'source_url': NotRequired[str],
+}, total=False)
+
+ModelTicketmasterEventSummary = TypedDict('ModelTicketmasterEventSummary', {
+    'attractions': NotRequired[list[ModelTicketmasterAttractionRef]],
+    'cancelled': NotRequired[bool],
+    'discovery_id': NotRequired[str],
+    'event_change_status': NotRequired[str],
+    'id': NotRequired[str],
+    'image_url': NotRequired[str],
+    'limited_availability': NotRequired[bool],
+    'onsale_time': NotRequired[str],
+    'postponed': NotRequired[bool],
+    'presales': NotRequired[list[ModelTicketmasterPresale]],
+    'rescheduled': NotRequired[bool],
+    'seatmap_url': NotRequired[str],
+    'sold_out': NotRequired[bool],
+    'start_time': NotRequired[str],
+    'tba': NotRequired[bool],
+    'ticketing_status': NotRequired[str],
+    'time_zone': NotRequired[str],
+    'title': NotRequired[str],
+    'url': NotRequired[str],
+    'venue': NotRequired[ModelTicketmasterVenueRef],
+    'virtual': NotRequired[bool],
+}, total=False)
+
+ModelTicketmasterEventsResponse = TypedDict('ModelTicketmasterEventsResponse', {
+    'count': NotRequired[int],
+    'entity_id': NotRequired[str],
+    'events': NotRequired[list[ModelTicketmasterEventSummary]],
+    'fetched_at': NotRequired[str],
+    'page': NotRequired[int],
+    'query': NotRequired[str],
+    'sort': NotRequired[str],
+    'source_url': NotRequired[str],
+    'total': NotRequired[int],
+}, total=False)
+
+ModelTicketmasterPresale = TypedDict('ModelTicketmasterPresale', {
+    'end_time': NotRequired[str],
+    'name': NotRequired[str],
+    'start_time': NotRequired[str],
+}, total=False)
+
+ModelTicketmasterSuggestion = TypedDict('ModelTicketmasterSuggestion', {
+    'category': NotRequired[str],
+    'event_count': NotRequired[int],
+    'image_url': NotRequired[str],
+    'title': NotRequired[str],
+    'type': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelTicketmasterSuggestionsResponse = TypedDict('ModelTicketmasterSuggestionsResponse', {
+    'count': NotRequired[int],
+    'fetched_at': NotRequired[str],
+    'query': NotRequired[str],
+    'source_url': NotRequired[str],
+    'suggestions': NotRequired[list[ModelTicketmasterSuggestion]],
+}, total=False)
+
+ModelTicketmasterVenue = TypedDict('ModelTicketmasterVenue', {
+    'address': NotRequired[str],
+    'city': NotRequired[str],
+    'country': NotRequired[str],
+    'discovery_id': NotRequired[str],
+    'id': NotRequired[str],
+    'image_url': NotRequired[str],
+    'info': NotRequired[list[ModelTicketmasterVenueInfoBlock]],
+    'latitude': NotRequired[float],
+    'longitude': NotRequired[float],
+    'name': NotRequired[str],
+    'postal_code': NotRequired[str],
+    'state': NotRequired[str],
+    'time_zone': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelTicketmasterVenueInfoBlock = TypedDict('ModelTicketmasterVenueInfoBlock', {
+    'name': NotRequired[str],
+    'text': NotRequired[str],
+}, total=False)
+
+ModelTicketmasterVenueRef = TypedDict('ModelTicketmasterVenueRef', {
+    'address': NotRequired[str],
+    'city': NotRequired[str],
+    'country': NotRequired[str],
+    'discovery_id': NotRequired[str],
+    'id': NotRequired[str],
+    'image_url': NotRequired[str],
+    'latitude': NotRequired[float],
+    'longitude': NotRequired[float],
+    'name': NotRequired[str],
+    'postal_code': NotRequired[str],
+    'state': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelTicketmasterVenueResponse = TypedDict('ModelTicketmasterVenueResponse', {
+    'fetched_at': NotRequired[str],
+    'source_url': NotRequired[str],
+    'venue': NotRequired[ModelTicketmasterVenue],
+}, total=False)
+
+ModelTicketmasterAttractionResponseDoc = TypedDict('ModelTicketmasterAttractionResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelTicketmasterAttractionResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelTicketmasterCategoriesResponseDoc = TypedDict('ModelTicketmasterCategoriesResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelTicketmasterDiscoverCategoriesResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelTicketmasterCitiesResponseDoc = TypedDict('ModelTicketmasterCitiesResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelTicketmasterDiscoverCitiesResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelTicketmasterEventResponseDoc = TypedDict('ModelTicketmasterEventResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelTicketmasterEventResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelTicketmasterEventsResponseDoc = TypedDict('ModelTicketmasterEventsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelTicketmasterEventsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelTicketmasterSuggestionsResponseDoc = TypedDict('ModelTicketmasterSuggestionsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelTicketmasterSuggestionsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelTicketmasterVenueResponseDoc = TypedDict('ModelTicketmasterVenueResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelTicketmasterVenueResponse],
     'msg': NotRequired[str],
 }, total=False)
 
@@ -21857,6 +22792,7 @@ DatasetsJobsSearchParams = TypedDict('DatasetsJobsSearchParams', {
     'state': NotRequired[str],
     'country': NotRequired[str],
     'employment_type': NotRequired[str],
+    'job_family': NotRequired[str],
     'remote': NotRequired[bool],
     'workplace_type': NotRequired[Literal['onsite', 'hybrid', 'remote']],
     'include_closed': NotRequired[bool],
@@ -25137,6 +26073,117 @@ MetaculusTournamentQuestionsParams = TypedDict('MetaculusTournamentQuestionsPara
     'limit': NotRequired[int],
 }, total=False)
 
+MlbGameResponse = ModelMlbGameResponseDoc
+MlbGameParams = TypedDict('MlbGameParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': Required[str],
+}, total=False)
+
+MlbGameBoxscoreResponse = ModelMlbBoxscoreResponseDoc
+MlbGameBoxscoreParams = TypedDict('MlbGameBoxscoreParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': Required[str],
+}, total=False)
+
+MlbGamePlayByPlayResponse = ModelMlbPlayByPlayResponseDoc
+MlbGamePlayByPlayParams = TypedDict('MlbGamePlayByPlayParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': Required[str],
+}, total=False)
+
+MlbLeagueStatsResponse = ModelMlbStatsResponseDoc
+MlbLeagueStatsParams = TypedDict('MlbLeagueStatsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'season': NotRequired[int],
+    'group': Required[Literal['hitting', 'pitching', 'fielding']],
+    'limit': NotRequired[int],
+}, total=False)
+
+MlbPlayerResponse = ModelMlbPlayerResponseDoc
+MlbPlayerParams = TypedDict('MlbPlayerParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': Required[str],
+}, total=False)
+
+MlbPlayerStatsResponse = ModelMlbStatsResponseDoc
+MlbPlayerStatsParams = TypedDict('MlbPlayerStatsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': Required[str],
+    'season': NotRequired[int],
+    'group': Required[Literal['hitting', 'pitching', 'fielding']],
+}, total=False)
+
+MlbScheduleResponse = ModelMlbScheduleResponseDoc
+MlbScheduleParams = TypedDict('MlbScheduleParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'date': NotRequired[str],
+    'start_date': NotRequired[str],
+    'end_date': NotRequired[str],
+    'team_id': NotRequired[str],
+}, total=False)
+
+MlbStandingsResponse = ModelMlbStandingsResponseDoc
+MlbStandingsParams = TypedDict('MlbStandingsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'season': NotRequired[int],
+    'type': NotRequired[Literal['regularSeason', 'wildCard', 'springTraining']],
+}, total=False)
+
+MlbTeamRosterResponse = ModelMlbRosterResponseDoc
+MlbTeamRosterParams = TypedDict('MlbTeamRosterParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'team_id': Required[str],
+    'season': NotRequired[int],
+    'roster_type': NotRequired[Literal['active', '40Man', 'fullSeason']],
+}, total=False)
+
+MlbTeamStatsResponse = ModelMlbStatsResponseDoc
+MlbTeamStatsParams = TypedDict('MlbTeamStatsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'team_id': Required[str],
+    'season': NotRequired[int],
+    'group': Required[Literal['hitting', 'pitching', 'fielding']],
+}, total=False)
+
+MlbTeamsResponse = ModelMlbTeamsResponseDoc
+MlbTeamsParams = TypedDict('MlbTeamsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'season': NotRequired[int],
+}, total=False)
+
+MlbTransactionsResponse = ModelMlbTransactionsResponseDoc
+MlbTransactionsParams = TypedDict('MlbTransactionsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'start_date': Required[str],
+    'end_date': Required[str],
+    'team_id': NotRequired[str],
+    'player_id': NotRequired[str],
+}, total=False)
+
 NumbeoCostOfLivingCityResponse = ModelNumbeoCostOfLivingCityResponseDoc
 NumbeoCostOfLivingCityParams = TypedDict('NumbeoCostOfLivingCityParams', {
     '_response_type': NotRequired[ResponseType],
@@ -27565,6 +28612,77 @@ SteamTopSellersParams = TypedDict('SteamTopSellersParams', {
     'l': NotRequired[str],
 }, total=False)
 
+TargetCategoriesResponse = ModelTargetCategoriesResponseDoc
+TargetCategoriesParams = TypedDict('TargetCategoriesParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+}, total=False)
+
+TargetCategoryProductsResponse = ModelTargetCategoryProductsResponseDoc
+TargetCategoryProductsParams = TypedDict('TargetCategoryProductsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'category_id': Required[str],
+    'page': NotRequired[int],
+    'sort': NotRequired[Literal['relevance', 'featured', 'price-low', 'price-high', 'rating', 'bestselling', 'newest']],
+    'store_id': NotRequired[int],
+    'filter_ids': NotRequired[str],
+}, total=False)
+
+TargetFilterOptionsResponse = ModelTargetFilterOptionsResponseDoc
+TargetFilterOptionsParams = TypedDict('TargetFilterOptionsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'q': NotRequired[str],
+    'category_id': NotRequired[str],
+    'store_id': NotRequired[int],
+    'filter_ids': NotRequired[str],
+}, total=False)
+
+TargetProductResponse = ModelTargetProductResponseDoc
+TargetProductParams = TypedDict('TargetProductParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'tcin': Required[str],
+    'store_id': NotRequired[int],
+}, total=False)
+
+TargetQuestionsResponse = ModelTargetQuestionsResponseDoc
+TargetQuestionsParams = TypedDict('TargetQuestionsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'tcin': Required[str],
+    'page': NotRequired[int],
+    'per_page': NotRequired[int],
+}, total=False)
+
+TargetReviewsResponse = ModelTargetReviewsResponseDoc
+TargetReviewsParams = TypedDict('TargetReviewsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'tcin': Required[str],
+    'page': NotRequired[int],
+    'per_page': NotRequired[int],
+}, total=False)
+
+TargetSearchResponse = ModelTargetSearchResponseDoc
+TargetSearchParams = TypedDict('TargetSearchParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'q': Required[str],
+    'page': NotRequired[int],
+    'sort': NotRequired[Literal['relevance', 'featured', 'price-low', 'price-high', 'rating', 'bestselling', 'newest']],
+    'store_id': NotRequired[int],
+    'filter_ids': NotRequired[str],
+}, total=False)
+
 TeslaJobsJobResponse = ModelTeslajobsJobResponseDoc
 TeslaJobsJobParams = TypedDict('TeslaJobsJobParams', {
     '_response_type': NotRequired[ResponseType],
@@ -27627,6 +28745,107 @@ ThreadsSearchParams = TypedDict('ThreadsSearchParams', {
     'q': Required[str],
 }, total=False)
 
+TicketmasterAttractionResponse = ModelTicketmasterAttractionResponseDoc
+TicketmasterAttractionParams = TypedDict('TicketmasterAttractionParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': Required[str],
+}, total=False)
+
+TicketmasterAttractionEventsResponse = ModelTicketmasterEventsResponseDoc
+TicketmasterAttractionEventsParams = TypedDict('TicketmasterAttractionEventsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': Required[str],
+    'page': NotRequired[int],
+    'sort': NotRequired[Literal['relevance', 'date']],
+}, total=False)
+
+TicketmasterDiscoverCategoriesResponse = ModelTicketmasterCategoriesResponseDoc
+TicketmasterDiscoverCategoriesParams = TypedDict('TicketmasterDiscoverCategoriesParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'section': NotRequired[Literal['all', 'concerts', 'sports', 'arts-theater', 'family']],
+    'page': NotRequired[int],
+    'per_page': NotRequired[int],
+}, total=False)
+
+TicketmasterDiscoverCategoryEventsResponse = ModelTicketmasterEventsResponseDoc
+TicketmasterDiscoverCategoryEventsParams = TypedDict('TicketmasterDiscoverCategoryEventsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'category_id': Required[str],
+    'page': NotRequired[int],
+}, total=False)
+
+TicketmasterDiscoverCitiesResponse = ModelTicketmasterCitiesResponseDoc
+TicketmasterDiscoverCitiesParams = TypedDict('TicketmasterDiscoverCitiesParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'country': NotRequired[str],
+    'page': NotRequired[int],
+    'per_page': NotRequired[int],
+}, total=False)
+
+TicketmasterDiscoverCityEventsResponse = ModelTicketmasterEventsResponseDoc
+TicketmasterDiscoverCityEventsParams = TypedDict('TicketmasterDiscoverCityEventsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'city': Required[str],
+    'country': NotRequired[str],
+    'page': NotRequired[int],
+}, total=False)
+
+TicketmasterEventResponse = ModelTicketmasterEventResponseDoc
+TicketmasterEventParams = TypedDict('TicketmasterEventParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': Required[str],
+}, total=False)
+
+TicketmasterSearchEventsResponse = ModelTicketmasterEventsResponseDoc
+TicketmasterSearchEventsParams = TypedDict('TicketmasterSearchEventsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'q': Required[str],
+    'page': NotRequired[int],
+    'sort': NotRequired[Literal['relevance', 'date']],
+}, total=False)
+
+TicketmasterSuggestResponse = ModelTicketmasterSuggestionsResponseDoc
+TicketmasterSuggestParams = TypedDict('TicketmasterSuggestParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'q': Required[str],
+}, total=False)
+
+TicketmasterVenueResponse = ModelTicketmasterVenueResponseDoc
+TicketmasterVenueParams = TypedDict('TicketmasterVenueParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': Required[str],
+}, total=False)
+
+TicketmasterVenueEventsResponse = ModelTicketmasterEventsResponseDoc
+TicketmasterVenueEventsParams = TypedDict('TicketmasterVenueEventsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': Required[str],
+    'page': NotRequired[int],
+    'sort': NotRequired[Literal['relevance', 'date']],
+}, total=False)
+
 TiktokCategoryResponse = ModelTiktokCategoryResponseDoc
 TiktokCategoryParams = TypedDict('TiktokCategoryParams', {
     '_response_type': NotRequired[ResponseType],
@@ -27641,6 +28860,27 @@ TiktokVideoCommentsParams = TypedDict('TiktokVideoCommentsParams', {
     '_headers': NotRequired[Mapping[str, str]],
     'aweme_id': Required[str],
     'cursor': NotRequired[int],
+}, total=False)
+
+TiktokCreativeCenterHashtagsResponse = ModelCreativecenterTrendingHashtagsResponseDoc
+TiktokCreativeCenterHashtagsParams = TypedDict('TiktokCreativeCenterHashtagsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'country_code': Required[str],
+    'period': NotRequired[Literal['7', '30']],
+}, total=False)
+
+TiktokCreativeCenterVideosResponse = ModelCreativecenterTrendingVideosResponseDoc
+TiktokCreativeCenterVideosParams = TypedDict('TiktokCreativeCenterVideosParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'country_code': Required[str],
+    'period': NotRequired[Literal['7', '30']],
+    'sort_by': NotRequired[Literal['views', 'engagement', 'six_second_views']],
+    'content_label_id': NotRequired[str],
+    'organic_only': NotRequired[bool],
 }, total=False)
 
 TiktokExploreResponse = ModelTiktokExploreResponseDoc
@@ -29342,6 +30582,20 @@ class MetaculusGroup:
     def top_comments(self, **params: Unpack[MetaculusTopCommentsParams]) -> MetaculusTopCommentsResponse: ...
     def tournament_questions(self, **params: Unpack[MetaculusTournamentQuestionsParams]) -> MetaculusTournamentQuestionsResponse: ...
 
+class MlbGroup:
+    def game(self, **params: Unpack[MlbGameParams]) -> MlbGameResponse: ...
+    def game_boxscore(self, **params: Unpack[MlbGameBoxscoreParams]) -> MlbGameBoxscoreResponse: ...
+    def game_play_by_play(self, **params: Unpack[MlbGamePlayByPlayParams]) -> MlbGamePlayByPlayResponse: ...
+    def league_stats(self, **params: Unpack[MlbLeagueStatsParams]) -> MlbLeagueStatsResponse: ...
+    def player(self, **params: Unpack[MlbPlayerParams]) -> MlbPlayerResponse: ...
+    def player_stats(self, **params: Unpack[MlbPlayerStatsParams]) -> MlbPlayerStatsResponse: ...
+    def schedule(self, **params: Unpack[MlbScheduleParams]) -> MlbScheduleResponse: ...
+    def standings(self, **params: Unpack[MlbStandingsParams]) -> MlbStandingsResponse: ...
+    def team_roster(self, **params: Unpack[MlbTeamRosterParams]) -> MlbTeamRosterResponse: ...
+    def team_stats(self, **params: Unpack[MlbTeamStatsParams]) -> MlbTeamStatsResponse: ...
+    def teams(self, **params: Unpack[MlbTeamsParams]) -> MlbTeamsResponse: ...
+    def transactions(self, **params: Unpack[MlbTransactionsParams]) -> MlbTransactionsResponse: ...
+
 class NumbeoGroup:
     def cost_of_living_city(self, **params: Unpack[NumbeoCostOfLivingCityParams]) -> NumbeoCostOfLivingCityResponse: ...
     def cost_of_living_country(self, **params: Unpack[NumbeoCostOfLivingCountryParams]) -> NumbeoCostOfLivingCountryResponse: ...
@@ -29618,6 +30872,15 @@ class SteamGroup:
     def tags_list(self, **params: Unpack[SteamTagsListParams]) -> SteamTagsListResponse: ...
     def top_sellers(self, **params: Unpack[SteamTopSellersParams]) -> SteamTopSellersResponse: ...
 
+class TargetGroup:
+    def categories(self, **params: Unpack[TargetCategoriesParams]) -> TargetCategoriesResponse: ...
+    def category_products(self, **params: Unpack[TargetCategoryProductsParams]) -> TargetCategoryProductsResponse: ...
+    def filter_options(self, **params: Unpack[TargetFilterOptionsParams]) -> TargetFilterOptionsResponse: ...
+    def product(self, **params: Unpack[TargetProductParams]) -> TargetProductResponse: ...
+    def questions(self, **params: Unpack[TargetQuestionsParams]) -> TargetQuestionsResponse: ...
+    def reviews(self, **params: Unpack[TargetReviewsParams]) -> TargetReviewsResponse: ...
+    def search(self, **params: Unpack[TargetSearchParams]) -> TargetSearchResponse: ...
+
 class TeslaJobsGroup:
     def job(self, **params: Unpack[TeslaJobsJobParams]) -> TeslaJobsJobResponse: ...
     def list(self, **params: Unpack[TeslaJobsListParams]) -> TeslaJobsListResponse: ...
@@ -29629,9 +30892,24 @@ class ThreadsGroup:
     def profile_posts(self, **params: Unpack[ThreadsProfilePostsParams]) -> ThreadsProfilePostsResponse: ...
     def search(self, **params: Unpack[ThreadsSearchParams]) -> ThreadsSearchResponse: ...
 
+class TicketmasterGroup:
+    def attraction(self, **params: Unpack[TicketmasterAttractionParams]) -> TicketmasterAttractionResponse: ...
+    def attraction_events(self, **params: Unpack[TicketmasterAttractionEventsParams]) -> TicketmasterAttractionEventsResponse: ...
+    def discover_categories(self, **params: Unpack[TicketmasterDiscoverCategoriesParams]) -> TicketmasterDiscoverCategoriesResponse: ...
+    def discover_category_events(self, **params: Unpack[TicketmasterDiscoverCategoryEventsParams]) -> TicketmasterDiscoverCategoryEventsResponse: ...
+    def discover_cities(self, **params: Unpack[TicketmasterDiscoverCitiesParams]) -> TicketmasterDiscoverCitiesResponse: ...
+    def discover_city_events(self, **params: Unpack[TicketmasterDiscoverCityEventsParams]) -> TicketmasterDiscoverCityEventsResponse: ...
+    def event(self, **params: Unpack[TicketmasterEventParams]) -> TicketmasterEventResponse: ...
+    def search_events(self, **params: Unpack[TicketmasterSearchEventsParams]) -> TicketmasterSearchEventsResponse: ...
+    def suggest(self, **params: Unpack[TicketmasterSuggestParams]) -> TicketmasterSuggestResponse: ...
+    def venue(self, **params: Unpack[TicketmasterVenueParams]) -> TicketmasterVenueResponse: ...
+    def venue_events(self, **params: Unpack[TicketmasterVenueEventsParams]) -> TicketmasterVenueEventsResponse: ...
+
 class TiktokGroup:
     def category(self, **params: Unpack[TiktokCategoryParams]) -> TiktokCategoryResponse: ...
     def video_comments(self, **params: Unpack[TiktokVideoCommentsParams]) -> TiktokVideoCommentsResponse: ...
+    def creative_center_hashtags(self, **params: Unpack[TiktokCreativeCenterHashtagsParams]) -> TiktokCreativeCenterHashtagsResponse: ...
+    def creative_center_videos(self, **params: Unpack[TiktokCreativeCenterVideosParams]) -> TiktokCreativeCenterVideosResponse: ...
     def explore(self, **params: Unpack[TiktokExploreParams]) -> TiktokExploreResponse: ...
     def challenge(self, **params: Unpack[TiktokChallengeParams]) -> TiktokChallengeResponse: ...
     def challenge_list(self, **params: Unpack[TiktokChallengeListParams]) -> TiktokChallengeListResponse: ...
@@ -30256,6 +31534,18 @@ OperationId = Literal[
     'metaculus-questions',
     'metaculus-top-comments',
     'metaculus-tournament-questions',
+    'mlb-game',
+    'mlb-game-boxscore',
+    'mlb-game-play-by-play',
+    'mlb-league-stats',
+    'mlb-player',
+    'mlb-player-stats',
+    'mlb-schedule',
+    'mlb-standings',
+    'mlb-team-roster',
+    'mlb-team-stats',
+    'mlb-teams',
+    'mlb-transactions',
     'numbeo-cost-of-living-city',
     'numbeo-cost-of-living-country',
     'numbeo-cost-of-living-rankings',
@@ -30496,6 +31786,13 @@ OperationId = Literal[
     'steam-tags',
     'steam-tags-list',
     'steam-top-sellers',
+    'target-categories',
+    'target-category-products',
+    'target-filter-options',
+    'target-product',
+    'target-questions',
+    'target-reviews',
+    'target-search',
     'tesla-jobs-job',
     'tesla-jobs-list',
     'threads-post',
@@ -30503,8 +31800,21 @@ OperationId = Literal[
     'threads-profile',
     'threads-profile-posts',
     'threads-search',
+    'ticketmaster-attraction',
+    'ticketmaster-attraction-events',
+    'ticketmaster-discover-categories',
+    'ticketmaster-discover-category-events',
+    'ticketmaster-discover-cities',
+    'ticketmaster-discover-city-events',
+    'ticketmaster-event',
+    'ticketmaster-search-events',
+    'ticketmaster-suggest',
+    'ticketmaster-venue',
+    'ticketmaster-venue-events',
     'tiktok-category',
     'tiktok-video-comments',
+    'tiktok-creative-center-hashtags',
+    'tiktok-creative-center-videos',
     'tiktok-explore',
     'tiktok-challenge',
     'tiktok-challenge-list',
@@ -30668,6 +31978,7 @@ class CrawloraClient:
     meta_jobs: MetaJobsGroup
     metacritic: MetacriticGroup
     metaculus: MetaculusGroup
+    mlb: MlbGroup
     numbeo: NumbeoGroup
     meta: MetaGroup
     pitch_book: PitchBookGroup
@@ -30686,8 +31997,10 @@ class CrawloraClient:
     spotify_podcasts: SpotifyPodcastsGroup
     spotify: SpotifyGroup
     steam: SteamGroup
+    target: TargetGroup
     tesla_jobs: TeslaJobsGroup
     threads: ThreadsGroup
+    ticketmaster: TicketmasterGroup
     tiktok: TiktokGroup
     tmdb: TmdbGroup
     trip_advisor: TripAdvisorGroup
@@ -36532,6 +37845,150 @@ class CrawloraClient:
     @overload
     def operation(
         self,
+        operation_id: Literal['mlb-game'],
+        params: MlbGameParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> MlbGameResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['mlb-game-boxscore'],
+        params: MlbGameBoxscoreParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> MlbGameBoxscoreResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['mlb-game-play-by-play'],
+        params: MlbGamePlayByPlayParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> MlbGamePlayByPlayResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['mlb-league-stats'],
+        params: MlbLeagueStatsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> MlbLeagueStatsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['mlb-player'],
+        params: MlbPlayerParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> MlbPlayerResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['mlb-player-stats'],
+        params: MlbPlayerStatsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> MlbPlayerStatsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['mlb-schedule'],
+        params: MlbScheduleParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> MlbScheduleResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['mlb-standings'],
+        params: MlbStandingsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> MlbStandingsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['mlb-team-roster'],
+        params: MlbTeamRosterParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> MlbTeamRosterResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['mlb-team-stats'],
+        params: MlbTeamStatsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> MlbTeamStatsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['mlb-teams'],
+        params: MlbTeamsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> MlbTeamsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['mlb-transactions'],
+        params: MlbTransactionsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> MlbTransactionsResponse: ...
+    @overload
+    def operation(
+        self,
         operation_id: Literal['numbeo-cost-of-living-city'],
         params: NumbeoCostOfLivingCityParams,
         *,
@@ -39412,6 +40869,90 @@ class CrawloraClient:
     @overload
     def operation(
         self,
+        operation_id: Literal['target-categories'],
+        params: TargetCategoriesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TargetCategoriesResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['target-category-products'],
+        params: TargetCategoryProductsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TargetCategoryProductsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['target-filter-options'],
+        params: TargetFilterOptionsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TargetFilterOptionsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['target-product'],
+        params: TargetProductParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TargetProductResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['target-questions'],
+        params: TargetQuestionsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TargetQuestionsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['target-reviews'],
+        params: TargetReviewsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TargetReviewsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['target-search'],
+        params: TargetSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TargetSearchResponse: ...
+    @overload
+    def operation(
+        self,
         operation_id: Literal['tesla-jobs-job'],
         params: TeslaJobsJobParams,
         *,
@@ -39496,6 +41037,138 @@ class CrawloraClient:
     @overload
     def operation(
         self,
+        operation_id: Literal['ticketmaster-attraction'],
+        params: TicketmasterAttractionParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TicketmasterAttractionResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['ticketmaster-attraction-events'],
+        params: TicketmasterAttractionEventsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TicketmasterAttractionEventsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['ticketmaster-discover-categories'],
+        params: TicketmasterDiscoverCategoriesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TicketmasterDiscoverCategoriesResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['ticketmaster-discover-category-events'],
+        params: TicketmasterDiscoverCategoryEventsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TicketmasterDiscoverCategoryEventsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['ticketmaster-discover-cities'],
+        params: TicketmasterDiscoverCitiesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TicketmasterDiscoverCitiesResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['ticketmaster-discover-city-events'],
+        params: TicketmasterDiscoverCityEventsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TicketmasterDiscoverCityEventsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['ticketmaster-event'],
+        params: TicketmasterEventParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TicketmasterEventResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['ticketmaster-search-events'],
+        params: TicketmasterSearchEventsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TicketmasterSearchEventsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['ticketmaster-suggest'],
+        params: TicketmasterSuggestParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TicketmasterSuggestResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['ticketmaster-venue'],
+        params: TicketmasterVenueParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TicketmasterVenueResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['ticketmaster-venue-events'],
+        params: TicketmasterVenueEventsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TicketmasterVenueEventsResponse: ...
+    @overload
+    def operation(
+        self,
         operation_id: Literal['tiktok-category'],
         params: TiktokCategoryParams = ...,
         *,
@@ -39517,6 +41190,30 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> TiktokVideoCommentsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['tiktok-creative-center-hashtags'],
+        params: TiktokCreativeCenterHashtagsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TiktokCreativeCenterHashtagsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['tiktok-creative-center-videos'],
+        params: TiktokCreativeCenterVideosParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TiktokCreativeCenterVideosResponse: ...
     @overload
     def operation(
         self,
@@ -46732,6 +48429,150 @@ class CrawloraClient:
     @overload
     def request(
         self,
+        operation_id: Literal['mlb-game'],
+        params: MlbGameParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> MlbGameResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['mlb-game-boxscore'],
+        params: MlbGameBoxscoreParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> MlbGameBoxscoreResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['mlb-game-play-by-play'],
+        params: MlbGamePlayByPlayParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> MlbGamePlayByPlayResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['mlb-league-stats'],
+        params: MlbLeagueStatsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> MlbLeagueStatsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['mlb-player'],
+        params: MlbPlayerParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> MlbPlayerResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['mlb-player-stats'],
+        params: MlbPlayerStatsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> MlbPlayerStatsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['mlb-schedule'],
+        params: MlbScheduleParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> MlbScheduleResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['mlb-standings'],
+        params: MlbStandingsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> MlbStandingsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['mlb-team-roster'],
+        params: MlbTeamRosterParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> MlbTeamRosterResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['mlb-team-stats'],
+        params: MlbTeamStatsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> MlbTeamStatsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['mlb-teams'],
+        params: MlbTeamsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> MlbTeamsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['mlb-transactions'],
+        params: MlbTransactionsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> MlbTransactionsResponse: ...
+    @overload
+    def request(
+        self,
         operation_id: Literal['numbeo-cost-of-living-city'],
         params: NumbeoCostOfLivingCityParams,
         *,
@@ -49612,6 +51453,90 @@ class CrawloraClient:
     @overload
     def request(
         self,
+        operation_id: Literal['target-categories'],
+        params: TargetCategoriesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TargetCategoriesResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['target-category-products'],
+        params: TargetCategoryProductsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TargetCategoryProductsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['target-filter-options'],
+        params: TargetFilterOptionsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TargetFilterOptionsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['target-product'],
+        params: TargetProductParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TargetProductResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['target-questions'],
+        params: TargetQuestionsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TargetQuestionsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['target-reviews'],
+        params: TargetReviewsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TargetReviewsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['target-search'],
+        params: TargetSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TargetSearchResponse: ...
+    @overload
+    def request(
+        self,
         operation_id: Literal['tesla-jobs-job'],
         params: TeslaJobsJobParams,
         *,
@@ -49696,6 +51621,138 @@ class CrawloraClient:
     @overload
     def request(
         self,
+        operation_id: Literal['ticketmaster-attraction'],
+        params: TicketmasterAttractionParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TicketmasterAttractionResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['ticketmaster-attraction-events'],
+        params: TicketmasterAttractionEventsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TicketmasterAttractionEventsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['ticketmaster-discover-categories'],
+        params: TicketmasterDiscoverCategoriesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TicketmasterDiscoverCategoriesResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['ticketmaster-discover-category-events'],
+        params: TicketmasterDiscoverCategoryEventsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TicketmasterDiscoverCategoryEventsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['ticketmaster-discover-cities'],
+        params: TicketmasterDiscoverCitiesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TicketmasterDiscoverCitiesResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['ticketmaster-discover-city-events'],
+        params: TicketmasterDiscoverCityEventsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TicketmasterDiscoverCityEventsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['ticketmaster-event'],
+        params: TicketmasterEventParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TicketmasterEventResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['ticketmaster-search-events'],
+        params: TicketmasterSearchEventsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TicketmasterSearchEventsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['ticketmaster-suggest'],
+        params: TicketmasterSuggestParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TicketmasterSuggestResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['ticketmaster-venue'],
+        params: TicketmasterVenueParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TicketmasterVenueResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['ticketmaster-venue-events'],
+        params: TicketmasterVenueEventsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TicketmasterVenueEventsResponse: ...
+    @overload
+    def request(
+        self,
         operation_id: Literal['tiktok-category'],
         params: TiktokCategoryParams = ...,
         *,
@@ -49717,6 +51774,30 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> TiktokVideoCommentsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['tiktok-creative-center-hashtags'],
+        params: TiktokCreativeCenterHashtagsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TiktokCreativeCenterHashtagsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['tiktok-creative-center-videos'],
+        params: TiktokCreativeCenterVideosParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TiktokCreativeCenterVideosResponse: ...
     @overload
     def request(
         self,

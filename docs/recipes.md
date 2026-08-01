@@ -257,6 +257,14 @@ with CrawloraClient(rate_limit=10, max_concurrency=4) as crawlora:
     crawlora.bing.search(q="coffee")
 ```
 
+## Ticketmaster, MLB, And Target
+
+```python
+events = crawlora.request("ticketmaster-search-events", {"keyword": "jazz", "page": 1})
+schedule = crawlora.request("mlb-schedule", {"date": "2026-08-01"})
+filters = crawlora.request("target-filter-options", {"category_id": "5xt1a"})
+```
+
 ## Optional Live Smoke Tests
 
 ```sh
