@@ -17862,7 +17862,9 @@ ModelTmdbMediaRef = TypedDict('ModelTmdbMediaRef', {
 
 ModelTmdbMovieListResponse = TypedDict('ModelTmdbMovieListResponse', {
     'category': NotRequired[str],
+    'has_next_page': NotRequired[bool],
     'movies': NotRequired[list[ModelTmdbMediaRef]],
+    'page': NotRequired[int],
     'source_url': NotRequired[str],
 }, total=False)
 
@@ -17907,6 +17909,8 @@ ModelTmdbRating = TypedDict('ModelTmdbRating', {
 }, total=False)
 
 ModelTmdbSearchResponse = TypedDict('ModelTmdbSearchResponse', {
+    'has_next_page': NotRequired[bool],
+    'page': NotRequired[int],
     'query': NotRequired[str],
     'results': NotRequired[list[ModelTmdbSearchResult]],
     'source_url': NotRequired[str],
@@ -17924,6 +17928,8 @@ ModelTmdbSearchResult = TypedDict('ModelTmdbSearchResult', {
 
 ModelTmdbTvlistResponse = TypedDict('ModelTmdbTvlistResponse', {
     'category': NotRequired[str],
+    'has_next_page': NotRequired[bool],
+    'page': NotRequired[int],
     'shows': NotRequired[list[ModelTmdbMediaRef]],
     'source_url': NotRequired[str],
 }, total=False)
@@ -20636,6 +20642,27 @@ ModelZillowSearchResponse = TypedDict('ModelZillowSearchResponse', {
     'location': NotRequired[str],
     'page': NotRequired[int],
     'results': NotRequired[list[ModelZillowPropertyItem]],
+}, total=False)
+
+ModelTmdbPersonListResponse = TypedDict('ModelTmdbPersonListResponse', {
+    'has_next_page': NotRequired[bool],
+    'page': NotRequired[int],
+    'people': NotRequired[list[ModelTmdbPersonRef]],
+    'source_url': NotRequired[str],
+}, total=False)
+
+ModelTmdbPersonRef = TypedDict('ModelTmdbPersonRef', {
+    'id': NotRequired[str],
+    'known_for': NotRequired[str],
+    'name': NotRequired[str],
+    'profile_url': NotRequired[str],
+    'uri': NotRequired[str],
+}, total=False)
+
+ModelTmdbPersonListResponseDoc = TypedDict('ModelTmdbPersonListResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelTmdbPersonListResponse],
+    'msg': NotRequired[str],
 }, total=False)
 
 AirbnbHostResponse = ModelAirbnbHostResponse
@@ -29078,6 +29105,18 @@ TmdbMovieListParams = TypedDict('TmdbMovieListParams', {
     '_timeout': NotRequired[float],
     '_headers': NotRequired[Mapping[str, str]],
     'category': NotRequired[Literal['popular', 'top_rated', 'now_playing', 'upcoming']],
+    'page': NotRequired[int],
+    'sort_by': NotRequired[Literal['popularity.desc', 'popularity.asc', 'vote_average.desc', 'vote_average.asc', 'primary_release_date.desc', 'primary_release_date.asc', 'title.asc', 'title.desc']],
+    'with_genres': NotRequired[str],
+    'original_language': NotRequired[str],
+    'date_from': NotRequired[str],
+    'date_to': NotRequired[str],
+    'min_rating': NotRequired[float],
+    'max_rating': NotRequired[float],
+    'min_votes': NotRequired[int],
+    'min_runtime': NotRequired[int],
+    'max_runtime': NotRequired[int],
+    'include_adult': NotRequired[bool],
     'limit': NotRequired[int],
 }, total=False)
 
@@ -29087,6 +29126,15 @@ TmdbMovieParams = TypedDict('TmdbMovieParams', {
     '_timeout': NotRequired[float],
     '_headers': NotRequired[Mapping[str, str]],
     'id': Required[str],
+}, total=False)
+
+TmdbPersonListResponse = ModelTmdbPersonListResponseDoc
+TmdbPersonListParams = TypedDict('TmdbPersonListParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'page': NotRequired[int],
+    'limit': NotRequired[int],
 }, total=False)
 
 TmdbPersonResponse = ModelTmdbPersonResponseDoc
@@ -29105,6 +29153,7 @@ TmdbSearchParams = TypedDict('TmdbSearchParams', {
     '_headers': NotRequired[Mapping[str, str]],
     'query': Required[str],
     'type': NotRequired[Literal['movie', 'tv', 'person']],
+    'page': NotRequired[int],
     'limit': NotRequired[int],
 }, total=False)
 
@@ -29114,6 +29163,18 @@ TmdbTvListParams = TypedDict('TmdbTvListParams', {
     '_timeout': NotRequired[float],
     '_headers': NotRequired[Mapping[str, str]],
     'category': NotRequired[Literal['popular', 'top_rated', 'airing_today', 'on_the_air']],
+    'page': NotRequired[int],
+    'sort_by': NotRequired[Literal['popularity.desc', 'popularity.asc', 'vote_average.desc', 'vote_average.asc', 'first_air_date.desc', 'first_air_date.asc', 'name.asc', 'name.desc']],
+    'with_genres': NotRequired[str],
+    'original_language': NotRequired[str],
+    'date_from': NotRequired[str],
+    'date_to': NotRequired[str],
+    'min_rating': NotRequired[float],
+    'max_rating': NotRequired[float],
+    'min_votes': NotRequired[int],
+    'min_runtime': NotRequired[int],
+    'max_runtime': NotRequired[int],
+    'include_adult': NotRequired[bool],
     'limit': NotRequired[int],
 }, total=False)
 
@@ -30935,6 +30996,7 @@ class TiktokGroup:
 class TmdbGroup:
     def movie_list(self, **params: Unpack[TmdbMovieListParams]) -> TmdbMovieListResponse: ...
     def movie(self, **params: Unpack[TmdbMovieParams]) -> TmdbMovieResponse: ...
+    def person_list(self, **params: Unpack[TmdbPersonListParams]) -> TmdbPersonListResponse: ...
     def person(self, **params: Unpack[TmdbPersonParams]) -> TmdbPersonResponse: ...
     def search(self, **params: Unpack[TmdbSearchParams]) -> TmdbSearchResponse: ...
     def tv_list(self, **params: Unpack[TmdbTvListParams]) -> TmdbTvListResponse: ...
@@ -31838,6 +31900,7 @@ OperationId = Literal[
     'tiktok-trending',
     'tmdb-movie-list',
     'tmdb-movie',
+    'tmdb-person-list',
     'tmdb-person',
     'tmdb-search',
     'tmdb-tv-list',
@@ -41490,6 +41553,18 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> TmdbMovieResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['tmdb-person-list'],
+        params: TmdbPersonListParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TmdbPersonListResponse: ...
     @overload
     def operation(
         self,
@@ -52074,6 +52149,18 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> TmdbMovieResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['tmdb-person-list'],
+        params: TmdbPersonListParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TmdbPersonListResponse: ...
     @overload
     def request(
         self,
