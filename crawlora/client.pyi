@@ -5172,6 +5172,22 @@ ModelDoordashCuisine = TypedDict('ModelDoordashCuisine', {
     'name': NotRequired[str],
 }, total=False)
 
+ModelDoordashFeedResponse = TypedDict('ModelDoordashFeedResponse', {
+    'stores': NotRequired[list[ModelDoordashFeedStore]],
+}, total=False)
+
+ModelDoordashFeedStore = TypedDict('ModelDoordashFeedStore', {
+    'averageRating': NotRequired[float],
+    'coverImageUrl': NotRequired[str],
+    'deliveryFee': NotRequired[str],
+    'eta': NotRequired[str],
+    'name': NotRequired[str],
+    'priceRange': NotRequired[str],
+    'ratingCount': NotRequired[str],
+    'storeId': NotRequired[str],
+    'tags': NotRequired[list[str]],
+}, total=False)
+
 ModelDoordashFilterValue = TypedDict('ModelDoordashFilterValue', {
     'displayName': NotRequired[str],
     'type': NotRequired[str],
@@ -5193,6 +5209,15 @@ ModelDoordashMenuResponse = TypedDict('ModelDoordashMenuResponse', {
 ModelDoordashMenuSection = TypedDict('ModelDoordashMenuSection', {
     'items': NotRequired[list[ModelDoordashMenuItem]],
     'name': NotRequired[str],
+}, total=False)
+
+ModelDoordashReviewItem = TypedDict('ModelDoordashReviewItem', {
+    'avatarInitial': NotRequired[str],
+    'avatarUrl': NotRequired[str],
+    'rating': NotRequired[float],
+    'reviewerName': NotRequired[str],
+    'reviewerReviewsCount': NotRequired[str],
+    'text': NotRequired[str],
 }, total=False)
 
 ModelDoordashSearchAddress = TypedDict('ModelDoordashSearchAddress', {
@@ -5218,6 +5243,21 @@ ModelDoordashSearchFiltersResponse = TypedDict('ModelDoordashSearchFiltersRespon
     'filters': NotRequired[list[ModelDoordashSearchFilter]],
 }, total=False)
 
+ModelDoordashSearchItemResult = TypedDict('ModelDoordashSearchItemResult', {
+    'description': NotRequired[str],
+    'distance': NotRequired[str],
+    'itemId': NotRequired[str],
+    'name': NotRequired[str],
+    'price': NotRequired[str],
+    'storeId': NotRequired[str],
+    'storeName': NotRequired[str],
+}, total=False)
+
+ModelDoordashSearchItemsResponse = TypedDict('ModelDoordashSearchItemsResponse', {
+    'query': NotRequired[str],
+    'results': NotRequired[list[ModelDoordashSearchItemResult]],
+}, total=False)
+
 ModelDoordashSearchResponse = TypedDict('ModelDoordashSearchResponse', {
     'query': NotRequired[str],
     'results': NotRequired[list[ModelDoordashSearchResult]],
@@ -5240,6 +5280,7 @@ ModelDoordashSearchResult = TypedDict('ModelDoordashSearchResult', {
 
 ModelDoordashStoreDetail = TypedDict('ModelDoordashStoreDetail', {
     'address': NotRequired[ModelDoordashAddress],
+    'averageRating': NotRequired[float],
     'images': NotRequired[list[str]],
     'latitude': NotRequired[float],
     'longitude': NotRequired[float],
@@ -5247,8 +5288,45 @@ ModelDoordashStoreDetail = TypedDict('ModelDoordashStoreDetail', {
     'menuSectionCount': NotRequired[int],
     'name': NotRequired[str],
     'priceRange': NotRequired[str],
+    'ratingCount': NotRequired[str],
     'storeId': NotRequired[str],
     'url': NotRequired[str],
+}, total=False)
+
+ModelDoordashStoreFulfillmentResponse = TypedDict('ModelDoordashStoreFulfillmentResponse', {
+    'deliverySubtitle': NotRequired[str],
+    'deliveryTitle': NotRequired[str],
+    'fulfillmentMethod': NotRequired[str],
+    'isFreeDelivery': NotRequired[bool],
+    'offeredFulfillmentMethods': NotRequired[list[str]],
+    'scheduleDescription': NotRequired[str],
+    'storeId': NotRequired[str],
+    'storeName': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelDoordashStoreItemResponse = TypedDict('ModelDoordashStoreItemResponse', {
+    'description': NotRequired[str],
+    'itemId': NotRequired[str],
+    'name': NotRequired[str],
+    'price': NotRequired[str],
+    'storeId': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelDoordashStoreReviewsResponse = TypedDict('ModelDoordashStoreReviewsResponse', {
+    'averageRating': NotRequired[float],
+    'ratingCount': NotRequired[str],
+    'reviews': NotRequired[list[ModelDoordashReviewItem]],
+    'storeId': NotRequired[str],
+    'storeName': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelDoordashFeedResponseDoc = TypedDict('ModelDoordashFeedResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelDoordashFeedResponse],
+    'msg': NotRequired[str],
 }, total=False)
 
 ModelDoordashMenuResponseDoc = TypedDict('ModelDoordashMenuResponseDoc', {
@@ -5263,15 +5341,39 @@ ModelDoordashSearchFiltersResponseDoc = TypedDict('ModelDoordashSearchFiltersRes
     'msg': NotRequired[str],
 }, total=False)
 
+ModelDoordashSearchItemsResponseDoc = TypedDict('ModelDoordashSearchItemsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelDoordashSearchItemsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
 ModelDoordashSearchResponseDoc = TypedDict('ModelDoordashSearchResponseDoc', {
     'code': NotRequired[int],
     'data': NotRequired[ModelDoordashSearchResponse],
     'msg': NotRequired[str],
 }, total=False)
 
+ModelDoordashStoreFulfillmentResponseDoc = TypedDict('ModelDoordashStoreFulfillmentResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelDoordashStoreFulfillmentResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelDoordashStoreItemResponseDoc = TypedDict('ModelDoordashStoreItemResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelDoordashStoreItemResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
 ModelDoordashStoreResponseDoc = TypedDict('ModelDoordashStoreResponseDoc', {
     'code': NotRequired[int],
     'data': NotRequired[ModelDoordashStoreDetail],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelDoordashStoreReviewsResponseDoc = TypedDict('ModelDoordashStoreReviewsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelDoordashStoreReviewsResponse],
     'msg': NotRequired[str],
 }, total=False)
 
@@ -24031,6 +24133,17 @@ DiscogsSearchParams = TypedDict('DiscogsSearchParams', {
     'per_page': NotRequired[int],
 }, total=False)
 
+DoorDashDoordashFeedResponse = ModelDoordashFeedResponseDoc
+DoorDashDoordashFeedParams = TypedDict('DoorDashDoordashFeedParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'latitude': Required[float],
+    'longitude': Required[float],
+    'offset': NotRequired[int],
+    'limit': NotRequired[int],
+}, total=False)
+
 DoorDashDoordashSearchResponse = ModelDoordashSearchResponseDoc
 DoorDashDoordashSearchParams = TypedDict('DoorDashDoordashSearchParams', {
     '_response_type': NotRequired[ResponseType],
@@ -24065,6 +24178,16 @@ DoorDashDoordashSearchFiltersParams = TypedDict('DoorDashDoordashSearchFiltersPa
     'longitude': Required[float],
 }, total=False)
 
+DoorDashDoordashSearchItemsResponse = ModelDoordashSearchItemsResponseDoc
+DoorDashDoordashSearchItemsParams = TypedDict('DoorDashDoordashSearchItemsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'query': Required[str],
+    'latitude': Required[float],
+    'longitude': Required[float],
+}, total=False)
+
 DoorDashDoordashStoreResponse = ModelDoordashStoreResponseDoc
 DoorDashDoordashStoreParams = TypedDict('DoorDashDoordashStoreParams', {
     '_response_type': NotRequired[ResponseType],
@@ -24075,8 +24198,39 @@ DoorDashDoordashStoreParams = TypedDict('DoorDashDoordashStoreParams', {
     'longitude': Required[float],
 }, total=False)
 
+DoorDashDoordashStoreFulfillmentResponse = ModelDoordashStoreFulfillmentResponseDoc
+DoorDashDoordashStoreFulfillmentParams = TypedDict('DoorDashDoordashStoreFulfillmentParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'store_id': Required[str],
+    'latitude': Required[float],
+    'longitude': Required[float],
+}, total=False)
+
+DoorDashDoordashStoreItemResponse = ModelDoordashStoreItemResponseDoc
+DoorDashDoordashStoreItemParams = TypedDict('DoorDashDoordashStoreItemParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'store_id': Required[str],
+    'item_id': Required[str],
+    'latitude': Required[float],
+    'longitude': Required[float],
+}, total=False)
+
 DoorDashDoordashStoreMenuResponse = ModelDoordashMenuResponseDoc
 DoorDashDoordashStoreMenuParams = TypedDict('DoorDashDoordashStoreMenuParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'store_id': Required[str],
+    'latitude': Required[float],
+    'longitude': Required[float],
+}, total=False)
+
+DoorDashDoordashStoreReviewsResponse = ModelDoordashStoreReviewsResponseDoc
+DoorDashDoordashStoreReviewsParams = TypedDict('DoorDashDoordashStoreReviewsParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
     '_headers': NotRequired[Mapping[str, str]],
@@ -30655,11 +30809,16 @@ class DiscogsGroup:
     def search(self, **params: Unpack[DiscogsSearchParams]) -> DiscogsSearchResponse: ...
 
 class DoorDashGroup:
+    def doordash_feed(self, **params: Unpack[DoorDashDoordashFeedParams]) -> DoorDashDoordashFeedResponse: ...
     def doordash_search(self, **params: Unpack[DoorDashDoordashSearchParams]) -> DoorDashDoordashSearchResponse: ...
     def doordash_search_autocomplete(self, **params: Unpack[DoorDashDoordashSearchAutocompleteParams]) -> DoorDashDoordashSearchAutocompleteResponse: ...
     def doordash_search_filters(self, **params: Unpack[DoorDashDoordashSearchFiltersParams]) -> DoorDashDoordashSearchFiltersResponse: ...
+    def doordash_search_items(self, **params: Unpack[DoorDashDoordashSearchItemsParams]) -> DoorDashDoordashSearchItemsResponse: ...
     def doordash_store(self, **params: Unpack[DoorDashDoordashStoreParams]) -> DoorDashDoordashStoreResponse: ...
+    def doordash_store_fulfillment(self, **params: Unpack[DoorDashDoordashStoreFulfillmentParams]) -> DoorDashDoordashStoreFulfillmentResponse: ...
+    def doordash_store_item(self, **params: Unpack[DoorDashDoordashStoreItemParams]) -> DoorDashDoordashStoreItemResponse: ...
     def doordash_store_menu(self, **params: Unpack[DoorDashDoordashStoreMenuParams]) -> DoorDashDoordashStoreMenuResponse: ...
+    def doordash_store_reviews(self, **params: Unpack[DoorDashDoordashStoreReviewsParams]) -> DoorDashDoordashStoreReviewsResponse: ...
 
 class EBayGroup:
     def ebay_item(self, **params: Unpack[EBayEbayItemParams]) -> EBayEbayItemResponse: ...
@@ -31656,11 +31815,16 @@ OperationId = Literal[
     'discogs-master',
     'discogs-release',
     'discogs-search',
+    'doordash-feed',
     'doordash-search',
     'doordash-search-autocomplete',
     'doordash-search-filters',
+    'doordash-search-items',
     'doordash-store',
+    'doordash-store-fulfillment',
+    'doordash-store-item',
     'doordash-store-menu',
+    'doordash-store-reviews',
     'ebay-item',
     'ebay-search',
     'ebay-seller',
@@ -35447,6 +35611,18 @@ class CrawloraClient:
     @overload
     def operation(
         self,
+        operation_id: Literal['doordash-feed'],
+        params: DoorDashDoordashFeedParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DoorDashDoordashFeedResponse: ...
+    @overload
+    def operation(
+        self,
         operation_id: Literal['doordash-search'],
         params: DoorDashDoordashSearchParams,
         *,
@@ -35483,6 +35659,18 @@ class CrawloraClient:
     @overload
     def operation(
         self,
+        operation_id: Literal['doordash-search-items'],
+        params: DoorDashDoordashSearchItemsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DoorDashDoordashSearchItemsResponse: ...
+    @overload
+    def operation(
+        self,
         operation_id: Literal['doordash-store'],
         params: DoorDashDoordashStoreParams,
         *,
@@ -35495,6 +35683,30 @@ class CrawloraClient:
     @overload
     def operation(
         self,
+        operation_id: Literal['doordash-store-fulfillment'],
+        params: DoorDashDoordashStoreFulfillmentParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DoorDashDoordashStoreFulfillmentResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['doordash-store-item'],
+        params: DoorDashDoordashStoreItemParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DoorDashDoordashStoreItemResponse: ...
+    @overload
+    def operation(
+        self,
         operation_id: Literal['doordash-store-menu'],
         params: DoorDashDoordashStoreMenuParams,
         *,
@@ -35504,6 +35716,18 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> DoorDashDoordashStoreMenuResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['doordash-store-reviews'],
+        params: DoorDashDoordashStoreReviewsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DoorDashDoordashStoreReviewsResponse: ...
     @overload
     def operation(
         self,
@@ -46139,6 +46363,18 @@ class CrawloraClient:
     @overload
     def request(
         self,
+        operation_id: Literal['doordash-feed'],
+        params: DoorDashDoordashFeedParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DoorDashDoordashFeedResponse: ...
+    @overload
+    def request(
+        self,
         operation_id: Literal['doordash-search'],
         params: DoorDashDoordashSearchParams,
         *,
@@ -46175,6 +46411,18 @@ class CrawloraClient:
     @overload
     def request(
         self,
+        operation_id: Literal['doordash-search-items'],
+        params: DoorDashDoordashSearchItemsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DoorDashDoordashSearchItemsResponse: ...
+    @overload
+    def request(
+        self,
         operation_id: Literal['doordash-store'],
         params: DoorDashDoordashStoreParams,
         *,
@@ -46187,6 +46435,30 @@ class CrawloraClient:
     @overload
     def request(
         self,
+        operation_id: Literal['doordash-store-fulfillment'],
+        params: DoorDashDoordashStoreFulfillmentParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DoorDashDoordashStoreFulfillmentResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['doordash-store-item'],
+        params: DoorDashDoordashStoreItemParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DoorDashDoordashStoreItemResponse: ...
+    @overload
+    def request(
+        self,
         operation_id: Literal['doordash-store-menu'],
         params: DoorDashDoordashStoreMenuParams,
         *,
@@ -46196,6 +46468,18 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> DoorDashDoordashStoreMenuResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['doordash-store-reviews'],
+        params: DoorDashDoordashStoreReviewsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DoorDashDoordashStoreReviewsResponse: ...
     @overload
     def request(
         self,

@@ -6,7 +6,7 @@ from pathlib import Path
 from urllib.error import URLError
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 
-from crawlora import OPERATION_COUNT, CrawloraClient, CrawloraError
+from crawlora import OPERATION_COUNT, OPERATIONS, CrawloraClient, CrawloraError
 
 
 class Handler(BaseHTTPRequestHandler):
@@ -266,11 +266,13 @@ class CrawloraClientTest(unittest.TestCase):
         self.assertEqual(str(raised.exception), "Crawlora request timed out")
         self.assertIs(raised.exception.__cause__, cause)
 
-    def test_operation_metadata_count(self):
-        self.assertEqual(OPERATION_COUNT, 890)
+    def test_operation_metadata_count(self) -> None:
+        self.assertEqual(len(OPERATIONS), OPERATION_COUNT)
+        self.assertEqual(OPERATION_COUNT, 895)
 
-    def test_deprecated_endpoints_are_not_generated(self):
+    def test_deprecated_endpoints_are_not_generated(self) -> None:
         self.assertFalse(hasattr(CrawloraClient(api_key="api_test", base_url=self.base_url).google, "lens"))
+        self.assertNotIn("google-lens", OPERATIONS)
 
     def test_generated_stub_includes_typed_endpoint_groups(self):
         stub = Path(__file__).resolve().parents[1].joinpath("crawlora", "client.pyi").read_text()
@@ -297,7 +299,7 @@ class CrawloraClientTest(unittest.TestCase):
         recipes_doc = root.joinpath("docs", "recipes.md").read_text()
 
         for expected in [
-            "Total operations: `890`",
+            "Total operations: `895`",
             "`bing-search`",
             "`GET /bing/search`",
             "`bing.search`",
