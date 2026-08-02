@@ -5155,6 +5155,126 @@ ModelDiscogsSearchResponseDoc = TypedDict('ModelDiscogsSearchResponseDoc', {
     'msg': NotRequired[str],
 }, total=False)
 
+ModelDoordashAddress = TypedDict('ModelDoordashAddress', {
+    'city': NotRequired[str],
+    'country': NotRequired[str],
+    'postalCode': NotRequired[str],
+    'region': NotRequired[str],
+    'street': NotRequired[str],
+}, total=False)
+
+ModelDoordashCuisine = TypedDict('ModelDoordashCuisine', {
+    'animatedCoverImageUrl': NotRequired[str],
+    'coverImageUrl': NotRequired[str],
+    'friendlyName': NotRequired[str],
+    'id': NotRequired[str],
+    'localizedFriendlyName': NotRequired[str],
+    'name': NotRequired[str],
+}, total=False)
+
+ModelDoordashFilterValue = TypedDict('ModelDoordashFilterValue', {
+    'displayName': NotRequired[str],
+    'type': NotRequired[str],
+}, total=False)
+
+ModelDoordashMenuItem = TypedDict('ModelDoordashMenuItem', {
+    'description': NotRequired[str],
+    'name': NotRequired[str],
+    'price': NotRequired[str],
+}, total=False)
+
+ModelDoordashMenuResponse = TypedDict('ModelDoordashMenuResponse', {
+    'sections': NotRequired[list[ModelDoordashMenuSection]],
+    'storeId': NotRequired[str],
+    'storeName': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelDoordashMenuSection = TypedDict('ModelDoordashMenuSection', {
+    'items': NotRequired[list[ModelDoordashMenuItem]],
+    'name': NotRequired[str],
+}, total=False)
+
+ModelDoordashSearchAddress = TypedDict('ModelDoordashSearchAddress', {
+    'city': NotRequired[str],
+    'displayAddress': NotRequired[str],
+    'latitude': NotRequired[float],
+    'longitude': NotRequired[float],
+    'region': NotRequired[str],
+    'street': NotRequired[str],
+}, total=False)
+
+ModelDoordashSearchFilter = TypedDict('ModelDoordashSearchFilter', {
+    'allowedValues': NotRequired[list[ModelDoordashFilterValue]],
+    'defaultValues': NotRequired[list[ModelDoordashFilterValue]],
+    'displayName': NotRequired[str],
+    'id': NotRequired[str],
+    'rangeDirection': NotRequired[str],
+    'type': NotRequired[str],
+}, total=False)
+
+ModelDoordashSearchFiltersResponse = TypedDict('ModelDoordashSearchFiltersResponse', {
+    'cuisines': NotRequired[list[ModelDoordashCuisine]],
+    'filters': NotRequired[list[ModelDoordashSearchFilter]],
+}, total=False)
+
+ModelDoordashSearchResponse = TypedDict('ModelDoordashSearchResponse', {
+    'query': NotRequired[str],
+    'results': NotRequired[list[ModelDoordashSearchResult]],
+}, total=False)
+
+ModelDoordashSearchResult = TypedDict('ModelDoordashSearchResult', {
+    'address': NotRequired[ModelDoordashSearchAddress],
+    'asapAvailable': NotRequired[bool],
+    'coverImageUrl': NotRequired[str],
+    'dashPassEligible': NotRequired[bool],
+    'distance': NotRequired[str],
+    'name': NotRequired[str],
+    'pickupAvailable': NotRequired[bool],
+    'squareImageUrl': NotRequired[str],
+    'storeId': NotRequired[str],
+    'tags': NotRequired[list[str]],
+    'type': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelDoordashStoreDetail = TypedDict('ModelDoordashStoreDetail', {
+    'address': NotRequired[ModelDoordashAddress],
+    'images': NotRequired[list[str]],
+    'latitude': NotRequired[float],
+    'longitude': NotRequired[float],
+    'menuItemCount': NotRequired[int],
+    'menuSectionCount': NotRequired[int],
+    'name': NotRequired[str],
+    'priceRange': NotRequired[str],
+    'storeId': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelDoordashMenuResponseDoc = TypedDict('ModelDoordashMenuResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelDoordashMenuResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelDoordashSearchFiltersResponseDoc = TypedDict('ModelDoordashSearchFiltersResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelDoordashSearchFiltersResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelDoordashSearchResponseDoc = TypedDict('ModelDoordashSearchResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelDoordashSearchResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelDoordashStoreResponseDoc = TypedDict('ModelDoordashStoreResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelDoordashStoreDetail],
+    'msg': NotRequired[str],
+}, total=False)
+
 ModelEbayItem = TypedDict('ModelEbayItem', {
     'availability': NotRequired[str],
     'condition': NotRequired[str],
@@ -8695,6 +8815,32 @@ ModelImdbSearchResponse = TypedDict('ModelImdbSearchResponse', {
     'source_url': NotRequired[str],
 }, total=False)
 
+ModelImdbSearchTitleItem = TypedDict('ModelImdbSearchTitleItem', {
+    'certificate': NotRequired[str],
+    'genres': NotRequired[list[str]],
+    'id': NotRequired[str],
+    'image_url': NotRequired[str],
+    'metascore': NotRequired[int],
+    'plot': NotRequired[str],
+    'rating_count': NotRequired[int],
+    'rating_value': NotRequired[float],
+    'release_date': NotRequired[str],
+    'runtime_minutes': NotRequired[int],
+    'title': NotRequired[str],
+    'title_type': NotRequired[str],
+    'url': NotRequired[str],
+    'year': NotRequired[int],
+}, total=False)
+
+ModelImdbSearchTitleResponse = TypedDict('ModelImdbSearchTitleResponse', {
+    'fetched_at': NotRequired[str],
+    'has_more': NotRequired[bool],
+    'limit': NotRequired[int],
+    'results': NotRequired[list[ModelImdbSearchTitleItem]],
+    'source_url': NotRequired[str],
+    'total': NotRequired[int],
+}, total=False)
+
 ModelImdbTechnicalSpecItem = TypedDict('ModelImdbTechnicalSpecItem', {
     'name': NotRequired[str],
     'slug': NotRequired[str],
@@ -8823,6 +8969,12 @@ ModelImdbReviewsResponseDoc = TypedDict('ModelImdbReviewsResponseDoc', {
 ModelImdbSearchResponseDoc = TypedDict('ModelImdbSearchResponseDoc', {
     'code': NotRequired[int],
     'data': NotRequired[ModelImdbSearchResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelImdbSearchTitleResponseDoc = TypedDict('ModelImdbSearchTitleResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelImdbSearchTitleResponse],
     'msg': NotRequired[str],
 }, total=False)
 
@@ -17891,6 +18043,21 @@ ModelTmdbMovieResponse = TypedDict('ModelTmdbMovieResponse', {
     'year': NotRequired[int],
 }, total=False)
 
+ModelTmdbPersonListResponse = TypedDict('ModelTmdbPersonListResponse', {
+    'has_next_page': NotRequired[bool],
+    'page': NotRequired[int],
+    'people': NotRequired[list[ModelTmdbPersonRef]],
+    'source_url': NotRequired[str],
+}, total=False)
+
+ModelTmdbPersonRef = TypedDict('ModelTmdbPersonRef', {
+    'id': NotRequired[str],
+    'known_for': NotRequired[str],
+    'name': NotRequired[str],
+    'profile_url': NotRequired[str],
+    'uri': NotRequired[str],
+}, total=False)
+
 ModelTmdbPersonResponse = TypedDict('ModelTmdbPersonResponse', {
     'biography': NotRequired[str],
     'birth_date': NotRequired[str],
@@ -17964,6 +18131,12 @@ ModelTmdbMovieListResponseDoc = TypedDict('ModelTmdbMovieListResponseDoc', {
 ModelTmdbMovieResponseDoc = TypedDict('ModelTmdbMovieResponseDoc', {
     'code': NotRequired[int],
     'data': NotRequired[ModelTmdbMovieResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelTmdbPersonListResponseDoc = TypedDict('ModelTmdbPersonListResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelTmdbPersonListResponse],
     'msg': NotRequired[str],
 }, total=False)
 
@@ -19169,6 +19342,14 @@ ModelUbereatsMenuItem = TypedDict('ModelUbereatsMenuItem', {
     'uuid': NotRequired[str],
 }, total=False)
 
+ModelUbereatsMenuResponse = TypedDict('ModelUbereatsMenuResponse', {
+    'currencyCode': NotRequired[str],
+    'sections': NotRequired[list[ModelUbereatsMenuSection]],
+    'storeTitle': NotRequired[str],
+    'storeUuid': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
 ModelUbereatsMenuSection = TypedDict('ModelUbereatsMenuSection', {
     'items': NotRequired[list[ModelUbereatsMenuItem]],
     'title': NotRequired[str],
@@ -19232,6 +19413,18 @@ ModelUbereatsStoreReviewsResponse = TypedDict('ModelUbereatsStoreReviewsResponse
     'reviewCount': NotRequired[int],
     'reviews': NotRequired[list[ModelUbereatsReview]],
     'storeUuid': NotRequired[str],
+}, total=False)
+
+ModelUbereatsFeedResponseDoc = TypedDict('ModelUbereatsFeedResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelUbereatsSearchResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelUbereatsMenuResponseDoc = TypedDict('ModelUbereatsMenuResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelUbereatsMenuResponse],
+    'msg': NotRequired[str],
 }, total=False)
 
 ModelUbereatsSearchResponseDoc = TypedDict('ModelUbereatsSearchResponseDoc', {
@@ -20642,27 +20835,6 @@ ModelZillowSearchResponse = TypedDict('ModelZillowSearchResponse', {
     'location': NotRequired[str],
     'page': NotRequired[int],
     'results': NotRequired[list[ModelZillowPropertyItem]],
-}, total=False)
-
-ModelTmdbPersonListResponse = TypedDict('ModelTmdbPersonListResponse', {
-    'has_next_page': NotRequired[bool],
-    'page': NotRequired[int],
-    'people': NotRequired[list[ModelTmdbPersonRef]],
-    'source_url': NotRequired[str],
-}, total=False)
-
-ModelTmdbPersonRef = TypedDict('ModelTmdbPersonRef', {
-    'id': NotRequired[str],
-    'known_for': NotRequired[str],
-    'name': NotRequired[str],
-    'profile_url': NotRequired[str],
-    'uri': NotRequired[str],
-}, total=False)
-
-ModelTmdbPersonListResponseDoc = TypedDict('ModelTmdbPersonListResponseDoc', {
-    'code': NotRequired[int],
-    'data': NotRequired[ModelTmdbPersonListResponse],
-    'msg': NotRequired[str],
 }, total=False)
 
 AirbnbHostResponse = ModelAirbnbHostResponse
@@ -23859,6 +24031,60 @@ DiscogsSearchParams = TypedDict('DiscogsSearchParams', {
     'per_page': NotRequired[int],
 }, total=False)
 
+DoorDashDoordashSearchResponse = ModelDoordashSearchResponseDoc
+DoorDashDoordashSearchParams = TypedDict('DoorDashDoordashSearchParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'query': Required[str],
+    'latitude': Required[float],
+    'longitude': Required[float],
+    'tag': NotRequired[str],
+    'dashPassOnly': NotRequired[bool],
+    'asapOnly': NotRequired[bool],
+    'pickupOnly': NotRequired[bool],
+    'maxDistanceMiles': NotRequired[float],
+}, total=False)
+
+DoorDashDoordashSearchAutocompleteResponse = ModelDoordashSearchResponseDoc
+DoorDashDoordashSearchAutocompleteParams = TypedDict('DoorDashDoordashSearchAutocompleteParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'query': Required[str],
+    'latitude': Required[float],
+    'longitude': Required[float],
+}, total=False)
+
+DoorDashDoordashSearchFiltersResponse = ModelDoordashSearchFiltersResponseDoc
+DoorDashDoordashSearchFiltersParams = TypedDict('DoorDashDoordashSearchFiltersParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'latitude': Required[float],
+    'longitude': Required[float],
+}, total=False)
+
+DoorDashDoordashStoreResponse = ModelDoordashStoreResponseDoc
+DoorDashDoordashStoreParams = TypedDict('DoorDashDoordashStoreParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'store_id': Required[str],
+    'latitude': Required[float],
+    'longitude': Required[float],
+}, total=False)
+
+DoorDashDoordashStoreMenuResponse = ModelDoordashMenuResponseDoc
+DoorDashDoordashStoreMenuParams = TypedDict('DoorDashDoordashStoreMenuParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'store_id': Required[str],
+    'latitude': Required[float],
+    'longitude': Required[float],
+}, total=False)
+
 EBayEbayItemResponse = ModelEbayItemResponseDoc
 EBayEbayItemParams = TypedDict('EBayEbayItemParams', {
     '_response_type': NotRequired[ResponseType],
@@ -24851,6 +25077,41 @@ ImdbSearchParams = TypedDict('ImdbSearchParams', {
     '_timeout': NotRequired[float],
     '_headers': NotRequired[Mapping[str, str]],
     'query': Required[str],
+    'limit': NotRequired[int],
+}, total=False)
+
+ImdbSearchTitleResponse = ModelImdbSearchTitleResponseDoc
+ImdbSearchTitleParams = TypedDict('ImdbSearchTitleParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'title': NotRequired[str],
+    'title_type': NotRequired[str],
+    'genres': NotRequired[str],
+    'release_date_from': NotRequired[str],
+    'release_date_to': NotRequired[str],
+    'min_user_rating': NotRequired[float],
+    'max_user_rating': NotRequired[float],
+    'min_votes': NotRequired[int],
+    'max_votes': NotRequired[int],
+    'min_popularity': NotRequired[int],
+    'max_popularity': NotRequired[int],
+    'min_runtime': NotRequired[int],
+    'max_runtime': NotRequired[int],
+    'groups': NotRequired[str],
+    'keywords': NotRequired[str],
+    'companies': NotRequired[str],
+    'certificates': NotRequired[str],
+    'colors': NotRequired[str],
+    'countries': NotRequired[str],
+    'languages': NotRequired[str],
+    'sound_mixes': NotRequired[str],
+    'role': NotRequired[str],
+    'characters': NotRequired[str],
+    'plot': NotRequired[str],
+    'include_adult': NotRequired[bool],
+    'sort': NotRequired[str],
+    'sort_order': NotRequired[str],
     'limit': NotRequired[int],
 }, total=False)
 
@@ -29405,6 +29666,17 @@ TrustpilotCategoryParams = TypedDict('TrustpilotCategoryParams', {
     'page': NotRequired[int],
 }, total=False)
 
+UberEatsUbereatsFeedResponse = ModelUbereatsFeedResponseDoc
+UberEatsUbereatsFeedParams = TypedDict('UberEatsUbereatsFeedParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'latitude': Required[float],
+    'longitude': Required[float],
+    'offset': NotRequired[int],
+    'limit': NotRequired[int],
+}, total=False)
+
 UberEatsUbereatsSearchResponse = ModelUbereatsSearchResponseDoc
 UberEatsUbereatsSearchParams = TypedDict('UberEatsUbereatsSearchParams', {
     '_response_type': NotRequired[ResponseType],
@@ -29420,6 +29692,14 @@ UberEatsUbereatsSearchParams = TypedDict('UberEatsUbereatsSearchParams', {
 
 UberEatsUbereatsStoreResponse = ModelUbereatsStoreResponseDoc
 UberEatsUbereatsStoreParams = TypedDict('UberEatsUbereatsStoreParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'store_id': Required[str],
+}, total=False)
+
+UberEatsUbereatsStoreMenuResponse = ModelUbereatsMenuResponseDoc
+UberEatsUbereatsStoreMenuParams = TypedDict('UberEatsUbereatsStoreMenuParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
     '_headers': NotRequired[Mapping[str, str]],
@@ -30374,6 +30654,13 @@ class DiscogsGroup:
     def release(self, **params: Unpack[DiscogsReleaseParams]) -> DiscogsReleaseResponse: ...
     def search(self, **params: Unpack[DiscogsSearchParams]) -> DiscogsSearchResponse: ...
 
+class DoorDashGroup:
+    def doordash_search(self, **params: Unpack[DoorDashDoordashSearchParams]) -> DoorDashDoordashSearchResponse: ...
+    def doordash_search_autocomplete(self, **params: Unpack[DoorDashDoordashSearchAutocompleteParams]) -> DoorDashDoordashSearchAutocompleteResponse: ...
+    def doordash_search_filters(self, **params: Unpack[DoorDashDoordashSearchFiltersParams]) -> DoorDashDoordashSearchFiltersResponse: ...
+    def doordash_store(self, **params: Unpack[DoorDashDoordashStoreParams]) -> DoorDashDoordashStoreResponse: ...
+    def doordash_store_menu(self, **params: Unpack[DoorDashDoordashStoreMenuParams]) -> DoorDashDoordashStoreMenuResponse: ...
+
 class EBayGroup:
     def ebay_item(self, **params: Unpack[EBayEbayItemParams]) -> EBayEbayItemResponse: ...
     def ebay_search(self, **params: Unpack[EBayEbaySearchParams]) -> EBayEbaySearchResponse: ...
@@ -30496,6 +30783,7 @@ class ImdbGroup:
     def name_awards(self, **params: Unpack[ImdbNameAwardsParams]) -> ImdbNameAwardsResponse: ...
     def name_credits(self, **params: Unpack[ImdbNameCreditsParams]) -> ImdbNameCreditsResponse: ...
     def search(self, **params: Unpack[ImdbSearchParams]) -> ImdbSearchResponse: ...
+    def search_title(self, **params: Unpack[ImdbSearchTitleParams]) -> ImdbSearchTitleResponse: ...
     def title(self, **params: Unpack[ImdbTitleParams]) -> ImdbTitleResponse: ...
     def title_awards(self, **params: Unpack[ImdbTitleAwardsParams]) -> ImdbTitleAwardsResponse: ...
     def title_company_credits(self, **params: Unpack[ImdbTitleCompanyCreditsParams]) -> ImdbTitleCompanyCreditsResponse: ...
@@ -31029,8 +31317,10 @@ class TrustpilotGroup:
     def category(self, **params: Unpack[TrustpilotCategoryParams]) -> TrustpilotCategoryResponse: ...
 
 class UberEatsGroup:
+    def ubereats_feed(self, **params: Unpack[UberEatsUbereatsFeedParams]) -> UberEatsUbereatsFeedResponse: ...
     def ubereats_search(self, **params: Unpack[UberEatsUbereatsSearchParams]) -> UberEatsUbereatsSearchResponse: ...
     def ubereats_store(self, **params: Unpack[UberEatsUbereatsStoreParams]) -> UberEatsUbereatsStoreResponse: ...
+    def ubereats_store_menu(self, **params: Unpack[UberEatsUbereatsStoreMenuParams]) -> UberEatsUbereatsStoreMenuResponse: ...
     def ubereats_store_reviews(self, **params: Unpack[UberEatsUbereatsStoreReviewsParams]) -> UberEatsUbereatsStoreReviewsResponse: ...
 
 class UsageGroup:
@@ -31366,6 +31656,11 @@ OperationId = Literal[
     'discogs-master',
     'discogs-release',
     'discogs-search',
+    'doordash-search',
+    'doordash-search-autocomplete',
+    'doordash-search-filters',
+    'doordash-store',
+    'doordash-store-menu',
     'ebay-item',
     'ebay-search',
     'ebay-seller',
@@ -31470,6 +31765,7 @@ OperationId = Literal[
     'imdb-name-awards',
     'imdb-name-credits',
     'imdb-search',
+    'imdb-search-title',
     'imdb-title',
     'imdb-title-awards',
     'imdb-title-company-credits',
@@ -31925,8 +32221,10 @@ OperationId = Literal[
     'trustpilot-categories',
     'trustpilot-category-search',
     'trustpilot-category',
+    'ubereats-feed',
     'ubereats-search',
     'ubereats-store',
+    'ubereats-store-menu',
     'ubereats-store-reviews',
     'usage-me-endpoints',
     'usage-me-overview',
@@ -32021,6 +32319,7 @@ class CrawloraClient:
     web: WebGroup
     datasets: DatasetsGroup
     discogs: DiscogsGroup
+    door_dash: DoorDashGroup
     e_bay: EBayGroup
     espn: EspnGroup
     facebook: FacebookGroup
@@ -35148,6 +35447,66 @@ class CrawloraClient:
     @overload
     def operation(
         self,
+        operation_id: Literal['doordash-search'],
+        params: DoorDashDoordashSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DoorDashDoordashSearchResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['doordash-search-autocomplete'],
+        params: DoorDashDoordashSearchAutocompleteParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DoorDashDoordashSearchAutocompleteResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['doordash-search-filters'],
+        params: DoorDashDoordashSearchFiltersParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DoorDashDoordashSearchFiltersResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['doordash-store'],
+        params: DoorDashDoordashStoreParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DoorDashDoordashStoreResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['doordash-store-menu'],
+        params: DoorDashDoordashStoreMenuParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DoorDashDoordashStoreMenuResponse: ...
+    @overload
+    def operation(
+        self,
         operation_id: Literal['ebay-item'],
         params: EBayEbayItemParams,
         *,
@@ -36393,6 +36752,18 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> ImdbSearchResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['imdb-search-title'],
+        params: ImdbSearchTitleParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ImdbSearchTitleResponse: ...
     @overload
     def operation(
         self,
@@ -41856,6 +42227,18 @@ class CrawloraClient:
     @overload
     def operation(
         self,
+        operation_id: Literal['ubereats-feed'],
+        params: UberEatsUbereatsFeedParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> UberEatsUbereatsFeedResponse: ...
+    @overload
+    def operation(
+        self,
         operation_id: Literal['ubereats-search'],
         params: UberEatsUbereatsSearchParams,
         *,
@@ -41877,6 +42260,18 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> UberEatsUbereatsStoreResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['ubereats-store-menu'],
+        params: UberEatsUbereatsStoreMenuParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> UberEatsUbereatsStoreMenuResponse: ...
     @overload
     def operation(
         self,
@@ -45744,6 +46139,66 @@ class CrawloraClient:
     @overload
     def request(
         self,
+        operation_id: Literal['doordash-search'],
+        params: DoorDashDoordashSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DoorDashDoordashSearchResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['doordash-search-autocomplete'],
+        params: DoorDashDoordashSearchAutocompleteParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DoorDashDoordashSearchAutocompleteResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['doordash-search-filters'],
+        params: DoorDashDoordashSearchFiltersParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DoorDashDoordashSearchFiltersResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['doordash-store'],
+        params: DoorDashDoordashStoreParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DoorDashDoordashStoreResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['doordash-store-menu'],
+        params: DoorDashDoordashStoreMenuParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DoorDashDoordashStoreMenuResponse: ...
+    @overload
+    def request(
+        self,
         operation_id: Literal['ebay-item'],
         params: EBayEbayItemParams,
         *,
@@ -46989,6 +47444,18 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> ImdbSearchResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['imdb-search-title'],
+        params: ImdbSearchTitleParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ImdbSearchTitleResponse: ...
     @overload
     def request(
         self,
@@ -52452,6 +52919,18 @@ class CrawloraClient:
     @overload
     def request(
         self,
+        operation_id: Literal['ubereats-feed'],
+        params: UberEatsUbereatsFeedParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> UberEatsUbereatsFeedResponse: ...
+    @overload
+    def request(
+        self,
         operation_id: Literal['ubereats-search'],
         params: UberEatsUbereatsSearchParams,
         *,
@@ -52473,6 +52952,18 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> UberEatsUbereatsStoreResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['ubereats-store-menu'],
+        params: UberEatsUbereatsStoreMenuParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> UberEatsUbereatsStoreMenuResponse: ...
     @overload
     def request(
         self,
