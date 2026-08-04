@@ -271,3 +271,11 @@ filters = crawlora.request("target-filter-options", {"category_id": "5xt1a"})
 CRAWLORA_API_KEY=... python3 examples/bing_search.py
 CRAWLORA_API_KEY=... CRAWLORA_YOUTUBE_VIDEO_ID=... python3 examples/youtube_transcript.py
 ```
+
+## Etsy
+
+```python
+results = crawlora.request("etsy-search", {"q": "handmade mug"})
+listing = crawlora.request("etsy-listing", {"id": "4474501681"})
+shop = crawlora.request("etsy-shop", {"id": "gaguatelier"})
+```

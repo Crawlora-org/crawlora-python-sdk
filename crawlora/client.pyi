@@ -1214,6 +1214,213 @@ ModelAppstoreVersionHistoryResponseDoc = TypedDict('ModelAppstoreVersionHistoryR
     'msg': NotRequired[str],
 }, total=False)
 
+ModelAutotraderBodyStyle = TypedDict('ModelAutotraderBodyStyle', {
+    'code': NotRequired[str],
+    'name': NotRequired[str],
+}, total=False)
+
+ModelAutotraderColor = TypedDict('ModelAutotraderColor', {
+    'exterior_color': NotRequired[str],
+    'exterior_color_simple': NotRequired[str],
+    'interior_color': NotRequired[str],
+    'interior_color_simple': NotRequired[str],
+}, total=False)
+
+ModelAutotraderDealer = TypedDict('ModelAutotraderDealer', {
+    'address1': NotRequired[str],
+    'city': NotRequired[str],
+    'id': NotRequired[int],
+    'is_private_seller': NotRequired[bool],
+    'is_virtual': NotRequired[bool],
+    'latitude': NotRequired[float],
+    'longitude': NotRequired[float],
+    'name': NotRequired[str],
+    'phone': NotRequired[str],
+    'rating': NotRequired[float],
+    'rating_count': NotRequired[int],
+    'state': NotRequired[str],
+    'url': NotRequired[str],
+    'website': NotRequired[str],
+    'zip': NotRequired[str],
+}, total=False)
+
+ModelAutotraderDealerResponse = TypedDict('ModelAutotraderDealerResponse', {
+    'address1': NotRequired[str],
+    'city': NotRequired[str],
+    'id': NotRequired[int],
+    'inventory': NotRequired[list[ModelAutotraderVehicle]],
+    'is_private_seller': NotRequired[bool],
+    'is_virtual': NotRequired[bool],
+    'latitude': NotRequired[float],
+    'longitude': NotRequired[float],
+    'name': NotRequired[str],
+    'phone': NotRequired[str],
+    'rating': NotRequired[float],
+    'rating_count': NotRequired[int],
+    'source_url': NotRequired[str],
+    'state': NotRequired[str],
+    'total_count': NotRequired[int],
+    'url': NotRequired[str],
+    'website': NotRequired[str],
+    'zip': NotRequired[str],
+}, total=False)
+
+ModelAutotraderDriveType = TypedDict('ModelAutotraderDriveType', {
+    'description': NotRequired[str],
+    'name': NotRequired[str],
+}, total=False)
+
+ModelAutotraderEngine = TypedDict('ModelAutotraderEngine', {
+    'code': NotRequired[str],
+    'name': NotRequired[str],
+}, total=False)
+
+ModelAutotraderFuelType = TypedDict('ModelAutotraderFuelType', {
+    'code': NotRequired[str],
+    'group': NotRequired[str],
+    'name': NotRequired[str],
+}, total=False)
+
+ModelAutotraderImage = TypedDict('ModelAutotraderImage', {
+    'alt': NotRequired[str],
+    'height': NotRequired[int],
+    'url': NotRequired[str],
+    'width': NotRequired[int],
+}, total=False)
+
+ModelAutotraderMake = TypedDict('ModelAutotraderMake', {
+    'code': NotRequired[str],
+    'name': NotRequired[str],
+}, total=False)
+
+ModelAutotraderMileage = TypedDict('ModelAutotraderMileage', {
+    'label': NotRequired[str],
+    'value': NotRequired[str],
+}, total=False)
+
+ModelAutotraderModel = TypedDict('ModelAutotraderModel', {
+    'code': NotRequired[str],
+    'name': NotRequired[str],
+}, total=False)
+
+ModelAutotraderPricing = TypedDict('ModelAutotraderPricing', {
+    'dealer_discounted_price': NotRequired[float],
+    'display_price': NotRequired[float],
+    'msrp': NotRequired[float],
+    'no_price_label': NotRequired[str],
+    'sale_price': NotRequired[float],
+}, total=False)
+
+ModelAutotraderSearchResponse = TypedDict('ModelAutotraderSearchResponse', {
+    'page': NotRequired[int],
+    'page_size': NotRequired[int],
+    'source_url': NotRequired[str],
+    'stats': NotRequired[ModelAutotraderSearchStats],
+    'total_count': NotRequired[int],
+    'vehicles': NotRequired[list[ModelAutotraderVehicle]],
+}, total=False)
+
+ModelAutotraderSearchStats = TypedDict('ModelAutotraderSearchStats', {
+    'derived_price': NotRequired[ModelAutotraderStatRange],
+    'end_year': NotRequired[int],
+    'max_price': NotRequired[float],
+    'min_price': NotRequired[float],
+    'start_year': NotRequired[int],
+    'year': NotRequired[ModelAutotraderStatRange],
+}, total=False)
+
+ModelAutotraderStatRange = TypedDict('ModelAutotraderStatRange', {
+    'average': NotRequired[float],
+    'max': NotRequired[float],
+    'min': NotRequired[float],
+}, total=False)
+
+ModelAutotraderTransmission = TypedDict('ModelAutotraderTransmission', {
+    'code': NotRequired[str],
+    'description': NotRequired[str],
+    'group': NotRequired[str],
+    'name': NotRequired[str],
+}, total=False)
+
+ModelAutotraderTrim = TypedDict('ModelAutotraderTrim', {
+    'code': NotRequired[str],
+    'name': NotRequired[str],
+}, total=False)
+
+ModelAutotraderVehicle = TypedDict('ModelAutotraderVehicle', {
+    'body_styles': NotRequired[list[ModelAutotraderBodyStyle]],
+    'color': NotRequired[ModelAutotraderColor],
+    'days_on_site': NotRequired[int],
+    'drive_type': NotRequired[ModelAutotraderDriveType],
+    'engine': NotRequired[ModelAutotraderEngine],
+    'fuel_type': NotRequired[ModelAutotraderFuelType],
+    'id': NotRequired[int],
+    'images': NotRequired[list[ModelAutotraderImage]],
+    'is_hot': NotRequired[bool],
+    'is_newly_listed': NotRequired[bool],
+    'is_reduced_price': NotRequired[bool],
+    'listing_type': NotRequired[str],
+    'make': NotRequired[ModelAutotraderMake],
+    'mileage': NotRequired[ModelAutotraderMileage],
+    'model': NotRequired[ModelAutotraderModel],
+    'mpg_city': NotRequired[int],
+    'mpg_highway': NotRequired[int],
+    'owner_id': NotRequired[int],
+    'packages': NotRequired[list[str]],
+    'pricing': NotRequired[ModelAutotraderPricing],
+    'stock_id': NotRequired[str],
+    'title': NotRequired[str],
+    'title_long': NotRequired[str],
+    'transmission': NotRequired[ModelAutotraderTransmission],
+    'trim': NotRequired[ModelAutotraderTrim],
+    'url': NotRequired[str],
+    'vehicle_history_flags': NotRequired[list[str]],
+    'vin': NotRequired[str],
+    'year': NotRequired[int],
+}, total=False)
+
+ModelAutotraderVehicleResponse = TypedDict('ModelAutotraderVehicleResponse', {
+    'body_styles': NotRequired[list[ModelAutotraderBodyStyle]],
+    'color': NotRequired[ModelAutotraderColor],
+    'days_on_site': NotRequired[int],
+    'dealer': NotRequired[ModelAutotraderDealer],
+    'description': NotRequired[str],
+    'drive_type': NotRequired[ModelAutotraderDriveType],
+    'engine': NotRequired[ModelAutotraderEngine],
+    'fuel_type': NotRequired[ModelAutotraderFuelType],
+    'id': NotRequired[int],
+    'images': NotRequired[list[ModelAutotraderImage]],
+    'is_hot': NotRequired[bool],
+    'is_newly_listed': NotRequired[bool],
+    'is_reduced_price': NotRequired[bool],
+    'listing_type': NotRequired[str],
+    'make': NotRequired[ModelAutotraderMake],
+    'mileage': NotRequired[ModelAutotraderMileage],
+    'model': NotRequired[ModelAutotraderModel],
+    'mpg_city': NotRequired[int],
+    'mpg_highway': NotRequired[int],
+    'owner_id': NotRequired[int],
+    'packages': NotRequired[list[str]],
+    'pricing': NotRequired[ModelAutotraderPricing],
+    'similar_listings': NotRequired[list[ModelAutotraderVehicle]],
+    'source_url': NotRequired[str],
+    'stock_id': NotRequired[str],
+    'title': NotRequired[str],
+    'title_long': NotRequired[str],
+    'transmission': NotRequired[ModelAutotraderTransmission],
+    'trim': NotRequired[ModelAutotraderTrim],
+    'url': NotRequired[str],
+    'vehicle_history_flags': NotRequired[list[str]],
+    'vin': NotRequired[str],
+    'year': NotRequired[int],
+}, total=False)
+
+ModelAutotraderSearchResponseDoc = TypedDict('ModelAutotraderSearchResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelAutotraderSearchResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
 ModelBillingBillingEndpointLedgerDoc = TypedDict('ModelBillingBillingEndpointLedgerDoc', {
     'charged_requests': NotRequired[int],
     'credits': NotRequired[int],
@@ -1718,6 +1925,265 @@ ModelBingSuggestResponseDoc = TypedDict('ModelBingSuggestResponseDoc', {
 ModelBingVideosResponseDoc = TypedDict('ModelBingVideosResponseDoc', {
     'code': NotRequired[int],
     'data': NotRequired[ModelBingVideosResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelBookingAttractionCategoryFilter = TypedDict('ModelBookingAttractionCategoryFilter', {
+    'name': NotRequired[str],
+    'product_count': NotRequired[int],
+    'subcategories': NotRequired[list[ModelBookingAttractionCategoryFilter]],
+    'tagname': NotRequired[str],
+}, total=False)
+
+ModelBookingAttractionDetailResponse = TypedDict('ModelBookingAttractionDetailResponse', {
+    'city': NotRequired[str],
+    'currency': NotRequired[str],
+    'description': NotRequired[str],
+    'duration': NotRequired[str],
+    'id': NotRequired[str],
+    'name': NotRequired[str],
+    'price': NotRequired[float],
+    'review_count': NotRequired[int],
+    'review_score': NotRequired[float],
+    'short_description': NotRequired[str],
+}, total=False)
+
+ModelBookingAttractionProduct = TypedDict('ModelBookingAttractionProduct', {
+    'currency': NotRequired[str],
+    'description': NotRequired[str],
+    'duration': NotRequired[str],
+    'id': NotRequired[str],
+    'name': NotRequired[str],
+    'price': NotRequired[float],
+    'review_count': NotRequired[int],
+    'review_score': NotRequired[float],
+    'slug': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelBookingAttractionReview = TypedDict('ModelBookingAttractionReview', {
+    'content': NotRequired[str],
+    'id': NotRequired[str],
+    'language': NotRequired[str],
+    'reviewed_date': NotRequired[str],
+    'reviewer_country': NotRequired[str],
+    'reviewer_name': NotRequired[str],
+    'score': NotRequired[float],
+}, total=False)
+
+ModelBookingAttractionReviewsResponse = TypedDict('ModelBookingAttractionReviewsResponse', {
+    'page': NotRequired[int],
+    'product_id': NotRequired[str],
+    'reviews': NotRequired[list[ModelBookingAttractionReview]],
+    'total': NotRequired[int],
+}, total=False)
+
+ModelBookingAttractionSearchResponse = TypedDict('ModelBookingAttractionSearchResponse', {
+    'categories': NotRequired[list[ModelBookingAttractionCategoryFilter]],
+    'country': NotRequired[str],
+    'destination': NotRequired[str],
+    'filtered_count': NotRequired[int],
+    'has_next_page': NotRequired[bool],
+    'page': NotRequired[int],
+    'products': NotRequired[list[ModelBookingAttractionProduct]],
+    'query': NotRequired[str],
+    'unfiltered_count': NotRequired[int],
+}, total=False)
+
+ModelBookingFacility = TypedDict('ModelBookingFacility', {
+    'icon': NotRequired[str],
+    'title': NotRequired[str],
+}, total=False)
+
+ModelBookingFlightAutocompleteResponse = TypedDict('ModelBookingFlightAutocompleteResponse', {
+    'query': NotRequired[str],
+    'results': NotRequired[list[ModelBookingFlightAutocompleteResult]],
+}, total=False)
+
+ModelBookingFlightAutocompleteResult = TypedDict('ModelBookingFlightAutocompleteResult', {
+    'code': NotRequired[str],
+    'country': NotRequired[str],
+    'country_name': NotRequired[str],
+    'name': NotRequired[str],
+    'photo_url': NotRequired[str],
+    'region_name': NotRequired[str],
+    'type': NotRequired[str],
+}, total=False)
+
+ModelBookingFlightLeg = TypedDict('ModelBookingFlightLeg', {
+    'arrival_airport': NotRequired[str],
+    'arrival_time': NotRequired[str],
+    'cabin_class': NotRequired[str],
+    'carrier': NotRequired[str],
+    'carrier_code': NotRequired[str],
+    'departure_airport': NotRequired[str],
+    'departure_time': NotRequired[str],
+    'duration_seconds': NotRequired[int],
+    'flight_number': NotRequired[int],
+    'stops': NotRequired[int],
+}, total=False)
+
+ModelBookingFlightOffer = TypedDict('ModelBookingFlightOffer', {
+    'currency': NotRequired[str],
+    'price': NotRequired[float],
+    'segments': NotRequired[list[ModelBookingFlightSegment]],
+    'token': NotRequired[str],
+}, total=False)
+
+ModelBookingFlightSearchResponse = TypedDict('ModelBookingFlightSearchResponse', {
+    'currency': NotRequired[str],
+    'depart': NotRequired[str],
+    'from': NotRequired[str],
+    'min_price': NotRequired[float],
+    'offers': NotRequired[list[ModelBookingFlightOffer]],
+    'return': NotRequired[str],
+    'to': NotRequired[str],
+    'total_count': NotRequired[int],
+    'type': NotRequired[str],
+}, total=False)
+
+ModelBookingFlightSegment = TypedDict('ModelBookingFlightSegment', {
+    'arrival_airport': NotRequired[str],
+    'arrival_city': NotRequired[str],
+    'arrival_time': NotRequired[str],
+    'departure_airport': NotRequired[str],
+    'departure_city': NotRequired[str],
+    'departure_time': NotRequired[str],
+    'legs': NotRequired[list[ModelBookingFlightLeg]],
+}, total=False)
+
+ModelBookingHotelDetailResponse = TypedDict('ModelBookingHotelDetailResponse', {
+    'address': NotRequired[str],
+    'facilities': NotRequired[list[ModelBookingFacility]],
+    'facilities_count': NotRequired[int],
+    'highlights': NotRequired[list[ModelBookingFacility]],
+    'house_rules': NotRequired[ModelBookingHouseRules],
+    'id': NotRequired[int],
+    'name': NotRequired[str],
+    'photos': NotRequired[list[str]],
+    'rating_scores': NotRequired[dict[str, float]],
+    'review_count': NotRequired[int],
+    'rooms': NotRequired[list[ModelBookingRoom]],
+    'star_rating': NotRequired[float],
+}, total=False)
+
+ModelBookingHouseRules = TypedDict('ModelBookingHouseRules', {
+    'allow_children': NotRequired[bool],
+    'checkin_age_restriction_phrase': NotRequired[str],
+    'curfew_phrase': NotRequired[str],
+    'group_limit_phrase': NotRequired[str],
+    'payment_exclusive': NotRequired[bool],
+    'pets_allowed': NotRequired[str],
+}, total=False)
+
+ModelBookingProperty = TypedDict('ModelBookingProperty', {
+    'currency': NotRequired[str],
+    'distance': NotRequired[str],
+    'id': NotRequired[int],
+    'location': NotRequired[str],
+    'name': NotRequired[str],
+    'photo_url': NotRequired[str],
+    'price': NotRequired[float],
+    'review_count': NotRequired[int],
+    'review_score': NotRequired[float],
+    'slug': NotRequired[str],
+    'star_rating': NotRequired[float],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelBookingReview = TypedDict('ModelBookingReview', {
+    'checkin_date': NotRequired[str],
+    'checkout_date': NotRequired[str],
+    'customer_type': NotRequired[str],
+    'helpful_votes_count': NotRequired[int],
+    'language': NotRequired[str],
+    'negative_text': NotRequired[str],
+    'num_nights': NotRequired[int],
+    'positive_text': NotRequired[str],
+    'review_url': NotRequired[str],
+    'reviewed_date': NotRequired[str],
+    'reviewer_country': NotRequired[str],
+    'reviewer_name': NotRequired[str],
+    'reviewer_review_count': NotRequired[int],
+    'room_type': NotRequired[str],
+    'score': NotRequired[float],
+    'stay_status': NotRequired[str],
+    'title': NotRequired[str],
+}, total=False)
+
+ModelBookingReviewsResponse = TypedDict('ModelBookingReviewsResponse', {
+    'hotel_id': NotRequired[int],
+    'page': NotRequired[int],
+    'rating_scores': NotRequired[dict[str, float]],
+    'reviews': NotRequired[list[ModelBookingReview]],
+    'reviews_count': NotRequired[int],
+    'search_text': NotRequired[str],
+}, total=False)
+
+ModelBookingRoom = TypedDict('ModelBookingRoom', {
+    'id': NotRequired[int],
+    'name': NotRequired[str],
+    'photo_count': NotRequired[int],
+    'photos': NotRequired[list[str]],
+}, total=False)
+
+ModelBookingSearchResponse = TypedDict('ModelBookingSearchResponse', {
+    'checkin': NotRequired[str],
+    'checkout': NotRequired[str],
+    'country': NotRequired[str],
+    'destination': NotRequired[str],
+    'destination_id': NotRequired[int],
+    'page': NotRequired[int],
+    'properties': NotRequired[list[ModelBookingProperty]],
+    'query': NotRequired[str],
+    'results_count': NotRequired[int],
+}, total=False)
+
+ModelBookingBookingAttractionDetailResponseDoc = TypedDict('ModelBookingBookingAttractionDetailResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelBookingAttractionDetailResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelBookingBookingAttractionReviewsResponseDoc = TypedDict('ModelBookingBookingAttractionReviewsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelBookingAttractionReviewsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelBookingBookingAttractionSearchResponseDoc = TypedDict('ModelBookingBookingAttractionSearchResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelBookingAttractionSearchResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelBookingBookingFlightAutocompleteResponseDoc = TypedDict('ModelBookingBookingFlightAutocompleteResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelBookingFlightAutocompleteResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelBookingBookingFlightSearchResponseDoc = TypedDict('ModelBookingBookingFlightSearchResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelBookingFlightSearchResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelBookingBookingHotelDetailResponseDoc = TypedDict('ModelBookingBookingHotelDetailResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelBookingHotelDetailResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelBookingBookingReviewsResponseDoc = TypedDict('ModelBookingBookingReviewsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelBookingReviewsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelBookingBookingSearchResponseDoc = TypedDict('ModelBookingBookingSearchResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelBookingSearchResponse],
     'msg': NotRequired[str],
 }, total=False)
 
@@ -5172,6 +5638,33 @@ ModelDoordashCuisine = TypedDict('ModelDoordashCuisine', {
     'name': NotRequired[str],
 }, total=False)
 
+ModelDoordashExploreItem = TypedDict('ModelDoordashExploreItem', {
+    'imageUrl': NotRequired[str],
+    'itemId': NotRequired[str],
+    'name': NotRequired[str],
+    'price': NotRequired[str],
+}, total=False)
+
+ModelDoordashExploreResponse = TypedDict('ModelDoordashExploreResponse', {
+    'stores': NotRequired[list[ModelDoordashExploreStore]],
+}, total=False)
+
+ModelDoordashExploreStore = TypedDict('ModelDoordashExploreStore', {
+    'asapAvailable': NotRequired[bool],
+    'averageRating': NotRequired[float],
+    'coverImageUrl': NotRequired[str],
+    'dashPassEligible': NotRequired[bool],
+    'displayAsapTime': NotRequired[str],
+    'displayStatus': NotRequired[str],
+    'name': NotRequired[str],
+    'numberOfRatings': NotRequired[int],
+    'pickupAvailable': NotRequired[bool],
+    'priceRange': NotRequired[int],
+    'storeId': NotRequired[str],
+    'tags': NotRequired[list[str]],
+    'topItems': NotRequired[list[ModelDoordashExploreItem]],
+}, total=False)
+
 ModelDoordashFeedResponse = TypedDict('ModelDoordashFeedResponse', {
     'stores': NotRequired[list[ModelDoordashFeedStore]],
 }, total=False)
@@ -5305,6 +5798,20 @@ ModelDoordashStoreFulfillmentResponse = TypedDict('ModelDoordashStoreFulfillment
     'url': NotRequired[str],
 }, total=False)
 
+ModelDoordashStoreInfoResponse = TypedDict('ModelDoordashStoreInfoResponse', {
+    'address': NotRequired[str],
+    'businessName': NotRequired[str],
+    'cityRegion': NotRequired[str],
+    'hasPhone': NotRequired[bool],
+    'hasWebsite': NotRequired[bool],
+    'latitude': NotRequired[float],
+    'longitude': NotRequired[float],
+    'phone': NotRequired[str],
+    'storeId': NotRequired[str],
+    'street': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
 ModelDoordashStoreItemResponse = TypedDict('ModelDoordashStoreItemResponse', {
     'description': NotRequired[str],
     'itemId': NotRequired[str],
@@ -5321,6 +5828,12 @@ ModelDoordashStoreReviewsResponse = TypedDict('ModelDoordashStoreReviewsResponse
     'storeId': NotRequired[str],
     'storeName': NotRequired[str],
     'url': NotRequired[str],
+}, total=False)
+
+ModelDoordashExploreResponseDoc = TypedDict('ModelDoordashExploreResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelDoordashExploreResponse],
+    'msg': NotRequired[str],
 }, total=False)
 
 ModelDoordashFeedResponseDoc = TypedDict('ModelDoordashFeedResponseDoc', {
@@ -5356,6 +5869,12 @@ ModelDoordashSearchResponseDoc = TypedDict('ModelDoordashSearchResponseDoc', {
 ModelDoordashStoreFulfillmentResponseDoc = TypedDict('ModelDoordashStoreFulfillmentResponseDoc', {
     'code': NotRequired[int],
     'data': NotRequired[ModelDoordashStoreFulfillmentResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelDoordashStoreInfoResponseDoc = TypedDict('ModelDoordashStoreInfoResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelDoordashStoreInfoResponse],
     'msg': NotRequired[str],
 }, total=False)
 
@@ -7444,6 +7963,417 @@ ModelEspnTeamsResponseDoc = TypedDict('ModelEspnTeamsResponseDoc', {
     'msg': NotRequired[str],
 }, total=False)
 
+ModelEtsyMobileListing = TypedDict('ModelEtsyMobileListing', {
+    'category_name': NotRequired[str],
+    'create_date': NotRequired[int],
+    'currency': NotRequired[str],
+    'description': NotRequired[str],
+    'favorites': NotRequired[int],
+    'images': NotRequired[list[str]],
+    'is_customizable': NotRequired[bool],
+    'is_digital': NotRequired[bool],
+    'is_sold_out': NotRequired[bool],
+    'listing_id': NotRequired[str],
+    'materials': NotRequired[list[str]],
+    'price': NotRequired[str],
+    'price_int': NotRequired[int],
+    'quantity': NotRequired[int],
+    'ships_from_country': NotRequired[str],
+    'shop_id': NotRequired[str],
+    'shop_name': NotRequired[str],
+    'state': NotRequired[str],
+    'tags': NotRequired[list[str]],
+    'title': NotRequired[str],
+    'update_date': NotRequired[int],
+    'url': NotRequired[str],
+    'views': NotRequired[int],
+    'when_made': NotRequired[str],
+}, total=False)
+
+ModelEtsyMobileListingCard = TypedDict('ModelEtsyMobileListingCard', {
+    'currency': NotRequired[str],
+    'image': NotRequired[str],
+    'is_sold_out': NotRequired[bool],
+    'listing_id': NotRequired[str],
+    'price': NotRequired[str],
+    'price_int': NotRequired[int],
+    'quantity': NotRequired[int],
+    'shop_id': NotRequired[str],
+    'shop_name': NotRequired[str],
+    'shop_rating': NotRequired[float],
+    'title': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelEtsyMobileListingReviews = TypedDict('ModelEtsyMobileListingReviews', {
+    'avg_rating': NotRequired[float],
+    'count': NotRequired[int],
+    'listing_id': NotRequired[str],
+    'offset': NotRequired[int],
+    'reviews': NotRequired[list[ModelEtsyMobileReview]],
+    'total_rating_count': NotRequired[int],
+}, total=False)
+
+ModelEtsyMobileReview = TypedDict('ModelEtsyMobileReview', {
+    'buyer_avatar': NotRequired[str],
+    'buyer_login': NotRequired[str],
+    'buyer_name': NotRequired[str],
+    'buyer_user_id': NotRequired[str],
+    'date': NotRequired[int],
+    'language': NotRequired[str],
+    'listing_id': NotRequired[str],
+    'listing_image': NotRequired[str],
+    'listing_title': NotRequired[str],
+    'rating': NotRequired[int],
+    'receipt_id': NotRequired[str],
+    'seller_replied': NotRequired[bool],
+    'text': NotRequired[str],
+}, total=False)
+
+ModelEtsyMobileSearchResponse = TypedDict('ModelEtsyMobileSearchResponse', {
+    'count': NotRequired[int],
+    'offset': NotRequired[int],
+    'query': NotRequired[str],
+    'results': NotRequired[list[ModelEtsyMobileListingCard]],
+}, total=False)
+
+ModelEtsyMobileShop = TypedDict('ModelEtsyMobileShop', {
+    'average_rating': NotRequired[float],
+    'headline': NotRequired[str],
+    'icon': NotRequired[str],
+    'is_star_seller': NotRequired[bool],
+    'open_date': NotRequired[int],
+    'reviews_count': NotRequired[int],
+    'seller_avatar': NotRequired[str],
+    'seller_login': NotRequired[str],
+    'seller_name': NotRequired[str],
+    'shop_id': NotRequired[str],
+    'shop_name': NotRequired[str],
+    'sold_count': NotRequired[int],
+}, total=False)
+
+ModelEtsyMobileShopCard = TypedDict('ModelEtsyMobileShopCard', {
+    'active_listing_count': NotRequired[int],
+    'is_vacation': NotRequired[bool],
+    'location': NotRequired[str],
+    'open_date': NotRequired[int],
+    'seller_avatar': NotRequired[str],
+    'shop_id': NotRequired[str],
+    'shop_name': NotRequired[str],
+}, total=False)
+
+ModelEtsyMobileShopListings = TypedDict('ModelEtsyMobileShopListings', {
+    'listings': NotRequired[list[ModelEtsyMobileListingCard]],
+    'offset': NotRequired[int],
+    'query': NotRequired[str],
+    'shop_id': NotRequired[str],
+    'shop_name': NotRequired[str],
+}, total=False)
+
+ModelEtsyMobileShopReviews = TypedDict('ModelEtsyMobileShopReviews', {
+    'avg_rating': NotRequired[float],
+    'count': NotRequired[int],
+    'offset': NotRequired[int],
+    'reviews': NotRequired[list[ModelEtsyMobileReview]],
+    'shop_id': NotRequired[str],
+    'shop_name': NotRequired[str],
+    'total_rating_count': NotRequired[int],
+}, total=False)
+
+ModelEtsyMobileShopSearchResponse = TypedDict('ModelEtsyMobileShopSearchResponse', {
+    'query': NotRequired[str],
+    'shops': NotRequired[list[ModelEtsyMobileShopCard]],
+}, total=False)
+
+ModelEtsyListingResponseDoc = TypedDict('ModelEtsyListingResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelEtsyMobileListing],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelEtsyListingReviewsResponseDoc = TypedDict('ModelEtsyListingReviewsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelEtsyMobileListingReviews],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelEtsySearchResponseDoc = TypedDict('ModelEtsySearchResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelEtsyMobileSearchResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelEtsyShopListingsResponseDoc = TypedDict('ModelEtsyShopListingsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelEtsyMobileShopListings],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelEtsyShopResponseDoc = TypedDict('ModelEtsyShopResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelEtsyMobileShop],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelEtsyShopReviewsResponseDoc = TypedDict('ModelEtsyShopReviewsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelEtsyMobileShopReviews],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelEtsyShopSearchResponseDoc = TypedDict('ModelEtsyShopSearchResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelEtsyMobileShopSearchResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelExpediaActivityListing = TypedDict('ModelExpediaActivityListing', {
+    'duration': NotRequired[str],
+    'free_cancellation': NotRequired[bool],
+    'id': NotRequired[str],
+    'name': NotRequired[str],
+    'price': NotRequired[str],
+    'review_count': NotRequired[int],
+    'review_label': NotRequired[str],
+    'review_score': NotRequired[str],
+    'thumbnail_url': NotRequired[str],
+}, total=False)
+
+ModelExpediaActivitySearchOption = TypedDict('ModelExpediaActivitySearchOption', {
+    'currency': NotRequired[str],
+    'destination': Required[str],
+    'end_date': Required[str],
+    'locale': NotRequired[str],
+    'page': NotRequired[int],
+    'page_size': NotRequired[int],
+    'start_date': Required[str],
+}, total=False)
+
+ModelExpediaActivitySearchResponse = TypedDict('ModelExpediaActivitySearchResponse', {
+    'activities': NotRequired[list[ModelExpediaActivityListing]],
+    'destination': NotRequired[str],
+    'page': NotRequired[int],
+    'region_id': NotRequired[str],
+    'total_count': NotRequired[int],
+}, total=False)
+
+ModelExpediaFlightOffer = TypedDict('ModelExpediaFlightOffer', {
+    'airline': NotRequired[str],
+    'arrival_time': NotRequired[str],
+    'departure_time': NotRequired[str],
+    'duration_summary': NotRequired[str],
+    'price': NotRequired[str],
+    'price_note': NotRequired[str],
+    'route': NotRequired[str],
+    'stops': NotRequired[int],
+}, total=False)
+
+ModelExpediaFlightsSearchOption = TypedDict('ModelExpediaFlightsSearchOption', {
+    'adults': NotRequired[int],
+    'cabin_class': NotRequired[str],
+    'currency': NotRequired[str],
+    'departure_date': Required[str],
+    'destination': Required[str],
+    'locale': NotRequired[str],
+    'origin': Required[str],
+    'return_date': NotRequired[str],
+    'trip_type': NotRequired[str],
+}, total=False)
+
+ModelExpediaFlightsSearchResponse = TypedDict('ModelExpediaFlightsSearchResponse', {
+    'departure_date': NotRequired[str],
+    'destination': NotRequired[str],
+    'offers': NotRequired[list[ModelExpediaFlightOffer]],
+    'origin': NotRequired[str],
+    'return_date': NotRequired[str],
+}, total=False)
+
+ModelExpediaLocationSearchOption = TypedDict('ModelExpediaLocationSearchOption', {
+    'currency': NotRequired[str],
+    'locale': NotRequired[str],
+    'term': Required[str],
+}, total=False)
+
+ModelExpediaLocationSearchResponse = TypedDict('ModelExpediaLocationSearchResponse', {
+    'items': NotRequired[list[ModelExpediaLocationSuggestion]],
+    'term': NotRequired[str],
+}, total=False)
+
+ModelExpediaLocationSuggestion = TypedDict('ModelExpediaLocationSuggestion', {
+    'airport_code': NotRequired[str],
+    'geo_type': NotRequired[str],
+    'latitude': NotRequired[float],
+    'location_full_name': NotRequired[str],
+    'longitude': NotRequired[float],
+    'primary_text': NotRequired[str],
+    'property_id': NotRequired[str],
+    'region_id': NotRequired[str],
+    'secondary_text': NotRequired[str],
+    'type': NotRequired[str],
+}, total=False)
+
+ModelExpediaPropertyDetailOption = TypedDict('ModelExpediaPropertyDetailOption', {
+    'adults': NotRequired[int],
+    'check_in': Required[str],
+    'check_out': Required[str],
+    'currency': NotRequired[str],
+    'locale': NotRequired[str],
+    'property_id': Required[str],
+}, total=False)
+
+ModelExpediaPropertyDetailResponse = TypedDict('ModelExpediaPropertyDetailResponse', {
+    'address': NotRequired[str],
+    'amenities': NotRequired[list[str]],
+    'city': NotRequired[str],
+    'country_code': NotRequired[str],
+    'latitude': NotRequired[float],
+    'longitude': NotRequired[float],
+    'name': NotRequired[str],
+    'property_id': NotRequired[str],
+    'province': NotRequired[str],
+    'star_rating': NotRequired[float],
+    'vip_message': NotRequired[str],
+}, total=False)
+
+ModelExpediaPropertyFilterField = TypedDict('ModelExpediaPropertyFilterField', {
+    'label': NotRequired[str],
+    'options': NotRequired[list[ModelExpediaPropertyFilterOption]],
+    'range_max': NotRequired[float],
+    'range_min': NotRequired[float],
+    'type': NotRequired[str],
+}, total=False)
+
+ModelExpediaPropertyFilterOption = TypedDict('ModelExpediaPropertyFilterOption', {
+    'filter_id': NotRequired[str],
+    'label': NotRequired[str],
+    'selected': NotRequired[bool],
+    'value': NotRequired[str],
+}, total=False)
+
+ModelExpediaPropertyFilterSection = TypedDict('ModelExpediaPropertyFilterSection', {
+    'fields': NotRequired[list[ModelExpediaPropertyFilterField]],
+    'title': NotRequired[str],
+}, total=False)
+
+ModelExpediaPropertyFiltersOption = TypedDict('ModelExpediaPropertyFiltersOption', {
+    'adults': NotRequired[int],
+    'check_in': Required[str],
+    'check_out': Required[str],
+    'currency': NotRequired[str],
+    'destination': Required[str],
+    'locale': NotRequired[str],
+    'rooms': NotRequired[int],
+}, total=False)
+
+ModelExpediaPropertyFiltersResponse = TypedDict('ModelExpediaPropertyFiltersResponse', {
+    'destination': NotRequired[str],
+    'region_id': NotRequired[str],
+    'sections': NotRequired[list[ModelExpediaPropertyFilterSection]],
+    'sort_options': NotRequired[list[ModelExpediaPropertyFilterOption]],
+}, total=False)
+
+ModelExpediaPropertyListing = TypedDict('ModelExpediaPropertyListing', {
+    'amenities': NotRequired[list[str]],
+    'badges': NotRequired[list[str]],
+    'id': NotRequired[str],
+    'name': NotRequired[str],
+    'nightly_price': NotRequired[str],
+    'price': NotRequired[str],
+    'review_count': NotRequired[int],
+    'review_score': NotRequired[float],
+    'review_title': NotRequired[str],
+    'strikeout_price': NotRequired[str],
+    'thumbnail_url': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelExpediaPropertyReview = TypedDict('ModelExpediaPropertyReview', {
+    'date': NotRequired[str],
+    'message': NotRequired[str],
+    'rating_label': NotRequired[str],
+    'reviewer_name': NotRequired[str],
+    'verified': NotRequired[bool],
+}, total=False)
+
+ModelExpediaPropertyReviewsOption = TypedDict('ModelExpediaPropertyReviewsOption', {
+    'adults': NotRequired[int],
+    'check_in': Required[str],
+    'check_out': Required[str],
+    'currency': NotRequired[str],
+    'locale': NotRequired[str],
+    'property_id': Required[str],
+}, total=False)
+
+ModelExpediaPropertyReviewsResponse = TypedDict('ModelExpediaPropertyReviewsResponse', {
+    'overall_rating': NotRequired[str],
+    'property_id': NotRequired[str],
+    'reviews': NotRequired[list[ModelExpediaPropertyReview]],
+}, total=False)
+
+ModelExpediaPropertySearchOption = TypedDict('ModelExpediaPropertySearchOption', {
+    'adults': NotRequired[int],
+    'check_in': Required[str],
+    'check_out': Required[str],
+    'currency': NotRequired[str],
+    'destination': Required[str],
+    'locale': NotRequired[str],
+    'page': NotRequired[int],
+    'page_size': NotRequired[int],
+    'rooms': NotRequired[int],
+}, total=False)
+
+ModelExpediaPropertySearchResponse = TypedDict('ModelExpediaPropertySearchResponse', {
+    'check_in': NotRequired[str],
+    'check_out': NotRequired[str],
+    'destination': NotRequired[str],
+    'page': NotRequired[int],
+    'properties': NotRequired[list[ModelExpediaPropertyListing]],
+    'region_id': NotRequired[str],
+    'results_label': NotRequired[str],
+}, total=False)
+
+ModelExpediaExpediaActivitySearchResponseDoc = TypedDict('ModelExpediaExpediaActivitySearchResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelExpediaActivitySearchResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelExpediaExpediaFlightsSearchResponseDoc = TypedDict('ModelExpediaExpediaFlightsSearchResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelExpediaFlightsSearchResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelExpediaExpediaLocationSearchResponseDoc = TypedDict('ModelExpediaExpediaLocationSearchResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelExpediaLocationSearchResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelExpediaExpediaPropertyDetailResponseDoc = TypedDict('ModelExpediaExpediaPropertyDetailResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelExpediaPropertyDetailResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelExpediaExpediaPropertyFiltersResponseDoc = TypedDict('ModelExpediaExpediaPropertyFiltersResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelExpediaPropertyFiltersResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelExpediaExpediaPropertyReviewsResponseDoc = TypedDict('ModelExpediaExpediaPropertyReviewsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelExpediaPropertyReviewsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelExpediaExpediaPropertySearchResponseDoc = TypedDict('ModelExpediaExpediaPropertySearchResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelExpediaPropertySearchResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
 ModelExtractOption = TypedDict('ModelExtractOption', {
     'instructions': NotRequired[str],
     'render': NotRequired[Literal['auto', 'http', 'browser']],
@@ -7471,6 +8401,60 @@ ModelExtractResponseDoc = TypedDict('ModelExtractResponseDoc', {
     'msg': NotRequired[str],
 }, total=False)
 
+ModelFacebookGroup = TypedDict('ModelFacebookGroup', {
+    'coverImage': NotRequired[str],
+    'groupId': NotRequired[str],
+    'membersCount': NotRequired[int],
+    'membersText': NotRequired[str],
+    'name': NotRequired[str],
+    'privacy': NotRequired[str],
+    'sourceUrl': NotRequired[str],
+}, total=False)
+
+ModelFacebookMarketplaceItem = TypedDict('ModelFacebookMarketplaceItem', {
+    'categoryId': NotRequired[str],
+    'condition': NotRequired[str],
+    'createdAt': NotRequired[str],
+    'description': NotRequired[str],
+    'id': NotRequired[str],
+    'image': NotRequired[str],
+    'isLive': NotRequired[bool],
+    'isPending': NotRequired[bool],
+    'isSold': NotRequired[bool],
+    'locationText': NotRequired[str],
+    'price': NotRequired[ModelFacebookMarketplacePrice],
+    'productType': NotRequired[str],
+    'sourceUrl': NotRequired[str],
+    'title': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelFacebookMarketplaceListing = TypedDict('ModelFacebookMarketplaceListing', {
+    'city': NotRequired[str],
+    'id': NotRequired[str],
+    'image': NotRequired[str],
+    'price': NotRequired[ModelFacebookMarketplacePrice],
+    'state': NotRequired[str],
+    'title': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelFacebookMarketplacePrice = TypedDict('ModelFacebookMarketplacePrice', {
+    'amount': NotRequired[str],
+    'currency': NotRequired[str],
+    'formatted': NotRequired[str],
+    'isFree': NotRequired[bool],
+}, total=False)
+
+ModelFacebookMarketplaceSearchResult = TypedDict('ModelFacebookMarketplaceSearchResult', {
+    'category': NotRequired[str],
+    'hasMore': NotRequired[bool],
+    'listings': NotRequired[list[ModelFacebookMarketplaceListing]],
+    'location': NotRequired[str],
+    'query': NotRequired[str],
+    'sourceUrl': NotRequired[str],
+}, total=False)
+
 ModelFacebookPage = TypedDict('ModelFacebookPage', {
     'address': NotRequired[str],
     'category': NotRequired[str],
@@ -7492,6 +8476,24 @@ ModelFacebookPage = TypedDict('ModelFacebookPage', {
     'website': NotRequired[str],
     'wereHere': NotRequired[int],
     'whatsapp': NotRequired[str],
+}, total=False)
+
+ModelFacebookGroupResponseDoc = TypedDict('ModelFacebookGroupResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelFacebookGroup],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelFacebookMarketplaceItemResponseDoc = TypedDict('ModelFacebookMarketplaceItemResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelFacebookMarketplaceItem],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelFacebookMarketplaceSearchResponseDoc = TypedDict('ModelFacebookMarketplaceSearchResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelFacebookMarketplaceSearchResult],
+    'msg': NotRequired[str],
 }, total=False)
 
 ModelFacebookPageResponseDoc = TypedDict('ModelFacebookPageResponseDoc', {
@@ -9107,6 +10109,194 @@ ModelImdbTitlePublicFactsResponseDoc = TypedDict('ModelImdbTitlePublicFactsRespo
 ModelImdbTitleResponseDoc = TypedDict('ModelImdbTitleResponseDoc', {
     'code': NotRequired[int],
     'data': NotRequired[ModelImdbTitleResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelImportyetiCompany = TypedDict('ModelImportyetiCompany', {
+    'address': NotRequired[str],
+    'also_known_as_addresses': NotRequired[int],
+    'also_known_as_names': NotRequired[int],
+    'avg_teu_per_month': NotRequired[float],
+    'avg_teu_per_shipment': NotRequired[float],
+    'est_shipping_spend': NotRequired[str],
+    'hs_codes': NotRequired[list[ModelImportyetiHscode]],
+    'last_shipment_date': NotRequired[str],
+    'name': NotRequired[str],
+    'phone': NotRequired[str],
+    'recent_shipments': NotRequired[list[ModelImportyetiShipment]],
+    'region_breakdown': NotRequired[list[ModelImportyetiRegionBreakdown]],
+    'slug': NotRequired[str],
+    'source_url': NotRequired[str],
+    'suppliers': NotRequired[list[ModelImportyetiSupplier]],
+    'total_shipments': NotRequired[int],
+    'url': NotRequired[str],
+    'website': NotRequired[str],
+}, total=False)
+
+ModelImportyetiCountryShipments = TypedDict('ModelImportyetiCountryShipments', {
+    'country': NotRequired[str],
+    'shipments': NotRequired[int],
+}, total=False)
+
+ModelImportyetiHscode = TypedDict('ModelImportyetiHscode', {
+    'code': NotRequired[str],
+    'description': NotRequired[str],
+    'product_description': NotRequired[str],
+    'sample_bill_of_lading': NotRequired[str],
+}, total=False)
+
+ModelImportyetiRegionBreakdown = TypedDict('ModelImportyetiRegionBreakdown', {
+    'countries': NotRequired[list[ModelImportyetiCountryShipments]],
+    'percent': NotRequired[float],
+    'region': NotRequired[str],
+}, total=False)
+
+ModelImportyetiSearchResponse = TypedDict('ModelImportyetiSearchResponse', {
+    'page': NotRequired[int],
+    'query': NotRequired[str],
+    'results': NotRequired[list[ModelImportyetiSearchResult]],
+    'source_url': NotRequired[str],
+    'total_hits': NotRequired[int],
+    'total_pages': NotRequired[int],
+}, total=False)
+
+ModelImportyetiSearchResult = TypedDict('ModelImportyetiSearchResult', {
+    'address': NotRequired[str],
+    'country_code': NotRequired[str],
+    'kind': NotRequired[str],
+    'most_recent_shipment': NotRequired[str],
+    'other_addresses_count': NotRequired[int],
+    'other_names_count': NotRequired[int],
+    'slug': NotRequired[str],
+    'title': NotRequired[str],
+    'total_shipments': NotRequired[int],
+}, total=False)
+
+ModelImportyetiShipment = TypedDict('ModelImportyetiShipment', {
+    'bill_of_lading': NotRequired[str],
+    'containers': NotRequired[str],
+    'date': NotRequired[str],
+    'description': NotRequired[str],
+    'estimated_freight_cost': NotRequired[str],
+    'quantity': NotRequired[str],
+    'route': NotRequired[str],
+    'supplier_location': NotRequired[str],
+    'supplier_name': NotRequired[str],
+    'supplier_slug': NotRequired[str],
+    'weight': NotRequired[str],
+}, total=False)
+
+ModelImportyetiSupplier = TypedDict('ModelImportyetiSupplier', {
+    'city': NotRequired[str],
+    'country': NotRequired[str],
+    'description': NotRequired[str],
+    'hs_codes': NotRequired[list[str]],
+    'name': NotRequired[str],
+    'product_categories': NotRequired[list[str]],
+    'slug': NotRequired[str],
+    'total_shipments': NotRequired[int],
+}, total=False)
+
+ModelImportyetiCompanyResponseDoc = TypedDict('ModelImportyetiCompanyResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelImportyetiCompany],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelImportyetiSearchResponseDoc = TypedDict('ModelImportyetiSearchResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelImportyetiSearchResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelIndeedJob = TypedDict('ModelIndeedJob', {
+    'benefits': NotRequired[list[str]],
+    'city': NotRequired[str],
+    'company': NotRequired[str],
+    'company_rating': NotRequired[float],
+    'company_review_count': NotRequired[int],
+    'company_url': NotRequired[str],
+    'country': NotRequired[str],
+    'description_html': NotRequired[str],
+    'description_text': NotRequired[str],
+    'direct_apply': NotRequired[bool],
+    'employment_type': NotRequired[list[str]],
+    'job_key': NotRequired[str],
+    'location': NotRequired[str],
+    'postal_code': NotRequired[str],
+    'posted_at': NotRequired[str],
+    'remote': NotRequired[bool],
+    'salary_currency': NotRequired[str],
+    'salary_max': NotRequired[float],
+    'salary_min': NotRequired[float],
+    'salary_period': NotRequired[str],
+    'salary_text': NotRequired[str],
+    'state': NotRequired[str],
+    'title': NotRequired[str],
+    'url': NotRequired[str],
+    'valid_through': NotRequired[str],
+}, total=False)
+
+ModelIndeedJobCard = TypedDict('ModelIndeedJobCard', {
+    'city': NotRequired[str],
+    'company': NotRequired[str],
+    'company_rating': NotRequired[float],
+    'company_review_count': NotRequired[int],
+    'indeed_applyable': NotRequired[bool],
+    'job_key': NotRequired[str],
+    'job_types': NotRequired[list[str]],
+    'location': NotRequired[str],
+    'new_job': NotRequired[bool],
+    'postal_code': NotRequired[str],
+    'posted_at': NotRequired[str],
+    'posted_relative': NotRequired[str],
+    'remote': NotRequired[bool],
+    'salary_currency': NotRequired[str],
+    'salary_max': NotRequired[float],
+    'salary_min': NotRequired[float],
+    'salary_period': NotRequired[str],
+    'salary_text': NotRequired[str],
+    'snippet': NotRequired[str],
+    'sponsored': NotRequired[bool],
+    'state': NotRequired[str],
+    'title': NotRequired[str],
+    'urgently_hiring': NotRequired[bool],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelIndeedLocationSuggestResponse = TypedDict('ModelIndeedLocationSuggestResponse', {
+    'query': NotRequired[str],
+    'suggestions': NotRequired[list[ModelIndeedLocationSuggestion]],
+}, total=False)
+
+ModelIndeedLocationSuggestion = TypedDict('ModelIndeedLocationSuggestion', {
+    'name': NotRequired[str],
+    'source': NotRequired[str],
+}, total=False)
+
+ModelIndeedSearchResponse = TypedDict('ModelIndeedSearchResponse', {
+    'jobs': NotRequired[list[ModelIndeedJobCard]],
+    'location': NotRequired[str],
+    'page': NotRequired[int],
+    'query': NotRequired[str],
+    'total': NotRequired[int],
+}, total=False)
+
+ModelIndeedJobResponseDoc = TypedDict('ModelIndeedJobResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelIndeedJob],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelIndeedLocationSuggestResponseDoc = TypedDict('ModelIndeedLocationSuggestResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelIndeedLocationSuggestResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelIndeedSearchResponseDoc = TypedDict('ModelIndeedSearchResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelIndeedSearchResponse],
     'msg': NotRequired[str],
 }, total=False)
 
@@ -11458,6 +12648,162 @@ ModelNumbeoRankingsByCountryResponseDoc = TypedDict('ModelNumbeoRankingsByCountr
 ModelNumbeoRankingsResponseDoc = TypedDict('ModelNumbeoRankingsResponseDoc', {
     'code': NotRequired[int],
     'data': NotRequired[ModelNumbeoRankingsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelOpentableCuisine = TypedDict('ModelOpentableCuisine', {
+    'id': NotRequired[str],
+    'name': NotRequired[str],
+    'primary': NotRequired[bool],
+}, total=False)
+
+ModelOpentableMenu = TypedDict('ModelOpentableMenu', {
+    'currency': NotRequired[str],
+    'sections': NotRequired[list[ModelOpentableMenuSection]],
+    'title': NotRequired[str],
+}, total=False)
+
+ModelOpentableMenuItem = TypedDict('ModelOpentableMenuItem', {
+    'description': NotRequired[str],
+    'price': NotRequired[str],
+    'title': NotRequired[str],
+}, total=False)
+
+ModelOpentableMenuSection = TypedDict('ModelOpentableMenuSection', {
+    'items': NotRequired[list[ModelOpentableMenuItem]],
+    'title': NotRequired[str],
+}, total=False)
+
+ModelOpentableMenusResponse = TypedDict('ModelOpentableMenusResponse', {
+    'menus': NotRequired[list[ModelOpentableMenu]],
+    'restaurant_id': NotRequired[str],
+}, total=False)
+
+ModelOpentablePriceBand = TypedDict('ModelOpentablePriceBand', {
+    'band': NotRequired[str],
+    'label': NotRequired[str],
+}, total=False)
+
+ModelOpentableRestaurantResponse = TypedDict('ModelOpentableRestaurantResponse', {
+    'availability_date_time': NotRequired[str],
+    'city': NotRequired[str],
+    'country': NotRequired[str],
+    'country_code': NotRequired[str],
+    'cuisines': NotRequired[list[ModelOpentableCuisine]],
+    'currency_code': NotRequired[str],
+    'description': NotRequired[str],
+    'dining_style': NotRequired[str],
+    'dress_code': NotRequired[str],
+    'email': NotRequired[str],
+    'features': NotRequired[list[str]],
+    'hours': NotRequired[str],
+    'id': NotRequired[str],
+    'latitude': NotRequired[float],
+    'line1': NotRequired[str],
+    'line2': NotRequired[str],
+    'longitude': NotRequired[float],
+    'max_advance_days': NotRequired[int],
+    'max_party_size': NotRequired[int],
+    'name': NotRequired[str],
+    'phone_number': NotRequired[str],
+    'photos_count': NotRequired[int],
+    'postal_code': NotRequired[str],
+    'price_band': NotRequired[ModelOpentablePriceBand],
+    'reviews': NotRequired[ModelOpentableReviewSummary],
+    'state': NotRequired[str],
+    'timeslots': NotRequired[list[ModelOpentableTimeslot]],
+    'website': NotRequired[str],
+}, total=False)
+
+ModelOpentableReview = TypedDict('ModelOpentableReview', {
+    'author': NotRequired[str],
+    'author_metro': NotRequired[str],
+    'id': NotRequired[str],
+    'posted_date': NotRequired[str],
+    'recommended': NotRequired[bool],
+    'reservation_date': NotRequired[str],
+    'statistics': NotRequired[ModelOpentableReviewStatistics],
+    'text': NotRequired[str],
+}, total=False)
+
+ModelOpentableReviewStatistics = TypedDict('ModelOpentableReviewStatistics', {
+    'ambience': NotRequired[float],
+    'food': NotRequired[float],
+    'noise': NotRequired[float],
+    'overall_rating': NotRequired[float],
+    'service': NotRequired[float],
+    'value': NotRequired[float],
+}, total=False)
+
+ModelOpentableReviewSummary = TypedDict('ModelOpentableReviewSummary', {
+    'ambience': NotRequired[float],
+    'count': NotRequired[int],
+    'food': NotRequired[float],
+    'noise': NotRequired[float],
+    'overall_rating': NotRequired[float],
+    'review_count': NotRequired[int],
+    'service': NotRequired[float],
+    'value': NotRequired[float],
+}, total=False)
+
+ModelOpentableReviewsResponse = TypedDict('ModelOpentableReviewsResponse', {
+    'page': NotRequired[int],
+    'restaurant_id': NotRequired[str],
+    'reviews': NotRequired[list[ModelOpentableReview]],
+}, total=False)
+
+ModelOpentableSearchResponse = TypedDict('ModelOpentableSearchResponse', {
+    'results': NotRequired[list[ModelOpentableSearchResult]],
+    'term': NotRequired[str],
+}, total=False)
+
+ModelOpentableSearchResult = TypedDict('ModelOpentableSearchResult', {
+    'availability_date_time': NotRequired[str],
+    'city': NotRequired[str],
+    'country': NotRequired[str],
+    'description': NotRequired[str],
+    'id': NotRequired[str],
+    'latitude': NotRequired[float],
+    'line1': NotRequired[str],
+    'line2': NotRequired[str],
+    'longitude': NotRequired[float],
+    'name': NotRequired[str],
+    'postal_code': NotRequired[str],
+    'state': NotRequired[str],
+    'timeslots': NotRequired[list[ModelOpentableTimeslot]],
+}, total=False)
+
+ModelOpentableTimeslot = TypedDict('ModelOpentableTimeslot', {
+    'available': NotRequired[bool],
+    'date_time': NotRequired[str],
+    'points': NotRequired[int],
+    'price_amount': NotRequired[int],
+    'redemption_tier': NotRequired[str],
+    'token': NotRequired[str],
+    'type': NotRequired[str],
+}, total=False)
+
+ModelOpentableMenusResponseDoc = TypedDict('ModelOpentableMenusResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelOpentableMenusResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelOpentableRestaurantResponseDoc = TypedDict('ModelOpentableRestaurantResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelOpentableRestaurantResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelOpentableReviewsResponseDoc = TypedDict('ModelOpentableReviewsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelOpentableReviewsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelOpentableSearchResponseDoc = TypedDict('ModelOpentableSearchResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelOpentableSearchResponse],
     'msg': NotRequired[str],
 }, total=False)
 
@@ -20400,6 +21746,236 @@ ModelYahoofinanceValuationResponseDoc = TypedDict('ModelYahoofinanceValuationRes
     'msg': NotRequired[str],
 }, total=False)
 
+ModelYelpAddressDetails = TypedDict('ModelYelpAddressDetails', {
+    'address_line_1': NotRequired[str],
+    'address_line_2': NotRequired[str],
+    'address_line_3': NotRequired[str],
+    'city': NotRequired[str],
+    'country': NotRequired[str],
+    'formatted_address': NotRequired[list[str]],
+    'postal_code': NotRequired[str],
+    'state': NotRequired[str],
+}, total=False)
+
+ModelYelpBusinessAttribute = TypedDict('ModelYelpBusinessAttribute', {
+    'alias': NotRequired[str],
+    'title': NotRequired[str],
+    'value': NotRequired[str],
+    'values': NotRequired[list[str]],
+}, total=False)
+
+ModelYelpBusinessItem = TypedDict('ModelYelpBusinessItem', {
+    'address': NotRequired[str],
+    'address_details': NotRequired[ModelYelpAddressDetails],
+    'alias': NotRequired[str],
+    'categories': NotRequired[list[str]],
+    'claimed': NotRequired[bool],
+    'closed': NotRequired[bool],
+    'coordinates': NotRequired[ModelYelpCoordinates],
+    'encoded_id': NotRequired[str],
+    'id': NotRequired[str],
+    'image': NotRequired[str],
+    'name': NotRequired[str],
+    'neighborhoods': NotRequired[list[str]],
+    'phone': NotRequired[str],
+    'phone_number': NotRequired[str],
+    'photos': NotRequired[list[str]],
+    'price': NotRequired[str],
+    'rating': NotRequired[float],
+    'review_count': NotRequired[int],
+    'url': NotRequired[str],
+    'website': NotRequired[str],
+}, total=False)
+
+ModelYelpCoordinates = TypedDict('ModelYelpCoordinates', {
+    'latitude': NotRequired[float],
+    'longitude': NotRequired[float],
+}, total=False)
+
+ModelYelpMobileBusinessMenuResponse = TypedDict('ModelYelpMobileBusinessMenuResponse', {
+    'id': NotRequired[str],
+    'items': NotRequired[list[ModelYelpMobileMenuItem]],
+}, total=False)
+
+ModelYelpMobileBusinessPhotosResponse = TypedDict('ModelYelpMobileBusinessPhotosResponse', {
+    'id': NotRequired[str],
+    'limit': NotRequired[int],
+    'offset': NotRequired[int],
+    'photos': NotRequired[list[ModelYelpMobilePhotoItem]],
+    'total': NotRequired[int],
+}, total=False)
+
+ModelYelpMobileBusinessResponse = TypedDict('ModelYelpMobileBusinessResponse', {
+    'address': NotRequired[str],
+    'address_details': NotRequired[ModelYelpAddressDetails],
+    'alias': NotRequired[str],
+    'attributes': NotRequired[list[ModelYelpBusinessAttribute]],
+    'categories': NotRequired[list[str]],
+    'claimed': NotRequired[bool],
+    'closed': NotRequired[bool],
+    'coordinates': NotRequired[ModelYelpCoordinates],
+    'description': NotRequired[str],
+    'encoded_id': NotRequired[str],
+    'health_score': NotRequired[str],
+    'hours': NotRequired[list[str]],
+    'id': NotRequired[str],
+    'image': NotRequired[str],
+    'name': NotRequired[str],
+    'neighborhoods': NotRequired[list[str]],
+    'phone': NotRequired[str],
+    'phone_number': NotRequired[str],
+    'photo_count': NotRequired[int],
+    'photos': NotRequired[list[str]],
+    'price': NotRequired[str],
+    'rating': NotRequired[float],
+    'review_count': NotRequired[int],
+    'url': NotRequired[str],
+    'website': NotRequired[str],
+    'year_established': NotRequired[int],
+}, total=False)
+
+ModelYelpMobileBusinessReviewHighlightsResponse = TypedDict('ModelYelpMobileBusinessReviewHighlightsResponse', {
+    'highlights': NotRequired[list[ModelYelpMobileReviewHighlight]],
+    'id': NotRequired[str],
+    'total': NotRequired[int],
+}, total=False)
+
+ModelYelpMobileBusinessReviewsResponse = TypedDict('ModelYelpMobileBusinessReviewsResponse', {
+    'id': NotRequired[str],
+    'limit': NotRequired[int],
+    'offset': NotRequired[int],
+    'reviews': NotRequired[list[ModelYelpMobileReviewItem]],
+}, total=False)
+
+ModelYelpMobileBusinessReviewsSearchResponse = TypedDict('ModelYelpMobileBusinessReviewsSearchResponse', {
+    'id': NotRequired[str],
+    'reviews': NotRequired[list[ModelYelpMobileReviewSearchItem]],
+    'term': NotRequired[str],
+    'total': NotRequired[int],
+}, total=False)
+
+ModelYelpMobileGeocodeResponse = TypedDict('ModelYelpMobileGeocodeResponse', {
+    'address': NotRequired[str],
+    'address_line_1': NotRequired[str],
+    'city': NotRequired[str],
+    'coordinates': NotRequired[ModelYelpCoordinates],
+    'country': NotRequired[str],
+    'county': NotRequired[str],
+    'display_name': NotRequired[str],
+    'postal_code': NotRequired[str],
+    'state': NotRequired[str],
+    'yelp_available': NotRequired[bool],
+}, total=False)
+
+ModelYelpMobileMenuItem = TypedDict('ModelYelpMobileMenuItem', {
+    'alias': NotRequired[str],
+    'description': NotRequired[str],
+    'name': NotRequired[str],
+    'photo': NotRequired[str],
+    'photo_count': NotRequired[int],
+    'price': NotRequired[str],
+    'review_count': NotRequired[int],
+}, total=False)
+
+ModelYelpMobilePhotoItem = TypedDict('ModelYelpMobilePhotoItem', {
+    'caption': NotRequired[str],
+    'height': NotRequired[int],
+    'id': NotRequired[str],
+    'share_url': NotRequired[str],
+    'time_created': NotRequired[int],
+    'url': NotRequired[str],
+    'width': NotRequired[int],
+}, total=False)
+
+ModelYelpMobileReviewHighlight = TypedDict('ModelYelpMobileReviewHighlight', {
+    'identifier': NotRequired[str],
+    'photo_url': NotRequired[str],
+    'review_count': NotRequired[int],
+    'review_id': NotRequired[str],
+    'sentence_html': NotRequired[str],
+}, total=False)
+
+ModelYelpMobileReviewItem = TypedDict('ModelYelpMobileReviewItem', {
+    'author': NotRequired[str],
+    'author_location': NotRequired[str],
+    'author_review_count': NotRequired[int],
+    'id': NotRequired[str],
+    'language': NotRequired[str],
+    'rating': NotRequired[float],
+    'share_url': NotRequired[str],
+    'text': NotRequired[str],
+    'time_modified': NotRequired[int],
+}, total=False)
+
+ModelYelpMobileReviewSearchItem = TypedDict('ModelYelpMobileReviewSearchItem', {
+    'author': NotRequired[str],
+    'author_location': NotRequired[str],
+    'author_review_count': NotRequired[int],
+    'excerpt_html': NotRequired[str],
+    'id': NotRequired[str],
+    'language': NotRequired[str],
+    'rating': NotRequired[float],
+    'share_url': NotRequired[str],
+    'time_modified': NotRequired[int],
+}, total=False)
+
+ModelYelpMobileSearchResponse = TypedDict('ModelYelpMobileSearchResponse', {
+    'limit': NotRequired[int],
+    'location': NotRequired[str],
+    'offset': NotRequired[int],
+    'results': NotRequired[list[ModelYelpBusinessItem]],
+    'term': NotRequired[str],
+    'total': NotRequired[int],
+}, total=False)
+
+ModelYelpMobileBusinessMenuResponseDoc = TypedDict('ModelYelpMobileBusinessMenuResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelYelpMobileBusinessMenuResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelYelpMobileBusinessPhotosResponseDoc = TypedDict('ModelYelpMobileBusinessPhotosResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelYelpMobileBusinessPhotosResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelYelpMobileBusinessResponseDoc = TypedDict('ModelYelpMobileBusinessResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelYelpMobileBusinessResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelYelpMobileBusinessReviewHighlightsResponseDoc = TypedDict('ModelYelpMobileBusinessReviewHighlightsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelYelpMobileBusinessReviewHighlightsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelYelpMobileBusinessReviewsResponseDoc = TypedDict('ModelYelpMobileBusinessReviewsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelYelpMobileBusinessReviewsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelYelpMobileBusinessReviewsSearchResponseDoc = TypedDict('ModelYelpMobileBusinessReviewsSearchResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelYelpMobileBusinessReviewsSearchResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelYelpMobileGeocodeResponseDoc = TypedDict('ModelYelpMobileGeocodeResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelYelpMobileGeocodeResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelYelpMobileSearchResponseDoc = TypedDict('ModelYelpMobileSearchResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelYelpMobileSearchResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
 ModelYoutubeCaption = TypedDict('ModelYoutubeCaption', {
     'duration': NotRequired[float],
     'start': NotRequired[float],
@@ -20645,6 +22221,118 @@ ModelYoutubeTranscriptResponseDoc = TypedDict('ModelYoutubeTranscriptResponseDoc
 ModelYoutubeVideoResponseDoc = TypedDict('ModelYoutubeVideoResponseDoc', {
     'code': NotRequired[int],
     'data': NotRequired[ModelYoutubeVideoDetail],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelZalandoCategoryResponse = TypedDict('ModelZalandoCategoryResponse', {
+    'category': NotRequired[str],
+    'count': NotRequired[int],
+    'fetched_at': NotRequired[str],
+    'market': NotRequired[str],
+    'products': NotRequired[list[ModelZalandoProductSummary]],
+    'source_url': NotRequired[str],
+    'total_count': NotRequired[int],
+}, total=False)
+
+ModelZalandoMarket = TypedDict('ModelZalandoMarket', {
+    'code': NotRequired[str],
+    'domain': NotRequired[str],
+}, total=False)
+
+ModelZalandoMarketsResponse = TypedDict('ModelZalandoMarketsResponse', {
+    'count': NotRequired[int],
+    'markets': NotRequired[list[ModelZalandoMarket]],
+}, total=False)
+
+ModelZalandoProduct = TypedDict('ModelZalandoProduct', {
+    'brand': NotRequired[str],
+    'color': NotRequired[str],
+    'currency': NotRequired[str],
+    'description': NotRequired[str],
+    'images': NotRequired[list[str]],
+    'name': NotRequired[str],
+    'price': NotRequired[float],
+    'sku': NotRequired[str],
+    'url': NotRequired[str],
+    'variants': NotRequired[list[ModelZalandoProductVariant]],
+}, total=False)
+
+ModelZalandoProductResponse = TypedDict('ModelZalandoProductResponse', {
+    'fetched_at': NotRequired[str],
+    'market': NotRequired[str],
+    'product': NotRequired[ModelZalandoProduct],
+    'source_url': NotRequired[str],
+}, total=False)
+
+ModelZalandoProductSummary = TypedDict('ModelZalandoProductSummary', {
+    'brand': NotRequired[str],
+    'condition': NotRequired[str],
+    'currency': NotRequired[str],
+    'discount_percent': NotRequired[int],
+    'image': NotRequired[str],
+    'name': NotRequired[str],
+    'original_price': NotRequired[float],
+    'price': NotRequired[float],
+    'silhouette': NotRequired[str],
+    'sku': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelZalandoProductVariant = TypedDict('ModelZalandoProductVariant', {
+    'availability': NotRequired[str],
+    'currency': NotRequired[str],
+    'gtin': NotRequired[str],
+    'price': NotRequired[float],
+    'size': NotRequired[str],
+    'sku': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelZalandoSearchResponse = TypedDict('ModelZalandoSearchResponse', {
+    'count': NotRequired[int],
+    'fetched_at': NotRequired[str],
+    'market': NotRequired[str],
+    'products': NotRequired[list[ModelZalandoProductSummary]],
+    'query': NotRequired[str],
+    'source_url': NotRequired[str],
+    'total_count': NotRequired[int],
+}, total=False)
+
+ModelZalandoSuggestResponse = TypedDict('ModelZalandoSuggestResponse', {
+    'fetched_at': NotRequired[str],
+    'market': NotRequired[str],
+    'query': NotRequired[str],
+    'source_url': NotRequired[str],
+    'suggestions': NotRequired[list[str]],
+}, total=False)
+
+ModelZalandoCategoryResponseDoc = TypedDict('ModelZalandoCategoryResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelZalandoCategoryResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelZalandoMarketsResponseDoc = TypedDict('ModelZalandoMarketsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelZalandoMarketsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelZalandoProductResponseDoc = TypedDict('ModelZalandoProductResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelZalandoProductResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelZalandoSearchResponseDoc = TypedDict('ModelZalandoSearchResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelZalandoSearchResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelZalandoSuggestResponseDoc = TypedDict('ModelZalandoSuggestResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelZalandoSuggestResponse],
     'msg': NotRequired[str],
 }, total=False)
 
@@ -21518,6 +23206,44 @@ AppStoreVersionHistoryParams = TypedDict('AppStoreVersionHistoryParams', {
     'lang': NotRequired[str],
 }, total=False)
 
+AutotraderDealerResponse = ModelAutotraderDealerResponse
+AutotraderDealerParams = TypedDict('AutotraderDealerParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': Required[str],
+}, total=False)
+
+AutotraderSearchResponse = ModelAutotraderSearchResponseDoc
+AutotraderSearchParams = TypedDict('AutotraderSearchParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'query': NotRequired[str],
+    'zip': NotRequired[str],
+    'radius': NotRequired[int],
+    'make': NotRequired[str],
+    'model': NotRequired[str],
+    'trim': NotRequired[str],
+    'condition': NotRequired[Literal['new', 'used', 'certified', '3p_cert']],
+    'body_style': NotRequired[Literal['convertible', 'coupe', 'hatchback', 'sedan', 'suv', 'truck', 'van', 'wagon']],
+    'seller_type': NotRequired[Literal['dealer', 'private']],
+    'min_year': NotRequired[int],
+    'max_year': NotRequired[int],
+    'min_price': NotRequired[int],
+    'max_price': NotRequired[int],
+    'max_mileage': NotRequired[int],
+    'page': NotRequired[int],
+}, total=False)
+
+AutotraderVehicleResponse = ModelAutotraderVehicleResponse
+AutotraderVehicleParams = TypedDict('AutotraderVehicleParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': Required[str],
+}, total=False)
+
 BillingMeResponse = ModelBillingBillingStateResponseDoc
 BillingMeParams = TypedDict('BillingMeParams', {
     '_response_type': NotRequired[ResponseType],
@@ -21648,6 +23374,103 @@ BingVideosParams = TypedDict('BingVideosParams', {
     'count': NotRequired[int],
     'country': NotRequired[str],
     'lang': NotRequired[str],
+}, total=False)
+
+BookingAttractionsDetailResponse = ModelBookingBookingAttractionDetailResponseDoc
+BookingAttractionsDetailParams = TypedDict('BookingAttractionsDetailParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'slug': Required[str],
+}, total=False)
+
+BookingAttractionsReviewsResponse = ModelBookingBookingAttractionReviewsResponseDoc
+BookingAttractionsReviewsParams = TypedDict('BookingAttractionsReviewsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'product_id': Required[str],
+    'page': NotRequired[int],
+    'limit': NotRequired[int],
+}, total=False)
+
+BookingAttractionsSearchResponse = ModelBookingBookingAttractionSearchResponseDoc
+BookingAttractionsSearchParams = TypedDict('BookingAttractionsSearchParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'query': Required[str],
+    'start_date': Required[str],
+    'end_date': NotRequired[str],
+    'page': NotRequired[int],
+    'limit': NotRequired[int],
+    'category': NotRequired[str],
+    'subcategory': NotRequired[str],
+}, total=False)
+
+BookingFlightsAutocompleteResponse = ModelBookingBookingFlightAutocompleteResponseDoc
+BookingFlightsAutocompleteParams = TypedDict('BookingFlightsAutocompleteParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'query': Required[str],
+    'type': NotRequired[Literal['to', 'from']],
+    'origin': NotRequired[str],
+    'origin_type': NotRequired[str],
+}, total=False)
+
+BookingFlightsSearchResponse = ModelBookingBookingFlightSearchResponseDoc
+BookingFlightsSearchParams = TypedDict('BookingFlightsSearchParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'type': NotRequired[Literal['ROUNDTRIP', 'ONEWAY']],
+    'from': Required[str],
+    'to': Required[str],
+    'from_country': NotRequired[str],
+    'to_country': NotRequired[str],
+    'depart': Required[str],
+    'return': NotRequired[str],
+    'adults': NotRequired[int],
+    'children': NotRequired[int],
+    'cabin_class': NotRequired[str],
+    'sort': NotRequired[str],
+}, total=False)
+
+BookingHotelDetailResponse = ModelBookingBookingHotelDetailResponseDoc
+BookingHotelDetailParams = TypedDict('BookingHotelDetailParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'hotel_id': Required[int],
+}, total=False)
+
+BookingReviewsResponse = ModelBookingBookingReviewsResponseDoc
+BookingReviewsParams = TypedDict('BookingReviewsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'hotel_id': Required[int],
+    'destination_id': NotRequired[int],
+    'hotel_country_code': Required[str],
+    'hotel_score': NotRequired[float],
+    'search_text': NotRequired[str],
+    'page': NotRequired[int],
+    'limit': NotRequired[int],
+}, total=False)
+
+BookingSearchResponse = ModelBookingBookingSearchResponseDoc
+BookingSearchParams = TypedDict('BookingSearchParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'query': Required[str],
+    'checkin': Required[str],
+    'checkout': Required[str],
+    'adults': NotRequired[int],
+    'rooms': NotRequired[int],
+    'children': NotRequired[int],
+    'page': NotRequired[int],
 }, total=False)
 
 BoxOfficeMojoBoxofficemojoBrandResponse = ModelBoxofficemojoTaxonomyDetailResponseDoc
@@ -24133,6 +25956,15 @@ DiscogsSearchParams = TypedDict('DiscogsSearchParams', {
     'per_page': NotRequired[int],
 }, total=False)
 
+DoorDashDoordashExploreResponse = ModelDoordashExploreResponseDoc
+DoorDashDoordashExploreParams = TypedDict('DoorDashDoordashExploreParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'latitude': Required[float],
+    'longitude': Required[float],
+}, total=False)
+
 DoorDashDoordashFeedResponse = ModelDoordashFeedResponseDoc
 DoorDashDoordashFeedParams = TypedDict('DoorDashDoordashFeedParams', {
     '_response_type': NotRequired[ResponseType],
@@ -24200,6 +26032,16 @@ DoorDashDoordashStoreParams = TypedDict('DoorDashDoordashStoreParams', {
 
 DoorDashDoordashStoreFulfillmentResponse = ModelDoordashStoreFulfillmentResponseDoc
 DoorDashDoordashStoreFulfillmentParams = TypedDict('DoorDashDoordashStoreFulfillmentParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'store_id': Required[str],
+    'latitude': Required[float],
+    'longitude': Required[float],
+}, total=False)
+
+DoorDashDoordashStoreInfoResponse = ModelDoordashStoreInfoResponseDoc
+DoorDashDoordashStoreInfoParams = TypedDict('DoorDashDoordashStoreInfoParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
     '_headers': NotRequired[Mapping[str, str]],
@@ -24381,6 +26223,135 @@ EspnTeamsParams = TypedDict('EspnTeamsParams', {
     'league': Required[Literal['nfl', 'college-football', 'nba', 'wnba', 'mens-college-basketball', 'womens-college-basketball', 'mlb', 'nhl', 'eng.1', 'esp.1', 'ita.1', 'ger.1', 'fra.1', 'usa.1', 'uefa.champions']],
 }, total=False)
 
+EtsyListingResponse = ModelEtsyListingResponseDoc
+EtsyListingParams = TypedDict('EtsyListingParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': Required[str],
+}, total=False)
+
+EtsyListingReviewsResponse = ModelEtsyListingReviewsResponseDoc
+EtsyListingReviewsParams = TypedDict('EtsyListingReviewsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': Required[str],
+    'offset': NotRequired[int],
+    'sort': NotRequired[Literal['newest', 'oldest', 'highest_rating', 'lowest_rating', 'most_relevant']],
+}, total=False)
+
+EtsySearchResponse = ModelEtsySearchResponseDoc
+EtsySearchParams = TypedDict('EtsySearchParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'q': Required[str],
+    'offset': NotRequired[int],
+    'limit': NotRequired[int],
+}, total=False)
+
+EtsyShopSearchResponse = ModelEtsyShopSearchResponseDoc
+EtsyShopSearchParams = TypedDict('EtsyShopSearchParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'q': Required[str],
+    'limit': NotRequired[int],
+}, total=False)
+
+EtsyShopResponse = ModelEtsyShopResponseDoc
+EtsyShopParams = TypedDict('EtsyShopParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': Required[str],
+}, total=False)
+
+EtsyShopListingsResponse = ModelEtsyShopListingsResponseDoc
+EtsyShopListingsParams = TypedDict('EtsyShopListingsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': Required[str],
+    'q': NotRequired[str],
+    'offset': NotRequired[int],
+    'limit': NotRequired[int],
+}, total=False)
+
+EtsyShopReviewsResponse = ModelEtsyShopReviewsResponseDoc
+EtsyShopReviewsParams = TypedDict('EtsyShopReviewsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': Required[str],
+    'offset': NotRequired[int],
+    'limit': NotRequired[int],
+}, total=False)
+
+ExpediaActivitiesSearchBody = ModelExpediaActivitySearchOption
+ExpediaActivitiesSearchResponse = ModelExpediaExpediaActivitySearchResponseDoc
+ExpediaActivitiesSearchParams = TypedDict('ExpediaActivitiesSearchParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'option': Required[ExpediaActivitiesSearchBody],
+}, total=False)
+
+ExpediaFlightsSearchBody = ModelExpediaFlightsSearchOption
+ExpediaFlightsSearchResponse = ModelExpediaExpediaFlightsSearchResponseDoc
+ExpediaFlightsSearchParams = TypedDict('ExpediaFlightsSearchParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'option': Required[ExpediaFlightsSearchBody],
+}, total=False)
+
+ExpediaLocationsSearchBody = ModelExpediaLocationSearchOption
+ExpediaLocationsSearchResponse = ModelExpediaExpediaLocationSearchResponseDoc
+ExpediaLocationsSearchParams = TypedDict('ExpediaLocationsSearchParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'option': Required[ExpediaLocationsSearchBody],
+}, total=False)
+
+ExpediaPropertiesDetailBody = ModelExpediaPropertyDetailOption
+ExpediaPropertiesDetailResponse = ModelExpediaExpediaPropertyDetailResponseDoc
+ExpediaPropertiesDetailParams = TypedDict('ExpediaPropertiesDetailParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'option': Required[ExpediaPropertiesDetailBody],
+}, total=False)
+
+ExpediaPropertiesFiltersBody = ModelExpediaPropertyFiltersOption
+ExpediaPropertiesFiltersResponse = ModelExpediaExpediaPropertyFiltersResponseDoc
+ExpediaPropertiesFiltersParams = TypedDict('ExpediaPropertiesFiltersParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'option': Required[ExpediaPropertiesFiltersBody],
+}, total=False)
+
+ExpediaPropertiesReviewsBody = ModelExpediaPropertyReviewsOption
+ExpediaPropertiesReviewsResponse = ModelExpediaExpediaPropertyReviewsResponseDoc
+ExpediaPropertiesReviewsParams = TypedDict('ExpediaPropertiesReviewsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'option': Required[ExpediaPropertiesReviewsBody],
+}, total=False)
+
+ExpediaPropertiesSearchBody = ModelExpediaPropertySearchOption
+ExpediaPropertiesSearchResponse = ModelExpediaExpediaPropertySearchResponseDoc
+ExpediaPropertiesSearchParams = TypedDict('ExpediaPropertiesSearchParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'option': Required[ExpediaPropertiesSearchBody],
+}, total=False)
+
 WebExtractBody = ModelExtractOption
 WebExtractResponse = ModelExtractResponseDoc
 WebExtractParams = TypedDict('WebExtractParams', {
@@ -24388,6 +26359,37 @@ WebExtractParams = TypedDict('WebExtractParams', {
     '_timeout': NotRequired[float],
     '_headers': NotRequired[Mapping[str, str]],
     'extractOption': Required[WebExtractBody],
+}, total=False)
+
+FacebookGroupResponse = ModelFacebookGroupResponseDoc
+FacebookGroupParams = TypedDict('FacebookGroupParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'group': Required[str],
+}, total=False)
+
+FacebookMarketplaceItemResponse = ModelFacebookMarketplaceItemResponseDoc
+FacebookMarketplaceItemParams = TypedDict('FacebookMarketplaceItemParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': Required[str],
+}, total=False)
+
+FacebookMarketplaceSearchResponse = ModelFacebookMarketplaceSearchResponseDoc
+FacebookMarketplaceSearchParams = TypedDict('FacebookMarketplaceSearchParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'location': Required[str],
+    'query': NotRequired[str],
+    'category': NotRequired[Literal['vehicles', 'property_rentals', 'classifieds', 'apparel', 'electronics', 'entertainment', 'family', 'free', 'garden_outdoors', 'hobbies', 'home_goods', 'home_improvement', 'musical_instruments', 'office_supplies', 'pet_supplies', 'property_sale', 'sporting_goods', 'toys_games']],
+    'min_price': NotRequired[int],
+    'max_price': NotRequired[int],
+    'sort_by': NotRequired[Literal['best_match', 'distance_ascend', 'creation_time_descend', 'price_ascend', 'price_descend']],
+    'days_since_listed': NotRequired[Literal['1', '7', '30']],
+    'condition': NotRequired[Literal['new', 'used_like_new', 'used_good', 'used_fair']],
 }, total=False)
 
 FacebookPageResponse = ModelFacebookPageResponseDoc
@@ -25405,6 +27407,53 @@ ImdbTitleTriviaParams = TypedDict('ImdbTitleTriviaParams', {
     '_headers': NotRequired[Mapping[str, str]],
     'id': NotRequired[str],
     'url': NotRequired[str],
+}, total=False)
+
+ImportYetiImportyetiCompanyResponse = ModelImportyetiCompanyResponseDoc
+ImportYetiImportyetiCompanyParams = TypedDict('ImportYetiImportyetiCompanyParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'slug': Required[str],
+}, total=False)
+
+ImportYetiImportyetiSearchResponse = ModelImportyetiSearchResponseDoc
+ImportYetiImportyetiSearchParams = TypedDict('ImportYetiImportyetiSearchParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'q': Required[str],
+    'page': NotRequired[int],
+}, total=False)
+
+IndeedJobResponse = ModelIndeedJobResponseDoc
+IndeedJobParams = TypedDict('IndeedJobParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'jk': Required[str],
+}, total=False)
+
+IndeedLocationsSuggestResponse = ModelIndeedLocationSuggestResponseDoc
+IndeedLocationsSuggestParams = TypedDict('IndeedLocationsSuggestParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'q': Required[str],
+    'limit': NotRequired[int],
+}, total=False)
+
+IndeedSearchResponse = ModelIndeedSearchResponseDoc
+IndeedSearchParams = TypedDict('IndeedSearchParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'q': Required[str],
+    'l': NotRequired[str],
+    'page': NotRequired[int],
+    'sort': NotRequired[Literal['relevance', 'date']],
+    'radius': NotRequired[int],
+    'fromage': NotRequired[int],
 }, total=False)
 
 InstagramPostResponse = ModelInstagramPostResponseDoc
@@ -26692,6 +28741,47 @@ NumbeoIndicesRankingsByCountryParams = TypedDict('NumbeoIndicesRankingsByCountry
     '_timeout': NotRequired[float],
     '_headers': NotRequired[Mapping[str, str]],
     'index': Required[Literal['quality-of-life', 'crime', 'health-care', 'pollution', 'traffic', 'property-investment']],
+}, total=False)
+
+OpenTableOpentableRestaurantResponse = ModelOpentableRestaurantResponseDoc
+OpenTableOpentableRestaurantParams = TypedDict('OpenTableOpentableRestaurantParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'restaurant_id': Required[str],
+    'date_time': NotRequired[str],
+    'party_size': NotRequired[int],
+}, total=False)
+
+OpenTableOpentableRestaurantMenusResponse = ModelOpentableMenusResponseDoc
+OpenTableOpentableRestaurantMenusParams = TypedDict('OpenTableOpentableRestaurantMenusParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'restaurant_id': Required[str],
+}, total=False)
+
+OpenTableOpentableRestaurantReviewsResponse = ModelOpentableReviewsResponseDoc
+OpenTableOpentableRestaurantReviewsParams = TypedDict('OpenTableOpentableRestaurantReviewsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'restaurant_id': Required[str],
+    'page': NotRequired[int],
+    'size': NotRequired[int],
+}, total=False)
+
+OpenTableOpentableSearchResponse = ModelOpentableSearchResponseDoc
+OpenTableOpentableSearchParams = TypedDict('OpenTableOpentableSearchParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'term': Required[str],
+    'latitude': Required[float],
+    'longitude': Required[float],
+    'date_time': NotRequired[str],
+    'party_size': NotRequired[int],
+    'size': NotRequired[int],
 }, total=False)
 
 MetaPingResponse = ModelApiPingResponseDoc
@@ -30359,6 +32449,78 @@ YahooFinanceTrendingParams = TypedDict('YahooFinanceTrendingParams', {
     'count': NotRequired[int],
 }, total=False)
 
+YelpBusinessResponse = ModelYelpMobileBusinessResponseDoc
+YelpBusinessParams = TypedDict('YelpBusinessParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': Required[str],
+}, total=False)
+
+YelpBusinessMenuResponse = ModelYelpMobileBusinessMenuResponseDoc
+YelpBusinessMenuParams = TypedDict('YelpBusinessMenuParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': Required[str],
+}, total=False)
+
+YelpBusinessPhotosResponse = ModelYelpMobileBusinessPhotosResponseDoc
+YelpBusinessPhotosParams = TypedDict('YelpBusinessPhotosParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': Required[str],
+    'limit': NotRequired[int],
+    'offset': NotRequired[int],
+}, total=False)
+
+YelpBusinessReviewsResponse = ModelYelpMobileBusinessReviewsResponseDoc
+YelpBusinessReviewsParams = TypedDict('YelpBusinessReviewsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': Required[str],
+    'limit': NotRequired[int],
+    'offset': NotRequired[int],
+}, total=False)
+
+YelpBusinessReviewHighlightsResponse = ModelYelpMobileBusinessReviewHighlightsResponseDoc
+YelpBusinessReviewHighlightsParams = TypedDict('YelpBusinessReviewHighlightsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': Required[str],
+}, total=False)
+
+YelpBusinessReviewsSearchResponse = ModelYelpMobileBusinessReviewsSearchResponseDoc
+YelpBusinessReviewsSearchParams = TypedDict('YelpBusinessReviewsSearchParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': Required[str],
+    'term': Required[str],
+}, total=False)
+
+YelpGeocodeResponse = ModelYelpMobileGeocodeResponseDoc
+YelpGeocodeParams = TypedDict('YelpGeocodeParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'address': Required[str],
+}, total=False)
+
+YelpSearchResponse = ModelYelpMobileSearchResponseDoc
+YelpSearchParams = TypedDict('YelpSearchParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'term': Required[str],
+    'location': Required[str],
+    'limit': NotRequired[int],
+    'offset': NotRequired[int],
+}, total=False)
+
 YoutubeCaptionsResponse = ModelYoutubeCaptionsResponseDoc
 YoutubeCaptionsParams = TypedDict('YoutubeCaptionsParams', {
     '_response_type': NotRequired[ResponseType],
@@ -30484,6 +32646,49 @@ YoutubeVideoParams = TypedDict('YoutubeVideoParams', {
     'id': Required[str],
 }, total=False)
 
+ZalandoCategoryResponse = ModelZalandoCategoryResponseDoc
+ZalandoCategoryParams = TypedDict('ZalandoCategoryParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'category': Required[str],
+    'market': Required[Literal['at', 'be', 'ch', 'cz', 'de', 'dk', 'ee', 'es', 'fi', 'fr', 'gb', 'hr', 'hu', 'ie', 'it', 'lt', 'lu', 'lv', 'nl', 'no', 'pl', 'ro', 'se', 'si', 'sk']],
+}, total=False)
+
+ZalandoMarketsResponse = ModelZalandoMarketsResponseDoc
+ZalandoMarketsParams = TypedDict('ZalandoMarketsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+}, total=False)
+
+ZalandoProductResponse = ModelZalandoProductResponseDoc
+ZalandoProductParams = TypedDict('ZalandoProductParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'sku': Required[str],
+    'market': Required[Literal['at', 'be', 'ch', 'cz', 'de', 'dk', 'ee', 'es', 'fi', 'fr', 'gb', 'hr', 'hu', 'ie', 'it', 'lt', 'lu', 'lv', 'nl', 'no', 'pl', 'ro', 'se', 'si', 'sk']],
+}, total=False)
+
+ZalandoSearchResponse = ModelZalandoSearchResponseDoc
+ZalandoSearchParams = TypedDict('ZalandoSearchParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'q': Required[str],
+    'market': Required[Literal['at', 'be', 'ch', 'cz', 'de', 'dk', 'ee', 'es', 'fi', 'fr', 'gb', 'hr', 'hu', 'ie', 'it', 'lt', 'lu', 'lv', 'nl', 'no', 'pl', 'ro', 'se', 'si', 'sk']],
+}, total=False)
+
+ZalandoSuggestResponse = ModelZalandoSuggestResponseDoc
+ZalandoSuggestParams = TypedDict('ZalandoSuggestParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'q': Required[str],
+    'market': Required[Literal['at', 'be', 'ch', 'cz', 'de', 'dk', 'ee', 'es', 'fi', 'fr', 'gb', 'hr', 'hu', 'ie', 'it', 'lt', 'lu', 'lv', 'nl', 'no', 'pl', 'ro', 'se', 'si', 'sk']],
+}, total=False)
+
 ZillowAutocompleteResponse = ModelZillowAutocompleteResponse
 ZillowAutocompleteParams = TypedDict('ZillowAutocompleteParams', {
     '_response_type': NotRequired[ResponseType],
@@ -30589,6 +32794,11 @@ class AppStoreGroup:
     def suggest(self, **params: Unpack[AppStoreSuggestParams]) -> AppStoreSuggestResponse: ...
     def version_history(self, **params: Unpack[AppStoreVersionHistoryParams]) -> AppStoreVersionHistoryResponse: ...
 
+class AutotraderGroup:
+    def dealer(self, **params: Unpack[AutotraderDealerParams]) -> AutotraderDealerResponse: ...
+    def search(self, **params: Unpack[AutotraderSearchParams]) -> AutotraderSearchResponse: ...
+    def vehicle(self, **params: Unpack[AutotraderVehicleParams]) -> AutotraderVehicleResponse: ...
+
 class BillingGroup:
     def me(self, **params: Unpack[BillingMeParams]) -> BillingMeResponse: ...
     def me_checkout(self, **params: Unpack[BillingMeCheckoutParams]) -> BillingMeCheckoutResponse: ...
@@ -30605,6 +32815,16 @@ class BingGroup:
     def search(self, **params: Unpack[BingSearchParams]) -> BingSearchResponse: ...
     def suggest(self, **params: Unpack[BingSuggestParams]) -> BingSuggestResponse: ...
     def videos(self, **params: Unpack[BingVideosParams]) -> BingVideosResponse: ...
+
+class BookingGroup:
+    def attractions_detail(self, **params: Unpack[BookingAttractionsDetailParams]) -> BookingAttractionsDetailResponse: ...
+    def attractions_reviews(self, **params: Unpack[BookingAttractionsReviewsParams]) -> BookingAttractionsReviewsResponse: ...
+    def attractions_search(self, **params: Unpack[BookingAttractionsSearchParams]) -> BookingAttractionsSearchResponse: ...
+    def flights_autocomplete(self, **params: Unpack[BookingFlightsAutocompleteParams]) -> BookingFlightsAutocompleteResponse: ...
+    def flights_search(self, **params: Unpack[BookingFlightsSearchParams]) -> BookingFlightsSearchResponse: ...
+    def hotel_detail(self, **params: Unpack[BookingHotelDetailParams]) -> BookingHotelDetailResponse: ...
+    def reviews(self, **params: Unpack[BookingReviewsParams]) -> BookingReviewsResponse: ...
+    def search(self, **params: Unpack[BookingSearchParams]) -> BookingSearchResponse: ...
 
 class BoxOfficeMojoGroup:
     def boxofficemojo_brand(self, **params: Unpack[BoxOfficeMojoBoxofficemojoBrandParams]) -> BoxOfficeMojoBoxofficemojoBrandResponse: ...
@@ -30809,6 +33029,7 @@ class DiscogsGroup:
     def search(self, **params: Unpack[DiscogsSearchParams]) -> DiscogsSearchResponse: ...
 
 class DoorDashGroup:
+    def doordash_explore(self, **params: Unpack[DoorDashDoordashExploreParams]) -> DoorDashDoordashExploreResponse: ...
     def doordash_feed(self, **params: Unpack[DoorDashDoordashFeedParams]) -> DoorDashDoordashFeedResponse: ...
     def doordash_search(self, **params: Unpack[DoorDashDoordashSearchParams]) -> DoorDashDoordashSearchResponse: ...
     def doordash_search_autocomplete(self, **params: Unpack[DoorDashDoordashSearchAutocompleteParams]) -> DoorDashDoordashSearchAutocompleteResponse: ...
@@ -30816,6 +33037,7 @@ class DoorDashGroup:
     def doordash_search_items(self, **params: Unpack[DoorDashDoordashSearchItemsParams]) -> DoorDashDoordashSearchItemsResponse: ...
     def doordash_store(self, **params: Unpack[DoorDashDoordashStoreParams]) -> DoorDashDoordashStoreResponse: ...
     def doordash_store_fulfillment(self, **params: Unpack[DoorDashDoordashStoreFulfillmentParams]) -> DoorDashDoordashStoreFulfillmentResponse: ...
+    def doordash_store_info(self, **params: Unpack[DoorDashDoordashStoreInfoParams]) -> DoorDashDoordashStoreInfoResponse: ...
     def doordash_store_item(self, **params: Unpack[DoorDashDoordashStoreItemParams]) -> DoorDashDoordashStoreItemResponse: ...
     def doordash_store_menu(self, **params: Unpack[DoorDashDoordashStoreMenuParams]) -> DoorDashDoordashStoreMenuResponse: ...
     def doordash_store_reviews(self, **params: Unpack[DoorDashDoordashStoreReviewsParams]) -> DoorDashDoordashStoreReviewsResponse: ...
@@ -30839,7 +33061,28 @@ class EspnGroup:
     def team_roster(self, **params: Unpack[EspnTeamRosterParams]) -> EspnTeamRosterResponse: ...
     def teams(self, **params: Unpack[EspnTeamsParams]) -> EspnTeamsResponse: ...
 
+class EtsyGroup:
+    def listing(self, **params: Unpack[EtsyListingParams]) -> EtsyListingResponse: ...
+    def listing_reviews(self, **params: Unpack[EtsyListingReviewsParams]) -> EtsyListingReviewsResponse: ...
+    def search(self, **params: Unpack[EtsySearchParams]) -> EtsySearchResponse: ...
+    def shop_search(self, **params: Unpack[EtsyShopSearchParams]) -> EtsyShopSearchResponse: ...
+    def shop(self, **params: Unpack[EtsyShopParams]) -> EtsyShopResponse: ...
+    def shop_listings(self, **params: Unpack[EtsyShopListingsParams]) -> EtsyShopListingsResponse: ...
+    def shop_reviews(self, **params: Unpack[EtsyShopReviewsParams]) -> EtsyShopReviewsResponse: ...
+
+class ExpediaGroup:
+    def activities_search(self, **params: Unpack[ExpediaActivitiesSearchParams]) -> ExpediaActivitiesSearchResponse: ...
+    def flights_search(self, **params: Unpack[ExpediaFlightsSearchParams]) -> ExpediaFlightsSearchResponse: ...
+    def locations_search(self, **params: Unpack[ExpediaLocationsSearchParams]) -> ExpediaLocationsSearchResponse: ...
+    def properties_detail(self, **params: Unpack[ExpediaPropertiesDetailParams]) -> ExpediaPropertiesDetailResponse: ...
+    def properties_filters(self, **params: Unpack[ExpediaPropertiesFiltersParams]) -> ExpediaPropertiesFiltersResponse: ...
+    def properties_reviews(self, **params: Unpack[ExpediaPropertiesReviewsParams]) -> ExpediaPropertiesReviewsResponse: ...
+    def properties_search(self, **params: Unpack[ExpediaPropertiesSearchParams]) -> ExpediaPropertiesSearchResponse: ...
+
 class FacebookGroup:
+    def group(self, **params: Unpack[FacebookGroupParams]) -> FacebookGroupResponse: ...
+    def marketplace_item(self, **params: Unpack[FacebookMarketplaceItemParams]) -> FacebookMarketplaceItemResponse: ...
+    def marketplace_search(self, **params: Unpack[FacebookMarketplaceSearchParams]) -> FacebookMarketplaceSearchResponse: ...
     def page(self, **params: Unpack[FacebookPageParams]) -> FacebookPageResponse: ...
 
 class GeocodingGroup:
@@ -30958,6 +33201,15 @@ class ImdbGroup:
     def title_reviews(self, **params: Unpack[ImdbTitleReviewsParams]) -> ImdbTitleReviewsResponse: ...
     def title_technical_specs(self, **params: Unpack[ImdbTitleTechnicalSpecsParams]) -> ImdbTitleTechnicalSpecsResponse: ...
     def title_trivia(self, **params: Unpack[ImdbTitleTriviaParams]) -> ImdbTitleTriviaResponse: ...
+
+class ImportYetiGroup:
+    def importyeti_company(self, **params: Unpack[ImportYetiImportyetiCompanyParams]) -> ImportYetiImportyetiCompanyResponse: ...
+    def importyeti_search(self, **params: Unpack[ImportYetiImportyetiSearchParams]) -> ImportYetiImportyetiSearchResponse: ...
+
+class IndeedGroup:
+    def job(self, **params: Unpack[IndeedJobParams]) -> IndeedJobResponse: ...
+    def locations_suggest(self, **params: Unpack[IndeedLocationsSuggestParams]) -> IndeedLocationsSuggestResponse: ...
+    def search(self, **params: Unpack[IndeedSearchParams]) -> IndeedSearchResponse: ...
 
 class InstagramGroup:
     def post(self, **params: Unpack[InstagramPostParams]) -> InstagramPostResponse: ...
@@ -31113,6 +33365,12 @@ class NumbeoGroup:
     def indices_country(self, **params: Unpack[NumbeoIndicesCountryParams]) -> NumbeoIndicesCountryResponse: ...
     def indices_rankings(self, **params: Unpack[NumbeoIndicesRankingsParams]) -> NumbeoIndicesRankingsResponse: ...
     def indices_rankings_by_country(self, **params: Unpack[NumbeoIndicesRankingsByCountryParams]) -> NumbeoIndicesRankingsByCountryResponse: ...
+
+class OpenTableGroup:
+    def opentable_restaurant(self, **params: Unpack[OpenTableOpentableRestaurantParams]) -> OpenTableOpentableRestaurantResponse: ...
+    def opentable_restaurant_menus(self, **params: Unpack[OpenTableOpentableRestaurantMenusParams]) -> OpenTableOpentableRestaurantMenusResponse: ...
+    def opentable_restaurant_reviews(self, **params: Unpack[OpenTableOpentableRestaurantReviewsParams]) -> OpenTableOpentableRestaurantReviewsResponse: ...
+    def opentable_search(self, **params: Unpack[OpenTableOpentableSearchParams]) -> OpenTableOpentableSearchResponse: ...
 
 class MetaGroup:
     def ping(self, **params: Unpack[MetaPingParams]) -> MetaPingResponse: ...
@@ -31545,6 +33803,16 @@ class YahooFinanceGroup:
     def ticker_valuation(self, **params: Unpack[YahooFinanceTickerValuationParams]) -> YahooFinanceTickerValuationResponse: ...
     def trending(self, **params: Unpack[YahooFinanceTrendingParams]) -> YahooFinanceTrendingResponse: ...
 
+class YelpGroup:
+    def business(self, **params: Unpack[YelpBusinessParams]) -> YelpBusinessResponse: ...
+    def business_menu(self, **params: Unpack[YelpBusinessMenuParams]) -> YelpBusinessMenuResponse: ...
+    def business_photos(self, **params: Unpack[YelpBusinessPhotosParams]) -> YelpBusinessPhotosResponse: ...
+    def business_reviews(self, **params: Unpack[YelpBusinessReviewsParams]) -> YelpBusinessReviewsResponse: ...
+    def business_review_highlights(self, **params: Unpack[YelpBusinessReviewHighlightsParams]) -> YelpBusinessReviewHighlightsResponse: ...
+    def business_reviews_search(self, **params: Unpack[YelpBusinessReviewsSearchParams]) -> YelpBusinessReviewsSearchResponse: ...
+    def geocode(self, **params: Unpack[YelpGeocodeParams]) -> YelpGeocodeResponse: ...
+    def search(self, **params: Unpack[YelpSearchParams]) -> YelpSearchResponse: ...
+
 class YoutubeGroup:
     def captions(self, **params: Unpack[YoutubeCaptionsParams]) -> YoutubeCaptionsResponse: ...
     def channel_playlists(self, **params: Unpack[YoutubeChannelPlaylistsParams]) -> YoutubeChannelPlaylistsResponse: ...
@@ -31559,6 +33827,13 @@ class YoutubeGroup:
     def transcript(self, **params: Unpack[YoutubeTranscriptParams]) -> YoutubeTranscriptResponse: ...
     def transcript_languages(self, **params: Unpack[YoutubeTranscriptLanguagesParams]) -> YoutubeTranscriptLanguagesResponse: ...
     def video(self, **params: Unpack[YoutubeVideoParams]) -> YoutubeVideoResponse: ...
+
+class ZalandoGroup:
+    def category(self, **params: Unpack[ZalandoCategoryParams]) -> ZalandoCategoryResponse: ...
+    def markets(self, **params: Unpack[ZalandoMarketsParams]) -> ZalandoMarketsResponse: ...
+    def product(self, **params: Unpack[ZalandoProductParams]) -> ZalandoProductResponse: ...
+    def search(self, **params: Unpack[ZalandoSearchParams]) -> ZalandoSearchResponse: ...
+    def suggest(self, **params: Unpack[ZalandoSuggestParams]) -> ZalandoSuggestResponse: ...
 
 class ZillowGroup:
     def autocomplete(self, **params: Unpack[ZillowAutocompleteParams]) -> ZillowAutocompleteResponse: ...
@@ -31621,6 +33896,9 @@ OperationId = Literal[
     'appstore-similar',
     'appstore-suggest',
     'appstore-version-history',
+    'autotrader-dealer',
+    'autotrader-search',
+    'autotrader-vehicle',
     'billing-me',
     'billing-me-checkout',
     'billing-me-events',
@@ -31634,6 +33912,14 @@ OperationId = Literal[
     'bing-search',
     'bing-suggest',
     'bing-videos',
+    'booking-attractions-detail',
+    'booking-attractions-reviews',
+    'booking-attractions-search',
+    'booking-flights-autocomplete',
+    'booking-flights-search',
+    'booking-hotel-detail',
+    'booking-reviews',
+    'booking-search',
     'boxofficemojo-brand',
     'boxofficemojo-brands',
     'boxofficemojo-calendar',
@@ -31815,6 +34101,7 @@ OperationId = Literal[
     'discogs-master',
     'discogs-release',
     'discogs-search',
+    'doordash-explore',
     'doordash-feed',
     'doordash-search',
     'doordash-search-autocomplete',
@@ -31822,6 +34109,7 @@ OperationId = Literal[
     'doordash-search-items',
     'doordash-store',
     'doordash-store-fulfillment',
+    'doordash-store-info',
     'doordash-store-item',
     'doordash-store-menu',
     'doordash-store-reviews',
@@ -31840,7 +34128,24 @@ OperationId = Literal[
     'espn-team',
     'espn-team-roster',
     'espn-teams',
+    'etsy-listing',
+    'etsy-listing-reviews',
+    'etsy-search',
+    'etsy-shop-search',
+    'etsy-shop',
+    'etsy-shop-listings',
+    'etsy-shop-reviews',
+    'expedia-activities-search',
+    'expedia-flights-search',
+    'expedia-locations-search',
+    'expedia-properties-detail',
+    'expedia-properties-filters',
+    'expedia-properties-reviews',
+    'expedia-properties-search',
     'extract',
+    'facebook-group',
+    'facebook-marketplace-item',
+    'facebook-marketplace-search',
     'facebook-page',
     'geocoding-lookup',
     'geocoding-reverse',
@@ -31945,6 +34250,11 @@ OperationId = Literal[
     'imdb-title-reviews',
     'imdb-title-technical-specs',
     'imdb-title-trivia',
+    'importyeti-company',
+    'importyeti-search',
+    'indeed-job',
+    'indeed-locations-suggest',
+    'indeed-search',
     'instagram-post',
     'instagram-profile',
     'instagram-reels',
@@ -32076,6 +34386,10 @@ OperationId = Literal[
     'numbeo-indices-country',
     'numbeo-indices-rankings',
     'numbeo-indices-rankings-by-country',
+    'opentable-restaurant',
+    'opentable-restaurant-menus',
+    'opentable-restaurant-reviews',
+    'opentable-search',
     'ping',
     'pitchbook-advisor',
     'pitchbook-company',
@@ -32445,6 +34759,14 @@ OperationId = Literal[
     'yahoo-finance-ticker-sustainability',
     'yahoo-finance-ticker-valuation',
     'yahoo-finance-trending',
+    'yelp-business',
+    'yelp-business-menu',
+    'yelp-business-photos',
+    'yelp-business-reviews',
+    'yelp-business-review-highlights',
+    'yelp-business-reviews-search',
+    'yelp-geocode',
+    'yelp-search',
     'youtube-captions',
     'youtube-channel-playlists',
     'youtube-channel-search',
@@ -32458,6 +34780,11 @@ OperationId = Literal[
     'youtube-transcript',
     'youtube-transcript-languages',
     'youtube-video',
+    'zalando-category',
+    'zalando-markets',
+    'zalando-product',
+    'zalando-search',
+    'zalando-suggest',
     'zillow-autocomplete',
     'zillow-property',
     'zillow-search',
@@ -32472,8 +34799,10 @@ class CrawloraClient:
     apple_jobs: AppleJobsGroup
     apple_podcasts: ApplePodcastsGroup
     app_store: AppStoreGroup
+    autotrader: AutotraderGroup
     billing: BillingGroup
     bing: BingGroup
+    booking: BookingGroup
     box_office_mojo: BoxOfficeMojoGroup
     brand: BrandGroup
     brave: BraveGroup
@@ -32486,6 +34815,8 @@ class CrawloraClient:
     door_dash: DoorDashGroup
     e_bay: EBayGroup
     espn: EspnGroup
+    etsy: EtsyGroup
+    expedia: ExpediaGroup
     facebook: FacebookGroup
     geocoding: GeocodingGroup
     git_hub: GitHubGroup
@@ -32494,6 +34825,8 @@ class CrawloraClient:
     google: GoogleGroup
     google_play: GooglePlayGroup
     imdb: ImdbGroup
+    import_yeti: ImportYetiGroup
+    indeed: IndeedGroup
     instagram: InstagramGroup
     jobs: JobsGroup
     just_watch: JustWatchGroup
@@ -32506,6 +34839,7 @@ class CrawloraClient:
     metaculus: MetaculusGroup
     mlb: MlbGroup
     numbeo: NumbeoGroup
+    open_table: OpenTableGroup
     meta: MetaGroup
     pitch_book: PitchBookGroup
     play_station: PlayStationGroup
@@ -32538,7 +34872,9 @@ class CrawloraClient:
     walmart: WalmartGroup
     x: XGroup
     yahoo_finance: YahooFinanceGroup
+    yelp: YelpGroup
     youtube: YoutubeGroup
+    zalando: ZalandoGroup
     zillow: ZillowGroup
     api_key: str
     jwt_token: str
@@ -33283,6 +35619,42 @@ class CrawloraClient:
     @overload
     def operation(
         self,
+        operation_id: Literal['autotrader-dealer'],
+        params: AutotraderDealerParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> AutotraderDealerResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['autotrader-search'],
+        params: AutotraderSearchParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> AutotraderSearchResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['autotrader-vehicle'],
+        params: AutotraderVehicleParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> AutotraderVehicleResponse: ...
+    @overload
+    def operation(
+        self,
         operation_id: Literal['billing-me'],
         params: BillingMeParams = ...,
         *,
@@ -33436,6 +35808,102 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> BingVideosResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['booking-attractions-detail'],
+        params: BookingAttractionsDetailParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> BookingAttractionsDetailResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['booking-attractions-reviews'],
+        params: BookingAttractionsReviewsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> BookingAttractionsReviewsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['booking-attractions-search'],
+        params: BookingAttractionsSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> BookingAttractionsSearchResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['booking-flights-autocomplete'],
+        params: BookingFlightsAutocompleteParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> BookingFlightsAutocompleteResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['booking-flights-search'],
+        params: BookingFlightsSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> BookingFlightsSearchResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['booking-hotel-detail'],
+        params: BookingHotelDetailParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> BookingHotelDetailResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['booking-reviews'],
+        params: BookingReviewsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> BookingReviewsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['booking-search'],
+        params: BookingSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> BookingSearchResponse: ...
     @overload
     def operation(
         self,
@@ -35611,6 +38079,18 @@ class CrawloraClient:
     @overload
     def operation(
         self,
+        operation_id: Literal['doordash-explore'],
+        params: DoorDashDoordashExploreParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DoorDashDoordashExploreResponse: ...
+    @overload
+    def operation(
+        self,
         operation_id: Literal['doordash-feed'],
         params: DoorDashDoordashFeedParams,
         *,
@@ -35692,6 +38172,18 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> DoorDashDoordashStoreFulfillmentResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['doordash-store-info'],
+        params: DoorDashDoordashStoreInfoParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DoorDashDoordashStoreInfoResponse: ...
     @overload
     def operation(
         self,
@@ -35911,6 +38403,174 @@ class CrawloraClient:
     @overload
     def operation(
         self,
+        operation_id: Literal['etsy-listing'],
+        params: EtsyListingParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> EtsyListingResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['etsy-listing-reviews'],
+        params: EtsyListingReviewsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> EtsyListingReviewsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['etsy-search'],
+        params: EtsySearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> EtsySearchResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['etsy-shop-search'],
+        params: EtsyShopSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> EtsyShopSearchResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['etsy-shop'],
+        params: EtsyShopParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> EtsyShopResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['etsy-shop-listings'],
+        params: EtsyShopListingsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> EtsyShopListingsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['etsy-shop-reviews'],
+        params: EtsyShopReviewsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> EtsyShopReviewsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['expedia-activities-search'],
+        params: ExpediaActivitiesSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ExpediaActivitiesSearchResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['expedia-flights-search'],
+        params: ExpediaFlightsSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ExpediaFlightsSearchResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['expedia-locations-search'],
+        params: ExpediaLocationsSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ExpediaLocationsSearchResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['expedia-properties-detail'],
+        params: ExpediaPropertiesDetailParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ExpediaPropertiesDetailResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['expedia-properties-filters'],
+        params: ExpediaPropertiesFiltersParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ExpediaPropertiesFiltersResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['expedia-properties-reviews'],
+        params: ExpediaPropertiesReviewsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ExpediaPropertiesReviewsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['expedia-properties-search'],
+        params: ExpediaPropertiesSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ExpediaPropertiesSearchResponse: ...
+    @overload
+    def operation(
+        self,
         operation_id: Literal['extract'],
         params: WebExtractParams,
         *,
@@ -35920,6 +38580,42 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> WebExtractResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['facebook-group'],
+        params: FacebookGroupParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FacebookGroupResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['facebook-marketplace-item'],
+        params: FacebookMarketplaceItemParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FacebookMarketplaceItemResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['facebook-marketplace-search'],
+        params: FacebookMarketplaceSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FacebookMarketplaceSearchResponse: ...
     @overload
     def operation(
         self,
@@ -37168,6 +39864,66 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> ImdbTitleTriviaResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['importyeti-company'],
+        params: ImportYetiImportyetiCompanyParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ImportYetiImportyetiCompanyResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['importyeti-search'],
+        params: ImportYetiImportyetiSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ImportYetiImportyetiSearchResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['indeed-job'],
+        params: IndeedJobParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> IndeedJobResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['indeed-locations-suggest'],
+        params: IndeedLocationsSuggestParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> IndeedLocationsSuggestResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['indeed-search'],
+        params: IndeedSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> IndeedSearchResponse: ...
     @overload
     def operation(
         self,
@@ -38740,6 +41496,54 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> NumbeoIndicesRankingsByCountryResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['opentable-restaurant'],
+        params: OpenTableOpentableRestaurantParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> OpenTableOpentableRestaurantResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['opentable-restaurant-menus'],
+        params: OpenTableOpentableRestaurantMenusParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> OpenTableOpentableRestaurantMenusResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['opentable-restaurant-reviews'],
+        params: OpenTableOpentableRestaurantReviewsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> OpenTableOpentableRestaurantReviewsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['opentable-search'],
+        params: OpenTableOpentableSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> OpenTableOpentableSearchResponse: ...
     @overload
     def operation(
         self,
@@ -43171,6 +45975,102 @@ class CrawloraClient:
     @overload
     def operation(
         self,
+        operation_id: Literal['yelp-business'],
+        params: YelpBusinessParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> YelpBusinessResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['yelp-business-menu'],
+        params: YelpBusinessMenuParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> YelpBusinessMenuResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['yelp-business-photos'],
+        params: YelpBusinessPhotosParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> YelpBusinessPhotosResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['yelp-business-reviews'],
+        params: YelpBusinessReviewsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> YelpBusinessReviewsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['yelp-business-review-highlights'],
+        params: YelpBusinessReviewHighlightsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> YelpBusinessReviewHighlightsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['yelp-business-reviews-search'],
+        params: YelpBusinessReviewsSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> YelpBusinessReviewsSearchResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['yelp-geocode'],
+        params: YelpGeocodeParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> YelpGeocodeResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['yelp-search'],
+        params: YelpSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> YelpSearchResponse: ...
+    @overload
+    def operation(
+        self,
         operation_id: Literal['youtube-captions'],
         params: YoutubeCaptionsParams,
         *,
@@ -43324,6 +46224,66 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> YoutubeVideoResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['zalando-category'],
+        params: ZalandoCategoryParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ZalandoCategoryResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['zalando-markets'],
+        params: ZalandoMarketsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ZalandoMarketsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['zalando-product'],
+        params: ZalandoProductParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ZalandoProductResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['zalando-search'],
+        params: ZalandoSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ZalandoSearchResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['zalando-suggest'],
+        params: ZalandoSuggestParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ZalandoSuggestResponse: ...
     @overload
     def operation(
         self,
@@ -44035,6 +46995,42 @@ class CrawloraClient:
     @overload
     def request(
         self,
+        operation_id: Literal['autotrader-dealer'],
+        params: AutotraderDealerParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> AutotraderDealerResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['autotrader-search'],
+        params: AutotraderSearchParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> AutotraderSearchResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['autotrader-vehicle'],
+        params: AutotraderVehicleParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> AutotraderVehicleResponse: ...
+    @overload
+    def request(
+        self,
         operation_id: Literal['billing-me'],
         params: BillingMeParams = ...,
         *,
@@ -44188,6 +47184,102 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> BingVideosResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['booking-attractions-detail'],
+        params: BookingAttractionsDetailParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> BookingAttractionsDetailResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['booking-attractions-reviews'],
+        params: BookingAttractionsReviewsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> BookingAttractionsReviewsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['booking-attractions-search'],
+        params: BookingAttractionsSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> BookingAttractionsSearchResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['booking-flights-autocomplete'],
+        params: BookingFlightsAutocompleteParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> BookingFlightsAutocompleteResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['booking-flights-search'],
+        params: BookingFlightsSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> BookingFlightsSearchResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['booking-hotel-detail'],
+        params: BookingHotelDetailParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> BookingHotelDetailResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['booking-reviews'],
+        params: BookingReviewsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> BookingReviewsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['booking-search'],
+        params: BookingSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> BookingSearchResponse: ...
     @overload
     def request(
         self,
@@ -46363,6 +49455,18 @@ class CrawloraClient:
     @overload
     def request(
         self,
+        operation_id: Literal['doordash-explore'],
+        params: DoorDashDoordashExploreParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DoorDashDoordashExploreResponse: ...
+    @overload
+    def request(
+        self,
         operation_id: Literal['doordash-feed'],
         params: DoorDashDoordashFeedParams,
         *,
@@ -46444,6 +49548,18 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> DoorDashDoordashStoreFulfillmentResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['doordash-store-info'],
+        params: DoorDashDoordashStoreInfoParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DoorDashDoordashStoreInfoResponse: ...
     @overload
     def request(
         self,
@@ -46663,6 +49779,174 @@ class CrawloraClient:
     @overload
     def request(
         self,
+        operation_id: Literal['etsy-listing'],
+        params: EtsyListingParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> EtsyListingResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['etsy-listing-reviews'],
+        params: EtsyListingReviewsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> EtsyListingReviewsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['etsy-search'],
+        params: EtsySearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> EtsySearchResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['etsy-shop-search'],
+        params: EtsyShopSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> EtsyShopSearchResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['etsy-shop'],
+        params: EtsyShopParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> EtsyShopResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['etsy-shop-listings'],
+        params: EtsyShopListingsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> EtsyShopListingsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['etsy-shop-reviews'],
+        params: EtsyShopReviewsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> EtsyShopReviewsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['expedia-activities-search'],
+        params: ExpediaActivitiesSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ExpediaActivitiesSearchResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['expedia-flights-search'],
+        params: ExpediaFlightsSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ExpediaFlightsSearchResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['expedia-locations-search'],
+        params: ExpediaLocationsSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ExpediaLocationsSearchResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['expedia-properties-detail'],
+        params: ExpediaPropertiesDetailParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ExpediaPropertiesDetailResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['expedia-properties-filters'],
+        params: ExpediaPropertiesFiltersParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ExpediaPropertiesFiltersResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['expedia-properties-reviews'],
+        params: ExpediaPropertiesReviewsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ExpediaPropertiesReviewsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['expedia-properties-search'],
+        params: ExpediaPropertiesSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ExpediaPropertiesSearchResponse: ...
+    @overload
+    def request(
+        self,
         operation_id: Literal['extract'],
         params: WebExtractParams,
         *,
@@ -46672,6 +49956,42 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> WebExtractResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['facebook-group'],
+        params: FacebookGroupParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FacebookGroupResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['facebook-marketplace-item'],
+        params: FacebookMarketplaceItemParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FacebookMarketplaceItemResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['facebook-marketplace-search'],
+        params: FacebookMarketplaceSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FacebookMarketplaceSearchResponse: ...
     @overload
     def request(
         self,
@@ -47920,6 +51240,66 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> ImdbTitleTriviaResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['importyeti-company'],
+        params: ImportYetiImportyetiCompanyParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ImportYetiImportyetiCompanyResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['importyeti-search'],
+        params: ImportYetiImportyetiSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ImportYetiImportyetiSearchResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['indeed-job'],
+        params: IndeedJobParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> IndeedJobResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['indeed-locations-suggest'],
+        params: IndeedLocationsSuggestParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> IndeedLocationsSuggestResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['indeed-search'],
+        params: IndeedSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> IndeedSearchResponse: ...
     @overload
     def request(
         self,
@@ -49492,6 +52872,54 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> NumbeoIndicesRankingsByCountryResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['opentable-restaurant'],
+        params: OpenTableOpentableRestaurantParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> OpenTableOpentableRestaurantResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['opentable-restaurant-menus'],
+        params: OpenTableOpentableRestaurantMenusParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> OpenTableOpentableRestaurantMenusResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['opentable-restaurant-reviews'],
+        params: OpenTableOpentableRestaurantReviewsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> OpenTableOpentableRestaurantReviewsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['opentable-search'],
+        params: OpenTableOpentableSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> OpenTableOpentableSearchResponse: ...
     @overload
     def request(
         self,
@@ -53923,6 +57351,102 @@ class CrawloraClient:
     @overload
     def request(
         self,
+        operation_id: Literal['yelp-business'],
+        params: YelpBusinessParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> YelpBusinessResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['yelp-business-menu'],
+        params: YelpBusinessMenuParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> YelpBusinessMenuResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['yelp-business-photos'],
+        params: YelpBusinessPhotosParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> YelpBusinessPhotosResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['yelp-business-reviews'],
+        params: YelpBusinessReviewsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> YelpBusinessReviewsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['yelp-business-review-highlights'],
+        params: YelpBusinessReviewHighlightsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> YelpBusinessReviewHighlightsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['yelp-business-reviews-search'],
+        params: YelpBusinessReviewsSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> YelpBusinessReviewsSearchResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['yelp-geocode'],
+        params: YelpGeocodeParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> YelpGeocodeResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['yelp-search'],
+        params: YelpSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> YelpSearchResponse: ...
+    @overload
+    def request(
+        self,
         operation_id: Literal['youtube-captions'],
         params: YoutubeCaptionsParams,
         *,
@@ -54076,6 +57600,66 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> YoutubeVideoResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['zalando-category'],
+        params: ZalandoCategoryParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ZalandoCategoryResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['zalando-markets'],
+        params: ZalandoMarketsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ZalandoMarketsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['zalando-product'],
+        params: ZalandoProductParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ZalandoProductResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['zalando-search'],
+        params: ZalandoSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ZalandoSearchResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['zalando-suggest'],
+        params: ZalandoSuggestParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ZalandoSuggestResponse: ...
     @overload
     def request(
         self,
