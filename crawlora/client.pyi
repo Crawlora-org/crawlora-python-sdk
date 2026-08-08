@@ -4887,6 +4887,8 @@ ModelCongressStockDisclosureResponse = TypedDict('ModelCongressStockDisclosureRe
     'count': NotRequired[int],
     'fetched_at': NotRequired[str],
     'from': NotRequired[str],
+    'limit': NotRequired[int],
+    'page': NotRequired[int],
     'query': NotRequired[str],
     'results': NotRequired[list[ModelCongressHouseDisclosure]],
     'sort': NotRequired[str],
@@ -26938,6 +26940,7 @@ CongressStockDisclosuresParams = TypedDict('CongressStockDisclosuresParams', {
     'from': NotRequired[str],
     'to': NotRequired[str],
     'sort': NotRequired[Literal['name_asc', 'name_desc', 'office_asc', 'office_desc', 'filing_year_asc', 'filing_year_desc']],
+    'page': NotRequired[int],
     'limit': NotRequired[int],
 }, total=False)
 
