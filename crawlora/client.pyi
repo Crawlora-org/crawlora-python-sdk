@@ -4876,12 +4876,26 @@ ModelCongressReportDetail = TypedDict('ModelCongressReportDetail', {
     'report_type': NotRequired[str],
     'source_url': NotRequired[str],
     'title': NotRequired[str],
+    'transactions': NotRequired[list[ModelCongressReportTransaction]],
 }, total=False)
 
 ModelCongressReportPart = TypedDict('ModelCongressReportPart', {
     'answer': NotRequired[str],
     'rows': NotRequired[list[dict[str, str]]],
     'title': NotRequired[str],
+}, total=False)
+
+ModelCongressReportTransaction = TypedDict('ModelCongressReportTransaction', {
+    'amount': NotRequired[str],
+    'asset_name': NotRequired[str],
+    'asset_type': NotRequired[str],
+    'comment': NotRequired[str],
+    'owner': NotRequired[str],
+    'source_part': NotRequired[str],
+    'source_row_number': NotRequired[str],
+    'ticker': NotRequired[str],
+    'transaction_date': NotRequired[str],
+    'transaction_type': NotRequired[str],
 }, total=False)
 
 ModelCongressStockDisclosureResponse = TypedDict('ModelCongressStockDisclosureResponse', {
