@@ -4856,11 +4856,13 @@ ModelCoingeckoTrendingResponseDoc = TypedDict('ModelCoingeckoTrendingResponseDoc
 ModelCongressChamber = Literal['house', 'senate']
 
 ModelCongressHouseDisclosure = TypedDict('ModelCongressHouseDisclosure', {
+    'filed_at': NotRequired[str],
     'filing_type': NotRequired[str],
     'filing_url': NotRequired[str],
     'filing_year': NotRequired[int],
     'member': NotRequired[str],
     'office': NotRequired[str],
+    'year_kind': NotRequired[Literal['filing', 'election']],
 }, total=False)
 
 ModelCongressReportDetail = TypedDict('ModelCongressReportDetail', {
@@ -26934,13 +26936,13 @@ CongressStockDisclosuresParams = TypedDict('CongressStockDisclosuresParams', {
     'first_name': NotRequired[str],
     'last_name': NotRequired[str],
     'ticker': NotRequired[str],
-    'state': NotRequired[str],
-    'senator_state': NotRequired[str],
-    'candidate_state': NotRequired[str],
+    'state': NotRequired[Literal['AK', 'AL', 'AR', 'AS', 'AZ', 'CA', 'CO', 'CT', 'DC', 'DE', 'FL', 'FM', 'GA', 'GU', 'HI', 'IA', 'ID', 'IL', 'IN', 'KS', 'KY', 'LA', 'MA', 'MD', 'ME', 'MH', 'MI', 'MN', 'MO', 'MP', 'MS', 'MT', 'NC', 'ND', 'NE', 'NH', 'NJ', 'NM', 'NV', 'NY', 'OH', 'OK', 'OR', 'PA', 'PR', 'PW', 'RI', 'SC', 'SD', 'TN', 'TX', 'UT', 'VA', 'VI', 'VT', 'WA', 'WI', 'WV', 'WY']],
+    'senator_state': NotRequired[Literal['AK', 'AL', 'AR', 'AS', 'AZ', 'CA', 'CO', 'CT', 'DC', 'DE', 'FL', 'FM', 'GA', 'GU', 'HI', 'IA', 'ID', 'IL', 'IN', 'KS', 'KY', 'LA', 'MA', 'MD', 'ME', 'MH', 'MI', 'MN', 'MO', 'MP', 'MS', 'MT', 'NC', 'ND', 'NE', 'NH', 'NJ', 'NM', 'NV', 'NY', 'OH', 'OK', 'OR', 'PA', 'PR', 'PW', 'RI', 'SC', 'SD', 'TN', 'TX', 'UT', 'VA', 'VI', 'VT', 'WA', 'WI', 'WV', 'WY']],
+    'candidate_state': NotRequired[Literal['AK', 'AL', 'AR', 'AS', 'AZ', 'CA', 'CO', 'CT', 'DC', 'DE', 'FL', 'FM', 'GA', 'GU', 'HI', 'IA', 'ID', 'IL', 'IN', 'KS', 'KY', 'LA', 'MA', 'MD', 'ME', 'MH', 'MI', 'MN', 'MO', 'MP', 'MS', 'MT', 'NC', 'ND', 'NE', 'NH', 'NJ', 'NM', 'NV', 'NY', 'OH', 'OK', 'OR', 'PA', 'PR', 'PW', 'RI', 'SC', 'SD', 'TN', 'TX', 'UT', 'VA', 'VI', 'VT', 'WA', 'WI', 'WV', 'WY']],
     'district': NotRequired[str],
-    'filer_type': NotRequired[str],
+    'filer_type': NotRequired[Literal['member', 'candidate', 'all', 'senator', 'former_senator']],
     'election_year': NotRequired[str],
-    'report_type': NotRequired[str],
+    'report_type': NotRequired[Literal['annual', 'periodic_transaction', 'due_date_extension', 'blind_trust', 'other']],
     'from': NotRequired[str],
     'to': NotRequired[str],
     'sort': NotRequired[Literal['name_asc', 'name_desc', 'office_asc', 'office_desc', 'filing_year_asc', 'filing_year_desc']],

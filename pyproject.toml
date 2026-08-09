@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "crawlora"
-version = "1.34.0.dev3"
+version = "1.34.0.dev4"
 description = "Official Python SDK for the Crawlora web-scraping API: typed grouped and dynamic operation calls for every public endpoint, with retries, pagination, hooks, and an async client."
 readme = "README.md"
 requires-python = ">=3.10"
