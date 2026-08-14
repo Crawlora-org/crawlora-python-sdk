@@ -279,3 +279,11 @@ results = crawlora.request("etsy-search", {"q": "handmade mug"})
 listing = crawlora.request("etsy-listing", {"id": "4474501681"})
 shop = crawlora.request("etsy-shop", {"id": "gaguatelier"})
 ```
+
+## Twitch And SoundCloud
+
+```python
+channel = crawlora.request("twitch-channel", {"login": "caedrel"})
+streams = crawlora.request("twitch-streams", {"game": "league-of-legends", "limit": 20})
+track = crawlora.request("soundcloud-track", {"url": "https://soundcloud.com/artist/track-name"})
+```
