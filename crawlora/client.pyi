@@ -1700,7 +1700,33 @@ ModelAutotraderSearchResponseDoc = TypedDict('ModelAutotraderSearchResponseDoc',
     'msg': NotRequired[str],
 }, total=False)
 
+ModelBestbuyBrand = TypedDict('ModelBestbuyBrand', {
+    'id': NotRequired[str],
+    'name': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelBestbuyBrandsResponse = TypedDict('ModelBestbuyBrandsResponse', {
+    'brands': NotRequired[list[ModelBestbuyBrand]],
+    'count': NotRequired[int],
+    'fetched_at': NotRequired[str],
+    'source_url': NotRequired[str],
+}, total=False)
+
 ModelBestbuyBreadcrumb = TypedDict('ModelBestbuyBreadcrumb', {
+    'name': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelBestbuyCategoriesResponse = TypedDict('ModelBestbuyCategoriesResponse', {
+    'categories': NotRequired[list[ModelBestbuyCategory]],
+    'count': NotRequired[int],
+    'fetched_at': NotRequired[str],
+    'source_url': NotRequired[str],
+}, total=False)
+
+ModelBestbuyCategory = TypedDict('ModelBestbuyCategory', {
+    'id': NotRequired[str],
     'name': NotRequired[str],
     'url': NotRequired[str],
 }, total=False)
@@ -1719,6 +1745,7 @@ ModelBestbuyCategoryResponse = TypedDict('ModelBestbuyCategoryResponse', {
     'category_id': NotRequired[str],
     'count': NotRequired[int],
     'fetched_at': NotRequired[str],
+    'page': NotRequired[int],
     'products': NotRequired[list[ModelBestbuyCategoryProduct]],
     'source_url': NotRequired[str],
     'total': NotRequired[int],
@@ -1743,6 +1770,29 @@ ModelBestbuyProduct = TypedDict('ModelBestbuyProduct', {
     'url': NotRequired[str],
 }, total=False)
 
+ModelBestbuyProductQuestion = TypedDict('ModelBestbuyProductQuestion', {
+    'answer': NotRequired[str],
+    'answered': NotRequired[str],
+    'answered_by': NotRequired[str],
+    'question': NotRequired[str],
+}, total=False)
+
+ModelBestbuyProductQuestionsResponse = TypedDict('ModelBestbuyProductQuestionsResponse', {
+    'count': NotRequired[int],
+    'fetched_at': NotRequired[str],
+    'questions': NotRequired[list[ModelBestbuyProductQuestion]],
+    'sku': NotRequired[str],
+    'source_url': NotRequired[str],
+}, total=False)
+
+ModelBestbuyProductRelatedResponse = TypedDict('ModelBestbuyProductRelatedResponse', {
+    'count': NotRequired[int],
+    'fetched_at': NotRequired[str],
+    'products': NotRequired[list[ModelBestbuyRelatedProduct]],
+    'sku': NotRequired[str],
+    'source_url': NotRequired[str],
+}, total=False)
+
 ModelBestbuyProductResponse = TypedDict('ModelBestbuyProductResponse', {
     'fetched_at': NotRequired[str],
     'product': NotRequired[ModelBestbuyProduct],
@@ -1759,6 +1809,15 @@ ModelBestbuyProductReviewsResponse = TypedDict('ModelBestbuyProductReviewsRespon
     'source_url': NotRequired[str],
 }, total=False)
 
+ModelBestbuyRelatedProduct = TypedDict('ModelBestbuyRelatedProduct', {
+    'currency_code': NotRequired[str],
+    'image_url': NotRequired[str],
+    'name': NotRequired[str],
+    'price': NotRequired[float],
+    'sku': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
 ModelBestbuyReview = TypedDict('ModelBestbuyReview', {
     'author': NotRequired[str],
     'helpful': NotRequired[int],
@@ -1771,9 +1830,89 @@ ModelBestbuyReview = TypedDict('ModelBestbuyReview', {
     'unhelpful': NotRequired[int],
 }, total=False)
 
+ModelBestbuySearchResponse = TypedDict('ModelBestbuySearchResponse', {
+    'count': NotRequired[int],
+    'fetched_at': NotRequired[str],
+    'page': NotRequired[int],
+    'products': NotRequired[list[ModelBestbuyCategoryProduct]],
+    'query': NotRequired[str],
+    'source_url': NotRequired[str],
+    'total': NotRequired[int],
+}, total=False)
+
+ModelBestbuyStore = TypedDict('ModelBestbuyStore', {
+    'address': NotRequired[str],
+    'city': NotRequired[str],
+    'country': NotRequired[str],
+    'hours': NotRequired[dict[str, str]],
+    'latitude': NotRequired[float],
+    'longitude': NotRequired[float],
+    'name': NotRequired[str],
+    'phone': NotRequired[str],
+    'postal_code': NotRequired[str],
+    'rating': NotRequired[float],
+    'review_count': NotRequired[int],
+    'state': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelBestbuyStoreResponse = TypedDict('ModelBestbuyStoreResponse', {
+    'city': NotRequired[str],
+    'count': NotRequired[int],
+    'fetched_at': NotRequired[str],
+    'source_url': NotRequired[str],
+    'state': NotRequired[str],
+    'stores': NotRequired[list[ModelBestbuyStore]],
+}, total=False)
+
+ModelBestbuySubcategoriesResponse = TypedDict('ModelBestbuySubcategoriesResponse', {
+    'category_id': NotRequired[str],
+    'count': NotRequired[int],
+    'fetched_at': NotRequired[str],
+    'source_url': NotRequired[str],
+    'subcategories': NotRequired[list[ModelBestbuyCategory]],
+}, total=False)
+
+ModelBestbuyTrendingCategoriesResponse = TypedDict('ModelBestbuyTrendingCategoriesResponse', {
+    'categories': NotRequired[list[ModelBestbuyTrendingCategory]],
+    'count': NotRequired[int],
+    'fetched_at': NotRequired[str],
+    'source_url': NotRequired[str],
+}, total=False)
+
+ModelBestbuyTrendingCategory = TypedDict('ModelBestbuyTrendingCategory', {
+    'id': NotRequired[str],
+    'name': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelBestbuyBrandsResponseDoc = TypedDict('ModelBestbuyBrandsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelBestbuyBrandsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelBestbuyCategoriesResponseDoc = TypedDict('ModelBestbuyCategoriesResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelBestbuyCategoriesResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
 ModelBestbuyCategoryResponseDoc = TypedDict('ModelBestbuyCategoryResponseDoc', {
     'code': NotRequired[int],
     'data': NotRequired[ModelBestbuyCategoryResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelBestbuyProductQuestionsResponseDoc = TypedDict('ModelBestbuyProductQuestionsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelBestbuyProductQuestionsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelBestbuyProductRelatedResponseDoc = TypedDict('ModelBestbuyProductRelatedResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelBestbuyProductRelatedResponse],
     'msg': NotRequired[str],
 }, total=False)
 
@@ -1786,6 +1925,30 @@ ModelBestbuyProductResponseDoc = TypedDict('ModelBestbuyProductResponseDoc', {
 ModelBestbuyProductReviewsResponseDoc = TypedDict('ModelBestbuyProductReviewsResponseDoc', {
     'code': NotRequired[int],
     'data': NotRequired[ModelBestbuyProductReviewsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelBestbuySearchResponseDoc = TypedDict('ModelBestbuySearchResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelBestbuySearchResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelBestbuyStoresResponseDoc = TypedDict('ModelBestbuyStoresResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelBestbuyStoreResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelBestbuySubcategoriesResponseDoc = TypedDict('ModelBestbuySubcategoriesResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelBestbuySubcategoriesResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelBestbuyTrendingCategoriesResponseDoc = TypedDict('ModelBestbuyTrendingCategoriesResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelBestbuyTrendingCategoriesResponse],
     'msg': NotRequired[str],
 }, total=False)
 
@@ -6540,6 +6703,17 @@ ModelDatasetsXUsersSearchResponseDoc = TypedDict('ModelDatasetsXUsersSearchRespo
     'msg': NotRequired[str],
 }, total=False)
 
+ModelDepopBrand = TypedDict('ModelDepopBrand', {
+    'id': NotRequired[int],
+    'name': NotRequired[str],
+    'slug': NotRequired[str],
+}, total=False)
+
+ModelDepopBrandsResponse = TypedDict('ModelDepopBrandsResponse', {
+    'brands': NotRequired[list[ModelDepopBrand]],
+    'total': NotRequired[int],
+}, total=False)
+
 ModelDepopCategoriesResponse = TypedDict('ModelDepopCategoriesResponse', {
     'departments': NotRequired[list[ModelDepopDepartment]],
 }, total=False)
@@ -6556,6 +6730,18 @@ ModelDepopDepartment = TypedDict('ModelDepopDepartment', {
     'id': NotRequired[str],
     'is_kids': NotRequired[bool],
     'name': NotRequired[str],
+}, total=False)
+
+ModelDepopDepartmentFacets = TypedDict('ModelDepopDepartmentFacets', {
+    'categories': NotRequired[list[ModelDepopFacetCount]],
+    'count': NotRequired[int],
+    'department': NotRequired[str],
+    'subcategories': NotRequired[list[ModelDepopFacetCount]],
+}, total=False)
+
+ModelDepopFacetCount = TypedDict('ModelDepopFacetCount', {
+    'count': NotRequired[int],
+    'id': NotRequired[str],
 }, total=False)
 
 ModelDepopItemDetailResponse = TypedDict('ModelDepopItemDetailResponse', {
@@ -6595,6 +6781,11 @@ ModelDepopItemSummary = TypedDict('ModelDepopItemSummary', {
     'url': NotRequired[str],
 }, total=False)
 
+ModelDepopSearchFacetsResponse = TypedDict('ModelDepopSearchFacetsResponse', {
+    'departments': NotRequired[list[ModelDepopDepartmentFacets]],
+    'query': NotRequired[str],
+}, total=False)
+
 ModelDepopSearchResponse = TypedDict('ModelDepopSearchResponse', {
     'has_more': NotRequired[bool],
     'items': NotRequired[list[ModelDepopItemSummary]],
@@ -6603,12 +6794,25 @@ ModelDepopSearchResponse = TypedDict('ModelDepopSearchResponse', {
     'total_results': NotRequired[int],
 }, total=False)
 
+ModelDepopSearchSellersResponse = TypedDict('ModelDepopSearchSellersResponse', {
+    'query': NotRequired[str],
+    'sellers': NotRequired[list[ModelDepopSellerSummary]],
+}, total=False)
+
 ModelDepopSeller = TypedDict('ModelDepopSeller', {
     'first_name': NotRequired[str],
     'id': NotRequired[int],
     'picture_url': NotRequired[str],
     'username': NotRequired[str],
     'verified': NotRequired[bool],
+}, total=False)
+
+ModelDepopSellerSummary = TypedDict('ModelDepopSellerSummary', {
+    'avatar_url': NotRequired[str],
+    'first_name': NotRequired[str],
+    'id': NotRequired[int],
+    'last_name': NotRequired[str],
+    'username': NotRequired[str],
 }, total=False)
 
 ModelDepopShopItem = TypedDict('ModelDepopShopItem', {
@@ -6641,9 +6845,53 @@ ModelDepopSimilarItemsResponse = TypedDict('ModelDepopSimilarItemsResponse', {
     'next_cursor': NotRequired[str],
 }, total=False)
 
+ModelDepopSizeCategory = TypedDict('ModelDepopSizeCategory', {
+    'id': NotRequired[str],
+    'name': NotRequired[str],
+    'regions': NotRequired[list[ModelDepopSizeRegion]],
+}, total=False)
+
+ModelDepopSizeDepartment = TypedDict('ModelDepopSizeDepartment', {
+    'categories': NotRequired[list[ModelDepopSizeCategory]],
+    'id': NotRequired[str],
+    'name': NotRequired[str],
+}, total=False)
+
+ModelDepopSizeOption = TypedDict('ModelDepopSizeOption', {
+    'id': NotRequired[str],
+    'name': NotRequired[str],
+}, total=False)
+
+ModelDepopSizeRegion = TypedDict('ModelDepopSizeRegion', {
+    'region': NotRequired[str],
+    'sizes': NotRequired[list[ModelDepopSizeOption]],
+}, total=False)
+
+ModelDepopSizesResponse = TypedDict('ModelDepopSizesResponse', {
+    'departments': NotRequired[list[ModelDepopSizeDepartment]],
+}, total=False)
+
 ModelDepopSubcategory = TypedDict('ModelDepopSubcategory', {
     'name': NotRequired[str],
     'slug': NotRequired[str],
+}, total=False)
+
+ModelDepopSuggestResponse = TypedDict('ModelDepopSuggestResponse', {
+    'query': NotRequired[str],
+    'suggestions': NotRequired[list[ModelDepopSuggestion]],
+}, total=False)
+
+ModelDepopSuggestion = TypedDict('ModelDepopSuggestion', {
+    'gender': NotRequired[str],
+    'group': NotRequired[str],
+    'suggested_filter_label': NotRequired[str],
+    'value': NotRequired[str],
+}, total=False)
+
+ModelDepopBrandsResponseDoc = TypedDict('ModelDepopBrandsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelDepopBrandsResponse],
+    'msg': NotRequired[str],
 }, total=False)
 
 ModelDepopCategoriesResponseDoc = TypedDict('ModelDepopCategoriesResponseDoc', {
@@ -6652,9 +6900,21 @@ ModelDepopCategoriesResponseDoc = TypedDict('ModelDepopCategoriesResponseDoc', {
     'msg': NotRequired[str],
 }, total=False)
 
+ModelDepopSearchFacetsResponseDoc = TypedDict('ModelDepopSearchFacetsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelDepopSearchFacetsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
 ModelDepopSearchResponseDoc = TypedDict('ModelDepopSearchResponseDoc', {
     'code': NotRequired[int],
     'data': NotRequired[ModelDepopSearchResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelDepopSearchSellersResponseDoc = TypedDict('ModelDepopSearchSellersResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelDepopSearchSellersResponse],
     'msg': NotRequired[str],
 }, total=False)
 
@@ -6667,6 +6927,18 @@ ModelDepopShopResponseDoc = TypedDict('ModelDepopShopResponseDoc', {
 ModelDepopSimilarItemsResponseDoc = TypedDict('ModelDepopSimilarItemsResponseDoc', {
     'code': NotRequired[int],
     'data': NotRequired[ModelDepopSimilarItemsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelDepopSizesResponseDoc = TypedDict('ModelDepopSizesResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelDepopSizesResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelDepopSuggestResponseDoc = TypedDict('ModelDepopSuggestResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelDepopSuggestResponse],
     'msg': NotRequired[str],
 }, total=False)
 
@@ -7237,6 +7509,17 @@ ModelDraftkingsEvent = TypedDict('ModelDraftkingsEvent', {
     'status': NotRequired[str],
 }, total=False)
 
+ModelDraftkingsEventContextResponse = TypedDict('ModelDraftkingsEventContextResponse', {
+    'event_id': NotRequired[str],
+    'event_seo_id': NotRequired[str],
+    'fetched_at': NotRequired[str],
+    'league_id': NotRequired[str],
+    'league_seo_id': NotRequired[str],
+    'source_url': NotRequired[str],
+    'sport_id': NotRequired[str],
+    'sport_seo_id': NotRequired[str],
+}, total=False)
+
 ModelDraftkingsEventMarketsResponse = TypedDict('ModelDraftkingsEventMarketsResponse', {
     'count': NotRequired[int],
     'event_id': NotRequired[str],
@@ -7249,11 +7532,31 @@ ModelDraftkingsEventMarketsResponse = TypedDict('ModelDraftkingsEventMarketsResp
 ModelDraftkingsEventResponse = TypedDict('ModelDraftkingsEventResponse', {
     'fetched_at': NotRequired[str],
     'id': NotRequired[str],
+    'league_id': NotRequired[str],
     'name': NotRequired[str],
     'participants': NotRequired[list[ModelDraftkingsParticipant]],
     'source_url': NotRequired[str],
+    'sport_id': NotRequired[str],
     'start_time': NotRequired[str],
     'status': NotRequired[str],
+}, total=False)
+
+ModelDraftkingsFeaturedLeague = TypedDict('ModelDraftkingsFeaturedLeague', {
+    'featured_order': NotRequired[int],
+    'has_live_offers': NotRequired[bool],
+    'id': NotRequired[str],
+    'name': NotRequired[str],
+    'slug': NotRequired[str],
+    'sport': NotRequired[str],
+    'sport_id': NotRequired[str],
+    'tags': NotRequired[list[str]],
+}, total=False)
+
+ModelDraftkingsFeaturedLeaguesResponse = TypedDict('ModelDraftkingsFeaturedLeaguesResponse', {
+    'count': NotRequired[int],
+    'fetched_at': NotRequired[str],
+    'leagues': NotRequired[list[ModelDraftkingsFeaturedLeague]],
+    'source_url': NotRequired[str],
 }, total=False)
 
 ModelDraftkingsFuturesResponse = TypedDict('ModelDraftkingsFuturesResponse', {
@@ -7267,11 +7570,96 @@ ModelDraftkingsFuturesResponse = TypedDict('ModelDraftkingsFuturesResponse', {
     'subcategory_id': NotRequired[str],
 }, total=False)
 
+ModelDraftkingsLeague = TypedDict('ModelDraftkingsLeague', {
+    'has_live_offers': NotRequired[bool],
+    'id': NotRequired[str],
+    'name': NotRequired[str],
+    'slug': NotRequired[str],
+}, total=False)
+
+ModelDraftkingsLeagueEvent = TypedDict('ModelDraftkingsLeagueEvent', {
+    'id': NotRequired[str],
+    'name': NotRequired[str],
+    'participant_type': NotRequired[str],
+    'participants': NotRequired[list[ModelDraftkingsParticipant]],
+    'start_time': NotRequired[str],
+    'status': NotRequired[str],
+    'tags': NotRequired[list[str]],
+}, total=False)
+
+ModelDraftkingsLeagueEventsResponse = TypedDict('ModelDraftkingsLeagueEventsResponse', {
+    'count': NotRequired[int],
+    'events': NotRequired[list[ModelDraftkingsLeagueEvent]],
+    'fetched_at': NotRequired[str],
+    'league': NotRequired[str],
+    'league_id': NotRequired[str],
+    'source_url': NotRequired[str],
+    'sport': NotRequired[str],
+    'sport_id': NotRequired[str],
+}, total=False)
+
+ModelDraftkingsLeaguesResponse = TypedDict('ModelDraftkingsLeaguesResponse', {
+    'count': NotRequired[int],
+    'fetched_at': NotRequired[str],
+    'source_url': NotRequired[str],
+    'sports': NotRequired[list[ModelDraftkingsSport]],
+}, total=False)
+
+ModelDraftkingsLiveEvent = TypedDict('ModelDraftkingsLiveEvent', {
+    'categories': NotRequired[list[ModelDraftkingsMarketCategory]],
+    'id': NotRequired[str],
+    'league_id': NotRequired[str],
+    'markets': NotRequired[list[ModelDraftkingsMarket]],
+    'name': NotRequired[str],
+    'participants': NotRequired[list[ModelDraftkingsParticipant]],
+    'period': NotRequired[str],
+    'score': NotRequired[ModelDraftkingsLiveScore],
+    'sport_id': NotRequired[str],
+    'start_time': NotRequired[str],
+    'status': NotRequired[str],
+    'subcategories': NotRequired[list[ModelDraftkingsMarketSubcategory]],
+}, total=False)
+
+ModelDraftkingsLiveResponse = TypedDict('ModelDraftkingsLiveResponse', {
+    'count': NotRequired[int],
+    'events': NotRequired[list[ModelDraftkingsLiveEvent]],
+    'fetched_at': NotRequired[str],
+    'source_url': NotRequired[str],
+}, total=False)
+
+ModelDraftkingsLiveScore = TypedDict('ModelDraftkingsLiveScore', {
+    'current': NotRequired[ModelDraftkingsLiveScoreLine],
+    'on_serve': NotRequired[str],
+    'periods': NotRequired[list[ModelDraftkingsLiveScorePeriod]],
+}, total=False)
+
+ModelDraftkingsLiveScoreLine = TypedDict('ModelDraftkingsLiveScoreLine', {
+    'away': NotRequired[str],
+    'home': NotRequired[str],
+}, total=False)
+
+ModelDraftkingsLiveScorePeriod = TypedDict('ModelDraftkingsLiveScorePeriod', {
+    'away': NotRequired[str],
+    'home': NotRequired[str],
+    'name': NotRequired[str],
+}, total=False)
+
 ModelDraftkingsMarket = TypedDict('ModelDraftkingsMarket', {
     'id': NotRequired[str],
     'selections': NotRequired[list[ModelDraftkingsSelection]],
     'subcategory_id': NotRequired[str],
     'type': NotRequired[str],
+}, total=False)
+
+ModelDraftkingsMarketCategory = TypedDict('ModelDraftkingsMarketCategory', {
+    'id': NotRequired[str],
+    'name': NotRequired[str],
+}, total=False)
+
+ModelDraftkingsMarketSubcategory = TypedDict('ModelDraftkingsMarketSubcategory', {
+    'category_id': NotRequired[str],
+    'id': NotRequired[str],
+    'name': NotRequired[str],
 }, total=False)
 
 ModelDraftkingsOdds = TypedDict('ModelDraftkingsOdds', {
@@ -7296,11 +7684,74 @@ ModelDraftkingsParticipant = TypedDict('ModelDraftkingsParticipant', {
     'role': NotRequired[str],
 }, total=False)
 
+ModelDraftkingsQuickLink = TypedDict('ModelDraftkingsQuickLink', {
+    'league_id': NotRequired[str],
+    'name': NotRequired[str],
+    'path': NotRequired[str],
+    'sport_id': NotRequired[str],
+}, total=False)
+
+ModelDraftkingsQuickLinksResponse = TypedDict('ModelDraftkingsQuickLinksResponse', {
+    'count': NotRequired[int],
+    'fetched_at': NotRequired[str],
+    'links': NotRequired[list[ModelDraftkingsQuickLink]],
+    'source_url': NotRequired[str],
+}, total=False)
+
 ModelDraftkingsSelection = TypedDict('ModelDraftkingsSelection', {
     'label': NotRequired[str],
     'odds': NotRequired[ModelDraftkingsOdds],
     'outcome_type': NotRequired[str],
     'points': NotRequired[float],
+}, total=False)
+
+ModelDraftkingsSport = TypedDict('ModelDraftkingsSport', {
+    'id': NotRequired[str],
+    'leagues': NotRequired[list[ModelDraftkingsLeague]],
+    'name': NotRequired[str],
+    'slug': NotRequired[str],
+}, total=False)
+
+ModelDraftkingsTeam = TypedDict('ModelDraftkingsTeam', {
+    'id': NotRequired[str],
+    'name': NotRequired[str],
+    'slug': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelDraftkingsTeamDetailResponse = TypedDict('ModelDraftkingsTeamDetailResponse', {
+    'abbreviation': NotRequired[str],
+    'city': NotRequired[str],
+    'fetched_at': NotRequired[str],
+    'id': NotRequired[str],
+    'leagues': NotRequired[list[ModelDraftkingsTeamLeagueRef]],
+    'name': NotRequired[str],
+    'primary_color': NotRequired[str],
+    'secondary_color': NotRequired[str],
+    'short_name': NotRequired[str],
+    'source_url': NotRequired[str],
+    'sport': NotRequired[str],
+    'sport_id': NotRequired[str],
+}, total=False)
+
+ModelDraftkingsTeamLeagueRef = TypedDict('ModelDraftkingsTeamLeagueRef', {
+    'id': NotRequired[str],
+    'slug': NotRequired[str],
+}, total=False)
+
+ModelDraftkingsTeamsResponse = TypedDict('ModelDraftkingsTeamsResponse', {
+    'count': NotRequired[int],
+    'fetched_at': NotRequired[str],
+    'league': NotRequired[str],
+    'source_url': NotRequired[str],
+    'sport': NotRequired[str],
+    'teams': NotRequired[list[ModelDraftkingsTeam]],
+}, total=False)
+
+ModelDraftkingsEventContextResponseDoc = TypedDict('ModelDraftkingsEventContextResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelDraftkingsEventContextResponse],
+    'msg': NotRequired[str],
 }, total=False)
 
 ModelDraftkingsEventMarketsResponseDoc = TypedDict('ModelDraftkingsEventMarketsResponseDoc', {
@@ -7315,15 +7766,57 @@ ModelDraftkingsEventResponseDoc = TypedDict('ModelDraftkingsEventResponseDoc', {
     'msg': NotRequired[str],
 }, total=False)
 
+ModelDraftkingsFeaturedLeaguesResponseDoc = TypedDict('ModelDraftkingsFeaturedLeaguesResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelDraftkingsFeaturedLeaguesResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
 ModelDraftkingsFuturesResponseDoc = TypedDict('ModelDraftkingsFuturesResponseDoc', {
     'code': NotRequired[int],
     'data': NotRequired[ModelDraftkingsFuturesResponse],
     'msg': NotRequired[str],
 }, total=False)
 
+ModelDraftkingsLeagueEventsResponseDoc = TypedDict('ModelDraftkingsLeagueEventsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelDraftkingsLeagueEventsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelDraftkingsLeaguesResponseDoc = TypedDict('ModelDraftkingsLeaguesResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelDraftkingsLeaguesResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelDraftkingsLiveResponseDoc = TypedDict('ModelDraftkingsLiveResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelDraftkingsLiveResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
 ModelDraftkingsOddsResponseDoc = TypedDict('ModelDraftkingsOddsResponseDoc', {
     'code': NotRequired[int],
     'data': NotRequired[ModelDraftkingsOddsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelDraftkingsQuickLinksResponseDoc = TypedDict('ModelDraftkingsQuickLinksResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelDraftkingsQuickLinksResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelDraftkingsTeamResponseDoc = TypedDict('ModelDraftkingsTeamResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelDraftkingsTeamDetailResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelDraftkingsTeamsResponseDoc = TypedDict('ModelDraftkingsTeamsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelDraftkingsTeamsResponse],
     'msg': NotRequired[str],
 }, total=False)
 
@@ -8629,6 +9122,7 @@ ModelEsPitchbookRecord = TypedDict('ModelEsPitchbookRecord', {
     'commitments_count': NotRequired[int],
     'contact': NotRequired[dict[str, str]],
     'contact_title': NotRequired[str],
+    'content_hash': NotRequired[str],
     'crawled_at': NotRequired[str],
     'crawled_at_ms': NotRequired[int],
     'description': NotRequired[str],
@@ -11179,6 +11673,24 @@ ModelGooglepatentsClassification = TypedDict('ModelGooglepatentsClassification',
     'is_cpc': NotRequired[bool],
 }, total=False)
 
+ModelGooglepatentsClassificationRelation = TypedDict('ModelGooglepatentsClassificationRelation', {
+    'code': NotRequired[str],
+    'description': NotRequired[str],
+    'is_child': NotRequired[bool],
+    'is_parent': NotRequired[bool],
+    'is_related': NotRequired[bool],
+    'name': NotRequired[str],
+}, total=False)
+
+ModelGooglepatentsClassificationResponse = TypedDict('ModelGooglepatentsClassificationResponse', {
+    'code': NotRequired[str],
+    'description': NotRequired[list[str]],
+    'fetched_at': NotRequired[str],
+    'name': NotRequired[str],
+    'relations': NotRequired[list[ModelGooglepatentsClassificationRelation]],
+    'source_url': NotRequired[str],
+}, total=False)
+
 ModelGooglepatentsCountryStatus = TypedDict('ModelGooglepatentsCountryStatus', {
     'country_code': NotRequired[str],
     'state': NotRequired[str],
@@ -11241,6 +11753,20 @@ ModelGooglepatentsFamilyMember = TypedDict('ModelGooglepatentsFamilyMember', {
     'publication_number': NotRequired[str],
 }, total=False)
 
+ModelGooglepatentsRecentEntry = TypedDict('ModelGooglepatentsRecentEntry', {
+    'publication_number': NotRequired[str],
+    'title': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelGooglepatentsRecentResponse = TypedDict('ModelGooglepatentsRecentResponse', {
+    'count': NotRequired[int],
+    'fetched_at': NotRequired[str],
+    'results': NotRequired[list[ModelGooglepatentsRecentEntry]],
+    'source_url': NotRequired[str],
+    'week': NotRequired[str],
+}, total=False)
+
 ModelGooglepatentsSearchResponse = TypedDict('ModelGooglepatentsSearchResponse', {
     'fetched_at': NotRequired[str],
     'many_results': NotRequired[bool],
@@ -11292,6 +11818,12 @@ ModelGooglepatentsSuggestResponse = TypedDict('ModelGooglepatentsSuggestResponse
     'value': NotRequired[str],
 }, total=False)
 
+ModelGooglepatentsClassificationResponseDoc = TypedDict('ModelGooglepatentsClassificationResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelGooglepatentsClassificationResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
 ModelGooglepatentsCoverageResponseDoc = TypedDict('ModelGooglepatentsCoverageResponseDoc', {
     'code': NotRequired[int],
     'data': NotRequired[ModelGooglepatentsCoverageResponse],
@@ -11301,6 +11833,12 @@ ModelGooglepatentsCoverageResponseDoc = TypedDict('ModelGooglepatentsCoverageRes
 ModelGooglepatentsDetailResponseDoc = TypedDict('ModelGooglepatentsDetailResponseDoc', {
     'code': NotRequired[int],
     'data': NotRequired[ModelGooglepatentsDetailResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelGooglepatentsRecentResponseDoc = TypedDict('ModelGooglepatentsRecentResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelGooglepatentsRecentResponse],
     'msg': NotRequired[str],
 }, total=False)
 
@@ -19809,6 +20347,284 @@ ModelSecSubmissionsResponseDoc = TypedDict('ModelSecSubmissionsResponseDoc', {
     'msg': NotRequired[str],
 }, total=False)
 
+ModelSephoraAnswer = TypedDict('ModelSephoraAnswer', {
+    'author': NotRequired[str],
+    'helpful_votes': NotRequired[int],
+    'id': NotRequired[str],
+    'is_brand_answer': NotRequired[bool],
+    'not_helpful_votes': NotRequired[int],
+    'submitted_at': NotRequired[str],
+    'text': NotRequired[str],
+}, total=False)
+
+ModelSephoraCategoryResponse = TypedDict('ModelSephoraCategoryResponse', {
+    'brand': NotRequired[list[str]],
+    'category_id': NotRequired[str],
+    'count': NotRequired[int],
+    'display_name': NotRequired[str],
+    'fetched_at': NotRequired[str],
+    'filter': NotRequired[list[str]],
+    'is_new': NotRequired[bool],
+    'page': NotRequired[int],
+    'page_size': NotRequired[int],
+    'price_max': NotRequired[int],
+    'price_min': NotRequired[int],
+    'products': NotRequired[list[ModelSephoraSearchProduct]],
+    'rating_min': NotRequired[int],
+    'related_categories': NotRequired[list[str]],
+    'slug': NotRequired[str],
+    'sort_by': NotRequired[str],
+    'source_url': NotRequired[str],
+    'total_products': NotRequired[int],
+}, total=False)
+
+ModelSephoraFullReview = TypedDict('ModelSephoraFullReview', {
+    'author': NotRequired[str],
+    'body': NotRequired[str],
+    'helpful_votes': NotRequired[int],
+    'id': NotRequired[str],
+    'location': NotRequired[str],
+    'not_helpful_votes': NotRequired[int],
+    'photo_urls': NotRequired[list[str]],
+    'rating': NotRequired[int],
+    'ratings_only': NotRequired[bool],
+    'recommended': NotRequired[bool],
+    'secondary_ratings': NotRequired[list[ModelSephoraReviewSecondaryRating]],
+    'submitted_at': NotRequired[str],
+    'title': NotRequired[str],
+}, total=False)
+
+ModelSephoraProductQuestionsResponse = TypedDict('ModelSephoraProductQuestionsResponse', {
+    'count': NotRequired[int],
+    'fetched_at': NotRequired[str],
+    'page': NotRequired[int],
+    'page_size': NotRequired[int],
+    'product_id': NotRequired[str],
+    'questions': NotRequired[list[ModelSephoraQuestion]],
+    'source_url': NotRequired[str],
+    'total_pages': NotRequired[int],
+    'total_questions': NotRequired[int],
+}, total=False)
+
+ModelSephoraProductResponse = TypedDict('ModelSephoraProductResponse', {
+    'brand': NotRequired[str],
+    'category': NotRequired[str],
+    'description': NotRequired[str],
+    'fetched_at': NotRequired[str],
+    'image': NotRequired[str],
+    'name': NotRequired[str],
+    'product_group_id': NotRequired[str],
+    'rating': NotRequired[float],
+    'review_count': NotRequired[int],
+    'review_sample': NotRequired[list[ModelSephoraReviewSample]],
+    'source_url': NotRequired[str],
+    'url': NotRequired[str],
+    'variants': NotRequired[list[ModelSephoraVariant]],
+}, total=False)
+
+ModelSephoraProductReviewsResponse = TypedDict('ModelSephoraProductReviewsResponse', {
+    'average_rating': NotRequired[float],
+    'count': NotRequired[int],
+    'fetched_at': NotRequired[str],
+    'page': NotRequired[int],
+    'page_size': NotRequired[int],
+    'product_id': NotRequired[str],
+    'rating_count': NotRequired[int],
+    'rating_histogram': NotRequired[list[int]],
+    'recommended_ratio': NotRequired[float],
+    'reviews': NotRequired[list[ModelSephoraFullReview]],
+    'source_url': NotRequired[str],
+    'total_pages': NotRequired[int],
+    'total_reviews': NotRequired[int],
+}, total=False)
+
+ModelSephoraQuestion = TypedDict('ModelSephoraQuestion', {
+    'answer_count': NotRequired[int],
+    'answers': NotRequired[list[ModelSephoraAnswer]],
+    'author': NotRequired[str],
+    'has_best_answer': NotRequired[bool],
+    'id': NotRequired[str],
+    'submitted_at': NotRequired[str],
+    'text': NotRequired[str],
+}, total=False)
+
+ModelSephoraReviewSample = TypedDict('ModelSephoraReviewSample', {
+    'author': NotRequired[str],
+    'body': NotRequired[str],
+    'date_published': NotRequired[str],
+    'id': NotRequired[str],
+    'rating': NotRequired[float],
+    'title': NotRequired[str],
+}, total=False)
+
+ModelSephoraReviewSecondaryRating = TypedDict('ModelSephoraReviewSecondaryRating', {
+    'max_value': NotRequired[int],
+    'name': NotRequired[str],
+    'value': NotRequired[int],
+}, total=False)
+
+ModelSephoraSearchProduct = TypedDict('ModelSephoraSearchProduct', {
+    'brand_name': NotRequired[str],
+    'image_url': NotRequired[str],
+    'list_price': NotRequired[str],
+    'more_colors': NotRequired[int],
+    'product_id': NotRequired[str],
+    'product_name': NotRequired[str],
+    'rating': NotRequired[float],
+    'review_count': NotRequired[int],
+    'sku_id': NotRequired[str],
+    'sponsored': NotRequired[bool],
+    'url': NotRequired[str],
+    'value_price': NotRequired[str],
+}, total=False)
+
+ModelSephoraSearchResponse = TypedDict('ModelSephoraSearchResponse', {
+    'brand': NotRequired[list[str]],
+    'count': NotRequired[int],
+    'fetched_at': NotRequired[str],
+    'filter': NotRequired[list[str]],
+    'is_new': NotRequired[bool],
+    'page': NotRequired[int],
+    'page_size': NotRequired[int],
+    'price_max': NotRequired[int],
+    'price_min': NotRequired[int],
+    'products': NotRequired[list[ModelSephoraSearchProduct]],
+    'query': NotRequired[str],
+    'rating_min': NotRequired[int],
+    'related_searches': NotRequired[list[str]],
+    'sort_by': NotRequired[str],
+    'source_url': NotRequired[str],
+    'total_products': NotRequired[int],
+}, total=False)
+
+ModelSephoraStore = TypedDict('ModelSephoraStore', {
+    'address': NotRequired[ModelSephoraStoreAddress],
+    'display_name': NotRequired[str],
+    'distance_miles': NotRequired[float],
+    'hours': NotRequired[ModelSephoraStoreHours],
+    'is_bopisable': NotRequired[bool],
+    'is_curbside_enabled': NotRequired[bool],
+    'is_online_reservation_enabled': NotRequired[bool],
+    'latitude': NotRequired[float],
+    'longitude': NotRequired[float],
+    'same_day_delivery_enabled': NotRequired[bool],
+    'store_id': NotRequired[str],
+    'store_type': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelSephoraStoreAddress = TypedDict('ModelSephoraStoreAddress', {
+    'address1': NotRequired[str],
+    'address2': NotRequired[str],
+    'city': NotRequired[str],
+    'country': NotRequired[str],
+    'mall_name': NotRequired[str],
+    'phone': NotRequired[str],
+    'postal_code': NotRequired[str],
+    'state': NotRequired[str],
+}, total=False)
+
+ModelSephoraStoreHours = TypedDict('ModelSephoraStoreHours', {
+    'friday': NotRequired[str],
+    'monday': NotRequired[str],
+    'saturday': NotRequired[str],
+    'sunday': NotRequired[str],
+    'thursday': NotRequired[str],
+    'time_zone': NotRequired[str],
+    'tuesday': NotRequired[str],
+    'wednesday': NotRequired[str],
+}, total=False)
+
+ModelSephoraStoresResponse = TypedDict('ModelSephoraStoresResponse', {
+    'count': NotRequired[int],
+    'fetched_at': NotRequired[str],
+    'latitude': NotRequired[float],
+    'longitude': NotRequired[float],
+    'radius': NotRequired[int],
+    'source_url': NotRequired[str],
+    'stores': NotRequired[list[ModelSephoraStore]],
+}, total=False)
+
+ModelSephoraSuggestCategory = TypedDict('ModelSephoraSuggestCategory', {
+    'name': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelSephoraSuggestProduct = TypedDict('ModelSephoraSuggestProduct', {
+    'brand_name': NotRequired[str],
+    'image_url': NotRequired[str],
+    'product_id': NotRequired[str],
+    'product_name': NotRequired[str],
+    'rating': NotRequired[float],
+    'review_count': NotRequired[int],
+    'sku_id': NotRequired[str],
+}, total=False)
+
+ModelSephoraSuggestResponse = TypedDict('ModelSephoraSuggestResponse', {
+    'categories': NotRequired[list[ModelSephoraSuggestCategory]],
+    'fetched_at': NotRequired[str],
+    'products': NotRequired[list[ModelSephoraSuggestProduct]],
+    'query': NotRequired[str],
+    'source_url': NotRequired[str],
+    'terms': NotRequired[list[ModelSephoraSuggestTerm]],
+}, total=False)
+
+ModelSephoraSuggestTerm = TypedDict('ModelSephoraSuggestTerm', {
+    'term': NotRequired[str],
+}, total=False)
+
+ModelSephoraVariant = TypedDict('ModelSephoraVariant', {
+    'availability': NotRequired[str],
+    'color': NotRequired[str],
+    'currency_code': NotRequired[str],
+    'image': NotRequired[str],
+    'name': NotRequired[str],
+    'price': NotRequired[str],
+    'sku': NotRequired[str],
+}, total=False)
+
+ModelSephoraCategoryResponseDoc = TypedDict('ModelSephoraCategoryResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelSephoraCategoryResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelSephoraProductQuestionsResponseDoc = TypedDict('ModelSephoraProductQuestionsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelSephoraProductQuestionsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelSephoraProductResponseDoc = TypedDict('ModelSephoraProductResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelSephoraProductResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelSephoraProductReviewsResponseDoc = TypedDict('ModelSephoraProductReviewsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelSephoraProductReviewsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelSephoraSearchResponseDoc = TypedDict('ModelSephoraSearchResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelSephoraSearchResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelSephoraStoresResponseDoc = TypedDict('ModelSephoraStoresResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelSephoraStoresResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelSephoraSuggestResponseDoc = TypedDict('ModelSephoraSuggestResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelSephoraSuggestResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
 ModelShopappAnalysisResponse = TypedDict('ModelShopappAnalysisResponse', {
     'currencies': NotRequired[list[str]],
     'discounts': NotRequired[ModelShopappDiscountSummary],
@@ -25912,6 +26728,69 @@ ModelUserUserRotateApikeyResponseDoc = TypedDict('ModelUserUserRotateApikeyRespo
     'msg': NotRequired[str],
 }, total=False)
 
+ModelUsptoppubsDetailResponse = TypedDict('ModelUsptoppubsDetailResponse', {
+    'abstract': NotRequired[str],
+    'applicant_names': NotRequired[list[str]],
+    'application_number': NotRequired[str],
+    'assignee_name': NotRequired[str],
+    'claims': NotRequired[list[str]],
+    'cpc_codes': NotRequired[str],
+    'database': NotRequired[str],
+    'description': NotRequired[list[str]],
+    'fetched_at': NotRequired[str],
+    'filing_date': NotRequired[str],
+    'guid': NotRequired[str],
+    'inventors_short': NotRequired[str],
+    'ipc_codes': NotRequired[str],
+    'kind_codes': NotRequired[list[str]],
+    'language': NotRequired[str],
+    'page_count': NotRequired[int],
+    'publication_date': NotRequired[str],
+    'publication_number': NotRequired[str],
+    'source_url': NotRequired[str],
+    'title': NotRequired[str],
+}, total=False)
+
+ModelUsptoppubsSearchResponse = TypedDict('ModelUsptoppubsSearchResponse', {
+    'fetched_at': NotRequired[str],
+    'num_found': NotRequired[int],
+    'page': NotRequired[int],
+    'per_page': NotRequired[int],
+    'query': NotRequired[str],
+    'results': NotRequired[list[ModelUsptoppubsSearchResult]],
+    'source_url': NotRequired[str],
+}, total=False)
+
+ModelUsptoppubsSearchResult = TypedDict('ModelUsptoppubsSearchResult', {
+    'applicant_names': NotRequired[list[str]],
+    'application_number': NotRequired[str],
+    'assignee_name': NotRequired[str],
+    'cpc_codes': NotRequired[str],
+    'database': NotRequired[str],
+    'filing_date': NotRequired[str],
+    'guid': NotRequired[str],
+    'inventors_short': NotRequired[str],
+    'ipc_codes': NotRequired[str],
+    'kind_codes': NotRequired[list[str]],
+    'language': NotRequired[str],
+    'page_count': NotRequired[int],
+    'publication_date': NotRequired[str],
+    'publication_number': NotRequired[str],
+    'title': NotRequired[str],
+}, total=False)
+
+ModelUsptoppubsDetailResponseDoc = TypedDict('ModelUsptoppubsDetailResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelUsptoppubsDetailResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelUsptoppubsSearchResponseDoc = TypedDict('ModelUsptoppubsSearchResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelUsptoppubsSearchResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
 ModelVintedBrandEntry = TypedDict('ModelVintedBrandEntry', {
     'id': NotRequired[str],
     'name': NotRequired[str],
@@ -30282,8 +31161,38 @@ AutotraderVehicleParams = TypedDict('AutotraderVehicleParams', {
     'id': Required[str],
 }, total=False)
 
+BestBuyBestbuyBrandsResponse = ModelBestbuyBrandsResponseDoc
+BestBuyBestbuyBrandsParams = TypedDict('BestBuyBestbuyBrandsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+}, total=False)
+
+BestBuyBestbuyCategoriesResponse = ModelBestbuyCategoriesResponseDoc
+BestBuyBestbuyCategoriesParams = TypedDict('BestBuyBestbuyCategoriesParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+}, total=False)
+
+BestBuyBestbuyCategoriesTrendingResponse = ModelBestbuyTrendingCategoriesResponseDoc
+BestBuyBestbuyCategoriesTrendingParams = TypedDict('BestBuyBestbuyCategoriesTrendingParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+}, total=False)
+
 BestBuyBestbuyCategoryResponse = ModelBestbuyCategoryResponseDoc
 BestBuyBestbuyCategoryParams = TypedDict('BestBuyBestbuyCategoryParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'category_id': Required[str],
+    'page': NotRequired[int],
+}, total=False)
+
+BestBuyBestbuyCategorySubcategoriesResponse = ModelBestbuySubcategoriesResponseDoc
+BestBuyBestbuyCategorySubcategoriesParams = TypedDict('BestBuyBestbuyCategorySubcategoriesParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
     '_headers': NotRequired[Mapping[str, str]],
@@ -30298,12 +31207,46 @@ BestBuyBestbuyProductParams = TypedDict('BestBuyBestbuyProductParams', {
     'sku': Required[str],
 }, total=False)
 
+BestBuyBestbuyProductQuestionsResponse = ModelBestbuyProductQuestionsResponseDoc
+BestBuyBestbuyProductQuestionsParams = TypedDict('BestBuyBestbuyProductQuestionsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'sku': Required[str],
+}, total=False)
+
+BestBuyBestbuyProductRelatedResponse = ModelBestbuyProductRelatedResponseDoc
+BestBuyBestbuyProductRelatedParams = TypedDict('BestBuyBestbuyProductRelatedParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'sku': Required[str],
+}, total=False)
+
 BestBuyBestbuyProductReviewsResponse = ModelBestbuyProductReviewsResponseDoc
 BestBuyBestbuyProductReviewsParams = TypedDict('BestBuyBestbuyProductReviewsParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
     '_headers': NotRequired[Mapping[str, str]],
     'sku': Required[str],
+}, total=False)
+
+BestBuyBestbuySearchResponse = ModelBestbuySearchResponseDoc
+BestBuyBestbuySearchParams = TypedDict('BestBuyBestbuySearchParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'q': Required[str],
+    'page': NotRequired[int],
+}, total=False)
+
+BestBuyBestbuyStoresResponse = ModelBestbuyStoresResponseDoc
+BestBuyBestbuyStoresParams = TypedDict('BestBuyBestbuyStoresParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'state': Required[str],
+    'city': Required[str],
 }, total=False)
 
 BillingMeResponse = ModelBillingBillingStateResponseDoc
@@ -33189,6 +34132,13 @@ DatasetsXUsersSearchParams = TypedDict('DatasetsXUsersSearchParams', {
     'page_size': NotRequired[int],
 }, total=False)
 
+DepopBrandsResponse = ModelDepopBrandsResponseDoc
+DepopBrandsParams = TypedDict('DepopBrandsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+}, total=False)
+
 DepopCategoriesResponse = ModelDepopCategoriesResponseDoc
 DepopCategoriesParams = TypedDict('DepopCategoriesParams', {
     '_response_type': NotRequired[ResponseType],
@@ -33231,7 +34181,24 @@ DepopSearchParams = TypedDict('DepopSearchParams', {
     'gender': NotRequired[str],
     'is_kids': NotRequired[bool],
     'brand_ids': NotRequired[str],
+    'sizes': NotRequired[str],
     'after': NotRequired[str],
+}, total=False)
+
+DepopSearchSellersResponse = ModelDepopSearchSellersResponseDoc
+DepopSearchSellersParams = TypedDict('DepopSearchSellersParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'query': Required[str],
+}, total=False)
+
+DepopSearchFacetsResponse = ModelDepopSearchFacetsResponseDoc
+DepopSearchFacetsParams = TypedDict('DepopSearchFacetsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'query': Required[str],
 }, total=False)
 
 DepopShopResponse = ModelDepopShopResponseDoc
@@ -33249,6 +34216,22 @@ DepopShopParams = TypedDict('DepopShopParams', {
     'category': NotRequired[str],
     'subcategory': NotRequired[str],
     'gender': NotRequired[str],
+    'sizes': NotRequired[str],
+}, total=False)
+
+DepopSizesResponse = ModelDepopSizesResponseDoc
+DepopSizesParams = TypedDict('DepopSizesParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+}, total=False)
+
+DepopSuggestResponse = ModelDepopSuggestResponseDoc
+DepopSuggestParams = TypedDict('DepopSuggestParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'query': Required[str],
 }, total=False)
 
 WebAntibotCheckBody = ModelDiagnosticsAntibotCheckRequest
@@ -33448,16 +34431,24 @@ DoorDashDoordashStoreReviewsParams = TypedDict('DoorDashDoordashStoreReviewsPara
     'longitude': Required[float],
 }, total=False)
 
-DraftKingsDraftkingsEventResponse = ModelDraftkingsEventResponseDoc
-DraftKingsDraftkingsEventParams = TypedDict('DraftKingsDraftkingsEventParams', {
+DraftKingsSportsbookDraftkingsEventResponse = ModelDraftkingsEventResponseDoc
+DraftKingsSportsbookDraftkingsEventParams = TypedDict('DraftKingsSportsbookDraftkingsEventParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
     '_headers': NotRequired[Mapping[str, str]],
     'event_id': Required[str],
 }, total=False)
 
-DraftKingsDraftkingsEventMarketsResponse = ModelDraftkingsEventMarketsResponseDoc
-DraftKingsDraftkingsEventMarketsParams = TypedDict('DraftKingsDraftkingsEventMarketsParams', {
+DraftKingsSportsbookDraftkingsEventContextResponse = ModelDraftkingsEventContextResponseDoc
+DraftKingsSportsbookDraftkingsEventContextParams = TypedDict('DraftKingsSportsbookDraftkingsEventContextParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'event_id': Required[str],
+}, total=False)
+
+DraftKingsSportsbookDraftkingsEventMarketsResponse = ModelDraftkingsEventMarketsResponseDoc
+DraftKingsSportsbookDraftkingsEventMarketsParams = TypedDict('DraftKingsSportsbookDraftkingsEventMarketsParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
     '_headers': NotRequired[Mapping[str, str]],
@@ -33465,8 +34456,15 @@ DraftKingsDraftkingsEventMarketsParams = TypedDict('DraftKingsDraftkingsEventMar
     'subcategory_id': Required[str],
 }, total=False)
 
-DraftKingsDraftkingsFuturesResponse = ModelDraftkingsFuturesResponseDoc
-DraftKingsDraftkingsFuturesParams = TypedDict('DraftKingsDraftkingsFuturesParams', {
+DraftKingsSportsbookDraftkingsFeaturedLeaguesResponse = ModelDraftkingsFeaturedLeaguesResponseDoc
+DraftKingsSportsbookDraftkingsFeaturedLeaguesParams = TypedDict('DraftKingsSportsbookDraftkingsFeaturedLeaguesParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+}, total=False)
+
+DraftKingsSportsbookDraftkingsFuturesResponse = ModelDraftkingsFuturesResponseDoc
+DraftKingsSportsbookDraftkingsFuturesParams = TypedDict('DraftKingsSportsbookDraftkingsFuturesParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
     '_headers': NotRequired[Mapping[str, str]],
@@ -33474,12 +34472,59 @@ DraftKingsDraftkingsFuturesParams = TypedDict('DraftKingsDraftkingsFuturesParams
     'subcategory_id': Required[str],
 }, total=False)
 
-DraftKingsDraftkingsOddsResponse = ModelDraftkingsOddsResponseDoc
-DraftKingsDraftkingsOddsParams = TypedDict('DraftKingsDraftkingsOddsParams', {
+DraftKingsSportsbookDraftkingsLeagueEventsResponse = ModelDraftkingsLeagueEventsResponseDoc
+DraftKingsSportsbookDraftkingsLeagueEventsParams = TypedDict('DraftKingsSportsbookDraftkingsLeagueEventsParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
     '_headers': NotRequired[Mapping[str, str]],
     'league_id': Required[str],
+}, total=False)
+
+DraftKingsSportsbookDraftkingsLeaguesResponse = ModelDraftkingsLeaguesResponseDoc
+DraftKingsSportsbookDraftkingsLeaguesParams = TypedDict('DraftKingsSportsbookDraftkingsLeaguesParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+}, total=False)
+
+DraftKingsSportsbookDraftkingsLiveResponse = ModelDraftkingsLiveResponseDoc
+DraftKingsSportsbookDraftkingsLiveParams = TypedDict('DraftKingsSportsbookDraftkingsLiveParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+}, total=False)
+
+DraftKingsSportsbookDraftkingsOddsResponse = ModelDraftkingsOddsResponseDoc
+DraftKingsSportsbookDraftkingsOddsParams = TypedDict('DraftKingsSportsbookDraftkingsOddsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'league_id': Required[str],
+}, total=False)
+
+DraftKingsSportsbookDraftkingsQuickLinksResponse = ModelDraftkingsQuickLinksResponseDoc
+DraftKingsSportsbookDraftkingsQuickLinksParams = TypedDict('DraftKingsSportsbookDraftkingsQuickLinksParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+}, total=False)
+
+DraftKingsSportsbookDraftkingsTeamResponse = ModelDraftkingsTeamResponseDoc
+DraftKingsSportsbookDraftkingsTeamParams = TypedDict('DraftKingsSportsbookDraftkingsTeamParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'team_id': Required[str],
+    'sport': Required[Literal['football', 'hockey', 'basketball', 'baseball']],
+    'slug': Required[str],
+}, total=False)
+
+DraftKingsSportsbookDraftkingsTeamsResponse = ModelDraftkingsTeamsResponseDoc
+DraftKingsSportsbookDraftkingsTeamsParams = TypedDict('DraftKingsSportsbookDraftkingsTeamsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'league': Required[Literal['nfl', 'nhl', 'nba', 'cbb', 'mlb', 'cfb']],
 }, total=False)
 
 DuckDuckGoSearchDuckduckgoImageResponse = ModelDuckduckgoImageResponseDoc
@@ -34571,6 +35616,14 @@ GoogleVideosParams = TypedDict('GoogleVideosParams', {
     'lang': NotRequired[str],
 }, total=False)
 
+GooglePatentsGooglepatentsClassificationResponse = ModelGooglepatentsClassificationResponseDoc
+GooglePatentsGooglepatentsClassificationParams = TypedDict('GooglePatentsGooglepatentsClassificationParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'code': Required[str],
+}, total=False)
+
 GooglePatentsGooglepatentsCoverageResponse = ModelGooglepatentsCoverageResponseDoc
 GooglePatentsGooglepatentsCoverageParams = TypedDict('GooglePatentsGooglepatentsCoverageParams', {
     '_response_type': NotRequired[ResponseType],
@@ -34585,6 +35638,14 @@ GooglePatentsGooglepatentsDetailParams = TypedDict('GooglePatentsGooglepatentsDe
     '_headers': NotRequired[Mapping[str, str]],
     'number': Required[str],
     'lang': NotRequired[str],
+}, total=False)
+
+GooglePatentsGooglepatentsRecentResponse = ModelGooglepatentsRecentResponseDoc
+GooglePatentsGooglepatentsRecentParams = TypedDict('GooglePatentsGooglepatentsRecentParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'week': Required[str],
 }, total=False)
 
 GooglePatentsGooglepatentsSearchResponse = ModelGooglepatentsSearchResponseDoc
@@ -38180,6 +39241,84 @@ SecEdgarSecInstitutionalHoldingsParams = TypedDict('SecEdgarSecInstitutionalHold
     'limit': NotRequired[int],
 }, total=False)
 
+SephoraCategoryResponse = ModelSephoraCategoryResponseDoc
+SephoraCategoryParams = TypedDict('SephoraCategoryParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'slug': Required[str],
+    'page': NotRequired[int],
+    'sort_by': NotRequired[Literal['featured', 'top_rated', 'new', 'best_selling', 'price_low_to_high', 'price_high_to_low']],
+    'price_min': NotRequired[int],
+    'price_max': NotRequired[int],
+    'brand': NotRequired[list[str]],
+    'rating_min': NotRequired[int],
+    'is_new': NotRequired[bool],
+    'filter': NotRequired[list[str]],
+}, total=False)
+
+SephoraProductResponse = ModelSephoraProductResponseDoc
+SephoraProductParams = TypedDict('SephoraProductParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'product_id': Required[str],
+}, total=False)
+
+SephoraProductQuestionsResponse = ModelSephoraProductQuestionsResponseDoc
+SephoraProductQuestionsParams = TypedDict('SephoraProductQuestionsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'product_id': Required[str],
+    'page': NotRequired[int],
+}, total=False)
+
+SephoraProductReviewsResponse = ModelSephoraProductReviewsResponseDoc
+SephoraProductReviewsParams = TypedDict('SephoraProductReviewsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'product_id': Required[str],
+    'page': NotRequired[int],
+}, total=False)
+
+SephoraSearchResponse = ModelSephoraSearchResponseDoc
+SephoraSearchParams = TypedDict('SephoraSearchParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'query': Required[str],
+    'page': NotRequired[int],
+    'page_size': NotRequired[int],
+    'sort_by': NotRequired[Literal['featured', 'top_rated', 'new', 'best_selling', 'price_low_to_high', 'price_high_to_low']],
+    'price_min': NotRequired[int],
+    'price_max': NotRequired[int],
+    'brand': NotRequired[list[str]],
+    'rating_min': NotRequired[int],
+    'is_new': NotRequired[bool],
+    'filter': NotRequired[list[str]],
+}, total=False)
+
+SephoraStoresResponse = ModelSephoraStoresResponseDoc
+SephoraStoresParams = TypedDict('SephoraStoresParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'latitude': Required[float],
+    'longitude': Required[float],
+    'radius': NotRequired[int],
+    'limit': NotRequired[int],
+}, total=False)
+
+SephoraSuggestResponse = ModelSephoraSuggestResponseDoc
+SephoraSuggestParams = TypedDict('SephoraSuggestParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'query': Required[str],
+}, total=False)
+
 ShopAppAnalysisResponse = ModelShopappAnalysisResponseDoc
 ShopAppAnalysisParams = TypedDict('ShopAppAnalysisParams', {
     '_response_type': NotRequired[ResponseType],
@@ -40484,6 +41623,26 @@ AccountDeletionRequestParams = TypedDict('AccountDeletionRequestParams', {
     'request': NotRequired[AccountDeletionRequestBody],
 }, total=False)
 
+UsptoPatentPublicSearchUsptoppubsDetailResponse = ModelUsptoppubsDetailResponseDoc
+UsptoPatentPublicSearchUsptoppubsDetailParams = TypedDict('UsptoPatentPublicSearchUsptoppubsDetailParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'guid': Required[str],
+    'source': Required[str],
+}, total=False)
+
+UsptoPatentPublicSearchUsptoppubsSearchResponse = ModelUsptoppubsSearchResponseDoc
+UsptoPatentPublicSearchUsptoppubsSearchParams = TypedDict('UsptoPatentPublicSearchUsptoppubsSearchParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'q': Required[str],
+    'databases': NotRequired[str],
+    'num': NotRequired[int],
+    'page': NotRequired[int],
+}, total=False)
+
 VintedBrandResponse = ModelVintedBrandResponseDoc
 VintedBrandParams = TypedDict('VintedBrandParams', {
     '_response_type': NotRequired[ResponseType],
@@ -41949,9 +43108,17 @@ class AutotraderGroup:
     def vehicle(self, **params: Unpack[AutotraderVehicleParams]) -> AutotraderVehicleResponse: ...
 
 class BestBuyGroup:
+    def bestbuy_brands(self, **params: Unpack[BestBuyBestbuyBrandsParams]) -> BestBuyBestbuyBrandsResponse: ...
+    def bestbuy_categories(self, **params: Unpack[BestBuyBestbuyCategoriesParams]) -> BestBuyBestbuyCategoriesResponse: ...
+    def bestbuy_categories_trending(self, **params: Unpack[BestBuyBestbuyCategoriesTrendingParams]) -> BestBuyBestbuyCategoriesTrendingResponse: ...
     def bestbuy_category(self, **params: Unpack[BestBuyBestbuyCategoryParams]) -> BestBuyBestbuyCategoryResponse: ...
+    def bestbuy_category_subcategories(self, **params: Unpack[BestBuyBestbuyCategorySubcategoriesParams]) -> BestBuyBestbuyCategorySubcategoriesResponse: ...
     def bestbuy_product(self, **params: Unpack[BestBuyBestbuyProductParams]) -> BestBuyBestbuyProductResponse: ...
+    def bestbuy_product_questions(self, **params: Unpack[BestBuyBestbuyProductQuestionsParams]) -> BestBuyBestbuyProductQuestionsResponse: ...
+    def bestbuy_product_related(self, **params: Unpack[BestBuyBestbuyProductRelatedParams]) -> BestBuyBestbuyProductRelatedResponse: ...
     def bestbuy_product_reviews(self, **params: Unpack[BestBuyBestbuyProductReviewsParams]) -> BestBuyBestbuyProductReviewsResponse: ...
+    def bestbuy_search(self, **params: Unpack[BestBuyBestbuySearchParams]) -> BestBuyBestbuySearchResponse: ...
+    def bestbuy_stores(self, **params: Unpack[BestBuyBestbuyStoresParams]) -> BestBuyBestbuyStoresResponse: ...
 
 class BillingGroup:
     def me(self, **params: Unpack[BillingMeParams]) -> BillingMeResponse: ...
@@ -42209,11 +43376,16 @@ class DatasetsGroup:
     def x_users_search(self, **params: Unpack[DatasetsXUsersSearchParams]) -> DatasetsXUsersSearchResponse: ...
 
 class DepopGroup:
+    def brands(self, **params: Unpack[DepopBrandsParams]) -> DepopBrandsResponse: ...
     def categories(self, **params: Unpack[DepopCategoriesParams]) -> DepopCategoriesResponse: ...
     def item(self, **params: Unpack[DepopItemParams]) -> DepopItemResponse: ...
     def item_similar(self, **params: Unpack[DepopItemSimilarParams]) -> DepopItemSimilarResponse: ...
     def search(self, **params: Unpack[DepopSearchParams]) -> DepopSearchResponse: ...
+    def search_sellers(self, **params: Unpack[DepopSearchSellersParams]) -> DepopSearchSellersResponse: ...
+    def search_facets(self, **params: Unpack[DepopSearchFacetsParams]) -> DepopSearchFacetsResponse: ...
     def shop(self, **params: Unpack[DepopShopParams]) -> DepopShopResponse: ...
+    def sizes(self, **params: Unpack[DepopSizesParams]) -> DepopSizesResponse: ...
+    def suggest(self, **params: Unpack[DepopSuggestParams]) -> DepopSuggestResponse: ...
 
 class DiscogsGroup:
     def artist(self, **params: Unpack[DiscogsArtistParams]) -> DiscogsArtistResponse: ...
@@ -42238,11 +43410,19 @@ class DoorDashGroup:
     def doordash_store_menu(self, **params: Unpack[DoorDashDoordashStoreMenuParams]) -> DoorDashDoordashStoreMenuResponse: ...
     def doordash_store_reviews(self, **params: Unpack[DoorDashDoordashStoreReviewsParams]) -> DoorDashDoordashStoreReviewsResponse: ...
 
-class DraftKingsGroup:
-    def draftkings_event(self, **params: Unpack[DraftKingsDraftkingsEventParams]) -> DraftKingsDraftkingsEventResponse: ...
-    def draftkings_event_markets(self, **params: Unpack[DraftKingsDraftkingsEventMarketsParams]) -> DraftKingsDraftkingsEventMarketsResponse: ...
-    def draftkings_futures(self, **params: Unpack[DraftKingsDraftkingsFuturesParams]) -> DraftKingsDraftkingsFuturesResponse: ...
-    def draftkings_odds(self, **params: Unpack[DraftKingsDraftkingsOddsParams]) -> DraftKingsDraftkingsOddsResponse: ...
+class DraftKingsSportsbookGroup:
+    def draftkings_event(self, **params: Unpack[DraftKingsSportsbookDraftkingsEventParams]) -> DraftKingsSportsbookDraftkingsEventResponse: ...
+    def draftkings_event_context(self, **params: Unpack[DraftKingsSportsbookDraftkingsEventContextParams]) -> DraftKingsSportsbookDraftkingsEventContextResponse: ...
+    def draftkings_event_markets(self, **params: Unpack[DraftKingsSportsbookDraftkingsEventMarketsParams]) -> DraftKingsSportsbookDraftkingsEventMarketsResponse: ...
+    def draftkings_featured_leagues(self, **params: Unpack[DraftKingsSportsbookDraftkingsFeaturedLeaguesParams]) -> DraftKingsSportsbookDraftkingsFeaturedLeaguesResponse: ...
+    def draftkings_futures(self, **params: Unpack[DraftKingsSportsbookDraftkingsFuturesParams]) -> DraftKingsSportsbookDraftkingsFuturesResponse: ...
+    def draftkings_league_events(self, **params: Unpack[DraftKingsSportsbookDraftkingsLeagueEventsParams]) -> DraftKingsSportsbookDraftkingsLeagueEventsResponse: ...
+    def draftkings_leagues(self, **params: Unpack[DraftKingsSportsbookDraftkingsLeaguesParams]) -> DraftKingsSportsbookDraftkingsLeaguesResponse: ...
+    def draftkings_live(self, **params: Unpack[DraftKingsSportsbookDraftkingsLiveParams]) -> DraftKingsSportsbookDraftkingsLiveResponse: ...
+    def draftkings_odds(self, **params: Unpack[DraftKingsSportsbookDraftkingsOddsParams]) -> DraftKingsSportsbookDraftkingsOddsResponse: ...
+    def draftkings_quick_links(self, **params: Unpack[DraftKingsSportsbookDraftkingsQuickLinksParams]) -> DraftKingsSportsbookDraftkingsQuickLinksResponse: ...
+    def draftkings_team(self, **params: Unpack[DraftKingsSportsbookDraftkingsTeamParams]) -> DraftKingsSportsbookDraftkingsTeamResponse: ...
+    def draftkings_teams(self, **params: Unpack[DraftKingsSportsbookDraftkingsTeamsParams]) -> DraftKingsSportsbookDraftkingsTeamsResponse: ...
 
 class DuckDuckGoSearchGroup:
     def duckduckgo_image(self, **params: Unpack[DuckDuckGoSearchDuckduckgoImageParams]) -> DuckDuckGoSearchDuckduckgoImageResponse: ...
@@ -42384,8 +43564,10 @@ class GoogleGroup:
     def videos(self, **params: Unpack[GoogleVideosParams]) -> GoogleVideosResponse: ...
 
 class GooglePatentsGroup:
+    def googlepatents_classification(self, **params: Unpack[GooglePatentsGooglepatentsClassificationParams]) -> GooglePatentsGooglepatentsClassificationResponse: ...
     def googlepatents_coverage(self, **params: Unpack[GooglePatentsGooglepatentsCoverageParams]) -> GooglePatentsGooglepatentsCoverageResponse: ...
     def googlepatents_detail(self, **params: Unpack[GooglePatentsGooglepatentsDetailParams]) -> GooglePatentsGooglepatentsDetailResponse: ...
+    def googlepatents_recent(self, **params: Unpack[GooglePatentsGooglepatentsRecentParams]) -> GooglePatentsGooglepatentsRecentResponse: ...
     def googlepatents_search(self, **params: Unpack[GooglePatentsGooglepatentsSearchParams]) -> GooglePatentsGooglepatentsSearchResponse: ...
     def googlepatents_suggest(self, **params: Unpack[GooglePatentsGooglepatentsSuggestParams]) -> GooglePatentsGooglepatentsSuggestResponse: ...
 
@@ -42829,6 +44011,15 @@ class SecEdgarGroup:
     def sec_insider(self, **params: Unpack[SecEdgarSecInsiderParams]) -> SecEdgarSecInsiderResponse: ...
     def sec_institutional_holdings(self, **params: Unpack[SecEdgarSecInstitutionalHoldingsParams]) -> SecEdgarSecInstitutionalHoldingsResponse: ...
 
+class SephoraGroup:
+    def category(self, **params: Unpack[SephoraCategoryParams]) -> SephoraCategoryResponse: ...
+    def product(self, **params: Unpack[SephoraProductParams]) -> SephoraProductResponse: ...
+    def product_questions(self, **params: Unpack[SephoraProductQuestionsParams]) -> SephoraProductQuestionsResponse: ...
+    def product_reviews(self, **params: Unpack[SephoraProductReviewsParams]) -> SephoraProductReviewsResponse: ...
+    def search(self, **params: Unpack[SephoraSearchParams]) -> SephoraSearchResponse: ...
+    def stores(self, **params: Unpack[SephoraStoresParams]) -> SephoraStoresResponse: ...
+    def suggest(self, **params: Unpack[SephoraSuggestParams]) -> SephoraSuggestResponse: ...
+
 class ShopAppGroup:
     def analysis(self, **params: Unpack[ShopAppAnalysisParams]) -> ShopAppAnalysisResponse: ...
     def categories(self, **params: Unpack[ShopAppCategoriesParams]) -> ShopAppCategoriesResponse: ...
@@ -43115,6 +44306,10 @@ class AccountDeletionGroup:
     def my_request(self, **params: Unpack[AccountDeletionMyRequestParams]) -> AccountDeletionMyRequestResponse: ...
     def request(self, **params: Unpack[AccountDeletionRequestParams]) -> AccountDeletionRequestResponse: ...
 
+class UsptoPatentPublicSearchGroup:
+    def usptoppubs_detail(self, **params: Unpack[UsptoPatentPublicSearchUsptoppubsDetailParams]) -> UsptoPatentPublicSearchUsptoppubsDetailResponse: ...
+    def usptoppubs_search(self, **params: Unpack[UsptoPatentPublicSearchUsptoppubsSearchParams]) -> UsptoPatentPublicSearchUsptoppubsSearchResponse: ...
+
 class VintedGroup:
     def brand(self, **params: Unpack[VintedBrandParams]) -> VintedBrandResponse: ...
     def brands(self, **params: Unpack[VintedBrandsParams]) -> VintedBrandsResponse: ...
@@ -43381,9 +44576,17 @@ OperationId = Literal[
     'autotrader-dealer',
     'autotrader-search',
     'autotrader-vehicle',
+    'bestbuy-brands',
+    'bestbuy-categories',
+    'bestbuy-categories-trending',
     'bestbuy-category',
+    'bestbuy-category-subcategories',
     'bestbuy-product',
+    'bestbuy-product-questions',
+    'bestbuy-product-related',
     'bestbuy-product-reviews',
+    'bestbuy-search',
+    'bestbuy-stores',
     'billing-me',
     'billing-me-checkout',
     'billing-me-events',
@@ -43603,11 +44806,16 @@ OperationId = Literal[
     'datasets-x-users-facets',
     'datasets-x-users-item',
     'datasets-x-users-search',
+    'depop-brands',
     'depop-categories',
     'depop-item',
     'depop-item-similar',
     'depop-search',
+    'depop-search-sellers',
+    'depop-search-facets',
     'depop-shop',
+    'depop-sizes',
+    'depop-suggest',
     'antibot-check',
     'discogs-artist',
     'discogs-artist-releases',
@@ -43629,9 +44837,17 @@ OperationId = Literal[
     'doordash-store-menu',
     'doordash-store-reviews',
     'draftkings-event',
+    'draftkings-event-context',
     'draftkings-event-markets',
+    'draftkings-featured-leagues',
     'draftkings-futures',
+    'draftkings-league-events',
+    'draftkings-leagues',
+    'draftkings-live',
     'draftkings-odds',
+    'draftkings-quick-links',
+    'draftkings-team',
+    'draftkings-teams',
     'duckduckgo-image',
     'duckduckgo-news',
     'duckduckgo-search',
@@ -43748,8 +44964,10 @@ OperationId = Literal[
     'google-trends-trending',
     'google-trends-trending-detail',
     'google-videos',
+    'googlepatents-classification',
     'googlepatents-coverage',
     'googlepatents-detail',
+    'googlepatents-recent',
     'googlepatents-search',
     'googlepatents-suggest',
     'googleplay-app',
@@ -44116,6 +45334,13 @@ OperationId = Literal[
     'sec-full-text-search',
     'sec-insider',
     'sec-institutional-holdings',
+    'sephora-category',
+    'sephora-product',
+    'sephora-product-questions',
+    'sephora-product-reviews',
+    'sephora-search',
+    'sephora-stores',
+    'sephora-suggest',
     'shop-app-analysis',
     'shop-app-categories',
     'shop-app-product',
@@ -44348,6 +45573,8 @@ OperationId = Literal[
     'account-deletion-cancel',
     'account-deletion-my-request',
     'account-deletion-request',
+    'usptoppubs-detail',
+    'usptoppubs-search',
     'vinted-brand',
     'vinted-brands',
     'vinted-catalog',
@@ -44538,7 +45765,7 @@ class CrawloraClient:
     depop: DepopGroup
     discogs: DiscogsGroup
     door_dash: DoorDashGroup
-    draft_kings: DraftKingsGroup
+    draft_kings_sportsbook: DraftKingsSportsbookGroup
     duck_duck_go_search: DuckDuckGoSearchGroup
     e_bay: EBayGroup
     espn: EspnGroup
@@ -44590,6 +45817,7 @@ class CrawloraClient:
     rotten_tomatoes: RottenTomatoesGroup
     sam_s_club: SamSClubGroup
     sec_edgar: SecEdgarGroup
+    sephora: SephoraGroup
     shop_app: ShopAppGroup
     shopify: ShopifyGroup
     similar_web: SimilarWebGroup
@@ -44617,6 +45845,7 @@ class CrawloraClient:
     usage: UsageGroup
     user: UserGroup
     account_deletion: AccountDeletionGroup
+    uspto_patent_public_search: UsptoPatentPublicSearchGroup
     vinted: VintedGroup
     walmart: WalmartGroup
     wayfair: WayfairGroup
@@ -45514,6 +46743,42 @@ class CrawloraClient:
     @overload
     def operation(
         self,
+        operation_id: Literal['bestbuy-brands'],
+        params: BestBuyBestbuyBrandsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> BestBuyBestbuyBrandsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['bestbuy-categories'],
+        params: BestBuyBestbuyCategoriesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> BestBuyBestbuyCategoriesResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['bestbuy-categories-trending'],
+        params: BestBuyBestbuyCategoriesTrendingParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> BestBuyBestbuyCategoriesTrendingResponse: ...
+    @overload
+    def operation(
+        self,
         operation_id: Literal['bestbuy-category'],
         params: BestBuyBestbuyCategoryParams,
         *,
@@ -45523,6 +46788,18 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> BestBuyBestbuyCategoryResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['bestbuy-category-subcategories'],
+        params: BestBuyBestbuyCategorySubcategoriesParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> BestBuyBestbuyCategorySubcategoriesResponse: ...
     @overload
     def operation(
         self,
@@ -45538,6 +46815,30 @@ class CrawloraClient:
     @overload
     def operation(
         self,
+        operation_id: Literal['bestbuy-product-questions'],
+        params: BestBuyBestbuyProductQuestionsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> BestBuyBestbuyProductQuestionsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['bestbuy-product-related'],
+        params: BestBuyBestbuyProductRelatedParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> BestBuyBestbuyProductRelatedResponse: ...
+    @overload
+    def operation(
+        self,
         operation_id: Literal['bestbuy-product-reviews'],
         params: BestBuyBestbuyProductReviewsParams,
         *,
@@ -45547,6 +46848,30 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> BestBuyBestbuyProductReviewsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['bestbuy-search'],
+        params: BestBuyBestbuySearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> BestBuyBestbuySearchResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['bestbuy-stores'],
+        params: BestBuyBestbuyStoresParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> BestBuyBestbuyStoresResponse: ...
     @overload
     def operation(
         self,
@@ -48178,6 +49503,18 @@ class CrawloraClient:
     @overload
     def operation(
         self,
+        operation_id: Literal['depop-brands'],
+        params: DepopBrandsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DepopBrandsResponse: ...
+    @overload
+    def operation(
+        self,
         operation_id: Literal['depop-categories'],
         params: DepopCategoriesParams = ...,
         *,
@@ -48226,6 +49563,30 @@ class CrawloraClient:
     @overload
     def operation(
         self,
+        operation_id: Literal['depop-search-sellers'],
+        params: DepopSearchSellersParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DepopSearchSellersResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['depop-search-facets'],
+        params: DepopSearchFacetsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DepopSearchFacetsResponse: ...
+    @overload
+    def operation(
+        self,
         operation_id: Literal['depop-shop'],
         params: DepopShopParams,
         *,
@@ -48235,6 +49596,30 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> DepopShopResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['depop-sizes'],
+        params: DepopSizesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DepopSizesResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['depop-suggest'],
+        params: DepopSuggestParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DepopSuggestResponse: ...
     @overload
     def operation(
         self,
@@ -48479,50 +49864,146 @@ class CrawloraClient:
     def operation(
         self,
         operation_id: Literal['draftkings-event'],
-        params: DraftKingsDraftkingsEventParams,
+        params: DraftKingsSportsbookDraftkingsEventParams,
         *,
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
-    ) -> DraftKingsDraftkingsEventResponse: ...
+    ) -> DraftKingsSportsbookDraftkingsEventResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['draftkings-event-context'],
+        params: DraftKingsSportsbookDraftkingsEventContextParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DraftKingsSportsbookDraftkingsEventContextResponse: ...
     @overload
     def operation(
         self,
         operation_id: Literal['draftkings-event-markets'],
-        params: DraftKingsDraftkingsEventMarketsParams,
+        params: DraftKingsSportsbookDraftkingsEventMarketsParams,
         *,
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
-    ) -> DraftKingsDraftkingsEventMarketsResponse: ...
+    ) -> DraftKingsSportsbookDraftkingsEventMarketsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['draftkings-featured-leagues'],
+        params: DraftKingsSportsbookDraftkingsFeaturedLeaguesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DraftKingsSportsbookDraftkingsFeaturedLeaguesResponse: ...
     @overload
     def operation(
         self,
         operation_id: Literal['draftkings-futures'],
-        params: DraftKingsDraftkingsFuturesParams,
+        params: DraftKingsSportsbookDraftkingsFuturesParams,
         *,
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
-    ) -> DraftKingsDraftkingsFuturesResponse: ...
+    ) -> DraftKingsSportsbookDraftkingsFuturesResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['draftkings-league-events'],
+        params: DraftKingsSportsbookDraftkingsLeagueEventsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DraftKingsSportsbookDraftkingsLeagueEventsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['draftkings-leagues'],
+        params: DraftKingsSportsbookDraftkingsLeaguesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DraftKingsSportsbookDraftkingsLeaguesResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['draftkings-live'],
+        params: DraftKingsSportsbookDraftkingsLiveParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DraftKingsSportsbookDraftkingsLiveResponse: ...
     @overload
     def operation(
         self,
         operation_id: Literal['draftkings-odds'],
-        params: DraftKingsDraftkingsOddsParams,
+        params: DraftKingsSportsbookDraftkingsOddsParams,
         *,
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
-    ) -> DraftKingsDraftkingsOddsResponse: ...
+    ) -> DraftKingsSportsbookDraftkingsOddsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['draftkings-quick-links'],
+        params: DraftKingsSportsbookDraftkingsQuickLinksParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DraftKingsSportsbookDraftkingsQuickLinksResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['draftkings-team'],
+        params: DraftKingsSportsbookDraftkingsTeamParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DraftKingsSportsbookDraftkingsTeamResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['draftkings-teams'],
+        params: DraftKingsSportsbookDraftkingsTeamsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DraftKingsSportsbookDraftkingsTeamsResponse: ...
     @overload
     def operation(
         self,
@@ -49918,6 +51399,18 @@ class CrawloraClient:
     @overload
     def operation(
         self,
+        operation_id: Literal['googlepatents-classification'],
+        params: GooglePatentsGooglepatentsClassificationParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> GooglePatentsGooglepatentsClassificationResponse: ...
+    @overload
+    def operation(
+        self,
         operation_id: Literal['googlepatents-coverage'],
         params: GooglePatentsGooglepatentsCoverageParams = ...,
         *,
@@ -49939,6 +51432,18 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> GooglePatentsGooglepatentsDetailResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['googlepatents-recent'],
+        params: GooglePatentsGooglepatentsRecentParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> GooglePatentsGooglepatentsRecentResponse: ...
     @overload
     def operation(
         self,
@@ -54334,6 +55839,90 @@ class CrawloraClient:
     @overload
     def operation(
         self,
+        operation_id: Literal['sephora-category'],
+        params: SephoraCategoryParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> SephoraCategoryResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['sephora-product'],
+        params: SephoraProductParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> SephoraProductResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['sephora-product-questions'],
+        params: SephoraProductQuestionsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> SephoraProductQuestionsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['sephora-product-reviews'],
+        params: SephoraProductReviewsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> SephoraProductReviewsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['sephora-search'],
+        params: SephoraSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> SephoraSearchResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['sephora-stores'],
+        params: SephoraStoresParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> SephoraStoresResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['sephora-suggest'],
+        params: SephoraSuggestParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> SephoraSuggestResponse: ...
+    @overload
+    def operation(
+        self,
         operation_id: Literal['shop-app-analysis'],
         params: ShopAppAnalysisParams,
         *,
@@ -57115,6 +58704,30 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> AccountDeletionRequestResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['usptoppubs-detail'],
+        params: UsptoPatentPublicSearchUsptoppubsDetailParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> UsptoPatentPublicSearchUsptoppubsDetailResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['usptoppubs-search'],
+        params: UsptoPatentPublicSearchUsptoppubsSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> UsptoPatentPublicSearchUsptoppubsSearchResponse: ...
     @overload
     def operation(
         self,
@@ -59806,6 +61419,42 @@ class CrawloraClient:
     @overload
     def request(
         self,
+        operation_id: Literal['bestbuy-brands'],
+        params: BestBuyBestbuyBrandsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> BestBuyBestbuyBrandsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['bestbuy-categories'],
+        params: BestBuyBestbuyCategoriesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> BestBuyBestbuyCategoriesResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['bestbuy-categories-trending'],
+        params: BestBuyBestbuyCategoriesTrendingParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> BestBuyBestbuyCategoriesTrendingResponse: ...
+    @overload
+    def request(
+        self,
         operation_id: Literal['bestbuy-category'],
         params: BestBuyBestbuyCategoryParams,
         *,
@@ -59815,6 +61464,18 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> BestBuyBestbuyCategoryResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['bestbuy-category-subcategories'],
+        params: BestBuyBestbuyCategorySubcategoriesParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> BestBuyBestbuyCategorySubcategoriesResponse: ...
     @overload
     def request(
         self,
@@ -59830,6 +61491,30 @@ class CrawloraClient:
     @overload
     def request(
         self,
+        operation_id: Literal['bestbuy-product-questions'],
+        params: BestBuyBestbuyProductQuestionsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> BestBuyBestbuyProductQuestionsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['bestbuy-product-related'],
+        params: BestBuyBestbuyProductRelatedParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> BestBuyBestbuyProductRelatedResponse: ...
+    @overload
+    def request(
+        self,
         operation_id: Literal['bestbuy-product-reviews'],
         params: BestBuyBestbuyProductReviewsParams,
         *,
@@ -59839,6 +61524,30 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> BestBuyBestbuyProductReviewsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['bestbuy-search'],
+        params: BestBuyBestbuySearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> BestBuyBestbuySearchResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['bestbuy-stores'],
+        params: BestBuyBestbuyStoresParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> BestBuyBestbuyStoresResponse: ...
     @overload
     def request(
         self,
@@ -62470,6 +64179,18 @@ class CrawloraClient:
     @overload
     def request(
         self,
+        operation_id: Literal['depop-brands'],
+        params: DepopBrandsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DepopBrandsResponse: ...
+    @overload
+    def request(
+        self,
         operation_id: Literal['depop-categories'],
         params: DepopCategoriesParams = ...,
         *,
@@ -62518,6 +64239,30 @@ class CrawloraClient:
     @overload
     def request(
         self,
+        operation_id: Literal['depop-search-sellers'],
+        params: DepopSearchSellersParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DepopSearchSellersResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['depop-search-facets'],
+        params: DepopSearchFacetsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DepopSearchFacetsResponse: ...
+    @overload
+    def request(
+        self,
         operation_id: Literal['depop-shop'],
         params: DepopShopParams,
         *,
@@ -62527,6 +64272,30 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> DepopShopResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['depop-sizes'],
+        params: DepopSizesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DepopSizesResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['depop-suggest'],
+        params: DepopSuggestParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DepopSuggestResponse: ...
     @overload
     def request(
         self,
@@ -62771,50 +64540,146 @@ class CrawloraClient:
     def request(
         self,
         operation_id: Literal['draftkings-event'],
-        params: DraftKingsDraftkingsEventParams,
+        params: DraftKingsSportsbookDraftkingsEventParams,
         *,
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
-    ) -> DraftKingsDraftkingsEventResponse: ...
+    ) -> DraftKingsSportsbookDraftkingsEventResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['draftkings-event-context'],
+        params: DraftKingsSportsbookDraftkingsEventContextParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DraftKingsSportsbookDraftkingsEventContextResponse: ...
     @overload
     def request(
         self,
         operation_id: Literal['draftkings-event-markets'],
-        params: DraftKingsDraftkingsEventMarketsParams,
+        params: DraftKingsSportsbookDraftkingsEventMarketsParams,
         *,
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
-    ) -> DraftKingsDraftkingsEventMarketsResponse: ...
+    ) -> DraftKingsSportsbookDraftkingsEventMarketsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['draftkings-featured-leagues'],
+        params: DraftKingsSportsbookDraftkingsFeaturedLeaguesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DraftKingsSportsbookDraftkingsFeaturedLeaguesResponse: ...
     @overload
     def request(
         self,
         operation_id: Literal['draftkings-futures'],
-        params: DraftKingsDraftkingsFuturesParams,
+        params: DraftKingsSportsbookDraftkingsFuturesParams,
         *,
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
-    ) -> DraftKingsDraftkingsFuturesResponse: ...
+    ) -> DraftKingsSportsbookDraftkingsFuturesResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['draftkings-league-events'],
+        params: DraftKingsSportsbookDraftkingsLeagueEventsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DraftKingsSportsbookDraftkingsLeagueEventsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['draftkings-leagues'],
+        params: DraftKingsSportsbookDraftkingsLeaguesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DraftKingsSportsbookDraftkingsLeaguesResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['draftkings-live'],
+        params: DraftKingsSportsbookDraftkingsLiveParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DraftKingsSportsbookDraftkingsLiveResponse: ...
     @overload
     def request(
         self,
         operation_id: Literal['draftkings-odds'],
-        params: DraftKingsDraftkingsOddsParams,
+        params: DraftKingsSportsbookDraftkingsOddsParams,
         *,
         response_type: ResponseType = ...,
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
-    ) -> DraftKingsDraftkingsOddsResponse: ...
+    ) -> DraftKingsSportsbookDraftkingsOddsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['draftkings-quick-links'],
+        params: DraftKingsSportsbookDraftkingsQuickLinksParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DraftKingsSportsbookDraftkingsQuickLinksResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['draftkings-team'],
+        params: DraftKingsSportsbookDraftkingsTeamParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DraftKingsSportsbookDraftkingsTeamResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['draftkings-teams'],
+        params: DraftKingsSportsbookDraftkingsTeamsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DraftKingsSportsbookDraftkingsTeamsResponse: ...
     @overload
     def request(
         self,
@@ -64210,6 +66075,18 @@ class CrawloraClient:
     @overload
     def request(
         self,
+        operation_id: Literal['googlepatents-classification'],
+        params: GooglePatentsGooglepatentsClassificationParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> GooglePatentsGooglepatentsClassificationResponse: ...
+    @overload
+    def request(
+        self,
         operation_id: Literal['googlepatents-coverage'],
         params: GooglePatentsGooglepatentsCoverageParams = ...,
         *,
@@ -64231,6 +66108,18 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> GooglePatentsGooglepatentsDetailResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['googlepatents-recent'],
+        params: GooglePatentsGooglepatentsRecentParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> GooglePatentsGooglepatentsRecentResponse: ...
     @overload
     def request(
         self,
@@ -68626,6 +70515,90 @@ class CrawloraClient:
     @overload
     def request(
         self,
+        operation_id: Literal['sephora-category'],
+        params: SephoraCategoryParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> SephoraCategoryResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['sephora-product'],
+        params: SephoraProductParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> SephoraProductResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['sephora-product-questions'],
+        params: SephoraProductQuestionsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> SephoraProductQuestionsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['sephora-product-reviews'],
+        params: SephoraProductReviewsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> SephoraProductReviewsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['sephora-search'],
+        params: SephoraSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> SephoraSearchResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['sephora-stores'],
+        params: SephoraStoresParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> SephoraStoresResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['sephora-suggest'],
+        params: SephoraSuggestParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> SephoraSuggestResponse: ...
+    @overload
+    def request(
+        self,
         operation_id: Literal['shop-app-analysis'],
         params: ShopAppAnalysisParams,
         *,
@@ -71407,6 +73380,30 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> AccountDeletionRequestResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['usptoppubs-detail'],
+        params: UsptoPatentPublicSearchUsptoppubsDetailParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> UsptoPatentPublicSearchUsptoppubsDetailResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['usptoppubs-search'],
+        params: UsptoPatentPublicSearchUsptoppubsSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> UsptoPatentPublicSearchUsptoppubsSearchResponse: ...
     @overload
     def request(
         self,
