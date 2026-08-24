@@ -55,6 +55,222 @@ ModelAccountdeletionAccountDeletionResponseDoc = TypedDict('ModelAccountdeletion
     'request': NotRequired[ModelAccountdeletionAccountDeletionRequestDoc],
 }, total=False)
 
+ModelAdidasBreadcrumb = TypedDict('ModelAdidasBreadcrumb', {
+    'link': NotRequired[str],
+    'text': NotRequired[str],
+}, total=False)
+
+ModelAdidasFilter = TypedDict('ModelAdidasFilter', {
+    'id': NotRequired[str],
+    'multiselect': NotRequired[bool],
+    'title': NotRequired[str],
+    'values': NotRequired[list[ModelAdidasFilterValue]],
+}, total=False)
+
+ModelAdidasFilterValue = TypedDict('ModelAdidasFilterValue', {
+    'count': NotRequired[int],
+    'name': NotRequired[str],
+    'value': NotRequired[str],
+}, total=False)
+
+ModelAdidasImage = TypedDict('ModelAdidasImage', {
+    'sort_order': NotRequired[int],
+    'url': NotRequired[str],
+    'view': NotRequired[str],
+}, total=False)
+
+ModelAdidasProduct = TypedDict('ModelAdidasProduct', {
+    'alt_text': NotRequired[str],
+    'available_sizes': NotRequired[list[str]],
+    'category': NotRequired[str],
+    'color_variations': NotRequired[list[str]],
+    'discount_percent': NotRequired[int],
+    'division': NotRequired[str],
+    'generic_product_type': NotRequired[list[str]],
+    'hover_image_url': NotRequired[str],
+    'id': NotRequired[str],
+    'image_url': NotRequired[str],
+    'is_flash': NotRequired[bool],
+    'model_number': NotRequired[str],
+    'online_from': NotRequired[str],
+    'orderable': NotRequired[bool],
+    'original_price': NotRequired[float],
+    'personalizable': NotRequired[bool],
+    'preorderable': NotRequired[bool],
+    'price': NotRequired[float],
+    'rating': NotRequired[float],
+    'rating_count': NotRequired[int],
+    'sport': NotRequired[list[str]],
+    'subtitle': NotRequired[str],
+    'surface': NotRequired[list[str]],
+    'title': NotRequired[str],
+    'unisex': NotRequired[bool],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelAdidasProductDetailResponse = TypedDict('ModelAdidasProductDetailResponse', {
+    'base_model_number': NotRequired[str],
+    'brand': NotRequired[str],
+    'breadcrumbs': NotRequired[list[ModelAdidasBreadcrumb]],
+    'canonical_url': NotRequired[str],
+    'category': NotRequired[str],
+    'color': NotRequired[str],
+    'current_price': NotRequired[float],
+    'description': NotRequired[str],
+    'discount_text': NotRequired[str],
+    'fetched_at': NotRequired[str],
+    'gender': NotRequired[str],
+    'images': NotRequired[list[ModelAdidasImage]],
+    'model_number': NotRequired[str],
+    'name': NotRequired[str],
+    'outlet': NotRequired[bool],
+    'product_id': NotRequired[str],
+    'product_type': NotRequired[str],
+    'sale': NotRequired[bool],
+    'sale_price': NotRequired[float],
+    'source_url': NotRequired[str],
+    'sport': NotRequired[list[str]],
+    'standard_price': NotRequired[float],
+    'variations': NotRequired[list[ModelAdidasVariation]],
+}, total=False)
+
+ModelAdidasSearchResponse = TypedDict('ModelAdidasSearchResponse', {
+    'breadcrumbs': NotRequired[list[ModelAdidasBreadcrumb]],
+    'category': NotRequired[str],
+    'count': NotRequired[int],
+    'fetched_at': NotRequired[str],
+    'filters': NotRequired[list[ModelAdidasFilter]],
+    'page': NotRequired[int],
+    'page_size': NotRequired[int],
+    'products': NotRequired[list[ModelAdidasProduct]],
+    'query': NotRequired[str],
+    'sort': NotRequired[str],
+    'sort_options': NotRequired[list[ModelAdidasSortOption]],
+    'source_url': NotRequired[str],
+    'total_pages': NotRequired[int],
+    'total_products': NotRequired[int],
+}, total=False)
+
+ModelAdidasSortOption = TypedDict('ModelAdidasSortOption', {
+    'id': NotRequired[str],
+    'selected': NotRequired[bool],
+}, total=False)
+
+ModelAdidasStore = TypedDict('ModelAdidasStore', {
+    'city': NotRequired[str],
+    'distance_miles': NotRequired[float],
+    'features': NotRequired[list[str]],
+    'id': NotRequired[str],
+    'latitude': NotRequired[float],
+    'longitude': NotRequired[float],
+    'name': NotRequired[str],
+    'opening_hours': NotRequired[list[ModelAdidasStoreDay]],
+    'phone': NotRequired[str],
+    'street': NotRequired[str],
+}, total=False)
+
+ModelAdidasStoreDay = TypedDict('ModelAdidasStoreDay', {
+    'closed': NotRequired[bool],
+    'day': NotRequired[str],
+    'end': NotRequired[str],
+    'start': NotRequired[str],
+}, total=False)
+
+ModelAdidasStoreDayHours = TypedDict('ModelAdidasStoreDayHours', {
+    'day': NotRequired[str],
+    'from': NotRequired[str],
+    'status': NotRequired[str],
+    'to': NotRequired[str],
+}, total=False)
+
+ModelAdidasStoreDetailResponse = TypedDict('ModelAdidasStoreDetailResponse', {
+    'address_line': NotRequired[str],
+    'city': NotRequired[str],
+    'country_code': NotRequired[str],
+    'description': NotRequired[str],
+    'fetched_at': NotRequired[str],
+    'latitude': NotRequired[float],
+    'longitude': NotRequired[float],
+    'name': NotRequired[str],
+    'opening_hours': NotRequired[list[ModelAdidasStoreDayHours]],
+    'phone': NotRequired[str],
+    'postal_code': NotRequired[str],
+    'services': NotRequired[list[ModelAdidasStoreService]],
+    'source_url': NotRequired[str],
+    'status': NotRequired[str],
+    'store_id': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelAdidasStoreResponse = TypedDict('ModelAdidasStoreResponse', {
+    'count': NotRequired[int],
+    'fetched_at': NotRequired[str],
+    'lat': NotRequired[float],
+    'lng': NotRequired[float],
+    'page': NotRequired[int],
+    'source_url': NotRequired[str],
+    'stores': NotRequired[list[ModelAdidasStore]],
+    'total': NotRequired[int],
+}, total=False)
+
+ModelAdidasStoreService = TypedDict('ModelAdidasStoreService', {
+    'name': NotRequired[str],
+    'type': NotRequired[str],
+}, total=False)
+
+ModelAdidasSuggestResponse = TypedDict('ModelAdidasSuggestResponse', {
+    'count': NotRequired[int],
+    'fetched_at': NotRequired[str],
+    'query': NotRequired[str],
+    'source_url': NotRequired[str],
+    'suggestions': NotRequired[list[ModelAdidasSuggestion]],
+}, total=False)
+
+ModelAdidasSuggestion = TypedDict('ModelAdidasSuggestion', {
+    'id': NotRequired[str],
+    'image_url': NotRequired[str],
+    'price': NotRequired[float],
+    'title': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelAdidasVariation = TypedDict('ModelAdidasVariation', {
+    'gtin': NotRequired[str],
+    'size': NotRequired[str],
+    'sku': NotRequired[str],
+    'split_size': NotRequired[list[str]],
+}, total=False)
+
+ModelAdidasProductResponseDoc = TypedDict('ModelAdidasProductResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelAdidasProductDetailResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelAdidasSearchResponseDoc = TypedDict('ModelAdidasSearchResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelAdidasSearchResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelAdidasStoreDetailResponseDoc = TypedDict('ModelAdidasStoreDetailResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelAdidasStoreDetailResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelAdidasStoresResponseDoc = TypedDict('ModelAdidasStoresResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelAdidasStoreResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelAdidasSuggestResponseDoc = TypedDict('ModelAdidasSuggestResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelAdidasSuggestResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
 ModelAgodaActivitiesSearchResponse = TypedDict('ModelAgodaActivitiesSearchResponse', {
     'activities': NotRequired[list[ModelAgodaActivitySummary]],
     'city_id': NotRequired[int],
@@ -1493,6 +1709,272 @@ ModelAppstoreVersionHistoryResponseDoc = TypedDict('ModelAppstoreVersionHistoryR
     'msg': NotRequired[str],
 }, total=False)
 
+ModelAudibleCategoriesResponse = TypedDict('ModelAudibleCategoriesResponse', {
+    'categories': NotRequired[list[ModelAudibleCategory]],
+    'source_url': NotRequired[str],
+}, total=False)
+
+ModelAudibleCategory = TypedDict('ModelAudibleCategory', {
+    'children': NotRequired[list[ModelAudibleCategory]],
+    'id': NotRequired[str],
+    'name': NotRequired[str],
+}, total=False)
+
+ModelAudibleCategoryEntry = TypedDict('ModelAudibleCategoryEntry', {
+    'id': NotRequired[str],
+    'name': NotRequired[str],
+}, total=False)
+
+ModelAudibleCategoryLadder = TypedDict('ModelAudibleCategoryLadder', {
+    'path': NotRequired[list[ModelAudibleCategoryEntry]],
+    'root': NotRequired[str],
+}, total=False)
+
+ModelAudibleCategoryResponse = TypedDict('ModelAudibleCategoryResponse', {
+    'children': NotRequired[list[ModelAudibleCategory]],
+    'id': NotRequired[str],
+    'name': NotRequired[str],
+    'source_url': NotRequired[str],
+}, total=False)
+
+ModelAudibleChartEntry = TypedDict('ModelAudibleChartEntry', {
+    'asin': NotRequired[str],
+    'authors': NotRequired[list[str]],
+    'language': NotRequired[str],
+    'narrators': NotRequired[list[str]],
+    'price_text': NotRequired[str],
+    'rank': NotRequired[int],
+    'rating': NotRequired[float],
+    'ratings_count': NotRequired[int],
+    'release_date': NotRequired[str],
+    'runtime_minutes': NotRequired[int],
+    'runtime_text': NotRequired[str],
+    'series': NotRequired[str],
+    'title': NotRequired[str],
+    'uri': NotRequired[str],
+}, total=False)
+
+ModelAudibleChartsResponse = TypedDict('ModelAudibleChartsResponse', {
+    'access_level': NotRequired[str],
+    'category_id': NotRequired[str],
+    'chart': NotRequired[str],
+    'content_type': NotRequired[str],
+    'duration': NotRequired[str],
+    'entries': NotRequired[list[ModelAudibleChartEntry]],
+    'language': NotRequired[str],
+    'originals_only': NotRequired[bool],
+    'page': NotRequired[int],
+    'results_text': NotRequired[str],
+    'source_url': NotRequired[str],
+    'title': NotRequired[str],
+}, total=False)
+
+ModelAudibleContributor = TypedDict('ModelAudibleContributor', {
+    'asin': NotRequired[str],
+    'name': NotRequired[str],
+}, total=False)
+
+ModelAudibleEditorialListResponse = TypedDict('ModelAudibleEditorialListResponse', {
+    'list': NotRequired[str],
+    'shelves': NotRequired[list[ModelAudibleEditorialShelf]],
+    'source_url': NotRequired[str],
+    'title': NotRequired[str],
+}, total=False)
+
+ModelAudibleEditorialShelf = TypedDict('ModelAudibleEditorialShelf', {
+    'asins': NotRequired[list[str]],
+    'heading': NotRequired[str],
+}, total=False)
+
+ModelAudiblePrice = TypedDict('ModelAudiblePrice', {
+    'credit_price': NotRequired[float],
+    'currency_code': NotRequired[str],
+    'list_price': NotRequired[float],
+}, total=False)
+
+ModelAudibleProductResponse = TypedDict('ModelAudibleProductResponse', {
+    'asin': NotRequired[str],
+    'authors': NotRequired[list[ModelAudibleContributor]],
+    'categories': NotRequired[list[ModelAudibleCategoryLadder]],
+    'description': NotRequired[str],
+    'format_type': NotRequired[str],
+    'image_url': NotRequired[str],
+    'is_preorderable': NotRequired[bool],
+    'language': NotRequired[str],
+    'narrators': NotRequired[list[ModelAudibleContributor]],
+    'price': NotRequired[ModelAudiblePrice],
+    'product_state': NotRequired[str],
+    'publisher': NotRequired[str],
+    'rating': NotRequired[ModelAudibleRating],
+    'release_date': NotRequired[str],
+    'runtime_minutes': NotRequired[int],
+    'sample_url': NotRequired[str],
+    'series': NotRequired[list[ModelAudibleSeriesEntry]],
+    'source_url': NotRequired[str],
+    'subtitle': NotRequired[str],
+    'title': NotRequired[str],
+    'uri': NotRequired[str],
+}, total=False)
+
+ModelAudibleProductsResponse = TypedDict('ModelAudibleProductsResponse', {
+    'products': NotRequired[list[ModelAudibleProductResponse]],
+    'requested': NotRequired[int],
+    'source_url': NotRequired[str],
+}, total=False)
+
+ModelAudibleRating = TypedDict('ModelAudibleRating', {
+    'num_reviews': NotRequired[int],
+    'overall': NotRequired[ModelAudibleRatingDistribution],
+    'performance': NotRequired[ModelAudibleRatingDistribution],
+    'story': NotRequired[ModelAudibleRatingDistribution],
+}, total=False)
+
+ModelAudibleRatingDistribution = TypedDict('ModelAudibleRatingDistribution', {
+    'average': NotRequired[float],
+    'display_average': NotRequired[str],
+    'five_star': NotRequired[int],
+    'four_star': NotRequired[int],
+    'num_ratings': NotRequired[int],
+    'one_star': NotRequired[int],
+    'three_star': NotRequired[int],
+    'two_star': NotRequired[int],
+}, total=False)
+
+ModelAudibleRelatedResponse = TypedDict('ModelAudibleRelatedResponse', {
+    'asin': NotRequired[str],
+    'limit': NotRequired[int],
+    'results': NotRequired[list[ModelAudibleSearchResult]],
+    'similarity_type': NotRequired[str],
+    'source_url': NotRequired[str],
+}, total=False)
+
+ModelAudibleReview = TypedDict('ModelAudibleReview', {
+    'author_name': NotRequired[str],
+    'body': NotRequired[str],
+    'helpful_votes': NotRequired[int],
+    'id': NotRequired[str],
+    'overall_rating': NotRequired[int],
+    'performance_rating': NotRequired[int],
+    'story_rating': NotRequired[int],
+    'submitted_at': NotRequired[str],
+    'title': NotRequired[str],
+}, total=False)
+
+ModelAudibleReviewsResponse = TypedDict('ModelAudibleReviewsResponse', {
+    'asin': NotRequired[str],
+    'limit': NotRequired[int],
+    'page': NotRequired[int],
+    'reviews': NotRequired[list[ModelAudibleReview]],
+    'source_url': NotRequired[str],
+}, total=False)
+
+ModelAudibleSearchResponse = TypedDict('ModelAudibleSearchResponse', {
+    'author': NotRequired[str],
+    'category_id': NotRequired[str],
+    'limit': NotRequired[int],
+    'narrator': NotRequired[str],
+    'page': NotRequired[int],
+    'query': NotRequired[str],
+    'results': NotRequired[list[ModelAudibleSearchResult]],
+    'sort_by': NotRequired[str],
+    'source_url': NotRequired[str],
+    'title': NotRequired[str],
+    'total_results': NotRequired[int],
+}, total=False)
+
+ModelAudibleSearchResult = TypedDict('ModelAudibleSearchResult', {
+    'asin': NotRequired[str],
+    'format_type': NotRequired[str],
+    'is_preorderable': NotRequired[bool],
+    'language': NotRequired[str],
+    'product_state': NotRequired[str],
+    'release_date': NotRequired[str],
+    'runtime_minutes': NotRequired[int],
+    'subtitle': NotRequired[str],
+    'title': NotRequired[str],
+    'uri': NotRequired[str],
+}, total=False)
+
+ModelAudibleSeriesBook = TypedDict('ModelAudibleSeriesBook', {
+    'asin': NotRequired[str],
+    'sequence': NotRequired[str],
+    'uri': NotRequired[str],
+}, total=False)
+
+ModelAudibleSeriesEntry = TypedDict('ModelAudibleSeriesEntry', {
+    'asin': NotRequired[str],
+    'sequence': NotRequired[str],
+    'title': NotRequired[str],
+    'uri': NotRequired[str],
+}, total=False)
+
+ModelAudibleSeriesResponse = TypedDict('ModelAudibleSeriesResponse', {
+    'asin': NotRequired[str],
+    'books': NotRequired[list[ModelAudibleSeriesBook]],
+    'source_url': NotRequired[str],
+    'title': NotRequired[str],
+}, total=False)
+
+ModelAudibleCategoriesResponseDoc = TypedDict('ModelAudibleCategoriesResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelAudibleCategoriesResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelAudibleCategoryResponseDoc = TypedDict('ModelAudibleCategoryResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelAudibleCategoryResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelAudibleChartsResponseDoc = TypedDict('ModelAudibleChartsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelAudibleChartsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelAudibleEditorialListResponseDoc = TypedDict('ModelAudibleEditorialListResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelAudibleEditorialListResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelAudibleProductResponseDoc = TypedDict('ModelAudibleProductResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelAudibleProductResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelAudibleProductsResponseDoc = TypedDict('ModelAudibleProductsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelAudibleProductsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelAudibleRelatedResponseDoc = TypedDict('ModelAudibleRelatedResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelAudibleRelatedResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelAudibleReviewsResponseDoc = TypedDict('ModelAudibleReviewsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelAudibleReviewsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelAudibleSearchResponseDoc = TypedDict('ModelAudibleSearchResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelAudibleSearchResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelAudibleSeriesResponseDoc = TypedDict('ModelAudibleSeriesResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelAudibleSeriesResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
 ModelAutotraderBodyStyle = TypedDict('ModelAutotraderBodyStyle', {
     'code': NotRequired[str],
     'name': NotRequired[str],
@@ -1697,6 +2179,269 @@ ModelAutotraderVehicleResponse = TypedDict('ModelAutotraderVehicleResponse', {
 ModelAutotraderSearchResponseDoc = TypedDict('ModelAutotraderSearchResponseDoc', {
     'code': NotRequired[int],
     'data': NotRequired[ModelAutotraderSearchResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelBbbBusinessHoursDay = TypedDict('ModelBbbBusinessHoursDay', {
+    'day': NotRequired[str],
+    'hours': NotRequired[str],
+}, total=False)
+
+ModelBbbBusinessResponse = TypedDict('ModelBbbBusinessResponse', {
+    'accredited': NotRequired[bool],
+    'accredited_since': NotRequired[str],
+    'additional_phone_numbers': NotRequired[list[str]],
+    'additional_websites': NotRequired[list[str]],
+    'address': NotRequired[str],
+    'alternate_names': NotRequired[list[str]],
+    'bbb_file_opened': NotRequired[str],
+    'business_incorporated': NotRequired[str],
+    'business_management': NotRequired[str],
+    'business_started': NotRequired[str],
+    'categories': NotRequired[list[str]],
+    'category': NotRequired[str],
+    'entity_type': NotRequired[str],
+    'hours': NotRequired[list[ModelBbbBusinessHoursDay]],
+    'image_url': NotRequired[str],
+    'latest_reviews': NotRequired[list[ModelBbbReviewPreview]],
+    'licensing_note': NotRequired[str],
+    'local_bbb': NotRequired[str],
+    'local_bbb_url': NotRequired[str],
+    'more_info_url': NotRequired[str],
+    'name': NotRequired[str],
+    'phone': NotRequired[str],
+    'products_and_services': NotRequired[list[str]],
+    'rating': NotRequired[str],
+    'rating_reasons': NotRequired[list[str]],
+    'social_media': NotRequired[list[str]],
+    'source_url': NotRequired[str],
+    'url': NotRequired[str],
+    'website': NotRequired[str],
+    'years_in_business': NotRequired[str],
+}, total=False)
+
+ModelBbbBusinessSearchResult = TypedDict('ModelBbbBusinessSearchResult', {
+    'accredited': NotRequired[bool],
+    'address': NotRequired[str],
+    'categories': NotRequired[list[str]],
+    'hq_profile_url': NotRequired[str],
+    'image_url': NotRequired[str],
+    'name': NotRequired[str],
+    'phone': NotRequired[str],
+    'quote_url': NotRequired[str],
+    'rating': NotRequired[str],
+    'service_areas': NotRequired[list[str]],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelBbbCategoryResponse = TypedDict('ModelBbbCategoryResponse', {
+    'page': NotRequired[int],
+    'results': NotRequired[list[ModelBbbBusinessSearchResult]],
+    'source_url': NotRequired[str],
+    'total_results': NotRequired[int],
+}, total=False)
+
+ModelBbbComplaint = TypedDict('ModelBbbComplaint', {
+    'business_responses': NotRequired[list[ModelBbbComplaintMessage]],
+    'customer_answers': NotRequired[list[ModelBbbComplaintMessage]],
+    'date': NotRequired[str],
+    'id': NotRequired[str],
+    'status': NotRequired[str],
+    'text': NotRequired[str],
+    'type': NotRequired[str],
+}, total=False)
+
+ModelBbbComplaintMessage = TypedDict('ModelBbbComplaintMessage', {
+    'date': NotRequired[str],
+    'text': NotRequired[str],
+}, total=False)
+
+ModelBbbComplaintsResponse = TypedDict('ModelBbbComplaintsResponse', {
+    'business_name': NotRequired[str],
+    'closed_last_12_months': NotRequired[int],
+    'complaints': NotRequired[list[ModelBbbComplaint]],
+    'complaints_list_incomplete': NotRequired[bool],
+    'period_text': NotRequired[str],
+    'source_url': NotRequired[str],
+    'submit_complaint_url': NotRequired[str],
+    'total_complaints': NotRequired[int],
+}, total=False)
+
+ModelBbbMoreInfoResponse = TypedDict('ModelBbbMoreInfoResponse', {
+    'business_name': NotRequired[str],
+    'rating': NotRequired[str],
+    'rating_reasons': NotRequired[list[str]],
+    'service_areas': NotRequired[list[str]],
+    'source_url': NotRequired[str],
+}, total=False)
+
+ModelBbbRelatedCategory = TypedDict('ModelBbbRelatedCategory', {
+    'name': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelBbbReviewItem = TypedDict('ModelBbbReviewItem', {
+    'author': NotRequired[str],
+    'date': NotRequired[str],
+    'id': NotRequired[str],
+    'rating': NotRequired[int],
+    'responses': NotRequired[list[ModelBbbReviewResponse]],
+    'text': NotRequired[str],
+}, total=False)
+
+ModelBbbReviewPreview = TypedDict('ModelBbbReviewPreview', {
+    'author': NotRequired[str],
+    'quote': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelBbbReviewResponse = TypedDict('ModelBbbReviewResponse', {
+    'date': NotRequired[str],
+    'is_business': NotRequired[bool],
+    'text': NotRequired[str],
+    'title': NotRequired[str],
+}, total=False)
+
+ModelBbbReviewsResponse = TypedDict('ModelBbbReviewsResponse', {
+    'average_rating': NotRequired[float],
+    'page': NotRequired[int],
+    'reviews': NotRequired[list[ModelBbbReviewItem]],
+    'source_url': NotRequired[str],
+    'total_pages': NotRequired[int],
+    'total_reviews': NotRequired[int],
+}, total=False)
+
+ModelBbbSearchResponse = TypedDict('ModelBbbSearchResponse', {
+    'location': NotRequired[str],
+    'page': NotRequired[int],
+    'query': NotRequired[str],
+    'related_categories': NotRequired[list[ModelBbbRelatedCategory]],
+    'results': NotRequired[list[ModelBbbBusinessSearchResult]],
+    'source_url': NotRequired[str],
+    'total_results': NotRequired[int],
+}, total=False)
+
+ModelBbbBusinessResponseDoc = TypedDict('ModelBbbBusinessResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelBbbBusinessResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelBbbCategoryResponseDoc = TypedDict('ModelBbbCategoryResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelBbbCategoryResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelBbbComplaintsResponseDoc = TypedDict('ModelBbbComplaintsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelBbbComplaintsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelBbbMoreInfoResponseDoc = TypedDict('ModelBbbMoreInfoResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelBbbMoreInfoResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelBbbReviewsResponseDoc = TypedDict('ModelBbbReviewsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelBbbReviewsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelBbbSearchResponseDoc = TypedDict('ModelBbbSearchResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelBbbSearchResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelBbbscamtrackerDetailResponse = TypedDict('ModelBbbscamtrackerDetailResponse', {
+    'business_name': NotRequired[str],
+    'date_reported': NotRequired[str],
+    'description': NotRequired[str],
+    'dollars_lost': NotRequired[str],
+    'id': NotRequired[str],
+    'scam_type': NotRequired[str],
+    'scammer_email': NotRequired[str],
+    'scammer_location': NotRequired[str],
+    'scammer_phone': NotRequired[str],
+    'scammer_url': NotRequired[str],
+    'source_url': NotRequired[str],
+    'targeted_location': NotRequired[str],
+}, total=False)
+
+ModelBbbscamtrackerScamResult = TypedDict('ModelBbbscamtrackerScamResult', {
+    'business_name_used': NotRequired[str],
+    'category': NotRequired[str],
+    'date_reported': NotRequired[str],
+    'description': NotRequired[str],
+    'dollars_lost': NotRequired[str],
+    'id': NotRequired[str],
+    'url': NotRequired[str],
+    'victim_location': NotRequired[str],
+}, total=False)
+
+ModelBbbscamtrackerScamTypeShare = TypedDict('ModelBbbscamtrackerScamTypeShare', {
+    'count': NotRequired[int],
+    'pct': NotRequired[float],
+    'type': NotRequired[str],
+}, total=False)
+
+ModelBbbscamtrackerSearchResponse = TypedDict('ModelBbbscamtrackerSearchResponse', {
+    'date_from': NotRequired[str],
+    'date_to': NotRequired[str],
+    'max_dollars_lost': NotRequired[int],
+    'min_dollars_lost': NotRequired[int],
+    'page': NotRequired[int],
+    'query': NotRequired[str],
+    'results': NotRequired[list[ModelBbbscamtrackerScamResult]],
+    'scam_type': NotRequired[str],
+    'scammer_state': NotRequired[str],
+    'source_url': NotRequired[str],
+    'state': NotRequired[str],
+    'total_results': NotRequired[int],
+}, total=False)
+
+ModelBbbscamtrackerStateStat = TypedDict('ModelBbbscamtrackerStateStat', {
+    'code': NotRequired[str],
+    'country': NotRequired[str],
+    'losses': NotRequired[int],
+    'losses_per_capita': NotRequired[float],
+    'median_loss': NotRequired[int],
+    'name': NotRequired[str],
+    'pct_reporting_loss': NotRequired[float],
+    'population': NotRequired[int],
+    'reports': NotRequired[int],
+    'reports_per_capita': NotRequired[float],
+    'reports_with_loss': NotRequired[int],
+    'scam_type_breakdown': NotRequired[list[ModelBbbscamtrackerScamTypeShare]],
+    'top_scam_type': NotRequired[str],
+    'yoy_change_pct': NotRequired[float],
+}, total=False)
+
+ModelBbbscamtrackerStateStatsResponse = TypedDict('ModelBbbscamtrackerStateStatsResponse', {
+    'aggregated_at': NotRequired[str],
+    'period': NotRequired[str],
+    'states': NotRequired[list[ModelBbbscamtrackerStateStat]],
+}, total=False)
+
+ModelBbbscamtrackerDetailResponseDoc = TypedDict('ModelBbbscamtrackerDetailResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelBbbscamtrackerDetailResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelBbbscamtrackerSearchResponseDoc = TypedDict('ModelBbbscamtrackerSearchResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelBbbscamtrackerSearchResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelBbbscamtrackerStateStatsResponseDoc = TypedDict('ModelBbbscamtrackerStateStatsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelBbbscamtrackerStateStatsResponse],
     'msg': NotRequired[str],
 }, total=False)
 
@@ -1952,6 +2697,40 @@ ModelBestbuyTrendingCategoriesResponseDoc = TypedDict('ModelBestbuyTrendingCateg
     'msg': NotRequired[str],
 }, total=False)
 
+ModelBillingStripeSubscriptionChangePreview = TypedDict('ModelBillingStripeSubscriptionChangePreview', {
+    'action': NotRequired[str],
+    'amount_due_cents': NotRequired[int],
+    'currency': NotRequired[str],
+    'current_period_end': NotRequired[str],
+    'current_plan': NotRequired[str],
+    'effective_at': NotRequired[str],
+    'next_renewal_amount_cents': NotRequired[int],
+    'preview_id': NotRequired[str],
+    'previewed_at': NotRequired[str],
+    'proration_date': NotRequired[int],
+    'remaining_credits_after_change': NotRequired[int],
+    'target_daily_credit_limit': NotRequired[int],
+    'target_included_credits': NotRequired[int],
+    'target_plan': NotRequired[str],
+    'target_rate_limit_per_minute': NotRequired[int],
+    'used_credits': NotRequired[int],
+}, total=False)
+
+ModelBillingStripeSubscriptionChangeResult = TypedDict('ModelBillingStripeSubscriptionChangeResult', {
+    'action': NotRequired[str],
+    'amount_due_cents': NotRequired[int],
+    'currency': NotRequired[str],
+    'current_plan': NotRequired[str],
+    'effective_at': NotRequired[str],
+    'hosted_invoice_url': NotRequired[str],
+    'invoice_id': NotRequired[str],
+    'local_sync_pending': NotRequired[bool],
+    'payment_action_required': NotRequired[bool],
+    'payment_client_secret': NotRequired[str],
+    'payment_status': NotRequired[str],
+    'target_plan': NotRequired[str],
+}, total=False)
+
 ModelBillingBillingEndpointLedgerDoc = TypedDict('ModelBillingBillingEndpointLedgerDoc', {
     'charged_requests': NotRequired[int],
     'credits': NotRequired[int],
@@ -2117,6 +2896,8 @@ ModelBillingBillingStateDoc = TypedDict('ModelBillingBillingStateDoc', {
     'hard_limit': NotRequired[bool],
     'included_credits': NotRequired[int],
     'overage_credits': NotRequired[int],
+    'pending_plan': NotRequired[str],
+    'pending_plan_effective_at': NotRequired[str],
     'period_end': NotRequired[str],
     'period_key': NotRequired[str],
     'period_start': NotRequired[str],
@@ -2337,6 +3118,25 @@ ModelBillingStripeSessionResponseDoc = TypedDict('ModelBillingStripeSessionRespo
     'msg': NotRequired[str],
 }, total=False)
 
+ModelBillingStripeSubscriptionChangePreviewResponseDoc = TypedDict('ModelBillingStripeSubscriptionChangePreviewResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelBillingStripeSubscriptionChangePreview],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelBillingStripeSubscriptionChangeRequestDoc = TypedDict('ModelBillingStripeSubscriptionChangeRequestDoc', {
+    'idempotency_key': NotRequired[str],
+    'plan': NotRequired[str],
+    'previewed_at': NotRequired[str],
+    'proration_date': NotRequired[int],
+}, total=False)
+
+ModelBillingStripeSubscriptionChangeResultResponseDoc = TypedDict('ModelBillingStripeSubscriptionChangeResultResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelBillingStripeSubscriptionChangeResult],
+    'msg': NotRequired[str],
+}, total=False)
+
 ModelBingContextAttribute = TypedDict('ModelBingContextAttribute', {
     'label': NotRequired[str],
     'value': NotRequired[str],
@@ -2394,6 +3194,7 @@ ModelBingSearchPagination = TypedDict('ModelBingSearchPagination', {
 
 ModelBingSearchResponse = TypedDict('ModelBingSearchResponse', {
     'context': NotRequired[ModelBingSearchContext],
+    'low_confidence': NotRequired[bool],
     'news': NotRequired[list[ModelBingNewsResult]],
     'pagination': NotRequired[ModelBingSearchPagination],
     'people_also_ask': NotRequired[list[str]],
@@ -3551,6 +4352,7 @@ ModelBrandLogo = TypedDict('ModelBrandLogo', {
     'colors': NotRequired[list[ModelBrandColor]],
     'mode': NotRequired[str],
     'resolution': NotRequired[ModelBrandResolution],
+    'theme': NotRequired[str],
     'type': NotRequired[str],
     'url': NotRequired[str],
 }, total=False)
@@ -4291,6 +5093,268 @@ ModelCarsdotcomVehicleResponse = TypedDict('ModelCarsdotcomVehicleResponse', {
 ModelCarsdotcomSearchResponseDoc = TypedDict('ModelCarsdotcomSearchResponseDoc', {
     'code': NotRequired[int],
     'data': NotRequired[ModelCarsdotcomSearchResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelChewyAnswer = TypedDict('ModelChewyAnswer', {
+    'helpful_count': NotRequired[int],
+    'id': NotRequired[str],
+    'is_staff': NotRequired[bool],
+    'submitted_at': NotRequired[str],
+    'submitted_by': NotRequired[str],
+    'text': NotRequired[str],
+}, total=False)
+
+ModelChewyCategoriesResponse = TypedDict('ModelChewyCategoriesResponse', {
+    'count': NotRequired[int],
+    'fetched_at': NotRequired[str],
+    'group_id': NotRequired[str],
+    'groups': NotRequired[list[ModelChewyCategoryGroup]],
+    'source_url': NotRequired[str],
+}, total=False)
+
+ModelChewyCategoryBreadcrumb = TypedDict('ModelChewyCategoryBreadcrumb', {
+    'group_id': NotRequired[str],
+    'text': NotRequired[str],
+    'url_slug': NotRequired[str],
+}, total=False)
+
+ModelChewyCategoryFacet = TypedDict('ModelChewyCategoryFacet', {
+    'name': NotRequired[str],
+    'options': NotRequired[list[ModelChewyCategoryFacetOption]],
+    'value': NotRequired[str],
+}, total=False)
+
+ModelChewyCategoryFacetOption = TypedDict('ModelChewyCategoryFacetOption', {
+    'display_label': NotRequired[str],
+    'name': NotRequired[str],
+    'product_count': NotRequired[int],
+    'url_slug': NotRequired[str],
+    'value': NotRequired[str],
+}, total=False)
+
+ModelChewyCategoryGroup = TypedDict('ModelChewyCategoryGroup', {
+    'children': NotRequired[list[ModelChewyCategoryGroup]],
+    'group_id': NotRequired[str],
+    'name': NotRequired[str],
+    'short_description': NotRequired[str],
+    'thumbnail_url': NotRequired[str],
+}, total=False)
+
+ModelChewyCategoryProduct = TypedDict('ModelChewyCategoryProduct', {
+    'autoship_discount_pct': NotRequired[str],
+    'autoship_price': NotRequired[float],
+    'currency_code': NotRequired[str],
+    'has_more_choices': NotRequired[bool],
+    'image_url': NotRequired[str],
+    'in_stock': NotRequired[bool],
+    'is_autoship_allowed': NotRequired[bool],
+    'is_chewy_exclusive': NotRequired[bool],
+    'is_deal': NotRequired[bool],
+    'is_new': NotRequired[bool],
+    'manufacturer': NotRequired[str],
+    'name': NotRequired[str],
+    'parent_part_number': NotRequired[str],
+    'part_number': NotRequired[str],
+    'price': NotRequired[float],
+    'rating': NotRequired[float],
+    'rating_count': NotRequired[int],
+    'strike_price': NotRequired[float],
+    'thumbnail_urls': NotRequired[list[str]],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelChewyCategoryResponse = TypedDict('ModelChewyCategoryResponse', {
+    'breadcrumbs': NotRequired[list[ModelChewyCategoryBreadcrumb]],
+    'count': NotRequired[int],
+    'facets': NotRequired[list[ModelChewyCategoryFacet]],
+    'fetched_at': NotRequired[str],
+    'group_id': NotRequired[str],
+    'name': NotRequired[str],
+    'page': NotRequired[int],
+    'page_size': NotRequired[int],
+    'products': NotRequired[list[ModelChewyCategoryProduct]],
+    'source_url': NotRequired[str],
+    'total': NotRequired[int],
+}, total=False)
+
+ModelChewyGtinlookupResponse = TypedDict('ModelChewyGtinlookupResponse', {
+    'count': NotRequired[int],
+    'fetched_at': NotRequired[str],
+    'not_found': NotRequired[list[str]],
+    'part_numbers': NotRequired[dict[str, str]],
+    'source_url': NotRequired[str],
+}, total=False)
+
+ModelChewyProduct = TypedDict('ModelChewyProduct', {
+    'brand': NotRequired[str],
+    'brand_url': NotRequired[str],
+    'breadcrumbs': NotRequired[list[ModelChewyProductBreadcrumb]],
+    'currency_code': NotRequired[str],
+    'description': NotRequired[str],
+    'entry_id': NotRequired[str],
+    'icons': NotRequired[list[ModelChewyProductIcon]],
+    'images': NotRequired[list[str]],
+    'in_stock': NotRequired[bool],
+    'name': NotRequired[str],
+    'parent_entry_id': NotRequired[str],
+    'parent_part_number': NotRequired[str],
+    'part_number': NotRequired[str],
+    'price': NotRequired[float],
+    'questions': NotRequired[list[ModelChewyProductQuestion]],
+    'questions_count': NotRequired[int],
+    'rating': NotRequired[float],
+    'rating_breakdown': NotRequired[list[ModelChewyProductRatingBreakdown]],
+    'rating_count': NotRequired[int],
+    'reviews': NotRequired[list[ModelChewyReview]],
+    'slug': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelChewyProductBreadcrumb = TypedDict('ModelChewyProductBreadcrumb', {
+    'id': NotRequired[str],
+    'name': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelChewyProductIcon = TypedDict('ModelChewyProductIcon', {
+    'image_url': NotRequired[str],
+    'name': NotRequired[str],
+}, total=False)
+
+ModelChewyProductQuestion = TypedDict('ModelChewyProductQuestion', {
+    'answers': NotRequired[list[ModelChewyAnswer]],
+    'id': NotRequired[str],
+    'is_staff_answered': NotRequired[bool],
+    'text': NotRequired[str],
+}, total=False)
+
+ModelChewyProductRatingBreakdown = TypedDict('ModelChewyProductRatingBreakdown', {
+    'count': NotRequired[int],
+    'percent': NotRequired[float],
+    'stars': NotRequired[int],
+}, total=False)
+
+ModelChewyProductResponse = TypedDict('ModelChewyProductResponse', {
+    'fetched_at': NotRequired[str],
+    'product': NotRequired[ModelChewyProduct],
+    'source_url': NotRequired[str],
+}, total=False)
+
+ModelChewyProductSummary = TypedDict('ModelChewyProductSummary', {
+    'brand': NotRequired[str],
+    'buyable': NotRequired[bool],
+    'currency_code': NotRequired[str],
+    'discontinued': NotRequired[bool],
+    'gtin': NotRequired[str],
+    'image_url': NotRequired[str],
+    'in_stock': NotRequired[bool],
+    'list_price': NotRequired[float],
+    'manufacturer_part_number': NotRequired[str],
+    'name': NotRequired[str],
+    'on_special': NotRequired[bool],
+    'parent_part_number': NotRequired[str],
+    'part_number': NotRequired[str],
+    'price': NotRequired[float],
+    'rating': NotRequired[float],
+    'rating_count': NotRequired[int],
+    'short_description': NotRequired[str],
+    'slug': NotRequired[str],
+    'thumbnail_url': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelChewyProductsResponse = TypedDict('ModelChewyProductsResponse', {
+    'count': NotRequired[int],
+    'fetched_at': NotRequired[str],
+    'not_found': NotRequired[list[str]],
+    'products': NotRequired[list[ModelChewyProductSummary]],
+    'source_url': NotRequired[str],
+}, total=False)
+
+ModelChewyReview = TypedDict('ModelChewyReview', {
+    'contributor_badge': NotRequired[str],
+    'helpful_count': NotRequired[int],
+    'id': NotRequired[str],
+    'incentivized': NotRequired[bool],
+    'photo_urls': NotRequired[list[str]],
+    'rating': NotRequired[int],
+    'submitted_at': NotRequired[str],
+    'submitted_by': NotRequired[str],
+    'text': NotRequired[str],
+    'title': NotRequired[str],
+}, total=False)
+
+ModelChewySearchResponse = TypedDict('ModelChewySearchResponse', {
+    'breadcrumbs': NotRequired[list[ModelChewyCategoryBreadcrumb]],
+    'count': NotRequired[int],
+    'facets': NotRequired[list[ModelChewyCategoryFacet]],
+    'fetched_at': NotRequired[str],
+    'products': NotRequired[list[ModelChewyCategoryProduct]],
+    'query': NotRequired[str],
+    'source_url': NotRequired[str],
+    'total': NotRequired[int],
+}, total=False)
+
+ModelChewySuggestResponse = TypedDict('ModelChewySuggestResponse', {
+    'articles': NotRequired[list[ModelChewySuggestedArticle]],
+    'fetched_at': NotRequired[str],
+    'redirect_url': NotRequired[str],
+    'source_url': NotRequired[str],
+    'suggestions': NotRequired[list[ModelChewySuggestion]],
+    'term': NotRequired[str],
+}, total=False)
+
+ModelChewySuggestedArticle = TypedDict('ModelChewySuggestedArticle', {
+    'thumbnail_url': NotRequired[str],
+    'title': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelChewySuggestion = TypedDict('ModelChewySuggestion', {
+    'term': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelChewyCategoriesResponseDoc = TypedDict('ModelChewyCategoriesResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelChewyCategoriesResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelChewyCategoryResponseDoc = TypedDict('ModelChewyCategoryResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelChewyCategoryResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelChewyGtinLookupResponseDoc = TypedDict('ModelChewyGtinLookupResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelChewyGtinlookupResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelChewyProductResponseDoc = TypedDict('ModelChewyProductResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelChewyProductResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelChewyProductsResponseDoc = TypedDict('ModelChewyProductsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelChewyProductsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelChewySearchResponseDoc = TypedDict('ModelChewySearchResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelChewySearchResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelChewySuggestResponseDoc = TypedDict('ModelChewySuggestResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelChewySuggestResponse],
     'msg': NotRequired[str],
 }, total=False)
 
@@ -5519,6 +6583,21 @@ ModelDatasetsAppsSearchResponse = TypedDict('ModelDatasetsAppsSearchResponse', {
     'total': NotRequired[int],
 }, total=False)
 
+ModelDatasetsBbbbusinessesFacetResponse = TypedDict('ModelDatasetsBbbbusinessesFacetResponse', {
+    'dataset': NotRequired[str],
+    'facet': NotRequired[str],
+    'items': NotRequired[list[ModelEsBbbbusinessesFacetItem]],
+}, total=False)
+
+ModelDatasetsBbbbusinessesSearchResponse = TypedDict('ModelDatasetsBbbbusinessesSearchResponse', {
+    'dataset': NotRequired[str],
+    'items': NotRequired[list[ModelEsBbbbusinessRecord]],
+    'page': NotRequired[int],
+    'page_size': NotRequired[int],
+    'sort': NotRequired[str],
+    'total': NotRequired[int],
+}, total=False)
+
 ModelDatasetsBoxOfficeMojoFacetResponse = TypedDict('ModelDatasetsBoxOfficeMojoFacetResponse', {
     'dataset': NotRequired[str],
     'facet': NotRequired[str],
@@ -5608,6 +6687,21 @@ ModelDatasetsDatasetInfo = TypedDict('ModelDatasetsDatasetInfo', {
 
 ModelDatasetsDatasetListResponse = TypedDict('ModelDatasetsDatasetListResponse', {
     'items': NotRequired[list[ModelDatasetsDatasetInfo]],
+}, total=False)
+
+ModelDatasetsFacebookPageFacetResponse = TypedDict('ModelDatasetsFacebookPageFacetResponse', {
+    'dataset': NotRequired[str],
+    'facet': NotRequired[str],
+    'items': NotRequired[list[ModelEsFacebookPageDatasetFacetItem]],
+}, total=False)
+
+ModelDatasetsFacebookPageSearchResponse = TypedDict('ModelDatasetsFacebookPageSearchResponse', {
+    'dataset': NotRequired[str],
+    'items': NotRequired[list[ModelEsFacebookPageDatasetItem]],
+    'page': NotRequired[int],
+    'page_size': NotRequired[int],
+    'sort': NotRequired[str],
+    'total': NotRequired[int],
 }, total=False)
 
 ModelDatasetsGithubUserFacetResponse = TypedDict('ModelDatasetsGithubUserFacetResponse', {
@@ -6064,6 +7158,26 @@ ModelDatasetsTrustmrrSearchResponse = TypedDict('ModelDatasetsTrustmrrSearchResp
     'total': NotRequired[int],
 }, total=False)
 
+ModelDatasetsVehicleListingFacetResponse = TypedDict('ModelDatasetsVehicleListingFacetResponse', {
+    'dataset': NotRequired[str],
+    'facet': NotRequired[str],
+    'items': NotRequired[list[ModelEsVehicleListingDatasetFacetItem]],
+}, total=False)
+
+ModelDatasetsVehicleListingPriceHistoryResponse = TypedDict('ModelDatasetsVehicleListingPriceHistoryResponse', {
+    'id': NotRequired[str],
+    'items': NotRequired[list[ModelEsVehiclePriceHistoryRecord]],
+}, total=False)
+
+ModelDatasetsVehicleListingSearchResponse = TypedDict('ModelDatasetsVehicleListingSearchResponse', {
+    'dataset': NotRequired[str],
+    'items': NotRequired[list[ModelEsVehicleListingRecord]],
+    'page': NotRequired[int],
+    'page_size': NotRequired[int],
+    'sort': NotRequired[str],
+    'total': NotRequired[int],
+}, total=False)
+
 ModelDatasetsXuserFacetResponse = TypedDict('ModelDatasetsXuserFacetResponse', {
     'dataset': NotRequired[str],
     'facet': NotRequired[str],
@@ -6073,6 +7187,21 @@ ModelDatasetsXuserFacetResponse = TypedDict('ModelDatasetsXuserFacetResponse', {
 ModelDatasetsXuserSearchResponse = TypedDict('ModelDatasetsXuserSearchResponse', {
     'dataset': NotRequired[str],
     'items': NotRequired[list[ModelEsXuserDatasetItem]],
+    'page': NotRequired[int],
+    'page_size': NotRequired[int],
+    'sort': NotRequired[str],
+    'total': NotRequired[int],
+}, total=False)
+
+ModelDatasetsYoutubeCreatorFacetResponse = TypedDict('ModelDatasetsYoutubeCreatorFacetResponse', {
+    'dataset': NotRequired[str],
+    'facet': NotRequired[str],
+    'items': NotRequired[list[ModelEsYoutubeCreatorDatasetFacetItem]],
+}, total=False)
+
+ModelDatasetsYoutubeCreatorSearchResponse = TypedDict('ModelDatasetsYoutubeCreatorSearchResponse', {
+    'dataset': NotRequired[str],
+    'items': NotRequired[list[ModelEsYoutubeCreatorDatasetItem]],
     'page': NotRequired[int],
     'page_size': NotRequired[int],
     'sort': NotRequired[str],
@@ -6124,6 +7253,24 @@ ModelDatasetsApplePodcastsShowsSearchResponseDoc = TypedDict('ModelDatasetsApple
 ModelDatasetsAppsSearchResponseDoc = TypedDict('ModelDatasetsAppsSearchResponseDoc', {
     'code': NotRequired[int],
     'data': NotRequired[ModelDatasetsAppsSearchResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelDatasetsBbbBusinessResponseDoc = TypedDict('ModelDatasetsBbbBusinessResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelEsBbbbusinessRecord],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelDatasetsBbbBusinessesFacetResponseDoc = TypedDict('ModelDatasetsBbbBusinessesFacetResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelDatasetsBbbbusinessesFacetResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelDatasetsBbbBusinessesSearchResponseDoc = TypedDict('ModelDatasetsBbbBusinessesSearchResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelDatasetsBbbbusinessesSearchResponse],
     'msg': NotRequired[str],
 }, total=False)
 
@@ -6190,6 +7337,24 @@ ModelDatasetsChromeExtensionsSearchResponseDoc = TypedDict('ModelDatasetsChromeE
 ModelDatasetsCreatorsSearchResponseDoc = TypedDict('ModelDatasetsCreatorsSearchResponseDoc', {
     'code': NotRequired[int],
     'data': NotRequired[ModelDatasetsCreatorsSearchResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelDatasetsFacebookPageResponseDoc = TypedDict('ModelDatasetsFacebookPageResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelEsFacebookPageCandidate],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelDatasetsFacebookPagesFacetResponseDoc = TypedDict('ModelDatasetsFacebookPagesFacetResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelDatasetsFacebookPageFacetResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelDatasetsFacebookPagesSearchResponseDoc = TypedDict('ModelDatasetsFacebookPagesSearchResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelDatasetsFacebookPageSearchResponse],
     'msg': NotRequired[str],
 }, total=False)
 
@@ -6685,6 +7850,30 @@ ModelDatasetsTrustmrrSearchResponseDoc = TypedDict('ModelDatasetsTrustmrrSearchR
     'msg': NotRequired[str],
 }, total=False)
 
+ModelDatasetsVehicleListingPriceHistoryResponseDoc = TypedDict('ModelDatasetsVehicleListingPriceHistoryResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelDatasetsVehicleListingPriceHistoryResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelDatasetsVehicleListingResponseDoc = TypedDict('ModelDatasetsVehicleListingResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelEsVehicleListingRecord],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelDatasetsVehicleListingsFacetResponseDoc = TypedDict('ModelDatasetsVehicleListingsFacetResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelDatasetsVehicleListingFacetResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelDatasetsVehicleListingsSearchResponseDoc = TypedDict('ModelDatasetsVehicleListingsSearchResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelDatasetsVehicleListingSearchResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
 ModelDatasetsXUserResponseDoc = TypedDict('ModelDatasetsXUserResponseDoc', {
     'code': NotRequired[int],
     'data': NotRequired[ModelEsXuserRecord],
@@ -6700,6 +7889,24 @@ ModelDatasetsXUsersFacetResponseDoc = TypedDict('ModelDatasetsXUsersFacetRespons
 ModelDatasetsXUsersSearchResponseDoc = TypedDict('ModelDatasetsXUsersSearchResponseDoc', {
     'code': NotRequired[int],
     'data': NotRequired[ModelDatasetsXuserSearchResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelDatasetsYoutubeCreatorResponseDoc = TypedDict('ModelDatasetsYoutubeCreatorResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelEsYoutubeChannelCandidate],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelDatasetsYoutubeCreatorsFacetResponseDoc = TypedDict('ModelDatasetsYoutubeCreatorsFacetResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelDatasetsYoutubeCreatorFacetResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelDatasetsYoutubeCreatorsSearchResponseDoc = TypedDict('ModelDatasetsYoutubeCreatorsSearchResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelDatasetsYoutubeCreatorSearchResponse],
     'msg': NotRequired[str],
 }, total=False)
 
@@ -8402,6 +9609,57 @@ ModelEsApplePodcastsShowsDatasetFacetItem = TypedDict('ModelEsApplePodcastsShows
     'value': NotRequired[str],
 }, total=False)
 
+ModelEsBbbbusinessHoursDay = TypedDict('ModelEsBbbbusinessHoursDay', {
+    'day': NotRequired[str],
+    'hours': NotRequired[str],
+}, total=False)
+
+ModelEsBbbbusinessRecord = TypedDict('ModelEsBbbbusinessRecord', {
+    'accredited': NotRequired[bool],
+    'accredited_since': NotRequired[str],
+    'additional_phone_numbers': NotRequired[list[str]],
+    'additional_websites': NotRequired[list[str]],
+    'address': NotRequired[str],
+    'alternate_names': NotRequired[list[str]],
+    'bbb_file_opened': NotRequired[str],
+    'bbb_local_id': NotRequired[str],
+    'business_id': NotRequired[str],
+    'business_incorporated': NotRequired[str],
+    'business_management': NotRequired[str],
+    'business_started': NotRequired[str],
+    'categories': NotRequired[list[str]],
+    'category': NotRequired[str],
+    'city': NotRequired[str],
+    'complaints_url': NotRequired[str],
+    'country': NotRequired[str],
+    'crawled_at': NotRequired[str],
+    'discovery_source': NotRequired[str],
+    'entity_type': NotRequired[str],
+    'hours': NotRequired[list[ModelEsBbbbusinessHoursDay]],
+    'licensing_note': NotRequired[str],
+    'more_info_url': NotRequired[str],
+    'name': NotRequired[str],
+    'phone': NotRequired[str],
+    'products_and_services': NotRequired[list[str]],
+    'rating': NotRequired[str],
+    'rating_rank': NotRequired[int],
+    'rating_reasons': NotRequired[list[str]],
+    'reviews_url': NotRequired[str],
+    'run_id': NotRequired[str],
+    'schema_version': NotRequired[int],
+    'social_media': NotRequired[list[str]],
+    'state': NotRequired[str],
+    'url': NotRequired[str],
+    'website': NotRequired[str],
+    'years_in_business': NotRequired[str],
+    'years_in_business_num': NotRequired[int],
+}, total=False)
+
+ModelEsBbbbusinessesFacetItem = TypedDict('ModelEsBbbbusinessesFacetItem', {
+    'count': NotRequired[int],
+    'value': NotRequired[str],
+}, total=False)
+
 ModelEsBoxOfficeMojoDatasetFacetItem = TypedDict('ModelEsBoxOfficeMojoDatasetFacetItem', {
     'count': NotRequired[int],
     'value': NotRequired[str],
@@ -8624,6 +9882,47 @@ ModelEsCreatorRecord = TypedDict('ModelEsCreatorRecord', {
     'unique_id': NotRequired[str],
     'verified': NotRequired[bool],
     'video_count': NotRequired[int],
+}, total=False)
+
+ModelEsFacebookPageCandidate = TypedDict('ModelEsFacebookPageCandidate', {
+    'address': NotRequired[str],
+    'category': NotRequired[str],
+    'discovered_at': NotRequired[str],
+    'discovery_source': NotRequired[str],
+    'email': NotRequired[str],
+    'hydrated_at': NotRequired[str],
+    'identifier': NotRequired[str],
+    'likes': NotRequired[int],
+    'page_id': NotRequired[str],
+    'phones': NotRequired[list[str]],
+    'source_url': NotRequired[str],
+    'status': NotRequired[str],
+    'title': NotRequired[str],
+    'website': NotRequired[str],
+    'whatsapp': NotRequired[str],
+}, total=False)
+
+ModelEsFacebookPageDatasetFacetItem = TypedDict('ModelEsFacebookPageDatasetFacetItem', {
+    'count': NotRequired[int],
+    'value': NotRequired[str],
+}, total=False)
+
+ModelEsFacebookPageDatasetItem = TypedDict('ModelEsFacebookPageDatasetItem', {
+    'address': NotRequired[str],
+    'category': NotRequired[str],
+    'discovered_at': NotRequired[str],
+    'discovery_source': NotRequired[str],
+    'email': NotRequired[str],
+    'hydrated_at': NotRequired[str],
+    'identifier': NotRequired[str],
+    'likes': NotRequired[int],
+    'page_id': NotRequired[str],
+    'phones': NotRequired[list[str]],
+    'source_url': NotRequired[str],
+    'status': NotRequired[str],
+    'title': NotRequired[str],
+    'website': NotRequired[str],
+    'whatsapp': NotRequired[str],
 }, total=False)
 
 ModelEsFacetItem = TypedDict('ModelEsFacetItem', {
@@ -9670,6 +10969,11 @@ ModelEsTechstackRecord = TypedDict('ModelEsTechstackRecord', {
     'scan_method': NotRequired[str],
     'schema_version': NotRequired[int],
     'scheme': NotRequired[str],
+    'secondary_only_technology_names': NotRequired[list[str]],
+    'secondary_page_categories': NotRequired[list[str]],
+    'secondary_pages': NotRequired[list[ModelEsTechstackSecondaryPage]],
+    'secondary_pages_discovered': NotRequired[int],
+    'secondary_pages_fetched': NotRequired[int],
     'seed_source': NotRequired[str],
     'server_language': NotRequired[str],
     'source_url': NotRequired[str],
@@ -9679,6 +10983,12 @@ ModelEsTechstackRecord = TypedDict('ModelEsTechstackRecord', {
     'technology_names': NotRequired[list[str]],
     'tld': NotRequired[str],
     'web_server': NotRequired[str],
+}, total=False)
+
+ModelEsTechstackSecondaryPage = TypedDict('ModelEsTechstackSecondaryPage', {
+    'category': NotRequired[str],
+    'fetched': NotRequired[bool],
+    'url': NotRequired[str],
 }, total=False)
 
 ModelEsTechstackTechnology = TypedDict('ModelEsTechstackTechnology', {
@@ -9780,6 +11090,58 @@ ModelEsTrustmrrStartupRecord = TypedDict('ModelEsTrustmrrStartupRecord', {
     'x_profile_picture': NotRequired[str],
 }, total=False)
 
+ModelEsVehicleListingDatasetFacetItem = TypedDict('ModelEsVehicleListingDatasetFacetItem', {
+    'count': NotRequired[int],
+    'value': NotRequired[str],
+}, total=False)
+
+ModelEsVehicleListingRecord = TypedDict('ModelEsVehicleListingRecord', {
+    'accident_count': NotRequired[int],
+    'body_style': NotRequired[str],
+    'city': NotRequired[str],
+    'crawled_at': NotRequired[str],
+    'drive_type': NotRequired[str],
+    'engine': NotRequired[str],
+    'exterior_color': NotRequired[str],
+    'first_seen_at': NotRequired[str],
+    'fuel_type': NotRequired[str],
+    'id': NotRequired[str],
+    'image_url': NotRequired[str],
+    'interior_color': NotRequired[str],
+    'is_price_reduced': NotRequired[bool],
+    'last_seen_at': NotRequired[str],
+    'latitude': NotRequired[float],
+    'longitude': NotRequired[float],
+    'make': NotRequired[str],
+    'mileage': NotRequired[int],
+    'model': NotRequired[str],
+    'owner_count': NotRequired[int],
+    'previous_price': NotRequired[float],
+    'price': NotRequired[float],
+    'run_id': NotRequired[str],
+    'schema_version': NotRequired[int],
+    'seller_name': NotRequired[str],
+    'seller_type': NotRequired[str],
+    'source': NotRequired[str],
+    'source_listing_id': NotRequired[str],
+    'state': NotRequired[str],
+    'transmission': NotRequired[str],
+    'trim': NotRequired[str],
+    'url': NotRequired[str],
+    'vin': NotRequired[str],
+    'year': NotRequired[int],
+}, total=False)
+
+ModelEsVehiclePriceHistoryRecord = TypedDict('ModelEsVehiclePriceHistoryRecord', {
+    'crawled_at': NotRequired[str],
+    'id': NotRequired[str],
+    'price': NotRequired[float],
+    'schema_version': NotRequired[int],
+    'snapshot_date': NotRequired[str],
+    'source': NotRequired[str],
+    'source_listing_id': NotRequired[str],
+}, total=False)
+
 ModelEsWebsiteStatus = TypedDict('ModelEsWebsiteStatus', {
     'checked_at': NotRequired[str],
     'dns_resolvable': NotRequired[bool],
@@ -9856,6 +11218,53 @@ ModelEsXuserRecord = TypedDict('ModelEsXuserRecord', {
     'source_tier': NotRequired[str],
     'username': NotRequired[str],
     'verified_type': NotRequired[str],
+}, total=False)
+
+ModelEsYoutubeChannelCandidate = TypedDict('ModelEsYoutubeChannelCandidate', {
+    'bio': NotRequired[str],
+    'channel_id': NotRequired[str],
+    'channel_name': NotRequired[str],
+    'channel_url': NotRequired[str],
+    'discovered_at': NotRequired[str],
+    'discovery_source': NotRequired[str],
+    'followers_count': NotRequired[int],
+    'followers_count_available': NotRequired[bool],
+    'hydrated_at': NotRequired[str],
+    'joined_date': NotRequired[str],
+    'links': NotRequired[list[str]],
+    'profile_pic': NotRequired[str],
+    'region': NotRequired[str],
+    'status': NotRequired[str],
+    'videos_count': NotRequired[int],
+    'videos_count_available': NotRequired[bool],
+    'views_count': NotRequired[int],
+    'views_count_available': NotRequired[bool],
+}, total=False)
+
+ModelEsYoutubeCreatorDatasetFacetItem = TypedDict('ModelEsYoutubeCreatorDatasetFacetItem', {
+    'count': NotRequired[int],
+    'value': NotRequired[str],
+}, total=False)
+
+ModelEsYoutubeCreatorDatasetItem = TypedDict('ModelEsYoutubeCreatorDatasetItem', {
+    'bio': NotRequired[str],
+    'channel_id': NotRequired[str],
+    'channel_name': NotRequired[str],
+    'channel_url': NotRequired[str],
+    'discovered_at': NotRequired[str],
+    'discovery_source': NotRequired[str],
+    'followers_count': NotRequired[int],
+    'followers_count_available': NotRequired[bool],
+    'hydrated_at': NotRequired[str],
+    'joined_date': NotRequired[str],
+    'links': NotRequired[list[str]],
+    'profile_pic': NotRequired[str],
+    'region': NotRequired[str],
+    'status': NotRequired[str],
+    'videos_count': NotRequired[int],
+    'videos_count_available': NotRequired[bool],
+    'views_count': NotRequired[int],
+    'views_count_available': NotRequired[bool],
 }, total=False)
 
 ModelEspnAthlete = TypedDict('ModelEspnAthlete', {
@@ -11093,6 +12502,259 @@ ModelFiverrSellerResponseDoc = TypedDict('ModelFiverrSellerResponseDoc', {
     'msg': NotRequired[str],
 }, total=False)
 
+ModelGdeltArticle = TypedDict('ModelGdeltArticle', {
+    'domain': NotRequired[str],
+    'language': NotRequired[str],
+    'seen_at': NotRequired[str],
+    'social_image_url': NotRequired[str],
+    'source_country': NotRequired[str],
+    'title': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelGdeltContextArticle = TypedDict('ModelGdeltContextArticle', {
+    'context': NotRequired[str],
+    'domain': NotRequired[str],
+    'is_quote': NotRequired[bool],
+    'language': NotRequired[str],
+    'seen_at': NotRequired[str],
+    'sentence': NotRequired[str],
+    'social_image_url': NotRequired[str],
+    'title': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelGdeltContextResponse = TypedDict('ModelGdeltContextResponse', {
+    'articles': NotRequired[list[ModelGdeltContextArticle]],
+    'count': NotRequired[int],
+    'fetched_at': NotRequired[str],
+    'maxrecords': NotRequired[int],
+    'query': NotRequired[str],
+    'sort': NotRequired[str],
+    'source_url': NotRequired[str],
+}, total=False)
+
+ModelGdeltSearchResponse = TypedDict('ModelGdeltSearchResponse', {
+    'articles': NotRequired[list[ModelGdeltArticle]],
+    'count': NotRequired[int],
+    'fetched_at': NotRequired[str],
+    'maxrecords': NotRequired[int],
+    'query': NotRequired[str],
+    'sort': NotRequired[str],
+    'source_url': NotRequired[str],
+}, total=False)
+
+ModelGdeltTvcapNlpEntityDetailsResponse = TypedDict('ModelGdeltTvcapNlpEntityDetailsResponse', {
+    'entities': NotRequired[list[ModelGdeltTvconceptEntity]],
+    'fetched_at': NotRequired[str],
+    'source_url': NotRequired[str],
+}, total=False)
+
+ModelGdeltTvclip = TypedDict('ModelGdeltTvclip', {
+    'caption': NotRequired[str],
+    'caption_concepts': NotRequired[str],
+    'clip_url': NotRequired[str],
+    'matched_at': NotRequired[str],
+    'onscreen_text': NotRequired[str],
+    'show': NotRequired[str],
+    'show_start_at': NotRequired[str],
+    'station': NotRequired[str],
+    'thumbnail_url': NotRequired[str],
+    'transcript': NotRequired[str],
+    'visual_entities': NotRequired[list[str]],
+}, total=False)
+
+ModelGdeltTvclipSearchResponse = TypedDict('ModelGdeltTvclipSearchResponse', {
+    'clips': NotRequired[list[ModelGdeltTvclip]],
+    'count': NotRequired[int],
+    'fetched_at': NotRequired[str],
+    'maxrecords': NotRequired[int],
+    'query': NotRequired[str],
+    'sort': NotRequired[str],
+    'source_url': NotRequired[str],
+    'station': NotRequired[str],
+}, total=False)
+
+ModelGdeltTvconceptEntity = TypedDict('ModelGdeltTvconceptEntity', {
+    'label': NotRequired[str],
+    'mid': NotRequired[str],
+}, total=False)
+
+ModelGdeltTvshowChartResponse = TypedDict('ModelGdeltTvshowChartResponse', {
+    'fetched_at': NotRequired[str],
+    'query': NotRequired[str],
+    'shows': NotRequired[list[ModelGdeltTvshowCount]],
+    'source_url': NotRequired[str],
+}, total=False)
+
+ModelGdeltTvshowCount = TypedDict('ModelGdeltTvshowCount', {
+    'count': NotRequired[float],
+    'show': NotRequired[str],
+}, total=False)
+
+ModelGdeltTvstation = TypedDict('ModelGdeltTvstation', {
+    'id': NotRequired[str],
+    'label': NotRequired[str],
+    'label_long': NotRequired[str],
+}, total=False)
+
+ModelGdeltTvstationChartResponse = TypedDict('ModelGdeltTvstationChartResponse', {
+    'fetched_at': NotRequired[str],
+    'query': NotRequired[str],
+    'source_url': NotRequired[str],
+    'stations': NotRequired[list[ModelGdeltTvstationCount]],
+}, total=False)
+
+ModelGdeltTvstationCount = TypedDict('ModelGdeltTvstationCount', {
+    'count': NotRequired[int],
+    'station': NotRequired[str],
+}, total=False)
+
+ModelGdeltTvstationDetailsResponse = TypedDict('ModelGdeltTvstationDetailsResponse', {
+    'fetched_at': NotRequired[str],
+    'source_url': NotRequired[str],
+    'stations': NotRequired[list[ModelGdeltTvstation]],
+}, total=False)
+
+ModelGdeltTvtimelineResponse = TypedDict('ModelGdeltTvtimelineResponse', {
+    'fetched_at': NotRequired[str],
+    'query': NotRequired[str],
+    'series': NotRequired[list[ModelGdeltTimelineSeries]],
+    'source_url': NotRequired[str],
+    'station': NotRequired[str],
+}, total=False)
+
+ModelGdeltTvvisualEntity = TypedDict('ModelGdeltTvvisualEntity', {
+    'label': NotRequired[str],
+}, total=False)
+
+ModelGdeltTvvisualEntityDetailsResponse = TypedDict('ModelGdeltTvvisualEntityDetailsResponse', {
+    'entities': NotRequired[list[ModelGdeltTvvisualEntity]],
+    'fetched_at': NotRequired[str],
+    'source_url': NotRequired[str],
+}, total=False)
+
+ModelGdeltTvwordCloudEntry = TypedDict('ModelGdeltTvwordCloudEntry', {
+    'count': NotRequired[float],
+    'label': NotRequired[str],
+}, total=False)
+
+ModelGdeltTvwordCloudResponse = TypedDict('ModelGdeltTvwordCloudResponse', {
+    'channel': NotRequired[str],
+    'fetched_at': NotRequired[str],
+    'query': NotRequired[str],
+    'source_url': NotRequired[str],
+    'words': NotRequired[list[ModelGdeltTvwordCloudEntry]],
+}, total=False)
+
+ModelGdeltTimelinePoint = TypedDict('ModelGdeltTimelinePoint', {
+    'date': NotRequired[str],
+    'value': NotRequired[float],
+}, total=False)
+
+ModelGdeltTimelineResponse = TypedDict('ModelGdeltTimelineResponse', {
+    'fetched_at': NotRequired[str],
+    'metric': NotRequired[str],
+    'query': NotRequired[str],
+    'series': NotRequired[list[ModelGdeltTimelineSeries]],
+    'source_url': NotRequired[str],
+}, total=False)
+
+ModelGdeltTimelineSeries = TypedDict('ModelGdeltTimelineSeries', {
+    'points': NotRequired[list[ModelGdeltTimelinePoint]],
+    'series': NotRequired[str],
+}, total=False)
+
+ModelGdeltToneChartArticle = TypedDict('ModelGdeltToneChartArticle', {
+    'title': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelGdeltToneChartBin = TypedDict('ModelGdeltToneChartBin', {
+    'bin': NotRequired[int],
+    'count': NotRequired[int],
+    'top_articles': NotRequired[list[ModelGdeltToneChartArticle]],
+}, total=False)
+
+ModelGdeltToneChartResponse = TypedDict('ModelGdeltToneChartResponse', {
+    'bins': NotRequired[list[ModelGdeltToneChartBin]],
+    'fetched_at': NotRequired[str],
+    'query': NotRequired[str],
+    'source_url': NotRequired[str],
+}, total=False)
+
+ModelGdeltContextResponseDoc = TypedDict('ModelGdeltContextResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelGdeltContextResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelGdeltSearchResponseDoc = TypedDict('ModelGdeltSearchResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelGdeltSearchResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelGdeltTimelineResponseDoc = TypedDict('ModelGdeltTimelineResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelGdeltTimelineResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelGdeltToneChartResponseDoc = TypedDict('ModelGdeltToneChartResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelGdeltToneChartResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelGdeltTvCapNlpEntityDetailsResponseDoc = TypedDict('ModelGdeltTvCapNlpEntityDetailsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelGdeltTvcapNlpEntityDetailsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelGdeltTvSearchResponseDoc = TypedDict('ModelGdeltTvSearchResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelGdeltTvclipSearchResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelGdeltTvShowChartResponseDoc = TypedDict('ModelGdeltTvShowChartResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelGdeltTvshowChartResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelGdeltTvStationChartResponseDoc = TypedDict('ModelGdeltTvStationChartResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelGdeltTvstationChartResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelGdeltTvStationDetailsResponseDoc = TypedDict('ModelGdeltTvStationDetailsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelGdeltTvstationDetailsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelGdeltTvTimelineResponseDoc = TypedDict('ModelGdeltTvTimelineResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelGdeltTvtimelineResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelGdeltTvVisualEntityDetailsResponseDoc = TypedDict('ModelGdeltTvVisualEntityDetailsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelGdeltTvvisualEntityDetailsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelGdeltTvWordCloudResponseDoc = TypedDict('ModelGdeltTvWordCloudResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelGdeltTvwordCloudResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
 ModelGeocodingAddress = TypedDict('ModelGeocodingAddress', {
     'ISO3166-2-lvl4': NotRequired[str],
     'ISO3166-2-lvl6': NotRequired[str],
@@ -11410,6 +13072,20 @@ ModelGoodreadsSearchResponseDoc = TypedDict('ModelGoodreadsSearchResponseDoc', {
     'msg': NotRequired[str],
 }, total=False)
 
+ModelGoogleAioverview = TypedDict('ModelGoogleAioverview', {
+    'heading': NotRequired[str],
+    'sources': NotRequired[list[str]],
+    'summary': NotRequired[str],
+}, total=False)
+
+ModelGoogleAdItem = TypedDict('ModelGoogleAdItem', {
+    'display_link': NotRequired[str],
+    'link': NotRequired[str],
+    'position': NotRequired[int],
+    'snippet': NotRequired[str],
+    'title': NotRequired[str],
+}, total=False)
+
 ModelGoogleJobItem = TypedDict('ModelGoogleJobItem', {
     'company': NotRequired[str],
     'employment': NotRequired[str],
@@ -11535,6 +13211,8 @@ ModelGoogleSearchOption = TypedDict('ModelGoogleSearchOption', {
 }, total=False)
 
 ModelGoogleSearchResp = TypedDict('ModelGoogleSearchResp', {
+    'ads': NotRequired[list[ModelGoogleAdItem]],
+    'ai_overview': NotRequired[ModelGoogleAioverview],
     'knowledge_graph': NotRequired[ModelGoogleKnowledgeGraph],
     'people_also_ask': NotRequired[list[ModelGooglePeopleAlsoAskItem]],
     'people_also_search_for': NotRequired[list[str]],
@@ -12296,6 +13974,423 @@ ModelHmSuggestResponseDoc = TypedDict('ModelHmSuggestResponseDoc', {
     'msg': NotRequired[str],
 }, total=False)
 
+ModelHomedepotCategoriesResponse = TypedDict('ModelHomedepotCategoriesResponse', {
+    'count': NotRequired[int],
+    'departments': NotRequired[list[ModelHomedepotDepartment]],
+    'fetched_at': NotRequired[str],
+    'source_url': NotRequired[str],
+}, total=False)
+
+ModelHomedepotCategoryProduct = TypedDict('ModelHomedepotCategoryProduct', {
+    'id': NotRequired[str],
+    'image': NotRequired[str],
+    'model': NotRequired[str],
+    'original_price': NotRequired[float],
+    'price': NotRequired[float],
+    'rating': NotRequired[float],
+    'review_count': NotRequired[int],
+    'title': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelHomedepotCategoryResponse = TypedDict('ModelHomedepotCategoryResponse', {
+    'count': NotRequired[int],
+    'fetched_at': NotRequired[str],
+    'path': NotRequired[str],
+    'products': NotRequired[list[ModelHomedepotCategoryProduct]],
+    'source_url': NotRequired[str],
+    'title': NotRequired[str],
+    'total': NotRequired[int],
+}, total=False)
+
+ModelHomedepotDepartment = TypedDict('ModelHomedepotDepartment', {
+    'name': NotRequired[str],
+    'path': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelHomedepotKeyFeature = TypedDict('ModelHomedepotKeyFeature', {
+    'name': NotRequired[str],
+    'value': NotRequired[str],
+}, total=False)
+
+ModelHomedepotProduct = TypedDict('ModelHomedepotProduct', {
+    'brand': NotRequired[str],
+    'currency': NotRequired[str],
+    'description': NotRequired[str],
+    'fetched_at': NotRequired[str],
+    'gtin': NotRequired[str],
+    'id': NotRequired[str],
+    'images': NotRequired[list[str]],
+    'key_features': NotRequired[list[ModelHomedepotKeyFeature]],
+    'model': NotRequired[str],
+    'price': NotRequired[float],
+    'rating': NotRequired[float],
+    'review_count': NotRequired[int],
+    'reviews': NotRequired[list[ModelHomedepotProductReview]],
+    'sku': NotRequired[str],
+    'source_url': NotRequired[str],
+    'specifications': NotRequired[list[ModelHomedepotSpecification]],
+    'title': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelHomedepotProductQuestionsResponse = TypedDict('ModelHomedepotProductQuestionsResponse', {
+    'count': NotRequired[int],
+    'fetched_at': NotRequired[str],
+    'id': NotRequired[str],
+    'questions': NotRequired[list[ModelHomedepotQuestion]],
+    'source_url': NotRequired[str],
+    'total': NotRequired[int],
+}, total=False)
+
+ModelHomedepotProductReview = TypedDict('ModelHomedepotProductReview', {
+    'author': NotRequired[str],
+    'body': NotRequired[str],
+    'headline': NotRequired[str],
+    'rating': NotRequired[float],
+}, total=False)
+
+ModelHomedepotQuestion = TypedDict('ModelHomedepotQuestion', {
+    'answer_count': NotRequired[int],
+    'answers': NotRequired[list[ModelHomedepotQuestionAnswer]],
+    'author': NotRequired[str],
+    'date': NotRequired[str],
+    'id': NotRequired[str],
+    'text': NotRequired[str],
+}, total=False)
+
+ModelHomedepotQuestionAnswer = TypedDict('ModelHomedepotQuestionAnswer', {
+    'author': NotRequired[str],
+    'date': NotRequired[str],
+    'helpful_count': NotRequired[int],
+    'id': NotRequired[str],
+    'is_brand_answer': NotRequired[bool],
+    'text': NotRequired[str],
+}, total=False)
+
+ModelHomedepotSearchResponse = TypedDict('ModelHomedepotSearchResponse', {
+    'count': NotRequired[int],
+    'fetched_at': NotRequired[str],
+    'page': NotRequired[int],
+    'products': NotRequired[list[ModelHomedepotCategoryProduct]],
+    'query': NotRequired[str],
+    'source_url': NotRequired[str],
+    'total': NotRequired[int],
+}, total=False)
+
+ModelHomedepotSpecification = TypedDict('ModelHomedepotSpecification', {
+    'name': NotRequired[str],
+    'value': NotRequired[str],
+}, total=False)
+
+ModelHomedepotCategoriesResponseDoc = TypedDict('ModelHomedepotCategoriesResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelHomedepotCategoriesResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelHomedepotCategoryResponseDoc = TypedDict('ModelHomedepotCategoryResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelHomedepotCategoryResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelHomedepotProductQuestionsResponseDoc = TypedDict('ModelHomedepotProductQuestionsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelHomedepotProductQuestionsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelHomedepotProductResponseDoc = TypedDict('ModelHomedepotProductResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelHomedepotProduct],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelHomedepotSearchResponseDoc = TypedDict('ModelHomedepotSearchResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelHomedepotSearchResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelIkeaAvailabilityResponse = TypedDict('ModelIkeaAvailabilityResponse', {
+    'available_for_click_collect': NotRequired[bool],
+    'available_for_home_delivery': NotRequired[bool],
+    'click_collect': NotRequired[ModelIkeaPickupAvailability],
+    'country': NotRequired[str],
+    'fetched_at': NotRequired[str],
+    'home_delivery': NotRequired[ModelIkeaDeliveryAvailability],
+    'item_no': NotRequired[str],
+    'source_url': NotRequired[str],
+}, total=False)
+
+ModelIkeaCategoryRef = TypedDict('ModelIkeaCategoryRef', {
+    'key': NotRequired[str],
+    'name': NotRequired[str],
+}, total=False)
+
+ModelIkeaCategoryResponse = TypedDict('ModelIkeaCategoryResponse', {
+    'category_key': NotRequired[str],
+    'category_name': NotRequired[str],
+    'category_url': NotRequired[str],
+    'count': NotRequired[int],
+    'country': NotRequired[str],
+    'fetched_at': NotRequired[str],
+    'language': NotRequired[str],
+    'offset': NotRequired[int],
+    'products': NotRequired[list[ModelIkeaProductSummary]],
+    'sort': NotRequired[str],
+    'source_url': NotRequired[str],
+    'total': NotRequired[int],
+}, total=False)
+
+ModelIkeaColor = TypedDict('ModelIkeaColor', {
+    'hex': NotRequired[str],
+    'id': NotRequired[str],
+    'name': NotRequired[str],
+}, total=False)
+
+ModelIkeaDeliveryAvailability = TypedDict('ModelIkeaDeliveryAvailability', {
+    'in_range': NotRequired[bool],
+    'message_type': NotRequired[str],
+    'updated_at': NotRequired[str],
+}, total=False)
+
+ModelIkeaPickupAvailability = TypedDict('ModelIkeaPickupAvailability', {
+    'in_range': NotRequired[bool],
+}, total=False)
+
+ModelIkeaPrice = TypedDict('ModelIkeaPrice', {
+    'currency_code': NotRequired[str],
+    'current': NotRequired[float],
+    'discount_amount': NotRequired[float],
+    'discount_percentage': NotRequired[float],
+    'formatted': NotRequired[str],
+    'previous': NotRequired[float],
+    'previous_formatted': NotRequired[str],
+    'tag': NotRequired[str],
+    'tag_text': NotRequired[str],
+    'valid_from': NotRequired[str],
+    'valid_to': NotRequired[str],
+}, total=False)
+
+ModelIkeaProduct = TypedDict('ModelIkeaProduct', {
+    'category_path': NotRequired[list[ModelIkeaCategoryRef]],
+    'colors': NotRequired[list[ModelIkeaColor]],
+    'filter_class': NotRequired[str],
+    'image_url': NotRequired[str],
+    'images': NotRequired[list[ModelIkeaProductImage]],
+    'item_no': NotRequired[str],
+    'measure_text': NotRequired[str],
+    'name': NotRequired[str],
+    'price': NotRequired[ModelIkeaPrice],
+    'product_url': NotRequired[str],
+    'quick_facts': NotRequired[list[ModelIkeaQuickFact]],
+    'rating': NotRequired[ModelIkeaRating],
+    'type_name': NotRequired[str],
+    'valid_design': NotRequired[str],
+    'variant_count': NotRequired[int],
+    'variants': NotRequired[list[ModelIkeaVariant]],
+}, total=False)
+
+ModelIkeaProductImage = TypedDict('ModelIkeaProductImage', {
+    'alt_text': NotRequired[str],
+    'type': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelIkeaProductResponse = TypedDict('ModelIkeaProductResponse', {
+    'fetched_at': NotRequired[str],
+    'product': NotRequired[ModelIkeaProduct],
+    'source_url': NotRequired[str],
+}, total=False)
+
+ModelIkeaProductSummary = TypedDict('ModelIkeaProductSummary', {
+    'colors': NotRequired[list[ModelIkeaColor]],
+    'filter_class': NotRequired[str],
+    'image_url': NotRequired[str],
+    'item_no': NotRequired[str],
+    'measure_text': NotRequired[str],
+    'name': NotRequired[str],
+    'price': NotRequired[ModelIkeaPrice],
+    'product_url': NotRequired[str],
+    'rating': NotRequired[ModelIkeaRating],
+    'type_name': NotRequired[str],
+    'valid_design': NotRequired[str],
+    'variant_count': NotRequired[int],
+    'variants': NotRequired[list[ModelIkeaVariant]],
+}, total=False)
+
+ModelIkeaQuickFact = TypedDict('ModelIkeaQuickFact', {
+    'name': NotRequired[str],
+    'type_name': NotRequired[str],
+}, total=False)
+
+ModelIkeaRating = TypedDict('ModelIkeaRating', {
+    'count': NotRequired[int],
+    'value': NotRequired[float],
+}, total=False)
+
+ModelIkeaRelatedSearch = TypedDict('ModelIkeaRelatedSearch', {
+    'count': NotRequired[int],
+    'text': NotRequired[str],
+}, total=False)
+
+ModelIkeaReview = TypedDict('ModelIkeaReview', {
+    'author': NotRequired[str],
+    'author_country': NotRequired[str],
+    'rating': NotRequired[int],
+    'text': NotRequired[str],
+    'title': NotRequired[str],
+}, total=False)
+
+ModelIkeaReviewsResponse = TypedDict('ModelIkeaReviewsResponse', {
+    'average_rating': NotRequired[float],
+    'count': NotRequired[int],
+    'fetched_at': NotRequired[str],
+    'item_no': NotRequired[str],
+    'rating_count': NotRequired[int],
+    'reviews': NotRequired[list[ModelIkeaReview]],
+    'source_url': NotRequired[str],
+}, total=False)
+
+ModelIkeaSearchResponse = TypedDict('ModelIkeaSearchResponse', {
+    'count': NotRequired[int],
+    'country': NotRequired[str],
+    'did_you_mean': NotRequired[list[str]],
+    'fetched_at': NotRequired[str],
+    'language': NotRequired[str],
+    'products': NotRequired[list[ModelIkeaProductSummary]],
+    'query': NotRequired[str],
+    'related_searches': NotRequired[list[ModelIkeaRelatedSearch]],
+    'source_url': NotRequired[str],
+    'total': NotRequired[int],
+}, total=False)
+
+ModelIkeaStoreAddress = TypedDict('ModelIkeaStoreAddress', {
+    'city': NotRequired[str],
+    'country': NotRequired[str],
+    'postal_code': NotRequired[str],
+    'state': NotRequired[str],
+    'street': NotRequired[str],
+}, total=False)
+
+ModelIkeaStoreAndDetail = TypedDict('ModelIkeaStoreAndDetail', {
+    'address': NotRequired[ModelIkeaStoreAddress],
+    'geo': NotRequired[ModelIkeaStoreGeo],
+    'hours': NotRequired[list[ModelIkeaStoreHours]],
+    'location_type': NotRequired[str],
+    'name': NotRequired[str],
+    'price_range': NotRequired[str],
+    'slug': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelIkeaStoreGeo = TypedDict('ModelIkeaStoreGeo', {
+    'latitude': NotRequired[float],
+    'longitude': NotRequired[float],
+}, total=False)
+
+ModelIkeaStoreHours = TypedDict('ModelIkeaStoreHours', {
+    'closes': NotRequired[str],
+    'days': NotRequired[list[str]],
+    'opens': NotRequired[str],
+}, total=False)
+
+ModelIkeaStoreRef = TypedDict('ModelIkeaStoreRef', {
+    'location_type': NotRequired[str],
+    'name': NotRequired[str],
+    'region': NotRequired[str],
+    'slug': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelIkeaStoreResponse = TypedDict('ModelIkeaStoreResponse', {
+    'fetched_at': NotRequired[str],
+    'source_url': NotRequired[str],
+    'store': NotRequired[ModelIkeaStoreAndDetail],
+}, total=False)
+
+ModelIkeaStoresResponse = TypedDict('ModelIkeaStoresResponse', {
+    'count': NotRequired[int],
+    'country': NotRequired[str],
+    'fetched_at': NotRequired[str],
+    'language': NotRequired[str],
+    'source_url': NotRequired[str],
+    'stores': NotRequired[list[ModelIkeaStoreRef]],
+}, total=False)
+
+ModelIkeaSuggestResponse = TypedDict('ModelIkeaSuggestResponse', {
+    'count': NotRequired[int],
+    'country': NotRequired[str],
+    'fetched_at': NotRequired[str],
+    'language': NotRequired[str],
+    'products': NotRequired[list[ModelIkeaProductSummary]],
+    'query': NotRequired[str],
+    'source_url': NotRequired[str],
+    'suggestions': NotRequired[list[ModelIkeaRelatedSearch]],
+}, total=False)
+
+ModelIkeaVariant = TypedDict('ModelIkeaVariant', {
+    'image_url': NotRequired[str],
+    'item_no': NotRequired[str],
+    'name': NotRequired[str],
+    'price': NotRequired[ModelIkeaPrice],
+    'product_url': NotRequired[str],
+    'rating': NotRequired[ModelIkeaRating],
+    'type_name': NotRequired[str],
+    'valid_design': NotRequired[str],
+}, total=False)
+
+ModelIkeaAvailabilityResponseDoc = TypedDict('ModelIkeaAvailabilityResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelIkeaAvailabilityResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelIkeaCategoryResponseDoc = TypedDict('ModelIkeaCategoryResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelIkeaCategoryResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelIkeaProductResponseDoc = TypedDict('ModelIkeaProductResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelIkeaProductResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelIkeaReviewsResponseDoc = TypedDict('ModelIkeaReviewsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelIkeaReviewsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelIkeaSearchResponseDoc = TypedDict('ModelIkeaSearchResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelIkeaSearchResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelIkeaStoreResponseDoc = TypedDict('ModelIkeaStoreResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelIkeaStoreResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelIkeaStoresResponseDoc = TypedDict('ModelIkeaStoresResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelIkeaStoresResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelIkeaSuggestResponseDoc = TypedDict('ModelIkeaSuggestResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelIkeaSuggestResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
 ModelImdbAlternateTitle = TypedDict('ModelImdbAlternateTitle', {
     'country': NotRequired[str],
     'title': NotRequired[str],
@@ -12318,6 +14413,27 @@ ModelImdbAwardTitle = TypedDict('ModelImdbAwardTitle', {
     'id': NotRequired[str],
     'title': NotRequired[str],
     'url': NotRequired[str],
+}, total=False)
+
+ModelImdbChartResponse = TypedDict('ModelImdbChartResponse', {
+    'chart': NotRequired[str],
+    'fetched_at': NotRequired[str],
+    'limit': NotRequired[int],
+    'source_url': NotRequired[str],
+    'titles': NotRequired[list[ModelImdbChartTitle]],
+}, total=False)
+
+ModelImdbChartTitle = TypedDict('ModelImdbChartTitle', {
+    'cast': NotRequired[list[ModelImdbPerson]],
+    'directors': NotRequired[list[ModelImdbPerson]],
+    'id': NotRequired[str],
+    'rank': NotRequired[int],
+    'rating_count': NotRequired[int],
+    'rating_value': NotRequired[float],
+    'title': NotRequired[str],
+    'url': NotRequired[str],
+    'writers': NotRequired[list[ModelImdbPerson]],
+    'year': NotRequired[int],
 }, total=False)
 
 ModelImdbCompanyItem = TypedDict('ModelImdbCompanyItem', {
@@ -12507,6 +14623,29 @@ ModelImdbPublicFactsAnalysisSummary = TypedDict('ModelImdbPublicFactsAnalysisSum
     'trivia_count': NotRequired[int],
 }, total=False)
 
+ModelImdbRatingCountrySummary = TypedDict('ModelImdbRatingCountrySummary', {
+    'aggregate': NotRequired[float],
+    'country': NotRequired[str],
+    'vote_count': NotRequired[int],
+}, total=False)
+
+ModelImdbRatingHistogramBucket = TypedDict('ModelImdbRatingHistogramBucket', {
+    'rating': NotRequired[int],
+    'vote_count': NotRequired[int],
+}, total=False)
+
+ModelImdbRatingsResponse = TypedDict('ModelImdbRatingsResponse', {
+    'countries': NotRequired[list[ModelImdbRatingCountrySummary]],
+    'fetched_at': NotRequired[str],
+    'histogram': NotRequired[list[ModelImdbRatingHistogramBucket]],
+    'id': NotRequired[str],
+    'rating_count': NotRequired[int],
+    'rating_value': NotRequired[float],
+    'source_url': NotRequired[str],
+    'title': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
 ModelImdbReleaseInfoItem = TypedDict('ModelImdbReleaseInfoItem', {
     'country': NotRequired[str],
     'date': NotRequired[str],
@@ -12597,6 +14736,27 @@ ModelImdbSearchTitleResponse = TypedDict('ModelImdbSearchTitleResponse', {
     'total': NotRequired[int],
 }, total=False)
 
+ModelImdbSimilarResponse = TypedDict('ModelImdbSimilarResponse', {
+    'fetched_at': NotRequired[str],
+    'id': NotRequired[str],
+    'source_url': NotRequired[str],
+    'titles': NotRequired[list[ModelImdbSimilarTitle]],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelImdbSimilarTitle = TypedDict('ModelImdbSimilarTitle', {
+    'content_rating': NotRequired[str],
+    'id': NotRequired[str],
+    'image_url': NotRequired[str],
+    'rating_count': NotRequired[int],
+    'rating_value': NotRequired[float],
+    'runtime_minutes': NotRequired[int],
+    'title': NotRequired[str],
+    'title_type': NotRequired[str],
+    'url': NotRequired[str],
+    'year': NotRequired[int],
+}, total=False)
+
 ModelImdbTechnicalSpecItem = TypedDict('ModelImdbTechnicalSpecItem', {
     'name': NotRequired[str],
     'slug': NotRequired[str],
@@ -12674,6 +14834,12 @@ ModelImdbTitleResponse = TypedDict('ModelImdbTitleResponse', {
     'year': NotRequired[str],
 }, total=False)
 
+ModelImdbChartsResponseDoc = TypedDict('ModelImdbChartsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelImdbChartResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
 ModelImdbCreditsResponseDoc = TypedDict('ModelImdbCreditsResponseDoc', {
     'code': NotRequired[int],
     'data': NotRequired[ModelImdbCreditsResponse],
@@ -12710,6 +14876,12 @@ ModelImdbParentalGuideResponseDoc = TypedDict('ModelImdbParentalGuideResponseDoc
     'msg': NotRequired[str],
 }, total=False)
 
+ModelImdbRatingsResponseDoc = TypedDict('ModelImdbRatingsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelImdbRatingsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
 ModelImdbReleaseInfoResponseDoc = TypedDict('ModelImdbReleaseInfoResponseDoc', {
     'code': NotRequired[int],
     'data': NotRequired[ModelImdbReleaseInfoResponse],
@@ -12731,6 +14903,12 @@ ModelImdbSearchResponseDoc = TypedDict('ModelImdbSearchResponseDoc', {
 ModelImdbSearchTitleResponseDoc = TypedDict('ModelImdbSearchTitleResponseDoc', {
     'code': NotRequired[int],
     'data': NotRequired[ModelImdbSearchTitleResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelImdbSimilarResponseDoc = TypedDict('ModelImdbSimilarResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelImdbSimilarResponse],
     'msg': NotRequired[str],
 }, total=False)
 
@@ -13272,6 +15450,275 @@ ModelInstagramProfileResponseDoc = TypedDict('ModelInstagramProfileResponseDoc',
 ModelInstagramReelsResponseDoc = TypedDict('ModelInstagramReelsResponseDoc', {
     'code': NotRequired[int],
     'data': NotRequired[ModelInstagramReelResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelJcrewCategoriesResponse = TypedDict('ModelJcrewCategoriesResponse', {
+    'categories': NotRequired[list[ModelJcrewNavCategory]],
+    'departments': NotRequired[list[str]],
+    'fetched_at': NotRequired[str],
+    'site': NotRequired[str],
+    'source_url': NotRequired[str],
+}, total=False)
+
+ModelJcrewCategoryProduct = TypedDict('ModelJcrewCategoryProduct', {
+    'average_rating': NotRequired[float],
+    'badge': NotRequired[str],
+    'color_codes': NotRequired[list[str]],
+    'currency': NotRequired[str],
+    'default_color_code': NotRequired[str],
+    'discount_max_percent': NotRequired[int],
+    'discount_min_percent': NotRequired[int],
+    'family_id': NotRequired[str],
+    'id': NotRequired[str],
+    'name': NotRequired[str],
+    'price': NotRequired[float],
+    'review_count': NotRequired[int],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelJcrewCategoryResponse = TypedDict('ModelJcrewCategoryResponse', {
+    'category': NotRequired[str],
+    'count': NotRequired[int],
+    'fetched_at': NotRequired[str],
+    'gender': NotRequired[str],
+    'label': NotRequired[str],
+    'page': NotRequired[int],
+    'products': NotRequired[list[ModelJcrewCategoryProduct]],
+    'result_count': NotRequired[int],
+    'site': NotRequired[str],
+    'source_url': NotRequired[str],
+    'total_pages': NotRequired[int],
+}, total=False)
+
+ModelJcrewFacet = TypedDict('ModelJcrewFacet', {
+    'is_range': NotRequired[bool],
+    'label': NotRequired[str],
+    'name': NotRequired[str],
+    'options': NotRequired[list[ModelJcrewFacetOption]],
+    'range_max': NotRequired[float],
+    'range_min': NotRequired[float],
+    'type': NotRequired[str],
+}, total=False)
+
+ModelJcrewFacetOption = TypedDict('ModelJcrewFacetOption', {
+    'count': NotRequired[int],
+    'label': NotRequired[str],
+    'value': NotRequired[str],
+}, total=False)
+
+ModelJcrewHour = TypedDict('ModelJcrewHour', {
+    'open_intervals': NotRequired[list[ModelJcrewTimeInterval]],
+}, total=False)
+
+ModelJcrewNavCategory = TypedDict('ModelJcrewNavCategory', {
+    'category': NotRequired[str],
+    'department': NotRequired[str],
+    'label': NotRequired[str],
+    'section': NotRequired[str],
+}, total=False)
+
+ModelJcrewProductColor = TypedDict('ModelJcrewProductColor', {
+    'code': NotRequired[str],
+    'image_url': NotRequired[str],
+    'name': NotRequired[str],
+}, total=False)
+
+ModelJcrewProductDetailResponse = TypedDict('ModelJcrewProductDetailResponse', {
+    'average_rating': NotRequired[float],
+    'brand': NotRequired[str],
+    'category_id': NotRequired[str],
+    'colors': NotRequired[list[ModelJcrewProductColor]],
+    'currency': NotRequired[str],
+    'description': NotRequired[str],
+    'fetched_at': NotRequired[str],
+    'fit_description': NotRequired[list[str]],
+    'gender': NotRequired[str],
+    'list_price': NotRequired[float],
+    'name': NotRequired[str],
+    'pid': NotRequired[str],
+    'rating_count': NotRequired[int],
+    'site': NotRequired[str],
+    'sizes': NotRequired[list[str]],
+    'skus': NotRequired[list[ModelJcrewProductSku]],
+    'source_url': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelJcrewProductReviewsResponse = TypedDict('ModelJcrewProductReviewsResponse', {
+    'average_rating': NotRequired[float],
+    'count': NotRequired[int],
+    'fetched_at': NotRequired[str],
+    'page': NotRequired[int],
+    'page_size': NotRequired[int],
+    'pid': NotRequired[str],
+    'rating_count': NotRequired[int],
+    'rating_histogram': NotRequired[list[int]],
+    'recommended_ratio': NotRequired[float],
+    'reviews': NotRequired[list[ModelJcrewReview]],
+    'site': NotRequired[str],
+    'source_url': NotRequired[str],
+    'total_pages': NotRequired[int],
+    'total_reviews': NotRequired[int],
+}, total=False)
+
+ModelJcrewProductSku = TypedDict('ModelJcrewProductSku', {
+    'color_code': NotRequired[str],
+    'color_name': NotRequired[str],
+    'currency': NotRequired[str],
+    'orderable': NotRequired[bool],
+    'price': NotRequired[float],
+    'size': NotRequired[str],
+}, total=False)
+
+ModelJcrewProductSummary = TypedDict('ModelJcrewProductSummary', {
+    'description': NotRequired[str],
+    'family_id': NotRequired[str],
+    'gender': NotRequired[str],
+    'id': NotRequired[str],
+    'image_url': NotRequired[str],
+    'name': NotRequired[str],
+    'orderable': NotRequired[bool],
+    'price_max': NotRequired[float],
+    'price_min': NotRequired[float],
+    'sale_price_max': NotRequired[float],
+    'sale_price_min': NotRequired[float],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelJcrewReview = TypedDict('ModelJcrewReview', {
+    'author': NotRequired[str],
+    'body': NotRequired[str],
+    'created_at': NotRequired[str],
+    'headline': NotRequired[str],
+    'helpful_votes': NotRequired[int],
+    'id': NotRequired[str],
+    'location': NotRequired[str],
+    'not_helpful_votes': NotRequired[int],
+    'rating': NotRequired[int],
+    'updated_at': NotRequired[str],
+    'verified_purchase': NotRequired[bool],
+}, total=False)
+
+ModelJcrewSearchResponse = TypedDict('ModelJcrewSearchResponse', {
+    'count': NotRequired[int],
+    'facets': NotRequired[list[ModelJcrewFacet]],
+    'fetched_at': NotRequired[str],
+    'filter': NotRequired[str],
+    'keyword': NotRequired[str],
+    'page': NotRequired[int],
+    'per_page': NotRequired[int],
+    'products': NotRequired[list[ModelJcrewProductSummary]],
+    'site': NotRequired[str],
+    'sort': NotRequired[str],
+    'source_url': NotRequired[str],
+    'total_pages': NotRequired[int],
+    'total_products': NotRequired[int],
+}, total=False)
+
+ModelJcrewSizeChartResponse = TypedDict('ModelJcrewSizeChartResponse', {
+    'columns': NotRequired[list[str]],
+    'fetched_at': NotRequired[str],
+    'pid': NotRequired[str],
+    'site': NotRequired[str],
+    'sizes': NotRequired[list[ModelJcrewSizeChartRow]],
+    'source_url': NotRequired[str],
+}, total=False)
+
+ModelJcrewSizeChartRow = TypedDict('ModelJcrewSizeChartRow', {
+    'imperial': NotRequired[dict[str, float]],
+    'metric': NotRequired[dict[str, float]],
+    'size': NotRequired[str],
+}, total=False)
+
+ModelJcrewStore = TypedDict('ModelJcrewStore', {
+    'address': NotRequired[str],
+    'city': NotRequired[str],
+    'country': NotRequired[str],
+    'distance_miles': NotRequired[float],
+    'hours': NotRequired[dict[str, ModelJcrewHour]],
+    'id': NotRequired[str],
+    'latitude': NotRequired[float],
+    'longitude': NotRequired[float],
+    'name': NotRequired[str],
+    'phone': NotRequired[str],
+    'postal_code': NotRequired[str],
+    'region': NotRequired[str],
+    'services': NotRequired[list[str]],
+}, total=False)
+
+ModelJcrewStoreResponse = TypedDict('ModelJcrewStoreResponse', {
+    'count': NotRequired[int],
+    'fetched_at': NotRequired[str],
+    'site': NotRequired[str],
+    'source_url': NotRequired[str],
+    'stores': NotRequired[list[ModelJcrewStore]],
+}, total=False)
+
+ModelJcrewSuggestResponse = TypedDict('ModelJcrewSuggestResponse', {
+    'count': NotRequired[int],
+    'fetched_at': NotRequired[str],
+    'query': NotRequired[str],
+    'site': NotRequired[str],
+    'source_url': NotRequired[str],
+    'suggestions': NotRequired[list[ModelJcrewSuggestion]],
+}, total=False)
+
+ModelJcrewSuggestion = TypedDict('ModelJcrewSuggestion', {
+    'query': NotRequired[str],
+    'total_results': NotRequired[int],
+}, total=False)
+
+ModelJcrewTimeInterval = TypedDict('ModelJcrewTimeInterval', {
+    'end': NotRequired[str],
+    'start': NotRequired[str],
+}, total=False)
+
+ModelJcrewCategoriesResponseDoc = TypedDict('ModelJcrewCategoriesResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelJcrewCategoriesResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelJcrewCategoryResponseDoc = TypedDict('ModelJcrewCategoryResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelJcrewCategoryResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelJcrewProductResponseDoc = TypedDict('ModelJcrewProductResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelJcrewProductDetailResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelJcrewProductReviewsResponseDoc = TypedDict('ModelJcrewProductReviewsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelJcrewProductReviewsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelJcrewSearchResponseDoc = TypedDict('ModelJcrewSearchResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelJcrewSearchResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelJcrewSizeChartResponseDoc = TypedDict('ModelJcrewSizeChartResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelJcrewSizeChartResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelJcrewStoresResponseDoc = TypedDict('ModelJcrewStoresResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelJcrewStoreResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelJcrewSuggestResponseDoc = TypedDict('ModelJcrewSuggestResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelJcrewSuggestResponse],
     'msg': NotRequired[str],
 }, total=False)
 
@@ -14199,6 +16646,160 @@ ModelKalshiSeriesResponseDoc = TypedDict('ModelKalshiSeriesResponseDoc', {
 ModelKalshiTradesResponseDoc = TypedDict('ModelKalshiTradesResponseDoc', {
     'code': NotRequired[int],
     'data': NotRequired[ModelKalshiTradesResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelKickstarterCategory = TypedDict('ModelKickstarterCategory', {
+    'id': NotRequired[int],
+    'name': NotRequired[str],
+    'parent_id': NotRequired[int],
+    'slug': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelKickstarterComment = TypedDict('ModelKickstarterComment', {
+    'author_name': NotRequired[str],
+    'body': NotRequired[str],
+    'is_creator': NotRequired[bool],
+    'posted_at': NotRequired[str],
+}, total=False)
+
+ModelKickstarterCommentsResult = TypedDict('ModelKickstarterCommentsResult', {
+    'comments': NotRequired[list[ModelKickstarterComment]],
+    'total_count': NotRequired[int],
+}, total=False)
+
+ModelKickstarterCreator = TypedDict('ModelKickstarterCreator', {
+    'avatar': NotRequired[str],
+    'id': NotRequired[int],
+    'name': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelKickstarterDiscoverResult = TypedDict('ModelKickstarterDiscoverResult', {
+    'page': NotRequired[int],
+    'projects': NotRequired[list[ModelKickstarterProject]],
+    'total_hits': NotRequired[int],
+}, total=False)
+
+ModelKickstarterLocation = TypedDict('ModelKickstarterLocation', {
+    'country': NotRequired[str],
+    'displayable_name': NotRequired[str],
+    'id': NotRequired[int],
+    'name': NotRequired[str],
+    'short_name': NotRequired[str],
+}, total=False)
+
+ModelKickstarterPhoto = TypedDict('ModelKickstarterPhoto', {
+    'full': NotRequired[str],
+}, total=False)
+
+ModelKickstarterProject = TypedDict('ModelKickstarterProject', {
+    'backers_count': NotRequired[int],
+    'blurb': NotRequired[str],
+    'category': NotRequired[ModelKickstarterCategory],
+    'comments_count': NotRequired[int],
+    'converted_pledged_amount': NotRequired[float],
+    'country': NotRequired[str],
+    'created_at': NotRequired[str],
+    'creator': NotRequired[ModelKickstarterCreator],
+    'currency': NotRequired[str],
+    'currency_symbol': NotRequired[str],
+    'deadline': NotRequired[str],
+    'faq_count': NotRequired[int],
+    'goal': NotRequired[float],
+    'has_video': NotRequired[bool],
+    'id': NotRequired[int],
+    'is_launched': NotRequired[bool],
+    'launched_at': NotRequired[str],
+    'location': NotRequired[ModelKickstarterLocation],
+    'name': NotRequired[str],
+    'percent_funded': NotRequired[int],
+    'photo': NotRequired[ModelKickstarterPhoto],
+    'pledged': NotRequired[float],
+    'reward_tiers': NotRequired[list[ModelKickstarterRewardTier]],
+    'risks_and_challenges': NotRequired[str],
+    'slug': NotRequired[str],
+    'spotlight': NotRequired[bool],
+    'staff_pick': NotRequired[bool],
+    'state': NotRequired[str],
+    'state_changed_at': NotRequired[str],
+    'story': NotRequired[str],
+    'updates_count': NotRequired[int],
+    'url': NotRequired[str],
+    'usd_pledged': NotRequired[float],
+}, total=False)
+
+ModelKickstarterRewardAddOn = TypedDict('ModelKickstarterRewardAddOn', {
+    'amount': NotRequired[float],
+    'currency': NotRequired[str],
+    'description': NotRequired[str],
+    'id': NotRequired[str],
+    'name': NotRequired[str],
+}, total=False)
+
+ModelKickstarterRewardItem = TypedDict('ModelKickstarterRewardItem', {
+    'name': NotRequired[str],
+    'quantity': NotRequired[int],
+}, total=False)
+
+ModelKickstarterRewardTier = TypedDict('ModelKickstarterRewardTier', {
+    'add_ons': NotRequired[list[ModelKickstarterRewardAddOn]],
+    'amount': NotRequired[float],
+    'available': NotRequired[bool],
+    'backers_count': NotRequired[int],
+    'currency': NotRequired[str],
+    'description': NotRequired[str],
+    'ends_at': NotRequired[str],
+    'estimated_delivery_on': NotRequired[str],
+    'featured': NotRequired[bool],
+    'id': NotRequired[str],
+    'image': NotRequired[str],
+    'items': NotRequired[list[ModelKickstarterRewardItem]],
+    'limit': NotRequired[int],
+    'name': NotRequired[str],
+    'remaining_quantity': NotRequired[int],
+    'shipping_enabled': NotRequired[bool],
+    'shipping_preference': NotRequired[str],
+    'shipping_summary': NotRequired[str],
+}, total=False)
+
+ModelKickstarterUpdate = TypedDict('ModelKickstarterUpdate', {
+    'author_name': NotRequired[str],
+    'body': NotRequired[str],
+    'comments_count': NotRequired[int],
+    'is_creator': NotRequired[bool],
+    'number': NotRequired[int],
+    'published_at': NotRequired[str],
+    'title': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelKickstarterUpdatesResult = TypedDict('ModelKickstarterUpdatesResult', {
+    'updates': NotRequired[list[ModelKickstarterUpdate]],
+}, total=False)
+
+ModelKickstarterCommentsResponseDoc = TypedDict('ModelKickstarterCommentsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelKickstarterCommentsResult],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelKickstarterDiscoverResponseDoc = TypedDict('ModelKickstarterDiscoverResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelKickstarterDiscoverResult],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelKickstarterProjectResponseDoc = TypedDict('ModelKickstarterProjectResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelKickstarterProject],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelKickstarterUpdatesResponseDoc = TypedDict('ModelKickstarterUpdatesResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelKickstarterUpdatesResult],
     'msg': NotRequired[str],
 }, total=False)
 
@@ -15776,6 +18377,14 @@ ModelMlbTransactionsResponseDoc = TypedDict('ModelMlbTransactionsResponseDoc', {
     'msg': NotRequired[str],
 }, total=False)
 
+ModelNikeAvailabilityResponse = TypedDict('ModelNikeAvailabilityResponse', {
+    'count': NotRequired[int],
+    'fetched_at': NotRequired[str],
+    'group_key': NotRequired[str],
+    'sizes': NotRequired[list[ModelNikeSizeAvailability]],
+    'source_url': NotRequired[str],
+}, total=False)
+
 ModelNikeBreadcrumb = TypedDict('ModelNikeBreadcrumb', {
     'name': NotRequired[str],
     'path': NotRequired[str],
@@ -15798,6 +18407,23 @@ ModelNikeCategorySubcategory = TypedDict('ModelNikeCategorySubcategory', {
     'name': NotRequired[str],
     'path': NotRequired[str],
     'slug': NotRequired[str],
+}, total=False)
+
+ModelNikeColorDetail = TypedDict('ModelNikeColorDetail', {
+    'color_code': NotRequired[str],
+    'color_description': NotRequired[str],
+    'currency': NotRequired[str],
+    'discount_percentage': NotRequired[int],
+    'grouping_label': NotRequired[str],
+    'images': NotRequired[list[str]],
+    'initial_price': NotRequired[float],
+    'is_buyable': NotRequired[bool],
+    'price': NotRequired[float],
+    'size_chart_url': NotRequired[str],
+    'sizes': NotRequired[list[ModelNikeProductSize]],
+    'style_code': NotRequired[str],
+    'style_color': NotRequired[str],
+    'url': NotRequired[str],
 }, total=False)
 
 ModelNikeColorVariant = TypedDict('ModelNikeColorVariant', {
@@ -15858,6 +18484,20 @@ ModelNikeProductDetailResponse = TypedDict('ModelNikeProductDetailResponse', {
     'url': NotRequired[str],
 }, total=False)
 
+ModelNikeProductDetailsResponse = TypedDict('ModelNikeProductDetailsResponse', {
+    'colors': NotRequired[list[ModelNikeColorDetail]],
+    'count': NotRequired[int],
+    'description': NotRequired[str],
+    'fetched_at': NotRequired[str],
+    'genders': NotRequired[list[str]],
+    'group_key': NotRequired[str],
+    'product_type': NotRequired[str],
+    'reason_to_buy': NotRequired[str],
+    'source_url': NotRequired[str],
+    'subtitle': NotRequired[str],
+    'title': NotRequired[str],
+}, total=False)
+
 ModelNikeProductGroup = TypedDict('ModelNikeProductGroup', {
     'badge_label': NotRequired[str],
     'colors': NotRequired[list[ModelNikeColorVariant]],
@@ -15902,6 +18542,28 @@ ModelNikeProductSize = TypedDict('ModelNikeProductSize', {
     'status': NotRequired[str],
 }, total=False)
 
+ModelNikeRecommendationsResponse = TypedDict('ModelNikeRecommendationsResponse', {
+    'count': NotRequired[int],
+    'fetched_at': NotRequired[str],
+    'recommendations': NotRequired[list[ModelNikeRecommendedProduct]],
+    'source_url': NotRequired[str],
+    'style_color': NotRequired[str],
+}, total=False)
+
+ModelNikeRecommendedProduct = TypedDict('ModelNikeRecommendedProduct', {
+    'currency': NotRequired[str],
+    'image_url': NotRequired[str],
+    'initial_price': NotRequired[float],
+    'price': NotRequired[float],
+    'price_type': NotRequired[str],
+    'rank': NotRequired[int],
+    'style_color': NotRequired[str],
+    'style_type': NotRequired[str],
+    'subtitle': NotRequired[str],
+    'title': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
 ModelNikeSearchResponse = TypedDict('ModelNikeSearchResponse', {
     'category': NotRequired[str],
     'count': NotRequired[int],
@@ -15914,6 +18576,16 @@ ModelNikeSearchResponse = TypedDict('ModelNikeSearchResponse', {
     'source_url': NotRequired[str],
     'total_pages': NotRequired[int],
     'total_products': NotRequired[int],
+}, total=False)
+
+ModelNikeSizeAvailability = TypedDict('ModelNikeSizeAvailability', {
+    'available': NotRequired[bool],
+    'grouping_label': NotRequired[str],
+    'gtin': NotRequired[str],
+    'label': NotRequired[str],
+    'localized_label': NotRequired[str],
+    'ship': NotRequired[str],
+    'style_color': NotRequired[str],
 }, total=False)
 
 ModelNikeStore = TypedDict('ModelNikeStore', {
@@ -15963,9 +18635,21 @@ ModelNikeTopLevelCategory = TypedDict('ModelNikeTopLevelCategory', {
     'path': NotRequired[str],
 }, total=False)
 
+ModelNikeAvailabilityResponseDoc = TypedDict('ModelNikeAvailabilityResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelNikeAvailabilityResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
 ModelNikeCategoriesResponseDoc = TypedDict('ModelNikeCategoriesResponseDoc', {
     'code': NotRequired[int],
     'data': NotRequired[ModelNikeCategoriesResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelNikeProductDetailsResponseDoc = TypedDict('ModelNikeProductDetailsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelNikeProductDetailsResponse],
     'msg': NotRequired[str],
 }, total=False)
 
@@ -15978,6 +18662,12 @@ ModelNikeProductResponseDoc = TypedDict('ModelNikeProductResponseDoc', {
 ModelNikeProductReviewsResponseDoc = TypedDict('ModelNikeProductReviewsResponseDoc', {
     'code': NotRequired[int],
     'data': NotRequired[ModelNikeProductReviewsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelNikeRecommendationsResponseDoc = TypedDict('ModelNikeRecommendationsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelNikeRecommendationsResponse],
     'msg': NotRequired[str],
 }, total=False)
 
@@ -19153,6 +21843,242 @@ ModelProducthuntSearchTopicDoc = TypedDict('ModelProducthuntSearchTopicDoc', {
     'topic': NotRequired[dict[str, Any]],
 }, total=False)
 
+ModelQuinceCategoriesResponse = TypedDict('ModelQuinceCategoriesResponse', {
+    'business_departments': NotRequired[list[ModelQuinceFacetCount]],
+    'categories': NotRequired[list[ModelQuinceFacetCount]],
+    'colors': NotRequired[list[ModelQuinceFacetCount]],
+    'departments': NotRequired[list[ModelQuinceFacetCount]],
+    'fetched_at': NotRequired[str],
+    'materials': NotRequired[list[ModelQuinceFacetCount]],
+    'sizes': NotRequired[list[ModelQuinceFacetCount]],
+}, total=False)
+
+ModelQuinceFacetCount = TypedDict('ModelQuinceFacetCount', {
+    'count': NotRequired[int],
+    'value': NotRequired[str],
+}, total=False)
+
+ModelQuinceNavCategory = TypedDict('ModelQuinceNavCategory', {
+    'groups': NotRequired[list[ModelQuinceNavGroup]],
+    'slug': NotRequired[str],
+    'title': NotRequired[str],
+}, total=False)
+
+ModelQuinceNavGroup = TypedDict('ModelQuinceNavGroup', {
+    'links': NotRequired[list[ModelQuinceNavLink]],
+    'title': NotRequired[str],
+}, total=False)
+
+ModelQuinceNavLink = TypedDict('ModelQuinceNavLink', {
+    'slug': NotRequired[str],
+    'text': NotRequired[str],
+}, total=False)
+
+ModelQuinceNavigationResponse = TypedDict('ModelQuinceNavigationResponse', {
+    'categories': NotRequired[list[ModelQuinceNavCategory]],
+    'fetched_at': NotRequired[str],
+    'source_url': NotRequired[str],
+}, total=False)
+
+ModelQuinceProduct = TypedDict('ModelQuinceProduct', {
+    'business_department': NotRequired[str],
+    'category': NotRequired[str],
+    'color': NotRequired[str],
+    'currency': NotRequired[str],
+    'department': NotRequired[str],
+    'description': NotRequired[str],
+    'gender': NotRequired[str],
+    'handle': NotRequired[str],
+    'image_url': NotRequired[str],
+    'in_stock': NotRequired[bool],
+    'material': NotRequired[list[str]],
+    'max_price': NotRequired[float],
+    'min_price': NotRequired[float],
+    'primary_colors': NotRequired[list[str]],
+    'product_id': NotRequired[int],
+    'product_type': NotRequired[str],
+    'sizes': NotRequired[list[str]],
+    'title': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelQuinceProductFaqitem = TypedDict('ModelQuinceProductFaqitem', {
+    'answer': NotRequired[str],
+    'question': NotRequired[str],
+}, total=False)
+
+ModelQuinceProductFaqresponse = TypedDict('ModelQuinceProductFaqresponse', {
+    'fetched_at': NotRequired[str],
+    'handle': NotRequired[str],
+    'questions': NotRequired[list[ModelQuinceProductFaqitem]],
+    'source_url': NotRequired[str],
+}, total=False)
+
+ModelQuinceProductOptionGroup = TypedDict('ModelQuinceProductOptionGroup', {
+    'name': NotRequired[str],
+    'values': NotRequired[list[ModelQuinceProductOptionValue]],
+}, total=False)
+
+ModelQuinceProductOptionValue = TypedDict('ModelQuinceProductOptionValue', {
+    'display_name': NotRequired[str],
+    'display_type': NotRequired[str],
+    'hex_code': NotRequired[str],
+    'value': NotRequired[str],
+}, total=False)
+
+ModelQuinceProductResponse = TypedDict('ModelQuinceProductResponse', {
+    'average_rating': NotRequired[float],
+    'country': NotRequired[str],
+    'description': NotRequired[str],
+    'fetched_at': NotRequired[str],
+    'gender': NotRequired[str],
+    'handle': NotRequired[str],
+    'images': NotRequired[list[str]],
+    'options': NotRequired[list[ModelQuinceProductOptionGroup]],
+    'product_id': NotRequired[int],
+    'product_type': NotRequired[str],
+    'review_count': NotRequired[int],
+    'source_url': NotRequired[str],
+    'title': NotRequired[str],
+    'url': NotRequired[str],
+    'variants': NotRequired[list[ModelQuinceProductVariant]],
+}, total=False)
+
+ModelQuinceProductReviewsResponse = TypedDict('ModelQuinceProductReviewsResponse', {
+    'average_rating': NotRequired[float],
+    'fetched_at': NotRequired[str],
+    'handle': NotRequired[str],
+    'review_count': NotRequired[int],
+    'reviews': NotRequired[list[ModelQuinceReview]],
+    'source_url': NotRequired[str],
+}, total=False)
+
+ModelQuinceProductVariant = TypedDict('ModelQuinceProductVariant', {
+    'currency': NotRequired[str],
+    'id': NotRequired[int],
+    'in_stock': NotRequired[bool],
+    'options': NotRequired[dict[str, str]],
+    'price': NotRequired[float],
+    'savings': NotRequired[str],
+    'sku': NotRequired[str],
+    'status': NotRequired[str],
+    'title': NotRequired[str],
+    'traditional_retail_price': NotRequired[float],
+}, total=False)
+
+ModelQuinceReview = TypedDict('ModelQuinceReview', {
+    'author': NotRequired[str],
+    'body': NotRequired[str],
+    'date_published': NotRequired[str],
+    'rating': NotRequired[float],
+}, total=False)
+
+ModelQuinceSearchResponse = TypedDict('ModelQuinceSearchResponse', {
+    'category': NotRequired[str],
+    'color': NotRequired[str],
+    'count': NotRequired[int],
+    'country': NotRequired[str],
+    'department': NotRequired[str],
+    'fetched_at': NotRequired[str],
+    'limit': NotRequired[int],
+    'material': NotRequired[str],
+    'max_price': NotRequired[float],
+    'min_price': NotRequired[float],
+    'page': NotRequired[int],
+    'products': NotRequired[list[ModelQuinceProduct]],
+    'query': NotRequired[str],
+    'size': NotRequired[str],
+    'source_url': NotRequired[str],
+    'total_pages': NotRequired[int],
+    'total_results': NotRequired[int],
+}, total=False)
+
+ModelQuinceSitemapItem = TypedDict('ModelQuinceSitemapItem', {
+    'loc': NotRequired[str],
+    'type': NotRequired[str],
+}, total=False)
+
+ModelQuinceSitemapUrlitem = TypedDict('ModelQuinceSitemapUrlitem', {
+    'handle': NotRequired[str],
+    'loc': NotRequired[str],
+    'type': NotRequired[str],
+}, total=False)
+
+ModelQuinceSitemapUrlsResponse = TypedDict('ModelQuinceSitemapUrlsResponse', {
+    'fetched_at': NotRequired[str],
+    'limit': NotRequired[int],
+    'source_url': NotRequired[str],
+    'type': NotRequired[str],
+    'urls': NotRequired[list[ModelQuinceSitemapUrlitem]],
+}, total=False)
+
+ModelQuinceSitemapsResponse = TypedDict('ModelQuinceSitemapsResponse', {
+    'fetched_at': NotRequired[str],
+    'sitemaps': NotRequired[list[ModelQuinceSitemapItem]],
+    'source_url': NotRequired[str],
+}, total=False)
+
+ModelQuinceSuggestResponse = TypedDict('ModelQuinceSuggestResponse', {
+    'fetched_at': NotRequired[str],
+    'query': NotRequired[str],
+    'source_url': NotRequired[str],
+    'suggestions': NotRequired[list[str]],
+}, total=False)
+
+ModelQuinceCategoriesResponseDoc = TypedDict('ModelQuinceCategoriesResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelQuinceCategoriesResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelQuinceNavigationResponseDoc = TypedDict('ModelQuinceNavigationResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelQuinceNavigationResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelQuinceProductFaqresponseDoc = TypedDict('ModelQuinceProductFaqresponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelQuinceProductFaqresponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelQuinceProductResponseDoc = TypedDict('ModelQuinceProductResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelQuinceProductResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelQuinceProductReviewsResponseDoc = TypedDict('ModelQuinceProductReviewsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelQuinceProductReviewsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelQuinceSearchResponseDoc = TypedDict('ModelQuinceSearchResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelQuinceSearchResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelQuinceSitemapUrlsResponseDoc = TypedDict('ModelQuinceSitemapUrlsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelQuinceSitemapUrlsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelQuinceSitemapsResponseDoc = TypedDict('ModelQuinceSitemapsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelQuinceSitemapsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelQuinceSuggestResponseDoc = TypedDict('ModelQuinceSuggestResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelQuinceSuggestResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
 ModelRedditAuthor = TypedDict('ModelRedditAuthor', {
     'name': NotRequired[str],
     'profile_url': NotRequired[str],
@@ -19316,6 +22242,12 @@ ModelRedditDomainPostsResponseDoc = TypedDict('ModelRedditDomainPostsResponseDoc
     'msg': NotRequired[str],
 }, total=False)
 
+ModelRedditLeadsResponseDoc = TypedDict('ModelRedditLeadsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelRedditleadsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
 ModelRedditMultiSubredditPostsResponseDoc = TypedDict('ModelRedditMultiSubredditPostsResponseDoc', {
     'code': NotRequired[int],
     'data': NotRequired[ModelRedditMultiSubredditPostsResponse],
@@ -19368,6 +22300,42 @@ ModelRedditUserPostsResponseDoc = TypedDict('ModelRedditUserPostsResponseDoc', {
     'code': NotRequired[int],
     'data': NotRequired[ModelRedditUserPostsResponse],
     'msg': NotRequired[str],
+}, total=False)
+
+ModelRedditleadsLead = TypedDict('ModelRedditleadsLead', {
+    'author': NotRequired[str],
+    'comment_count': NotRequired[int],
+    'created': NotRequired[str],
+    'permalink': NotRequired[str],
+    'post_score': NotRequired[int],
+    'reason': NotRequired[str],
+    'score': NotRequired[int],
+    'signals': NotRequired[list[ModelRedditleadsSignal]],
+    'subreddit': NotRequired[str],
+    'title': NotRequired[str],
+}, total=False)
+
+ModelRedditleadsResponse = TypedDict('ModelRedditleadsResponse', {
+    'classifier': NotRequired[str],
+    'degraded': NotRequired[bool],
+    'leads': NotRequired[list[ModelRedditleadsLead]],
+    'min_score': NotRequired[int],
+    'model': NotRequired[str],
+    'query': NotRequired[str],
+    'stats': NotRequired[ModelRedditleadsStats],
+    'subreddit': NotRequired[str],
+}, total=False)
+
+ModelRedditleadsSignal = TypedDict('ModelRedditleadsSignal', {
+    'id': NotRequired[str],
+    'label': NotRequired[str],
+}, total=False)
+
+ModelRedditleadsStats = TypedDict('ModelRedditleadsStats', {
+    'classified': NotRequired[int],
+    'prefiltered': NotRequired[int],
+    'returned': NotRequired[int],
+    'scanned': NotRequired[int],
 }, total=False)
 
 ModelRedfinEstimateResponse = TypedDict('ModelRedfinEstimateResponse', {
@@ -20625,6 +23593,219 @@ ModelSephoraSuggestResponseDoc = TypedDict('ModelSephoraSuggestResponseDoc', {
     'msg': NotRequired[str],
 }, total=False)
 
+ModelSheinAggregationFilters = TypedDict('ModelSheinAggregationFilters', {
+    'category': NotRequired[ModelSheinFacetCategory],
+    'filters': NotRequired[list[ModelSheinFacetGroup]],
+    'keyword': NotRequired[str],
+    'max_price': NotRequired[str],
+    'min_price': NotRequired[str],
+}, total=False)
+
+ModelSheinAutocompleteResponse = TypedDict('ModelSheinAutocompleteResponse', {
+    'suggestions': NotRequired[list[ModelSheinAutocompleteSuggestion]],
+    'word': NotRequired[str],
+}, total=False)
+
+ModelSheinAutocompleteSuggestion = TypedDict('ModelSheinAutocompleteSuggestion', {
+    'type': NotRequired[str],
+    'word': NotRequired[str],
+    'word_id': NotRequired[str],
+}, total=False)
+
+ModelSheinCategoryFiltersResponse = TypedDict('ModelSheinCategoryFiltersResponse', {
+    'cat_id': NotRequired[str],
+    'currency': NotRequired[str],
+    'filters': NotRequired[list[ModelSheinFilter]],
+    'max_price': NotRequired[float],
+    'min_price': NotRequired[float],
+}, total=False)
+
+ModelSheinCategoryGoodsResponse = TypedDict('ModelSheinCategoryGoodsResponse', {
+    'cat_id': NotRequired[str],
+    'category_name': NotRequired[str],
+    'page': NotRequired[int],
+    'products': NotRequired[list[ModelSheinProduct]],
+    'total': NotRequired[int],
+}, total=False)
+
+ModelSheinCategoryNavResponse = TypedDict('ModelSheinCategoryNavResponse', {
+    'cat_id': NotRequired[str],
+    'navs': NotRequired[list[ModelSheinNavTab]],
+}, total=False)
+
+ModelSheinColorVariant = TypedDict('ModelSheinColorVariant', {
+    'color_image': NotRequired[str],
+    'color_name': NotRequired[str],
+    'goods_id': NotRequired[str],
+    'goods_sn': NotRequired[str],
+    'goods_url_name': NotRequired[str],
+    'image': NotRequired[str],
+}, total=False)
+
+ModelSheinFacetCategory = TypedDict('ModelSheinFacetCategory', {
+    'children': NotRequired[list[ModelSheinFacetCategory]],
+    'id': NotRequired[str],
+    'name': NotRequired[str],
+}, total=False)
+
+ModelSheinFacetGroup = TypedDict('ModelSheinFacetGroup', {
+    'id': NotRequired[str],
+    'name': NotRequired[str],
+    'options': NotRequired[list[ModelSheinFacetOption]],
+}, total=False)
+
+ModelSheinFacetOption = TypedDict('ModelSheinFacetOption', {
+    'id': NotRequired[str],
+    'name': NotRequired[str],
+}, total=False)
+
+ModelSheinFilter = TypedDict('ModelSheinFilter', {
+    'node_id': NotRequired[str],
+    'node_name': NotRequired[str],
+    'options': NotRequired[list[ModelSheinFilterOption]],
+}, total=False)
+
+ModelSheinFilterOption = TypedDict('ModelSheinFilterOption', {
+    'node_id': NotRequired[str],
+    'node_name': NotRequired[str],
+}, total=False)
+
+ModelSheinKeyword = TypedDict('ModelSheinKeyword', {
+    'from': NotRequired[str],
+    'type': NotRequired[str],
+    'word': NotRequired[str],
+    'word_id': NotRequired[str],
+}, total=False)
+
+ModelSheinNavTab = TypedDict('ModelSheinNavTab', {
+    'goods_id': NotRequired[str],
+    'nav_id': NotRequired[str],
+    'nav_img': NotRequired[str],
+    'nav_name': NotRequired[str],
+    'nav_type': NotRequired[str],
+}, total=False)
+
+ModelSheinProduct = TypedDict('ModelSheinProduct', {
+    'brand_code': NotRequired[str],
+    'category_id': NotRequired[str],
+    'category_name': NotRequired[str],
+    'color_img': NotRequired[str],
+    'comment_avg': NotRequired[str],
+    'comment_count': NotRequired[int],
+    'detail_images': NotRequired[list[str]],
+    'goods_id': NotRequired[str],
+    'goods_img': NotRequired[str],
+    'goods_name': NotRequired[str],
+    'goods_sn': NotRequired[str],
+    'goods_url_name': NotRequired[str],
+    'mall_code': NotRequired[str],
+    'on_sale': NotRequired[bool],
+    'retail_price': NotRequired[str],
+    'sale_price': NotRequired[str],
+    'sold_out': NotRequired[bool],
+    'spu': NotRequired[str],
+    'store_code': NotRequired[str],
+    'usd_price': NotRequired[str],
+}, total=False)
+
+ModelSheinProductDetail = TypedDict('ModelSheinProductDetail', {
+    'brand_code': NotRequired[str],
+    'category_id': NotRequired[str],
+    'category_name': NotRequired[str],
+    'color_variants': NotRequired[list[ModelSheinColorVariant]],
+    'description': NotRequired[str],
+    'goods_id': NotRequired[str],
+    'goods_name': NotRequired[str],
+    'goods_sn': NotRequired[str],
+    'images': NotRequired[list[str]],
+    'on_sale': NotRequired[bool],
+    'retail_price': NotRequired[str],
+    'sale_price': NotRequired[str],
+    'size_guide_url': NotRequired[str],
+    'sizes': NotRequired[list[ModelSheinSizeOption]],
+    'skus': NotRequired[list[ModelSheinSkuVariant]],
+    'store_code': NotRequired[str],
+    'usd_price': NotRequired[str],
+    'video_url': NotRequired[str],
+}, total=False)
+
+ModelSheinSearchKeywordsResponse = TypedDict('ModelSheinSearchKeywordsResponse', {
+    'keywords': NotRequired[list[ModelSheinKeyword]],
+}, total=False)
+
+ModelSheinSearchProductsResponse = TypedDict('ModelSheinSearchProductsResponse', {
+    'keyword': NotRequired[str],
+    'origin_word': NotRequired[str],
+    'page': NotRequired[int],
+    'products': NotRequired[list[ModelSheinProduct]],
+    'suggest_words': NotRequired[list[str]],
+    'total': NotRequired[int],
+}, total=False)
+
+ModelSheinSizeOption = TypedDict('ModelSheinSizeOption', {
+    'attr_id': NotRequired[str],
+    'attr_name': NotRequired[str],
+    'attr_value_id': NotRequired[str],
+    'attr_value_name': NotRequired[str],
+}, total=False)
+
+ModelSheinSkuVariant = TypedDict('ModelSheinSkuVariant', {
+    'retail_price': NotRequired[str],
+    'sale_price': NotRequired[str],
+    'sku_code': NotRequired[str],
+    'sku_sale_attr': NotRequired[str],
+    'stock': NotRequired[str],
+    'usd_price': NotRequired[str],
+}, total=False)
+
+ModelSheinAggregationFiltersResponseDoc = TypedDict('ModelSheinAggregationFiltersResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelSheinAggregationFilters],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelSheinAutocompleteResponseDoc = TypedDict('ModelSheinAutocompleteResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelSheinAutocompleteResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelSheinCategoryFiltersResponseDoc = TypedDict('ModelSheinCategoryFiltersResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelSheinCategoryFiltersResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelSheinCategoryGoodsResponseDoc = TypedDict('ModelSheinCategoryGoodsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelSheinCategoryGoodsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelSheinCategoryNavResponseDoc = TypedDict('ModelSheinCategoryNavResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelSheinCategoryNavResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelSheinProductDetailResponseDoc = TypedDict('ModelSheinProductDetailResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelSheinProductDetail],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelSheinProductsSearchResponseDoc = TypedDict('ModelSheinProductsSearchResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelSheinSearchProductsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelSheinSearchKeywordsResponseDoc = TypedDict('ModelSheinSearchKeywordsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelSheinSearchKeywordsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
 ModelShopappAnalysisResponse = TypedDict('ModelShopappAnalysisResponse', {
     'currencies': NotRequired[list[str]],
     'discounts': NotRequired[ModelShopappDiscountSummary],
@@ -21022,11 +24203,18 @@ ModelShopifyCollectionItem = TypedDict('ModelShopifyCollectionItem', {
 
 ModelShopifyCollectionProductsResponse = TypedDict('ModelShopifyCollectionProductsResponse', {
     'collection': NotRequired[str],
+    'facets': NotRequired[dict[str, dict[str, int]]],
+    'facets_stats': NotRequired[dict[str, ModelShopifyFacetStat]],
+    'filters': NotRequired[dict[str, list[str]]],
     'limit': NotRequired[int],
     'page': NotRequired[int],
     'products': NotRequired[list[ModelShopifyProductItem]],
+    'sort': NotRequired[Literal['sortLTH', 'sortHTL', 'newest']],
     'source_url': NotRequired[str],
     'store_url': NotRequired[str],
+    'total_items': NotRequired[int],
+    'total_pages': NotRequired[int],
+    'transport_mode': NotRequired[Literal['ssr_embedded']],
 }, total=False)
 
 ModelShopifyCollectionsResponse = TypedDict('ModelShopifyCollectionsResponse', {
@@ -21035,6 +24223,13 @@ ModelShopifyCollectionsResponse = TypedDict('ModelShopifyCollectionsResponse', {
     'page': NotRequired[int],
     'source_url': NotRequired[str],
     'store_url': NotRequired[str],
+    'transport_mode': NotRequired[Literal['ssr_embedded']],
+}, total=False)
+
+ModelShopifyFacetStat = TypedDict('ModelShopifyFacetStat', {
+    'avg': NotRequired[float],
+    'max': NotRequired[float],
+    'min': NotRequired[float],
 }, total=False)
 
 ModelShopifyImageItem = TypedDict('ModelShopifyImageItem', {
@@ -21070,6 +24265,7 @@ ModelShopifyPageResponse = TypedDict('ModelShopifyPageResponse', {
     'page': NotRequired[ModelShopifyPageItem],
     'source_url': NotRequired[str],
     'store_url': NotRequired[str],
+    'transport_mode': NotRequired[Literal['ssr_embedded']],
 }, total=False)
 
 ModelShopifyPagesResponse = TypedDict('ModelShopifyPagesResponse', {
@@ -21078,21 +24274,29 @@ ModelShopifyPagesResponse = TypedDict('ModelShopifyPagesResponse', {
     'pages': NotRequired[list[ModelShopifyPageItem]],
     'source_url': NotRequired[str],
     'store_url': NotRequired[str],
+    'transport_mode': NotRequired[Literal['ssr_embedded']],
 }, total=False)
 
 ModelShopifyProductItem = TypedDict('ModelShopifyProductItem', {
     'available': NotRequired[bool],
+    'canonical_colour': NotRequired[str],
+    'collection_tags': NotRequired[list[str]],
+    'colour': NotRequired[str],
     'compare_at_price': NotRequired[float],
     'created_at': NotRequired[str],
     'description': NotRequired[str],
+    'discount_percentage': NotRequired[float],
     'featured_image': NotRequired[str],
     'handle': NotRequired[str],
     'id': NotRequired[str],
     'images': NotRequired[list[ModelShopifyImageItem]],
+    'labels': NotRequired[list[str]],
     'options': NotRequired[list[ModelShopifyOptionItem]],
     'price': NotRequired[float],
     'product_type': NotRequired[str],
     'published_at': NotRequired[str],
+    'rating': NotRequired[float],
+    'rating_count': NotRequired[int],
     'tags': NotRequired[list[str]],
     'title': NotRequired[str],
     'updated_at': NotRequired[str],
@@ -21109,20 +24313,29 @@ ModelShopifyProductRecommendationsResponse = TypedDict('ModelShopifyProductRecom
     'products': NotRequired[list[ModelShopifyProductItem]],
     'source_url': NotRequired[str],
     'store_url': NotRequired[str],
+    'transport_mode': NotRequired[Literal['ssr_embedded']],
 }, total=False)
 
 ModelShopifyProductResponse = TypedDict('ModelShopifyProductResponse', {
     'product': NotRequired[ModelShopifyProductItem],
     'source_url': NotRequired[str],
     'store_url': NotRequired[str],
+    'transport_mode': NotRequired[Literal['ssr_embedded']],
 }, total=False)
 
 ModelShopifyProductsResponse = TypedDict('ModelShopifyProductsResponse', {
+    'facets': NotRequired[dict[str, dict[str, int]]],
+    'facets_stats': NotRequired[dict[str, ModelShopifyFacetStat]],
+    'filters': NotRequired[dict[str, list[str]]],
     'limit': NotRequired[int],
     'page': NotRequired[int],
     'products': NotRequired[list[ModelShopifyProductItem]],
+    'sort': NotRequired[Literal['sortLTH', 'sortHTL', 'newest']],
     'source_url': NotRequired[str],
     'store_url': NotRequired[str],
+    'total_items': NotRequired[int],
+    'total_pages': NotRequired[int],
+    'transport_mode': NotRequired[Literal['ssr_embedded']],
 }, total=False)
 
 ModelShopifySearchQueryItem = TypedDict('ModelShopifySearchQueryItem', {
@@ -21189,6 +24402,7 @@ ModelShopifyStoreResponse = TypedDict('ModelShopifyStoreResponse', {
     'requested_url': NotRequired[str],
     'source_domain': NotRequired[str],
     'source_url': NotRequired[str],
+    'transport_mode': NotRequired[Literal['ssr_embedded']],
 }, total=False)
 
 ModelShopifyVariantItem = TypedDict('ModelShopifyVariantItem', {
@@ -21199,6 +24413,7 @@ ModelShopifyVariantItem = TypedDict('ModelShopifyVariantItem', {
     'featured_image': NotRequired[str],
     'grams': NotRequired[int],
     'id': NotRequired[str],
+    'inventory_quantity': NotRequired[int],
     'option1': NotRequired[str],
     'option2': NotRequired[str],
     'option3': NotRequired[str],
@@ -21273,6 +24488,72 @@ ModelShopifySitemapUrlsResponseDoc = TypedDict('ModelShopifySitemapUrlsResponseD
 }, total=False)
 
 ModelShopifyStoreResponseDoc = TypedDict('ModelShopifyStoreResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelShopifyStoreResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelShopifybrandsCollectionProductsResponseDoc = TypedDict('ModelShopifybrandsCollectionProductsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelShopifyCollectionProductsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelShopifybrandsCollectionsResponseDoc = TypedDict('ModelShopifybrandsCollectionsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelShopifyCollectionsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelShopifybrandsPageResponseDoc = TypedDict('ModelShopifybrandsPageResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelShopifyPageResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelShopifybrandsPagesResponseDoc = TypedDict('ModelShopifybrandsPagesResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelShopifyPagesResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelShopifybrandsProductRecommendationsResponseDoc = TypedDict('ModelShopifybrandsProductRecommendationsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelShopifyProductRecommendationsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelShopifybrandsProductResponseDoc = TypedDict('ModelShopifybrandsProductResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelShopifyProductResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelShopifybrandsProductsResponseDoc = TypedDict('ModelShopifybrandsProductsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelShopifyProductsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelShopifybrandsSearchSuggestResponseDoc = TypedDict('ModelShopifybrandsSearchSuggestResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelShopifySearchSuggestResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelShopifybrandsSitemapIndexResponseDoc = TypedDict('ModelShopifybrandsSitemapIndexResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelShopifySitemapIndexResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelShopifybrandsSitemapUrlsResponseDoc = TypedDict('ModelShopifybrandsSitemapUrlsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelShopifySitemapUrlsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelShopifybrandsStoreResponseDoc = TypedDict('ModelShopifybrandsStoreResponseDoc', {
     'code': NotRequired[int],
     'data': NotRequired[ModelShopifyStoreResponse],
     'msg': NotRequired[str],
@@ -23732,6 +27013,7 @@ ModelTechstackResult = TypedDict('ModelTechstackResult', {
     'detector_version': NotRequired[str],
     'final_url': NotRequired[str],
     'technologies': NotRequired[list[ModelTechstackTechnology]],
+    'unmatched_evidence': NotRequired[ModelTechstackUnmatchedEvidence],
     'url': NotRequired[str],
 }, total=False)
 
@@ -23741,6 +27023,11 @@ ModelTechstackTechnology = TypedDict('ModelTechstackTechnology', {
     'evidence': NotRequired[str],
     'name': NotRequired[str],
     'version': NotRequired[str],
+}, total=False)
+
+ModelTechstackUnmatchedEvidence = TypedDict('ModelTechstackUnmatchedEvidence', {
+    'domains': NotRequired[list[str]],
+    'generator': NotRequired[str],
 }, total=False)
 
 ModelTeslajobsListResponse = TypedDict('ModelTeslajobsListResponse', {
@@ -26927,6 +30214,41 @@ ModelVintedMemberResponseDoc = TypedDict('ModelVintedMemberResponseDoc', {
     'msg': NotRequired[str],
 }, total=False)
 
+ModelWalgreensStore = TypedDict('ModelWalgreensStore', {
+    'address_line1': NotRequired[str],
+    'brand': NotRequired[str],
+    'city': NotRequired[str],
+    'county': NotRequired[str],
+    'distance_miles': NotRequired[float],
+    'fax': NotRequired[str],
+    'intersection': NotRequired[str],
+    'latitude': NotRequired[float],
+    'longitude': NotRequired[float],
+    'name': NotRequired[str],
+    'pharmacy_close_time': NotRequired[str],
+    'pharmacy_open_time': NotRequired[str],
+    'phone': NotRequired[str],
+    'services': NotRequired[list[str]],
+    'state': NotRequired[str],
+    'store_close_time': NotRequired[str],
+    'store_number': NotRequired[str],
+    'store_open_time': NotRequired[str],
+    'store_type': NotRequired[str],
+    'time_zone': NotRequired[str],
+    'zip': NotRequired[str],
+}, total=False)
+
+ModelWalgreensStoresResponse = TypedDict('ModelWalgreensStoresResponse', {
+    'stores': NotRequired[list[ModelWalgreensStore]],
+    'total_count': NotRequired[int],
+}, total=False)
+
+ModelWalgreensStoresResponseDoc = TypedDict('ModelWalgreensStoresResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelWalgreensStoresResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
 ModelWalmartProduct = TypedDict('ModelWalmartProduct', {
     'attributes': NotRequired[dict[str, str]],
     'availability': NotRequired[str],
@@ -27182,8 +30504,8 @@ ModelWebBillingRejectionDoc = TypedDict('ModelWebBillingRejectionDoc', {
     'message': NotRequired[str],
     'plan': NotRequired[str],
     'rate_limit_per_minute': NotRequired[int],
-    'reason': NotRequired[Literal['insufficient_credits', 'daily_credit_limit', 'rate_limited']],
-    'reset_scope': NotRequired[Literal['daily', 'monthly', 'minute']],
+    'reason': NotRequired[Literal['insufficient_credits', 'daily_credit_limit', 'rate_limited', 'ip_rate_limited']],
+    'reset_scope': NotRequired[Literal['daily', 'monthly', 'minute', 'ip_window']],
     'resets_at': NotRequired[str],
     'retry_after_seconds': NotRequired[int],
     'suggested_plan': NotRequired[str],
@@ -27206,6 +30528,114 @@ ModelWebTechStackResponseDoc = TypedDict('ModelWebTechStackResponseDoc', {
     'code': NotRequired[int],
     'data': NotRequired[ModelTechstackResult],
     'msg': NotRequired[str],
+}, total=False)
+
+ModelWebmonitorCheckDoc = TypedDict('ModelWebmonitorCheckDoc', {
+    'added_urls': NotRequired[list[str]],
+    'billed': NotRequired[bool],
+    'changed': NotRequired[bool],
+    'checked_at': NotRequired[str],
+    'diff': NotRequired[str],
+    'error': NotRequired[str],
+    'fingerprint': NotRequired[str],
+    'id': NotRequired[str],
+    'monitor_id': NotRequired[str],
+    'removed_urls': NotRequired[list[str]],
+    'skipped': NotRequired[bool],
+    'webhook_deliveries': NotRequired[list[ModelWebmonitorWebhookDeliveryDoc]],
+}, total=False)
+
+ModelWebmonitorCheckListResponseDoc = TypedDict('ModelWebmonitorCheckListResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[list[ModelWebmonitorCheckDoc]],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelWebmonitorCreateMonitorBodyDoc = TypedDict('ModelWebmonitorCreateMonitorBodyDoc', {
+    'cadence_minutes': NotRequired[int],
+    'enabled': NotRequired[bool],
+    'name': NotRequired[str],
+    'notification': NotRequired[ModelWebmonitorNotificationBodyDoc],
+    'sitemap': NotRequired[ModelWebmonitorSitemapTargetBodyDoc],
+    'target_type': NotRequired[Literal['page', 'sitemap']],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelWebmonitorMonitorDeleteResponseDoc = TypedDict('ModelWebmonitorMonitorDeleteResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[dict[str, Any]],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelWebmonitorMonitorDoc = TypedDict('ModelWebmonitorMonitorDoc', {
+    'cadence_minutes': NotRequired[int],
+    'created_at': NotRequired[str],
+    'enabled': NotRequired[bool],
+    'failures': NotRequired[int],
+    'id': NotRequired[str],
+    'last_changed_at': NotRequired[str],
+    'last_checked_at': NotRequired[str],
+    'last_error': NotRequired[str],
+    'name': NotRequired[str],
+    'next_check_at': NotRequired[str],
+    'notification': NotRequired[ModelWebmonitorNotificationDoc],
+    'sitemap': NotRequired[ModelWebmonitorSitemapTargetDoc],
+    'target_type': NotRequired[Literal['page', 'sitemap']],
+    'updated_at': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelWebmonitorMonitorListResponseDoc = TypedDict('ModelWebmonitorMonitorListResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[list[ModelWebmonitorMonitorDoc]],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelWebmonitorMonitorResponseDoc = TypedDict('ModelWebmonitorMonitorResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelWebmonitorMonitorDoc],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelWebmonitorNotificationBodyDoc = TypedDict('ModelWebmonitorNotificationBodyDoc', {
+    'events': NotRequired[list[str]],
+    'webhook_secret': NotRequired[str],
+    'webhook_url': NotRequired[str],
+}, total=False)
+
+ModelWebmonitorNotificationDoc = TypedDict('ModelWebmonitorNotificationDoc', {
+    'events': NotRequired[list[str]],
+    'webhook_url': NotRequired[str],
+}, total=False)
+
+ModelWebmonitorSitemapTargetBodyDoc = TypedDict('ModelWebmonitorSitemapTargetBodyDoc', {
+    'exclude_patterns': NotRequired[list[str]],
+    'include_patterns': NotRequired[list[str]],
+    'max_urls': NotRequired[int],
+}, total=False)
+
+ModelWebmonitorSitemapTargetDoc = TypedDict('ModelWebmonitorSitemapTargetDoc', {
+    'exclude_patterns': NotRequired[list[str]],
+    'include_patterns': NotRequired[list[str]],
+    'max_urls': NotRequired[int],
+}, total=False)
+
+ModelWebmonitorUpdateMonitorBodyDoc = TypedDict('ModelWebmonitorUpdateMonitorBodyDoc', {
+    'cadence_minutes': NotRequired[int],
+    'enabled': NotRequired[bool],
+    'name': NotRequired[str],
+    'notification': NotRequired[ModelWebmonitorNotificationBodyDoc],
+    'sitemap': NotRequired[ModelWebmonitorSitemapTargetBodyDoc],
+    'target_type': NotRequired[Literal['page', 'sitemap']],
+}, total=False)
+
+ModelWebmonitorWebhookDeliveryDoc = TypedDict('ModelWebmonitorWebhookDeliveryDoc', {
+    'attempts': NotRequired[int],
+    'delivered_at': NotRequired[str],
+    'error': NotRequired[str],
+    'event': NotRequired[Literal['change.detected', 'run.completed']],
+    'status': NotRequired[Literal['delivered', 'rejected', 'failed', 'skipped_unsafe_url']],
+    'status_code': NotRequired[int],
 }, total=False)
 
 ModelWhatnotBrowseResponse = TypedDict('ModelWhatnotBrowseResponse', {
@@ -30464,6 +33894,51 @@ ModelZillowSearchResponse = TypedDict('ModelZillowSearchResponse', {
     'results': NotRequired[list[ModelZillowPropertyItem]],
 }, total=False)
 
+AdidasProductResponse = ModelAdidasProductResponseDoc
+AdidasProductParams = TypedDict('AdidasProductParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'product_id': Required[str],
+}, total=False)
+
+AdidasSearchResponse = ModelAdidasSearchResponseDoc
+AdidasSearchParams = TypedDict('AdidasSearchParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'query': NotRequired[str],
+    'category': NotRequired[str],
+    'sort': NotRequired[str],
+    'page': NotRequired[int],
+}, total=False)
+
+AdidasStoreResponse = ModelAdidasStoreDetailResponseDoc
+AdidasStoreParams = TypedDict('AdidasStoreParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'store_id': Required[str],
+}, total=False)
+
+AdidasStoresResponse = ModelAdidasStoresResponseDoc
+AdidasStoresParams = TypedDict('AdidasStoresParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'lat': Required[float],
+    'lng': Required[float],
+    'page': NotRequired[int],
+}, total=False)
+
+AdidasSuggestResponse = ModelAdidasSuggestResponseDoc
+AdidasSuggestParams = TypedDict('AdidasSuggestParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'query': Required[str],
+}, total=False)
+
 AgodaActivitiesSearchResponse = ModelAgodaActivitiesSearchResponseDoc
 AgodaActivitiesSearchParams = TypedDict('AgodaActivitiesSearchParams', {
     '_response_type': NotRequired[ResponseType],
@@ -30611,6 +34086,102 @@ AirbnbSearchParams = TypedDict('AirbnbSearchParams', {
     'sw_lat': NotRequired[float],
     'sw_lng': NotRequired[float],
     'zoom': NotRequired[int],
+}, total=False)
+
+AllbirdsCollectionsResponse = ModelShopifybrandsCollectionsResponseDoc
+AllbirdsCollectionsParams = TypedDict('AllbirdsCollectionsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'page': NotRequired[int],
+    'limit': NotRequired[int],
+}, total=False)
+
+AllbirdsCollectionProductsResponse = ModelShopifybrandsCollectionProductsResponseDoc
+AllbirdsCollectionProductsParams = TypedDict('AllbirdsCollectionProductsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'handle': Required[str],
+    'page': NotRequired[int],
+    'limit': NotRequired[int],
+}, total=False)
+
+AllbirdsPagesResponse = ModelShopifybrandsPagesResponseDoc
+AllbirdsPagesParams = TypedDict('AllbirdsPagesParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'page': NotRequired[int],
+    'limit': NotRequired[int],
+}, total=False)
+
+AllbirdsPageResponse = ModelShopifybrandsPageResponseDoc
+AllbirdsPageParams = TypedDict('AllbirdsPageParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'handle': Required[str],
+}, total=False)
+
+AllbirdsProductsResponse = ModelShopifybrandsProductsResponseDoc
+AllbirdsProductsParams = TypedDict('AllbirdsProductsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'page': NotRequired[int],
+    'limit': NotRequired[int],
+}, total=False)
+
+AllbirdsProductResponse = ModelShopifybrandsProductResponseDoc
+AllbirdsProductParams = TypedDict('AllbirdsProductParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'handle': Required[str],
+}, total=False)
+
+AllbirdsProductRecommendationsResponse = ModelShopifybrandsProductRecommendationsResponseDoc
+AllbirdsProductRecommendationsParams = TypedDict('AllbirdsProductRecommendationsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'handle': Required[str],
+    'limit': NotRequired[int],
+    'intent': NotRequired[Literal['related', 'complementary']],
+}, total=False)
+
+AllbirdsSearchSuggestResponse = ModelShopifybrandsSearchSuggestResponseDoc
+AllbirdsSearchSuggestParams = TypedDict('AllbirdsSearchSuggestParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'q': Required[str],
+    'types': NotRequired[str],
+    'limit': NotRequired[int],
+}, total=False)
+
+AllbirdsSitemapUrlsResponse = ModelShopifybrandsSitemapUrlsResponseDoc
+AllbirdsSitemapUrlsParams = TypedDict('AllbirdsSitemapUrlsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'type': NotRequired[Literal['all', 'products', 'collections', 'pages', 'blogs', 'agentic_discovery', 'other']],
+    'limit': NotRequired[int],
+}, total=False)
+
+AllbirdsSitemapsResponse = ModelShopifybrandsSitemapIndexResponseDoc
+AllbirdsSitemapsParams = TypedDict('AllbirdsSitemapsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+}, total=False)
+
+AllbirdsStoreResponse = ModelShopifybrandsStoreResponseDoc
+AllbirdsStoreParams = TypedDict('AllbirdsStoreParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
 }, total=False)
 
 AmazonJobsJobResponse = ModelAmazonjobsJobResponseDoc
@@ -31123,6 +34694,102 @@ AppStoreVersionHistoryParams = TypedDict('AppStoreVersionHistoryParams', {
     'lang': NotRequired[str],
 }, total=False)
 
+AudibleCategoriesResponse = ModelAudibleCategoriesResponseDoc
+AudibleCategoriesParams = TypedDict('AudibleCategoriesParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+}, total=False)
+
+AudibleCategoryResponse = ModelAudibleCategoryResponseDoc
+AudibleCategoryParams = TypedDict('AudibleCategoryParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': Required[str],
+}, total=False)
+
+AudibleChartsResponse = ModelAudibleChartsResponseDoc
+AudibleChartsParams = TypedDict('AudibleChartsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'chart': NotRequired[Literal['most_listened', 'bestselling']],
+    'content_type': NotRequired[Literal['audiobooks', 'podcasts']],
+    'category_id': NotRequired[str],
+    'access_level': NotRequired[Literal['all', 'free', 'plus', 'premium']],
+    'language': NotRequired[Literal['all', 'danish', 'english', 'french', 'german', 'italian', 'japanese', 'polish', 'portuguese', 'russian', 'spanish', 'swedish']],
+    'duration': NotRequired[Literal['all', 'oneHourLess', 'oneToThreeHour', 'threeToSixHour', 'sixToTenHour', 'tenToTwentyHour', 'twentyHourMore']],
+    'originals_only': NotRequired[bool],
+    'page': NotRequired[int],
+}, total=False)
+
+AudibleEditorialListResponse = ModelAudibleEditorialListResponseDoc
+AudibleEditorialListParams = TypedDict('AudibleEditorialListParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'list': Required[Literal['audiobooks', 'booktok', 'podcasts']],
+}, total=False)
+
+AudibleProductResponse = ModelAudibleProductResponseDoc
+AudibleProductParams = TypedDict('AudibleProductParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'asin': Required[str],
+}, total=False)
+
+AudibleProductRelatedResponse = ModelAudibleRelatedResponseDoc
+AudibleProductRelatedParams = TypedDict('AudibleProductRelatedParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'asin': Required[str],
+    'similarity_type': Required[Literal['InTheSameSeries', 'ByTheSameNarrator', 'RawSimilarities', 'ByTheSameAuthor', 'NextInSameSeries']],
+    'limit': NotRequired[int],
+}, total=False)
+
+AudibleProductReviewsResponse = ModelAudibleReviewsResponseDoc
+AudibleProductReviewsParams = TypedDict('AudibleProductReviewsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'asin': Required[str],
+    'page': NotRequired[int],
+    'limit': NotRequired[int],
+}, total=False)
+
+AudibleProductsResponse = ModelAudibleProductsResponseDoc
+AudibleProductsParams = TypedDict('AudibleProductsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'asins': Required[str],
+}, total=False)
+
+AudibleSearchResponse = ModelAudibleSearchResponseDoc
+AudibleSearchParams = TypedDict('AudibleSearchParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'q': NotRequired[str],
+    'title': NotRequired[str],
+    'author': NotRequired[str],
+    'narrator': NotRequired[str],
+    'category_id': NotRequired[str],
+    'page': NotRequired[int],
+    'limit': NotRequired[int],
+}, total=False)
+
+AudibleSeriesResponse = ModelAudibleSeriesResponseDoc
+AudibleSeriesParams = TypedDict('AudibleSeriesParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'asin': Required[str],
+}, total=False)
+
 AutotraderDealerResponse = ModelAutotraderDealerResponse
 AutotraderDealerParams = TypedDict('AutotraderDealerParams', {
     '_response_type': NotRequired[ResponseType],
@@ -31159,6 +34826,90 @@ AutotraderVehicleParams = TypedDict('AutotraderVehicleParams', {
     '_timeout': NotRequired[float],
     '_headers': NotRequired[Mapping[str, str]],
     'id': Required[str],
+}, total=False)
+
+BbbBusinessResponse = ModelBbbBusinessResponseDoc
+BbbBusinessParams = TypedDict('BbbBusinessParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'url': Required[str],
+}, total=False)
+
+BbbBusinessComplaintsResponse = ModelBbbComplaintsResponseDoc
+BbbBusinessComplaintsParams = TypedDict('BbbBusinessComplaintsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'url': Required[str],
+}, total=False)
+
+BbbBusinessMoreInfoResponse = ModelBbbMoreInfoResponseDoc
+BbbBusinessMoreInfoParams = TypedDict('BbbBusinessMoreInfoParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'url': Required[str],
+}, total=False)
+
+BbbBusinessReviewsResponse = ModelBbbReviewsResponseDoc
+BbbBusinessReviewsParams = TypedDict('BbbBusinessReviewsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'url': Required[str],
+    'page': NotRequired[int],
+}, total=False)
+
+BbbCategoryResponse = ModelBbbCategoryResponseDoc
+BbbCategoryParams = TypedDict('BbbCategoryParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'url': Required[str],
+    'page': NotRequired[int],
+}, total=False)
+
+BbbScamtrackerSearchResponse = ModelBbbscamtrackerSearchResponseDoc
+BbbScamtrackerSearchParams = TypedDict('BbbScamtrackerSearchParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'query': NotRequired[str],
+    'scam_type': NotRequired[Literal['Advance Fee Loan', 'Bank/Credit Card Company Imposter', 'Business Email Compromise', 'Charity', 'Counterfeit Product', 'COVID-19', 'Credit Cards', 'Credit Repair/Debt Relief', 'CryptoCurrency', 'Debt Collections', 'Employment', 'Fake Check/Money Order', 'Fake Invoice/Supplier Bill', 'Family/Friend Emergency', 'Foreign Money Exchange', 'Government Agency Imposter', 'Government Grant', 'Healthcare/Medicaid/Medicare', 'Home Improvement', 'Identity Theft', 'Investment', 'Moving', 'Online Purchase', 'Other', 'Phishing', 'Rental', 'Retail Business', 'Romance', 'Scholarship', 'Sweepstakes/Lottery/Prizes', 'Tax Collection', 'Tech Support', 'Travel/Vacation/Timeshare', 'Utility', 'Vanity Award', 'Worthless Problem-solving Service', 'Yellow Pages/Directories']],
+    'state': NotRequired[str],
+    'scammer_state': NotRequired[str],
+    'date_from': NotRequired[str],
+    'date_to': NotRequired[str],
+    'min_dollars_lost': NotRequired[int],
+    'max_dollars_lost': NotRequired[int],
+    'page': NotRequired[int],
+}, total=False)
+
+BbbScamtrackerStateStatsResponse = ModelBbbscamtrackerStateStatsResponseDoc
+BbbScamtrackerStateStatsParams = TypedDict('BbbScamtrackerStateStatsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'period': NotRequired[Literal['30', '90', '365', 'all']],
+}, total=False)
+
+BbbScamtrackerDetailResponse = ModelBbbscamtrackerDetailResponseDoc
+BbbScamtrackerDetailParams = TypedDict('BbbScamtrackerDetailParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': Required[str],
+}, total=False)
+
+BbbSearchResponse = ModelBbbSearchResponseDoc
+BbbSearchParams = TypedDict('BbbSearchParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'query': Required[str],
+    'location': Required[str],
+    'page': NotRequired[int],
 }, total=False)
 
 BestBuyBestbuyBrandsResponse = ModelBestbuyBrandsResponseDoc
@@ -31327,6 +35078,31 @@ BillingMeRejectionsParams = TypedDict('BillingMeRejectionsParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
     '_headers': NotRequired[Mapping[str, str]],
+}, total=False)
+
+BillingMeSubscriptionChangeBody = ModelBillingStripeSubscriptionChangeRequestDoc
+BillingMeSubscriptionChangeResponse = ModelBillingStripeSubscriptionChangeResultResponseDoc
+BillingMeSubscriptionChangeParams = TypedDict('BillingMeSubscriptionChangeParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'request': Required[BillingMeSubscriptionChangeBody],
+}, total=False)
+
+BillingMeSubscriptionChangeCancelResponse = ModelBillingStripeSubscriptionChangeResultResponseDoc
+BillingMeSubscriptionChangeCancelParams = TypedDict('BillingMeSubscriptionChangeCancelParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+}, total=False)
+
+BillingMeSubscriptionPreviewBody = ModelBillingStripeSubscriptionChangeRequestDoc
+BillingMeSubscriptionPreviewResponse = ModelBillingStripeSubscriptionChangePreviewResponseDoc
+BillingMeSubscriptionPreviewParams = TypedDict('BillingMeSubscriptionPreviewParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'request': Required[BillingMeSubscriptionPreviewBody],
 }, total=False)
 
 BingImagesResponse = ModelBingImagesResponseDoc
@@ -31826,6 +35602,102 @@ BraveVideosParams = TypedDict('BraveVideosParams', {
     'date_to': NotRequired[str],
 }, total=False)
 
+BrooklinenCollectionsResponse = ModelShopifybrandsCollectionsResponseDoc
+BrooklinenCollectionsParams = TypedDict('BrooklinenCollectionsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'page': NotRequired[int],
+    'limit': NotRequired[int],
+}, total=False)
+
+BrooklinenCollectionProductsResponse = ModelShopifybrandsCollectionProductsResponseDoc
+BrooklinenCollectionProductsParams = TypedDict('BrooklinenCollectionProductsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'handle': Required[str],
+    'page': NotRequired[int],
+    'limit': NotRequired[int],
+}, total=False)
+
+BrooklinenPagesResponse = ModelShopifybrandsPagesResponseDoc
+BrooklinenPagesParams = TypedDict('BrooklinenPagesParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'page': NotRequired[int],
+    'limit': NotRequired[int],
+}, total=False)
+
+BrooklinenPageResponse = ModelShopifybrandsPageResponseDoc
+BrooklinenPageParams = TypedDict('BrooklinenPageParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'handle': Required[str],
+}, total=False)
+
+BrooklinenProductsResponse = ModelShopifybrandsProductsResponseDoc
+BrooklinenProductsParams = TypedDict('BrooklinenProductsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'page': NotRequired[int],
+    'limit': NotRequired[int],
+}, total=False)
+
+BrooklinenProductResponse = ModelShopifybrandsProductResponseDoc
+BrooklinenProductParams = TypedDict('BrooklinenProductParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'handle': Required[str],
+}, total=False)
+
+BrooklinenProductRecommendationsResponse = ModelShopifybrandsProductRecommendationsResponseDoc
+BrooklinenProductRecommendationsParams = TypedDict('BrooklinenProductRecommendationsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'handle': Required[str],
+    'limit': NotRequired[int],
+    'intent': NotRequired[Literal['related', 'complementary']],
+}, total=False)
+
+BrooklinenSearchSuggestResponse = ModelShopifybrandsSearchSuggestResponseDoc
+BrooklinenSearchSuggestParams = TypedDict('BrooklinenSearchSuggestParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'q': Required[str],
+    'types': NotRequired[str],
+    'limit': NotRequired[int],
+}, total=False)
+
+BrooklinenSitemapUrlsResponse = ModelShopifybrandsSitemapUrlsResponseDoc
+BrooklinenSitemapUrlsParams = TypedDict('BrooklinenSitemapUrlsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'type': NotRequired[Literal['all', 'products', 'collections', 'pages', 'blogs', 'agentic_discovery', 'other']],
+    'limit': NotRequired[int],
+}, total=False)
+
+BrooklinenSitemapsResponse = ModelShopifybrandsSitemapIndexResponseDoc
+BrooklinenSitemapsParams = TypedDict('BrooklinenSitemapsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+}, total=False)
+
+BrooklinenStoreResponse = ModelShopifybrandsStoreResponseDoc
+BrooklinenStoreParams = TypedDict('BrooklinenStoreParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+}, total=False)
+
 CapterraProductResponse = ModelCapterraProductResponseDoc
 CapterraProductParams = TypedDict('CapterraProductParams', {
     '_response_type': NotRequired[ResponseType],
@@ -31937,6 +35809,69 @@ CarsComCarsdotcomVehicleParams = TypedDict('CarsComCarsdotcomVehicleParams', {
     '_timeout': NotRequired[float],
     '_headers': NotRequired[Mapping[str, str]],
     'listing_id': Required[str],
+}, total=False)
+
+ChewyCategoriesResponse = ModelChewyCategoriesResponseDoc
+ChewyCategoriesParams = TypedDict('ChewyCategoriesParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'group_id': NotRequired[str],
+    'depth': NotRequired[int],
+}, total=False)
+
+ChewyCategoryResponse = ModelChewyCategoryResponseDoc
+ChewyCategoryParams = TypedDict('ChewyCategoryParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'group_id': Required[str],
+    'page': NotRequired[int],
+    'sort': NotRequired[Literal['byRelevance', 'byNewest', 'byPopularity', 'byLowestPrice', 'byHighestPrice', 'byRating', 'byRatingCount']],
+    'filter': NotRequired[list[str]],
+}, total=False)
+
+ChewyGtinLookupResponse = ModelChewyGtinLookupResponseDoc
+ChewyGtinLookupParams = TypedDict('ChewyGtinLookupParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'gtins': Required[str],
+}, total=False)
+
+ChewyProductResponse = ModelChewyProductResponseDoc
+ChewyProductParams = TypedDict('ChewyProductParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': Required[str],
+}, total=False)
+
+ChewyProductsResponse = ModelChewyProductsResponseDoc
+ChewyProductsParams = TypedDict('ChewyProductsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'part_numbers': Required[str],
+}, total=False)
+
+ChewySearchResponse = ModelChewySearchResponseDoc
+ChewySearchParams = TypedDict('ChewySearchParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'q': Required[str],
+    'page': NotRequired[int],
+    'sort': NotRequired[Literal['byRelevance', 'byNewest', 'byPopularity', 'byLowestPrice', 'byHighestPrice', 'byRating', 'byRatingCount']],
+    'filter': NotRequired[list[str]],
+}, total=False)
+
+ChewySuggestResponse = ModelChewySuggestResponseDoc
+ChewySuggestParams = TypedDict('ChewySuggestParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'term': Required[str],
 }, total=False)
 
 ChromeWebStoreChromewebstoreCategoriesResponse = ModelChromewebstoreCategoriesResponseDoc
@@ -32265,6 +36200,102 @@ CoinGeckoTrendingParams = TypedDict('CoinGeckoTrendingParams', {
     'vs_currency': NotRequired[Literal['btc', 'eth', 'ltc', 'bch', 'bnb', 'eos', 'xrp', 'xlm', 'link', 'dot', 'yfi', 'sol', 'usd', 'aed', 'ars', 'aud', 'bdt', 'bhd', 'bmd', 'brl', 'cad', 'chf', 'clp', 'cny', 'czk', 'dkk', 'eur', 'gbp', 'gel', 'hkd', 'huf', 'idr', 'ils', 'inr', 'jpy', 'krw', 'kwd', 'lkr', 'mmk', 'mxn', 'myr', 'ngn', 'nok', 'nzd', 'php', 'pkr', 'pln', 'rub', 'sar', 'sek', 'sgd', 'thb', 'try', 'twd', 'uah', 'vef', 'vnd', 'zar', 'xdr', 'xag', 'xau', 'bits', 'sats']],
 }, total=False)
 
+ColeHaanColehaanCollectionsResponse = ModelShopifybrandsCollectionsResponseDoc
+ColeHaanColehaanCollectionsParams = TypedDict('ColeHaanColehaanCollectionsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'page': NotRequired[int],
+    'limit': NotRequired[int],
+}, total=False)
+
+ColeHaanColehaanCollectionProductsResponse = ModelShopifybrandsCollectionProductsResponseDoc
+ColeHaanColehaanCollectionProductsParams = TypedDict('ColeHaanColehaanCollectionProductsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'handle': Required[str],
+    'page': NotRequired[int],
+    'limit': NotRequired[int],
+}, total=False)
+
+ColeHaanColehaanPagesResponse = ModelShopifybrandsPagesResponseDoc
+ColeHaanColehaanPagesParams = TypedDict('ColeHaanColehaanPagesParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'page': NotRequired[int],
+    'limit': NotRequired[int],
+}, total=False)
+
+ColeHaanColehaanPageResponse = ModelShopifybrandsPageResponseDoc
+ColeHaanColehaanPageParams = TypedDict('ColeHaanColehaanPageParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'handle': Required[str],
+}, total=False)
+
+ColeHaanColehaanProductsResponse = ModelShopifybrandsProductsResponseDoc
+ColeHaanColehaanProductsParams = TypedDict('ColeHaanColehaanProductsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'page': NotRequired[int],
+    'limit': NotRequired[int],
+}, total=False)
+
+ColeHaanColehaanProductResponse = ModelShopifybrandsProductResponseDoc
+ColeHaanColehaanProductParams = TypedDict('ColeHaanColehaanProductParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'handle': Required[str],
+}, total=False)
+
+ColeHaanColehaanProductRecommendationsResponse = ModelShopifybrandsProductRecommendationsResponseDoc
+ColeHaanColehaanProductRecommendationsParams = TypedDict('ColeHaanColehaanProductRecommendationsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'handle': Required[str],
+    'limit': NotRequired[int],
+    'intent': NotRequired[Literal['related', 'complementary']],
+}, total=False)
+
+ColeHaanColehaanSearchSuggestResponse = ModelShopifybrandsSearchSuggestResponseDoc
+ColeHaanColehaanSearchSuggestParams = TypedDict('ColeHaanColehaanSearchSuggestParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'q': Required[str],
+    'types': NotRequired[str],
+    'limit': NotRequired[int],
+}, total=False)
+
+ColeHaanColehaanSitemapUrlsResponse = ModelShopifybrandsSitemapUrlsResponseDoc
+ColeHaanColehaanSitemapUrlsParams = TypedDict('ColeHaanColehaanSitemapUrlsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'type': NotRequired[Literal['all', 'products', 'collections', 'pages', 'blogs', 'agentic_discovery', 'other']],
+    'limit': NotRequired[int],
+}, total=False)
+
+ColeHaanColehaanSitemapsResponse = ModelShopifybrandsSitemapIndexResponseDoc
+ColeHaanColehaanSitemapsParams = TypedDict('ColeHaanColehaanSitemapsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+}, total=False)
+
+ColeHaanColehaanStoreResponse = ModelShopifybrandsStoreResponseDoc
+ColeHaanColehaanStoreParams = TypedDict('ColeHaanColehaanStoreParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+}, total=False)
+
 CongressReportResponse = ModelCongressReportResponseDoc
 CongressReportParams = TypedDict('CongressReportParams', {
     '_response_type': NotRequired[ResponseType],
@@ -32518,6 +36549,49 @@ DatasetsAppsSearchParams = TypedDict('DatasetsAppsSearchParams', {
     'page_size': NotRequired[int],
 }, total=False)
 
+DatasetsBbbBusinessesFacetsResponse = ModelDatasetsBbbBusinessesFacetResponseDoc
+DatasetsBbbBusinessesFacetsParams = TypedDict('DatasetsBbbBusinessesFacetsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'facet': Required[Literal['category', 'state', 'city', 'rating', 'accredited', 'entity_type', 'run_id']],
+    'q': NotRequired[str],
+    'category': NotRequired[str],
+    'state': NotRequired[str],
+    'city': NotRequired[str],
+    'rating': NotRequired[Literal['A+', 'A', 'A-', 'B+', 'B', 'B-', 'C+', 'C', 'C-', 'D+', 'D', 'D-', 'F']],
+    'accredited': NotRequired[bool],
+    'entity_type': NotRequired[str],
+    'run_id': NotRequired[str],
+}, total=False)
+
+DatasetsBbbBusinessesItemResponse = ModelDatasetsBbbBusinessResponseDoc
+DatasetsBbbBusinessesItemParams = TypedDict('DatasetsBbbBusinessesItemParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': Required[str],
+}, total=False)
+
+DatasetsBbbBusinessesSearchResponse = ModelDatasetsBbbBusinessesSearchResponseDoc
+DatasetsBbbBusinessesSearchParams = TypedDict('DatasetsBbbBusinessesSearchParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'q': NotRequired[str],
+    'category': NotRequired[str],
+    'state': NotRequired[str],
+    'city': NotRequired[str],
+    'rating': NotRequired[Literal['A+', 'A', 'A-', 'B+', 'B', 'B-', 'C+', 'C', 'C-', 'D+', 'D', 'D-', 'F']],
+    'min_rating_rank': NotRequired[int],
+    'accredited': NotRequired[bool],
+    'entity_type': NotRequired[str],
+    'run_id': NotRequired[str],
+    'sort': NotRequired[Literal['relevance', 'rating_desc', 'rating_asc', 'accredited_first', 'name_asc', 'years_in_business_desc']],
+    'page': NotRequired[int],
+    'page_size': NotRequired[int],
+}, total=False)
+
 DatasetsBoxofficemojoFacetsResponse = ModelDatasetsBoxOfficeMojoFacetResponseDoc
 DatasetsBoxofficemojoFacetsParams = TypedDict('DatasetsBoxofficemojoFacetsParams', {
     '_response_type': NotRequired[ResponseType],
@@ -32694,6 +36768,59 @@ DatasetsCreatorsSearchParams = TypedDict('DatasetsCreatorsSearchParams', {
     'has_email': NotRequired[bool],
     'include_inactive': NotRequired[bool],
     'sort': NotRequired[Literal['followers_desc', 'engagement_desc', 'likes_desc', 'relevance']],
+    'page': NotRequired[int],
+    'page_size': NotRequired[int],
+}, total=False)
+
+DatasetsFacebookPagesFacetsResponse = ModelDatasetsFacebookPagesFacetResponseDoc
+DatasetsFacebookPagesFacetsParams = TypedDict('DatasetsFacebookPagesFacetsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'facet': Required[Literal['category', 'discovery_source']],
+    'q': NotRequired[str],
+    'page_id': NotRequired[str],
+    'identifier': NotRequired[str],
+    'category': NotRequired[str],
+    'discovery_source': NotRequired[str],
+    'has_website': NotRequired[bool],
+    'has_email': NotRequired[bool],
+    'has_phone': NotRequired[bool],
+    'has_whatsapp': NotRequired[bool],
+    'min_likes': NotRequired[int],
+    'max_likes': NotRequired[int],
+    'hydrated_after': NotRequired[str],
+    'hydrated_before': NotRequired[str],
+    'sort': NotRequired[Literal['relevance', 'likes_desc', 'likes_asc', 'hydrated_at_desc', 'hydrated_at_asc']],
+}, total=False)
+
+DatasetsFacebookPagesItemResponse = ModelDatasetsFacebookPageResponseDoc
+DatasetsFacebookPagesItemParams = TypedDict('DatasetsFacebookPagesItemParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'page_id': Required[str],
+}, total=False)
+
+DatasetsFacebookPagesSearchResponse = ModelDatasetsFacebookPagesSearchResponseDoc
+DatasetsFacebookPagesSearchParams = TypedDict('DatasetsFacebookPagesSearchParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'q': NotRequired[str],
+    'page_id': NotRequired[str],
+    'identifier': NotRequired[str],
+    'category': NotRequired[str],
+    'discovery_source': NotRequired[str],
+    'has_website': NotRequired[bool],
+    'has_email': NotRequired[bool],
+    'has_phone': NotRequired[bool],
+    'has_whatsapp': NotRequired[bool],
+    'min_likes': NotRequired[int],
+    'max_likes': NotRequired[int],
+    'hydrated_after': NotRequired[str],
+    'hydrated_before': NotRequired[str],
+    'sort': NotRequired[Literal['relevance', 'likes_desc', 'likes_asc', 'hydrated_at_desc', 'hydrated_at_asc']],
     'page': NotRequired[int],
     'page_size': NotRequired[int],
 }, total=False)
@@ -34077,6 +38204,78 @@ DatasetsTrustmrrSearchParams = TypedDict('DatasetsTrustmrrSearchParams', {
     'page_size': NotRequired[int],
 }, total=False)
 
+DatasetsVehicleListingsFacetsResponse = ModelDatasetsVehicleListingsFacetResponseDoc
+DatasetsVehicleListingsFacetsParams = TypedDict('DatasetsVehicleListingsFacetsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'facet': Required[Literal['source', 'make', 'model', 'trim', 'body_style', 'transmission', 'drive_type', 'fuel_type', 'seller_type', 'state', 'run_id']],
+    'q': NotRequired[str],
+    'source': NotRequired[Literal['carmax', 'autotrader', 'carsdotcom']],
+    'make': NotRequired[str],
+    'model': NotRequired[str],
+    'trim': NotRequired[str],
+    'body_style': NotRequired[str],
+    'transmission': NotRequired[str],
+    'drive_type': NotRequired[str],
+    'fuel_type': NotRequired[str],
+    'seller_type': NotRequired[Literal['retailer', 'dealer', 'private']],
+    'state': NotRequired[str],
+    'vin': NotRequired[str],
+    'run_id': NotRequired[str],
+    'is_price_reduced': NotRequired[bool],
+    'min_year': NotRequired[int],
+    'max_year': NotRequired[int],
+    'min_price': NotRequired[float],
+    'max_price': NotRequired[float],
+    'max_mileage': NotRequired[int],
+}, total=False)
+
+DatasetsVehicleListingsItemResponse = ModelDatasetsVehicleListingResponseDoc
+DatasetsVehicleListingsItemParams = TypedDict('DatasetsVehicleListingsItemParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': Required[str],
+}, total=False)
+
+DatasetsVehicleListingsPriceHistoryResponse = ModelDatasetsVehicleListingPriceHistoryResponseDoc
+DatasetsVehicleListingsPriceHistoryParams = TypedDict('DatasetsVehicleListingsPriceHistoryParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': Required[str],
+}, total=False)
+
+DatasetsVehicleListingsSearchResponse = ModelDatasetsVehicleListingsSearchResponseDoc
+DatasetsVehicleListingsSearchParams = TypedDict('DatasetsVehicleListingsSearchParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'q': NotRequired[str],
+    'source': NotRequired[Literal['carmax', 'autotrader', 'carsdotcom']],
+    'make': NotRequired[str],
+    'model': NotRequired[str],
+    'trim': NotRequired[str],
+    'body_style': NotRequired[str],
+    'transmission': NotRequired[str],
+    'drive_type': NotRequired[str],
+    'fuel_type': NotRequired[str],
+    'seller_type': NotRequired[Literal['retailer', 'dealer', 'private']],
+    'state': NotRequired[str],
+    'vin': NotRequired[str],
+    'run_id': NotRequired[str],
+    'is_price_reduced': NotRequired[bool],
+    'min_year': NotRequired[int],
+    'max_year': NotRequired[int],
+    'min_price': NotRequired[float],
+    'max_price': NotRequired[float],
+    'max_mileage': NotRequired[int],
+    'sort': NotRequired[Literal['relevance', 'recently_updated', 'newly_listed', 'price_asc', 'price_desc', 'mileage_asc', 'mileage_desc', 'year_desc', 'year_asc']],
+    'page': NotRequired[int],
+    'page_size': NotRequired[int],
+}, total=False)
+
 DatasetsXUsersFacetsResponse = ModelDatasetsXUsersFacetResponseDoc
 DatasetsXUsersFacetsParams = TypedDict('DatasetsXUsersFacetsParams', {
     '_response_type': NotRequired[ResponseType],
@@ -34128,6 +38327,71 @@ DatasetsXUsersSearchParams = TypedDict('DatasetsXUsersSearchParams', {
     'crawled_after': NotRequired[str],
     'crawled_before': NotRequired[str],
     'sort': NotRequired[Literal['relevance', 'followers_desc', 'followers_asc', 'crawled_at_desc', 'crawled_at_asc', 'created_at_desc', 'created_at_asc']],
+    'page': NotRequired[int],
+    'page_size': NotRequired[int],
+}, total=False)
+
+DatasetsYoutubeCreatorsFacetsResponse = ModelDatasetsYoutubeCreatorsFacetResponseDoc
+DatasetsYoutubeCreatorsFacetsParams = TypedDict('DatasetsYoutubeCreatorsFacetsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'facet': Required[Literal['region', 'discovery_source']],
+    'q': NotRequired[str],
+    'channel_id': NotRequired[str],
+    'region': NotRequired[str],
+    'discovery_source': NotRequired[str],
+    'has_bio': NotRequired[bool],
+    'has_links': NotRequired[bool],
+    'followers_count_available': NotRequired[bool],
+    'videos_count_available': NotRequired[bool],
+    'views_count_available': NotRequired[bool],
+    'min_followers': NotRequired[int],
+    'max_followers': NotRequired[int],
+    'min_videos': NotRequired[int],
+    'max_videos': NotRequired[int],
+    'min_views': NotRequired[int],
+    'max_views': NotRequired[int],
+    'joined_after': NotRequired[str],
+    'joined_before': NotRequired[str],
+    'hydrated_after': NotRequired[str],
+    'hydrated_before': NotRequired[str],
+    'sort': NotRequired[Literal['relevance', 'followers_desc', 'followers_asc', 'views_desc', 'videos_desc', 'hydrated_at_desc', 'hydrated_at_asc']],
+}, total=False)
+
+DatasetsYoutubeCreatorsItemResponse = ModelDatasetsYoutubeCreatorResponseDoc
+DatasetsYoutubeCreatorsItemParams = TypedDict('DatasetsYoutubeCreatorsItemParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'channel_id': Required[str],
+}, total=False)
+
+DatasetsYoutubeCreatorsSearchResponse = ModelDatasetsYoutubeCreatorsSearchResponseDoc
+DatasetsYoutubeCreatorsSearchParams = TypedDict('DatasetsYoutubeCreatorsSearchParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'q': NotRequired[str],
+    'channel_id': NotRequired[str],
+    'region': NotRequired[str],
+    'discovery_source': NotRequired[str],
+    'has_bio': NotRequired[bool],
+    'has_links': NotRequired[bool],
+    'followers_count_available': NotRequired[bool],
+    'videos_count_available': NotRequired[bool],
+    'views_count_available': NotRequired[bool],
+    'min_followers': NotRequired[int],
+    'max_followers': NotRequired[int],
+    'min_videos': NotRequired[int],
+    'max_videos': NotRequired[int],
+    'min_views': NotRequired[int],
+    'max_views': NotRequired[int],
+    'joined_after': NotRequired[str],
+    'joined_before': NotRequired[str],
+    'hydrated_after': NotRequired[str],
+    'hydrated_before': NotRequired[str],
+    'sort': NotRequired[Literal['relevance', 'followers_desc', 'followers_asc', 'views_desc', 'videos_desc', 'hydrated_at_desc', 'hydrated_at_asc']],
     'page': NotRequired[int],
     'page_size': NotRequired[int],
 }, total=False)
@@ -34820,6 +39084,102 @@ EtsyShopReviewsParams = TypedDict('EtsyShopReviewsParams', {
     'limit': NotRequired[int],
 }, total=False)
 
+EverlaneCollectionsResponse = ModelShopifybrandsCollectionsResponseDoc
+EverlaneCollectionsParams = TypedDict('EverlaneCollectionsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'page': NotRequired[int],
+    'limit': NotRequired[int],
+}, total=False)
+
+EverlaneCollectionProductsResponse = ModelShopifybrandsCollectionProductsResponseDoc
+EverlaneCollectionProductsParams = TypedDict('EverlaneCollectionProductsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'handle': Required[str],
+    'page': NotRequired[int],
+    'limit': NotRequired[int],
+}, total=False)
+
+EverlanePagesResponse = ModelShopifybrandsPagesResponseDoc
+EverlanePagesParams = TypedDict('EverlanePagesParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'page': NotRequired[int],
+    'limit': NotRequired[int],
+}, total=False)
+
+EverlanePageResponse = ModelShopifybrandsPageResponseDoc
+EverlanePageParams = TypedDict('EverlanePageParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'handle': Required[str],
+}, total=False)
+
+EverlaneProductsResponse = ModelShopifybrandsProductsResponseDoc
+EverlaneProductsParams = TypedDict('EverlaneProductsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'page': NotRequired[int],
+    'limit': NotRequired[int],
+}, total=False)
+
+EverlaneProductResponse = ModelShopifybrandsProductResponseDoc
+EverlaneProductParams = TypedDict('EverlaneProductParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'handle': Required[str],
+}, total=False)
+
+EverlaneProductRecommendationsResponse = ModelShopifybrandsProductRecommendationsResponseDoc
+EverlaneProductRecommendationsParams = TypedDict('EverlaneProductRecommendationsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'handle': Required[str],
+    'limit': NotRequired[int],
+    'intent': NotRequired[Literal['related', 'complementary']],
+}, total=False)
+
+EverlaneSearchSuggestResponse = ModelShopifybrandsSearchSuggestResponseDoc
+EverlaneSearchSuggestParams = TypedDict('EverlaneSearchSuggestParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'q': Required[str],
+    'types': NotRequired[str],
+    'limit': NotRequired[int],
+}, total=False)
+
+EverlaneSitemapUrlsResponse = ModelShopifybrandsSitemapUrlsResponseDoc
+EverlaneSitemapUrlsParams = TypedDict('EverlaneSitemapUrlsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'type': NotRequired[Literal['all', 'products', 'collections', 'pages', 'blogs', 'agentic_discovery', 'other']],
+    'limit': NotRequired[int],
+}, total=False)
+
+EverlaneSitemapsResponse = ModelShopifybrandsSitemapIndexResponseDoc
+EverlaneSitemapsParams = TypedDict('EverlaneSitemapsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+}, total=False)
+
+EverlaneStoreResponse = ModelShopifybrandsStoreResponseDoc
+EverlaneStoreParams = TypedDict('EverlaneStoreParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+}, total=False)
+
 ExpediaActivitiesSearchBody = ModelExpediaActivitySearchOption
 ExpediaActivitiesSearchResponse = ModelExpediaExpediaActivitySearchResponseDoc
 ExpediaActivitiesSearchParams = TypedDict('ExpediaActivitiesSearchParams', {
@@ -34915,6 +39275,102 @@ FacebookPageParams = TypedDict('FacebookPageParams', {
     'page': Required[str],
 }, total=False)
 
+FashionNovaFashionnovaCollectionsResponse = ModelShopifybrandsCollectionsResponseDoc
+FashionNovaFashionnovaCollectionsParams = TypedDict('FashionNovaFashionnovaCollectionsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'page': NotRequired[int],
+    'limit': NotRequired[int],
+}, total=False)
+
+FashionNovaFashionnovaCollectionProductsResponse = ModelShopifybrandsCollectionProductsResponseDoc
+FashionNovaFashionnovaCollectionProductsParams = TypedDict('FashionNovaFashionnovaCollectionProductsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'handle': Required[str],
+    'page': NotRequired[int],
+    'limit': NotRequired[int],
+}, total=False)
+
+FashionNovaFashionnovaPagesResponse = ModelShopifybrandsPagesResponseDoc
+FashionNovaFashionnovaPagesParams = TypedDict('FashionNovaFashionnovaPagesParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'page': NotRequired[int],
+    'limit': NotRequired[int],
+}, total=False)
+
+FashionNovaFashionnovaPageResponse = ModelShopifybrandsPageResponseDoc
+FashionNovaFashionnovaPageParams = TypedDict('FashionNovaFashionnovaPageParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'handle': Required[str],
+}, total=False)
+
+FashionNovaFashionnovaProductsResponse = ModelShopifybrandsProductsResponseDoc
+FashionNovaFashionnovaProductsParams = TypedDict('FashionNovaFashionnovaProductsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'page': NotRequired[int],
+    'limit': NotRequired[int],
+}, total=False)
+
+FashionNovaFashionnovaProductResponse = ModelShopifybrandsProductResponseDoc
+FashionNovaFashionnovaProductParams = TypedDict('FashionNovaFashionnovaProductParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'handle': Required[str],
+}, total=False)
+
+FashionNovaFashionnovaProductRecommendationsResponse = ModelShopifybrandsProductRecommendationsResponseDoc
+FashionNovaFashionnovaProductRecommendationsParams = TypedDict('FashionNovaFashionnovaProductRecommendationsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'handle': Required[str],
+    'limit': NotRequired[int],
+    'intent': NotRequired[Literal['related', 'complementary']],
+}, total=False)
+
+FashionNovaFashionnovaSearchSuggestResponse = ModelShopifybrandsSearchSuggestResponseDoc
+FashionNovaFashionnovaSearchSuggestParams = TypedDict('FashionNovaFashionnovaSearchSuggestParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'q': Required[str],
+    'types': NotRequired[str],
+    'limit': NotRequired[int],
+}, total=False)
+
+FashionNovaFashionnovaSitemapUrlsResponse = ModelShopifybrandsSitemapUrlsResponseDoc
+FashionNovaFashionnovaSitemapUrlsParams = TypedDict('FashionNovaFashionnovaSitemapUrlsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'type': NotRequired[Literal['all', 'products', 'collections', 'pages', 'blogs', 'agentic_discovery', 'other']],
+    'limit': NotRequired[int],
+}, total=False)
+
+FashionNovaFashionnovaSitemapsResponse = ModelShopifybrandsSitemapIndexResponseDoc
+FashionNovaFashionnovaSitemapsParams = TypedDict('FashionNovaFashionnovaSitemapsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+}, total=False)
+
+FashionNovaFashionnovaStoreResponse = ModelShopifybrandsStoreResponseDoc
+FashionNovaFashionnovaStoreParams = TypedDict('FashionNovaFashionnovaStoreParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+}, total=False)
+
 FiverrGigResponse = ModelFiverrGigResponseDoc
 FiverrGigParams = TypedDict('FiverrGigParams', {
     '_response_type': NotRequired[ResponseType],
@@ -34939,6 +39395,206 @@ FiverrSellerParams = TypedDict('FiverrSellerParams', {
     '_timeout': NotRequired[float],
     '_headers': NotRequired[Mapping[str, str]],
     'username': Required[str],
+}, total=False)
+
+GdeltContextResponse = ModelGdeltContextResponseDoc
+GdeltContextParams = TypedDict('GdeltContextParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'query': Required[str],
+    'domain': NotRequired[str],
+    'language': NotRequired[str],
+    'is_quote': NotRequired[bool],
+    'timespan': NotRequired[str],
+    'from': NotRequired[str],
+    'to': NotRequired[str],
+    'sort': NotRequired[Literal['relevance', 'datedesc', 'dateasc']],
+    'maxrecords': NotRequired[int],
+}, total=False)
+
+GdeltSearchResponse = ModelGdeltSearchResponseDoc
+GdeltSearchParams = TypedDict('GdeltSearchParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'query': Required[str],
+    'country': NotRequired[str],
+    'language': NotRequired[str],
+    'domain': NotRequired[str],
+    'timespan': NotRequired[str],
+    'from': NotRequired[str],
+    'to': NotRequired[str],
+    'sort': NotRequired[Literal['relevance', 'datedesc', 'dateasc', 'tonedesc', 'toneasc']],
+    'maxrecords': NotRequired[int],
+}, total=False)
+
+GdeltTimelineResponse = ModelGdeltTimelineResponseDoc
+GdeltTimelineParams = TypedDict('GdeltTimelineParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'query': Required[str],
+    'metric': NotRequired[Literal['volume', 'volume_raw', 'tone', 'lang', 'country']],
+    'country': NotRequired[str],
+    'language': NotRequired[str],
+    'domain': NotRequired[str],
+    'timespan': NotRequired[str],
+    'from': NotRequired[str],
+    'to': NotRequired[str],
+    'smooth': NotRequired[int],
+}, total=False)
+
+GdeltTonechartResponse = ModelGdeltToneChartResponseDoc
+GdeltTonechartParams = TypedDict('GdeltTonechartParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'query': Required[str],
+    'country': NotRequired[str],
+    'language': NotRequired[str],
+    'domain': NotRequired[str],
+    'timespan': NotRequired[str],
+    'from': NotRequired[str],
+    'to': NotRequired[str],
+}, total=False)
+
+GdeltTvConceptEntitiesResponse = ModelGdeltTvCapNlpEntityDetailsResponseDoc
+GdeltTvConceptEntitiesParams = TypedDict('GdeltTvConceptEntitiesParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'limit': NotRequired[int],
+}, total=False)
+
+GdeltTvSearchResponse = ModelGdeltTvSearchResponseDoc
+GdeltTvSearchParams = TypedDict('GdeltTvSearchParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'transcript': NotRequired[list[str]],
+    'caption': NotRequired[list[str]],
+    'concept': NotRequired[list[str]],
+    'onscreen_text': NotRequired[list[str]],
+    'visual': NotRequired[list[str]],
+    'exclude_transcript': NotRequired[list[str]],
+    'exclude_caption': NotRequired[list[str]],
+    'exclude_concept': NotRequired[list[str]],
+    'exclude_onscreen_text': NotRequired[list[str]],
+    'exclude_visual': NotRequired[list[str]],
+    'station': Required[Literal['CNN', 'MSNBC', 'FOXNEWS', 'BBCNEWS', 'KGO', 'KPIX', 'KNTV']],
+    'show': NotRequired[str],
+    'day_of_week': NotRequired[int],
+    'timespan': NotRequired[str],
+    'from': NotRequired[str],
+    'to': NotRequired[str],
+    'sort': NotRequired[Literal['relevance', 'datedesc', 'dateasc']],
+    'maxrecords': NotRequired[int],
+}, total=False)
+
+GdeltTvShowchartResponse = ModelGdeltTvShowChartResponseDoc
+GdeltTvShowchartParams = TypedDict('GdeltTvShowchartParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'transcript': NotRequired[list[str]],
+    'caption': NotRequired[list[str]],
+    'concept': NotRequired[list[str]],
+    'onscreen_text': NotRequired[list[str]],
+    'visual': NotRequired[list[str]],
+    'exclude_transcript': NotRequired[list[str]],
+    'exclude_caption': NotRequired[list[str]],
+    'exclude_concept': NotRequired[list[str]],
+    'exclude_onscreen_text': NotRequired[list[str]],
+    'exclude_visual': NotRequired[list[str]],
+    'station': Required[list[Literal['CNN', 'MSNBC', 'FOXNEWS', 'BBCNEWS', 'KGO', 'KPIX', 'KNTV']]],
+    'show': NotRequired[str],
+    'timespan': NotRequired[str],
+    'from': NotRequired[str],
+    'to': NotRequired[str],
+}, total=False)
+
+GdeltTvStationchartResponse = ModelGdeltTvStationChartResponseDoc
+GdeltTvStationchartParams = TypedDict('GdeltTvStationchartParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'transcript': NotRequired[list[str]],
+    'caption': NotRequired[list[str]],
+    'concept': NotRequired[list[str]],
+    'onscreen_text': NotRequired[list[str]],
+    'visual': NotRequired[list[str]],
+    'exclude_transcript': NotRequired[list[str]],
+    'exclude_caption': NotRequired[list[str]],
+    'exclude_concept': NotRequired[list[str]],
+    'exclude_onscreen_text': NotRequired[list[str]],
+    'exclude_visual': NotRequired[list[str]],
+    'station': Required[list[Literal['CNN', 'MSNBC', 'FOXNEWS', 'BBCNEWS', 'KGO', 'KPIX', 'KNTV']]],
+    'show': NotRequired[str],
+    'timespan': NotRequired[str],
+    'from': NotRequired[str],
+    'to': NotRequired[str],
+}, total=False)
+
+GdeltTvStationdetailsResponse = ModelGdeltTvStationDetailsResponseDoc
+GdeltTvStationdetailsParams = TypedDict('GdeltTvStationdetailsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+}, total=False)
+
+GdeltTvTimelineResponse = ModelGdeltTvTimelineResponseDoc
+GdeltTvTimelineParams = TypedDict('GdeltTvTimelineParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'transcript': NotRequired[list[str]],
+    'caption': NotRequired[list[str]],
+    'concept': NotRequired[list[str]],
+    'onscreen_text': NotRequired[list[str]],
+    'visual': NotRequired[list[str]],
+    'exclude_transcript': NotRequired[list[str]],
+    'exclude_caption': NotRequired[list[str]],
+    'exclude_concept': NotRequired[list[str]],
+    'exclude_onscreen_text': NotRequired[list[str]],
+    'exclude_visual': NotRequired[list[str]],
+    'station': Required[Literal['CNN', 'MSNBC', 'FOXNEWS', 'BBCNEWS', 'KGO', 'KPIX', 'KNTV']],
+    'show': NotRequired[str],
+    'timespan': NotRequired[str],
+    'from': NotRequired[str],
+    'to': NotRequired[str],
+}, total=False)
+
+GdeltTvVisualEntitiesResponse = ModelGdeltTvVisualEntityDetailsResponseDoc
+GdeltTvVisualEntitiesParams = TypedDict('GdeltTvVisualEntitiesParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'limit': NotRequired[int],
+}, total=False)
+
+GdeltTvWordcloudResponse = ModelGdeltTvWordCloudResponseDoc
+GdeltTvWordcloudParams = TypedDict('GdeltTvWordcloudParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'channel': Required[Literal['transcript', 'caption', 'concept', 'onscreen_text', 'visual']],
+    'transcript': NotRequired[list[str]],
+    'caption': NotRequired[list[str]],
+    'concept': NotRequired[list[str]],
+    'onscreen_text': NotRequired[list[str]],
+    'visual': NotRequired[list[str]],
+    'exclude_transcript': NotRequired[list[str]],
+    'exclude_caption': NotRequired[list[str]],
+    'exclude_concept': NotRequired[list[str]],
+    'exclude_onscreen_text': NotRequired[list[str]],
+    'exclude_visual': NotRequired[list[str]],
+    'station': Required[Literal['CNN', 'MSNBC', 'FOXNEWS', 'BBCNEWS', 'KGO', 'KPIX', 'KNTV']],
+    'show': NotRequired[str],
+    'day_of_week': NotRequired[str],
+    'timespan': NotRequired[str],
+    'from': NotRequired[str],
+    'to': NotRequired[str],
 }, total=False)
 
 GeocodingLookupResponse = ModelGeocodingLookupResponseDoc
@@ -35802,6 +40458,92 @@ GooglePlaySuggestParams = TypedDict('GooglePlaySuggestParams', {
     'lang': NotRequired[str],
 }, total=False)
 
+GymsharkCollectionsResponse = ModelShopifybrandsCollectionsResponseDoc
+GymsharkCollectionsParams = TypedDict('GymsharkCollectionsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'page': NotRequired[int],
+    'limit': NotRequired[int],
+}, total=False)
+
+GymsharkCollectionProductsResponse = ModelShopifybrandsCollectionProductsResponseDoc
+GymsharkCollectionProductsParams = TypedDict('GymsharkCollectionProductsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'handle': Required[str],
+    'page': NotRequired[int],
+    'limit': NotRequired[int],
+}, total=False)
+
+GymsharkPagesResponse = ModelShopifybrandsPagesResponseDoc
+GymsharkPagesParams = TypedDict('GymsharkPagesParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'page': NotRequired[int],
+    'limit': NotRequired[int],
+}, total=False)
+
+GymsharkPageResponse = ModelShopifybrandsPageResponseDoc
+GymsharkPageParams = TypedDict('GymsharkPageParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'handle': Required[str],
+}, total=False)
+
+GymsharkProductsResponse = ModelShopifybrandsProductsResponseDoc
+GymsharkProductsParams = TypedDict('GymsharkProductsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'page': NotRequired[int],
+    'limit': NotRequired[int],
+}, total=False)
+
+GymsharkProductResponse = ModelShopifybrandsProductResponseDoc
+GymsharkProductParams = TypedDict('GymsharkProductParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'handle': Required[str],
+}, total=False)
+
+GymsharkProductRecommendationsResponse = ModelShopifybrandsProductRecommendationsResponseDoc
+GymsharkProductRecommendationsParams = TypedDict('GymsharkProductRecommendationsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'handle': Required[str],
+    'limit': NotRequired[int],
+    'intent': NotRequired[Literal['related', 'complementary']],
+}, total=False)
+
+GymsharkSitemapUrlsResponse = ModelShopifybrandsSitemapUrlsResponseDoc
+GymsharkSitemapUrlsParams = TypedDict('GymsharkSitemapUrlsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'type': NotRequired[Literal['all', 'products', 'collections', 'pages', 'blogs', 'agentic_discovery', 'other']],
+    'limit': NotRequired[int],
+}, total=False)
+
+GymsharkSitemapsResponse = ModelShopifybrandsSitemapIndexResponseDoc
+GymsharkSitemapsParams = TypedDict('GymsharkSitemapsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+}, total=False)
+
+GymsharkStoreResponse = ModelShopifybrandsStoreResponseDoc
+GymsharkStoreParams = TypedDict('GymsharkStoreParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+}, total=False)
+
 HMHmCategoriesResponse = ModelHmCategoriesResponseDoc
 HMHmCategoriesParams = TypedDict('HMHmCategoriesParams', {
     '_response_type': NotRequired[ResponseType],
@@ -35865,6 +40607,138 @@ HMHmStoresParams = TypedDict('HMHmStoresParams', {
     'lat': NotRequired[float],
     'lng': NotRequired[float],
     'radius_meters': NotRequired[int],
+}, total=False)
+
+HomeDepotHomedepotCategoriesResponse = ModelHomedepotCategoriesResponseDoc
+HomeDepotHomedepotCategoriesParams = TypedDict('HomeDepotHomedepotCategoriesParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+}, total=False)
+
+HomeDepotHomedepotCategoryResponse = ModelHomedepotCategoryResponseDoc
+HomeDepotHomedepotCategoryParams = TypedDict('HomeDepotHomedepotCategoryParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'path': Required[str],
+}, total=False)
+
+HomeDepotHomedepotProductResponse = ModelHomedepotProductResponseDoc
+HomeDepotHomedepotProductParams = TypedDict('HomeDepotHomedepotProductParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': Required[str],
+}, total=False)
+
+HomeDepotHomedepotProductQuestionsResponse = ModelHomedepotProductQuestionsResponseDoc
+HomeDepotHomedepotProductQuestionsParams = TypedDict('HomeDepotHomedepotProductQuestionsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': Required[str],
+}, total=False)
+
+HomeDepotHomedepotSearchResponse = ModelHomedepotSearchResponseDoc
+HomeDepotHomedepotSearchParams = TypedDict('HomeDepotHomedepotSearchParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'q': Required[str],
+    'page': NotRequired[int],
+}, total=False)
+
+IkeaAvailabilityResponse = ModelIkeaAvailabilityResponseDoc
+IkeaAvailabilityParams = TypedDict('IkeaAvailabilityParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'item_no': Required[str],
+    'country': NotRequired[str],
+}, total=False)
+
+IkeaCategoryResponse = ModelIkeaCategoryResponseDoc
+IkeaCategoryParams = TypedDict('IkeaCategoryParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'category': Required[str],
+    'country': NotRequired[str],
+    'language': NotRequired[str],
+    'offset': NotRequired[int],
+    'size': NotRequired[int],
+    'sort': NotRequired[Literal['relevance', 'price-low', 'price-high', 'newest', 'rating', 'name', 'popular', 'width', 'height', 'depth', 'length']],
+}, total=False)
+
+IkeaProductResponse = ModelIkeaProductResponseDoc
+IkeaProductParams = TypedDict('IkeaProductParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'item_no': Required[str],
+    'country': NotRequired[str],
+    'language': NotRequired[str],
+}, total=False)
+
+IkeaReviewsResponse = ModelIkeaReviewsResponseDoc
+IkeaReviewsParams = TypedDict('IkeaReviewsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'item_no': Required[str],
+    'country': NotRequired[str],
+    'language': NotRequired[str],
+}, total=False)
+
+IkeaSearchResponse = ModelIkeaSearchResponseDoc
+IkeaSearchParams = TypedDict('IkeaSearchParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'q': Required[str],
+    'country': NotRequired[str],
+    'language': NotRequired[str],
+    'size': NotRequired[int],
+}, total=False)
+
+IkeaStoreResponse = ModelIkeaStoreResponseDoc
+IkeaStoreParams = TypedDict('IkeaStoreParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'slug': Required[str],
+    'country': NotRequired[str],
+    'language': NotRequired[str],
+}, total=False)
+
+IkeaStoresResponse = ModelIkeaStoresResponseDoc
+IkeaStoresParams = TypedDict('IkeaStoresParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'country': NotRequired[str],
+    'language': NotRequired[str],
+}, total=False)
+
+IkeaSuggestResponse = ModelIkeaSuggestResponseDoc
+IkeaSuggestParams = TypedDict('IkeaSuggestParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'q': Required[str],
+    'country': NotRequired[str],
+    'language': NotRequired[str],
+    'size': NotRequired[int],
+}, total=False)
+
+ImdbChartsResponse = ModelImdbChartsResponseDoc
+ImdbChartsParams = TypedDict('ImdbChartsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'chart': NotRequired[Literal['top_rated_movies', 'top_rated_tv_shows', 'most_popular_movies', 'most_popular_tv_shows', 'top_rated_english_movies', 'lowest_rated_movies']],
+    'limit': NotRequired[int],
 }, total=False)
 
 ImdbNameResponse = ModelImdbNameResponseDoc
@@ -36039,6 +40913,15 @@ ImdbTitleQuotesParams = TypedDict('ImdbTitleQuotesParams', {
     'url': NotRequired[str],
 }, total=False)
 
+ImdbTitleRatingsResponse = ModelImdbRatingsResponseDoc
+ImdbTitleRatingsParams = TypedDict('ImdbTitleRatingsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
 ImdbTitleReleaseInfoResponse = ModelImdbReleaseInfoResponseDoc
 ImdbTitleReleaseInfoParams = TypedDict('ImdbTitleReleaseInfoParams', {
     '_response_type': NotRequired[ResponseType],
@@ -36056,6 +40939,15 @@ ImdbTitleReviewsParams = TypedDict('ImdbTitleReviewsParams', {
     'id': NotRequired[str],
     'url': NotRequired[str],
     'limit': NotRequired[int],
+}, total=False)
+
+ImdbTitleSimilarResponse = ModelImdbSimilarResponseDoc
+ImdbTitleSimilarParams = TypedDict('ImdbTitleSimilarParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': NotRequired[str],
+    'url': NotRequired[str],
 }, total=False)
 
 ImdbTitleTechnicalSpecsResponse = ModelImdbTechnicalSpecsResponseDoc
@@ -36204,6 +41096,85 @@ InstagramReelsParams = TypedDict('InstagramReelsParams', {
     '_headers': NotRequired[Mapping[str, str]],
     'id': Required[str],
     'max_id': NotRequired[str],
+}, total=False)
+
+JCrewJcrewCategoriesResponse = ModelJcrewCategoriesResponseDoc
+JCrewJcrewCategoriesParams = TypedDict('JCrewJcrewCategoriesParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'site': NotRequired[Literal['jcrew', 'factory']],
+    'department': NotRequired[str],
+}, total=False)
+
+JCrewJcrewCategoryResponse = ModelJcrewCategoryResponseDoc
+JCrewJcrewCategoryParams = TypedDict('JCrewJcrewCategoryParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'category': Required[str],
+    'site': NotRequired[Literal['jcrew', 'factory']],
+    'page': NotRequired[int],
+}, total=False)
+
+JCrewJcrewProductResponse = ModelJcrewProductResponseDoc
+JCrewJcrewProductParams = TypedDict('JCrewJcrewProductParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'pid': Required[str],
+    'site': NotRequired[Literal['jcrew', 'factory']],
+}, total=False)
+
+JCrewJcrewProductReviewsResponse = ModelJcrewProductReviewsResponseDoc
+JCrewJcrewProductReviewsParams = TypedDict('JCrewJcrewProductReviewsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'pid': Required[str],
+    'site': NotRequired[Literal['jcrew', 'factory']],
+    'page': NotRequired[int],
+}, total=False)
+
+JCrewJcrewSearchResponse = ModelJcrewSearchResponseDoc
+JCrewJcrewSearchParams = TypedDict('JCrewJcrewSearchParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'keyword': Required[str],
+    'site': NotRequired[Literal['jcrew', 'factory']],
+    'page': NotRequired[int],
+    'per_page': NotRequired[int],
+    'sort': NotRequired[Literal['relevance', 'price_asc', 'price_desc']],
+    'filter': NotRequired[str],
+}, total=False)
+
+JCrewJcrewSizeChartResponse = ModelJcrewSizeChartResponseDoc
+JCrewJcrewSizeChartParams = TypedDict('JCrewJcrewSizeChartParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'pid': Required[str],
+    'site': NotRequired[Literal['jcrew', 'factory']],
+}, total=False)
+
+JCrewJcrewStoresResponse = ModelJcrewStoresResponseDoc
+JCrewJcrewStoresParams = TypedDict('JCrewJcrewStoresParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'site': NotRequired[Literal['jcrew', 'factory']],
+    'lat': NotRequired[float],
+    'lng': NotRequired[float],
+}, total=False)
+
+JCrewJcrewSuggestResponse = ModelJcrewSuggestResponseDoc
+JCrewJcrewSuggestParams = TypedDict('JCrewJcrewSuggestParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'query': Required[str],
+    'site': NotRequired[Literal['jcrew', 'factory']],
 }, total=False)
 
 JobsAshbyBoardResponse = ModelJobsBoardResponseDoc
@@ -36928,6 +41899,46 @@ KalshiTradesParams = TypedDict('KalshiTradesParams', {
     'max_ts': NotRequired[int],
 }, total=False)
 
+KickstarterCommentsResponse = ModelKickstarterCommentsResponseDoc
+KickstarterCommentsParams = TypedDict('KickstarterCommentsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'creator': Required[str],
+    'slug': Required[str],
+}, total=False)
+
+KickstarterDiscoverResponse = ModelKickstarterDiscoverResponseDoc
+KickstarterDiscoverParams = TypedDict('KickstarterDiscoverParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'category_id': NotRequired[int],
+    'term': NotRequired[str],
+    'sort': NotRequired[Literal['magic', 'popularity', 'newest', 'end_date', 'most_funded']],
+    'page': NotRequired[int],
+    'state': NotRequired[list[Literal['upcoming', 'live', 'late_pledge', 'canceled', 'failed', 'successful']]],
+    'staff_pick_only': NotRequired[bool],
+}, total=False)
+
+KickstarterProjectResponse = ModelKickstarterProjectResponseDoc
+KickstarterProjectParams = TypedDict('KickstarterProjectParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'creator': Required[str],
+    'slug': Required[str],
+}, total=False)
+
+KickstarterUpdatesResponse = ModelKickstarterUpdatesResponseDoc
+KickstarterUpdatesParams = TypedDict('KickstarterUpdatesParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'creator': Required[str],
+    'slug': Required[str],
+}, total=False)
+
 KohlSKohlsCategoryResponse = ModelKohlsCategoryResponseDoc
 KohlSKohlsCategoryParams = TypedDict('KohlSKohlsCategoryParams', {
     '_response_type': NotRequired[ResponseType],
@@ -36959,6 +41970,102 @@ KohlSKohlsSuggestParams = TypedDict('KohlSKohlsSuggestParams', {
     '_timeout': NotRequired[float],
     '_headers': NotRequired[Mapping[str, str]],
     'query': Required[str],
+}, total=False)
+
+KylieCosmeticsKyliecosmeticsCollectionsResponse = ModelShopifybrandsCollectionsResponseDoc
+KylieCosmeticsKyliecosmeticsCollectionsParams = TypedDict('KylieCosmeticsKyliecosmeticsCollectionsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'page': NotRequired[int],
+    'limit': NotRequired[int],
+}, total=False)
+
+KylieCosmeticsKyliecosmeticsCollectionProductsResponse = ModelShopifybrandsCollectionProductsResponseDoc
+KylieCosmeticsKyliecosmeticsCollectionProductsParams = TypedDict('KylieCosmeticsKyliecosmeticsCollectionProductsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'handle': Required[str],
+    'page': NotRequired[int],
+    'limit': NotRequired[int],
+}, total=False)
+
+KylieCosmeticsKyliecosmeticsPagesResponse = ModelShopifybrandsPagesResponseDoc
+KylieCosmeticsKyliecosmeticsPagesParams = TypedDict('KylieCosmeticsKyliecosmeticsPagesParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'page': NotRequired[int],
+    'limit': NotRequired[int],
+}, total=False)
+
+KylieCosmeticsKyliecosmeticsPageResponse = ModelShopifybrandsPageResponseDoc
+KylieCosmeticsKyliecosmeticsPageParams = TypedDict('KylieCosmeticsKyliecosmeticsPageParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'handle': Required[str],
+}, total=False)
+
+KylieCosmeticsKyliecosmeticsProductsResponse = ModelShopifybrandsProductsResponseDoc
+KylieCosmeticsKyliecosmeticsProductsParams = TypedDict('KylieCosmeticsKyliecosmeticsProductsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'page': NotRequired[int],
+    'limit': NotRequired[int],
+}, total=False)
+
+KylieCosmeticsKyliecosmeticsProductResponse = ModelShopifybrandsProductResponseDoc
+KylieCosmeticsKyliecosmeticsProductParams = TypedDict('KylieCosmeticsKyliecosmeticsProductParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'handle': Required[str],
+}, total=False)
+
+KylieCosmeticsKyliecosmeticsProductRecommendationsResponse = ModelShopifybrandsProductRecommendationsResponseDoc
+KylieCosmeticsKyliecosmeticsProductRecommendationsParams = TypedDict('KylieCosmeticsKyliecosmeticsProductRecommendationsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'handle': Required[str],
+    'limit': NotRequired[int],
+    'intent': NotRequired[Literal['related', 'complementary']],
+}, total=False)
+
+KylieCosmeticsKyliecosmeticsSearchSuggestResponse = ModelShopifybrandsSearchSuggestResponseDoc
+KylieCosmeticsKyliecosmeticsSearchSuggestParams = TypedDict('KylieCosmeticsKyliecosmeticsSearchSuggestParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'q': Required[str],
+    'types': NotRequired[str],
+    'limit': NotRequired[int],
+}, total=False)
+
+KylieCosmeticsKyliecosmeticsSitemapUrlsResponse = ModelShopifybrandsSitemapUrlsResponseDoc
+KylieCosmeticsKyliecosmeticsSitemapUrlsParams = TypedDict('KylieCosmeticsKyliecosmeticsSitemapUrlsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'type': NotRequired[Literal['all', 'products', 'collections', 'pages', 'blogs', 'agentic_discovery', 'other']],
+    'limit': NotRequired[int],
+}, total=False)
+
+KylieCosmeticsKyliecosmeticsSitemapsResponse = ModelShopifybrandsSitemapIndexResponseDoc
+KylieCosmeticsKyliecosmeticsSitemapsParams = TypedDict('KylieCosmeticsKyliecosmeticsSitemapsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+}, total=False)
+
+KylieCosmeticsKyliecosmeticsStoreResponse = ModelShopifybrandsStoreResponseDoc
+KylieCosmeticsKyliecosmeticsStoreParams = TypedDict('KylieCosmeticsKyliecosmeticsStoreParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
 }, total=False)
 
 LetterboxdFilmResponse = ModelLetterboxdFilmResponseDoc
@@ -37543,6 +42650,56 @@ MlbTransactionsParams = TypedDict('MlbTransactionsParams', {
     'player_id': NotRequired[str],
 }, total=False)
 
+MonitorsListResponse = ModelWebmonitorMonitorListResponseDoc
+MonitorsListParams = TypedDict('MonitorsListParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+}, total=False)
+
+MonitorsCreateBody = ModelWebmonitorCreateMonitorBodyDoc
+MonitorsCreateResponse = ModelWebmonitorMonitorResponseDoc
+MonitorsCreateParams = TypedDict('MonitorsCreateParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'request': Required[MonitorsCreateBody],
+}, total=False)
+
+MonitorsDeleteResponse = ModelWebmonitorMonitorDeleteResponseDoc
+MonitorsDeleteParams = TypedDict('MonitorsDeleteParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': Required[str],
+}, total=False)
+
+MonitorsGetResponse = ModelWebmonitorMonitorResponseDoc
+MonitorsGetParams = TypedDict('MonitorsGetParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': Required[str],
+}, total=False)
+
+MonitorsUpdateBody = ModelWebmonitorUpdateMonitorBodyDoc
+MonitorsUpdateResponse = ModelWebmonitorMonitorResponseDoc
+MonitorsUpdateParams = TypedDict('MonitorsUpdateParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': Required[str],
+    'request': Required[MonitorsUpdateBody],
+}, total=False)
+
+MonitorsChecksResponse = ModelWebmonitorCheckListResponseDoc
+MonitorsChecksParams = TypedDict('MonitorsChecksParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': Required[str],
+}, total=False)
+
 NikeCategoriesResponse = ModelNikeCategoriesResponseDoc
 NikeCategoriesParams = TypedDict('NikeCategoriesParams', {
     '_response_type': NotRequired[ResponseType],
@@ -37556,6 +42713,30 @@ NikeProductParams = TypedDict('NikeProductParams', {
     '_timeout': NotRequired[float],
     '_headers': NotRequired[Mapping[str, str]],
     'slug': Required[str],
+    'style_color': Required[str],
+}, total=False)
+
+NikeProductAvailabilityResponse = ModelNikeAvailabilityResponseDoc
+NikeProductAvailabilityParams = TypedDict('NikeProductAvailabilityParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'group_key': Required[str],
+}, total=False)
+
+NikeProductDetailsResponse = ModelNikeProductDetailsResponseDoc
+NikeProductDetailsParams = TypedDict('NikeProductDetailsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'group_key': Required[str],
+}, total=False)
+
+NikeProductRecommendationsResponse = ModelNikeRecommendationsResponseDoc
+NikeProductRecommendationsParams = TypedDict('NikeProductRecommendationsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
     'style_color': Required[str],
 }, total=False)
 
@@ -37664,6 +42845,102 @@ NumbeoIndicesRankingsByCountryParams = TypedDict('NumbeoIndicesRankingsByCountry
     '_timeout': NotRequired[float],
     '_headers': NotRequired[Mapping[str, str]],
     'index': Required[Literal['quality-of-life', 'crime', 'health-care', 'pollution', 'traffic', 'property-investment']],
+}, total=False)
+
+OhPollyOhpollyCollectionsResponse = ModelShopifybrandsCollectionsResponseDoc
+OhPollyOhpollyCollectionsParams = TypedDict('OhPollyOhpollyCollectionsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'page': NotRequired[int],
+    'limit': NotRequired[int],
+}, total=False)
+
+OhPollyOhpollyCollectionProductsResponse = ModelShopifybrandsCollectionProductsResponseDoc
+OhPollyOhpollyCollectionProductsParams = TypedDict('OhPollyOhpollyCollectionProductsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'handle': Required[str],
+    'page': NotRequired[int],
+    'limit': NotRequired[int],
+}, total=False)
+
+OhPollyOhpollyPagesResponse = ModelShopifybrandsPagesResponseDoc
+OhPollyOhpollyPagesParams = TypedDict('OhPollyOhpollyPagesParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'page': NotRequired[int],
+    'limit': NotRequired[int],
+}, total=False)
+
+OhPollyOhpollyPageResponse = ModelShopifybrandsPageResponseDoc
+OhPollyOhpollyPageParams = TypedDict('OhPollyOhpollyPageParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'handle': Required[str],
+}, total=False)
+
+OhPollyOhpollyProductsResponse = ModelShopifybrandsProductsResponseDoc
+OhPollyOhpollyProductsParams = TypedDict('OhPollyOhpollyProductsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'page': NotRequired[int],
+    'limit': NotRequired[int],
+}, total=False)
+
+OhPollyOhpollyProductResponse = ModelShopifybrandsProductResponseDoc
+OhPollyOhpollyProductParams = TypedDict('OhPollyOhpollyProductParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'handle': Required[str],
+}, total=False)
+
+OhPollyOhpollyProductRecommendationsResponse = ModelShopifybrandsProductRecommendationsResponseDoc
+OhPollyOhpollyProductRecommendationsParams = TypedDict('OhPollyOhpollyProductRecommendationsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'handle': Required[str],
+    'limit': NotRequired[int],
+    'intent': NotRequired[Literal['related', 'complementary']],
+}, total=False)
+
+OhPollyOhpollySearchSuggestResponse = ModelShopifybrandsSearchSuggestResponseDoc
+OhPollyOhpollySearchSuggestParams = TypedDict('OhPollyOhpollySearchSuggestParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'q': Required[str],
+    'types': NotRequired[str],
+    'limit': NotRequired[int],
+}, total=False)
+
+OhPollyOhpollySitemapUrlsResponse = ModelShopifybrandsSitemapUrlsResponseDoc
+OhPollyOhpollySitemapUrlsParams = TypedDict('OhPollyOhpollySitemapUrlsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'type': NotRequired[Literal['all', 'products', 'collections', 'pages', 'blogs', 'agentic_discovery', 'other']],
+    'limit': NotRequired[int],
+}, total=False)
+
+OhPollyOhpollySitemapsResponse = ModelShopifybrandsSitemapIndexResponseDoc
+OhPollyOhpollySitemapsParams = TypedDict('OhPollyOhpollySitemapsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+}, total=False)
+
+OhPollyOhpollyStoreResponse = ModelShopifybrandsStoreResponseDoc
+OhPollyOhpollyStoreParams = TypedDict('OhPollyOhpollyStoreParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
 }, total=False)
 
 OldNavyOldnavyCategoriesResponse = ModelOldnavyCategoriesResponseDoc
@@ -38799,6 +44076,85 @@ ProductHuntSearchParams = TypedDict('ProductHuntSearchParams', {
     'topics': NotRequired[str],
 }, total=False)
 
+QuinceCategoriesResponse = ModelQuinceCategoriesResponseDoc
+QuinceCategoriesParams = TypedDict('QuinceCategoriesParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+}, total=False)
+
+QuinceNavigationResponse = ModelQuinceNavigationResponseDoc
+QuinceNavigationParams = TypedDict('QuinceNavigationParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+}, total=False)
+
+QuinceProductResponse = ModelQuinceProductResponseDoc
+QuinceProductParams = TypedDict('QuinceProductParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'handle': Required[str],
+}, total=False)
+
+QuinceProductFaqResponse = ModelQuinceProductFaqresponseDoc
+QuinceProductFaqParams = TypedDict('QuinceProductFaqParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'handle': Required[str],
+}, total=False)
+
+QuinceProductReviewsResponse = ModelQuinceProductReviewsResponseDoc
+QuinceProductReviewsParams = TypedDict('QuinceProductReviewsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'handle': Required[str],
+}, total=False)
+
+QuinceSearchResponse = ModelQuinceSearchResponseDoc
+QuinceSearchParams = TypedDict('QuinceSearchParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'q': NotRequired[str],
+    'department': NotRequired[str],
+    'category': NotRequired[str],
+    'material': NotRequired[str],
+    'color': NotRequired[str],
+    'size': NotRequired[str],
+    'min_price': NotRequired[float],
+    'max_price': NotRequired[float],
+    'page': NotRequired[int],
+    'limit': NotRequired[int],
+}, total=False)
+
+QuinceSitemapUrlsResponse = ModelQuinceSitemapUrlsResponseDoc
+QuinceSitemapUrlsParams = TypedDict('QuinceSitemapUrlsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'type': NotRequired[Literal['all', 'products', 'collections', 'subcollections', 'pages']],
+    'limit': NotRequired[int],
+}, total=False)
+
+QuinceSitemapsResponse = ModelQuinceSitemapsResponseDoc
+QuinceSitemapsParams = TypedDict('QuinceSitemapsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+}, total=False)
+
+QuinceSuggestResponse = ModelQuinceSuggestResponseDoc
+QuinceSuggestParams = TypedDict('QuinceSuggestParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'q': Required[str],
+}, total=False)
+
 MetaReadyResponse = ModelApiReadinessResponseDoc
 MetaReadyParams = TypedDict('MetaReadyParams', {
     '_response_type': NotRequired[ResponseType],
@@ -38828,6 +44184,20 @@ RedditDomainPostsParams = TypedDict('RedditDomainPostsParams', {
     'time': NotRequired[Literal['hour', 'day', 'week', 'month', 'year', 'all']],
     'limit': NotRequired[int],
     'after': NotRequired[str],
+}, total=False)
+
+RedditLeadsResponse = ModelRedditLeadsResponseDoc
+RedditLeadsParams = TypedDict('RedditLeadsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'q': Required[str],
+    'subreddit': NotRequired[str],
+    'sort': NotRequired[Literal['relevance', 'hot', 'new', 'top', 'comments']],
+    'time': NotRequired[Literal['hour', 'day', 'week', 'month', 'year', 'all']],
+    'limit': NotRequired[int],
+    'min_score': NotRequired[int],
+    'classifier': NotRequired[Literal['auto', 'heuristic', 'llm']],
 }, total=False)
 
 RedditPostResponse = ModelRedditPostResponseDoc
@@ -38999,6 +44369,102 @@ ReferralsMeEventsParams = TypedDict('ReferralsMeEventsParams', {
     '_timeout': NotRequired[float],
     '_headers': NotRequired[Mapping[str, str]],
     'limit': NotRequired[int],
+}, total=False)
+
+RothySRothysCollectionsResponse = ModelShopifybrandsCollectionsResponseDoc
+RothySRothysCollectionsParams = TypedDict('RothySRothysCollectionsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'page': NotRequired[int],
+    'limit': NotRequired[int],
+}, total=False)
+
+RothySRothysCollectionProductsResponse = ModelShopifybrandsCollectionProductsResponseDoc
+RothySRothysCollectionProductsParams = TypedDict('RothySRothysCollectionProductsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'handle': Required[str],
+    'page': NotRequired[int],
+    'limit': NotRequired[int],
+}, total=False)
+
+RothySRothysPagesResponse = ModelShopifybrandsPagesResponseDoc
+RothySRothysPagesParams = TypedDict('RothySRothysPagesParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'page': NotRequired[int],
+    'limit': NotRequired[int],
+}, total=False)
+
+RothySRothysPageResponse = ModelShopifybrandsPageResponseDoc
+RothySRothysPageParams = TypedDict('RothySRothysPageParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'handle': Required[str],
+}, total=False)
+
+RothySRothysProductsResponse = ModelShopifybrandsProductsResponseDoc
+RothySRothysProductsParams = TypedDict('RothySRothysProductsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'page': NotRequired[int],
+    'limit': NotRequired[int],
+}, total=False)
+
+RothySRothysProductResponse = ModelShopifybrandsProductResponseDoc
+RothySRothysProductParams = TypedDict('RothySRothysProductParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'handle': Required[str],
+}, total=False)
+
+RothySRothysProductRecommendationsResponse = ModelShopifybrandsProductRecommendationsResponseDoc
+RothySRothysProductRecommendationsParams = TypedDict('RothySRothysProductRecommendationsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'handle': Required[str],
+    'limit': NotRequired[int],
+    'intent': NotRequired[Literal['related', 'complementary']],
+}, total=False)
+
+RothySRothysSearchSuggestResponse = ModelShopifybrandsSearchSuggestResponseDoc
+RothySRothysSearchSuggestParams = TypedDict('RothySRothysSearchSuggestParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'q': Required[str],
+    'types': NotRequired[str],
+    'limit': NotRequired[int],
+}, total=False)
+
+RothySRothysSitemapUrlsResponse = ModelShopifybrandsSitemapUrlsResponseDoc
+RothySRothysSitemapUrlsParams = TypedDict('RothySRothysSitemapUrlsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'type': NotRequired[Literal['all', 'products', 'collections', 'pages', 'blogs', 'agentic_discovery', 'other']],
+    'limit': NotRequired[int],
+}, total=False)
+
+RothySRothysSitemapsResponse = ModelShopifybrandsSitemapIndexResponseDoc
+RothySRothysSitemapsParams = TypedDict('RothySRothysSitemapsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+}, total=False)
+
+RothySRothysStoreResponse = ModelShopifybrandsStoreResponseDoc
+RothySRothysStoreParams = TypedDict('RothySRothysStoreParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
 }, total=False)
 
 RottenTomatoesRottentomatoesBrowseMoviesResponse = ModelRottentomatoesBrowseResponseDoc
@@ -39319,6 +44785,79 @@ SephoraSuggestParams = TypedDict('SephoraSuggestParams', {
     'query': Required[str],
 }, total=False)
 
+SheinCategoryFiltersResponse = ModelSheinCategoryFiltersResponseDoc
+SheinCategoryFiltersParams = TypedDict('SheinCategoryFiltersParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'cat_id': Required[str],
+}, total=False)
+
+SheinCategoryGoodsResponse = ModelSheinCategoryGoodsResponseDoc
+SheinCategoryGoodsParams = TypedDict('SheinCategoryGoodsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'cat_id': Required[str],
+    'page': NotRequired[int],
+    'page_size': NotRequired[int],
+    'sort': NotRequired[str],
+}, total=False)
+
+SheinCategoryNavResponse = ModelSheinCategoryNavResponseDoc
+SheinCategoryNavParams = TypedDict('SheinCategoryNavParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'cat_id': Required[str],
+}, total=False)
+
+SheinProductsAggregationFiltersResponse = ModelSheinAggregationFiltersResponseDoc
+SheinProductsAggregationFiltersParams = TypedDict('SheinProductsAggregationFiltersParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'keyword': Required[str],
+    'cat_id': NotRequired[str],
+}, total=False)
+
+SheinProductsDetailResponse = ModelSheinProductDetailResponseDoc
+SheinProductsDetailParams = TypedDict('SheinProductsDetailParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'goods_id': Required[str],
+    'goods_sn': NotRequired[str],
+}, total=False)
+
+SheinProductsSearchResponse = ModelSheinProductsSearchResponseDoc
+SheinProductsSearchParams = TypedDict('SheinProductsSearchParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'keyword': Required[str],
+    'page': NotRequired[int],
+    'page_size': NotRequired[int],
+    'sort': NotRequired[str],
+}, total=False)
+
+SheinSearchAutocompleteResponse = ModelSheinAutocompleteResponseDoc
+SheinSearchAutocompleteParams = TypedDict('SheinSearchAutocompleteParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'word': Required[str],
+}, total=False)
+
+SheinSearchKeywordsResponse = ModelSheinSearchKeywordsResponseDoc
+SheinSearchKeywordsParams = TypedDict('SheinSearchKeywordsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'scene': NotRequired[str],
+    'word_type': NotRequired[str],
+}, total=False)
+
 ShopAppAnalysisResponse = ModelShopappAnalysisResponseDoc
 ShopAppAnalysisParams = TypedDict('ShopAppAnalysisParams', {
     '_response_type': NotRequired[ResponseType],
@@ -39491,6 +45030,7 @@ ShopifyCollectionProductsParams = TypedDict('ShopifyCollectionProductsParams', {
     'url': Required[str],
     'page': NotRequired[int],
     'limit': NotRequired[int],
+    'sortBy': NotRequired[Literal['sortLTH', 'sortHTL', 'newest']],
 }, total=False)
 
 ShopifyPagesResponse = ModelShopifyPagesResponseDoc
@@ -39520,6 +45060,7 @@ ShopifyProductsParams = TypedDict('ShopifyProductsParams', {
     'url': Required[str],
     'page': NotRequired[int],
     'limit': NotRequired[int],
+    'sortBy': NotRequired[Literal['sortLTH', 'sortHTL', 'newest']],
 }, total=False)
 
 ShopifyProductResponse = ModelShopifyProductResponseDoc
@@ -39593,6 +45134,102 @@ SimilarWebWebParams = TypedDict('SimilarWebWebParams', {
     '_timeout': NotRequired[float],
     '_headers': NotRequired[Mapping[str, str]],
     'domain': Required[str],
+}, total=False)
+
+SkimsCollectionsResponse = ModelShopifybrandsCollectionsResponseDoc
+SkimsCollectionsParams = TypedDict('SkimsCollectionsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'page': NotRequired[int],
+    'limit': NotRequired[int],
+}, total=False)
+
+SkimsCollectionProductsResponse = ModelShopifybrandsCollectionProductsResponseDoc
+SkimsCollectionProductsParams = TypedDict('SkimsCollectionProductsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'handle': Required[str],
+    'page': NotRequired[int],
+    'limit': NotRequired[int],
+}, total=False)
+
+SkimsPagesResponse = ModelShopifybrandsPagesResponseDoc
+SkimsPagesParams = TypedDict('SkimsPagesParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'page': NotRequired[int],
+    'limit': NotRequired[int],
+}, total=False)
+
+SkimsPageResponse = ModelShopifybrandsPageResponseDoc
+SkimsPageParams = TypedDict('SkimsPageParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'handle': Required[str],
+}, total=False)
+
+SkimsProductsResponse = ModelShopifybrandsProductsResponseDoc
+SkimsProductsParams = TypedDict('SkimsProductsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'page': NotRequired[int],
+    'limit': NotRequired[int],
+}, total=False)
+
+SkimsProductResponse = ModelShopifybrandsProductResponseDoc
+SkimsProductParams = TypedDict('SkimsProductParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'handle': Required[str],
+}, total=False)
+
+SkimsProductRecommendationsResponse = ModelShopifybrandsProductRecommendationsResponseDoc
+SkimsProductRecommendationsParams = TypedDict('SkimsProductRecommendationsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'handle': Required[str],
+    'limit': NotRequired[int],
+    'intent': NotRequired[Literal['related', 'complementary']],
+}, total=False)
+
+SkimsSearchSuggestResponse = ModelShopifybrandsSearchSuggestResponseDoc
+SkimsSearchSuggestParams = TypedDict('SkimsSearchSuggestParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'q': Required[str],
+    'types': NotRequired[str],
+    'limit': NotRequired[int],
+}, total=False)
+
+SkimsSitemapUrlsResponse = ModelShopifybrandsSitemapUrlsResponseDoc
+SkimsSitemapUrlsParams = TypedDict('SkimsSitemapUrlsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'type': NotRequired[Literal['all', 'products', 'collections', 'pages', 'blogs', 'agentic_discovery', 'other']],
+    'limit': NotRequired[int],
+}, total=False)
+
+SkimsSitemapsResponse = ModelShopifybrandsSitemapIndexResponseDoc
+SkimsSitemapsParams = TypedDict('SkimsSitemapsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+}, total=False)
+
+SkimsStoreResponse = ModelShopifybrandsStoreResponseDoc
+SkimsStoreParams = TypedDict('SkimsStoreParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
 }, total=False)
 
 SofaScoreSofascoreEventResponse = ModelSofascoreEventResponseDoc
@@ -40432,6 +46069,102 @@ SteamTopSellersParams = TypedDict('SteamTopSellersParams', {
     'l': NotRequired[str],
 }, total=False)
 
+SteveMaddenStevemaddenCollectionsResponse = ModelShopifybrandsCollectionsResponseDoc
+SteveMaddenStevemaddenCollectionsParams = TypedDict('SteveMaddenStevemaddenCollectionsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'page': NotRequired[int],
+    'limit': NotRequired[int],
+}, total=False)
+
+SteveMaddenStevemaddenCollectionProductsResponse = ModelShopifybrandsCollectionProductsResponseDoc
+SteveMaddenStevemaddenCollectionProductsParams = TypedDict('SteveMaddenStevemaddenCollectionProductsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'handle': Required[str],
+    'page': NotRequired[int],
+    'limit': NotRequired[int],
+}, total=False)
+
+SteveMaddenStevemaddenPagesResponse = ModelShopifybrandsPagesResponseDoc
+SteveMaddenStevemaddenPagesParams = TypedDict('SteveMaddenStevemaddenPagesParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'page': NotRequired[int],
+    'limit': NotRequired[int],
+}, total=False)
+
+SteveMaddenStevemaddenPageResponse = ModelShopifybrandsPageResponseDoc
+SteveMaddenStevemaddenPageParams = TypedDict('SteveMaddenStevemaddenPageParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'handle': Required[str],
+}, total=False)
+
+SteveMaddenStevemaddenProductsResponse = ModelShopifybrandsProductsResponseDoc
+SteveMaddenStevemaddenProductsParams = TypedDict('SteveMaddenStevemaddenProductsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'page': NotRequired[int],
+    'limit': NotRequired[int],
+}, total=False)
+
+SteveMaddenStevemaddenProductResponse = ModelShopifybrandsProductResponseDoc
+SteveMaddenStevemaddenProductParams = TypedDict('SteveMaddenStevemaddenProductParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'handle': Required[str],
+}, total=False)
+
+SteveMaddenStevemaddenProductRecommendationsResponse = ModelShopifybrandsProductRecommendationsResponseDoc
+SteveMaddenStevemaddenProductRecommendationsParams = TypedDict('SteveMaddenStevemaddenProductRecommendationsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'handle': Required[str],
+    'limit': NotRequired[int],
+    'intent': NotRequired[Literal['related', 'complementary']],
+}, total=False)
+
+SteveMaddenStevemaddenSearchSuggestResponse = ModelShopifybrandsSearchSuggestResponseDoc
+SteveMaddenStevemaddenSearchSuggestParams = TypedDict('SteveMaddenStevemaddenSearchSuggestParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'q': Required[str],
+    'types': NotRequired[str],
+    'limit': NotRequired[int],
+}, total=False)
+
+SteveMaddenStevemaddenSitemapUrlsResponse = ModelShopifybrandsSitemapUrlsResponseDoc
+SteveMaddenStevemaddenSitemapUrlsParams = TypedDict('SteveMaddenStevemaddenSitemapUrlsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'type': NotRequired[Literal['all', 'products', 'collections', 'pages', 'blogs', 'agentic_discovery', 'other']],
+    'limit': NotRequired[int],
+}, total=False)
+
+SteveMaddenStevemaddenSitemapsResponse = ModelShopifybrandsSitemapIndexResponseDoc
+SteveMaddenStevemaddenSitemapsParams = TypedDict('SteveMaddenStevemaddenSitemapsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+}, total=False)
+
+SteveMaddenStevemaddenStoreResponse = ModelShopifybrandsStoreResponseDoc
+SteveMaddenStevemaddenStoreParams = TypedDict('SteveMaddenStevemaddenStoreParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+}, total=False)
+
 StockXStockxBrandsResponse = ModelStockxBrandsResponseDoc
 StockXStockxBrandsParams = TypedDict('StockXStockxBrandsParams', {
     '_response_type': NotRequired[ResponseType],
@@ -40607,6 +46340,102 @@ TeslaJobsListParams = TypedDict('TeslaJobsListParams', {
     'location': NotRequired[str],
     'page': NotRequired[int],
     'page_size': NotRequired[int],
+}, total=False)
+
+TheBodyShopThebodyshopCollectionsResponse = ModelShopifybrandsCollectionsResponseDoc
+TheBodyShopThebodyshopCollectionsParams = TypedDict('TheBodyShopThebodyshopCollectionsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'page': NotRequired[int],
+    'limit': NotRequired[int],
+}, total=False)
+
+TheBodyShopThebodyshopCollectionProductsResponse = ModelShopifybrandsCollectionProductsResponseDoc
+TheBodyShopThebodyshopCollectionProductsParams = TypedDict('TheBodyShopThebodyshopCollectionProductsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'handle': Required[str],
+    'page': NotRequired[int],
+    'limit': NotRequired[int],
+}, total=False)
+
+TheBodyShopThebodyshopPagesResponse = ModelShopifybrandsPagesResponseDoc
+TheBodyShopThebodyshopPagesParams = TypedDict('TheBodyShopThebodyshopPagesParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'page': NotRequired[int],
+    'limit': NotRequired[int],
+}, total=False)
+
+TheBodyShopThebodyshopPageResponse = ModelShopifybrandsPageResponseDoc
+TheBodyShopThebodyshopPageParams = TypedDict('TheBodyShopThebodyshopPageParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'handle': Required[str],
+}, total=False)
+
+TheBodyShopThebodyshopProductsResponse = ModelShopifybrandsProductsResponseDoc
+TheBodyShopThebodyshopProductsParams = TypedDict('TheBodyShopThebodyshopProductsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'page': NotRequired[int],
+    'limit': NotRequired[int],
+}, total=False)
+
+TheBodyShopThebodyshopProductResponse = ModelShopifybrandsProductResponseDoc
+TheBodyShopThebodyshopProductParams = TypedDict('TheBodyShopThebodyshopProductParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'handle': Required[str],
+}, total=False)
+
+TheBodyShopThebodyshopProductRecommendationsResponse = ModelShopifybrandsProductRecommendationsResponseDoc
+TheBodyShopThebodyshopProductRecommendationsParams = TypedDict('TheBodyShopThebodyshopProductRecommendationsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'handle': Required[str],
+    'limit': NotRequired[int],
+    'intent': NotRequired[Literal['related', 'complementary']],
+}, total=False)
+
+TheBodyShopThebodyshopSearchSuggestResponse = ModelShopifybrandsSearchSuggestResponseDoc
+TheBodyShopThebodyshopSearchSuggestParams = TypedDict('TheBodyShopThebodyshopSearchSuggestParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'q': Required[str],
+    'types': NotRequired[str],
+    'limit': NotRequired[int],
+}, total=False)
+
+TheBodyShopThebodyshopSitemapUrlsResponse = ModelShopifybrandsSitemapUrlsResponseDoc
+TheBodyShopThebodyshopSitemapUrlsParams = TypedDict('TheBodyShopThebodyshopSitemapUrlsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'type': NotRequired[Literal['all', 'products', 'collections', 'pages', 'blogs', 'agentic_discovery', 'other']],
+    'limit': NotRequired[int],
+}, total=False)
+
+TheBodyShopThebodyshopSitemapsResponse = ModelShopifybrandsSitemapIndexResponseDoc
+TheBodyShopThebodyshopSitemapsParams = TypedDict('TheBodyShopThebodyshopSitemapsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+}, total=False)
+
+TheBodyShopThebodyshopStoreResponse = ModelShopifybrandsStoreResponseDoc
+TheBodyShopThebodyshopStoreParams = TypedDict('TheBodyShopThebodyshopStoreParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
 }, total=False)
 
 ThreadsPostResponse = ModelThreadsPostResponseDoc
@@ -41707,6 +47536,16 @@ VintedMemberParams = TypedDict('VintedMemberParams', {
     '_timeout': NotRequired[float],
     '_headers': NotRequired[Mapping[str, str]],
     'id': Required[str],
+}, total=False)
+
+WalgreensStoresResponse = ModelWalgreensStoresResponseDoc
+WalgreensStoresParams = TypedDict('WalgreensStoresParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'latitude': NotRequired[float],
+    'longitude': NotRequired[float],
+    'zip': NotRequired[str],
 }, total=False)
 
 WalmartProductResponse = ModelWalmartProductResponseDoc
@@ -43021,6 +48860,13 @@ ZillowSearchParams = TypedDict('ZillowSearchParams', {
     'north': NotRequired[float],
 }, total=False)
 
+class AdidasGroup:
+    def product(self, **params: Unpack[AdidasProductParams]) -> AdidasProductResponse: ...
+    def search(self, **params: Unpack[AdidasSearchParams]) -> AdidasSearchResponse: ...
+    def store(self, **params: Unpack[AdidasStoreParams]) -> AdidasStoreResponse: ...
+    def stores(self, **params: Unpack[AdidasStoresParams]) -> AdidasStoresResponse: ...
+    def suggest(self, **params: Unpack[AdidasSuggestParams]) -> AdidasSuggestResponse: ...
+
 class AgodaGroup:
     def activities_search(self, **params: Unpack[AgodaActivitiesSearchParams]) -> AgodaActivitiesSearchResponse: ...
     def activity_detail(self, **params: Unpack[AgodaActivityDetailParams]) -> AgodaActivityDetailResponse: ...
@@ -43039,6 +48885,19 @@ class AirbnbGroup:
     def room_calendar(self, **params: Unpack[AirbnbRoomCalendarParams]) -> AirbnbRoomCalendarResponse: ...
     def room_reviews(self, **params: Unpack[AirbnbRoomReviewsParams]) -> AirbnbRoomReviewsResponse: ...
     def search(self, **params: Unpack[AirbnbSearchParams]) -> AirbnbSearchResponse: ...
+
+class AllbirdsGroup:
+    def collections(self, **params: Unpack[AllbirdsCollectionsParams]) -> AllbirdsCollectionsResponse: ...
+    def collection_products(self, **params: Unpack[AllbirdsCollectionProductsParams]) -> AllbirdsCollectionProductsResponse: ...
+    def pages(self, **params: Unpack[AllbirdsPagesParams]) -> AllbirdsPagesResponse: ...
+    def page(self, **params: Unpack[AllbirdsPageParams]) -> AllbirdsPageResponse: ...
+    def products(self, **params: Unpack[AllbirdsProductsParams]) -> AllbirdsProductsResponse: ...
+    def product(self, **params: Unpack[AllbirdsProductParams]) -> AllbirdsProductResponse: ...
+    def product_recommendations(self, **params: Unpack[AllbirdsProductRecommendationsParams]) -> AllbirdsProductRecommendationsResponse: ...
+    def search_suggest(self, **params: Unpack[AllbirdsSearchSuggestParams]) -> AllbirdsSearchSuggestResponse: ...
+    def sitemap_urls(self, **params: Unpack[AllbirdsSitemapUrlsParams]) -> AllbirdsSitemapUrlsResponse: ...
+    def sitemaps(self, **params: Unpack[AllbirdsSitemapsParams]) -> AllbirdsSitemapsResponse: ...
+    def store(self, **params: Unpack[AllbirdsStoreParams]) -> AllbirdsStoreResponse: ...
 
 class AmazonJobsGroup:
     def job(self, **params: Unpack[AmazonJobsJobParams]) -> AmazonJobsJobResponse: ...
@@ -43102,10 +48961,33 @@ class AppStoreGroup:
     def suggest(self, **params: Unpack[AppStoreSuggestParams]) -> AppStoreSuggestResponse: ...
     def version_history(self, **params: Unpack[AppStoreVersionHistoryParams]) -> AppStoreVersionHistoryResponse: ...
 
+class AudibleGroup:
+    def categories(self, **params: Unpack[AudibleCategoriesParams]) -> AudibleCategoriesResponse: ...
+    def category(self, **params: Unpack[AudibleCategoryParams]) -> AudibleCategoryResponse: ...
+    def charts(self, **params: Unpack[AudibleChartsParams]) -> AudibleChartsResponse: ...
+    def editorial_list(self, **params: Unpack[AudibleEditorialListParams]) -> AudibleEditorialListResponse: ...
+    def product(self, **params: Unpack[AudibleProductParams]) -> AudibleProductResponse: ...
+    def product_related(self, **params: Unpack[AudibleProductRelatedParams]) -> AudibleProductRelatedResponse: ...
+    def product_reviews(self, **params: Unpack[AudibleProductReviewsParams]) -> AudibleProductReviewsResponse: ...
+    def products(self, **params: Unpack[AudibleProductsParams]) -> AudibleProductsResponse: ...
+    def search(self, **params: Unpack[AudibleSearchParams]) -> AudibleSearchResponse: ...
+    def series(self, **params: Unpack[AudibleSeriesParams]) -> AudibleSeriesResponse: ...
+
 class AutotraderGroup:
     def dealer(self, **params: Unpack[AutotraderDealerParams]) -> AutotraderDealerResponse: ...
     def search(self, **params: Unpack[AutotraderSearchParams]) -> AutotraderSearchResponse: ...
     def vehicle(self, **params: Unpack[AutotraderVehicleParams]) -> AutotraderVehicleResponse: ...
+
+class BbbGroup:
+    def business(self, **params: Unpack[BbbBusinessParams]) -> BbbBusinessResponse: ...
+    def business_complaints(self, **params: Unpack[BbbBusinessComplaintsParams]) -> BbbBusinessComplaintsResponse: ...
+    def business_more_info(self, **params: Unpack[BbbBusinessMoreInfoParams]) -> BbbBusinessMoreInfoResponse: ...
+    def business_reviews(self, **params: Unpack[BbbBusinessReviewsParams]) -> BbbBusinessReviewsResponse: ...
+    def category(self, **params: Unpack[BbbCategoryParams]) -> BbbCategoryResponse: ...
+    def scamtracker_search(self, **params: Unpack[BbbScamtrackerSearchParams]) -> BbbScamtrackerSearchResponse: ...
+    def scamtracker_state_stats(self, **params: Unpack[BbbScamtrackerStateStatsParams]) -> BbbScamtrackerStateStatsResponse: ...
+    def scamtracker_detail(self, **params: Unpack[BbbScamtrackerDetailParams]) -> BbbScamtrackerDetailResponse: ...
+    def search(self, **params: Unpack[BbbSearchParams]) -> BbbSearchResponse: ...
 
 class BestBuyGroup:
     def bestbuy_brands(self, **params: Unpack[BestBuyBestbuyBrandsParams]) -> BestBuyBestbuyBrandsResponse: ...
@@ -43130,6 +49012,9 @@ class BillingGroup:
     def me_period_statement_download(self, **params: Unpack[BillingMePeriodStatementDownloadParams]) -> BillingMePeriodStatementDownloadResponse: ...
     def me_portal(self, **params: Unpack[BillingMePortalParams]) -> BillingMePortalResponse: ...
     def me_rejections(self, **params: Unpack[BillingMeRejectionsParams]) -> BillingMeRejectionsResponse: ...
+    def me_subscription_change(self, **params: Unpack[BillingMeSubscriptionChangeParams]) -> BillingMeSubscriptionChangeResponse: ...
+    def me_subscription_change_cancel(self, **params: Unpack[BillingMeSubscriptionChangeCancelParams]) -> BillingMeSubscriptionChangeCancelResponse: ...
+    def me_subscription_preview(self, **params: Unpack[BillingMeSubscriptionPreviewParams]) -> BillingMeSubscriptionPreviewResponse: ...
 
 class BingGroup:
     def images(self, **params: Unpack[BingImagesParams]) -> BingImagesResponse: ...
@@ -43190,6 +49075,19 @@ class BraveGroup:
     def suggest(self, **params: Unpack[BraveSuggestParams]) -> BraveSuggestResponse: ...
     def videos(self, **params: Unpack[BraveVideosParams]) -> BraveVideosResponse: ...
 
+class BrooklinenGroup:
+    def collections(self, **params: Unpack[BrooklinenCollectionsParams]) -> BrooklinenCollectionsResponse: ...
+    def collection_products(self, **params: Unpack[BrooklinenCollectionProductsParams]) -> BrooklinenCollectionProductsResponse: ...
+    def pages(self, **params: Unpack[BrooklinenPagesParams]) -> BrooklinenPagesResponse: ...
+    def page(self, **params: Unpack[BrooklinenPageParams]) -> BrooklinenPageResponse: ...
+    def products(self, **params: Unpack[BrooklinenProductsParams]) -> BrooklinenProductsResponse: ...
+    def product(self, **params: Unpack[BrooklinenProductParams]) -> BrooklinenProductResponse: ...
+    def product_recommendations(self, **params: Unpack[BrooklinenProductRecommendationsParams]) -> BrooklinenProductRecommendationsResponse: ...
+    def search_suggest(self, **params: Unpack[BrooklinenSearchSuggestParams]) -> BrooklinenSearchSuggestResponse: ...
+    def sitemap_urls(self, **params: Unpack[BrooklinenSitemapUrlsParams]) -> BrooklinenSitemapUrlsResponse: ...
+    def sitemaps(self, **params: Unpack[BrooklinenSitemapsParams]) -> BrooklinenSitemapsResponse: ...
+    def store(self, **params: Unpack[BrooklinenStoreParams]) -> BrooklinenStoreResponse: ...
+
 class CapterraGroup:
     def product(self, **params: Unpack[CapterraProductParams]) -> CapterraProductResponse: ...
     def reviews(self, **params: Unpack[CapterraReviewsParams]) -> CapterraReviewsResponse: ...
@@ -43207,6 +49105,15 @@ class CarMaxGroup:
 class CarsComGroup:
     def carsdotcom_search(self, **params: Unpack[CarsComCarsdotcomSearchParams]) -> CarsComCarsdotcomSearchResponse: ...
     def carsdotcom_vehicle(self, **params: Unpack[CarsComCarsdotcomVehicleParams]) -> CarsComCarsdotcomVehicleResponse: ...
+
+class ChewyGroup:
+    def categories(self, **params: Unpack[ChewyCategoriesParams]) -> ChewyCategoriesResponse: ...
+    def category(self, **params: Unpack[ChewyCategoryParams]) -> ChewyCategoryResponse: ...
+    def gtin_lookup(self, **params: Unpack[ChewyGtinLookupParams]) -> ChewyGtinLookupResponse: ...
+    def product(self, **params: Unpack[ChewyProductParams]) -> ChewyProductResponse: ...
+    def products(self, **params: Unpack[ChewyProductsParams]) -> ChewyProductsResponse: ...
+    def search(self, **params: Unpack[ChewySearchParams]) -> ChewySearchResponse: ...
+    def suggest(self, **params: Unpack[ChewySuggestParams]) -> ChewySuggestResponse: ...
 
 class ChromeWebStoreGroup:
     def chromewebstore_categories(self, **params: Unpack[ChromeWebStoreChromewebstoreCategoriesParams]) -> ChromeWebStoreChromewebstoreCategoriesResponse: ...
@@ -43245,6 +49152,19 @@ class CoinGeckoGroup:
     def treasuries(self, **params: Unpack[CoinGeckoTreasuriesParams]) -> CoinGeckoTreasuriesResponse: ...
     def trending(self, **params: Unpack[CoinGeckoTrendingParams]) -> CoinGeckoTrendingResponse: ...
 
+class ColeHaanGroup:
+    def colehaan_collections(self, **params: Unpack[ColeHaanColehaanCollectionsParams]) -> ColeHaanColehaanCollectionsResponse: ...
+    def colehaan_collection_products(self, **params: Unpack[ColeHaanColehaanCollectionProductsParams]) -> ColeHaanColehaanCollectionProductsResponse: ...
+    def colehaan_pages(self, **params: Unpack[ColeHaanColehaanPagesParams]) -> ColeHaanColehaanPagesResponse: ...
+    def colehaan_page(self, **params: Unpack[ColeHaanColehaanPageParams]) -> ColeHaanColehaanPageResponse: ...
+    def colehaan_products(self, **params: Unpack[ColeHaanColehaanProductsParams]) -> ColeHaanColehaanProductsResponse: ...
+    def colehaan_product(self, **params: Unpack[ColeHaanColehaanProductParams]) -> ColeHaanColehaanProductResponse: ...
+    def colehaan_product_recommendations(self, **params: Unpack[ColeHaanColehaanProductRecommendationsParams]) -> ColeHaanColehaanProductRecommendationsResponse: ...
+    def colehaan_search_suggest(self, **params: Unpack[ColeHaanColehaanSearchSuggestParams]) -> ColeHaanColehaanSearchSuggestResponse: ...
+    def colehaan_sitemap_urls(self, **params: Unpack[ColeHaanColehaanSitemapUrlsParams]) -> ColeHaanColehaanSitemapUrlsResponse: ...
+    def colehaan_sitemaps(self, **params: Unpack[ColeHaanColehaanSitemapsParams]) -> ColeHaanColehaanSitemapsResponse: ...
+    def colehaan_store(self, **params: Unpack[ColeHaanColehaanStoreParams]) -> ColeHaanColehaanStoreResponse: ...
+
 class CongressGroup:
     def report(self, **params: Unpack[CongressReportParams]) -> CongressReportResponse: ...
     def stock_disclosures(self, **params: Unpack[CongressStockDisclosuresParams]) -> CongressStockDisclosuresResponse: ...
@@ -43276,6 +49196,9 @@ class DatasetsGroup:
     def apps_charts_search(self, **params: Unpack[DatasetsAppsChartsSearchParams]) -> DatasetsAppsChartsSearchResponse: ...
     def apps_reviews_search(self, **params: Unpack[DatasetsAppsReviewsSearchParams]) -> DatasetsAppsReviewsSearchResponse: ...
     def apps_search(self, **params: Unpack[DatasetsAppsSearchParams]) -> DatasetsAppsSearchResponse: ...
+    def bbb_businesses_facets(self, **params: Unpack[DatasetsBbbBusinessesFacetsParams]) -> DatasetsBbbBusinessesFacetsResponse: ...
+    def bbb_businesses_item(self, **params: Unpack[DatasetsBbbBusinessesItemParams]) -> DatasetsBbbBusinessesItemResponse: ...
+    def bbb_businesses_search(self, **params: Unpack[DatasetsBbbBusinessesSearchParams]) -> DatasetsBbbBusinessesSearchResponse: ...
     def boxofficemojo_facets(self, **params: Unpack[DatasetsBoxofficemojoFacetsParams]) -> DatasetsBoxofficemojoFacetsResponse: ...
     def boxofficemojo_item(self, **params: Unpack[DatasetsBoxofficemojoItemParams]) -> DatasetsBoxofficemojoItemResponse: ...
     def boxofficemojo_search(self, **params: Unpack[DatasetsBoxofficemojoSearchParams]) -> DatasetsBoxofficemojoSearchResponse: ...
@@ -43287,6 +49210,9 @@ class DatasetsGroup:
     def chrome_extensions_search(self, **params: Unpack[DatasetsChromeExtensionsSearchParams]) -> DatasetsChromeExtensionsSearchResponse: ...
     def chrome_extensions_trending(self, **params: Unpack[DatasetsChromeExtensionsTrendingParams]) -> DatasetsChromeExtensionsTrendingResponse: ...
     def creators_search(self, **params: Unpack[DatasetsCreatorsSearchParams]) -> DatasetsCreatorsSearchResponse: ...
+    def facebook_pages_facets(self, **params: Unpack[DatasetsFacebookPagesFacetsParams]) -> DatasetsFacebookPagesFacetsResponse: ...
+    def facebook_pages_item(self, **params: Unpack[DatasetsFacebookPagesItemParams]) -> DatasetsFacebookPagesItemResponse: ...
+    def facebook_pages_search(self, **params: Unpack[DatasetsFacebookPagesSearchParams]) -> DatasetsFacebookPagesSearchResponse: ...
     def github_users_facets(self, **params: Unpack[DatasetsGithubUsersFacetsParams]) -> DatasetsGithubUsersFacetsResponse: ...
     def github_users_item(self, **params: Unpack[DatasetsGithubUsersItemParams]) -> DatasetsGithubUsersItemResponse: ...
     def github_users_nearby(self, **params: Unpack[DatasetsGithubUsersNearbyParams]) -> DatasetsGithubUsersNearbyResponse: ...
@@ -43371,9 +49297,16 @@ class DatasetsGroup:
     def trustmrr_history(self, **params: Unpack[DatasetsTrustmrrHistoryParams]) -> DatasetsTrustmrrHistoryResponse: ...
     def trustmrr_item(self, **params: Unpack[DatasetsTrustmrrItemParams]) -> DatasetsTrustmrrItemResponse: ...
     def trustmrr_search(self, **params: Unpack[DatasetsTrustmrrSearchParams]) -> DatasetsTrustmrrSearchResponse: ...
+    def vehicle_listings_facets(self, **params: Unpack[DatasetsVehicleListingsFacetsParams]) -> DatasetsVehicleListingsFacetsResponse: ...
+    def vehicle_listings_item(self, **params: Unpack[DatasetsVehicleListingsItemParams]) -> DatasetsVehicleListingsItemResponse: ...
+    def vehicle_listings_price_history(self, **params: Unpack[DatasetsVehicleListingsPriceHistoryParams]) -> DatasetsVehicleListingsPriceHistoryResponse: ...
+    def vehicle_listings_search(self, **params: Unpack[DatasetsVehicleListingsSearchParams]) -> DatasetsVehicleListingsSearchResponse: ...
     def x_users_facets(self, **params: Unpack[DatasetsXUsersFacetsParams]) -> DatasetsXUsersFacetsResponse: ...
     def x_users_item(self, **params: Unpack[DatasetsXUsersItemParams]) -> DatasetsXUsersItemResponse: ...
     def x_users_search(self, **params: Unpack[DatasetsXUsersSearchParams]) -> DatasetsXUsersSearchResponse: ...
+    def youtube_creators_facets(self, **params: Unpack[DatasetsYoutubeCreatorsFacetsParams]) -> DatasetsYoutubeCreatorsFacetsResponse: ...
+    def youtube_creators_item(self, **params: Unpack[DatasetsYoutubeCreatorsItemParams]) -> DatasetsYoutubeCreatorsItemResponse: ...
+    def youtube_creators_search(self, **params: Unpack[DatasetsYoutubeCreatorsSearchParams]) -> DatasetsYoutubeCreatorsSearchResponse: ...
 
 class DepopGroup:
     def brands(self, **params: Unpack[DepopBrandsParams]) -> DepopBrandsResponse: ...
@@ -43463,6 +49396,19 @@ class EtsyGroup:
     def shop_listings(self, **params: Unpack[EtsyShopListingsParams]) -> EtsyShopListingsResponse: ...
     def shop_reviews(self, **params: Unpack[EtsyShopReviewsParams]) -> EtsyShopReviewsResponse: ...
 
+class EverlaneGroup:
+    def collections(self, **params: Unpack[EverlaneCollectionsParams]) -> EverlaneCollectionsResponse: ...
+    def collection_products(self, **params: Unpack[EverlaneCollectionProductsParams]) -> EverlaneCollectionProductsResponse: ...
+    def pages(self, **params: Unpack[EverlanePagesParams]) -> EverlanePagesResponse: ...
+    def page(self, **params: Unpack[EverlanePageParams]) -> EverlanePageResponse: ...
+    def products(self, **params: Unpack[EverlaneProductsParams]) -> EverlaneProductsResponse: ...
+    def product(self, **params: Unpack[EverlaneProductParams]) -> EverlaneProductResponse: ...
+    def product_recommendations(self, **params: Unpack[EverlaneProductRecommendationsParams]) -> EverlaneProductRecommendationsResponse: ...
+    def search_suggest(self, **params: Unpack[EverlaneSearchSuggestParams]) -> EverlaneSearchSuggestResponse: ...
+    def sitemap_urls(self, **params: Unpack[EverlaneSitemapUrlsParams]) -> EverlaneSitemapUrlsResponse: ...
+    def sitemaps(self, **params: Unpack[EverlaneSitemapsParams]) -> EverlaneSitemapsResponse: ...
+    def store(self, **params: Unpack[EverlaneStoreParams]) -> EverlaneStoreResponse: ...
+
 class ExpediaGroup:
     def activities_search(self, **params: Unpack[ExpediaActivitiesSearchParams]) -> ExpediaActivitiesSearchResponse: ...
     def flights_search(self, **params: Unpack[ExpediaFlightsSearchParams]) -> ExpediaFlightsSearchResponse: ...
@@ -43476,10 +49422,37 @@ class FacebookGroup:
     def marketplace_search(self, **params: Unpack[FacebookMarketplaceSearchParams]) -> FacebookMarketplaceSearchResponse: ...
     def page(self, **params: Unpack[FacebookPageParams]) -> FacebookPageResponse: ...
 
+class FashionNovaGroup:
+    def fashionnova_collections(self, **params: Unpack[FashionNovaFashionnovaCollectionsParams]) -> FashionNovaFashionnovaCollectionsResponse: ...
+    def fashionnova_collection_products(self, **params: Unpack[FashionNovaFashionnovaCollectionProductsParams]) -> FashionNovaFashionnovaCollectionProductsResponse: ...
+    def fashionnova_pages(self, **params: Unpack[FashionNovaFashionnovaPagesParams]) -> FashionNovaFashionnovaPagesResponse: ...
+    def fashionnova_page(self, **params: Unpack[FashionNovaFashionnovaPageParams]) -> FashionNovaFashionnovaPageResponse: ...
+    def fashionnova_products(self, **params: Unpack[FashionNovaFashionnovaProductsParams]) -> FashionNovaFashionnovaProductsResponse: ...
+    def fashionnova_product(self, **params: Unpack[FashionNovaFashionnovaProductParams]) -> FashionNovaFashionnovaProductResponse: ...
+    def fashionnova_product_recommendations(self, **params: Unpack[FashionNovaFashionnovaProductRecommendationsParams]) -> FashionNovaFashionnovaProductRecommendationsResponse: ...
+    def fashionnova_search_suggest(self, **params: Unpack[FashionNovaFashionnovaSearchSuggestParams]) -> FashionNovaFashionnovaSearchSuggestResponse: ...
+    def fashionnova_sitemap_urls(self, **params: Unpack[FashionNovaFashionnovaSitemapUrlsParams]) -> FashionNovaFashionnovaSitemapUrlsResponse: ...
+    def fashionnova_sitemaps(self, **params: Unpack[FashionNovaFashionnovaSitemapsParams]) -> FashionNovaFashionnovaSitemapsResponse: ...
+    def fashionnova_store(self, **params: Unpack[FashionNovaFashionnovaStoreParams]) -> FashionNovaFashionnovaStoreResponse: ...
+
 class FiverrGroup:
     def gig(self, **params: Unpack[FiverrGigParams]) -> FiverrGigResponse: ...
     def search(self, **params: Unpack[FiverrSearchParams]) -> FiverrSearchResponse: ...
     def seller(self, **params: Unpack[FiverrSellerParams]) -> FiverrSellerResponse: ...
+
+class GdeltGroup:
+    def context(self, **params: Unpack[GdeltContextParams]) -> GdeltContextResponse: ...
+    def search(self, **params: Unpack[GdeltSearchParams]) -> GdeltSearchResponse: ...
+    def timeline(self, **params: Unpack[GdeltTimelineParams]) -> GdeltTimelineResponse: ...
+    def tonechart(self, **params: Unpack[GdeltTonechartParams]) -> GdeltTonechartResponse: ...
+    def tv_concept_entities(self, **params: Unpack[GdeltTvConceptEntitiesParams]) -> GdeltTvConceptEntitiesResponse: ...
+    def tv_search(self, **params: Unpack[GdeltTvSearchParams]) -> GdeltTvSearchResponse: ...
+    def tv_showchart(self, **params: Unpack[GdeltTvShowchartParams]) -> GdeltTvShowchartResponse: ...
+    def tv_stationchart(self, **params: Unpack[GdeltTvStationchartParams]) -> GdeltTvStationchartResponse: ...
+    def tv_stationdetails(self, **params: Unpack[GdeltTvStationdetailsParams]) -> GdeltTvStationdetailsResponse: ...
+    def tv_timeline(self, **params: Unpack[GdeltTvTimelineParams]) -> GdeltTvTimelineResponse: ...
+    def tv_visual_entities(self, **params: Unpack[GdeltTvVisualEntitiesParams]) -> GdeltTvVisualEntitiesResponse: ...
+    def tv_wordcloud(self, **params: Unpack[GdeltTvWordcloudParams]) -> GdeltTvWordcloudResponse: ...
 
 class GeocodingGroup:
     def lookup(self, **params: Unpack[GeocodingLookupParams]) -> GeocodingLookupResponse: ...
@@ -43584,6 +49557,18 @@ class GooglePlayGroup:
     def similar(self, **params: Unpack[GooglePlaySimilarParams]) -> GooglePlaySimilarResponse: ...
     def suggest(self, **params: Unpack[GooglePlaySuggestParams]) -> GooglePlaySuggestResponse: ...
 
+class GymsharkGroup:
+    def collections(self, **params: Unpack[GymsharkCollectionsParams]) -> GymsharkCollectionsResponse: ...
+    def collection_products(self, **params: Unpack[GymsharkCollectionProductsParams]) -> GymsharkCollectionProductsResponse: ...
+    def pages(self, **params: Unpack[GymsharkPagesParams]) -> GymsharkPagesResponse: ...
+    def page(self, **params: Unpack[GymsharkPageParams]) -> GymsharkPageResponse: ...
+    def products(self, **params: Unpack[GymsharkProductsParams]) -> GymsharkProductsResponse: ...
+    def product(self, **params: Unpack[GymsharkProductParams]) -> GymsharkProductResponse: ...
+    def product_recommendations(self, **params: Unpack[GymsharkProductRecommendationsParams]) -> GymsharkProductRecommendationsResponse: ...
+    def sitemap_urls(self, **params: Unpack[GymsharkSitemapUrlsParams]) -> GymsharkSitemapUrlsResponse: ...
+    def sitemaps(self, **params: Unpack[GymsharkSitemapsParams]) -> GymsharkSitemapsResponse: ...
+    def store(self, **params: Unpack[GymsharkStoreParams]) -> GymsharkStoreResponse: ...
+
 class HMGroup:
     def hm_categories(self, **params: Unpack[HMHmCategoriesParams]) -> HMHmCategoriesResponse: ...
     def hm_listing(self, **params: Unpack[HMHmListingParams]) -> HMHmListingResponse: ...
@@ -43593,7 +49578,25 @@ class HMGroup:
     def hm_search_suggestions(self, **params: Unpack[HMHmSearchSuggestionsParams]) -> HMHmSearchSuggestionsResponse: ...
     def hm_stores(self, **params: Unpack[HMHmStoresParams]) -> HMHmStoresResponse: ...
 
+class HomeDepotGroup:
+    def homedepot_categories(self, **params: Unpack[HomeDepotHomedepotCategoriesParams]) -> HomeDepotHomedepotCategoriesResponse: ...
+    def homedepot_category(self, **params: Unpack[HomeDepotHomedepotCategoryParams]) -> HomeDepotHomedepotCategoryResponse: ...
+    def homedepot_product(self, **params: Unpack[HomeDepotHomedepotProductParams]) -> HomeDepotHomedepotProductResponse: ...
+    def homedepot_product_questions(self, **params: Unpack[HomeDepotHomedepotProductQuestionsParams]) -> HomeDepotHomedepotProductQuestionsResponse: ...
+    def homedepot_search(self, **params: Unpack[HomeDepotHomedepotSearchParams]) -> HomeDepotHomedepotSearchResponse: ...
+
+class IkeaGroup:
+    def availability(self, **params: Unpack[IkeaAvailabilityParams]) -> IkeaAvailabilityResponse: ...
+    def category(self, **params: Unpack[IkeaCategoryParams]) -> IkeaCategoryResponse: ...
+    def product(self, **params: Unpack[IkeaProductParams]) -> IkeaProductResponse: ...
+    def reviews(self, **params: Unpack[IkeaReviewsParams]) -> IkeaReviewsResponse: ...
+    def search(self, **params: Unpack[IkeaSearchParams]) -> IkeaSearchResponse: ...
+    def store(self, **params: Unpack[IkeaStoreParams]) -> IkeaStoreResponse: ...
+    def stores(self, **params: Unpack[IkeaStoresParams]) -> IkeaStoresResponse: ...
+    def suggest(self, **params: Unpack[IkeaSuggestParams]) -> IkeaSuggestResponse: ...
+
 class ImdbGroup:
+    def charts(self, **params: Unpack[ImdbChartsParams]) -> ImdbChartsResponse: ...
     def name(self, **params: Unpack[ImdbNameParams]) -> ImdbNameResponse: ...
     def name_awards(self, **params: Unpack[ImdbNameAwardsParams]) -> ImdbNameAwardsResponse: ...
     def name_credits(self, **params: Unpack[ImdbNameCreditsParams]) -> ImdbNameCreditsResponse: ...
@@ -43610,8 +49613,10 @@ class ImdbGroup:
     def title_parental_guide(self, **params: Unpack[ImdbTitleParentalGuideParams]) -> ImdbTitleParentalGuideResponse: ...
     def title_public_facts_analysis(self, **params: Unpack[ImdbTitlePublicFactsAnalysisParams]) -> ImdbTitlePublicFactsAnalysisResponse: ...
     def title_quotes(self, **params: Unpack[ImdbTitleQuotesParams]) -> ImdbTitleQuotesResponse: ...
+    def title_ratings(self, **params: Unpack[ImdbTitleRatingsParams]) -> ImdbTitleRatingsResponse: ...
     def title_release_info(self, **params: Unpack[ImdbTitleReleaseInfoParams]) -> ImdbTitleReleaseInfoResponse: ...
     def title_reviews(self, **params: Unpack[ImdbTitleReviewsParams]) -> ImdbTitleReviewsResponse: ...
+    def title_similar(self, **params: Unpack[ImdbTitleSimilarParams]) -> ImdbTitleSimilarResponse: ...
     def title_technical_specs(self, **params: Unpack[ImdbTitleTechnicalSpecsParams]) -> ImdbTitleTechnicalSpecsResponse: ...
     def title_trivia(self, **params: Unpack[ImdbTitleTriviaParams]) -> ImdbTitleTriviaResponse: ...
 
@@ -43636,6 +49641,16 @@ class InstagramGroup:
     def post(self, **params: Unpack[InstagramPostParams]) -> InstagramPostResponse: ...
     def profile(self, **params: Unpack[InstagramProfileParams]) -> InstagramProfileResponse: ...
     def reels(self, **params: Unpack[InstagramReelsParams]) -> InstagramReelsResponse: ...
+
+class JCrewGroup:
+    def jcrew_categories(self, **params: Unpack[JCrewJcrewCategoriesParams]) -> JCrewJcrewCategoriesResponse: ...
+    def jcrew_category(self, **params: Unpack[JCrewJcrewCategoryParams]) -> JCrewJcrewCategoryResponse: ...
+    def jcrew_product(self, **params: Unpack[JCrewJcrewProductParams]) -> JCrewJcrewProductResponse: ...
+    def jcrew_product_reviews(self, **params: Unpack[JCrewJcrewProductReviewsParams]) -> JCrewJcrewProductReviewsResponse: ...
+    def jcrew_search(self, **params: Unpack[JCrewJcrewSearchParams]) -> JCrewJcrewSearchResponse: ...
+    def jcrew_size_chart(self, **params: Unpack[JCrewJcrewSizeChartParams]) -> JCrewJcrewSizeChartResponse: ...
+    def jcrew_stores(self, **params: Unpack[JCrewJcrewStoresParams]) -> JCrewJcrewStoresResponse: ...
+    def jcrew_suggest(self, **params: Unpack[JCrewJcrewSuggestParams]) -> JCrewJcrewSuggestResponse: ...
 
 class JobsGroup:
     def ashby_board(self, **params: Unpack[JobsAshbyBoardParams]) -> JobsAshbyBoardResponse: ...
@@ -43713,11 +49728,30 @@ class KalshiGroup:
     def series_detail(self, **params: Unpack[KalshiSeriesDetailParams]) -> KalshiSeriesDetailResponse: ...
     def trades(self, **params: Unpack[KalshiTradesParams]) -> KalshiTradesResponse: ...
 
+class KickstarterGroup:
+    def comments(self, **params: Unpack[KickstarterCommentsParams]) -> KickstarterCommentsResponse: ...
+    def discover(self, **params: Unpack[KickstarterDiscoverParams]) -> KickstarterDiscoverResponse: ...
+    def project(self, **params: Unpack[KickstarterProjectParams]) -> KickstarterProjectResponse: ...
+    def updates(self, **params: Unpack[KickstarterUpdatesParams]) -> KickstarterUpdatesResponse: ...
+
 class KohlSGroup:
     def kohls_category(self, **params: Unpack[KohlSKohlsCategoryParams]) -> KohlSKohlsCategoryResponse: ...
     def kohls_product_reviews(self, **params: Unpack[KohlSKohlsProductReviewsParams]) -> KohlSKohlsProductReviewsResponse: ...
     def kohls_stores(self, **params: Unpack[KohlSKohlsStoresParams]) -> KohlSKohlsStoresResponse: ...
     def kohls_suggest(self, **params: Unpack[KohlSKohlsSuggestParams]) -> KohlSKohlsSuggestResponse: ...
+
+class KylieCosmeticsGroup:
+    def kyliecosmetics_collections(self, **params: Unpack[KylieCosmeticsKyliecosmeticsCollectionsParams]) -> KylieCosmeticsKyliecosmeticsCollectionsResponse: ...
+    def kyliecosmetics_collection_products(self, **params: Unpack[KylieCosmeticsKyliecosmeticsCollectionProductsParams]) -> KylieCosmeticsKyliecosmeticsCollectionProductsResponse: ...
+    def kyliecosmetics_pages(self, **params: Unpack[KylieCosmeticsKyliecosmeticsPagesParams]) -> KylieCosmeticsKyliecosmeticsPagesResponse: ...
+    def kyliecosmetics_page(self, **params: Unpack[KylieCosmeticsKyliecosmeticsPageParams]) -> KylieCosmeticsKyliecosmeticsPageResponse: ...
+    def kyliecosmetics_products(self, **params: Unpack[KylieCosmeticsKyliecosmeticsProductsParams]) -> KylieCosmeticsKyliecosmeticsProductsResponse: ...
+    def kyliecosmetics_product(self, **params: Unpack[KylieCosmeticsKyliecosmeticsProductParams]) -> KylieCosmeticsKyliecosmeticsProductResponse: ...
+    def kyliecosmetics_product_recommendations(self, **params: Unpack[KylieCosmeticsKyliecosmeticsProductRecommendationsParams]) -> KylieCosmeticsKyliecosmeticsProductRecommendationsResponse: ...
+    def kyliecosmetics_search_suggest(self, **params: Unpack[KylieCosmeticsKyliecosmeticsSearchSuggestParams]) -> KylieCosmeticsKyliecosmeticsSearchSuggestResponse: ...
+    def kyliecosmetics_sitemap_urls(self, **params: Unpack[KylieCosmeticsKyliecosmeticsSitemapUrlsParams]) -> KylieCosmeticsKyliecosmeticsSitemapUrlsResponse: ...
+    def kyliecosmetics_sitemaps(self, **params: Unpack[KylieCosmeticsKyliecosmeticsSitemapsParams]) -> KylieCosmeticsKyliecosmeticsSitemapsResponse: ...
+    def kyliecosmetics_store(self, **params: Unpack[KylieCosmeticsKyliecosmeticsStoreParams]) -> KylieCosmeticsKyliecosmeticsStoreResponse: ...
 
 class LetterboxdGroup:
     def film(self, **params: Unpack[LetterboxdFilmParams]) -> LetterboxdFilmResponse: ...
@@ -43802,9 +49836,20 @@ class MlbGroup:
     def teams(self, **params: Unpack[MlbTeamsParams]) -> MlbTeamsResponse: ...
     def transactions(self, **params: Unpack[MlbTransactionsParams]) -> MlbTransactionsResponse: ...
 
+class MonitorsGroup:
+    def list(self, **params: Unpack[MonitorsListParams]) -> MonitorsListResponse: ...
+    def create(self, **params: Unpack[MonitorsCreateParams]) -> MonitorsCreateResponse: ...
+    def delete(self, **params: Unpack[MonitorsDeleteParams]) -> MonitorsDeleteResponse: ...
+    def get(self, **params: Unpack[MonitorsGetParams]) -> MonitorsGetResponse: ...
+    def update(self, **params: Unpack[MonitorsUpdateParams]) -> MonitorsUpdateResponse: ...
+    def checks(self, **params: Unpack[MonitorsChecksParams]) -> MonitorsChecksResponse: ...
+
 class NikeGroup:
     def categories(self, **params: Unpack[NikeCategoriesParams]) -> NikeCategoriesResponse: ...
     def product(self, **params: Unpack[NikeProductParams]) -> NikeProductResponse: ...
+    def product_availability(self, **params: Unpack[NikeProductAvailabilityParams]) -> NikeProductAvailabilityResponse: ...
+    def product_details(self, **params: Unpack[NikeProductDetailsParams]) -> NikeProductDetailsResponse: ...
+    def product_recommendations(self, **params: Unpack[NikeProductRecommendationsParams]) -> NikeProductRecommendationsResponse: ...
     def product_reviews(self, **params: Unpack[NikeProductReviewsParams]) -> NikeProductReviewsResponse: ...
     def search(self, **params: Unpack[NikeSearchParams]) -> NikeSearchResponse: ...
     def stores(self, **params: Unpack[NikeStoresParams]) -> NikeStoresResponse: ...
@@ -43819,6 +49864,19 @@ class NumbeoGroup:
     def indices_country(self, **params: Unpack[NumbeoIndicesCountryParams]) -> NumbeoIndicesCountryResponse: ...
     def indices_rankings(self, **params: Unpack[NumbeoIndicesRankingsParams]) -> NumbeoIndicesRankingsResponse: ...
     def indices_rankings_by_country(self, **params: Unpack[NumbeoIndicesRankingsByCountryParams]) -> NumbeoIndicesRankingsByCountryResponse: ...
+
+class OhPollyGroup:
+    def ohpolly_collections(self, **params: Unpack[OhPollyOhpollyCollectionsParams]) -> OhPollyOhpollyCollectionsResponse: ...
+    def ohpolly_collection_products(self, **params: Unpack[OhPollyOhpollyCollectionProductsParams]) -> OhPollyOhpollyCollectionProductsResponse: ...
+    def ohpolly_pages(self, **params: Unpack[OhPollyOhpollyPagesParams]) -> OhPollyOhpollyPagesResponse: ...
+    def ohpolly_page(self, **params: Unpack[OhPollyOhpollyPageParams]) -> OhPollyOhpollyPageResponse: ...
+    def ohpolly_products(self, **params: Unpack[OhPollyOhpollyProductsParams]) -> OhPollyOhpollyProductsResponse: ...
+    def ohpolly_product(self, **params: Unpack[OhPollyOhpollyProductParams]) -> OhPollyOhpollyProductResponse: ...
+    def ohpolly_product_recommendations(self, **params: Unpack[OhPollyOhpollyProductRecommendationsParams]) -> OhPollyOhpollyProductRecommendationsResponse: ...
+    def ohpolly_search_suggest(self, **params: Unpack[OhPollyOhpollySearchSuggestParams]) -> OhPollyOhpollySearchSuggestResponse: ...
+    def ohpolly_sitemap_urls(self, **params: Unpack[OhPollyOhpollySitemapUrlsParams]) -> OhPollyOhpollySitemapUrlsResponse: ...
+    def ohpolly_sitemaps(self, **params: Unpack[OhPollyOhpollySitemapsParams]) -> OhPollyOhpollySitemapsResponse: ...
+    def ohpolly_store(self, **params: Unpack[OhPollyOhpollyStoreParams]) -> OhPollyOhpollyStoreResponse: ...
 
 class OldNavyGroup:
     def oldnavy_categories(self, **params: Unpack[OldNavyOldnavyCategoriesParams]) -> OldNavyOldnavyCategoriesResponse: ...
@@ -43956,9 +50014,21 @@ class ProductHuntGroup:
     def reviews(self, **params: Unpack[ProductHuntReviewsParams]) -> ProductHuntReviewsResponse: ...
     def search(self, **params: Unpack[ProductHuntSearchParams]) -> ProductHuntSearchResponse: ...
 
+class QuinceGroup:
+    def categories(self, **params: Unpack[QuinceCategoriesParams]) -> QuinceCategoriesResponse: ...
+    def navigation(self, **params: Unpack[QuinceNavigationParams]) -> QuinceNavigationResponse: ...
+    def product(self, **params: Unpack[QuinceProductParams]) -> QuinceProductResponse: ...
+    def product_faq(self, **params: Unpack[QuinceProductFaqParams]) -> QuinceProductFaqResponse: ...
+    def product_reviews(self, **params: Unpack[QuinceProductReviewsParams]) -> QuinceProductReviewsResponse: ...
+    def search(self, **params: Unpack[QuinceSearchParams]) -> QuinceSearchResponse: ...
+    def sitemap_urls(self, **params: Unpack[QuinceSitemapUrlsParams]) -> QuinceSitemapUrlsResponse: ...
+    def sitemaps(self, **params: Unpack[QuinceSitemapsParams]) -> QuinceSitemapsResponse: ...
+    def suggest(self, **params: Unpack[QuinceSuggestParams]) -> QuinceSuggestResponse: ...
+
 class RedditGroup:
     def comments(self, **params: Unpack[RedditCommentsParams]) -> RedditCommentsResponse: ...
     def domain_posts(self, **params: Unpack[RedditDomainPostsParams]) -> RedditDomainPostsResponse: ...
+    def leads(self, **params: Unpack[RedditLeadsParams]) -> RedditLeadsResponse: ...
     def post(self, **params: Unpack[RedditPostParams]) -> RedditPostResponse: ...
     def search(self, **params: Unpack[RedditSearchParams]) -> RedditSearchResponse: ...
     def subreddit_about(self, **params: Unpack[RedditSubredditAboutParams]) -> RedditSubredditAboutResponse: ...
@@ -43980,6 +50050,19 @@ class ReferralsGroup:
     def click(self, **params: Unpack[ReferralsClickParams]) -> ReferralsClickResponse: ...
     def me(self, **params: Unpack[ReferralsMeParams]) -> ReferralsMeResponse: ...
     def me_events(self, **params: Unpack[ReferralsMeEventsParams]) -> ReferralsMeEventsResponse: ...
+
+class RothySGroup:
+    def rothys_collections(self, **params: Unpack[RothySRothysCollectionsParams]) -> RothySRothysCollectionsResponse: ...
+    def rothys_collection_products(self, **params: Unpack[RothySRothysCollectionProductsParams]) -> RothySRothysCollectionProductsResponse: ...
+    def rothys_pages(self, **params: Unpack[RothySRothysPagesParams]) -> RothySRothysPagesResponse: ...
+    def rothys_page(self, **params: Unpack[RothySRothysPageParams]) -> RothySRothysPageResponse: ...
+    def rothys_products(self, **params: Unpack[RothySRothysProductsParams]) -> RothySRothysProductsResponse: ...
+    def rothys_product(self, **params: Unpack[RothySRothysProductParams]) -> RothySRothysProductResponse: ...
+    def rothys_product_recommendations(self, **params: Unpack[RothySRothysProductRecommendationsParams]) -> RothySRothysProductRecommendationsResponse: ...
+    def rothys_search_suggest(self, **params: Unpack[RothySRothysSearchSuggestParams]) -> RothySRothysSearchSuggestResponse: ...
+    def rothys_sitemap_urls(self, **params: Unpack[RothySRothysSitemapUrlsParams]) -> RothySRothysSitemapUrlsResponse: ...
+    def rothys_sitemaps(self, **params: Unpack[RothySRothysSitemapsParams]) -> RothySRothysSitemapsResponse: ...
+    def rothys_store(self, **params: Unpack[RothySRothysStoreParams]) -> RothySRothysStoreResponse: ...
 
 class RottenTomatoesGroup:
     def rottentomatoes_browse_movies(self, **params: Unpack[RottenTomatoesRottentomatoesBrowseMoviesParams]) -> RottenTomatoesRottentomatoesBrowseMoviesResponse: ...
@@ -44020,6 +50103,16 @@ class SephoraGroup:
     def stores(self, **params: Unpack[SephoraStoresParams]) -> SephoraStoresResponse: ...
     def suggest(self, **params: Unpack[SephoraSuggestParams]) -> SephoraSuggestResponse: ...
 
+class SheinGroup:
+    def category_filters(self, **params: Unpack[SheinCategoryFiltersParams]) -> SheinCategoryFiltersResponse: ...
+    def category_goods(self, **params: Unpack[SheinCategoryGoodsParams]) -> SheinCategoryGoodsResponse: ...
+    def category_nav(self, **params: Unpack[SheinCategoryNavParams]) -> SheinCategoryNavResponse: ...
+    def products_aggregation_filters(self, **params: Unpack[SheinProductsAggregationFiltersParams]) -> SheinProductsAggregationFiltersResponse: ...
+    def products_detail(self, **params: Unpack[SheinProductsDetailParams]) -> SheinProductsDetailResponse: ...
+    def products_search(self, **params: Unpack[SheinProductsSearchParams]) -> SheinProductsSearchResponse: ...
+    def search_autocomplete(self, **params: Unpack[SheinSearchAutocompleteParams]) -> SheinSearchAutocompleteResponse: ...
+    def search_keywords(self, **params: Unpack[SheinSearchKeywordsParams]) -> SheinSearchKeywordsResponse: ...
+
 class ShopAppGroup:
     def analysis(self, **params: Unpack[ShopAppAnalysisParams]) -> ShopAppAnalysisResponse: ...
     def categories(self, **params: Unpack[ShopAppCategoriesParams]) -> ShopAppCategoriesResponse: ...
@@ -44054,6 +50147,19 @@ class ShopifyGroup:
 class SimilarWebGroup:
     def search(self, **params: Unpack[SimilarWebSearchParams]) -> SimilarWebSearchResponse: ...
     def web(self, **params: Unpack[SimilarWebWebParams]) -> SimilarWebWebResponse: ...
+
+class SkimsGroup:
+    def collections(self, **params: Unpack[SkimsCollectionsParams]) -> SkimsCollectionsResponse: ...
+    def collection_products(self, **params: Unpack[SkimsCollectionProductsParams]) -> SkimsCollectionProductsResponse: ...
+    def pages(self, **params: Unpack[SkimsPagesParams]) -> SkimsPagesResponse: ...
+    def page(self, **params: Unpack[SkimsPageParams]) -> SkimsPageResponse: ...
+    def products(self, **params: Unpack[SkimsProductsParams]) -> SkimsProductsResponse: ...
+    def product(self, **params: Unpack[SkimsProductParams]) -> SkimsProductResponse: ...
+    def product_recommendations(self, **params: Unpack[SkimsProductRecommendationsParams]) -> SkimsProductRecommendationsResponse: ...
+    def search_suggest(self, **params: Unpack[SkimsSearchSuggestParams]) -> SkimsSearchSuggestResponse: ...
+    def sitemap_urls(self, **params: Unpack[SkimsSitemapUrlsParams]) -> SkimsSitemapUrlsResponse: ...
+    def sitemaps(self, **params: Unpack[SkimsSitemapsParams]) -> SkimsSitemapsResponse: ...
+    def store(self, **params: Unpack[SkimsStoreParams]) -> SkimsStoreResponse: ...
 
 class SofaScoreGroup:
     def sofascore_event(self, **params: Unpack[SofaScoreSofascoreEventParams]) -> SofaScoreSofascoreEventResponse: ...
@@ -44144,6 +50250,19 @@ class SteamGroup:
     def tags_list(self, **params: Unpack[SteamTagsListParams]) -> SteamTagsListResponse: ...
     def top_sellers(self, **params: Unpack[SteamTopSellersParams]) -> SteamTopSellersResponse: ...
 
+class SteveMaddenGroup:
+    def stevemadden_collections(self, **params: Unpack[SteveMaddenStevemaddenCollectionsParams]) -> SteveMaddenStevemaddenCollectionsResponse: ...
+    def stevemadden_collection_products(self, **params: Unpack[SteveMaddenStevemaddenCollectionProductsParams]) -> SteveMaddenStevemaddenCollectionProductsResponse: ...
+    def stevemadden_pages(self, **params: Unpack[SteveMaddenStevemaddenPagesParams]) -> SteveMaddenStevemaddenPagesResponse: ...
+    def stevemadden_page(self, **params: Unpack[SteveMaddenStevemaddenPageParams]) -> SteveMaddenStevemaddenPageResponse: ...
+    def stevemadden_products(self, **params: Unpack[SteveMaddenStevemaddenProductsParams]) -> SteveMaddenStevemaddenProductsResponse: ...
+    def stevemadden_product(self, **params: Unpack[SteveMaddenStevemaddenProductParams]) -> SteveMaddenStevemaddenProductResponse: ...
+    def stevemadden_product_recommendations(self, **params: Unpack[SteveMaddenStevemaddenProductRecommendationsParams]) -> SteveMaddenStevemaddenProductRecommendationsResponse: ...
+    def stevemadden_search_suggest(self, **params: Unpack[SteveMaddenStevemaddenSearchSuggestParams]) -> SteveMaddenStevemaddenSearchSuggestResponse: ...
+    def stevemadden_sitemap_urls(self, **params: Unpack[SteveMaddenStevemaddenSitemapUrlsParams]) -> SteveMaddenStevemaddenSitemapUrlsResponse: ...
+    def stevemadden_sitemaps(self, **params: Unpack[SteveMaddenStevemaddenSitemapsParams]) -> SteveMaddenStevemaddenSitemapsResponse: ...
+    def stevemadden_store(self, **params: Unpack[SteveMaddenStevemaddenStoreParams]) -> SteveMaddenStevemaddenStoreResponse: ...
+
 class StockXGroup:
     def stockx_brands(self, **params: Unpack[StockXStockxBrandsParams]) -> StockXStockxBrandsResponse: ...
     def stockx_categories(self, **params: Unpack[StockXStockxCategoriesParams]) -> StockXStockxCategoriesResponse: ...
@@ -44169,6 +50288,19 @@ class TargetGroup:
 class TeslaJobsGroup:
     def job(self, **params: Unpack[TeslaJobsJobParams]) -> TeslaJobsJobResponse: ...
     def list(self, **params: Unpack[TeslaJobsListParams]) -> TeslaJobsListResponse: ...
+
+class TheBodyShopGroup:
+    def thebodyshop_collections(self, **params: Unpack[TheBodyShopThebodyshopCollectionsParams]) -> TheBodyShopThebodyshopCollectionsResponse: ...
+    def thebodyshop_collection_products(self, **params: Unpack[TheBodyShopThebodyshopCollectionProductsParams]) -> TheBodyShopThebodyshopCollectionProductsResponse: ...
+    def thebodyshop_pages(self, **params: Unpack[TheBodyShopThebodyshopPagesParams]) -> TheBodyShopThebodyshopPagesResponse: ...
+    def thebodyshop_page(self, **params: Unpack[TheBodyShopThebodyshopPageParams]) -> TheBodyShopThebodyshopPageResponse: ...
+    def thebodyshop_products(self, **params: Unpack[TheBodyShopThebodyshopProductsParams]) -> TheBodyShopThebodyshopProductsResponse: ...
+    def thebodyshop_product(self, **params: Unpack[TheBodyShopThebodyshopProductParams]) -> TheBodyShopThebodyshopProductResponse: ...
+    def thebodyshop_product_recommendations(self, **params: Unpack[TheBodyShopThebodyshopProductRecommendationsParams]) -> TheBodyShopThebodyshopProductRecommendationsResponse: ...
+    def thebodyshop_search_suggest(self, **params: Unpack[TheBodyShopThebodyshopSearchSuggestParams]) -> TheBodyShopThebodyshopSearchSuggestResponse: ...
+    def thebodyshop_sitemap_urls(self, **params: Unpack[TheBodyShopThebodyshopSitemapUrlsParams]) -> TheBodyShopThebodyshopSitemapUrlsResponse: ...
+    def thebodyshop_sitemaps(self, **params: Unpack[TheBodyShopThebodyshopSitemapsParams]) -> TheBodyShopThebodyshopSitemapsResponse: ...
+    def thebodyshop_store(self, **params: Unpack[TheBodyShopThebodyshopStoreParams]) -> TheBodyShopThebodyshopStoreResponse: ...
 
 class ThreadsGroup:
     def post(self, **params: Unpack[ThreadsPostParams]) -> ThreadsPostResponse: ...
@@ -44318,6 +50450,9 @@ class VintedGroup:
     def category(self, **params: Unpack[VintedCategoryParams]) -> VintedCategoryResponse: ...
     def item(self, **params: Unpack[VintedItemParams]) -> VintedItemResponse: ...
     def member(self, **params: Unpack[VintedMemberParams]) -> VintedMemberResponse: ...
+
+class WalgreensGroup:
+    def stores(self, **params: Unpack[WalgreensStoresParams]) -> WalgreensStoresResponse: ...
 
 class WalmartGroup:
     def product(self, **params: Unpack[WalmartProductParams]) -> WalmartProductResponse: ...
@@ -44510,6 +50645,11 @@ class ZillowGroup:
     def search(self, **params: Unpack[ZillowSearchParams]) -> ZillowSearchResponse: ...
 
 OperationId = Literal[
+    'adidas-product',
+    'adidas-search',
+    'adidas-store',
+    'adidas-stores',
+    'adidas-suggest',
     'agoda-activities-search',
     'agoda-activity-detail',
     'agoda-flights-itinerary-amenities',
@@ -44525,6 +50665,17 @@ OperationId = Literal[
     'airbnb-room-calendar',
     'airbnb-room-reviews',
     'airbnb-search',
+    'allbirds-collections',
+    'allbirds-collection-products',
+    'allbirds-pages',
+    'allbirds-page',
+    'allbirds-products',
+    'allbirds-product',
+    'allbirds-product-recommendations',
+    'allbirds-search-suggest',
+    'allbirds-sitemap-urls',
+    'allbirds-sitemaps',
+    'allbirds-store',
     'amazon-jobs-job',
     'amazon-jobs-search',
     'amazon-product',
@@ -44573,9 +50724,28 @@ OperationId = Literal[
     'appstore-similar',
     'appstore-suggest',
     'appstore-version-history',
+    'audible-categories',
+    'audible-category',
+    'audible-charts',
+    'audible-editorial-list',
+    'audible-product',
+    'audible-product-related',
+    'audible-product-reviews',
+    'audible-products',
+    'audible-search',
+    'audible-series',
     'autotrader-dealer',
     'autotrader-search',
     'autotrader-vehicle',
+    'bbb-business',
+    'bbb-business-complaints',
+    'bbb-business-more-info',
+    'bbb-business-reviews',
+    'bbb-category',
+    'bbb-scamtracker-search',
+    'bbb-scamtracker-state-stats',
+    'bbb-scamtracker-detail',
+    'bbb-search',
     'bestbuy-brands',
     'bestbuy-categories',
     'bestbuy-categories-trending',
@@ -44596,6 +50766,9 @@ OperationId = Literal[
     'billing-me-period-statement-download',
     'billing-me-portal',
     'billing-me-rejections',
+    'billing-me-subscription-change',
+    'billing-me-subscription-change-cancel',
+    'billing-me-subscription-preview',
     'bing-images',
     'bing-news',
     'bing-search',
@@ -44643,6 +50816,17 @@ OperationId = Literal[
     'brave-search',
     'brave-suggest',
     'brave-videos',
+    'brooklinen-collections',
+    'brooklinen-collection-products',
+    'brooklinen-pages',
+    'brooklinen-page',
+    'brooklinen-products',
+    'brooklinen-product',
+    'brooklinen-product-recommendations',
+    'brooklinen-search-suggest',
+    'brooklinen-sitemap-urls',
+    'brooklinen-sitemaps',
+    'brooklinen-store',
     'capterra-product',
     'capterra-reviews',
     'capterra-search',
@@ -44655,6 +50839,13 @@ OperationId = Literal[
     'carmax-vehicle-recommendations',
     'carsdotcom-search',
     'carsdotcom-vehicle',
+    'chewy-categories',
+    'chewy-category',
+    'chewy-gtin-lookup',
+    'chewy-product',
+    'chewy-products',
+    'chewy-search',
+    'chewy-suggest',
     'chromewebstore-categories',
     'chromewebstore-category',
     'chromewebstore-charts',
@@ -44688,6 +50879,17 @@ OperationId = Literal[
     'coingecko-token-unlocks',
     'coingecko-treasuries',
     'coingecko-trending',
+    'colehaan-collections',
+    'colehaan-collection-products',
+    'colehaan-pages',
+    'colehaan-page',
+    'colehaan-products',
+    'colehaan-product',
+    'colehaan-product-recommendations',
+    'colehaan-search-suggest',
+    'colehaan-sitemap-urls',
+    'colehaan-sitemaps',
+    'colehaan-store',
     'congress-report',
     'congress-stock-disclosures',
     'contact',
@@ -44708,6 +50910,9 @@ OperationId = Literal[
     'datasets-apps-charts-search',
     'datasets-apps-reviews-search',
     'datasets-apps-search',
+    'datasets-bbb-businesses-facets',
+    'datasets-bbb-businesses-item',
+    'datasets-bbb-businesses-search',
     'datasets-boxofficemojo-facets',
     'datasets-boxofficemojo-item',
     'datasets-boxofficemojo-search',
@@ -44719,6 +50924,9 @@ OperationId = Literal[
     'datasets-chrome-extensions-search',
     'datasets-chrome-extensions-trending',
     'datasets-creators-search',
+    'datasets-facebook-pages-facets',
+    'datasets-facebook-pages-item',
+    'datasets-facebook-pages-search',
     'datasets-github-users-facets',
     'datasets-github-users-item',
     'datasets-github-users-nearby',
@@ -44803,9 +51011,16 @@ OperationId = Literal[
     'datasets-trustmrr-history',
     'datasets-trustmrr-item',
     'datasets-trustmrr-search',
+    'datasets-vehicle-listings-facets',
+    'datasets-vehicle-listings-item',
+    'datasets-vehicle-listings-price-history',
+    'datasets-vehicle-listings-search',
     'datasets-x-users-facets',
     'datasets-x-users-item',
     'datasets-x-users-search',
+    'datasets-youtube-creators-facets',
+    'datasets-youtube-creators-item',
+    'datasets-youtube-creators-search',
     'depop-brands',
     'depop-categories',
     'depop-item',
@@ -44879,6 +51094,17 @@ OperationId = Literal[
     'etsy-shop',
     'etsy-shop-listings',
     'etsy-shop-reviews',
+    'everlane-collections',
+    'everlane-collection-products',
+    'everlane-pages',
+    'everlane-page',
+    'everlane-products',
+    'everlane-product',
+    'everlane-product-recommendations',
+    'everlane-search-suggest',
+    'everlane-sitemap-urls',
+    'everlane-sitemaps',
+    'everlane-store',
     'expedia-activities-search',
     'expedia-flights-search',
     'expedia-locations-search',
@@ -44889,9 +51115,32 @@ OperationId = Literal[
     'extract',
     'facebook-marketplace-search',
     'facebook-page',
+    'fashionnova-collections',
+    'fashionnova-collection-products',
+    'fashionnova-pages',
+    'fashionnova-page',
+    'fashionnova-products',
+    'fashionnova-product',
+    'fashionnova-product-recommendations',
+    'fashionnova-search-suggest',
+    'fashionnova-sitemap-urls',
+    'fashionnova-sitemaps',
+    'fashionnova-store',
     'fiverr-gig',
     'fiverr-search',
     'fiverr-seller',
+    'gdelt-context',
+    'gdelt-search',
+    'gdelt-timeline',
+    'gdelt-tonechart',
+    'gdelt-tv-concept-entities',
+    'gdelt-tv-search',
+    'gdelt-tv-showchart',
+    'gdelt-tv-stationchart',
+    'gdelt-tv-stationdetails',
+    'gdelt-tv-timeline',
+    'gdelt-tv-visual-entities',
+    'gdelt-tv-wordcloud',
     'geocoding-lookup',
     'geocoding-reverse',
     'geocoding-search',
@@ -44981,6 +51230,16 @@ OperationId = Literal[
     'googleplay-search',
     'googleplay-similar',
     'googleplay-suggest',
+    'gymshark-collections',
+    'gymshark-collection-products',
+    'gymshark-pages',
+    'gymshark-page',
+    'gymshark-products',
+    'gymshark-product',
+    'gymshark-product-recommendations',
+    'gymshark-sitemap-urls',
+    'gymshark-sitemaps',
+    'gymshark-store',
     'hm-categories',
     'hm-listing',
     'hm-product',
@@ -44988,6 +51247,20 @@ OperationId = Literal[
     'hm-search',
     'hm-search-suggestions',
     'hm-stores',
+    'homedepot-categories',
+    'homedepot-category',
+    'homedepot-product',
+    'homedepot-product-questions',
+    'homedepot-search',
+    'ikea-availability',
+    'ikea-category',
+    'ikea-product',
+    'ikea-reviews',
+    'ikea-search',
+    'ikea-store',
+    'ikea-stores',
+    'ikea-suggest',
+    'imdb-charts',
     'imdb-name',
     'imdb-name-awards',
     'imdb-name-credits',
@@ -45004,8 +51277,10 @@ OperationId = Literal[
     'imdb-title-parental-guide',
     'imdb-title-public-facts-analysis',
     'imdb-title-quotes',
+    'imdb-title-ratings',
     'imdb-title-release-info',
     'imdb-title-reviews',
+    'imdb-title-similar',
     'imdb-title-technical-specs',
     'imdb-title-trivia',
     'importyeti-company',
@@ -45022,6 +51297,14 @@ OperationId = Literal[
     'instagram-post',
     'instagram-profile',
     'instagram-reels',
+    'jcrew-categories',
+    'jcrew-category',
+    'jcrew-product',
+    'jcrew-product-reviews',
+    'jcrew-search',
+    'jcrew-size-chart',
+    'jcrew-stores',
+    'jcrew-suggest',
     'jobs-ashby-board',
     'jobs-company-search',
     'jobs-eightfold-board',
@@ -45092,10 +51375,25 @@ OperationId = Literal[
     'kalshi-series',
     'kalshi-series-detail',
     'kalshi-trades',
+    'kickstarter-comments',
+    'kickstarter-discover',
+    'kickstarter-project',
+    'kickstarter-updates',
     'kohls-category',
     'kohls-product-reviews',
     'kohls-stores',
     'kohls-suggest',
+    'kyliecosmetics-collections',
+    'kyliecosmetics-collection-products',
+    'kyliecosmetics-pages',
+    'kyliecosmetics-page',
+    'kyliecosmetics-products',
+    'kyliecosmetics-product',
+    'kyliecosmetics-product-recommendations',
+    'kyliecosmetics-search-suggest',
+    'kyliecosmetics-sitemap-urls',
+    'kyliecosmetics-sitemaps',
+    'kyliecosmetics-store',
     'letterboxd-film',
     'letterboxd-film-rating-histogram',
     'letterboxd-film-reviews',
@@ -45159,8 +51457,17 @@ OperationId = Literal[
     'mlb-team-stats',
     'mlb-teams',
     'mlb-transactions',
+    'monitors-list',
+    'monitors-create',
+    'monitors-delete',
+    'monitors-get',
+    'monitors-update',
+    'monitors-checks',
     'nike-categories',
     'nike-product',
+    'nike-product-availability',
+    'nike-product-details',
+    'nike-product-recommendations',
     'nike-product-reviews',
     'nike-search',
     'nike-stores',
@@ -45173,6 +51480,17 @@ OperationId = Literal[
     'numbeo-indices-country',
     'numbeo-indices-rankings',
     'numbeo-indices-rankings-by-country',
+    'ohpolly-collections',
+    'ohpolly-collection-products',
+    'ohpolly-pages',
+    'ohpolly-page',
+    'ohpolly-products',
+    'ohpolly-product',
+    'ohpolly-product-recommendations',
+    'ohpolly-search-suggest',
+    'ohpolly-sitemap-urls',
+    'ohpolly-sitemaps',
+    'ohpolly-store',
     'oldnavy-categories',
     'oldnavy-category',
     'oldnavy-product',
@@ -45290,9 +51608,19 @@ OperationId = Literal[
     'producthunt-makers',
     'producthunt-reviews',
     'producthunt-search',
+    'quince-categories',
+    'quince-navigation',
+    'quince-product',
+    'quince-product-faq',
+    'quince-product-reviews',
+    'quince-search',
+    'quince-sitemap-urls',
+    'quince-sitemaps',
+    'quince-suggest',
     'ready',
     'reddit-comments',
     'reddit-domain-posts',
+    'reddit-leads',
     'reddit-post',
     'reddit-search',
     'reddit-subreddit-about',
@@ -45310,6 +51638,17 @@ OperationId = Literal[
     'referrals-click',
     'referrals-me',
     'referrals-me-events',
+    'rothys-collections',
+    'rothys-collection-products',
+    'rothys-pages',
+    'rothys-page',
+    'rothys-products',
+    'rothys-product',
+    'rothys-product-recommendations',
+    'rothys-search-suggest',
+    'rothys-sitemap-urls',
+    'rothys-sitemaps',
+    'rothys-store',
     'rottentomatoes-browse-movies',
     'rottentomatoes-browse-tv',
     'rottentomatoes-episode',
@@ -45341,6 +51680,14 @@ OperationId = Literal[
     'sephora-search',
     'sephora-stores',
     'sephora-suggest',
+    'shein-category-filters',
+    'shein-category-goods',
+    'shein-category-nav',
+    'shein-products-aggregation-filters',
+    'shein-products-detail',
+    'shein-products-search',
+    'shein-search-autocomplete',
+    'shein-search-keywords',
     'shop-app-analysis',
     'shop-app-categories',
     'shop-app-product',
@@ -45370,6 +51717,17 @@ OperationId = Literal[
     'shopify-store',
     'similarweb-search',
     'similarweb-web',
+    'skims-collections',
+    'skims-collection-products',
+    'skims-pages',
+    'skims-page',
+    'skims-products',
+    'skims-product',
+    'skims-product-recommendations',
+    'skims-search-suggest',
+    'skims-sitemap-urls',
+    'skims-sitemaps',
+    'skims-store',
     'sofascore-event',
     'sofascore-event-h2h',
     'sofascore-event-incidents',
@@ -45449,6 +51807,17 @@ OperationId = Literal[
     'steam-tags',
     'steam-tags-list',
     'steam-top-sellers',
+    'stevemadden-collections',
+    'stevemadden-collection-products',
+    'stevemadden-pages',
+    'stevemadden-page',
+    'stevemadden-products',
+    'stevemadden-product',
+    'stevemadden-product-recommendations',
+    'stevemadden-search-suggest',
+    'stevemadden-sitemap-urls',
+    'stevemadden-sitemaps',
+    'stevemadden-store',
     'stockx-brands',
     'stockx-categories',
     'stockx-product',
@@ -45467,6 +51836,17 @@ OperationId = Literal[
     'target-search',
     'tesla-jobs-job',
     'tesla-jobs-list',
+    'thebodyshop-collections',
+    'thebodyshop-collection-products',
+    'thebodyshop-pages',
+    'thebodyshop-page',
+    'thebodyshop-products',
+    'thebodyshop-product',
+    'thebodyshop-product-recommendations',
+    'thebodyshop-search-suggest',
+    'thebodyshop-sitemap-urls',
+    'thebodyshop-sitemaps',
+    'thebodyshop-store',
     'threads-post',
     'threads-post-replies',
     'threads-profile',
@@ -45582,6 +51962,7 @@ OperationId = Literal[
     'vinted-category',
     'vinted-item',
     'vinted-member',
+    'walgreens-stores',
     'walmart-product',
     'walmart-product-reviews',
     'walmart-search',
@@ -45735,8 +52116,10 @@ OperationId = Literal[
 ]
 
 class CrawloraClient:
+    adidas: AdidasGroup
     agoda: AgodaGroup
     airbnb: AirbnbGroup
+    allbirds: AllbirdsGroup
     amazon_jobs: AmazonJobsGroup
     amazon: AmazonGroup
     anime: AnimeGroup
@@ -45744,7 +52127,9 @@ class CrawloraClient:
     apple_jobs: AppleJobsGroup
     apple_podcasts: ApplePodcastsGroup
     app_store: AppStoreGroup
+    audible: AudibleGroup
     autotrader: AutotraderGroup
+    bbb: BbbGroup
     best_buy: BestBuyGroup
     billing: BillingGroup
     bing: BingGroup
@@ -45753,11 +52138,14 @@ class CrawloraClient:
     box_office_mojo: BoxOfficeMojoGroup
     brand: BrandGroup
     brave: BraveGroup
+    brooklinen: BrooklinenGroup
     capterra: CapterraGroup
     car_max: CarMaxGroup
     cars_com: CarsComGroup
+    chewy: ChewyGroup
     chrome_web_store: ChromeWebStoreGroup
     coin_gecko: CoinGeckoGroup
+    cole_haan: ColeHaanGroup
     congress: CongressGroup
     web: WebGroup
     costco: CostcoGroup
@@ -45770,9 +52158,12 @@ class CrawloraClient:
     e_bay: EBayGroup
     espn: EspnGroup
     etsy: EtsyGroup
+    everlane: EverlaneGroup
     expedia: ExpediaGroup
     facebook: FacebookGroup
+    fashion_nova: FashionNovaGroup
     fiverr: FiverrGroup
+    gdelt: GdeltGroup
     geocoding: GeocodingGroup
     git_hub: GitHubGroup
     goodreads: GoodreadsGroup
@@ -45780,16 +52171,22 @@ class CrawloraClient:
     google: GoogleGroup
     google_patents: GooglePatentsGroup
     google_play: GooglePlayGroup
+    gymshark: GymsharkGroup
     h_m: HMGroup
+    home_depot: HomeDepotGroup
+    ikea: IkeaGroup
     imdb: ImdbGroup
     import_yeti: ImportYetiGroup
     indeed: IndeedGroup
     instacart: InstacartGroup
     instagram: InstagramGroup
+    j_crew: JCrewGroup
     jobs: JobsGroup
     just_watch: JustWatchGroup
     kalshi: KalshiGroup
+    kickstarter: KickstarterGroup
     kohl_s: KohlSGroup
+    kylie_cosmetics: KylieCosmeticsGroup
     letterboxd: LetterboxdGroup
     linked_in: LinkedInGroup
     lululemon: LululemonGroup
@@ -45800,8 +52197,10 @@ class CrawloraClient:
     metacritic: MetacriticGroup
     metaculus: MetaculusGroup
     mlb: MlbGroup
+    monitors: MonitorsGroup
     nike: NikeGroup
     numbeo: NumbeoGroup
+    oh_polly: OhPollyGroup
     old_navy: OldNavyGroup
     open_table: OpenTableGroup
     meta: MetaGroup
@@ -45811,25 +52210,31 @@ class CrawloraClient:
     polymarket: PolymarketGroup
     poshmark: PoshmarkGroup
     product_hunt: ProductHuntGroup
+    quince: QuinceGroup
     reddit: RedditGroup
     redfin: RedfinGroup
     referrals: ReferralsGroup
+    rothy_s: RothySGroup
     rotten_tomatoes: RottenTomatoesGroup
     sam_s_club: SamSClubGroup
     sec_edgar: SecEdgarGroup
     sephora: SephoraGroup
+    shein: SheinGroup
     shop_app: ShopAppGroup
     shopify: ShopifyGroup
     similar_web: SimilarWebGroup
+    skims: SkimsGroup
     sofa_score: SofaScoreGroup
     sound_cloud: SoundCloudGroup
     spotify_podcasts: SpotifyPodcastsGroup
     spotify: SpotifyGroup
     steam: SteamGroup
+    steve_madden: SteveMaddenGroup
     stock_x: StockXGroup
     strava: StravaGroup
     target: TargetGroup
     tesla_jobs: TeslaJobsGroup
+    the_body_shop: TheBodyShopGroup
     threads: ThreadsGroup
     ticketmaster: TicketmasterGroup
     tiktok: TiktokGroup
@@ -45847,6 +52252,7 @@ class CrawloraClient:
     account_deletion: AccountDeletionGroup
     uspto_patent_public_search: UsptoPatentPublicSearchGroup
     vinted: VintedGroup
+    walgreens: WalgreensGroup
     walmart: WalmartGroup
     wayfair: WayfairGroup
     whatnot: WhatnotGroup
@@ -45948,6 +52354,66 @@ class CrawloraClient:
         timeout: float | None = ...,
         headers: Mapping[str, str] | None = ...,
     ) -> Iterator[Any]: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['adidas-product'],
+        params: AdidasProductParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> AdidasProductResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['adidas-search'],
+        params: AdidasSearchParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> AdidasSearchResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['adidas-store'],
+        params: AdidasStoreParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> AdidasStoreResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['adidas-stores'],
+        params: AdidasStoresParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> AdidasStoresResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['adidas-suggest'],
+        params: AdidasSuggestParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> AdidasSuggestResponse: ...
     @overload
     def operation(
         self,
@@ -46128,6 +52594,138 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> AirbnbSearchResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['allbirds-collections'],
+        params: AllbirdsCollectionsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> AllbirdsCollectionsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['allbirds-collection-products'],
+        params: AllbirdsCollectionProductsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> AllbirdsCollectionProductsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['allbirds-pages'],
+        params: AllbirdsPagesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> AllbirdsPagesResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['allbirds-page'],
+        params: AllbirdsPageParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> AllbirdsPageResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['allbirds-products'],
+        params: AllbirdsProductsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> AllbirdsProductsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['allbirds-product'],
+        params: AllbirdsProductParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> AllbirdsProductResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['allbirds-product-recommendations'],
+        params: AllbirdsProductRecommendationsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> AllbirdsProductRecommendationsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['allbirds-search-suggest'],
+        params: AllbirdsSearchSuggestParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> AllbirdsSearchSuggestResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['allbirds-sitemap-urls'],
+        params: AllbirdsSitemapUrlsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> AllbirdsSitemapUrlsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['allbirds-sitemaps'],
+        params: AllbirdsSitemapsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> AllbirdsSitemapsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['allbirds-store'],
+        params: AllbirdsStoreParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> AllbirdsStoreResponse: ...
     @overload
     def operation(
         self,
@@ -46707,6 +53305,126 @@ class CrawloraClient:
     @overload
     def operation(
         self,
+        operation_id: Literal['audible-categories'],
+        params: AudibleCategoriesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> AudibleCategoriesResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['audible-category'],
+        params: AudibleCategoryParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> AudibleCategoryResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['audible-charts'],
+        params: AudibleChartsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> AudibleChartsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['audible-editorial-list'],
+        params: AudibleEditorialListParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> AudibleEditorialListResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['audible-product'],
+        params: AudibleProductParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> AudibleProductResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['audible-product-related'],
+        params: AudibleProductRelatedParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> AudibleProductRelatedResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['audible-product-reviews'],
+        params: AudibleProductReviewsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> AudibleProductReviewsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['audible-products'],
+        params: AudibleProductsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> AudibleProductsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['audible-search'],
+        params: AudibleSearchParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> AudibleSearchResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['audible-series'],
+        params: AudibleSeriesParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> AudibleSeriesResponse: ...
+    @overload
+    def operation(
+        self,
         operation_id: Literal['autotrader-dealer'],
         params: AutotraderDealerParams,
         *,
@@ -46740,6 +53458,114 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> AutotraderVehicleResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['bbb-business'],
+        params: BbbBusinessParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> BbbBusinessResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['bbb-business-complaints'],
+        params: BbbBusinessComplaintsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> BbbBusinessComplaintsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['bbb-business-more-info'],
+        params: BbbBusinessMoreInfoParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> BbbBusinessMoreInfoResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['bbb-business-reviews'],
+        params: BbbBusinessReviewsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> BbbBusinessReviewsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['bbb-category'],
+        params: BbbCategoryParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> BbbCategoryResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['bbb-scamtracker-search'],
+        params: BbbScamtrackerSearchParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> BbbScamtrackerSearchResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['bbb-scamtracker-state-stats'],
+        params: BbbScamtrackerStateStatsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> BbbScamtrackerStateStatsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['bbb-scamtracker-detail'],
+        params: BbbScamtrackerDetailParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> BbbScamtrackerDetailResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['bbb-search'],
+        params: BbbSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> BbbSearchResponse: ...
     @overload
     def operation(
         self,
@@ -46980,6 +53806,42 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> BillingMeRejectionsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['billing-me-subscription-change'],
+        params: BillingMeSubscriptionChangeParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> BillingMeSubscriptionChangeResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['billing-me-subscription-change-cancel'],
+        params: BillingMeSubscriptionChangeCancelParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> BillingMeSubscriptionChangeCancelResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['billing-me-subscription-preview'],
+        params: BillingMeSubscriptionPreviewParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> BillingMeSubscriptionPreviewResponse: ...
     @overload
     def operation(
         self,
@@ -47547,6 +54409,138 @@ class CrawloraClient:
     @overload
     def operation(
         self,
+        operation_id: Literal['brooklinen-collections'],
+        params: BrooklinenCollectionsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> BrooklinenCollectionsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['brooklinen-collection-products'],
+        params: BrooklinenCollectionProductsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> BrooklinenCollectionProductsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['brooklinen-pages'],
+        params: BrooklinenPagesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> BrooklinenPagesResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['brooklinen-page'],
+        params: BrooklinenPageParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> BrooklinenPageResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['brooklinen-products'],
+        params: BrooklinenProductsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> BrooklinenProductsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['brooklinen-product'],
+        params: BrooklinenProductParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> BrooklinenProductResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['brooklinen-product-recommendations'],
+        params: BrooklinenProductRecommendationsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> BrooklinenProductRecommendationsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['brooklinen-search-suggest'],
+        params: BrooklinenSearchSuggestParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> BrooklinenSearchSuggestResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['brooklinen-sitemap-urls'],
+        params: BrooklinenSitemapUrlsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> BrooklinenSitemapUrlsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['brooklinen-sitemaps'],
+        params: BrooklinenSitemapsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> BrooklinenSitemapsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['brooklinen-store'],
+        params: BrooklinenStoreParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> BrooklinenStoreResponse: ...
+    @overload
+    def operation(
+        self,
         operation_id: Literal['capterra-product'],
         params: CapterraProductParams,
         *,
@@ -47688,6 +54682,90 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> CarsComCarsdotcomVehicleResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['chewy-categories'],
+        params: ChewyCategoriesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ChewyCategoriesResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['chewy-category'],
+        params: ChewyCategoryParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ChewyCategoryResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['chewy-gtin-lookup'],
+        params: ChewyGtinLookupParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ChewyGtinLookupResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['chewy-product'],
+        params: ChewyProductParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ChewyProductResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['chewy-products'],
+        params: ChewyProductsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ChewyProductsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['chewy-search'],
+        params: ChewySearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ChewySearchResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['chewy-suggest'],
+        params: ChewySuggestParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ChewySuggestResponse: ...
     @overload
     def operation(
         self,
@@ -48087,6 +55165,138 @@ class CrawloraClient:
     @overload
     def operation(
         self,
+        operation_id: Literal['colehaan-collections'],
+        params: ColeHaanColehaanCollectionsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ColeHaanColehaanCollectionsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['colehaan-collection-products'],
+        params: ColeHaanColehaanCollectionProductsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ColeHaanColehaanCollectionProductsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['colehaan-pages'],
+        params: ColeHaanColehaanPagesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ColeHaanColehaanPagesResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['colehaan-page'],
+        params: ColeHaanColehaanPageParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ColeHaanColehaanPageResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['colehaan-products'],
+        params: ColeHaanColehaanProductsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ColeHaanColehaanProductsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['colehaan-product'],
+        params: ColeHaanColehaanProductParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ColeHaanColehaanProductResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['colehaan-product-recommendations'],
+        params: ColeHaanColehaanProductRecommendationsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ColeHaanColehaanProductRecommendationsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['colehaan-search-suggest'],
+        params: ColeHaanColehaanSearchSuggestParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ColeHaanColehaanSearchSuggestResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['colehaan-sitemap-urls'],
+        params: ColeHaanColehaanSitemapUrlsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ColeHaanColehaanSitemapUrlsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['colehaan-sitemaps'],
+        params: ColeHaanColehaanSitemapsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ColeHaanColehaanSitemapsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['colehaan-store'],
+        params: ColeHaanColehaanStoreParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ColeHaanColehaanStoreResponse: ...
+    @overload
+    def operation(
+        self,
         operation_id: Literal['congress-report'],
         params: CongressReportParams,
         *,
@@ -48327,6 +55537,42 @@ class CrawloraClient:
     @overload
     def operation(
         self,
+        operation_id: Literal['datasets-bbb-businesses-facets'],
+        params: DatasetsBbbBusinessesFacetsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsBbbBusinessesFacetsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['datasets-bbb-businesses-item'],
+        params: DatasetsBbbBusinessesItemParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsBbbBusinessesItemResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['datasets-bbb-businesses-search'],
+        params: DatasetsBbbBusinessesSearchParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsBbbBusinessesSearchResponse: ...
+    @overload
+    def operation(
+        self,
         operation_id: Literal['datasets-boxofficemojo-facets'],
         params: DatasetsBoxofficemojoFacetsParams,
         *,
@@ -48456,6 +55702,42 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> DatasetsCreatorsSearchResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['datasets-facebook-pages-facets'],
+        params: DatasetsFacebookPagesFacetsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsFacebookPagesFacetsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['datasets-facebook-pages-item'],
+        params: DatasetsFacebookPagesItemParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsFacebookPagesItemResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['datasets-facebook-pages-search'],
+        params: DatasetsFacebookPagesSearchParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsFacebookPagesSearchResponse: ...
     @overload
     def operation(
         self,
@@ -49467,6 +56749,54 @@ class CrawloraClient:
     @overload
     def operation(
         self,
+        operation_id: Literal['datasets-vehicle-listings-facets'],
+        params: DatasetsVehicleListingsFacetsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsVehicleListingsFacetsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['datasets-vehicle-listings-item'],
+        params: DatasetsVehicleListingsItemParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsVehicleListingsItemResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['datasets-vehicle-listings-price-history'],
+        params: DatasetsVehicleListingsPriceHistoryParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsVehicleListingsPriceHistoryResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['datasets-vehicle-listings-search'],
+        params: DatasetsVehicleListingsSearchParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsVehicleListingsSearchResponse: ...
+    @overload
+    def operation(
+        self,
         operation_id: Literal['datasets-x-users-facets'],
         params: DatasetsXUsersFacetsParams,
         *,
@@ -49500,6 +56830,42 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> DatasetsXUsersSearchResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['datasets-youtube-creators-facets'],
+        params: DatasetsYoutubeCreatorsFacetsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsYoutubeCreatorsFacetsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['datasets-youtube-creators-item'],
+        params: DatasetsYoutubeCreatorsItemParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsYoutubeCreatorsItemResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['datasets-youtube-creators-search'],
+        params: DatasetsYoutubeCreatorsSearchParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsYoutubeCreatorsSearchResponse: ...
     @overload
     def operation(
         self,
@@ -50379,6 +57745,138 @@ class CrawloraClient:
     @overload
     def operation(
         self,
+        operation_id: Literal['everlane-collections'],
+        params: EverlaneCollectionsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> EverlaneCollectionsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['everlane-collection-products'],
+        params: EverlaneCollectionProductsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> EverlaneCollectionProductsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['everlane-pages'],
+        params: EverlanePagesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> EverlanePagesResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['everlane-page'],
+        params: EverlanePageParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> EverlanePageResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['everlane-products'],
+        params: EverlaneProductsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> EverlaneProductsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['everlane-product'],
+        params: EverlaneProductParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> EverlaneProductResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['everlane-product-recommendations'],
+        params: EverlaneProductRecommendationsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> EverlaneProductRecommendationsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['everlane-search-suggest'],
+        params: EverlaneSearchSuggestParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> EverlaneSearchSuggestResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['everlane-sitemap-urls'],
+        params: EverlaneSitemapUrlsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> EverlaneSitemapUrlsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['everlane-sitemaps'],
+        params: EverlaneSitemapsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> EverlaneSitemapsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['everlane-store'],
+        params: EverlaneStoreParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> EverlaneStoreResponse: ...
+    @overload
+    def operation(
+        self,
         operation_id: Literal['expedia-activities-search'],
         params: ExpediaActivitiesSearchParams,
         *,
@@ -50499,6 +57997,138 @@ class CrawloraClient:
     @overload
     def operation(
         self,
+        operation_id: Literal['fashionnova-collections'],
+        params: FashionNovaFashionnovaCollectionsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FashionNovaFashionnovaCollectionsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['fashionnova-collection-products'],
+        params: FashionNovaFashionnovaCollectionProductsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FashionNovaFashionnovaCollectionProductsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['fashionnova-pages'],
+        params: FashionNovaFashionnovaPagesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FashionNovaFashionnovaPagesResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['fashionnova-page'],
+        params: FashionNovaFashionnovaPageParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FashionNovaFashionnovaPageResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['fashionnova-products'],
+        params: FashionNovaFashionnovaProductsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FashionNovaFashionnovaProductsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['fashionnova-product'],
+        params: FashionNovaFashionnovaProductParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FashionNovaFashionnovaProductResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['fashionnova-product-recommendations'],
+        params: FashionNovaFashionnovaProductRecommendationsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FashionNovaFashionnovaProductRecommendationsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['fashionnova-search-suggest'],
+        params: FashionNovaFashionnovaSearchSuggestParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FashionNovaFashionnovaSearchSuggestResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['fashionnova-sitemap-urls'],
+        params: FashionNovaFashionnovaSitemapUrlsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FashionNovaFashionnovaSitemapUrlsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['fashionnova-sitemaps'],
+        params: FashionNovaFashionnovaSitemapsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FashionNovaFashionnovaSitemapsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['fashionnova-store'],
+        params: FashionNovaFashionnovaStoreParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FashionNovaFashionnovaStoreResponse: ...
+    @overload
+    def operation(
+        self,
         operation_id: Literal['fiverr-gig'],
         params: FiverrGigParams,
         *,
@@ -50532,6 +58162,150 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> FiverrSellerResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['gdelt-context'],
+        params: GdeltContextParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> GdeltContextResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['gdelt-search'],
+        params: GdeltSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> GdeltSearchResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['gdelt-timeline'],
+        params: GdeltTimelineParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> GdeltTimelineResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['gdelt-tonechart'],
+        params: GdeltTonechartParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> GdeltTonechartResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['gdelt-tv-concept-entities'],
+        params: GdeltTvConceptEntitiesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> GdeltTvConceptEntitiesResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['gdelt-tv-search'],
+        params: GdeltTvSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> GdeltTvSearchResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['gdelt-tv-showchart'],
+        params: GdeltTvShowchartParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> GdeltTvShowchartResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['gdelt-tv-stationchart'],
+        params: GdeltTvStationchartParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> GdeltTvStationchartResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['gdelt-tv-stationdetails'],
+        params: GdeltTvStationdetailsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> GdeltTvStationdetailsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['gdelt-tv-timeline'],
+        params: GdeltTvTimelineParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> GdeltTvTimelineResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['gdelt-tv-visual-entities'],
+        params: GdeltTvVisualEntitiesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> GdeltTvVisualEntitiesResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['gdelt-tv-wordcloud'],
+        params: GdeltTvWordcloudParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> GdeltTvWordcloudResponse: ...
     @overload
     def operation(
         self,
@@ -51603,6 +59377,126 @@ class CrawloraClient:
     @overload
     def operation(
         self,
+        operation_id: Literal['gymshark-collections'],
+        params: GymsharkCollectionsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> GymsharkCollectionsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['gymshark-collection-products'],
+        params: GymsharkCollectionProductsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> GymsharkCollectionProductsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['gymshark-pages'],
+        params: GymsharkPagesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> GymsharkPagesResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['gymshark-page'],
+        params: GymsharkPageParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> GymsharkPageResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['gymshark-products'],
+        params: GymsharkProductsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> GymsharkProductsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['gymshark-product'],
+        params: GymsharkProductParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> GymsharkProductResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['gymshark-product-recommendations'],
+        params: GymsharkProductRecommendationsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> GymsharkProductRecommendationsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['gymshark-sitemap-urls'],
+        params: GymsharkSitemapUrlsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> GymsharkSitemapUrlsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['gymshark-sitemaps'],
+        params: GymsharkSitemapsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> GymsharkSitemapsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['gymshark-store'],
+        params: GymsharkStoreParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> GymsharkStoreResponse: ...
+    @overload
+    def operation(
+        self,
         operation_id: Literal['hm-categories'],
         params: HMHmCategoriesParams = ...,
         *,
@@ -51684,6 +59578,174 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> HMHmStoresResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['homedepot-categories'],
+        params: HomeDepotHomedepotCategoriesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> HomeDepotHomedepotCategoriesResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['homedepot-category'],
+        params: HomeDepotHomedepotCategoryParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> HomeDepotHomedepotCategoryResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['homedepot-product'],
+        params: HomeDepotHomedepotProductParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> HomeDepotHomedepotProductResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['homedepot-product-questions'],
+        params: HomeDepotHomedepotProductQuestionsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> HomeDepotHomedepotProductQuestionsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['homedepot-search'],
+        params: HomeDepotHomedepotSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> HomeDepotHomedepotSearchResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['ikea-availability'],
+        params: IkeaAvailabilityParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> IkeaAvailabilityResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['ikea-category'],
+        params: IkeaCategoryParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> IkeaCategoryResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['ikea-product'],
+        params: IkeaProductParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> IkeaProductResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['ikea-reviews'],
+        params: IkeaReviewsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> IkeaReviewsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['ikea-search'],
+        params: IkeaSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> IkeaSearchResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['ikea-store'],
+        params: IkeaStoreParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> IkeaStoreResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['ikea-stores'],
+        params: IkeaStoresParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> IkeaStoresResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['ikea-suggest'],
+        params: IkeaSuggestParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> IkeaSuggestResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['imdb-charts'],
+        params: ImdbChartsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ImdbChartsResponse: ...
     @overload
     def operation(
         self,
@@ -51879,6 +59941,18 @@ class CrawloraClient:
     @overload
     def operation(
         self,
+        operation_id: Literal['imdb-title-ratings'],
+        params: ImdbTitleRatingsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ImdbTitleRatingsResponse: ...
+    @overload
+    def operation(
+        self,
         operation_id: Literal['imdb-title-release-info'],
         params: ImdbTitleReleaseInfoParams = ...,
         *,
@@ -51900,6 +59974,18 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> ImdbTitleReviewsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['imdb-title-similar'],
+        params: ImdbTitleSimilarParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ImdbTitleSimilarResponse: ...
     @overload
     def operation(
         self,
@@ -52092,6 +60178,102 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> InstagramReelsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['jcrew-categories'],
+        params: JCrewJcrewCategoriesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> JCrewJcrewCategoriesResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['jcrew-category'],
+        params: JCrewJcrewCategoryParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> JCrewJcrewCategoryResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['jcrew-product'],
+        params: JCrewJcrewProductParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> JCrewJcrewProductResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['jcrew-product-reviews'],
+        params: JCrewJcrewProductReviewsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> JCrewJcrewProductReviewsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['jcrew-search'],
+        params: JCrewJcrewSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> JCrewJcrewSearchResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['jcrew-size-chart'],
+        params: JCrewJcrewSizeChartParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> JCrewJcrewSizeChartResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['jcrew-stores'],
+        params: JCrewJcrewStoresParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> JCrewJcrewStoresResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['jcrew-suggest'],
+        params: JCrewJcrewSuggestParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> JCrewJcrewSuggestResponse: ...
     @overload
     def operation(
         self,
@@ -52935,6 +61117,54 @@ class CrawloraClient:
     @overload
     def operation(
         self,
+        operation_id: Literal['kickstarter-comments'],
+        params: KickstarterCommentsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> KickstarterCommentsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['kickstarter-discover'],
+        params: KickstarterDiscoverParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> KickstarterDiscoverResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['kickstarter-project'],
+        params: KickstarterProjectParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> KickstarterProjectResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['kickstarter-updates'],
+        params: KickstarterUpdatesParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> KickstarterUpdatesResponse: ...
+    @overload
+    def operation(
+        self,
         operation_id: Literal['kohls-category'],
         params: KohlSKohlsCategoryParams,
         *,
@@ -52980,6 +61210,138 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> KohlSKohlsSuggestResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['kyliecosmetics-collections'],
+        params: KylieCosmeticsKyliecosmeticsCollectionsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> KylieCosmeticsKyliecosmeticsCollectionsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['kyliecosmetics-collection-products'],
+        params: KylieCosmeticsKyliecosmeticsCollectionProductsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> KylieCosmeticsKyliecosmeticsCollectionProductsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['kyliecosmetics-pages'],
+        params: KylieCosmeticsKyliecosmeticsPagesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> KylieCosmeticsKyliecosmeticsPagesResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['kyliecosmetics-page'],
+        params: KylieCosmeticsKyliecosmeticsPageParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> KylieCosmeticsKyliecosmeticsPageResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['kyliecosmetics-products'],
+        params: KylieCosmeticsKyliecosmeticsProductsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> KylieCosmeticsKyliecosmeticsProductsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['kyliecosmetics-product'],
+        params: KylieCosmeticsKyliecosmeticsProductParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> KylieCosmeticsKyliecosmeticsProductResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['kyliecosmetics-product-recommendations'],
+        params: KylieCosmeticsKyliecosmeticsProductRecommendationsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> KylieCosmeticsKyliecosmeticsProductRecommendationsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['kyliecosmetics-search-suggest'],
+        params: KylieCosmeticsKyliecosmeticsSearchSuggestParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> KylieCosmeticsKyliecosmeticsSearchSuggestResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['kyliecosmetics-sitemap-urls'],
+        params: KylieCosmeticsKyliecosmeticsSitemapUrlsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> KylieCosmeticsKyliecosmeticsSitemapUrlsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['kyliecosmetics-sitemaps'],
+        params: KylieCosmeticsKyliecosmeticsSitemapsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> KylieCosmeticsKyliecosmeticsSitemapsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['kyliecosmetics-store'],
+        params: KylieCosmeticsKyliecosmeticsStoreParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> KylieCosmeticsKyliecosmeticsStoreResponse: ...
     @overload
     def operation(
         self,
@@ -53739,6 +62101,78 @@ class CrawloraClient:
     @overload
     def operation(
         self,
+        operation_id: Literal['monitors-list'],
+        params: MonitorsListParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> MonitorsListResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['monitors-create'],
+        params: MonitorsCreateParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> MonitorsCreateResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['monitors-delete'],
+        params: MonitorsDeleteParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> MonitorsDeleteResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['monitors-get'],
+        params: MonitorsGetParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> MonitorsGetResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['monitors-update'],
+        params: MonitorsUpdateParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> MonitorsUpdateResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['monitors-checks'],
+        params: MonitorsChecksParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> MonitorsChecksResponse: ...
+    @overload
+    def operation(
+        self,
         operation_id: Literal['nike-categories'],
         params: NikeCategoriesParams = ...,
         *,
@@ -53760,6 +62194,42 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> NikeProductResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['nike-product-availability'],
+        params: NikeProductAvailabilityParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> NikeProductAvailabilityResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['nike-product-details'],
+        params: NikeProductDetailsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> NikeProductDetailsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['nike-product-recommendations'],
+        params: NikeProductRecommendationsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> NikeProductRecommendationsResponse: ...
     @overload
     def operation(
         self,
@@ -53904,6 +62374,138 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> NumbeoIndicesRankingsByCountryResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['ohpolly-collections'],
+        params: OhPollyOhpollyCollectionsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> OhPollyOhpollyCollectionsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['ohpolly-collection-products'],
+        params: OhPollyOhpollyCollectionProductsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> OhPollyOhpollyCollectionProductsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['ohpolly-pages'],
+        params: OhPollyOhpollyPagesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> OhPollyOhpollyPagesResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['ohpolly-page'],
+        params: OhPollyOhpollyPageParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> OhPollyOhpollyPageResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['ohpolly-products'],
+        params: OhPollyOhpollyProductsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> OhPollyOhpollyProductsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['ohpolly-product'],
+        params: OhPollyOhpollyProductParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> OhPollyOhpollyProductResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['ohpolly-product-recommendations'],
+        params: OhPollyOhpollyProductRecommendationsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> OhPollyOhpollyProductRecommendationsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['ohpolly-search-suggest'],
+        params: OhPollyOhpollySearchSuggestParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> OhPollyOhpollySearchSuggestResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['ohpolly-sitemap-urls'],
+        params: OhPollyOhpollySitemapUrlsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> OhPollyOhpollySitemapUrlsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['ohpolly-sitemaps'],
+        params: OhPollyOhpollySitemapsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> OhPollyOhpollySitemapsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['ohpolly-store'],
+        params: OhPollyOhpollyStoreParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> OhPollyOhpollyStoreResponse: ...
     @overload
     def operation(
         self,
@@ -55311,6 +63913,114 @@ class CrawloraClient:
     @overload
     def operation(
         self,
+        operation_id: Literal['quince-categories'],
+        params: QuinceCategoriesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> QuinceCategoriesResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['quince-navigation'],
+        params: QuinceNavigationParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> QuinceNavigationResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['quince-product'],
+        params: QuinceProductParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> QuinceProductResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['quince-product-faq'],
+        params: QuinceProductFaqParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> QuinceProductFaqResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['quince-product-reviews'],
+        params: QuinceProductReviewsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> QuinceProductReviewsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['quince-search'],
+        params: QuinceSearchParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> QuinceSearchResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['quince-sitemap-urls'],
+        params: QuinceSitemapUrlsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> QuinceSitemapUrlsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['quince-sitemaps'],
+        params: QuinceSitemapsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> QuinceSitemapsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['quince-suggest'],
+        params: QuinceSuggestParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> QuinceSuggestResponse: ...
+    @overload
+    def operation(
+        self,
         operation_id: Literal['ready'],
         params: MetaReadyParams = ...,
         *,
@@ -55344,6 +64054,18 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> RedditDomainPostsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['reddit-leads'],
+        params: RedditLeadsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> RedditLeadsResponse: ...
     @overload
     def operation(
         self,
@@ -55548,6 +64270,138 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> ReferralsMeEventsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['rothys-collections'],
+        params: RothySRothysCollectionsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> RothySRothysCollectionsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['rothys-collection-products'],
+        params: RothySRothysCollectionProductsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> RothySRothysCollectionProductsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['rothys-pages'],
+        params: RothySRothysPagesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> RothySRothysPagesResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['rothys-page'],
+        params: RothySRothysPageParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> RothySRothysPageResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['rothys-products'],
+        params: RothySRothysProductsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> RothySRothysProductsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['rothys-product'],
+        params: RothySRothysProductParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> RothySRothysProductResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['rothys-product-recommendations'],
+        params: RothySRothysProductRecommendationsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> RothySRothysProductRecommendationsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['rothys-search-suggest'],
+        params: RothySRothysSearchSuggestParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> RothySRothysSearchSuggestResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['rothys-sitemap-urls'],
+        params: RothySRothysSitemapUrlsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> RothySRothysSitemapUrlsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['rothys-sitemaps'],
+        params: RothySRothysSitemapsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> RothySRothysSitemapsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['rothys-store'],
+        params: RothySRothysStoreParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> RothySRothysStoreResponse: ...
     @overload
     def operation(
         self,
@@ -55923,6 +64777,102 @@ class CrawloraClient:
     @overload
     def operation(
         self,
+        operation_id: Literal['shein-category-filters'],
+        params: SheinCategoryFiltersParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> SheinCategoryFiltersResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['shein-category-goods'],
+        params: SheinCategoryGoodsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> SheinCategoryGoodsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['shein-category-nav'],
+        params: SheinCategoryNavParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> SheinCategoryNavResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['shein-products-aggregation-filters'],
+        params: SheinProductsAggregationFiltersParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> SheinProductsAggregationFiltersResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['shein-products-detail'],
+        params: SheinProductsDetailParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> SheinProductsDetailResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['shein-products-search'],
+        params: SheinProductsSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> SheinProductsSearchResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['shein-search-autocomplete'],
+        params: SheinSearchAutocompleteParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> SheinSearchAutocompleteResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['shein-search-keywords'],
+        params: SheinSearchKeywordsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> SheinSearchKeywordsResponse: ...
+    @overload
+    def operation(
+        self,
         operation_id: Literal['shop-app-analysis'],
         params: ShopAppAnalysisParams,
         *,
@@ -56268,6 +65218,138 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> SimilarWebWebResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['skims-collections'],
+        params: SkimsCollectionsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> SkimsCollectionsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['skims-collection-products'],
+        params: SkimsCollectionProductsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> SkimsCollectionProductsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['skims-pages'],
+        params: SkimsPagesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> SkimsPagesResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['skims-page'],
+        params: SkimsPageParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> SkimsPageResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['skims-products'],
+        params: SkimsProductsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> SkimsProductsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['skims-product'],
+        params: SkimsProductParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> SkimsProductResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['skims-product-recommendations'],
+        params: SkimsProductRecommendationsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> SkimsProductRecommendationsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['skims-search-suggest'],
+        params: SkimsSearchSuggestParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> SkimsSearchSuggestResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['skims-sitemap-urls'],
+        params: SkimsSitemapUrlsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> SkimsSitemapUrlsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['skims-sitemaps'],
+        params: SkimsSitemapsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> SkimsSitemapsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['skims-store'],
+        params: SkimsStoreParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> SkimsStoreResponse: ...
     @overload
     def operation(
         self,
@@ -57219,6 +66301,138 @@ class CrawloraClient:
     @overload
     def operation(
         self,
+        operation_id: Literal['stevemadden-collections'],
+        params: SteveMaddenStevemaddenCollectionsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> SteveMaddenStevemaddenCollectionsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['stevemadden-collection-products'],
+        params: SteveMaddenStevemaddenCollectionProductsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> SteveMaddenStevemaddenCollectionProductsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['stevemadden-pages'],
+        params: SteveMaddenStevemaddenPagesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> SteveMaddenStevemaddenPagesResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['stevemadden-page'],
+        params: SteveMaddenStevemaddenPageParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> SteveMaddenStevemaddenPageResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['stevemadden-products'],
+        params: SteveMaddenStevemaddenProductsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> SteveMaddenStevemaddenProductsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['stevemadden-product'],
+        params: SteveMaddenStevemaddenProductParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> SteveMaddenStevemaddenProductResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['stevemadden-product-recommendations'],
+        params: SteveMaddenStevemaddenProductRecommendationsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> SteveMaddenStevemaddenProductRecommendationsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['stevemadden-search-suggest'],
+        params: SteveMaddenStevemaddenSearchSuggestParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> SteveMaddenStevemaddenSearchSuggestResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['stevemadden-sitemap-urls'],
+        params: SteveMaddenStevemaddenSitemapUrlsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> SteveMaddenStevemaddenSitemapUrlsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['stevemadden-sitemaps'],
+        params: SteveMaddenStevemaddenSitemapsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> SteveMaddenStevemaddenSitemapsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['stevemadden-store'],
+        params: SteveMaddenStevemaddenStoreParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> SteveMaddenStevemaddenStoreResponse: ...
+    @overload
+    def operation(
+        self,
         operation_id: Literal['stockx-brands'],
         params: StockXStockxBrandsParams = ...,
         *,
@@ -57432,6 +66646,138 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> TeslaJobsListResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['thebodyshop-collections'],
+        params: TheBodyShopThebodyshopCollectionsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TheBodyShopThebodyshopCollectionsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['thebodyshop-collection-products'],
+        params: TheBodyShopThebodyshopCollectionProductsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TheBodyShopThebodyshopCollectionProductsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['thebodyshop-pages'],
+        params: TheBodyShopThebodyshopPagesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TheBodyShopThebodyshopPagesResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['thebodyshop-page'],
+        params: TheBodyShopThebodyshopPageParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TheBodyShopThebodyshopPageResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['thebodyshop-products'],
+        params: TheBodyShopThebodyshopProductsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TheBodyShopThebodyshopProductsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['thebodyshop-product'],
+        params: TheBodyShopThebodyshopProductParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TheBodyShopThebodyshopProductResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['thebodyshop-product-recommendations'],
+        params: TheBodyShopThebodyshopProductRecommendationsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TheBodyShopThebodyshopProductRecommendationsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['thebodyshop-search-suggest'],
+        params: TheBodyShopThebodyshopSearchSuggestParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TheBodyShopThebodyshopSearchSuggestResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['thebodyshop-sitemap-urls'],
+        params: TheBodyShopThebodyshopSitemapUrlsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TheBodyShopThebodyshopSitemapUrlsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['thebodyshop-sitemaps'],
+        params: TheBodyShopThebodyshopSitemapsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TheBodyShopThebodyshopSitemapsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['thebodyshop-store'],
+        params: TheBodyShopThebodyshopStoreParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TheBodyShopThebodyshopStoreResponse: ...
     @overload
     def operation(
         self,
@@ -58812,6 +68158,18 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> VintedMemberResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['walgreens-stores'],
+        params: WalgreensStoresParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> WalgreensStoresResponse: ...
     @overload
     def operation(
         self,
@@ -60627,6 +69985,66 @@ class CrawloraClient:
     @overload
     def request(
         self,
+        operation_id: Literal['adidas-product'],
+        params: AdidasProductParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> AdidasProductResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['adidas-search'],
+        params: AdidasSearchParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> AdidasSearchResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['adidas-store'],
+        params: AdidasStoreParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> AdidasStoreResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['adidas-stores'],
+        params: AdidasStoresParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> AdidasStoresResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['adidas-suggest'],
+        params: AdidasSuggestParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> AdidasSuggestResponse: ...
+    @overload
+    def request(
+        self,
         operation_id: Literal['agoda-activities-search'],
         params: AgodaActivitiesSearchParams = ...,
         *,
@@ -60804,6 +70222,138 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> AirbnbSearchResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['allbirds-collections'],
+        params: AllbirdsCollectionsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> AllbirdsCollectionsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['allbirds-collection-products'],
+        params: AllbirdsCollectionProductsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> AllbirdsCollectionProductsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['allbirds-pages'],
+        params: AllbirdsPagesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> AllbirdsPagesResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['allbirds-page'],
+        params: AllbirdsPageParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> AllbirdsPageResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['allbirds-products'],
+        params: AllbirdsProductsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> AllbirdsProductsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['allbirds-product'],
+        params: AllbirdsProductParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> AllbirdsProductResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['allbirds-product-recommendations'],
+        params: AllbirdsProductRecommendationsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> AllbirdsProductRecommendationsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['allbirds-search-suggest'],
+        params: AllbirdsSearchSuggestParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> AllbirdsSearchSuggestResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['allbirds-sitemap-urls'],
+        params: AllbirdsSitemapUrlsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> AllbirdsSitemapUrlsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['allbirds-sitemaps'],
+        params: AllbirdsSitemapsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> AllbirdsSitemapsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['allbirds-store'],
+        params: AllbirdsStoreParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> AllbirdsStoreResponse: ...
     @overload
     def request(
         self,
@@ -61383,6 +70933,126 @@ class CrawloraClient:
     @overload
     def request(
         self,
+        operation_id: Literal['audible-categories'],
+        params: AudibleCategoriesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> AudibleCategoriesResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['audible-category'],
+        params: AudibleCategoryParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> AudibleCategoryResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['audible-charts'],
+        params: AudibleChartsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> AudibleChartsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['audible-editorial-list'],
+        params: AudibleEditorialListParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> AudibleEditorialListResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['audible-product'],
+        params: AudibleProductParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> AudibleProductResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['audible-product-related'],
+        params: AudibleProductRelatedParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> AudibleProductRelatedResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['audible-product-reviews'],
+        params: AudibleProductReviewsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> AudibleProductReviewsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['audible-products'],
+        params: AudibleProductsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> AudibleProductsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['audible-search'],
+        params: AudibleSearchParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> AudibleSearchResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['audible-series'],
+        params: AudibleSeriesParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> AudibleSeriesResponse: ...
+    @overload
+    def request(
+        self,
         operation_id: Literal['autotrader-dealer'],
         params: AutotraderDealerParams,
         *,
@@ -61416,6 +71086,114 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> AutotraderVehicleResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['bbb-business'],
+        params: BbbBusinessParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> BbbBusinessResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['bbb-business-complaints'],
+        params: BbbBusinessComplaintsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> BbbBusinessComplaintsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['bbb-business-more-info'],
+        params: BbbBusinessMoreInfoParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> BbbBusinessMoreInfoResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['bbb-business-reviews'],
+        params: BbbBusinessReviewsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> BbbBusinessReviewsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['bbb-category'],
+        params: BbbCategoryParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> BbbCategoryResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['bbb-scamtracker-search'],
+        params: BbbScamtrackerSearchParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> BbbScamtrackerSearchResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['bbb-scamtracker-state-stats'],
+        params: BbbScamtrackerStateStatsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> BbbScamtrackerStateStatsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['bbb-scamtracker-detail'],
+        params: BbbScamtrackerDetailParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> BbbScamtrackerDetailResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['bbb-search'],
+        params: BbbSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> BbbSearchResponse: ...
     @overload
     def request(
         self,
@@ -61656,6 +71434,42 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> BillingMeRejectionsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['billing-me-subscription-change'],
+        params: BillingMeSubscriptionChangeParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> BillingMeSubscriptionChangeResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['billing-me-subscription-change-cancel'],
+        params: BillingMeSubscriptionChangeCancelParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> BillingMeSubscriptionChangeCancelResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['billing-me-subscription-preview'],
+        params: BillingMeSubscriptionPreviewParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> BillingMeSubscriptionPreviewResponse: ...
     @overload
     def request(
         self,
@@ -62223,6 +72037,138 @@ class CrawloraClient:
     @overload
     def request(
         self,
+        operation_id: Literal['brooklinen-collections'],
+        params: BrooklinenCollectionsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> BrooklinenCollectionsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['brooklinen-collection-products'],
+        params: BrooklinenCollectionProductsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> BrooklinenCollectionProductsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['brooklinen-pages'],
+        params: BrooklinenPagesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> BrooklinenPagesResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['brooklinen-page'],
+        params: BrooklinenPageParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> BrooklinenPageResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['brooklinen-products'],
+        params: BrooklinenProductsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> BrooklinenProductsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['brooklinen-product'],
+        params: BrooklinenProductParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> BrooklinenProductResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['brooklinen-product-recommendations'],
+        params: BrooklinenProductRecommendationsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> BrooklinenProductRecommendationsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['brooklinen-search-suggest'],
+        params: BrooklinenSearchSuggestParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> BrooklinenSearchSuggestResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['brooklinen-sitemap-urls'],
+        params: BrooklinenSitemapUrlsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> BrooklinenSitemapUrlsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['brooklinen-sitemaps'],
+        params: BrooklinenSitemapsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> BrooklinenSitemapsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['brooklinen-store'],
+        params: BrooklinenStoreParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> BrooklinenStoreResponse: ...
+    @overload
+    def request(
+        self,
         operation_id: Literal['capterra-product'],
         params: CapterraProductParams,
         *,
@@ -62364,6 +72310,90 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> CarsComCarsdotcomVehicleResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['chewy-categories'],
+        params: ChewyCategoriesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ChewyCategoriesResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['chewy-category'],
+        params: ChewyCategoryParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ChewyCategoryResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['chewy-gtin-lookup'],
+        params: ChewyGtinLookupParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ChewyGtinLookupResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['chewy-product'],
+        params: ChewyProductParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ChewyProductResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['chewy-products'],
+        params: ChewyProductsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ChewyProductsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['chewy-search'],
+        params: ChewySearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ChewySearchResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['chewy-suggest'],
+        params: ChewySuggestParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ChewySuggestResponse: ...
     @overload
     def request(
         self,
@@ -62763,6 +72793,138 @@ class CrawloraClient:
     @overload
     def request(
         self,
+        operation_id: Literal['colehaan-collections'],
+        params: ColeHaanColehaanCollectionsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ColeHaanColehaanCollectionsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['colehaan-collection-products'],
+        params: ColeHaanColehaanCollectionProductsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ColeHaanColehaanCollectionProductsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['colehaan-pages'],
+        params: ColeHaanColehaanPagesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ColeHaanColehaanPagesResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['colehaan-page'],
+        params: ColeHaanColehaanPageParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ColeHaanColehaanPageResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['colehaan-products'],
+        params: ColeHaanColehaanProductsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ColeHaanColehaanProductsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['colehaan-product'],
+        params: ColeHaanColehaanProductParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ColeHaanColehaanProductResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['colehaan-product-recommendations'],
+        params: ColeHaanColehaanProductRecommendationsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ColeHaanColehaanProductRecommendationsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['colehaan-search-suggest'],
+        params: ColeHaanColehaanSearchSuggestParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ColeHaanColehaanSearchSuggestResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['colehaan-sitemap-urls'],
+        params: ColeHaanColehaanSitemapUrlsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ColeHaanColehaanSitemapUrlsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['colehaan-sitemaps'],
+        params: ColeHaanColehaanSitemapsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ColeHaanColehaanSitemapsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['colehaan-store'],
+        params: ColeHaanColehaanStoreParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ColeHaanColehaanStoreResponse: ...
+    @overload
+    def request(
+        self,
         operation_id: Literal['congress-report'],
         params: CongressReportParams,
         *,
@@ -63003,6 +73165,42 @@ class CrawloraClient:
     @overload
     def request(
         self,
+        operation_id: Literal['datasets-bbb-businesses-facets'],
+        params: DatasetsBbbBusinessesFacetsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsBbbBusinessesFacetsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['datasets-bbb-businesses-item'],
+        params: DatasetsBbbBusinessesItemParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsBbbBusinessesItemResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['datasets-bbb-businesses-search'],
+        params: DatasetsBbbBusinessesSearchParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsBbbBusinessesSearchResponse: ...
+    @overload
+    def request(
+        self,
         operation_id: Literal['datasets-boxofficemojo-facets'],
         params: DatasetsBoxofficemojoFacetsParams,
         *,
@@ -63132,6 +73330,42 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> DatasetsCreatorsSearchResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['datasets-facebook-pages-facets'],
+        params: DatasetsFacebookPagesFacetsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsFacebookPagesFacetsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['datasets-facebook-pages-item'],
+        params: DatasetsFacebookPagesItemParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsFacebookPagesItemResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['datasets-facebook-pages-search'],
+        params: DatasetsFacebookPagesSearchParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsFacebookPagesSearchResponse: ...
     @overload
     def request(
         self,
@@ -64143,6 +74377,54 @@ class CrawloraClient:
     @overload
     def request(
         self,
+        operation_id: Literal['datasets-vehicle-listings-facets'],
+        params: DatasetsVehicleListingsFacetsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsVehicleListingsFacetsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['datasets-vehicle-listings-item'],
+        params: DatasetsVehicleListingsItemParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsVehicleListingsItemResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['datasets-vehicle-listings-price-history'],
+        params: DatasetsVehicleListingsPriceHistoryParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsVehicleListingsPriceHistoryResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['datasets-vehicle-listings-search'],
+        params: DatasetsVehicleListingsSearchParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsVehicleListingsSearchResponse: ...
+    @overload
+    def request(
+        self,
         operation_id: Literal['datasets-x-users-facets'],
         params: DatasetsXUsersFacetsParams,
         *,
@@ -64176,6 +74458,42 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> DatasetsXUsersSearchResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['datasets-youtube-creators-facets'],
+        params: DatasetsYoutubeCreatorsFacetsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsYoutubeCreatorsFacetsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['datasets-youtube-creators-item'],
+        params: DatasetsYoutubeCreatorsItemParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsYoutubeCreatorsItemResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['datasets-youtube-creators-search'],
+        params: DatasetsYoutubeCreatorsSearchParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsYoutubeCreatorsSearchResponse: ...
     @overload
     def request(
         self,
@@ -65055,6 +75373,138 @@ class CrawloraClient:
     @overload
     def request(
         self,
+        operation_id: Literal['everlane-collections'],
+        params: EverlaneCollectionsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> EverlaneCollectionsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['everlane-collection-products'],
+        params: EverlaneCollectionProductsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> EverlaneCollectionProductsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['everlane-pages'],
+        params: EverlanePagesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> EverlanePagesResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['everlane-page'],
+        params: EverlanePageParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> EverlanePageResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['everlane-products'],
+        params: EverlaneProductsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> EverlaneProductsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['everlane-product'],
+        params: EverlaneProductParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> EverlaneProductResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['everlane-product-recommendations'],
+        params: EverlaneProductRecommendationsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> EverlaneProductRecommendationsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['everlane-search-suggest'],
+        params: EverlaneSearchSuggestParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> EverlaneSearchSuggestResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['everlane-sitemap-urls'],
+        params: EverlaneSitemapUrlsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> EverlaneSitemapUrlsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['everlane-sitemaps'],
+        params: EverlaneSitemapsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> EverlaneSitemapsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['everlane-store'],
+        params: EverlaneStoreParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> EverlaneStoreResponse: ...
+    @overload
+    def request(
+        self,
         operation_id: Literal['expedia-activities-search'],
         params: ExpediaActivitiesSearchParams,
         *,
@@ -65175,6 +75625,138 @@ class CrawloraClient:
     @overload
     def request(
         self,
+        operation_id: Literal['fashionnova-collections'],
+        params: FashionNovaFashionnovaCollectionsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FashionNovaFashionnovaCollectionsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['fashionnova-collection-products'],
+        params: FashionNovaFashionnovaCollectionProductsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FashionNovaFashionnovaCollectionProductsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['fashionnova-pages'],
+        params: FashionNovaFashionnovaPagesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FashionNovaFashionnovaPagesResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['fashionnova-page'],
+        params: FashionNovaFashionnovaPageParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FashionNovaFashionnovaPageResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['fashionnova-products'],
+        params: FashionNovaFashionnovaProductsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FashionNovaFashionnovaProductsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['fashionnova-product'],
+        params: FashionNovaFashionnovaProductParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FashionNovaFashionnovaProductResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['fashionnova-product-recommendations'],
+        params: FashionNovaFashionnovaProductRecommendationsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FashionNovaFashionnovaProductRecommendationsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['fashionnova-search-suggest'],
+        params: FashionNovaFashionnovaSearchSuggestParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FashionNovaFashionnovaSearchSuggestResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['fashionnova-sitemap-urls'],
+        params: FashionNovaFashionnovaSitemapUrlsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FashionNovaFashionnovaSitemapUrlsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['fashionnova-sitemaps'],
+        params: FashionNovaFashionnovaSitemapsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FashionNovaFashionnovaSitemapsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['fashionnova-store'],
+        params: FashionNovaFashionnovaStoreParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FashionNovaFashionnovaStoreResponse: ...
+    @overload
+    def request(
+        self,
         operation_id: Literal['fiverr-gig'],
         params: FiverrGigParams,
         *,
@@ -65208,6 +75790,150 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> FiverrSellerResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['gdelt-context'],
+        params: GdeltContextParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> GdeltContextResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['gdelt-search'],
+        params: GdeltSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> GdeltSearchResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['gdelt-timeline'],
+        params: GdeltTimelineParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> GdeltTimelineResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['gdelt-tonechart'],
+        params: GdeltTonechartParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> GdeltTonechartResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['gdelt-tv-concept-entities'],
+        params: GdeltTvConceptEntitiesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> GdeltTvConceptEntitiesResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['gdelt-tv-search'],
+        params: GdeltTvSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> GdeltTvSearchResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['gdelt-tv-showchart'],
+        params: GdeltTvShowchartParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> GdeltTvShowchartResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['gdelt-tv-stationchart'],
+        params: GdeltTvStationchartParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> GdeltTvStationchartResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['gdelt-tv-stationdetails'],
+        params: GdeltTvStationdetailsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> GdeltTvStationdetailsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['gdelt-tv-timeline'],
+        params: GdeltTvTimelineParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> GdeltTvTimelineResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['gdelt-tv-visual-entities'],
+        params: GdeltTvVisualEntitiesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> GdeltTvVisualEntitiesResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['gdelt-tv-wordcloud'],
+        params: GdeltTvWordcloudParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> GdeltTvWordcloudResponse: ...
     @overload
     def request(
         self,
@@ -66279,6 +77005,126 @@ class CrawloraClient:
     @overload
     def request(
         self,
+        operation_id: Literal['gymshark-collections'],
+        params: GymsharkCollectionsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> GymsharkCollectionsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['gymshark-collection-products'],
+        params: GymsharkCollectionProductsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> GymsharkCollectionProductsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['gymshark-pages'],
+        params: GymsharkPagesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> GymsharkPagesResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['gymshark-page'],
+        params: GymsharkPageParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> GymsharkPageResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['gymshark-products'],
+        params: GymsharkProductsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> GymsharkProductsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['gymshark-product'],
+        params: GymsharkProductParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> GymsharkProductResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['gymshark-product-recommendations'],
+        params: GymsharkProductRecommendationsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> GymsharkProductRecommendationsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['gymshark-sitemap-urls'],
+        params: GymsharkSitemapUrlsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> GymsharkSitemapUrlsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['gymshark-sitemaps'],
+        params: GymsharkSitemapsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> GymsharkSitemapsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['gymshark-store'],
+        params: GymsharkStoreParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> GymsharkStoreResponse: ...
+    @overload
+    def request(
+        self,
         operation_id: Literal['hm-categories'],
         params: HMHmCategoriesParams = ...,
         *,
@@ -66360,6 +77206,174 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> HMHmStoresResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['homedepot-categories'],
+        params: HomeDepotHomedepotCategoriesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> HomeDepotHomedepotCategoriesResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['homedepot-category'],
+        params: HomeDepotHomedepotCategoryParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> HomeDepotHomedepotCategoryResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['homedepot-product'],
+        params: HomeDepotHomedepotProductParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> HomeDepotHomedepotProductResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['homedepot-product-questions'],
+        params: HomeDepotHomedepotProductQuestionsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> HomeDepotHomedepotProductQuestionsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['homedepot-search'],
+        params: HomeDepotHomedepotSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> HomeDepotHomedepotSearchResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['ikea-availability'],
+        params: IkeaAvailabilityParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> IkeaAvailabilityResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['ikea-category'],
+        params: IkeaCategoryParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> IkeaCategoryResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['ikea-product'],
+        params: IkeaProductParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> IkeaProductResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['ikea-reviews'],
+        params: IkeaReviewsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> IkeaReviewsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['ikea-search'],
+        params: IkeaSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> IkeaSearchResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['ikea-store'],
+        params: IkeaStoreParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> IkeaStoreResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['ikea-stores'],
+        params: IkeaStoresParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> IkeaStoresResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['ikea-suggest'],
+        params: IkeaSuggestParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> IkeaSuggestResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['imdb-charts'],
+        params: ImdbChartsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ImdbChartsResponse: ...
     @overload
     def request(
         self,
@@ -66555,6 +77569,18 @@ class CrawloraClient:
     @overload
     def request(
         self,
+        operation_id: Literal['imdb-title-ratings'],
+        params: ImdbTitleRatingsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ImdbTitleRatingsResponse: ...
+    @overload
+    def request(
+        self,
         operation_id: Literal['imdb-title-release-info'],
         params: ImdbTitleReleaseInfoParams = ...,
         *,
@@ -66576,6 +77602,18 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> ImdbTitleReviewsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['imdb-title-similar'],
+        params: ImdbTitleSimilarParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ImdbTitleSimilarResponse: ...
     @overload
     def request(
         self,
@@ -66768,6 +77806,102 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> InstagramReelsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['jcrew-categories'],
+        params: JCrewJcrewCategoriesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> JCrewJcrewCategoriesResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['jcrew-category'],
+        params: JCrewJcrewCategoryParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> JCrewJcrewCategoryResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['jcrew-product'],
+        params: JCrewJcrewProductParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> JCrewJcrewProductResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['jcrew-product-reviews'],
+        params: JCrewJcrewProductReviewsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> JCrewJcrewProductReviewsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['jcrew-search'],
+        params: JCrewJcrewSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> JCrewJcrewSearchResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['jcrew-size-chart'],
+        params: JCrewJcrewSizeChartParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> JCrewJcrewSizeChartResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['jcrew-stores'],
+        params: JCrewJcrewStoresParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> JCrewJcrewStoresResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['jcrew-suggest'],
+        params: JCrewJcrewSuggestParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> JCrewJcrewSuggestResponse: ...
     @overload
     def request(
         self,
@@ -67611,6 +78745,54 @@ class CrawloraClient:
     @overload
     def request(
         self,
+        operation_id: Literal['kickstarter-comments'],
+        params: KickstarterCommentsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> KickstarterCommentsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['kickstarter-discover'],
+        params: KickstarterDiscoverParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> KickstarterDiscoverResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['kickstarter-project'],
+        params: KickstarterProjectParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> KickstarterProjectResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['kickstarter-updates'],
+        params: KickstarterUpdatesParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> KickstarterUpdatesResponse: ...
+    @overload
+    def request(
+        self,
         operation_id: Literal['kohls-category'],
         params: KohlSKohlsCategoryParams,
         *,
@@ -67656,6 +78838,138 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> KohlSKohlsSuggestResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['kyliecosmetics-collections'],
+        params: KylieCosmeticsKyliecosmeticsCollectionsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> KylieCosmeticsKyliecosmeticsCollectionsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['kyliecosmetics-collection-products'],
+        params: KylieCosmeticsKyliecosmeticsCollectionProductsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> KylieCosmeticsKyliecosmeticsCollectionProductsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['kyliecosmetics-pages'],
+        params: KylieCosmeticsKyliecosmeticsPagesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> KylieCosmeticsKyliecosmeticsPagesResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['kyliecosmetics-page'],
+        params: KylieCosmeticsKyliecosmeticsPageParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> KylieCosmeticsKyliecosmeticsPageResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['kyliecosmetics-products'],
+        params: KylieCosmeticsKyliecosmeticsProductsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> KylieCosmeticsKyliecosmeticsProductsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['kyliecosmetics-product'],
+        params: KylieCosmeticsKyliecosmeticsProductParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> KylieCosmeticsKyliecosmeticsProductResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['kyliecosmetics-product-recommendations'],
+        params: KylieCosmeticsKyliecosmeticsProductRecommendationsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> KylieCosmeticsKyliecosmeticsProductRecommendationsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['kyliecosmetics-search-suggest'],
+        params: KylieCosmeticsKyliecosmeticsSearchSuggestParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> KylieCosmeticsKyliecosmeticsSearchSuggestResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['kyliecosmetics-sitemap-urls'],
+        params: KylieCosmeticsKyliecosmeticsSitemapUrlsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> KylieCosmeticsKyliecosmeticsSitemapUrlsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['kyliecosmetics-sitemaps'],
+        params: KylieCosmeticsKyliecosmeticsSitemapsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> KylieCosmeticsKyliecosmeticsSitemapsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['kyliecosmetics-store'],
+        params: KylieCosmeticsKyliecosmeticsStoreParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> KylieCosmeticsKyliecosmeticsStoreResponse: ...
     @overload
     def request(
         self,
@@ -68415,6 +79729,78 @@ class CrawloraClient:
     @overload
     def request(
         self,
+        operation_id: Literal['monitors-list'],
+        params: MonitorsListParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> MonitorsListResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['monitors-create'],
+        params: MonitorsCreateParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> MonitorsCreateResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['monitors-delete'],
+        params: MonitorsDeleteParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> MonitorsDeleteResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['monitors-get'],
+        params: MonitorsGetParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> MonitorsGetResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['monitors-update'],
+        params: MonitorsUpdateParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> MonitorsUpdateResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['monitors-checks'],
+        params: MonitorsChecksParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> MonitorsChecksResponse: ...
+    @overload
+    def request(
+        self,
         operation_id: Literal['nike-categories'],
         params: NikeCategoriesParams = ...,
         *,
@@ -68436,6 +79822,42 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> NikeProductResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['nike-product-availability'],
+        params: NikeProductAvailabilityParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> NikeProductAvailabilityResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['nike-product-details'],
+        params: NikeProductDetailsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> NikeProductDetailsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['nike-product-recommendations'],
+        params: NikeProductRecommendationsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> NikeProductRecommendationsResponse: ...
     @overload
     def request(
         self,
@@ -68580,6 +80002,138 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> NumbeoIndicesRankingsByCountryResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['ohpolly-collections'],
+        params: OhPollyOhpollyCollectionsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> OhPollyOhpollyCollectionsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['ohpolly-collection-products'],
+        params: OhPollyOhpollyCollectionProductsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> OhPollyOhpollyCollectionProductsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['ohpolly-pages'],
+        params: OhPollyOhpollyPagesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> OhPollyOhpollyPagesResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['ohpolly-page'],
+        params: OhPollyOhpollyPageParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> OhPollyOhpollyPageResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['ohpolly-products'],
+        params: OhPollyOhpollyProductsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> OhPollyOhpollyProductsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['ohpolly-product'],
+        params: OhPollyOhpollyProductParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> OhPollyOhpollyProductResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['ohpolly-product-recommendations'],
+        params: OhPollyOhpollyProductRecommendationsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> OhPollyOhpollyProductRecommendationsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['ohpolly-search-suggest'],
+        params: OhPollyOhpollySearchSuggestParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> OhPollyOhpollySearchSuggestResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['ohpolly-sitemap-urls'],
+        params: OhPollyOhpollySitemapUrlsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> OhPollyOhpollySitemapUrlsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['ohpolly-sitemaps'],
+        params: OhPollyOhpollySitemapsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> OhPollyOhpollySitemapsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['ohpolly-store'],
+        params: OhPollyOhpollyStoreParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> OhPollyOhpollyStoreResponse: ...
     @overload
     def request(
         self,
@@ -69987,6 +81541,114 @@ class CrawloraClient:
     @overload
     def request(
         self,
+        operation_id: Literal['quince-categories'],
+        params: QuinceCategoriesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> QuinceCategoriesResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['quince-navigation'],
+        params: QuinceNavigationParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> QuinceNavigationResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['quince-product'],
+        params: QuinceProductParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> QuinceProductResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['quince-product-faq'],
+        params: QuinceProductFaqParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> QuinceProductFaqResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['quince-product-reviews'],
+        params: QuinceProductReviewsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> QuinceProductReviewsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['quince-search'],
+        params: QuinceSearchParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> QuinceSearchResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['quince-sitemap-urls'],
+        params: QuinceSitemapUrlsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> QuinceSitemapUrlsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['quince-sitemaps'],
+        params: QuinceSitemapsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> QuinceSitemapsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['quince-suggest'],
+        params: QuinceSuggestParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> QuinceSuggestResponse: ...
+    @overload
+    def request(
+        self,
         operation_id: Literal['ready'],
         params: MetaReadyParams = ...,
         *,
@@ -70020,6 +81682,18 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> RedditDomainPostsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['reddit-leads'],
+        params: RedditLeadsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> RedditLeadsResponse: ...
     @overload
     def request(
         self,
@@ -70224,6 +81898,138 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> ReferralsMeEventsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['rothys-collections'],
+        params: RothySRothysCollectionsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> RothySRothysCollectionsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['rothys-collection-products'],
+        params: RothySRothysCollectionProductsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> RothySRothysCollectionProductsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['rothys-pages'],
+        params: RothySRothysPagesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> RothySRothysPagesResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['rothys-page'],
+        params: RothySRothysPageParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> RothySRothysPageResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['rothys-products'],
+        params: RothySRothysProductsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> RothySRothysProductsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['rothys-product'],
+        params: RothySRothysProductParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> RothySRothysProductResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['rothys-product-recommendations'],
+        params: RothySRothysProductRecommendationsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> RothySRothysProductRecommendationsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['rothys-search-suggest'],
+        params: RothySRothysSearchSuggestParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> RothySRothysSearchSuggestResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['rothys-sitemap-urls'],
+        params: RothySRothysSitemapUrlsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> RothySRothysSitemapUrlsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['rothys-sitemaps'],
+        params: RothySRothysSitemapsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> RothySRothysSitemapsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['rothys-store'],
+        params: RothySRothysStoreParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> RothySRothysStoreResponse: ...
     @overload
     def request(
         self,
@@ -70599,6 +82405,102 @@ class CrawloraClient:
     @overload
     def request(
         self,
+        operation_id: Literal['shein-category-filters'],
+        params: SheinCategoryFiltersParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> SheinCategoryFiltersResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['shein-category-goods'],
+        params: SheinCategoryGoodsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> SheinCategoryGoodsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['shein-category-nav'],
+        params: SheinCategoryNavParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> SheinCategoryNavResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['shein-products-aggregation-filters'],
+        params: SheinProductsAggregationFiltersParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> SheinProductsAggregationFiltersResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['shein-products-detail'],
+        params: SheinProductsDetailParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> SheinProductsDetailResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['shein-products-search'],
+        params: SheinProductsSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> SheinProductsSearchResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['shein-search-autocomplete'],
+        params: SheinSearchAutocompleteParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> SheinSearchAutocompleteResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['shein-search-keywords'],
+        params: SheinSearchKeywordsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> SheinSearchKeywordsResponse: ...
+    @overload
+    def request(
+        self,
         operation_id: Literal['shop-app-analysis'],
         params: ShopAppAnalysisParams,
         *,
@@ -70944,6 +82846,138 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> SimilarWebWebResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['skims-collections'],
+        params: SkimsCollectionsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> SkimsCollectionsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['skims-collection-products'],
+        params: SkimsCollectionProductsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> SkimsCollectionProductsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['skims-pages'],
+        params: SkimsPagesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> SkimsPagesResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['skims-page'],
+        params: SkimsPageParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> SkimsPageResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['skims-products'],
+        params: SkimsProductsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> SkimsProductsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['skims-product'],
+        params: SkimsProductParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> SkimsProductResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['skims-product-recommendations'],
+        params: SkimsProductRecommendationsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> SkimsProductRecommendationsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['skims-search-suggest'],
+        params: SkimsSearchSuggestParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> SkimsSearchSuggestResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['skims-sitemap-urls'],
+        params: SkimsSitemapUrlsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> SkimsSitemapUrlsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['skims-sitemaps'],
+        params: SkimsSitemapsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> SkimsSitemapsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['skims-store'],
+        params: SkimsStoreParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> SkimsStoreResponse: ...
     @overload
     def request(
         self,
@@ -71895,6 +83929,138 @@ class CrawloraClient:
     @overload
     def request(
         self,
+        operation_id: Literal['stevemadden-collections'],
+        params: SteveMaddenStevemaddenCollectionsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> SteveMaddenStevemaddenCollectionsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['stevemadden-collection-products'],
+        params: SteveMaddenStevemaddenCollectionProductsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> SteveMaddenStevemaddenCollectionProductsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['stevemadden-pages'],
+        params: SteveMaddenStevemaddenPagesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> SteveMaddenStevemaddenPagesResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['stevemadden-page'],
+        params: SteveMaddenStevemaddenPageParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> SteveMaddenStevemaddenPageResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['stevemadden-products'],
+        params: SteveMaddenStevemaddenProductsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> SteveMaddenStevemaddenProductsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['stevemadden-product'],
+        params: SteveMaddenStevemaddenProductParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> SteveMaddenStevemaddenProductResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['stevemadden-product-recommendations'],
+        params: SteveMaddenStevemaddenProductRecommendationsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> SteveMaddenStevemaddenProductRecommendationsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['stevemadden-search-suggest'],
+        params: SteveMaddenStevemaddenSearchSuggestParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> SteveMaddenStevemaddenSearchSuggestResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['stevemadden-sitemap-urls'],
+        params: SteveMaddenStevemaddenSitemapUrlsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> SteveMaddenStevemaddenSitemapUrlsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['stevemadden-sitemaps'],
+        params: SteveMaddenStevemaddenSitemapsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> SteveMaddenStevemaddenSitemapsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['stevemadden-store'],
+        params: SteveMaddenStevemaddenStoreParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> SteveMaddenStevemaddenStoreResponse: ...
+    @overload
+    def request(
+        self,
         operation_id: Literal['stockx-brands'],
         params: StockXStockxBrandsParams = ...,
         *,
@@ -72108,6 +84274,138 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> TeslaJobsListResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['thebodyshop-collections'],
+        params: TheBodyShopThebodyshopCollectionsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TheBodyShopThebodyshopCollectionsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['thebodyshop-collection-products'],
+        params: TheBodyShopThebodyshopCollectionProductsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TheBodyShopThebodyshopCollectionProductsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['thebodyshop-pages'],
+        params: TheBodyShopThebodyshopPagesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TheBodyShopThebodyshopPagesResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['thebodyshop-page'],
+        params: TheBodyShopThebodyshopPageParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TheBodyShopThebodyshopPageResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['thebodyshop-products'],
+        params: TheBodyShopThebodyshopProductsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TheBodyShopThebodyshopProductsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['thebodyshop-product'],
+        params: TheBodyShopThebodyshopProductParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TheBodyShopThebodyshopProductResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['thebodyshop-product-recommendations'],
+        params: TheBodyShopThebodyshopProductRecommendationsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TheBodyShopThebodyshopProductRecommendationsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['thebodyshop-search-suggest'],
+        params: TheBodyShopThebodyshopSearchSuggestParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TheBodyShopThebodyshopSearchSuggestResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['thebodyshop-sitemap-urls'],
+        params: TheBodyShopThebodyshopSitemapUrlsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TheBodyShopThebodyshopSitemapUrlsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['thebodyshop-sitemaps'],
+        params: TheBodyShopThebodyshopSitemapsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TheBodyShopThebodyshopSitemapsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['thebodyshop-store'],
+        params: TheBodyShopThebodyshopStoreParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TheBodyShopThebodyshopStoreResponse: ...
     @overload
     def request(
         self,
@@ -73488,6 +85786,18 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> VintedMemberResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['walgreens-stores'],
+        params: WalgreensStoresParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> WalgreensStoresResponse: ...
     @overload
     def request(
         self,
