@@ -10950,6 +10950,7 @@ ModelEsTechstackDatasetFacetItem = TypedDict('ModelEsTechstackDatasetFacetItem',
 
 ModelEsTechstackRecord = TypedDict('ModelEsTechstackRecord', {
     'analytics': NotRequired[list[str]],
+    'block_matched': NotRequired[list[str]],
     'categories': NotRequired[list[str]],
     'category': NotRequired[str],
     'cdn': NotRequired[str],
@@ -10957,9 +10958,12 @@ ModelEsTechstackRecord = TypedDict('ModelEsTechstackRecord', {
     'detector_version': NotRequired[str],
     'domain': NotRequired[str],
     'ecommerce': NotRequired[str],
+    'failure_reason': NotRequired[str],
     'final_url': NotRequired[str],
     'has_captcha': NotRequired[bool],
+    'is_infrastructure': NotRequired[bool],
     'method_version': NotRequired[str],
+    'probe_error': NotRequired[str],
     'probed_at': NotRequired[str],
     'rank': NotRequired[int],
     'reachable': NotRequired[bool],
@@ -24566,11 +24570,13 @@ ModelSimilarwebSearchResp = TypedDict('ModelSimilarwebSearchResp', {
 }, total=False)
 
 ModelSimilarwebSimilarWebResp = TypedDict('ModelSimilarwebSimilarWebResp', {
+    'AiTrafficDetails': NotRequired[dict[str, Any]],
     'Category': NotRequired[str],
     'CategoryRank': NotRequired[dict[str, Any]],
     'Competitors': NotRequired[dict[str, Any]],
     'Countries': NotRequired[list[dict[str, Any]]],
     'CountryRank': NotRequired[dict[str, Any]],
+    'DataSource': NotRequired[str],
     'Description': NotRequired[str],
     'Engagments': NotRequired[dict[str, Any]],
     'EstimatedMonthlyVisits': NotRequired[dict[str, Any]],
@@ -27007,16 +27013,6 @@ ModelTargetSearchResponseDoc = TypedDict('ModelTargetSearchResponseDoc', {
     'msg': NotRequired[str],
 }, total=False)
 
-ModelTechstackResult = TypedDict('ModelTechstackResult', {
-    'categories': NotRequired[list[str]],
-    'count': NotRequired[int],
-    'detector_version': NotRequired[str],
-    'final_url': NotRequired[str],
-    'technologies': NotRequired[list[ModelTechstackTechnology]],
-    'unmatched_evidence': NotRequired[ModelTechstackUnmatchedEvidence],
-    'url': NotRequired[str],
-}, total=False)
-
 ModelTechstackTechnology = TypedDict('ModelTechstackTechnology', {
     'categories': NotRequired[list[str]],
     'confidence': NotRequired[str],
@@ -27172,9 +27168,12 @@ ModelThreadsSearchResponseDoc = TypedDict('ModelThreadsSearchResponseDoc', {
 ModelTicketmasterAttraction = TypedDict('ModelTicketmasterAttraction', {
     'classification': NotRequired[ModelTicketmasterClassification],
     'discovery_id': NotRequired[str],
+    'has_artist_video': NotRequired[bool],
     'id': NotRequired[str],
     'image_url': NotRequired[str],
     'name': NotRequired[str],
+    'setlist_source_url': NotRequired[str],
+    'setlists': NotRequired[list[ModelTicketmasterSetlist]],
     'synopsis': NotRequired[str],
     'url': NotRequired[str],
 }, total=False)
@@ -27187,10 +27186,32 @@ ModelTicketmasterAttractionRef = TypedDict('ModelTicketmasterAttractionRef', {
     'url': NotRequired[str],
 }, total=False)
 
+ModelTicketmasterAttractionRelatedResponse = TypedDict('ModelTicketmasterAttractionRelatedResponse', {
+    'attraction_id': NotRequired[str],
+    'attractions': NotRequired[list[ModelTicketmasterAttractionRef]],
+    'count': NotRequired[int],
+    'fetched_at': NotRequired[str],
+    'source_url': NotRequired[str],
+}, total=False)
+
 ModelTicketmasterAttractionResponse = TypedDict('ModelTicketmasterAttractionResponse', {
     'attraction': NotRequired[ModelTicketmasterAttraction],
     'fetched_at': NotRequired[str],
     'source_url': NotRequired[str],
+}, total=False)
+
+ModelTicketmasterAttractionReviewsResponse = TypedDict('ModelTicketmasterAttractionReviewsResponse', {
+    'ai_review_summary': NotRequired[str],
+    'attraction_id': NotRequired[str],
+    'average_rating': NotRequired[float],
+    'best_rating': NotRequired[float],
+    'fetched_at': NotRequired[str],
+    'limit': NotRequired[int],
+    'offset': NotRequired[int],
+    'reviews': NotRequired[list[ModelTicketmasterReview]],
+    'source_url': NotRequired[str],
+    'time_zone': NotRequired[str],
+    'total': NotRequired[int],
 }, total=False)
 
 ModelTicketmasterClassification = TypedDict('ModelTicketmasterClassification', {
@@ -27317,6 +27338,37 @@ ModelTicketmasterPresale = TypedDict('ModelTicketmasterPresale', {
     'start_time': NotRequired[str],
 }, total=False)
 
+ModelTicketmasterReview = TypedDict('ModelTicketmasterReview', {
+    'city': NotRequired[str],
+    'date_created': NotRequired[str],
+    'nick_name': NotRequired[str],
+    'rating': NotRequired[int],
+    'review': NotRequired[str],
+    'title': NotRequired[str],
+    'venue': NotRequired[str],
+}, total=False)
+
+ModelTicketmasterSetlist = TypedDict('ModelTicketmasterSetlist', {
+    'city_name': NotRequired[str],
+    'country_name': NotRequired[str],
+    'event_date': NotRequired[str],
+    'sets': NotRequired[list[ModelTicketmasterSetlistSet]],
+    'tour_name': NotRequired[str],
+    'venue_name': NotRequired[str],
+}, total=False)
+
+ModelTicketmasterSetlistSet = TypedDict('ModelTicketmasterSetlistSet', {
+    'name': NotRequired[str],
+    'songs': NotRequired[list[ModelTicketmasterSetlistSong]],
+}, total=False)
+
+ModelTicketmasterSetlistSong = TypedDict('ModelTicketmasterSetlistSong', {
+    'name': NotRequired[str],
+    'original_artist': NotRequired[str],
+    'performance_notes': NotRequired[str],
+    'pre_recorded': NotRequired[bool],
+}, total=False)
+
 ModelTicketmasterSuggestion = TypedDict('ModelTicketmasterSuggestion', {
     'category': NotRequired[str],
     'event_count': NotRequired[int],
@@ -27334,9 +27386,36 @@ ModelTicketmasterSuggestionsResponse = TypedDict('ModelTicketmasterSuggestionsRe
     'suggestions': NotRequired[list[ModelTicketmasterSuggestion]],
 }, total=False)
 
+ModelTicketmasterTrendingAttraction = TypedDict('ModelTicketmasterTrendingAttraction', {
+    'discovery_id': NotRequired[str],
+    'genre': NotRequired[str],
+    'genre_id': NotRequired[str],
+    'id': NotRequired[str],
+    'image_url': NotRequired[str],
+    'images': NotRequired[list[ModelTicketmasterTrendingAttractionImage]],
+    'name': NotRequired[str],
+    'rank': NotRequired[int],
+    'segment': NotRequired[str],
+    'segment_id': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelTicketmasterTrendingAttractionImage = TypedDict('ModelTicketmasterTrendingAttractionImage', {
+    'ratio': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelTicketmasterTrendingAttractionsResponse = TypedDict('ModelTicketmasterTrendingAttractionsResponse', {
+    'attractions': NotRequired[list[ModelTicketmasterTrendingAttraction]],
+    'count': NotRequired[int],
+    'fetched_at': NotRequired[str],
+    'source_url': NotRequired[str],
+}, total=False)
+
 ModelTicketmasterVenue = TypedDict('ModelTicketmasterVenue', {
     'address': NotRequired[str],
     'city': NotRequired[str],
+    'city_categories': NotRequired[list[ModelTicketmasterVenueCityCategory]],
     'country': NotRequired[str],
     'discovery_id': NotRequired[str],
     'id': NotRequired[str],
@@ -27346,9 +27425,24 @@ ModelTicketmasterVenue = TypedDict('ModelTicketmasterVenue', {
     'longitude': NotRequired[float],
     'name': NotRequired[str],
     'postal_code': NotRequired[str],
+    'seat_maps': NotRequired[list[ModelTicketmasterVenueSeatMap]],
     'state': NotRequired[str],
     'time_zone': NotRequired[str],
     'url': NotRequired[str],
+}, total=False)
+
+ModelTicketmasterVenueCityCategory = TypedDict('ModelTicketmasterVenueCityCategory', {
+    'id': NotRequired[str],
+    'name': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelTicketmasterVenueEnhancedDetailsResponse = TypedDict('ModelTicketmasterVenueEnhancedDetailsResponse', {
+    'fetched_at': NotRequired[str],
+    'header_image_url': NotRequired[str],
+    'related_links': NotRequired[list[ModelTicketmasterVenueRelatedLink]],
+    'source_url': NotRequired[str],
+    'venue_id': NotRequired[str],
 }, total=False)
 
 ModelTicketmasterVenueInfoBlock = TypedDict('ModelTicketmasterVenueInfoBlock', {
@@ -27371,15 +27465,38 @@ ModelTicketmasterVenueRef = TypedDict('ModelTicketmasterVenueRef', {
     'url': NotRequired[str],
 }, total=False)
 
+ModelTicketmasterVenueRelatedLink = TypedDict('ModelTicketmasterVenueRelatedLink', {
+    'image_url': NotRequired[str],
+    'title': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
 ModelTicketmasterVenueResponse = TypedDict('ModelTicketmasterVenueResponse', {
     'fetched_at': NotRequired[str],
     'source_url': NotRequired[str],
     'venue': NotRequired[ModelTicketmasterVenue],
 }, total=False)
 
+ModelTicketmasterVenueSeatMap = TypedDict('ModelTicketmasterVenueSeatMap', {
+    'image_url': NotRequired[str],
+    'name': NotRequired[str],
+}, total=False)
+
+ModelTicketmasterAttractionRelatedResponseDoc = TypedDict('ModelTicketmasterAttractionRelatedResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelTicketmasterAttractionRelatedResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
 ModelTicketmasterAttractionResponseDoc = TypedDict('ModelTicketmasterAttractionResponseDoc', {
     'code': NotRequired[int],
     'data': NotRequired[ModelTicketmasterAttractionResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelTicketmasterAttractionReviewsResponseDoc = TypedDict('ModelTicketmasterAttractionReviewsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelTicketmasterAttractionReviewsResponse],
     'msg': NotRequired[str],
 }, total=False)
 
@@ -27413,9 +27530,164 @@ ModelTicketmasterSuggestionsResponseDoc = TypedDict('ModelTicketmasterSuggestion
     'msg': NotRequired[str],
 }, total=False)
 
+ModelTicketmasterTrendingAttractionsResponseDoc = TypedDict('ModelTicketmasterTrendingAttractionsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelTicketmasterTrendingAttractionsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelTicketmasterVenueEnhancedDetailsResponseDoc = TypedDict('ModelTicketmasterVenueEnhancedDetailsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelTicketmasterVenueEnhancedDetailsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
 ModelTicketmasterVenueResponseDoc = TypedDict('ModelTicketmasterVenueResponseDoc', {
     'code': NotRequired[int],
     'data': NotRequired[ModelTicketmasterVenueResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelTicketwebAttraction = TypedDict('ModelTicketwebAttraction', {
+    'category': NotRequired[str],
+    'genre': NotRequired[str],
+    'id': NotRequired[str],
+    'image_url': NotRequired[str],
+    'name': NotRequired[str],
+}, total=False)
+
+ModelTicketwebDeliveryMethod = TypedDict('ModelTicketwebDeliveryMethod', {
+    'description': NotRequired[str],
+    'fee': NotRequired[str],
+    'name': NotRequired[str],
+}, total=False)
+
+ModelTicketwebEventDetail = TypedDict('ModelTicketwebEventDetail', {
+    'age_restriction': NotRequired[int],
+    'age_restriction_message': NotRequired[str],
+    'announce_time': NotRequired[str],
+    'attractions': NotRequired[list[ModelTicketwebAttraction]],
+    'currency': NotRequired[str],
+    'delivery_methods': NotRequired[list[ModelTicketwebDeliveryMethod]],
+    'description': NotRequired[str],
+    'end_time': NotRequired[str],
+    'has_tickets': NotRequired[bool],
+    'id': NotRequired[str],
+    'image_url': NotRequired[str],
+    'name': NotRequired[str],
+    'on_sale_time': NotRequired[str],
+    'price_range': NotRequired[ModelTicketwebPriceRange],
+    'sections': NotRequired[list[ModelTicketwebTicketSection]],
+    'start_time': NotRequired[str],
+    'terms_and_conditions': NotRequired[str],
+    'url': NotRequired[str],
+    'venue': NotRequired[ModelTicketwebEventVenue],
+}, total=False)
+
+ModelTicketwebEventResponse = TypedDict('ModelTicketwebEventResponse', {
+    'event': NotRequired[ModelTicketwebEventDetail],
+    'fetched_at': NotRequired[str],
+    'source_url': NotRequired[str],
+}, total=False)
+
+ModelTicketwebEventSummary = TypedDict('ModelTicketwebEventSummary', {
+    'availability': NotRequired[Literal['in_stock', 'sold_out', 'unknown']],
+    'id': NotRequired[str],
+    'image_url': NotRequired[str],
+    'name': NotRequired[str],
+    'start_time': NotRequired[str],
+    'url': NotRequired[str],
+    'venue': NotRequired[ModelTicketwebVenueRef],
+}, total=False)
+
+ModelTicketwebEventVenue = TypedDict('ModelTicketwebEventVenue', {
+    'address': NotRequired[str],
+    'city': NotRequired[str],
+    'country': NotRequired[str],
+    'id': NotRequired[str],
+    'map_image': NotRequired[str],
+    'name': NotRequired[str],
+    'postal_code': NotRequired[str],
+    'state': NotRequired[str],
+    'time_zone': NotRequired[str],
+}, total=False)
+
+ModelTicketwebPriceRange = TypedDict('ModelTicketwebPriceRange', {
+    'max': NotRequired[float],
+    'min': NotRequired[float],
+}, total=False)
+
+ModelTicketwebSearchResponse = TypedDict('ModelTicketwebSearchResponse', {
+    'count': NotRequired[int],
+    'events': NotRequired[list[ModelTicketwebEventSummary]],
+    'fetched_at': NotRequired[str],
+    'page': NotRequired[int],
+    'query': NotRequired[str],
+    'source_url': NotRequired[str],
+}, total=False)
+
+ModelTicketwebTicketFees = TypedDict('ModelTicketwebTicketFees', {
+    'credit_card': NotRequired[float],
+    'facility': NotRequired[float],
+    'per_ticket': NotRequired[float],
+    'rebate': NotRequired[float],
+    'taxes': NotRequired[float],
+}, total=False)
+
+ModelTicketwebTicketPrice = TypedDict('ModelTicketwebTicketPrice', {
+    'base': NotRequired[float],
+    'fees': NotRequired[ModelTicketwebTicketFees],
+    'max_purchase_limit': NotRequired[int],
+    'min_purchase_limit': NotRequired[int],
+    'name': NotRequired[str],
+    'sold_out': NotRequired[bool],
+    'total': NotRequired[float],
+}, total=False)
+
+ModelTicketwebTicketSection = TypedDict('ModelTicketwebTicketSection', {
+    'name': NotRequired[str],
+    'prices': NotRequired[list[ModelTicketwebTicketPrice]],
+    'purchase_limit': NotRequired[int],
+    'sold_out': NotRequired[bool],
+}, total=False)
+
+ModelTicketwebVenueDetail = TypedDict('ModelTicketwebVenueDetail', {
+    'address': NotRequired[str],
+    'id': NotRequired[str],
+    'name': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelTicketwebVenueRef = TypedDict('ModelTicketwebVenueRef', {
+    'address': NotRequired[str],
+    'name': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelTicketwebVenueResponse = TypedDict('ModelTicketwebVenueResponse', {
+    'count': NotRequired[int],
+    'events': NotRequired[list[ModelTicketwebEventSummary]],
+    'fetched_at': NotRequired[str],
+    'page': NotRequired[int],
+    'source_url': NotRequired[str],
+    'venue': NotRequired[ModelTicketwebVenueDetail],
+}, total=False)
+
+ModelTicketwebEventResponseDoc = TypedDict('ModelTicketwebEventResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelTicketwebEventResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelTicketwebSearchResponseDoc = TypedDict('ModelTicketwebSearchResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelTicketwebSearchResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelTicketwebVenueResponseDoc = TypedDict('ModelTicketwebVenueResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelTicketwebVenueResponse],
     'msg': NotRequired[str],
 }, total=False)
 
@@ -30493,6 +30765,19 @@ ModelWebTechStackOption = TypedDict('ModelWebTechStackOption', {
     'url': Required[str],
 }, total=False)
 
+ModelWebTechStackResult = TypedDict('ModelWebTechStackResult', {
+    'categories': NotRequired[list[str]],
+    'count': NotRequired[int],
+    'detector_version': NotRequired[str],
+    'failure_reason': NotRequired[str],
+    'final_url': NotRequired[str],
+    'is_infrastructure': NotRequired[bool],
+    'reachable': NotRequired[bool],
+    'technologies': NotRequired[list[ModelTechstackTechnology]],
+    'unmatched_evidence': NotRequired[ModelTechstackUnmatchedEvidence],
+    'url': NotRequired[str],
+}, total=False)
+
 ModelWebBillingRejectionDoc = TypedDict('ModelWebBillingRejectionDoc', {
     'credit_cost': NotRequired[int],
     'credits_included': NotRequired[int],
@@ -30526,7 +30811,7 @@ ModelWebScrapeResponseDoc = TypedDict('ModelWebScrapeResponseDoc', {
 
 ModelWebTechStackResponseDoc = TypedDict('ModelWebTechStackResponseDoc', {
     'code': NotRequired[int],
-    'data': NotRequired[ModelTechstackResult],
+    'data': NotRequired[ModelWebTechStackResult],
     'msg': NotRequired[str],
 }, total=False)
 
@@ -38098,6 +38383,7 @@ DatasetsTechstackFacetsParams = TypedDict('DatasetsTechstackFacetsParams', {
     'render_tier': NotRequired[Literal['http', 'browser']],
     'seed_source': NotRequired[str],
     'has_captcha': NotRequired[bool],
+    'is_infrastructure': NotRequired[bool],
     'reachable': NotRequired[bool],
     'min_tech_count': NotRequired[int],
     'run_id': NotRequired[str],
@@ -38130,6 +38416,7 @@ DatasetsTechstackSearchParams = TypedDict('DatasetsTechstackSearchParams', {
     'render_tier': NotRequired[Literal['http', 'browser']],
     'seed_source': NotRequired[str],
     'has_captcha': NotRequired[bool],
+    'is_infrastructure': NotRequired[bool],
     'reachable': NotRequired[bool],
     'min_tech_count': NotRequired[int],
     'run_id': NotRequired[str],
@@ -46499,6 +46786,24 @@ TicketmasterAttractionEventsParams = TypedDict('TicketmasterAttractionEventsPara
     'sort': NotRequired[Literal['relevance', 'date']],
 }, total=False)
 
+TicketmasterAttractionRelatedResponse = ModelTicketmasterAttractionRelatedResponseDoc
+TicketmasterAttractionRelatedParams = TypedDict('TicketmasterAttractionRelatedParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': Required[str],
+}, total=False)
+
+TicketmasterAttractionReviewsResponse = ModelTicketmasterAttractionReviewsResponseDoc
+TicketmasterAttractionReviewsParams = TypedDict('TicketmasterAttractionReviewsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': Required[str],
+    'offset': NotRequired[int],
+    'limit': NotRequired[int],
+}, total=False)
+
 TicketmasterDiscoverCategoriesResponse = ModelTicketmasterCategoriesResponseDoc
 TicketmasterDiscoverCategoriesParams = TypedDict('TicketmasterDiscoverCategoriesParams', {
     '_response_type': NotRequired[ResponseType],
@@ -46564,8 +46869,23 @@ TicketmasterSuggestParams = TypedDict('TicketmasterSuggestParams', {
     'q': Required[str],
 }, total=False)
 
+TicketmasterTrendingAttractionsResponse = ModelTicketmasterTrendingAttractionsResponseDoc
+TicketmasterTrendingAttractionsParams = TypedDict('TicketmasterTrendingAttractionsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+}, total=False)
+
 TicketmasterVenueResponse = ModelTicketmasterVenueResponseDoc
 TicketmasterVenueParams = TypedDict('TicketmasterVenueParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': Required[str],
+}, total=False)
+
+TicketmasterVenueEnhancedDetailsResponse = ModelTicketmasterVenueEnhancedDetailsResponseDoc
+TicketmasterVenueEnhancedDetailsParams = TypedDict('TicketmasterVenueEnhancedDetailsParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
     '_headers': NotRequired[Mapping[str, str]],
@@ -46580,6 +46900,32 @@ TicketmasterVenueEventsParams = TypedDict('TicketmasterVenueEventsParams', {
     'id': Required[str],
     'page': NotRequired[int],
     'sort': NotRequired[Literal['relevance', 'date']],
+}, total=False)
+
+TicketWebTicketwebEventResponse = ModelTicketwebEventResponseDoc
+TicketWebTicketwebEventParams = TypedDict('TicketWebTicketwebEventParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': Required[str],
+}, total=False)
+
+TicketWebTicketwebSearchResponse = ModelTicketwebSearchResponseDoc
+TicketWebTicketwebSearchParams = TypedDict('TicketWebTicketwebSearchParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'q': Required[str],
+    'page': NotRequired[int],
+}, total=False)
+
+TicketWebTicketwebVenueResponse = ModelTicketwebVenueResponseDoc
+TicketWebTicketwebVenueParams = TypedDict('TicketWebTicketwebVenueParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': Required[str],
+    'page': NotRequired[int],
 }, total=False)
 
 TiktokCategoryResponse = ModelTiktokCategoryResponseDoc
@@ -50312,6 +50658,8 @@ class ThreadsGroup:
 class TicketmasterGroup:
     def attraction(self, **params: Unpack[TicketmasterAttractionParams]) -> TicketmasterAttractionResponse: ...
     def attraction_events(self, **params: Unpack[TicketmasterAttractionEventsParams]) -> TicketmasterAttractionEventsResponse: ...
+    def attraction_related(self, **params: Unpack[TicketmasterAttractionRelatedParams]) -> TicketmasterAttractionRelatedResponse: ...
+    def attraction_reviews(self, **params: Unpack[TicketmasterAttractionReviewsParams]) -> TicketmasterAttractionReviewsResponse: ...
     def discover_categories(self, **params: Unpack[TicketmasterDiscoverCategoriesParams]) -> TicketmasterDiscoverCategoriesResponse: ...
     def discover_category_events(self, **params: Unpack[TicketmasterDiscoverCategoryEventsParams]) -> TicketmasterDiscoverCategoryEventsResponse: ...
     def discover_cities(self, **params: Unpack[TicketmasterDiscoverCitiesParams]) -> TicketmasterDiscoverCitiesResponse: ...
@@ -50319,8 +50667,15 @@ class TicketmasterGroup:
     def event(self, **params: Unpack[TicketmasterEventParams]) -> TicketmasterEventResponse: ...
     def search_events(self, **params: Unpack[TicketmasterSearchEventsParams]) -> TicketmasterSearchEventsResponse: ...
     def suggest(self, **params: Unpack[TicketmasterSuggestParams]) -> TicketmasterSuggestResponse: ...
+    def trending_attractions(self, **params: Unpack[TicketmasterTrendingAttractionsParams]) -> TicketmasterTrendingAttractionsResponse: ...
     def venue(self, **params: Unpack[TicketmasterVenueParams]) -> TicketmasterVenueResponse: ...
+    def venue_enhanced_details(self, **params: Unpack[TicketmasterVenueEnhancedDetailsParams]) -> TicketmasterVenueEnhancedDetailsResponse: ...
     def venue_events(self, **params: Unpack[TicketmasterVenueEventsParams]) -> TicketmasterVenueEventsResponse: ...
+
+class TicketWebGroup:
+    def ticketweb_event(self, **params: Unpack[TicketWebTicketwebEventParams]) -> TicketWebTicketwebEventResponse: ...
+    def ticketweb_search(self, **params: Unpack[TicketWebTicketwebSearchParams]) -> TicketWebTicketwebSearchResponse: ...
+    def ticketweb_venue(self, **params: Unpack[TicketWebTicketwebVenueParams]) -> TicketWebTicketwebVenueResponse: ...
 
 class TiktokGroup:
     def category(self, **params: Unpack[TiktokCategoryParams]) -> TiktokCategoryResponse: ...
@@ -51854,6 +52209,8 @@ OperationId = Literal[
     'threads-search',
     'ticketmaster-attraction',
     'ticketmaster-attraction-events',
+    'ticketmaster-attraction-related',
+    'ticketmaster-attraction-reviews',
     'ticketmaster-discover-categories',
     'ticketmaster-discover-category-events',
     'ticketmaster-discover-cities',
@@ -51861,8 +52218,13 @@ OperationId = Literal[
     'ticketmaster-event',
     'ticketmaster-search-events',
     'ticketmaster-suggest',
+    'ticketmaster-trending-attractions',
     'ticketmaster-venue',
+    'ticketmaster-venue-enhanced-details',
     'ticketmaster-venue-events',
+    'ticketweb-event',
+    'ticketweb-search',
+    'ticketweb-venue',
     'tiktok-category',
     'tiktok-video-comments',
     'tiktok-creative-center-hashtags',
@@ -52237,6 +52599,7 @@ class CrawloraClient:
     the_body_shop: TheBodyShopGroup
     threads: ThreadsGroup
     ticketmaster: TicketmasterGroup
+    ticket_web: TicketWebGroup
     tiktok: TiktokGroup
     tmdb: TmdbGroup
     trip_advisor: TripAdvisorGroup
@@ -66865,6 +67228,30 @@ class CrawloraClient:
     @overload
     def operation(
         self,
+        operation_id: Literal['ticketmaster-attraction-related'],
+        params: TicketmasterAttractionRelatedParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TicketmasterAttractionRelatedResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['ticketmaster-attraction-reviews'],
+        params: TicketmasterAttractionReviewsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TicketmasterAttractionReviewsResponse: ...
+    @overload
+    def operation(
+        self,
         operation_id: Literal['ticketmaster-discover-categories'],
         params: TicketmasterDiscoverCategoriesParams = ...,
         *,
@@ -66949,6 +67336,18 @@ class CrawloraClient:
     @overload
     def operation(
         self,
+        operation_id: Literal['ticketmaster-trending-attractions'],
+        params: TicketmasterTrendingAttractionsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TicketmasterTrendingAttractionsResponse: ...
+    @overload
+    def operation(
+        self,
         operation_id: Literal['ticketmaster-venue'],
         params: TicketmasterVenueParams,
         *,
@@ -66961,6 +67360,18 @@ class CrawloraClient:
     @overload
     def operation(
         self,
+        operation_id: Literal['ticketmaster-venue-enhanced-details'],
+        params: TicketmasterVenueEnhancedDetailsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TicketmasterVenueEnhancedDetailsResponse: ...
+    @overload
+    def operation(
+        self,
         operation_id: Literal['ticketmaster-venue-events'],
         params: TicketmasterVenueEventsParams,
         *,
@@ -66970,6 +67381,42 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> TicketmasterVenueEventsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['ticketweb-event'],
+        params: TicketWebTicketwebEventParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TicketWebTicketwebEventResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['ticketweb-search'],
+        params: TicketWebTicketwebSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TicketWebTicketwebSearchResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['ticketweb-venue'],
+        params: TicketWebTicketwebVenueParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TicketWebTicketwebVenueResponse: ...
     @overload
     def operation(
         self,
@@ -84493,6 +84940,30 @@ class CrawloraClient:
     @overload
     def request(
         self,
+        operation_id: Literal['ticketmaster-attraction-related'],
+        params: TicketmasterAttractionRelatedParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TicketmasterAttractionRelatedResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['ticketmaster-attraction-reviews'],
+        params: TicketmasterAttractionReviewsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TicketmasterAttractionReviewsResponse: ...
+    @overload
+    def request(
+        self,
         operation_id: Literal['ticketmaster-discover-categories'],
         params: TicketmasterDiscoverCategoriesParams = ...,
         *,
@@ -84577,6 +85048,18 @@ class CrawloraClient:
     @overload
     def request(
         self,
+        operation_id: Literal['ticketmaster-trending-attractions'],
+        params: TicketmasterTrendingAttractionsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TicketmasterTrendingAttractionsResponse: ...
+    @overload
+    def request(
+        self,
         operation_id: Literal['ticketmaster-venue'],
         params: TicketmasterVenueParams,
         *,
@@ -84589,6 +85072,18 @@ class CrawloraClient:
     @overload
     def request(
         self,
+        operation_id: Literal['ticketmaster-venue-enhanced-details'],
+        params: TicketmasterVenueEnhancedDetailsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TicketmasterVenueEnhancedDetailsResponse: ...
+    @overload
+    def request(
+        self,
         operation_id: Literal['ticketmaster-venue-events'],
         params: TicketmasterVenueEventsParams,
         *,
@@ -84598,6 +85093,42 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> TicketmasterVenueEventsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['ticketweb-event'],
+        params: TicketWebTicketwebEventParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TicketWebTicketwebEventResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['ticketweb-search'],
+        params: TicketWebTicketwebSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TicketWebTicketwebSearchResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['ticketweb-venue'],
+        params: TicketWebTicketwebVenueParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TicketWebTicketwebVenueResponse: ...
     @overload
     def request(
         self,
