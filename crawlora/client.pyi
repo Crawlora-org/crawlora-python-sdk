@@ -9406,9 +9406,31 @@ ModelContactSocialProfile = TypedDict('ModelContactSocialProfile', {
     'url': NotRequired[str],
 }, total=False)
 
+ModelContactVerifiedAddress = TypedDict('ModelContactVerifiedAddress', {
+    'address': NotRequired[str],
+    'status': NotRequired[Literal['verified', 'risky', 'unverified', 'invalid']],
+    'type': NotRequired[Literal['personal', 'generic', 'role']],
+}, total=False)
+
+ModelContactVerifyRequest = TypedDict('ModelContactVerifyRequest', {
+    'emails': Required[list[str]],
+}, total=False)
+
+ModelContactVerifyResponse = TypedDict('ModelContactVerifyResponse', {
+    'checked': NotRequired[int],
+    'results': NotRequired[list[ModelContactVerifiedAddress]],
+    'smtp_enabled': NotRequired[bool],
+}, total=False)
+
 ModelContactContactResponseDoc = TypedDict('ModelContactContactResponseDoc', {
     'code': NotRequired[int],
     'data': NotRequired[ModelContactContactResult],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelContactVerifyResponseDoc = TypedDict('ModelContactVerifyResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelContactVerifyResponse],
     'msg': NotRequired[str],
 }, total=False)
 
@@ -55022,6 +55044,15 @@ EBayEbaySellerShopParams = TypedDict('EBayEbaySellerShopParams', {
     'page': NotRequired[int],
 }, total=False)
 
+WebEmailVerifyBody = ModelContactVerifyRequest
+WebEmailVerifyResponse = ModelContactVerifyResponseDoc
+WebEmailVerifyParams = TypedDict('WebEmailVerifyParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'option': Required[WebEmailVerifyBody],
+}, total=False)
+
 EspnAthleteResponse = ModelEspnAthleteResponseDoc
 EspnAthleteParams = TypedDict('EspnAthleteParams', {
     '_response_type': NotRequired[ResponseType],
@@ -68348,6 +68379,7 @@ class CongressGroup:
 class WebGroup:
     def contact(self, **params: Unpack[WebContactParams]) -> WebContactResponse: ...
     def antibot_check(self, **params: Unpack[WebAntibotCheckParams]) -> WebAntibotCheckResponse: ...
+    def email_verify(self, **params: Unpack[WebEmailVerifyParams]) -> WebEmailVerifyResponse: ...
     def extract(self, **params: Unpack[WebExtractParams]) -> WebExtractResponse: ...
     def scrape(self, **params: Unpack[WebScrapeParams]) -> WebScrapeResponse: ...
     def techstack(self, **params: Unpack[WebTechstackParams]) -> WebTechstackResponse: ...
@@ -70878,6 +70910,7 @@ OperationId = Literal[
     'ebay-seller-about',
     'ebay-seller-feedback',
     'ebay-seller-shop',
+    'email-verify',
     'espn-athlete',
     'espn-game-summary',
     'espn-news',
@@ -79675,6 +79708,18 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> EBayEbaySellerShopResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['email-verify'],
+        params: WebEmailVerifyParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> WebEmailVerifyResponse: ...
     @overload
     def operation(
         self,
@@ -102943,6 +102988,18 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> EBayEbaySellerShopResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['email-verify'],
+        params: WebEmailVerifyParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> WebEmailVerifyResponse: ...
     @overload
     def request(
         self,

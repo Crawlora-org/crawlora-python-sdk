@@ -11977,6 +11977,17 @@ OPERATIONS = {'7now-catalog': {'bodyParam': None,
                       'produces': ['application/json'],
                       'queryParams': [{'in': 'query', 'name': 'page', 'type': 'integer'}],
                       'security': ['ApiKeyAuth']},
+ 'email-verify': {'bodyParam': 'option',
+                  'bodyRequired': True,
+                  'consumes': ['application/json'],
+                  'formParams': [],
+                  'id': 'email-verify',
+                  'method': 'POST',
+                  'path': '/email/verify',
+                  'pathParams': [],
+                  'produces': ['application/json'],
+                  'queryParams': [],
+                  'security': ['ApiKeyAuth']},
  'espn-athlete': {'bodyParam': None,
                   'bodyRequired': False,
                   'consumes': ['application/json'],
@@ -33647,6 +33658,7 @@ GROUPS = {'accor': {'amenities': 'accor-amenities',
  'wayfair': {'categories': 'wayfair-categories', 'category': 'wayfair-category', 'product': 'wayfair-product'},
  'web': {'antibot_check': 'antibot-check',
          'contact': 'contact',
+         'email_verify': 'email-verify',
          'extract': 'extract',
          'scrape': 'web-scrape',
          'techstack': 'web-techstack'},
@@ -33811,7 +33823,7 @@ GROUPS = {'accor': {'amenities': 'accor-amenities',
             'restaurant_menu': 'zomato-restaurant-menu',
             'search': 'zomato-search'}}
 
-OPERATION_COUNT = 1938
+OPERATION_COUNT = 1939
 
 class OperationId:
     ACCOR_AMENITIES = 'accor-amenities'
@@ -35573,6 +35585,7 @@ class OperationId:
     WAYFAIR_PRODUCT = 'wayfair-product'
     WEB_ANTIBOT_CHECK = 'antibot-check'
     WEB_CONTACT = 'contact'
+    WEB_EMAIL_VERIFY = 'email-verify'
     WEB_EXTRACT = 'extract'
     WEB_SCRAPE = 'web-scrape'
     WEB_TECHSTACK = 'web-techstack'
