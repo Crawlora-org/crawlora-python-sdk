@@ -51,7 +51,7 @@ class IdempotencyTest(unittest.TestCase):
             api_key="k", base_url="http://x/api/v1", retries=1, retry_delay=0, idempotency_keys=True,
             transport=make_transport([(503, {"code": 503}), (200, {"code": 200, "data": {}})], record=rec),
         )
-        client.google.search(searchOption={"q": "c"})  # POST
+        client.web.email_verify(option={"emails": ["jane@example.com"]})  # POST
         keys = [r["headers"].get("Idempotency-key") or r["headers"].get("Idempotency-Key") for r in rec]
         self.assertEqual(len(rec), 2)
         self.assertTrue(keys[0])

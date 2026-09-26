@@ -1,16 +1,14 @@
 from crawlora import CrawloraClient
-from crawlora.client import BingSearchResponse, GoogleSearchBody, GoogleSearchResponse
+from crawlora.client import BingSearchResponse, WebEmailVerifyBody, WebEmailVerifyResponse
 
 client = CrawloraClient(api_key="api_test")
 
 search_response: BingSearchResponse = client.request("bing-search", {"q": "coffee"})
 search_response["data"]["results"][0]["title"].upper()
 
-search_body: GoogleSearchBody = {
-    "country": "us",
-    "keyword": "coffee",
-    "language": "en",
+email_verify_body: WebEmailVerifyBody = {
+    "emails": ["jane@example.com"],
 }
 
-google_response: GoogleSearchResponse = client.operation("google-search", {"searchOption": search_body})
-google_response["data"]["result"][0]["title"].upper()
+email_verify_response: WebEmailVerifyResponse = client.operation("email-verify", {"option": email_verify_body})
+email_verify_response["data"]["results"][0]["email"].upper()

@@ -84,8 +84,8 @@ class CrawloraClientTest(unittest.TestCase):
 
         with self.assertRaisesRegex(ValueError, "missing required query parameter: q"):
             client.bing.search()
-        with self.assertRaisesRegex(ValueError, "missing required body parameter: searchOption"):
-            client.google.search()
+        with self.assertRaisesRegex(ValueError, "missing required body parameter: option"):
+            client.web.email_verify()
         self.assertEqual(Handler.calls, [])
 
     def test_invalid_enum_params_fail_before_request(self):
@@ -131,8 +131,8 @@ class CrawloraClientTest(unittest.TestCase):
 
     def test_request_headers_override_default_auth_and_content_headers(self):
         client = CrawloraClient(api_key="api_default", base_url=self.base_url)
-        client.google.search(
-            searchOption={"q": "coffee"},
+        client.web.email_verify(
+            option={"emails": ["jane@example.com"]},
             _headers={"X-API-KEY": "api_request", "Content-Type": "application/custom+json"},
         )
 
@@ -156,9 +156,9 @@ class CrawloraClientTest(unittest.TestCase):
 
     def test_json_body(self):
         client = CrawloraClient(api_key="api_test", base_url=self.base_url)
-        client.google.search(searchOption={"q": "coffee"})
+        client.web.email_verify(option={"emails": ["jane@example.com"]})
 
-        self.assertEqual(Handler.calls[0]["body"], b'{"q": "coffee"}')
+        self.assertEqual(Handler.calls[0]["body"], b'{"emails": ["jane@example.com"]}')
         self.assertEqual(Handler.calls[0]["headers"]["Content-Type"], "application/json")
 
     def test_api_error(self):
@@ -268,7 +268,7 @@ class CrawloraClientTest(unittest.TestCase):
 
     def test_operation_metadata_count(self) -> None:
         self.assertEqual(len(OPERATIONS), OPERATION_COUNT)
-        self.assertEqual(OPERATION_COUNT, 1939)
+        self.assertEqual(OPERATION_COUNT, 3159)
 
     def test_deprecated_endpoints_are_not_generated(self) -> None:
         self.assertFalse(hasattr(CrawloraClient(api_key="api_test", base_url=self.base_url).google, "lens"))
@@ -284,7 +284,7 @@ class CrawloraClientTest(unittest.TestCase):
         self.assertIn("BingSearchParams = TypedDict", stub)
         self.assertIn("'q': Required[str]", stub)
         self.assertIn("'count': NotRequired[int]", stub)
-        self.assertIn("GoogleSearchBody = ModelGoogleSearchOption", stub)
+        self.assertIn("WebEmailVerifyBody = ModelContactVerifyRequest", stub)
         self.assertIn("'review_count': NotRequired[int | None]", stub)
         self.assertIn("def search(self, **params: Unpack[BingSearchParams]) -> BingSearchResponse: ...", stub)
         self.assertIn("OperationId = Literal[", stub)
@@ -299,7 +299,7 @@ class CrawloraClientTest(unittest.TestCase):
         recipes_doc = root.joinpath("docs", "recipes.md").read_text()
 
         for expected in [
-            "Total operations: `1939`",
+            "Total operations: `3159`",
             "`bing-search`",
             "`GET /bing/search`",
             "`bing.search`",
