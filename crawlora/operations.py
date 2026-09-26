@@ -29126,8 +29126,19 @@ OPERATIONS = {'7now-catalog': {'bodyParam': None,
                          'path': '/livescore/news-feed',
                          'pathParams': [],
                          'produces': ['application/json'],
-                         'queryParams': [],
+                         'queryParams': [{'in': 'query', 'name': 'include_content', 'type': 'boolean'}],
                          'security': ['ApiKeyAuth']},
+ 'livescore-news-publishers': {'bodyParam': None,
+                               'bodyRequired': False,
+                               'consumes': ['application/json'],
+                               'formParams': [],
+                               'id': 'livescore-news-publishers',
+                               'method': 'GET',
+                               'path': '/livescore/news-publishers',
+                               'pathParams': [],
+                               'produces': ['application/json'],
+                               'queryParams': [],
+                               'security': ['ApiKeyAuth']},
  'livescore-player': {'bodyParam': None,
                       'bodyRequired': False,
                       'consumes': ['application/json'],
@@ -56206,6 +56217,7 @@ GROUPS = {'abc_news': {'abcnews_article': 'abcnews-article',
                 'livescore_news_article': 'livescore-news-article',
                 'livescore_news_categories': 'livescore-news-categories',
                 'livescore_news_feed': 'livescore-news-feed',
+                'livescore_news_publishers': 'livescore-news-publishers',
                 'livescore_player': 'livescore-player',
                 'livescore_scores': 'livescore-scores',
                 'livescore_scores_toc': 'livescore-scores-toc',
@@ -57798,7 +57810,7 @@ GROUPS = {'abc_news': {'abcnews_article': 'abcnews-article',
             'restaurant_menu': 'zomato-restaurant-menu',
             'search': 'zomato-search'}}
 
-OPERATION_COUNT = 3159
+OPERATION_COUNT = 3160
 
 class OperationId:
     ABC_NEWS_ABCNEWS_ARTICLE = 'abcnews-article'
@@ -59330,6 +59342,7 @@ class OperationId:
     LIVE_SCORE_LIVESCORE_NEWS_ARTICLE = 'livescore-news-article'
     LIVE_SCORE_LIVESCORE_NEWS_CATEGORIES = 'livescore-news-categories'
     LIVE_SCORE_LIVESCORE_NEWS_FEED = 'livescore-news-feed'
+    LIVE_SCORE_LIVESCORE_NEWS_PUBLISHERS = 'livescore-news-publishers'
     LIVE_SCORE_LIVESCORE_PLAYER = 'livescore-player'
     LIVE_SCORE_LIVESCORE_SCORES = 'livescore-scores'
     LIVE_SCORE_LIVESCORE_SCORES_TOC = 'livescore-scores-toc'

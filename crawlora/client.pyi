@@ -30673,6 +30673,7 @@ ModelLivescienceAuthorSocialLink = TypedDict('ModelLivescienceAuthorSocialLink',
 ModelLivescoreLivescoreNewsFeedItemDoc = TypedDict('ModelLivescoreLivescoreNewsFeedItemDoc', {
     'author': NotRequired[str],
     'categories': NotRequired[list[str]],
+    'content': NotRequired[str],
     'description': NotRequired[str],
     'guid': NotRequired[str],
     'link': NotRequired[str],
@@ -30681,6 +30682,20 @@ ModelLivescoreLivescoreNewsFeedItemDoc = TypedDict('ModelLivescoreLivescoreNewsF
 }, total=False)
 
 ModelLivescoreLivescoreNewsFeedResponseDoc = TypedDict('ModelLivescoreLivescoreNewsFeedResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[dict[str, Any]],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelLivescoreLivescoreNewsPublisherDoc = TypedDict('ModelLivescoreLivescoreNewsPublisherDoc', {
+    'contact': NotRequired[str],
+    'logo_url': NotRequired[str],
+    'name': NotRequired[str],
+    'telephone': NotRequired[str],
+    'website': NotRequired[str],
+}, total=False)
+
+ModelLivescoreLivescoreNewsPublishersResponseDoc = TypedDict('ModelLivescoreLivescoreNewsPublishersResponseDoc', {
     'code': NotRequired[int],
     'data': NotRequired[dict[str, Any]],
     'msg': NotRequired[str],
@@ -77338,6 +77353,14 @@ LiveScoreLivescoreNewsFeedParams = TypedDict('LiveScoreLivescoreNewsFeedParams',
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
     '_headers': NotRequired[Mapping[str, str]],
+    'include_content': NotRequired[bool],
+}, total=False)
+
+LiveScoreLivescoreNewsPublishersResponse = ModelLivescoreLivescoreNewsPublishersResponseDoc
+LiveScoreLivescoreNewsPublishersParams = TypedDict('LiveScoreLivescoreNewsPublishersParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
 }, total=False)
 
 LiveScoreLivescorePlayerResponse = ModelLivescoreResponseDoc
@@ -90171,7 +90194,7 @@ XboxBrowseParams = TypedDict('XboxBrowseParams', {
     'sort': NotRequired[Literal['relevance', 'release_date_desc', 'most_popular', 'price_asc', 'price_desc', 'most_wishlisted', 'discount_desc', 'title_asc', 'title_desc']],
     'genre': NotRequired[list[Literal['Action & adventure', 'Card & board', 'Casino', 'Classics', 'Companion', 'Educational', 'Family & kids', 'Fighting', 'Multi-Player Online Battle Arena', 'Music', 'Other', 'Platformer', 'Puzzle & trivia', 'Racing & flying', 'Role playing', 'Shooter', 'Simulation', 'Sports', 'Strategy', 'Tools', 'Word']]],
     'price': NotRequired[list[Literal['OnSale', '0', '0.01To5', '5To10', '10To20', '20To40', '40To60', '60To']]],
-    'platform': NotRequired[list[Literal['XboxSeriesX|S', 'XboxOne', 'PC', 'Handheld', 'CloudGaming', 'XboxPlayAnywhere']]],
+    'platform': NotRequired[list[Literal['XboxSeriesX\x7cS', 'XboxOne', 'PC', 'Handheld', 'CloudGaming', 'XboxPlayAnywhere']]],
     'subscription': NotRequired[list[Literal['CFQ7TTC0KHS0', 'CFQ7TTC0P85B', 'CFQ7TTC0K5DJ', 'CFQ7TTC0K6L8', 'CFQ7TTC0KGQ8', 'CFQ7TTC0K5DH', 'CFQ7TTC0QH5H']]],
     'age_rating': NotRequired[list[Literal['ESRB:EC', 'ESRB:E', 'ESRB:E10', 'ESRB:T', 'ESRB:M', 'ESRB:AO', 'ESRB:RPEveryone', 'ESRB:RPMature', 'ESRB:RPTeen', 'ESRB:UR']]],
     'multiplayer': NotRequired[list[Literal['CrossPlatformMultiplayer', 'CrossPlatformCoop', 'SinglePlayer', 'OnlineMultiplayerWithGold', 'CoopSupportOnline', 'CoopSupportLocal', 'LocalMultiplayer']]],
@@ -90224,7 +90247,7 @@ XboxSearchParams = TypedDict('XboxSearchParams', {
     'sort': NotRequired[Literal['relevance', 'release_date_desc', 'most_popular', 'price_asc', 'price_desc', 'most_wishlisted', 'discount_desc', 'title_asc', 'title_desc']],
     'genre': NotRequired[list[Literal['Action & adventure', 'Card & board', 'Casino', 'Classics', 'Companion', 'Educational', 'Family & kids', 'Fighting', 'Multi-Player Online Battle Arena', 'Music', 'Other', 'Platformer', 'Puzzle & trivia', 'Racing & flying', 'Role playing', 'Shooter', 'Simulation', 'Sports', 'Strategy', 'Tools', 'Word']]],
     'price': NotRequired[list[Literal['OnSale', '0', '0.01To5', '5To10', '10To20', '20To40', '40To60', '60To']]],
-    'platform': NotRequired[list[Literal['XboxSeriesX|S', 'XboxOne', 'PC', 'Handheld', 'CloudGaming', 'XboxPlayAnywhere']]],
+    'platform': NotRequired[list[Literal['XboxSeriesX\x7cS', 'XboxOne', 'PC', 'Handheld', 'CloudGaming', 'XboxPlayAnywhere']]],
     'subscription': NotRequired[list[Literal['CFQ7TTC0KHS0', 'CFQ7TTC0P85B', 'CFQ7TTC0K5DJ', 'CFQ7TTC0K6L8', 'CFQ7TTC0KGQ8', 'CFQ7TTC0K5DH', 'CFQ7TTC0QH5H']]],
     'age_rating': NotRequired[list[Literal['ESRB:EC', 'ESRB:E', 'ESRB:E10', 'ESRB:T', 'ESRB:M', 'ESRB:AO', 'ESRB:RPEveryone', 'ESRB:RPMature', 'ESRB:RPTeen', 'ESRB:UR']]],
     'multiplayer': NotRequired[list[Literal['CrossPlatformMultiplayer', 'CrossPlatformCoop', 'SinglePlayer', 'OnlineMultiplayerWithGold', 'CoopSupportOnline', 'CoopSupportLocal', 'LocalMultiplayer']]],
@@ -93571,6 +93594,7 @@ class LiveScoreGroup:
     def livescore_news_article(self, **params: Unpack[LiveScoreLivescoreNewsArticleParams]) -> LiveScoreLivescoreNewsArticleResponse: ...
     def livescore_news_categories(self, **params: Unpack[LiveScoreLivescoreNewsCategoriesParams]) -> LiveScoreLivescoreNewsCategoriesResponse: ...
     def livescore_news_feed(self, **params: Unpack[LiveScoreLivescoreNewsFeedParams]) -> LiveScoreLivescoreNewsFeedResponse: ...
+    def livescore_news_publishers(self, **params: Unpack[LiveScoreLivescoreNewsPublishersParams]) -> LiveScoreLivescoreNewsPublishersResponse: ...
     def livescore_player(self, **params: Unpack[LiveScoreLivescorePlayerParams]) -> LiveScoreLivescorePlayerResponse: ...
     def livescore_scores(self, **params: Unpack[LiveScoreLivescoreScoresParams]) -> LiveScoreLivescoreScoresResponse: ...
     def livescore_scores_toc(self, **params: Unpack[LiveScoreLivescoreScoresTocParams]) -> LiveScoreLivescoreScoresTocResponse: ...
@@ -97178,6 +97202,7 @@ OperationId = Literal[
     'livescore-news-article',
     'livescore-news-categories',
     'livescore-news-feed',
+    'livescore-news-publishers',
     'livescore-player',
     'livescore-scores',
     'livescore-scores-toc',
@@ -118137,6 +118162,18 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> LiveScoreLivescoreNewsFeedResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['livescore-news-publishers'],
+        params: LiveScoreLivescoreNewsPublishersParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> LiveScoreLivescoreNewsPublishersResponse: ...
     @overload
     def operation(
         self,
@@ -156057,6 +156094,18 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> LiveScoreLivescoreNewsFeedResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['livescore-news-publishers'],
+        params: LiveScoreLivescoreNewsPublishersParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> LiveScoreLivescoreNewsPublishersResponse: ...
     @overload
     def request(
         self,

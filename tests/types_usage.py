@@ -11,4 +11,4 @@ email_verify_body: WebEmailVerifyBody = {
 }
 
 email_verify_response: WebEmailVerifyResponse = client.operation("email-verify", {"option": email_verify_body})
-email_verify_response["data"]["results"][0]["email"].upper()
+email_verify_response["data"]["results"][0]["address"].upper()
