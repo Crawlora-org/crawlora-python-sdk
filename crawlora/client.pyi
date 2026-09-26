@@ -42739,6 +42739,25 @@ ModelRollingstoneHeadlineItem = TypedDict('ModelRollingstoneHeadlineItem', {
     'url': NotRequired[str],
 }, total=False)
 
+ModelRottentomatoesBrowseFilter = TypedDict('ModelRottentomatoesBrowseFilter', {
+    'key': NotRequired[str],
+    'label': NotRequired[str],
+    'values': NotRequired[list[ModelRottentomatoesBrowseFilterValue]],
+}, total=False)
+
+ModelRottentomatoesBrowseFilterValue = TypedDict('ModelRottentomatoesBrowseFilterValue', {
+    'label': NotRequired[str],
+    'value': NotRequired[str],
+}, total=False)
+
+ModelRottentomatoesBrowseFiltersResponse = TypedDict('ModelRottentomatoesBrowseFiltersResponse', {
+    'fetched_at': NotRequired[str],
+    'filters': NotRequired[list[ModelRottentomatoesBrowseFilter]],
+    'list': NotRequired[str],
+    'public_page_derived': NotRequired[bool],
+    'source_url': NotRequired[str],
+}, total=False)
+
 ModelRottentomatoesBrowseItem = TypedDict('ModelRottentomatoesBrowseItem', {
     'critics_review_count': NotRequired[int],
     'date_created': NotRequired[str],
@@ -42757,10 +42776,64 @@ ModelRottentomatoesBrowseResponse = TypedDict('ModelRottentomatoesBrowseResponse
     'items': NotRequired[list[ModelRottentomatoesBrowseItem]],
     'limit': NotRequired[int],
     'list': NotRequired[str],
+    'page_info': NotRequired[ModelRottentomatoesReviewPageInfo],
     'public_page_derived': NotRequired[bool],
     'sort': NotRequired[str],
     'source_url': NotRequired[str],
     'title': NotRequired[str],
+}, total=False)
+
+ModelRottentomatoesCriticAuthor = TypedDict('ModelRottentomatoesCriticAuthor', {
+    'badges': NotRequired[list[str]],
+    'name': NotRequired[str],
+    'path': NotRequired[str],
+    'publication_label': NotRequired[str],
+    'publications': NotRequired[list[ModelRottentomatoesCriticAuthorPublication]],
+}, total=False)
+
+ModelRottentomatoesCriticAuthorPublication = TypedDict('ModelRottentomatoesCriticAuthorPublication', {
+    'editorial_url': NotRequired[str],
+    'id': NotRequired[str],
+    'name': NotRequired[str],
+    'path': NotRequired[str],
+}, total=False)
+
+ModelRottentomatoesCriticsAuthorsResponse = TypedDict('ModelRottentomatoesCriticsAuthorsResponse', {
+    'after': NotRequired[str],
+    'authors': NotRequired[list[ModelRottentomatoesCriticAuthor]],
+    'before': NotRequired[str],
+    'fetched_at': NotRequired[str],
+    'has_next_page': NotRequired[bool],
+    'has_previous_page': NotRequired[bool],
+    'inactive': NotRequired[bool],
+    'letter': NotRequired[str],
+    'limit': NotRequired[int],
+    'next_cursor': NotRequired[str],
+    'previous_cursor': NotRequired[str],
+    'public_page_derived': NotRequired[bool],
+    'search': NotRequired[str],
+    'source_url': NotRequired[str],
+}, total=False)
+
+ModelRottentomatoesEditorialSearchResponse = TypedDict('ModelRottentomatoesEditorialSearchResponse', {
+    'fetched_at': NotRequired[str],
+    'has_next_page': NotRequired[bool],
+    'limit': NotRequired[int],
+    'page': NotRequired[int],
+    'public_page_derived': NotRequired[bool],
+    'query': NotRequired[str],
+    'results': NotRequired[list[ModelRottentomatoesEditorialSearchResult]],
+    'source_url': NotRequired[str],
+    'total': NotRequired[int],
+    'total_pages': NotRequired[int],
+}, total=False)
+
+ModelRottentomatoesEditorialSearchResult = TypedDict('ModelRottentomatoesEditorialSearchResult', {
+    'id': NotRequired[int],
+    'subtype': NotRequired[str],
+    'title': NotRequired[str],
+    'type': NotRequired[str],
+    'url': NotRequired[str],
 }, total=False)
 
 ModelRottentomatoesEpisodeResponse = TypedDict('ModelRottentomatoesEpisodeResponse', {
@@ -42912,6 +42985,8 @@ ModelRottentomatoesReviewMovieSummary = TypedDict('ModelRottentomatoesReviewMovi
 ModelRottentomatoesReviewPageInfo = TypedDict('ModelRottentomatoesReviewPageInfo', {
     'end_cursor': NotRequired[str],
     'has_next_page': NotRequired[bool],
+    'has_previous_page': NotRequired[bool],
+    'start_cursor': NotRequired[str],
 }, total=False)
 
 ModelRottentomatoesReviewsResponse = TypedDict('ModelRottentomatoesReviewsResponse', {
@@ -43038,15 +43113,65 @@ ModelRottentomatoesSeriesSummary = TypedDict('ModelRottentomatoesSeriesSummary',
     'url': NotRequired[str],
 }, total=False)
 
+ModelRottentomatoesSitemap = TypedDict('ModelRottentomatoesSitemap', {
+    'family': NotRequired[str],
+    'index': NotRequired[int],
+    'last_modified': NotRequired[str],
+    'name': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelRottentomatoesSitemapIndexResponse = TypedDict('ModelRottentomatoesSitemapIndexResponse', {
+    'fetched_at': NotRequired[str],
+    'public_page_derived': NotRequired[bool],
+    'sitemaps': NotRequired[list[ModelRottentomatoesSitemap]],
+    'source_url': NotRequired[str],
+}, total=False)
+
+ModelRottentomatoesSitemapUrl = TypedDict('ModelRottentomatoesSitemapUrl', {
+    'last_modified': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelRottentomatoesSitemapUrlresponse = TypedDict('ModelRottentomatoesSitemapUrlresponse', {
+    'fetched_at': NotRequired[str],
+    'has_more': NotRequired[bool],
+    'limit': NotRequired[int],
+    'name': NotRequired[str],
+    'offset': NotRequired[int],
+    'public_page_derived': NotRequired[bool],
+    'source_url': NotRequired[str],
+    'total': NotRequired[int],
+    'urls': NotRequired[list[ModelRottentomatoesSitemapUrl]],
+}, total=False)
+
 ModelRottentomatoesTvseason = TypedDict('ModelRottentomatoesTvseason', {
     'name': NotRequired[str],
     'path': NotRequired[str],
     'url': NotRequired[str],
 }, total=False)
 
+ModelRottentomatoesBrowseFiltersResponseDoc = TypedDict('ModelRottentomatoesBrowseFiltersResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelRottentomatoesBrowseFiltersResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
 ModelRottentomatoesBrowseResponseDoc = TypedDict('ModelRottentomatoesBrowseResponseDoc', {
     'code': NotRequired[int],
     'data': NotRequired[ModelRottentomatoesBrowseResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelRottentomatoesCriticsAuthorsResponseDoc = TypedDict('ModelRottentomatoesCriticsAuthorsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelRottentomatoesCriticsAuthorsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelRottentomatoesEditorialSearchResponseDoc = TypedDict('ModelRottentomatoesEditorialSearchResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelRottentomatoesEditorialSearchResponse],
     'msg': NotRequired[str],
 }, total=False)
 
@@ -43089,6 +43214,18 @@ ModelRottentomatoesSeasonResponseDoc = TypedDict('ModelRottentomatoesSeasonRespo
 ModelRottentomatoesSeriesResponseDoc = TypedDict('ModelRottentomatoesSeriesResponseDoc', {
     'code': NotRequired[int],
     'data': NotRequired[ModelRottentomatoesSeriesResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelRottentomatoesSitemapIndexResponseDoc = TypedDict('ModelRottentomatoesSitemapIndexResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelRottentomatoesSitemapIndexResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelRottentomatoesSitemapUrlresponseDoc = TypedDict('ModelRottentomatoesSitemapUrlresponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelRottentomatoesSitemapUrlresponse],
     'msg': NotRequired[str],
 }, total=False)
 
@@ -83430,13 +83567,27 @@ RothySRothysStoreParams = TypedDict('RothySRothysStoreParams', {
     '_headers': NotRequired[Mapping[str, str]],
 }, total=False)
 
+RottenTomatoesRottentomatoesBrowseFiltersResponse = ModelRottentomatoesBrowseFiltersResponseDoc
+RottenTomatoesRottentomatoesBrowseFiltersParams = TypedDict('RottenTomatoesRottentomatoesBrowseFiltersParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'list': NotRequired[Literal['movies_in_theaters', 'movies_at_home', 'movies_coming_soon', 'tv_series_browse']],
+}, total=False)
+
 RottenTomatoesRottentomatoesBrowseMoviesResponse = ModelRottentomatoesBrowseResponseDoc
 RottenTomatoesRottentomatoesBrowseMoviesParams = TypedDict('RottenTomatoesRottentomatoesBrowseMoviesParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
     '_headers': NotRequired[Mapping[str, str]],
     'list': NotRequired[Literal['movies_in_theaters', 'movies_at_home', 'movies_coming_soon']],
-    'sort': NotRequired[Literal['popular', 'newest', 'top_box_office']],
+    'sort': NotRequired[Literal['popular', 'newest', 'top_box_office', 'a_z', 'critic_highest', 'critic_lowest', 'audience_highest', 'audience_lowest']],
+    'genres': NotRequired[Literal['action', 'adventure', 'animation', 'anime', 'biography', 'comedy', 'crime', 'documentary', 'drama', 'entertainment', 'faith_and_spirituality', 'fantasy', 'game_show', 'lgbtq', 'health_and_wellness', 'history', 'holiday', 'horror', 'house_and_garden', 'kids_and_family', 'music', 'musical', 'mystery_and_thriller', 'nature', 'news', 'reality', 'romance', 'sci_fi', 'short', 'soap', 'special_interest', 'sports', 'stand_up', 'talk_show', 'travel', 'variety', 'war', 'western']],
+    'ratings': NotRequired[Literal['g', 'pg', 'pg_13', 'r', 'nc_17', 'nr', 'ur']],
+    'audience': NotRequired[Literal['verified_hot', 'upright', 'spilled']],
+    'critics': NotRequired[Literal['certified_fresh', 'fresh', 'rotten']],
+    'affiliates': NotRequired[Literal['theaters', 'fandango', 'apple-tv-plus', 'netflix', 'prime-video', 'disney-plus', 'max', 'peacock', 'hulu', 'paramount-plus', 'amc-plus', 'acorn-tv', 'apple-tv']],
+    'after': NotRequired[str],
     'limit': NotRequired[int],
 }, total=False)
 
@@ -83446,7 +83597,36 @@ RottenTomatoesRottentomatoesBrowseTvParams = TypedDict('RottenTomatoesRottentoma
     '_timeout': NotRequired[float],
     '_headers': NotRequired[Mapping[str, str]],
     'list': NotRequired[Literal['tv_series_browse']],
-    'sort': NotRequired[Literal['popular', 'newest']],
+    'sort': NotRequired[Literal['popular', 'newest', 'a_z', 'critic_highest', 'critic_lowest', 'audience_highest', 'audience_lowest']],
+    'genres': NotRequired[Literal['action', 'adventure', 'animation', 'anime', 'biography', 'comedy', 'crime', 'documentary', 'drama', 'entertainment', 'faith_and_spirituality', 'fantasy', 'game_show', 'lgbtq', 'health_and_wellness', 'history', 'holiday', 'horror', 'house_and_garden', 'kids_and_family', 'music', 'musical', 'mystery_and_thriller', 'nature', 'news', 'reality', 'romance', 'sci_fi', 'short', 'soap', 'special_interest', 'sports', 'stand_up', 'talk_show', 'travel', 'variety', 'war', 'western']],
+    'ratings': NotRequired[Literal['tvy', 'tvy7', 'tvg', 'tvpg', 'tv14', 'tvma']],
+    'audience': NotRequired[Literal['upright', 'spilled']],
+    'critics': NotRequired[Literal['fresh', 'rotten']],
+    'affiliates': NotRequired[Literal['theaters', 'fandango', 'apple-tv-plus', 'netflix', 'prime-video', 'disney-plus', 'max', 'peacock', 'hulu', 'paramount-plus', 'amc-plus', 'acorn-tv', 'apple-tv']],
+    'after': NotRequired[str],
+    'limit': NotRequired[int],
+}, total=False)
+
+RottenTomatoesRottentomatoesCriticsAuthorsResponse = ModelRottentomatoesCriticsAuthorsResponseDoc
+RottenTomatoesRottentomatoesCriticsAuthorsParams = TypedDict('RottenTomatoesRottentomatoesCriticsAuthorsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'letter': NotRequired[Literal['#', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']],
+    'search': NotRequired[str],
+    'inactive': NotRequired[bool],
+    'after': NotRequired[str],
+    'before': NotRequired[str],
+    'limit': NotRequired[int],
+}, total=False)
+
+RottenTomatoesRottentomatoesEditorialSearchResponse = ModelRottentomatoesEditorialSearchResponseDoc
+RottenTomatoesRottentomatoesEditorialSearchParams = TypedDict('RottenTomatoesRottentomatoesEditorialSearchParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'query': Required[str],
+    'page': NotRequired[int],
     'limit': NotRequired[int],
 }, total=False)
 
@@ -83514,6 +83694,23 @@ RottenTomatoesRottentomatoesSeriesParams = TypedDict('RottenTomatoesRottentomato
     '_headers': NotRequired[Mapping[str, str]],
     'path': NotRequired[str],
     'url': NotRequired[str],
+}, total=False)
+
+RottenTomatoesRottentomatoesSitemapUrlsResponse = ModelRottentomatoesSitemapUrlresponseDoc
+RottenTomatoesRottentomatoesSitemapUrlsParams = TypedDict('RottenTomatoesRottentomatoesSitemapUrlsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'name': Required[str],
+    'offset': NotRequired[int],
+    'limit': NotRequired[int],
+}, total=False)
+
+RottenTomatoesRottentomatoesSitemapsResponse = ModelRottentomatoesSitemapIndexResponseDoc
+RottenTomatoesRottentomatoesSitemapsParams = TypedDict('RottenTomatoesRottentomatoesSitemapsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
 }, total=False)
 
 RoverSitterSearchResponse = ModelRoverSearchResponseDoc
@@ -94452,8 +94649,11 @@ class RothySGroup:
     def rothys_store(self, **params: Unpack[RothySRothysStoreParams]) -> RothySRothysStoreResponse: ...
 
 class RottenTomatoesGroup:
+    def rottentomatoes_browse_filters(self, **params: Unpack[RottenTomatoesRottentomatoesBrowseFiltersParams]) -> RottenTomatoesRottentomatoesBrowseFiltersResponse: ...
     def rottentomatoes_browse_movies(self, **params: Unpack[RottenTomatoesRottentomatoesBrowseMoviesParams]) -> RottenTomatoesRottentomatoesBrowseMoviesResponse: ...
     def rottentomatoes_browse_tv(self, **params: Unpack[RottenTomatoesRottentomatoesBrowseTvParams]) -> RottenTomatoesRottentomatoesBrowseTvResponse: ...
+    def rottentomatoes_critics_authors(self, **params: Unpack[RottenTomatoesRottentomatoesCriticsAuthorsParams]) -> RottenTomatoesRottentomatoesCriticsAuthorsResponse: ...
+    def rottentomatoes_editorial_search(self, **params: Unpack[RottenTomatoesRottentomatoesEditorialSearchParams]) -> RottenTomatoesRottentomatoesEditorialSearchResponse: ...
     def rottentomatoes_episode(self, **params: Unpack[RottenTomatoesRottentomatoesEpisodeParams]) -> RottenTomatoesRottentomatoesEpisodeResponse: ...
     def rottentomatoes_movie(self, **params: Unpack[RottenTomatoesRottentomatoesMovieParams]) -> RottenTomatoesRottentomatoesMovieResponse: ...
     def rottentomatoes_movie_reviews(self, **params: Unpack[RottenTomatoesRottentomatoesMovieReviewsParams]) -> RottenTomatoesRottentomatoesMovieReviewsResponse: ...
@@ -94461,6 +94661,8 @@ class RottenTomatoesGroup:
     def rottentomatoes_search(self, **params: Unpack[RottenTomatoesRottentomatoesSearchParams]) -> RottenTomatoesRottentomatoesSearchResponse: ...
     def rottentomatoes_season(self, **params: Unpack[RottenTomatoesRottentomatoesSeasonParams]) -> RottenTomatoesRottentomatoesSeasonResponse: ...
     def rottentomatoes_series(self, **params: Unpack[RottenTomatoesRottentomatoesSeriesParams]) -> RottenTomatoesRottentomatoesSeriesResponse: ...
+    def rottentomatoes_sitemap_urls(self, **params: Unpack[RottenTomatoesRottentomatoesSitemapUrlsParams]) -> RottenTomatoesRottentomatoesSitemapUrlsResponse: ...
+    def rottentomatoes_sitemaps(self, **params: Unpack[RottenTomatoesRottentomatoesSitemapsParams]) -> RottenTomatoesRottentomatoesSitemapsResponse: ...
 
 class RoverGroup:
     def sitter_search(self, **params: Unpack[RoverSitterSearchParams]) -> RoverSitterSearchResponse: ...
@@ -97880,8 +98082,11 @@ OperationId = Literal[
     'rothys-sitemap-urls',
     'rothys-sitemaps',
     'rothys-store',
+    'rottentomatoes-browse-filters',
     'rottentomatoes-browse-movies',
     'rottentomatoes-browse-tv',
+    'rottentomatoes-critics-authors',
+    'rottentomatoes-editorial-search',
     'rottentomatoes-episode',
     'rottentomatoes-movie',
     'rottentomatoes-movie-reviews',
@@ -97889,6 +98094,8 @@ OperationId = Literal[
     'rottentomatoes-search',
     'rottentomatoes-season',
     'rottentomatoes-series',
+    'rottentomatoes-sitemap-urls',
+    'rottentomatoes-sitemaps',
     'rover-sitter-search',
     'rover-sitter-profile',
     'rover-trainer-search',
@@ -126301,6 +126508,18 @@ class CrawloraClient:
     @overload
     def operation(
         self,
+        operation_id: Literal['rottentomatoes-browse-filters'],
+        params: RottenTomatoesRottentomatoesBrowseFiltersParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> RottenTomatoesRottentomatoesBrowseFiltersResponse: ...
+    @overload
+    def operation(
+        self,
         operation_id: Literal['rottentomatoes-browse-movies'],
         params: RottenTomatoesRottentomatoesBrowseMoviesParams = ...,
         *,
@@ -126322,6 +126541,30 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> RottenTomatoesRottentomatoesBrowseTvResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['rottentomatoes-critics-authors'],
+        params: RottenTomatoesRottentomatoesCriticsAuthorsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> RottenTomatoesRottentomatoesCriticsAuthorsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['rottentomatoes-editorial-search'],
+        params: RottenTomatoesRottentomatoesEditorialSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> RottenTomatoesRottentomatoesEditorialSearchResponse: ...
     @overload
     def operation(
         self,
@@ -126406,6 +126649,30 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> RottenTomatoesRottentomatoesSeriesResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['rottentomatoes-sitemap-urls'],
+        params: RottenTomatoesRottentomatoesSitemapUrlsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> RottenTomatoesRottentomatoesSitemapUrlsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['rottentomatoes-sitemaps'],
+        params: RottenTomatoesRottentomatoesSitemapsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> RottenTomatoesRottentomatoesSitemapsResponse: ...
     @overload
     def operation(
         self,
@@ -164233,6 +164500,18 @@ class CrawloraClient:
     @overload
     def request(
         self,
+        operation_id: Literal['rottentomatoes-browse-filters'],
+        params: RottenTomatoesRottentomatoesBrowseFiltersParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> RottenTomatoesRottentomatoesBrowseFiltersResponse: ...
+    @overload
+    def request(
+        self,
         operation_id: Literal['rottentomatoes-browse-movies'],
         params: RottenTomatoesRottentomatoesBrowseMoviesParams = ...,
         *,
@@ -164254,6 +164533,30 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> RottenTomatoesRottentomatoesBrowseTvResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['rottentomatoes-critics-authors'],
+        params: RottenTomatoesRottentomatoesCriticsAuthorsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> RottenTomatoesRottentomatoesCriticsAuthorsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['rottentomatoes-editorial-search'],
+        params: RottenTomatoesRottentomatoesEditorialSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> RottenTomatoesRottentomatoesEditorialSearchResponse: ...
     @overload
     def request(
         self,
@@ -164338,6 +164641,30 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> RottenTomatoesRottentomatoesSeriesResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['rottentomatoes-sitemap-urls'],
+        params: RottenTomatoesRottentomatoesSitemapUrlsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> RottenTomatoesRottentomatoesSitemapUrlsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['rottentomatoes-sitemaps'],
+        params: RottenTomatoesRottentomatoesSitemapsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> RottenTomatoesRottentomatoesSitemapsResponse: ...
     @overload
     def request(
         self,
