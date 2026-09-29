@@ -285,7 +285,8 @@ class CrawloraClientTest(unittest.TestCase):
         self.assertIn("'q': Required[str]", stub)
         self.assertIn("'count': NotRequired[int]", stub)
         self.assertIn("WebEmailVerifyBody = ModelContactVerifyRequest", stub)
-        self.assertIn("'XboxSeriesX\\x7cS'", stub)
+        browse_stub = stub.split("XboxBrowseParams = TypedDict", 1)[1].split("\n\n", 1)[0]
+        self.assertIn("'platform': NotRequired[list[str]]", browse_stub)
         self.assertIn("'review_count': NotRequired[int | None]", stub)
         self.assertIn("def search(self, **params: Unpack[BingSearchParams]) -> BingSearchResponse: ...", stub)
         self.assertIn("OperationId = Literal[", stub)
