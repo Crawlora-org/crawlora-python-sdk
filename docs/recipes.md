@@ -287,3 +287,10 @@ channel = crawlora.request("twitch-channel", {"login": "caedrel"})
 streams = crawlora.request("twitch-streams", {"game": "league-of-legends", "limit": 20})
 track = crawlora.request("soundcloud-track", {"url": "https://soundcloud.com/artist/track-name"})
 ```
+
+## News Publishers And Sports
+
+```python
+news = crawlora.al_com.alcom_news()
+sports = crawlora.sportskeeda.news()
+```
