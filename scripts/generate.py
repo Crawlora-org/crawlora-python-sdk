@@ -52,8 +52,15 @@ def schema_ref_name(schema):
 
 
 def py_literal(value):
-    """Render a Literal string while escaping type-syntax punctuation."""
-    return repr(str(value)).replace("|", "\\x7c")
+    """Render a Literal string with Python's standard escaping."""
+    return repr(str(value))
+
+
+def py_enum_type(values):
+    """Render enum values, falling back to str for mypy's pipe parsing bug."""
+    if any("|" in str(value) for value in values):
+        return "str"
+    return "Literal[" + ", ".join(py_literal(value) for value in values) + "]"
 
 
 def _py_schema_type(schema):
@@ -67,7 +74,7 @@ def _py_schema_type(schema):
         return concrete[0] if len(concrete) == 1 else "Any"
     enum_schema_values = schema.get("enum") or []
     if enum_schema_values:
-        return "Literal[" + ", ".join(py_literal(value) for value in enum_schema_values) + "]"
+        return py_enum_type(enum_schema_values)
     typ = schema.get("type")
     if typ == "integer":
         return "int"
@@ -98,7 +105,7 @@ def py_schema_type(schema):
 def py_type(param):
     enum_values = param.get("enum") or []
     if enum_values:
-        return "Literal[" + ", ".join(py_literal(value) for value in enum_values) + "]"
+        return py_enum_type(enum_values)
     typ = param.get("type")
     if typ == "integer":
         return "int"
