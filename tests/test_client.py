@@ -268,7 +268,7 @@ class CrawloraClientTest(unittest.TestCase):
 
     def test_operation_metadata_count(self) -> None:
         self.assertEqual(len(OPERATIONS), OPERATION_COUNT)
-        self.assertEqual(OPERATION_COUNT, 3275)
+        self.assertEqual(OPERATION_COUNT, 3529)
 
     def test_deprecated_endpoints_are_not_generated(self) -> None:
         self.assertFalse(hasattr(CrawloraClient(api_key="api_test", base_url=self.base_url).google, "lens"))
@@ -301,7 +301,7 @@ class CrawloraClientTest(unittest.TestCase):
         recipes_doc = root.joinpath("docs", "recipes.md").read_text()
 
         for expected in [
-            "Total operations: `3275`",
+            "Total operations: `3529`",
             "`bing-search`",
             "`GET /bing/search`",
             "`bing.search`",
