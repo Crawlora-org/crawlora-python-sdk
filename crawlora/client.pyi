@@ -4376,6 +4376,39 @@ ModelAxiosHeadlinesResponseDoc = TypedDict('ModelAxiosHeadlinesResponseDoc', {
     'msg': NotRequired[str],
 }, total=False)
 
+ModelBaiduSearchPagination = TypedDict('ModelBaiduSearchPagination', {
+    'next_page': NotRequired[int],
+    'page': NotRequired[int],
+}, total=False)
+
+ModelBaiduSearchResponse = TypedDict('ModelBaiduSearchResponse', {
+    'pagination': NotRequired[ModelBaiduSearchPagination],
+    'query': NotRequired[str],
+    'results': NotRequired[list[ModelBaiduSearchResult]],
+}, total=False)
+
+ModelBaiduSearchResult = TypedDict('ModelBaiduSearchResult', {
+    'date': NotRequired[str],
+    'description': NotRequired[str],
+    'position': NotRequired[int],
+    'source': NotRequired[str],
+    'title': NotRequired[str],
+    'type': NotRequired[Literal['web', 'video', 'baike']],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelBaiduSearchResponseDoc = TypedDict('ModelBaiduSearchResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelBaiduSearchResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelBaiduSuggestResponseDoc = TypedDict('ModelBaiduSuggestResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelSuggestResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
 ModelBalenciagaCategoriesResponse = TypedDict('ModelBalenciagaCategoriesResponse', {
     'categories': NotRequired[list[ModelBalenciagaCategory]],
     'count': NotRequired[int],
@@ -6166,7 +6199,14 @@ ModelBingSuggestResponse = TypedDict('ModelBingSuggestResponse', {
     'suggestions': NotRequired[list[ModelBingSuggestionResult]],
 }, total=False)
 
+ModelBingSuggestionEntity = TypedDict('ModelBingSuggestionEntity', {
+    'description': NotRequired[str],
+    'image_url': NotRequired[str],
+    'name': NotRequired[str],
+}, total=False)
+
 ModelBingSuggestionResult = TypedDict('ModelBingSuggestionResult', {
+    'entity': NotRequired[ModelBingSuggestionEntity],
     'position': NotRequired[int],
     'query': NotRequired[str],
 }, total=False)
@@ -7796,7 +7836,16 @@ ModelBraveSuggestResponse = TypedDict('ModelBraveSuggestResponse', {
     'suggestions': NotRequired[list[ModelBraveSuggestionResult]],
 }, total=False)
 
+ModelBraveSuggestionEntity = TypedDict('ModelBraveSuggestionEntity', {
+    'category': NotRequired[str],
+    'description': NotRequired[str],
+    'image_url': NotRequired[str],
+    'logo': NotRequired[bool],
+    'name': NotRequired[str],
+}, total=False)
+
 ModelBraveSuggestionResult = TypedDict('ModelBraveSuggestionResult', {
+    'entity': NotRequired[ModelBraveSuggestionEntity],
     'position': NotRequired[int],
     'query': NotRequired[str],
 }, total=False)
@@ -16011,6 +16060,12 @@ ModelDuckduckgoSearchResponseDoc = TypedDict('ModelDuckduckgoSearchResponseDoc',
 ModelDuckduckgoShoppingResponseDoc = TypedDict('ModelDuckduckgoShoppingResponseDoc', {
     'code': NotRequired[int],
     'data': NotRequired[ModelDuckduckgoShoppingResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelDuckduckgoSuggestResponseDoc = TypedDict('ModelDuckduckgoSuggestResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelSuggestResponse],
     'msg': NotRequired[str],
 }, total=False)
 
@@ -24244,12 +24299,16 @@ ModelGoogleSearchOption = TypedDict('ModelGoogleSearchOption', {
 
 ModelGoogleSuggestResponse = TypedDict('ModelGoogleSuggestResponse', {
     'query': NotRequired[str],
+    'source': NotRequired[str],
     'suggestions': NotRequired[list[ModelGoogleSuggestionResult]],
 }, total=False)
 
 ModelGoogleSuggestionResult = TypedDict('ModelGoogleSuggestionResult', {
+    'description': NotRequired[str],
     'position': NotRequired[int],
     'query': NotRequired[str],
+    'relevance': NotRequired[int],
+    'type': NotRequired[str],
 }, total=False)
 
 ModelGoogleVerticalPagination = TypedDict('ModelGoogleVerticalPagination', {
@@ -25206,6 +25265,11 @@ ModelGreystarFaq = TypedDict('ModelGreystarFaq', {
     'question': NotRequired[str],
 }, total=False)
 
+ModelGreystarFacetCount = TypedDict('ModelGreystarFacetCount', {
+    'count': NotRequired[int],
+    'value': NotRequired[str],
+}, total=False)
+
 ModelGreystarFee = TypedDict('ModelGreystarFee', {
     'amount': NotRequired[float],
     'category': NotRequired[str],
@@ -25240,6 +25304,21 @@ ModelGreystarImage = TypedDict('ModelGreystarImage', {
     'height': NotRequired[int],
     'url': NotRequired[str],
     'width': NotRequired[int],
+}, total=False)
+
+ModelGreystarListedUnit = TypedDict('ModelGreystarListedUnit', {
+    'banner': NotRequired[str],
+    'bathrooms': NotRequired[float],
+    'bedrooms': NotRequired[float],
+    'floorplan': NotRequired[str],
+    'max_price': NotRequired[float],
+    'min_base_rent_lease_term': NotRequired[int],
+    'min_price': NotRequired[float],
+    'price': NotRequired[float],
+    'required_monthly_fees_max': NotRequired[float],
+    'required_monthly_fees_min': NotRequired[float],
+    'unit_id': NotRequired[str],
+    'unit_number': NotRequired[str],
 }, total=False)
 
 ModelGreystarLocation = TypedDict('ModelGreystarLocation', {
@@ -25414,6 +25493,50 @@ ModelGreystarUnit = TypedDict('ModelGreystarUnit', {
     'min_price': NotRequired[float],
     'unit_id': NotRequired[str],
     'unit_number': NotRequired[str],
+}, total=False)
+
+ModelGreystarUnitFacets = TypedDict('ModelGreystarUnitFacets', {
+    'bathrooms': NotRequired[list[ModelGreystarFacetCount]],
+    'bedrooms': NotRequired[list[ModelGreystarFacetCount]],
+    'building_types': NotRequired[list[ModelGreystarFacetCount]],
+    'highlights': NotRequired[list[ModelGreystarFacetCount]],
+}, total=False)
+
+ModelGreystarUnitLocation = TypedDict('ModelGreystarUnitLocation', {
+    'location': NotRequired[str],
+    'parent': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelGreystarUnitLocationList = TypedDict('ModelGreystarUnitLocationList', {
+    'locations': NotRequired[list[ModelGreystarUnitLocation]],
+    'total_count': NotRequired[int],
+}, total=False)
+
+ModelGreystarUnitProperty = TypedDict('ModelGreystarUnitProperty', {
+    'address': NotRequired[str],
+    'city': NotRequired[str],
+    'latitude': NotRequired[float],
+    'longitude': NotRequired[float],
+    'matching_units': NotRequired[int],
+    'name': NotRequired[str],
+    'postal_code': NotRequired[str],
+    'property_id': NotRequired[str],
+    'state': NotRequired[str],
+    'state_name': NotRequired[str],
+    'thumbnail_url': NotRequired[str],
+    'units': NotRequired[list[ModelGreystarListedUnit]],
+    'units_truncated': NotRequired[bool],
+}, total=False)
+
+ModelGreystarUnitSearchResult = TypedDict('ModelGreystarUnitSearchResult', {
+    'facets': NotRequired[ModelGreystarUnitFacets],
+    'location': NotRequired[str],
+    'page': NotRequired[int],
+    'per_page': NotRequired[int],
+    'properties': NotRequired[list[ModelGreystarUnitProperty]],
+    'total_count': NotRequired[int],
+    'total_pages': NotRequired[int],
 }, total=False)
 
 ModelGrubhubAvailabilityResponse = TypedDict('ModelGrubhubAvailabilityResponse', {
@@ -29128,10 +29251,6 @@ ModelInstagramImageCandidate = TypedDict('ModelInstagramImageCandidate', {
     'width': NotRequired[int],
 }, total=False)
 
-ModelInstagramImageVersions = TypedDict('ModelInstagramImageVersions', {
-    'candidates': NotRequired[list[ModelInstagramImageCandidate]],
-}, total=False)
-
 ModelInstagramImageVersions2 = TypedDict('ModelInstagramImageVersions2', {
     'candidates': NotRequired[list[ModelInstagramImageCandidate]],
 }, total=False)
@@ -29146,7 +29265,7 @@ ModelInstagramMedia = TypedDict('ModelInstagramMedia', {
     'comment_count': NotRequired[int],
     'display_uri': NotRequired[str],
     'id': NotRequired[str],
-    'image_versions2': NotRequired[ModelInstagramImageVersions],
+    'image_versions2': NotRequired[ModelInstagramReelImageVersions],
     'like_count': NotRequired[int],
     'media_type': NotRequired[int],
     'play_count': NotRequired[int],
@@ -29205,6 +29324,16 @@ ModelInstagramPost = TypedDict('ModelInstagramPost', {
     'video_url': NotRequired[str],
     'view_count': NotRequired[int],
     'width': NotRequired[int],
+}, total=False)
+
+ModelInstagramReelImageCandidate = TypedDict('ModelInstagramReelImageCandidate', {
+    'height': NotRequired[int],
+    'url': NotRequired[str],
+    'width': NotRequired[int],
+}, total=False)
+
+ModelInstagramReelImageVersions = TypedDict('ModelInstagramReelImageVersions', {
+    'candidates': NotRequired[list[ModelInstagramReelImageCandidate]],
 }, total=False)
 
 ModelInstagramReelResponse = TypedDict('ModelInstagramReelResponse', {
@@ -45106,6 +45235,12 @@ ModelQuinceSuggestResponseDoc = TypedDict('ModelQuinceSuggestResponseDoc', {
     'msg': NotRequired[str],
 }, total=False)
 
+ModelQwantSuggestResponseDoc = TypedDict('ModelQwantSuggestResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelSuggestResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
 ModelRaisingcanesDirectoryChild = TypedDict('ModelRaisingcanesDirectoryChild', {
     'is_store': NotRequired[bool],
     'name': NotRequired[str],
@@ -54028,6 +54163,12 @@ ModelStarbucksStoresResponseDoc = TypedDict('ModelStarbucksStoresResponseDoc', {
     'msg': NotRequired[str],
 }, total=False)
 
+ModelStartpageSuggestResponseDoc = TypedDict('ModelStartpageSuggestResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelSuggestResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
 ModelSteamAchievementsResponse = TypedDict('ModelSteamAchievementsResponse', {
     'achievements': NotRequired[list[ModelSteamGlobalAchievement]],
     'appid': NotRequired[str],
@@ -56077,6 +56218,16 @@ ModelSubwayStoreResponseDoc = TypedDict('ModelSubwayStoreResponseDoc', {
     'code': NotRequired[int],
     'data': NotRequired[ModelSubwayStoreResponse],
     'msg': NotRequired[Any],
+}, total=False)
+
+ModelSuggestResponse = TypedDict('ModelSuggestResponse', {
+    'query': NotRequired[str],
+    'suggestions': NotRequired[list[ModelSuggestSuggestion]],
+}, total=False)
+
+ModelSuggestSuggestion = TypedDict('ModelSuggestSuggestion', {
+    'position': NotRequired[int],
+    'query': NotRequired[str],
 }, total=False)
 
 ModelSunAuthorArticle = TypedDict('ModelSunAuthorArticle', {
@@ -62753,6 +62904,7 @@ ModelWebScrapeMetadata = TypedDict('ModelWebScrapeMetadata', {
 
 ModelWebScrapeOption = TypedDict('ModelWebScrapeOption', {
     'backend': NotRequired[str],
+    'dedicated': NotRequired[bool],
     'formats': NotRequired[list[str]],
     'max_age': NotRequired[int],
     'only_main_content': NotRequired[bool],
@@ -66107,6 +66259,37 @@ ModelYahootechHomeResponseDoc = TypedDict('ModelYahootechHomeResponseDoc', {
     'msg': NotRequired[str],
 }, total=False)
 
+ModelYandexSearchPagination = TypedDict('ModelYandexSearchPagination', {
+    'next_page': NotRequired[int],
+    'page': NotRequired[int],
+}, total=False)
+
+ModelYandexSearchResponse = TypedDict('ModelYandexSearchResponse', {
+    'pagination': NotRequired[ModelYandexSearchPagination],
+    'query': NotRequired[str],
+    'results': NotRequired[list[ModelYandexSearchResult]],
+}, total=False)
+
+ModelYandexSearchResult = TypedDict('ModelYandexSearchResult', {
+    'description': NotRequired[str],
+    'display_url': NotRequired[str],
+    'position': NotRequired[int],
+    'title': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelYandexSearchResponseDoc = TypedDict('ModelYandexSearchResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelYandexSearchResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelYandexSuggestResponseDoc = TypedDict('ModelYandexSuggestResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelSuggestResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
 ModelYardbarkerAuthorResponse = TypedDict('ModelYardbarkerAuthorResponse', {
     'articles': NotRequired[list[ModelNewsplatformHeadlineItem]],
     'image_url': NotRequired[str],
@@ -66652,6 +66835,12 @@ ModelYoutubeProfileResponseDoc = TypedDict('ModelYoutubeProfileResponseDoc', {
 ModelYoutubeSearchResponseDoc = TypedDict('ModelYoutubeSearchResponseDoc', {
     'code': NotRequired[int],
     'data': NotRequired[ModelYoutubeSearchResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelYoutubeSuggestResponseDoc = TypedDict('ModelYoutubeSuggestResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelSuggestResponse],
     'msg': NotRequired[str],
 }, total=False)
 
@@ -69873,6 +70062,24 @@ AxiosHeadlinesParams = TypedDict('AxiosHeadlinesParams', {
     'topic': Required[str],
 }, total=False)
 
+BaiduSearchResponse = ModelBaiduSearchResponseDoc
+BaiduSearchParams = TypedDict('BaiduSearchParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'q': Required[str],
+    'page': NotRequired[int],
+}, total=False)
+
+BaiduSuggestResponse = ModelBaiduSuggestResponseDoc
+BaiduSuggestParams = TypedDict('BaiduSuggestParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'q': Required[str],
+    'count': NotRequired[int],
+}, total=False)
+
 BalenciagaCategoriesResponse = ModelBalenciagaCategoriesResponseDoc
 BalenciagaCategoriesParams = TypedDict('BalenciagaCategoriesParams', {
     '_response_type': NotRequired[ResponseType],
@@ -70491,6 +70698,7 @@ BingSuggestParams = TypedDict('BingSuggestParams', {
     'count': NotRequired[int],
     'country': NotRequired[str],
     'lang': NotRequired[str],
+    'rich': NotRequired[bool],
 }, total=False)
 
 BingVideosResponse = ModelBingVideosResponseDoc
@@ -71178,6 +71386,7 @@ BraveSuggestParams = TypedDict('BraveSuggestParams', {
     'count': NotRequired[int],
     'country': NotRequired[Literal['all', 'ar', 'at', 'au', 'be', 'br', 'ca', 'ch', 'cl', 'cn', 'de', 'dk', 'es', 'fi', 'fr', 'gb', 'gr', 'hk', 'id', 'in', 'it', 'jp', 'kr', 'mx', 'my', 'nl', 'no', 'nz', 'ph', 'pl', 'pt', 'ru', 'sa', 'se', 'sg', 'tr', 'tw', 'us', 'za']],
     'lang': NotRequired[Literal['de-de', 'en-ca', 'en-gb', 'en-in', 'en-us', 'fi-fi', 'fr-ca', 'fr-fr', 'ja-jp', 'pt-br', 'sq-al', 'sw-ke', 'zh-tw']],
+    'rich': NotRequired[bool],
 }, total=False)
 
 BraveVideosResponse = ModelBraveVideosResponseDoc
@@ -76434,6 +76643,16 @@ DuckDuckGoSearchDuckduckgoShoppingParams = TypedDict('DuckDuckGoSearchDuckduckgo
     'region': NotRequired[str],
 }, total=False)
 
+DuckDuckGoSearchDuckduckgoSuggestResponse = ModelDuckduckgoSuggestResponseDoc
+DuckDuckGoSearchDuckduckgoSuggestParams = TypedDict('DuckDuckGoSearchDuckduckgoSuggestParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'q': Required[str],
+    'count': NotRequired[int],
+    'region': NotRequired[str],
+}, total=False)
+
 DuckDuckGoSearchDuckduckgoVideoResponse = ModelDuckduckgoVideoResponseDoc
 DuckDuckGoSearchDuckduckgoVideoParams = TypedDict('DuckDuckGoSearchDuckduckgoVideoParams', {
     '_response_type': NotRequired[ResponseType],
@@ -80161,6 +80380,8 @@ GoogleSuggestParams = TypedDict('GoogleSuggestParams', {
     'count': NotRequired[int],
     'country': NotRequired[str],
     'lang': NotRequired[str],
+    'source': NotRequired[Literal['web', 'youtube', 'shopping']],
+    'rich': NotRequired[bool],
 }, total=False)
 
 GoogleTrendsCategoriesResponse = ModelTrendsTrendsCategoriesResponseDoc
@@ -80704,6 +80925,31 @@ GreystarSearchParams = TypedDict('GreystarSearchParams', {
     'min_price': NotRequired[float],
     'max_price': NotRequired[float],
     'sort': NotRequired[Literal['relevance', 'name', 'price_asc', 'price_desc']],
+    'page': NotRequired[int],
+    'per_page': NotRequired[int],
+}, total=False)
+
+GreystarUnitLocationsResponse = ModelGreystarUnitLocationList
+GreystarUnitLocationsParams = TypedDict('GreystarUnitLocationsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'query': NotRequired[str],
+}, total=False)
+
+GreystarUnitsResponse = ModelGreystarUnitSearchResult
+GreystarUnitsParams = TypedDict('GreystarUnitsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'location': NotRequired[str],
+    'bedrooms': NotRequired[list[Literal['0', '1', '2', '3', '4', '5', '6']]],
+    'bathrooms': NotRequired[list[Literal['0', '1', '2', '3', '4']]],
+    'building_type': NotRequired[list[Literal['Active Adult', 'Garden', 'High-Rise', 'Mid-Rise', 'Single Family Home', 'Student', 'Townhome']]],
+    'highlights': NotRequired[list[Literal['airCon', 'dishwasher', 'eco', 'fitness', 'garages', 'limitedAccess', 'patioBalcony', 'pets', 'playground', 'pools', 'smokeFree', 'walkInClosets', 'washerDryer']]],
+    'min_price': NotRequired[float],
+    'max_price': NotRequired[float],
+    'sort': NotRequired[Literal['relevance', 'price_asc']],
     'page': NotRequired[int],
     'per_page': NotRequired[int],
 }, total=False)
@@ -90969,6 +91215,16 @@ QuinceSuggestParams = TypedDict('QuinceSuggestParams', {
     'q': Required[str],
 }, total=False)
 
+QwantSuggestResponse = ModelQwantSuggestResponseDoc
+QwantSuggestParams = TypedDict('QwantSuggestParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'q': Required[str],
+    'count': NotRequired[int],
+    'locale': NotRequired[str],
+}, total=False)
+
 RaisingCaneSRaisingcanesDirectoryResponse = ModelRaisingcanesDirectoryResponseDoc
 RaisingCaneSRaisingcanesDirectoryParams = TypedDict('RaisingCaneSRaisingcanesDirectoryParams', {
     '_response_type': NotRequired[ResponseType],
@@ -95024,6 +95280,15 @@ StarbucksStoresParams = TypedDict('StarbucksStoresParams', {
     'lat': NotRequired[float],
     'lng': NotRequired[float],
     'market': NotRequired[Literal['us', 'ca']],
+}, total=False)
+
+StartpageSuggestResponse = ModelStartpageSuggestResponseDoc
+StartpageSuggestParams = TypedDict('StartpageSuggestParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'q': Required[str],
+    'count': NotRequired[int],
 }, total=False)
 
 MinnesotaStarTribuneStartribuneNewsResponse = ModelPublicnewsNewsResponseDoc
@@ -100645,6 +100910,25 @@ YahooTechHomeParams = TypedDict('YahooTechHomeParams', {
     '_headers': NotRequired[Mapping[str, str]],
 }, total=False)
 
+YandexSearchResponse = ModelYandexSearchResponseDoc
+YandexSearchParams = TypedDict('YandexSearchParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'q': Required[str],
+    'page': NotRequired[int],
+}, total=False)
+
+YandexSuggestResponse = ModelYandexSuggestResponseDoc
+YandexSuggestParams = TypedDict('YandexSuggestParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'q': Required[str],
+    'count': NotRequired[int],
+    'lang': NotRequired[str],
+}, total=False)
+
 YardbarkerArticleResponse = ModelPublicnewsArticleResponseDoc
 YardbarkerArticleParams = TypedDict('YardbarkerArticleParams', {
     '_response_type': NotRequired[ResponseType],
@@ -100885,6 +101169,17 @@ YoutubeSearchParams = TypedDict('YoutubeSearchParams', {
     'hl': NotRequired[str],
     'gl': NotRequired[str],
     'params': NotRequired[str],
+}, total=False)
+
+YoutubeSuggestResponse = ModelYoutubeSuggestResponseDoc
+YoutubeSuggestParams = TypedDict('YoutubeSuggestParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'q': Required[str],
+    'count': NotRequired[int],
+    'hl': NotRequired[str],
+    'gl': NotRequired[str],
 }, total=False)
 
 YoutubeTagResponse = ModelYoutubeTagResponseDoc
@@ -101497,6 +101792,10 @@ class AxiosGroup:
     def article(self, **params: Unpack[AxiosArticleParams]) -> AxiosArticleResponse: ...
     def categories(self, **params: Unpack[AxiosCategoriesParams]) -> AxiosCategoriesResponse: ...
     def headlines(self, **params: Unpack[AxiosHeadlinesParams]) -> AxiosHeadlinesResponse: ...
+
+class BaiduGroup:
+    def search(self, **params: Unpack[BaiduSearchParams]) -> BaiduSearchResponse: ...
+    def suggest(self, **params: Unpack[BaiduSuggestParams]) -> BaiduSuggestResponse: ...
 
 class BalenciagaGroup:
     def categories(self, **params: Unpack[BalenciagaCategoriesParams]) -> BalenciagaCategoriesResponse: ...
@@ -102281,6 +102580,7 @@ class DuckDuckGoSearchGroup:
     def duckduckgo_news(self, **params: Unpack[DuckDuckGoSearchDuckduckgoNewsParams]) -> DuckDuckGoSearchDuckduckgoNewsResponse: ...
     def duckduckgo_search(self, **params: Unpack[DuckDuckGoSearchDuckduckgoSearchParams]) -> DuckDuckGoSearchDuckduckgoSearchResponse: ...
     def duckduckgo_shopping(self, **params: Unpack[DuckDuckGoSearchDuckduckgoShoppingParams]) -> DuckDuckGoSearchDuckduckgoShoppingResponse: ...
+    def duckduckgo_suggest(self, **params: Unpack[DuckDuckGoSearchDuckduckgoSuggestParams]) -> DuckDuckGoSearchDuckduckgoSuggestResponse: ...
     def duckduckgo_video(self, **params: Unpack[DuckDuckGoSearchDuckduckgoVideoParams]) -> DuckDuckGoSearchDuckduckgoVideoResponse: ...
 
 class DunkinGroup:
@@ -102863,6 +103163,8 @@ class GreystarGroup:
     def newsroom_article(self, **params: Unpack[GreystarNewsroomArticleParams]) -> GreystarNewsroomArticleResponse: ...
     def property(self, **params: Unpack[GreystarPropertyParams]) -> GreystarPropertyResponse: ...
     def search(self, **params: Unpack[GreystarSearchParams]) -> GreystarSearchResponse: ...
+    def unit_locations(self, **params: Unpack[GreystarUnitLocationsParams]) -> GreystarUnitLocationsResponse: ...
+    def units(self, **params: Unpack[GreystarUnitsParams]) -> GreystarUnitsResponse: ...
 
 class GrubhubGroup:
     def availability(self, **params: Unpack[GrubhubAvailabilityParams]) -> GrubhubAvailabilityResponse: ...
@@ -104238,6 +104540,9 @@ class QuinceGroup:
     def sitemaps(self, **params: Unpack[QuinceSitemapsParams]) -> QuinceSitemapsResponse: ...
     def suggest(self, **params: Unpack[QuinceSuggestParams]) -> QuinceSuggestResponse: ...
 
+class QwantGroup:
+    def suggest(self, **params: Unpack[QwantSuggestParams]) -> QwantSuggestResponse: ...
+
 class RaisingCaneSGroup:
     def raisingcanes_directory(self, **params: Unpack[RaisingCaneSRaisingcanesDirectoryParams]) -> RaisingCaneSRaisingcanesDirectoryResponse: ...
     def raisingcanes_menu(self, **params: Unpack[RaisingCaneSRaisingcanesMenuParams]) -> RaisingCaneSRaisingcanesMenuResponse: ...
@@ -104783,6 +105088,9 @@ class StarbucksGroup:
     def product(self, **params: Unpack[StarbucksProductParams]) -> StarbucksProductResponse: ...
     def nutrition(self, **params: Unpack[StarbucksNutritionParams]) -> StarbucksNutritionResponse: ...
     def stores(self, **params: Unpack[StarbucksStoresParams]) -> StarbucksStoresResponse: ...
+
+class StartpageGroup:
+    def suggest(self, **params: Unpack[StartpageSuggestParams]) -> StartpageSuggestResponse: ...
 
 class MinnesotaStarTribuneGroup:
     def startribune_news(self, **params: Unpack[MinnesotaStarTribuneStartribuneNewsParams]) -> MinnesotaStarTribuneStartribuneNewsResponse: ...
@@ -105609,6 +105917,10 @@ class YahooTechGroup:
     def category(self, **params: Unpack[YahooTechCategoryParams]) -> YahooTechCategoryResponse: ...
     def home(self, **params: Unpack[YahooTechHomeParams]) -> YahooTechHomeResponse: ...
 
+class YandexGroup:
+    def search(self, **params: Unpack[YandexSearchParams]) -> YandexSearchResponse: ...
+    def suggest(self, **params: Unpack[YandexSuggestParams]) -> YandexSuggestResponse: ...
+
 class YardbarkerGroup:
     def article(self, **params: Unpack[YardbarkerArticleParams]) -> YardbarkerArticleResponse: ...
     def author(self, **params: Unpack[YardbarkerAuthorParams]) -> YardbarkerAuthorResponse: ...
@@ -105642,6 +105954,7 @@ class YoutubeGroup:
     def playlist(self, **params: Unpack[YoutubePlaylistParams]) -> YoutubePlaylistResponse: ...
     def profile(self, **params: Unpack[YoutubeProfileParams]) -> YoutubeProfileResponse: ...
     def search(self, **params: Unpack[YoutubeSearchParams]) -> YoutubeSearchResponse: ...
+    def suggest(self, **params: Unpack[YoutubeSuggestParams]) -> YoutubeSuggestResponse: ...
     def tag(self, **params: Unpack[YoutubeTagParams]) -> YoutubeTagResponse: ...
     def transcript(self, **params: Unpack[YoutubeTranscriptParams]) -> YoutubeTranscriptResponse: ...
     def transcript_languages(self, **params: Unpack[YoutubeTranscriptLanguagesParams]) -> YoutubeTranscriptLanguagesResponse: ...
@@ -105906,6 +106219,8 @@ OperationId = Literal[
     'axios-article',
     'axios-categories',
     'axios-headlines',
+    'baidu-search',
+    'baidu-suggest',
     'balenciaga-categories',
     'balenciaga-category',
     'balenciaga-product',
@@ -106530,6 +106845,7 @@ OperationId = Literal[
     'duckduckgo-news',
     'duckduckgo-search',
     'duckduckgo-shopping',
+    'duckduckgo-suggest',
     'duckduckgo-video',
     'dunkin-directory',
     'dunkin-menu',
@@ -107000,6 +107316,8 @@ OperationId = Literal[
     'greystar-newsroom-article',
     'greystar-property',
     'greystar-search',
+    'greystar-unit-locations',
+    'greystar-units',
     'grubhub-availability',
     'grubhub-offers',
     'grubhub-restaurant',
@@ -108089,6 +108407,7 @@ OperationId = Literal[
     'quince-sitemap-urls',
     'quince-sitemaps',
     'quince-suggest',
+    'qwant-suggest',
     'raisingcanes-directory',
     'raisingcanes-menu',
     'raisingcanes-nearby',
@@ -108530,6 +108849,7 @@ OperationId = Literal[
     'starbucks-product',
     'starbucks-nutrition',
     'starbucks-stores',
+    'startpage-suggest',
     'startribune-news',
     'steam-achievements',
     'steam-app',
@@ -109161,6 +109481,8 @@ OperationId = Literal[
     'yahoo-tech-article',
     'yahoo-tech-category',
     'yahoo-tech-home',
+    'yandex-search',
+    'yandex-suggest',
     'yardbarker-article',
     'yardbarker-author',
     'yardbarker-headlines',
@@ -109187,6 +109509,7 @@ OperationId = Literal[
     'youtube-playlist',
     'youtube-profile',
     'youtube-search',
+    'youtube-suggest',
     'youtube-tag',
     'youtube-transcript',
     'youtube-transcript-languages',
@@ -109258,6 +109581,7 @@ class CrawloraClient:
     audible: AudibleGroup
     autotrader: AutotraderGroup
     axios: AxiosGroup
+    baidu: BaiduGroup
     balenciaga: BalenciagaGroup
     barrons: BarronsGroup
     bbb: BbbGroup
@@ -109535,6 +109859,7 @@ class CrawloraClient:
     psastore: PsastoreGroup
     punch: PunchGroup
     quince: QuinceGroup
+    qwant: QwantGroup
     raising_cane_s: RaisingCaneSGroup
     rappler: RapplerGroup
     raw_story: RawStoryGroup
@@ -109588,6 +109913,7 @@ class CrawloraClient:
     spotify: SpotifyGroup
     evening_standard: EveningStandardGroup
     starbucks: StarbucksGroup
+    startpage: StartpageGroup
     minnesota_star_tribune: MinnesotaStarTribuneGroup
     steam: SteamGroup
     steve_madden: SteveMaddenGroup
@@ -109686,6 +110012,7 @@ class CrawloraClient:
     yahoo_shopping: YahooShoppingGroup
     yahoo_sports: YahooSportsGroup
     yahoo_tech: YahooTechGroup
+    yandex: YandexGroup
     yardbarker: YardbarkerGroup
     yelp: YelpGroup
     yoox: YooxGroup
@@ -112297,6 +112624,30 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> AxiosHeadlinesResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['baidu-search'],
+        params: BaiduSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> BaiduSearchResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['baidu-suggest'],
+        params: BaiduSuggestParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> BaiduSuggestResponse: ...
     @overload
     def operation(
         self,
@@ -119788,6 +120139,18 @@ class CrawloraClient:
     @overload
     def operation(
         self,
+        operation_id: Literal['duckduckgo-suggest'],
+        params: DuckDuckGoSearchDuckduckgoSuggestParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DuckDuckGoSearchDuckduckgoSuggestResponse: ...
+    @overload
+    def operation(
+        self,
         operation_id: Literal['duckduckgo-video'],
         params: DuckDuckGoSearchDuckduckgoVideoParams,
         *,
@@ -125425,6 +125788,30 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> GreystarSearchResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['greystar-unit-locations'],
+        params: GreystarUnitLocationsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> GreystarUnitLocationsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['greystar-units'],
+        params: GreystarUnitsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> GreystarUnitsResponse: ...
     @overload
     def operation(
         self,
@@ -138496,6 +138883,18 @@ class CrawloraClient:
     @overload
     def operation(
         self,
+        operation_id: Literal['qwant-suggest'],
+        params: QwantSuggestParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> QwantSuggestResponse: ...
+    @overload
+    def operation(
+        self,
         operation_id: Literal['raisingcanes-directory'],
         params: RaisingCaneSRaisingcanesDirectoryParams = ...,
         *,
@@ -143785,6 +144184,18 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> StarbucksStoresResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['startpage-suggest'],
+        params: StartpageSuggestParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> StartpageSuggestResponse: ...
     @overload
     def operation(
         self,
@@ -151360,6 +151771,30 @@ class CrawloraClient:
     @overload
     def operation(
         self,
+        operation_id: Literal['yandex-search'],
+        params: YandexSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> YandexSearchResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['yandex-suggest'],
+        params: YandexSuggestParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> YandexSuggestResponse: ...
+    @overload
+    def operation(
+        self,
         operation_id: Literal['yardbarker-article'],
         params: YardbarkerArticleParams,
         *,
@@ -151669,6 +152104,18 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> YoutubeSearchResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['youtube-suggest'],
+        params: YoutubeSuggestParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> YoutubeSuggestResponse: ...
     @overload
     def operation(
         self,
@@ -154660,6 +155107,30 @@ class CrawloraClient:
     @overload
     def request(
         self,
+        operation_id: Literal['baidu-search'],
+        params: BaiduSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> BaiduSearchResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['baidu-suggest'],
+        params: BaiduSuggestParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> BaiduSuggestResponse: ...
+    @overload
+    def request(
+        self,
         operation_id: Literal['balenciaga-categories'],
         params: BalenciagaCategoriesParams = ...,
         *,
@@ -162148,6 +162619,18 @@ class CrawloraClient:
     @overload
     def request(
         self,
+        operation_id: Literal['duckduckgo-suggest'],
+        params: DuckDuckGoSearchDuckduckgoSuggestParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DuckDuckGoSearchDuckduckgoSuggestResponse: ...
+    @overload
+    def request(
+        self,
         operation_id: Literal['duckduckgo-video'],
         params: DuckDuckGoSearchDuckduckgoVideoParams,
         *,
@@ -167785,6 +168268,30 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> GreystarSearchResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['greystar-unit-locations'],
+        params: GreystarUnitLocationsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> GreystarUnitLocationsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['greystar-units'],
+        params: GreystarUnitsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> GreystarUnitsResponse: ...
     @overload
     def request(
         self,
@@ -180856,6 +181363,18 @@ class CrawloraClient:
     @overload
     def request(
         self,
+        operation_id: Literal['qwant-suggest'],
+        params: QwantSuggestParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> QwantSuggestResponse: ...
+    @overload
+    def request(
+        self,
         operation_id: Literal['raisingcanes-directory'],
         params: RaisingCaneSRaisingcanesDirectoryParams = ...,
         *,
@@ -186145,6 +186664,18 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> StarbucksStoresResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['startpage-suggest'],
+        params: StartpageSuggestParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> StartpageSuggestResponse: ...
     @overload
     def request(
         self,
@@ -193720,6 +194251,30 @@ class CrawloraClient:
     @overload
     def request(
         self,
+        operation_id: Literal['yandex-search'],
+        params: YandexSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> YandexSearchResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['yandex-suggest'],
+        params: YandexSuggestParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> YandexSuggestResponse: ...
+    @overload
+    def request(
+        self,
         operation_id: Literal['yardbarker-article'],
         params: YardbarkerArticleParams,
         *,
@@ -194029,6 +194584,18 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> YoutubeSearchResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['youtube-suggest'],
+        params: YoutubeSuggestParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> YoutubeSuggestResponse: ...
     @overload
     def request(
         self,
