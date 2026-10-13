@@ -4748,8 +4748,10 @@ ModelBbbBusinessResponse = TypedDict('ModelBbbBusinessResponse', {
     'local_bbb_url': NotRequired[str],
     'more_info_url': NotRequired[str],
     'name': NotRequired[str],
+    'notice': NotRequired[str],
     'phone': NotRequired[str],
     'products_and_services': NotRequired[list[str]],
+    'profile_under_review': NotRequired[bool],
     'rating': NotRequired[str],
     'rating_reasons': NotRequired[list[str]],
     'social_media': NotRequired[list[str]],
@@ -4808,8 +4810,10 @@ ModelBbbComplaintsResponse = TypedDict('ModelBbbComplaintsResponse', {
     'filed_last_12_months': NotRequired[int],
     'has_more': NotRequired[bool],
     'hidden_complaints': NotRequired[int],
+    'notice': NotRequired[str],
     'page': NotRequired[int],
     'period_text': NotRequired[str],
+    'profile_under_review': NotRequired[bool],
     'published_complaints': NotRequired[int],
     'source_url': NotRequired[str],
     'submit_complaint_url': NotRequired[str],
@@ -4955,6 +4959,7 @@ ModelBbbdirectoryCountryRegions = TypedDict('ModelBbbdirectoryCountryRegions', {
 ModelBbbdirectoryLocalBbbchapter = TypedDict('ModelBbbdirectoryLocalBbbchapter', {
     'id': NotRequired[str],
     'name': NotRequired[str],
+    'news_url': NotRequired[str],
     'offices': NotRequired[list[ModelBbbdirectoryOffice]],
     'open_to_public': NotRequired[bool],
     'url': NotRequired[str],
@@ -4966,6 +4971,7 @@ ModelBbbdirectoryLocalBbbresponse = TypedDict('ModelBbbdirectoryLocalBbbresponse
     'id': NotRequired[str],
     'languages': NotRequired[list[str]],
     'name': NotRequired[str],
+    'news_url': NotRequired[str],
     'offices': NotRequired[list[ModelBbbdirectoryOffice]],
     'open_to_public': NotRequired[bool],
     'service_territory': NotRequired[list[str]],
@@ -5080,11 +5086,15 @@ ModelBbbnewsNewsItem = TypedDict('ModelBbbnewsNewsItem', {
 }, total=False)
 
 ModelBbbnewsNewsResponse = TypedDict('ModelBbbnewsNewsResponse', {
-    'country': NotRequired[str],
+    'city': NotRequired[str],
+    'country': NotRequired[Literal['us', 'ca']],
     'items': NotRequired[list[ModelBbbnewsNewsItem]],
+    'local_bbb_id': NotRequired[str],
+    'local_bbb_name': NotRequired[str],
     'page': NotRequired[int],
     'page_size': NotRequired[int],
     'source_url': NotRequired[str],
+    'state': NotRequired[str],
     'topic': NotRequired[str],
     'total': NotRequired[int],
 }, total=False)
@@ -5096,8 +5106,12 @@ ModelBbbnewsTopic = TypedDict('ModelBbbnewsTopic', {
 }, total=False)
 
 ModelBbbnewsTopicsResponse = TypedDict('ModelBbbnewsTopicsResponse', {
-    'country': NotRequired[str],
+    'city': NotRequired[str],
+    'country': NotRequired[Literal['us', 'ca']],
+    'local_bbb_id': NotRequired[str],
+    'local_bbb_name': NotRequired[str],
     'source_url': NotRequired[str],
+    'state': NotRequired[str],
     'topics': NotRequired[list[ModelBbbnewsTopic]],
 }, total=False)
 
@@ -13343,7 +13357,14 @@ ModelDatasetsAppsSearchResponse = TypedDict('ModelDatasetsAppsSearchResponse', {
 ModelDatasetsBbbbusinessesFacetResponse = TypedDict('ModelDatasetsBbbbusinessesFacetResponse', {
     'dataset': NotRequired[str],
     'facet': NotRequired[str],
+    'has_more': NotRequired[bool],
     'items': NotRequired[list[ModelEsBbbbusinessesFacetItem]],
+    'limit': NotRequired[int],
+    'missing': NotRequired[int],
+    'offset': NotRequired[int],
+    'total': NotRequired[int],
+    'total_values': NotRequired[int],
+    'values_truncated': NotRequired[bool],
 }, total=False)
 
 ModelDatasetsBbbbusinessesSearchResponse = TypedDict('ModelDatasetsBbbbusinessesSearchResponse', {
@@ -79119,12 +79140,16 @@ DatasetsBbbBusinessesFacetsParams = TypedDict('DatasetsBbbBusinessesFacetsParams
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
     '_headers': NotRequired[Mapping[str, str]],
-    'facet': Required[Literal['category', 'state', 'city', 'rating', 'accredited', 'entity_type', 'run_id', 'alert_title', 'has_alerts']],
+    'facet': Required[Literal['country', 'category', 'state', 'city', 'rating', 'accredited', 'entity_type', 'run_id', 'alert_title', 'has_alerts']],
+    'limit': NotRequired[int],
+    'offset': NotRequired[int],
     'q': NotRequired[str],
     'category': NotRequired[str],
+    'country': NotRequired[Literal['us', 'ca']],
     'state': NotRequired[str],
     'city': NotRequired[str],
     'rating': NotRequired[Literal['A+', 'A', 'A-', 'B+', 'B', 'B-', 'C+', 'C', 'C-', 'D+', 'D', 'D-', 'F']],
+    'min_rating_rank': NotRequired[int],
     'accredited': NotRequired[bool],
     'has_alerts': NotRequired[bool],
     'alert_title': NotRequired[str],
@@ -79148,6 +79173,7 @@ DatasetsBbbBusinessesSearchParams = TypedDict('DatasetsBbbBusinessesSearchParams
     '_headers': NotRequired[Mapping[str, str]],
     'q': NotRequired[str],
     'category': NotRequired[str],
+    'country': NotRequired[Literal['us', 'ca']],
     'state': NotRequired[str],
     'city': NotRequired[str],
     'rating': NotRequired[Literal['A+', 'A', 'A-', 'B+', 'B', 'B-', 'C+', 'C', 'C-', 'D+', 'D', 'D-', 'F']],
