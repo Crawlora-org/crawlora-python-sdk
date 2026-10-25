@@ -9162,6 +9162,87 @@ ModelCarsdotcomSearchResponseDoc = TypedDict('ModelCarsdotcomSearchResponseDoc',
     'msg': NotRequired[str],
 }, total=False)
 
+ModelCasinoCasinoCleopatraGuideResponse = TypedDict('ModelCasinoCasinoCleopatraGuideResponse', {
+    'fetched_at': NotRequired[str],
+    'section_count': NotRequired[int],
+    'sections': NotRequired[list[ModelCasinoCasinoSlotsGuideSection]],
+    'source_url': NotRequired[str],
+}, total=False)
+
+ModelCasinoCasinoDirectoryResponse = TypedDict('ModelCasinoCasinoDirectoryResponse', {
+    'count': NotRequired[int],
+    'fetched_at': NotRequired[str],
+    'links': NotRequired[list[ModelCasinoCasinoLink]],
+    'source_url': NotRequired[str],
+}, total=False)
+
+ModelCasinoCasinoLink = TypedDict('ModelCasinoCasinoLink', {
+    'title': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelCasinoCasinoSlotsCategoriesResponse = TypedDict('ModelCasinoCasinoSlotsCategoriesResponse', {
+    'categories': NotRequired[list[ModelCasinoCasinoSlotsCategory]],
+    'category_count': NotRequired[int],
+    'fetched_at': NotRequired[str],
+    'source_url': NotRequired[str],
+}, total=False)
+
+ModelCasinoCasinoSlotsCategory = TypedDict('ModelCasinoCasinoSlotsCategory', {
+    'category_id': NotRequired[str],
+    'kind': NotRequired[Literal['dynamic_games', 'top_games']],
+    'name': NotRequired[str],
+}, total=False)
+
+ModelCasinoCasinoSlotsGuideResponse = TypedDict('ModelCasinoCasinoSlotsGuideResponse', {
+    'fetched_at': NotRequired[str],
+    'section_count': NotRequired[int],
+    'sections': NotRequired[list[ModelCasinoCasinoSlotsGuideSection]],
+    'source_url': NotRequired[str],
+}, total=False)
+
+ModelCasinoCasinoSlotsGuideSection = TypedDict('ModelCasinoCasinoSlotsGuideSection', {
+    'text': NotRequired[str],
+    'title': NotRequired[str],
+}, total=False)
+
+ModelCasinoCasinoWheelOfFortuneGuideResponse = TypedDict('ModelCasinoCasinoWheelOfFortuneGuideResponse', {
+    'fetched_at': NotRequired[str],
+    'section_count': NotRequired[int],
+    'sections': NotRequired[list[ModelCasinoCasinoSlotsGuideSection]],
+    'source_url': NotRequired[str],
+}, total=False)
+
+ModelCasinoCasinoCleopatraGuideResponseDoc = TypedDict('ModelCasinoCasinoCleopatraGuideResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelCasinoCasinoCleopatraGuideResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelCasinoCasinoDirectoryResponseDoc = TypedDict('ModelCasinoCasinoDirectoryResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelCasinoCasinoDirectoryResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelCasinoCasinoSlotsCategoriesResponseDoc = TypedDict('ModelCasinoCasinoSlotsCategoriesResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelCasinoCasinoSlotsCategoriesResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelCasinoCasinoSlotsGuideResponseDoc = TypedDict('ModelCasinoCasinoSlotsGuideResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelCasinoCasinoSlotsGuideResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelCasinoCasinoWheelOfFortuneGuideResponseDoc = TypedDict('ModelCasinoCasinoWheelOfFortuneGuideResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelCasinoCasinoWheelOfFortuneGuideResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
 ModelCbcAuthorArticle = TypedDict('ModelCbcAuthorArticle', {
     'image_url': NotRequired[str],
     'published_at': NotRequired[str],
@@ -11846,8 +11927,10 @@ ModelCostcoReview = TypedDict('ModelCostcoReview', {
 
 ModelCostcoSearchResponse = TypedDict('ModelCostcoSearchResponse', {
     'category': NotRequired[str],
+    'is_partial': NotRequired[bool],
     'products': NotRequired[list[ModelCostcoProductSummary]],
     'query': NotRequired[str],
+    'source': NotRequired[Literal['product_sitemap']],
     'total_count': NotRequired[int],
 }, total=False)
 
@@ -15526,6 +15609,128 @@ ModelDeveloperretrievalDeveloperWarningDoc = TypedDict('ModelDeveloperretrievalD
     'source_id': NotRequired[str],
 }, total=False)
 
+ModelDfsDfscontestType = TypedDict('ModelDfsDfscontestType', {
+    'description': NotRequired[str],
+    'name': NotRequired[str],
+}, total=False)
+
+ModelDfsDfsglossaryResponse = TypedDict('ModelDfsDfsglossaryResponse', {
+    'fetched_at': NotRequired[str],
+    'source_url': NotRequired[str],
+    'term_count': NotRequired[int],
+    'terms': NotRequired[list[ModelDfsDfsglossaryTerm]],
+}, total=False)
+
+ModelDfsDfsglossaryTerm = TypedDict('ModelDfsDfsglossaryTerm', {
+    'definition': NotRequired[str],
+    'term': NotRequired[str],
+}, total=False)
+
+ModelDfsDfsguideResponse = TypedDict('ModelDfsDfsguideResponse', {
+    'contest_type_count': NotRequired[int],
+    'contest_types': NotRequired[list[ModelDfsDfscontestType]],
+    'fetched_at': NotRequired[str],
+    'source_url': NotRequired[str],
+    'sport_page_count': NotRequired[int],
+    'sport_pages': NotRequired[list[ModelDfsDfssportPage]],
+}, total=False)
+
+ModelDfsDfsnflbestBallContest = TypedDict('ModelDfsDfsnflbestBallContest', {
+    'entry_fee_label': NotRequired[str],
+    'maximum_entries': NotRequired[int],
+    'name': NotRequired[str],
+    'top_prize_label': NotRequired[str],
+}, total=False)
+
+ModelDfsDfsnflbestBallContestsResponse = TypedDict('ModelDfsDfsnflbestBallContestsResponse', {
+    'contest_count': NotRequired[int],
+    'contests': NotRequired[list[ModelDfsDfsnflbestBallContest]],
+    'fetched_at': NotRequired[str],
+    'season': NotRequired[int],
+    'source_url': NotRequired[str],
+}, total=False)
+
+ModelDfsDfsrulesAndScoringResponse = TypedDict('ModelDfsDfsrulesAndScoringResponse', {
+    'fetched_at': NotRequired[str],
+    'game_type_count': NotRequired[int],
+    'overview': NotRequired[ModelDfsDfsscoringRule],
+    'rule_count': NotRequired[int],
+    'source_url': NotRequired[str],
+    'sport_count': NotRequired[int],
+    'sports': NotRequired[list[ModelDfsDfsrulesSport]],
+}, total=False)
+
+ModelDfsDfsrulesSport = TypedDict('ModelDfsDfsrulesSport', {
+    'id': NotRequired[int],
+    'name': NotRequired[str],
+    'rule_count': NotRequired[int],
+    'rules': NotRequired[list[ModelDfsDfsscoringRule]],
+    'slug': NotRequired[str],
+    'sort_order': NotRequired[int],
+}, total=False)
+
+ModelDfsDfsscoringRule = TypedDict('ModelDfsDfsscoringRule', {
+    'content_html': NotRequired[str],
+    'content_text': NotRequired[str],
+    'game_types': NotRequired[list[int]],
+    'name': NotRequired[str],
+    'slug': NotRequired[str],
+    'sort_order': NotRequired[int],
+}, total=False)
+
+ModelDfsDfssport = TypedDict('ModelDfsDfssport', {
+    'full_name': NotRequired[str],
+    'has_public_contests': NotRequired[bool],
+    'id': NotRequired[int],
+    'is_enabled': NotRequired[bool],
+    'region_full_name': NotRequired[str],
+    'sort_order': NotRequired[int],
+    'sport_code': NotRequired[str],
+}, total=False)
+
+ModelDfsDfssportPage = TypedDict('ModelDfsDfssportPage', {
+    'name': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelDfsDfssportsResponse = TypedDict('ModelDfsDfssportsResponse', {
+    'count': NotRequired[int],
+    'fetched_at': NotRequired[str],
+    'region_code': NotRequired[str],
+    'source_url': NotRequired[str],
+    'sports': NotRequired[list[ModelDfsDfssport]],
+}, total=False)
+
+ModelDfsDfsGlossaryResponseDoc = TypedDict('ModelDfsDfsGlossaryResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelDfsDfsglossaryResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelDfsDfsGuideResponseDoc = TypedDict('ModelDfsDfsGuideResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelDfsDfsguideResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelDfsDfsNflbestBallFeaturedContestsResponseDoc = TypedDict('ModelDfsDfsNflbestBallFeaturedContestsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelDfsDfsnflbestBallContestsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelDfsDfsRulesAndScoringResponseDoc = TypedDict('ModelDfsDfsRulesAndScoringResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelDfsDfsrulesAndScoringResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelDfsDfsSportsResponseDoc = TypedDict('ModelDfsDfsSportsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelDfsDfssportsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
 ModelDiagnosticsAntibotCheckRequest = TypedDict('ModelDiagnosticsAntibotCheckRequest', {
     'fast': NotRequired[bool],
     'url': Required[str],
@@ -16302,326 +16507,6 @@ ModelDoordashStoreResponseDoc = TypedDict('ModelDoordashStoreResponseDoc', {
 ModelDoordashStoreReviewsResponseDoc = TypedDict('ModelDoordashStoreReviewsResponseDoc', {
     'code': NotRequired[int],
     'data': NotRequired[ModelDoordashStoreReviewsResponse],
-    'msg': NotRequired[str],
-}, total=False)
-
-ModelDraftkingsEvent = TypedDict('ModelDraftkingsEvent', {
-    'id': NotRequired[str],
-    'markets': NotRequired[list[ModelDraftkingsMarket]],
-    'name': NotRequired[str],
-    'participants': NotRequired[list[ModelDraftkingsParticipant]],
-    'start_time': NotRequired[str],
-    'status': NotRequired[str],
-}, total=False)
-
-ModelDraftkingsEventContextResponse = TypedDict('ModelDraftkingsEventContextResponse', {
-    'event_id': NotRequired[str],
-    'event_seo_id': NotRequired[str],
-    'fetched_at': NotRequired[str],
-    'league_id': NotRequired[str],
-    'league_seo_id': NotRequired[str],
-    'source_url': NotRequired[str],
-    'sport_id': NotRequired[str],
-    'sport_seo_id': NotRequired[str],
-}, total=False)
-
-ModelDraftkingsEventMarketsResponse = TypedDict('ModelDraftkingsEventMarketsResponse', {
-    'count': NotRequired[int],
-    'event_id': NotRequired[str],
-    'fetched_at': NotRequired[str],
-    'markets': NotRequired[list[ModelDraftkingsMarket]],
-    'source_url': NotRequired[str],
-    'subcategory_id': NotRequired[str],
-}, total=False)
-
-ModelDraftkingsEventResponse = TypedDict('ModelDraftkingsEventResponse', {
-    'fetched_at': NotRequired[str],
-    'id': NotRequired[str],
-    'league_id': NotRequired[str],
-    'name': NotRequired[str],
-    'participants': NotRequired[list[ModelDraftkingsParticipant]],
-    'source_url': NotRequired[str],
-    'sport_id': NotRequired[str],
-    'start_time': NotRequired[str],
-    'status': NotRequired[str],
-}, total=False)
-
-ModelDraftkingsFeaturedLeague = TypedDict('ModelDraftkingsFeaturedLeague', {
-    'featured_order': NotRequired[int],
-    'has_live_offers': NotRequired[bool],
-    'id': NotRequired[str],
-    'name': NotRequired[str],
-    'slug': NotRequired[str],
-    'sport': NotRequired[str],
-    'sport_id': NotRequired[str],
-    'tags': NotRequired[list[str]],
-}, total=False)
-
-ModelDraftkingsFeaturedLeaguesResponse = TypedDict('ModelDraftkingsFeaturedLeaguesResponse', {
-    'count': NotRequired[int],
-    'fetched_at': NotRequired[str],
-    'leagues': NotRequired[list[ModelDraftkingsFeaturedLeague]],
-    'source_url': NotRequired[str],
-}, total=False)
-
-ModelDraftkingsFuturesResponse = TypedDict('ModelDraftkingsFuturesResponse', {
-    'count': NotRequired[int],
-    'events': NotRequired[list[ModelDraftkingsEvent]],
-    'fetched_at': NotRequired[str],
-    'league': NotRequired[str],
-    'league_id': NotRequired[str],
-    'source_url': NotRequired[str],
-    'sport': NotRequired[str],
-    'subcategory_id': NotRequired[str],
-}, total=False)
-
-ModelDraftkingsLeague = TypedDict('ModelDraftkingsLeague', {
-    'has_live_offers': NotRequired[bool],
-    'id': NotRequired[str],
-    'name': NotRequired[str],
-    'slug': NotRequired[str],
-}, total=False)
-
-ModelDraftkingsLeagueEvent = TypedDict('ModelDraftkingsLeagueEvent', {
-    'id': NotRequired[str],
-    'name': NotRequired[str],
-    'participant_type': NotRequired[str],
-    'participants': NotRequired[list[ModelDraftkingsParticipant]],
-    'start_time': NotRequired[str],
-    'status': NotRequired[str],
-    'tags': NotRequired[list[str]],
-}, total=False)
-
-ModelDraftkingsLeagueEventsResponse = TypedDict('ModelDraftkingsLeagueEventsResponse', {
-    'count': NotRequired[int],
-    'events': NotRequired[list[ModelDraftkingsLeagueEvent]],
-    'fetched_at': NotRequired[str],
-    'league': NotRequired[str],
-    'league_id': NotRequired[str],
-    'source_url': NotRequired[str],
-    'sport': NotRequired[str],
-    'sport_id': NotRequired[str],
-}, total=False)
-
-ModelDraftkingsLeaguesResponse = TypedDict('ModelDraftkingsLeaguesResponse', {
-    'count': NotRequired[int],
-    'fetched_at': NotRequired[str],
-    'source_url': NotRequired[str],
-    'sports': NotRequired[list[ModelDraftkingsSport]],
-}, total=False)
-
-ModelDraftkingsLiveEvent = TypedDict('ModelDraftkingsLiveEvent', {
-    'categories': NotRequired[list[ModelDraftkingsMarketCategory]],
-    'id': NotRequired[str],
-    'league_id': NotRequired[str],
-    'markets': NotRequired[list[ModelDraftkingsMarket]],
-    'name': NotRequired[str],
-    'participants': NotRequired[list[ModelDraftkingsParticipant]],
-    'period': NotRequired[str],
-    'score': NotRequired[ModelDraftkingsLiveScore],
-    'sport_id': NotRequired[str],
-    'start_time': NotRequired[str],
-    'status': NotRequired[str],
-    'subcategories': NotRequired[list[ModelDraftkingsMarketSubcategory]],
-}, total=False)
-
-ModelDraftkingsLiveResponse = TypedDict('ModelDraftkingsLiveResponse', {
-    'count': NotRequired[int],
-    'events': NotRequired[list[ModelDraftkingsLiveEvent]],
-    'fetched_at': NotRequired[str],
-    'source_url': NotRequired[str],
-}, total=False)
-
-ModelDraftkingsLiveScore = TypedDict('ModelDraftkingsLiveScore', {
-    'current': NotRequired[ModelDraftkingsLiveScoreLine],
-    'on_serve': NotRequired[str],
-    'periods': NotRequired[list[ModelDraftkingsLiveScorePeriod]],
-}, total=False)
-
-ModelDraftkingsLiveScoreLine = TypedDict('ModelDraftkingsLiveScoreLine', {
-    'away': NotRequired[str],
-    'home': NotRequired[str],
-}, total=False)
-
-ModelDraftkingsLiveScorePeriod = TypedDict('ModelDraftkingsLiveScorePeriod', {
-    'away': NotRequired[str],
-    'home': NotRequired[str],
-    'name': NotRequired[str],
-}, total=False)
-
-ModelDraftkingsMarket = TypedDict('ModelDraftkingsMarket', {
-    'id': NotRequired[str],
-    'selections': NotRequired[list[ModelDraftkingsSelection]],
-    'subcategory_id': NotRequired[str],
-    'type': NotRequired[str],
-}, total=False)
-
-ModelDraftkingsMarketCategory = TypedDict('ModelDraftkingsMarketCategory', {
-    'id': NotRequired[str],
-    'name': NotRequired[str],
-}, total=False)
-
-ModelDraftkingsMarketSubcategory = TypedDict('ModelDraftkingsMarketSubcategory', {
-    'category_id': NotRequired[str],
-    'id': NotRequired[str],
-    'name': NotRequired[str],
-}, total=False)
-
-ModelDraftkingsOdds = TypedDict('ModelDraftkingsOdds', {
-    'american': NotRequired[str],
-    'decimal': NotRequired[str],
-    'fractional': NotRequired[str],
-}, total=False)
-
-ModelDraftkingsOddsResponse = TypedDict('ModelDraftkingsOddsResponse', {
-    'count': NotRequired[int],
-    'events': NotRequired[list[ModelDraftkingsEvent]],
-    'fetched_at': NotRequired[str],
-    'league': NotRequired[str],
-    'league_id': NotRequired[str],
-    'source_url': NotRequired[str],
-    'sport': NotRequired[str],
-}, total=False)
-
-ModelDraftkingsParticipant = TypedDict('ModelDraftkingsParticipant', {
-    'id': NotRequired[str],
-    'name': NotRequired[str],
-    'role': NotRequired[str],
-}, total=False)
-
-ModelDraftkingsQuickLink = TypedDict('ModelDraftkingsQuickLink', {
-    'league_id': NotRequired[str],
-    'name': NotRequired[str],
-    'path': NotRequired[str],
-    'sport_id': NotRequired[str],
-}, total=False)
-
-ModelDraftkingsQuickLinksResponse = TypedDict('ModelDraftkingsQuickLinksResponse', {
-    'count': NotRequired[int],
-    'fetched_at': NotRequired[str],
-    'links': NotRequired[list[ModelDraftkingsQuickLink]],
-    'source_url': NotRequired[str],
-}, total=False)
-
-ModelDraftkingsSelection = TypedDict('ModelDraftkingsSelection', {
-    'label': NotRequired[str],
-    'odds': NotRequired[ModelDraftkingsOdds],
-    'outcome_type': NotRequired[str],
-    'points': NotRequired[float],
-}, total=False)
-
-ModelDraftkingsSport = TypedDict('ModelDraftkingsSport', {
-    'id': NotRequired[str],
-    'leagues': NotRequired[list[ModelDraftkingsLeague]],
-    'name': NotRequired[str],
-    'slug': NotRequired[str],
-}, total=False)
-
-ModelDraftkingsTeam = TypedDict('ModelDraftkingsTeam', {
-    'id': NotRequired[str],
-    'name': NotRequired[str],
-    'slug': NotRequired[str],
-    'url': NotRequired[str],
-}, total=False)
-
-ModelDraftkingsTeamDetailResponse = TypedDict('ModelDraftkingsTeamDetailResponse', {
-    'abbreviation': NotRequired[str],
-    'city': NotRequired[str],
-    'fetched_at': NotRequired[str],
-    'id': NotRequired[str],
-    'leagues': NotRequired[list[ModelDraftkingsTeamLeagueRef]],
-    'name': NotRequired[str],
-    'primary_color': NotRequired[str],
-    'secondary_color': NotRequired[str],
-    'short_name': NotRequired[str],
-    'source_url': NotRequired[str],
-    'sport': NotRequired[str],
-    'sport_id': NotRequired[str],
-}, total=False)
-
-ModelDraftkingsTeamLeagueRef = TypedDict('ModelDraftkingsTeamLeagueRef', {
-    'id': NotRequired[str],
-    'slug': NotRequired[str],
-}, total=False)
-
-ModelDraftkingsTeamsResponse = TypedDict('ModelDraftkingsTeamsResponse', {
-    'count': NotRequired[int],
-    'fetched_at': NotRequired[str],
-    'league': NotRequired[str],
-    'source_url': NotRequired[str],
-    'sport': NotRequired[str],
-    'teams': NotRequired[list[ModelDraftkingsTeam]],
-}, total=False)
-
-ModelDraftkingsEventContextResponseDoc = TypedDict('ModelDraftkingsEventContextResponseDoc', {
-    'code': NotRequired[int],
-    'data': NotRequired[ModelDraftkingsEventContextResponse],
-    'msg': NotRequired[str],
-}, total=False)
-
-ModelDraftkingsEventMarketsResponseDoc = TypedDict('ModelDraftkingsEventMarketsResponseDoc', {
-    'code': NotRequired[int],
-    'data': NotRequired[ModelDraftkingsEventMarketsResponse],
-    'msg': NotRequired[str],
-}, total=False)
-
-ModelDraftkingsEventResponseDoc = TypedDict('ModelDraftkingsEventResponseDoc', {
-    'code': NotRequired[int],
-    'data': NotRequired[ModelDraftkingsEventResponse],
-    'msg': NotRequired[str],
-}, total=False)
-
-ModelDraftkingsFeaturedLeaguesResponseDoc = TypedDict('ModelDraftkingsFeaturedLeaguesResponseDoc', {
-    'code': NotRequired[int],
-    'data': NotRequired[ModelDraftkingsFeaturedLeaguesResponse],
-    'msg': NotRequired[str],
-}, total=False)
-
-ModelDraftkingsFuturesResponseDoc = TypedDict('ModelDraftkingsFuturesResponseDoc', {
-    'code': NotRequired[int],
-    'data': NotRequired[ModelDraftkingsFuturesResponse],
-    'msg': NotRequired[str],
-}, total=False)
-
-ModelDraftkingsLeagueEventsResponseDoc = TypedDict('ModelDraftkingsLeagueEventsResponseDoc', {
-    'code': NotRequired[int],
-    'data': NotRequired[ModelDraftkingsLeagueEventsResponse],
-    'msg': NotRequired[str],
-}, total=False)
-
-ModelDraftkingsLeaguesResponseDoc = TypedDict('ModelDraftkingsLeaguesResponseDoc', {
-    'code': NotRequired[int],
-    'data': NotRequired[ModelDraftkingsLeaguesResponse],
-    'msg': NotRequired[str],
-}, total=False)
-
-ModelDraftkingsLiveResponseDoc = TypedDict('ModelDraftkingsLiveResponseDoc', {
-    'code': NotRequired[int],
-    'data': NotRequired[ModelDraftkingsLiveResponse],
-    'msg': NotRequired[str],
-}, total=False)
-
-ModelDraftkingsOddsResponseDoc = TypedDict('ModelDraftkingsOddsResponseDoc', {
-    'code': NotRequired[int],
-    'data': NotRequired[ModelDraftkingsOddsResponse],
-    'msg': NotRequired[str],
-}, total=False)
-
-ModelDraftkingsQuickLinksResponseDoc = TypedDict('ModelDraftkingsQuickLinksResponseDoc', {
-    'code': NotRequired[int],
-    'data': NotRequired[ModelDraftkingsQuickLinksResponse],
-    'msg': NotRequired[str],
-}, total=False)
-
-ModelDraftkingsTeamResponseDoc = TypedDict('ModelDraftkingsTeamResponseDoc', {
-    'code': NotRequired[int],
-    'data': NotRequired[ModelDraftkingsTeamDetailResponse],
-    'msg': NotRequired[str],
-}, total=False)
-
-ModelDraftkingsTeamsResponseDoc = TypedDict('ModelDraftkingsTeamsResponseDoc', {
-    'code': NotRequired[int],
-    'data': NotRequired[ModelDraftkingsTeamsResponse],
     'msg': NotRequired[str],
 }, total=False)
 
@@ -20857,6 +20742,2638 @@ ModelFanaticsliveShowResponseDoc = TypedDict('ModelFanaticsliveShowResponseDoc',
     'msg': NotRequired[str],
 }, total=False)
 
+ModelFanduelCasinoCategoriesResponse = TypedDict('ModelFanduelCasinoCategoriesResponse', {
+    'categories': NotRequired[list[ModelFanduelCasinoCategory]],
+    'fetched_at': NotRequired[str],
+    'lobby': NotRequired[str],
+    'region': NotRequired[str],
+    'regions': NotRequired[list[str]],
+}, total=False)
+
+ModelFanduelCasinoCategory = TypedDict('ModelFanduelCasinoCategory', {
+    'note': NotRequired[str],
+    'slug': NotRequired[str],
+    'title': NotRequired[str],
+}, total=False)
+
+ModelFanduelCasinoCategoryResponse = TypedDict('ModelFanduelCasinoCategoryResponse', {
+    'badges': NotRequired[list[ModelFanduelCasinoCount]],
+    'cached_at': NotRequired[str],
+    'category': NotRequired[ModelFanduelCasinoCategory],
+    'category_total': NotRequired[int],
+    'fetched_at': NotRequired[str],
+    'games': NotRequired[list[ModelFanduelCasinoGame]],
+    'limit': NotRequired[int],
+    'lobby': NotRequired[str],
+    'offset': NotRequired[int],
+    'providers': NotRequired[list[ModelFanduelCasinoCount]],
+    'region': NotRequired[str],
+    'total': NotRequired[int],
+}, total=False)
+
+ModelFanduelCasinoCount = TypedDict('ModelFanduelCasinoCount', {
+    'count': NotRequired[int],
+    'value': NotRequired[str],
+}, total=False)
+
+ModelFanduelCasinoGame = TypedDict('ModelFanduelCasinoGame', {
+    'badge': NotRequired[str],
+    'game_url': NotRequired[str],
+    'name': NotRequired[str],
+    'position': NotRequired[int],
+    'provider': NotRequired[str],
+    'site_wide_jackpot': NotRequired[bool],
+    'slug': NotRequired[str],
+}, total=False)
+
+ModelFanduelCasinoGameResponse = TypedDict('ModelFanduelCasinoGameResponse', {
+    'badge': NotRequired[str],
+    'bet_range': NotRequired[str],
+    'category': NotRequired[str],
+    'description': NotRequired[str],
+    'features': NotRequired[list[str]],
+    'fetched_at': NotRequired[str],
+    'game_id': NotRequired[str],
+    'max_bet': NotRequired[float],
+    'min_bet': NotRequired[float],
+    'name': NotRequired[str],
+    'players_now': NotRequired[int],
+    'provider_name': NotRequired[str],
+    'provider_ref': NotRequired[str],
+    'region': NotRequired[str],
+    'slug': NotRequired[str],
+    'studio': NotRequired[str],
+    'summary_tag': NotRequired[str],
+    'themes': NotRequired[list[str]],
+    'trend': NotRequired[str],
+    'url': NotRequired[str],
+    'volatility': NotRequired[str],
+}, total=False)
+
+ModelFanduelQuickPicksDailyEpisode = TypedDict('ModelFanduelQuickPicksDailyEpisode', {
+    'duration_seconds': NotRequired[float],
+    'id': NotRequired[str],
+    'image_url': NotRequired[str],
+    'in_rss_playlist': NotRequired[bool],
+    'published_at': NotRequired[str],
+    'summary': NotRequired[str],
+    'title': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelFanduelQuickPicksDailyResponse = TypedDict('ModelFanduelQuickPicksDailyResponse', {
+    'episodes': NotRequired[list[ModelFanduelQuickPicksDailyEpisode]],
+    'fetched_at': NotRequired[str],
+    'next_cursor': NotRequired[str],
+    'page': NotRequired[int],
+    'page_size': NotRequired[int],
+    'podcast': NotRequired[str],
+    'publisher': NotRequired[str],
+    'show_url': NotRequired[str],
+    'source_url': NotRequired[str],
+    'total_count': NotRequired[int],
+}, total=False)
+
+ModelFanduelRacingAveragePace = TypedDict('ModelFanduelRacingAveragePace', {
+    'early': NotRequired[float],
+    'finish': NotRequired[float],
+    'middle': NotRequired[float],
+    'races': NotRequired[int],
+}, total=False)
+
+ModelFanduelRacingCarryoverPool = TypedDict('ModelFanduelRacingCarryoverPool', {
+    'amount': NotRequired[float],
+    'mtp': NotRequired[int],
+    'pool_type': NotRequired[str],
+    'post_time': NotRequired[str],
+    'race_number': NotRequired[int],
+    'race_status': NotRequired[ModelFanduelRacingCodeName],
+    'track_code': NotRequired[str],
+    'track_name': NotRequired[str],
+    'wager_type': NotRequired[ModelFanduelRacingCodeName],
+}, total=False)
+
+ModelFanduelRacingCarryoverResponse = TypedDict('ModelFanduelRacingCarryoverResponse', {
+    'fetched_at': NotRequired[str],
+    'limit': NotRequired[int],
+    'page': NotRequired[int],
+    'pools': NotRequired[list[ModelFanduelRacingCarryoverPool]],
+    'total': NotRequired[int],
+}, total=False)
+
+ModelFanduelRacingCodeName = TypedDict('ModelFanduelRacingCodeName', {
+    'code': NotRequired[str],
+    'name': NotRequired[str],
+}, total=False)
+
+ModelFanduelRacingCombo = TypedDict('ModelFanduelRacingCombo', {
+    'payout': NotRequired[str],
+    'runner1': NotRequired[str],
+    'runner2': NotRequired[str],
+}, total=False)
+
+ModelFanduelRacingCount = TypedDict('ModelFanduelRacingCount', {
+    'code': NotRequired[str],
+    'count': NotRequired[int],
+    'name': NotRequired[str],
+}, total=False)
+
+ModelFanduelRacingEntry = TypedDict('ModelFanduelRacingEntry', {
+    'current_odds': NotRequired[ModelFanduelRacingOdds],
+    'favorite': NotRequired[bool],
+    'morning_line': NotRequired[ModelFanduelRacingOdds],
+    'number': NotRequired[int],
+    'number_color': NotRequired[str],
+    'pool_grids': NotRequired[list[ModelFanduelRacingPoolGrid]],
+    'recent_odds': NotRequired[list[ModelFanduelRacingRecentOdd]],
+    'runners': NotRequired[list[ModelFanduelRacingRunner]],
+    'saddle_color': NotRequired[str],
+}, total=False)
+
+ModelFanduelRacingFavoriteRank = TypedDict('ModelFanduelRacingFavoriteRank', {
+    'current_odds': NotRequired[int],
+    'high_speed': NotRequired[int],
+    'morning_line': NotRequired[int],
+    'power_rating': NotRequired[int],
+}, total=False)
+
+ModelFanduelRacingFiltersResponse = TypedDict('ModelFanduelRacingFiltersResponse', {
+    'classes': NotRequired[list[ModelFanduelRacingCount]],
+    'countries': NotRequired[list[ModelFanduelRacingCount]],
+    'fetched_at': NotRequired[str],
+    'race_count': NotRequired[int],
+    'race_date': NotRequired[str],
+    'race_sorts': NotRequired[list[str]],
+    'race_types': NotRequired[list[ModelFanduelRacingCount]],
+    'statuses': NotRequired[list[ModelFanduelRacingCount]],
+    'surfaces': NotRequired[list[ModelFanduelRacingCount]],
+    'track_count': NotRequired[int],
+    'track_sorts': NotRequired[list[str]],
+}, total=False)
+
+ModelFanduelRacingFinisher = TypedDict('ModelFanduelRacingFinisher', {
+    'entry': NotRequired[int],
+    'finish_status': NotRequired[str],
+    'number': NotRequired[str],
+    'place_payoff': NotRequired[float],
+    'position': NotRequired[int],
+    'runner': NotRequired[str],
+    'show_payoff': NotRequired[float],
+    'silk_url': NotRequired[str],
+    'timeform': NotRequired[ModelFanduelRacingFinisherTimeform],
+    'win_payoff': NotRequired[float],
+}, total=False)
+
+ModelFanduelRacingFinisherTimeform = TypedDict('ModelFanduelRacingFinisherTimeform', {
+    'beaten_lengths': NotRequired[float],
+    'beaten_text': NotRequired[str],
+    'post_race_report': NotRequired[str],
+    'starting_price': NotRequired[float],
+    'total_beaten_lengths': NotRequired[float],
+    'total_beaten_text': NotRequired[str],
+}, total=False)
+
+ModelFanduelRacingFreePick = TypedDict('ModelFanduelRacingFreePick', {
+    'info': NotRequired[str],
+    'number': NotRequired[int],
+}, total=False)
+
+ModelFanduelRacingHandicapping = TypedDict('ModelFanduelRacingHandicapping', {
+    'average_pace': NotRequired[ModelFanduelRacingAveragePace],
+    'free_pick': NotRequired[ModelFanduelRacingFreePick],
+    'jockey_trainer': NotRequired[ModelFanduelRacingJockeyTrainer],
+    'past_results': NotRequired[ModelFanduelRacingPastResults],
+    'snapshot': NotRequired[ModelFanduelRacingSnapshot],
+    'speed_and_class': NotRequired[ModelFanduelRacingSpeedAndClass],
+}, total=False)
+
+ModelFanduelRacingHorseRace = TypedDict('ModelFanduelRacingHorseRace', {
+    'claiming_price': NotRequired[float],
+    'date': NotRequired[str],
+    'description': NotRequired[str],
+    'distance': NotRequired[ModelFanduelRacingPastDistance],
+    'id': NotRequired[str],
+    'number': NotRequired[str],
+    'post_time': NotRequired[str],
+    'purse': NotRequired[float],
+    'race_class': NotRequired[ModelFanduelRacingCodeName],
+    'race_type': NotRequired[ModelFanduelRacingCodeName],
+    'result': NotRequired[ModelFanduelRacingFinisher],
+    'runner_count': NotRequired[int],
+    'surface': NotRequired[ModelFanduelRacingCodeName],
+    'track_code': NotRequired[str],
+    'track_condition': NotRequired[str],
+    'track_name': NotRequired[str],
+    'winning_time': NotRequired[float],
+}, total=False)
+
+ModelFanduelRacingHorseResponse = TypedDict('ModelFanduelRacingHorseResponse', {
+    'fetched_at': NotRequired[str],
+    'id': NotRequired[str],
+    'limit': NotRequired[int],
+    'page': NotRequired[int],
+    'races': NotRequired[list[ModelFanduelRacingHorseRace]],
+    'starts': NotRequired[int],
+    'top3': NotRequired[int],
+    'total': NotRequired[int],
+    'win_percentage': NotRequired[float],
+    'wins': NotRequired[int],
+}, total=False)
+
+ModelFanduelRacingJockeyTrainer = TypedDict('ModelFanduelRacingJockeyTrainer', {
+    'jockey_entity_id': NotRequired[int],
+    'jockey_name': NotRequired[str],
+    'places': NotRequired[int],
+    'shows': NotRequired[int],
+    'starts': NotRequired[int],
+    'trainer_entity_id': NotRequired[int],
+    'trainer_name': NotRequired[str],
+    'wins': NotRequired[int],
+}, total=False)
+
+ModelFanduelRacingLastEvent = TypedDict('ModelFanduelRacingLastEvent', {
+    'date': NotRequired[str],
+    'race': NotRequired[int],
+    'track': NotRequired[str],
+}, total=False)
+
+ModelFanduelRacingLegResult = TypedDict('ModelFanduelRacingLegResult', {
+    'leg': NotRequired[int],
+    'winning_entry': NotRequired[int],
+}, total=False)
+
+ModelFanduelRacingNextRace = TypedDict('ModelFanduelRacingNextRace', {
+    'mtp': NotRequired[int],
+    'number': NotRequired[str],
+    'post_time': NotRequired[str],
+    'status': NotRequired[ModelFanduelRacingCodeName],
+}, total=False)
+
+ModelFanduelRacingOdds = TypedDict('ModelFanduelRacingOdds', {
+    'decimal': NotRequired[float],
+    'fractional': NotRequired[str],
+}, total=False)
+
+ModelFanduelRacingPastDistance = TypedDict('ModelFanduelRacingPastDistance', {
+    'code': NotRequired[str],
+    'unit': NotRequired[str],
+    'value': NotRequired[float],
+}, total=False)
+
+ModelFanduelRacingPastEntry = TypedDict('ModelFanduelRacingPastEntry', {
+    'favorite': NotRequired[bool],
+    'final_odds': NotRequired[ModelFanduelRacingOdds],
+    'morning_line': NotRequired[ModelFanduelRacingOdds],
+    'number': NotRequired[int],
+    'number_color': NotRequired[str],
+    'runners': NotRequired[list[ModelFanduelRacingPastRunner]],
+    'saddle_color': NotRequired[str],
+}, total=False)
+
+ModelFanduelRacingPastRaceResponse = TypedDict('ModelFanduelRacingPastRaceResponse', {
+    'claiming_price': NotRequired[float],
+    'date': NotRequired[str],
+    'description': NotRequired[str],
+    'distance': NotRequired[ModelFanduelRacingPastDistance],
+    'entries': NotRequired[list[ModelFanduelRacingPastEntry]],
+    'fetched_at': NotRequired[str],
+    'has_replay': NotRequired[bool],
+    'id': NotRequired[str],
+    'number': NotRequired[str],
+    'post_time': NotRequired[str],
+    'purse': NotRequired[float],
+    'race_class': NotRequired[ModelFanduelRacingCodeName],
+    'race_type': NotRequired[ModelFanduelRacingCodeName],
+    'results': NotRequired[ModelFanduelRacingResults],
+    'runner_count': NotRequired[int],
+    'surface': NotRequired[ModelFanduelRacingCodeName],
+    'track_code': NotRequired[str],
+    'track_condition': NotRequired[str],
+    'track_name': NotRequired[str],
+}, total=False)
+
+ModelFanduelRacingPastRaceSummary = TypedDict('ModelFanduelRacingPastRaceSummary', {
+    'claiming_price': NotRequired[float],
+    'date': NotRequired[str],
+    'description': NotRequired[str],
+    'distance': NotRequired[ModelFanduelRacingPastDistance],
+    'id': NotRequired[str],
+    'number': NotRequired[str],
+    'post_time': NotRequired[str],
+    'purse': NotRequired[float],
+    'race_class': NotRequired[ModelFanduelRacingCodeName],
+    'race_type': NotRequired[ModelFanduelRacingCodeName],
+    'runner_count': NotRequired[int],
+    'surface': NotRequired[ModelFanduelRacingCodeName],
+    'track_code': NotRequired[str],
+    'track_condition': NotRequired[str],
+    'track_name': NotRequired[str],
+}, total=False)
+
+ModelFanduelRacingPastRacesResponse = TypedDict('ModelFanduelRacingPastRacesResponse', {
+    'date': NotRequired[str],
+    'fetched_at': NotRequired[str],
+    'limit': NotRequired[int],
+    'page': NotRequired[int],
+    'races': NotRequired[list[ModelFanduelRacingPastRaceSummary]],
+    'total': NotRequired[int],
+    'track': NotRequired[str],
+}, total=False)
+
+ModelFanduelRacingPastResults = TypedDict('ModelFanduelRacingPastResults', {
+    'first': NotRequired[int],
+    'second': NotRequired[int],
+    'starts': NotRequired[int],
+    'third': NotRequired[int],
+    'top3_percentage': NotRequired[float],
+    'top3_percentage_ranking': NotRequired[str],
+    'win_percentage': NotRequired[float],
+    'win_percentage_ranking': NotRequired[str],
+}, total=False)
+
+ModelFanduelRacingPastRunner = TypedDict('ModelFanduelRacingPastRunner', {
+    'age': NotRequired[int],
+    'birth_year': NotRequired[int],
+    'dam': NotRequired[str],
+    'dam_sire': NotRequired[str],
+    'entity_id': NotRequired[str],
+    'jockey': NotRequired[str],
+    'medication': NotRequired[str],
+    'name': NotRequired[str],
+    'owner': NotRequired[str],
+    'runner_id': NotRequired[str],
+    'scratched': NotRequired[bool],
+    'sex': NotRequired[str],
+    'sire': NotRequired[str],
+    'trainer': NotRequired[str],
+    'weight': NotRequired[int],
+}, total=False)
+
+ModelFanduelRacingPastTrack = TypedDict('ModelFanduelRacingPastTrack', {
+    'city': NotRequired[str],
+    'code': NotRequired[str],
+    'country': NotRequired[str],
+    'dates': NotRequired[list[str]],
+    'dates_total': NotRequired[int],
+    'name': NotRequired[str],
+    'race_types': NotRequired[list[str]],
+    'races_on_date': NotRequired[int],
+    'state': NotRequired[str],
+}, total=False)
+
+ModelFanduelRacingPastTracksResponse = TypedDict('ModelFanduelRacingPastTracksResponse', {
+    'date': NotRequired[str],
+    'fetched_at': NotRequired[str],
+    'limit': NotRequired[int],
+    'page': NotRequired[int],
+    'total': NotRequired[int],
+    'track': NotRequired[str],
+    'tracks': NotRequired[list[ModelFanduelRacingPastTrack]],
+}, total=False)
+
+ModelFanduelRacingPayoff = TypedDict('ModelFanduelRacingPayoff', {
+    'selections': NotRequired[list[ModelFanduelRacingPayoffSelection]],
+    'wager_amount': NotRequired[float],
+    'wager_type': NotRequired[ModelFanduelRacingCodeName],
+}, total=False)
+
+ModelFanduelRacingPayoffSelection = TypedDict('ModelFanduelRacingPayoffSelection', {
+    'payout': NotRequired[float],
+    'qualifier': NotRequired[str],
+    'selection': NotRequired[str],
+}, total=False)
+
+ModelFanduelRacingPool = TypedDict('ModelFanduelRacingPool', {
+    'amount': NotRequired[float],
+    'wager_type': NotRequired[ModelFanduelRacingCodeName],
+}, total=False)
+
+ModelFanduelRacingPoolCell = TypedDict('ModelFanduelRacingPoolCell', {
+    'amount': NotRequired[float],
+    'status': NotRequired[str],
+    'target': NotRequired[int],
+}, total=False)
+
+ModelFanduelRacingPoolGrid = TypedDict('ModelFanduelRacingPoolGrid', {
+    'cells': NotRequired[list[ModelFanduelRacingPoolCell]],
+    'wager_type': NotRequired[ModelFanduelRacingCodeName],
+}, total=False)
+
+ModelFanduelRacingProbable = TypedDict('ModelFanduelRacingProbable', {
+    'amount': NotRequired[float],
+    'combos': NotRequired[list[ModelFanduelRacingCombo]],
+    'min_wager': NotRequired[float],
+    'pool_amount_total': NotRequired[float],
+    'wager_type': NotRequired[ModelFanduelRacingCodeName],
+}, total=False)
+
+ModelFanduelRacingRaceResponse = TypedDict('ModelFanduelRacingRaceResponse', {
+    'age_restriction': NotRequired[str],
+    'analyst_verdict': NotRequired[str],
+    'claiming_price': NotRequired[float],
+    'country': NotRequired[str],
+    'description': NotRequired[str],
+    'distance': NotRequired[str],
+    'entries': NotRequired[list[ModelFanduelRacingEntry]],
+    'fetched_at': NotRequired[str],
+    'has_replay': NotRequired[bool],
+    'id': NotRequired[str],
+    'included': NotRequired[list[str]],
+    'last_updated_ms': NotRequired[int],
+    'live_streaming': NotRequired[bool],
+    'mtp': NotRequired[int],
+    'number': NotRequired[str],
+    'pools': NotRequired[list[ModelFanduelRacingPool]],
+    'post_time': NotRequired[str],
+    'probables': NotRequired[list[ModelFanduelRacingProbable]],
+    'purse': NotRequired[float],
+    'race_class': NotRequired[ModelFanduelRacingCodeName],
+    'race_date': NotRequired[str],
+    'race_type': NotRequired[ModelFanduelRacingCodeName],
+    'results': NotRequired[ModelFanduelRacingResults],
+    'runner_count': NotRequired[int],
+    'status': NotRequired[ModelFanduelRacingCodeName],
+    'surface': NotRequired[ModelFanduelRacingCodeName],
+    'track_code': NotRequired[str],
+    'track_condition': NotRequired[str],
+    'track_name': NotRequired[str],
+    'tvg_race_id': NotRequired[int],
+    'wagerable_runner_count': NotRequired[int],
+    'wagers': NotRequired[list[ModelFanduelRacingWager]],
+    'will_pays': NotRequired[list[ModelFanduelRacingWillPay]],
+}, total=False)
+
+ModelFanduelRacingRaceSummary = TypedDict('ModelFanduelRacingRaceSummary', {
+    'country': NotRequired[str],
+    'distance': NotRequired[str],
+    'id': NotRequired[str],
+    'live_streaming': NotRequired[bool],
+    'mtp': NotRequired[int],
+    'number': NotRequired[str],
+    'post_time': NotRequired[str],
+    'purse': NotRequired[float],
+    'race_class': NotRequired[ModelFanduelRacingCodeName],
+    'race_date': NotRequired[str],
+    'race_type': NotRequired[ModelFanduelRacingCodeName],
+    'runner_count': NotRequired[int],
+    'status': NotRequired[ModelFanduelRacingCodeName],
+    'surface': NotRequired[ModelFanduelRacingCodeName],
+    'track_code': NotRequired[str],
+    'track_name': NotRequired[str],
+}, total=False)
+
+ModelFanduelRacingRacesResponse = TypedDict('ModelFanduelRacingRacesResponse', {
+    'fetched_at': NotRequired[str],
+    'limit': NotRequired[int],
+    'page': NotRequired[int],
+    'race_date': NotRequired[str],
+    'races': NotRequired[list[ModelFanduelRacingRaceSummary]],
+    'total': NotRequired[int],
+}, total=False)
+
+ModelFanduelRacingRecentOdd = TypedDict('ModelFanduelRacingRecentOdd', {
+    'odds': NotRequired[str],
+    'trending': NotRequired[bool],
+}, total=False)
+
+ModelFanduelRacingResultEntry = TypedDict('ModelFanduelRacingResultEntry', {
+    'country': NotRequired[str],
+    'distance': NotRequired[str],
+    'id': NotRequired[str],
+    'live_streaming': NotRequired[bool],
+    'mtp': NotRequired[int],
+    'number': NotRequired[str],
+    'post_time': NotRequired[str],
+    'purse': NotRequired[float],
+    'race_class': NotRequired[ModelFanduelRacingCodeName],
+    'race_date': NotRequired[str],
+    'race_type': NotRequired[ModelFanduelRacingCodeName],
+    'results': NotRequired[ModelFanduelRacingResults],
+    'runner_count': NotRequired[int],
+    'status': NotRequired[ModelFanduelRacingCodeName],
+    'surface': NotRequired[ModelFanduelRacingCodeName],
+    'track_code': NotRequired[str],
+    'track_name': NotRequired[str],
+}, total=False)
+
+ModelFanduelRacingResults = TypedDict('ModelFanduelRacingResults', {
+    'finishers': NotRequired[list[ModelFanduelRacingFinisher]],
+    'payoffs': NotRequired[list[ModelFanduelRacingPayoff]],
+    'winning_time': NotRequired[float],
+}, total=False)
+
+ModelFanduelRacingResultsResponse = TypedDict('ModelFanduelRacingResultsResponse', {
+    'fetched_at': NotRequired[str],
+    'limit': NotRequired[int],
+    'page': NotRequired[int],
+    'race_date': NotRequired[str],
+    'results': NotRequired[list[ModelFanduelRacingResultEntry]],
+    'total': NotRequired[int],
+}, total=False)
+
+ModelFanduelRacingRunner = TypedDict('ModelFanduelRacingRunner', {
+    'age': NotRequired[int],
+    'dam': NotRequired[str],
+    'dam_sire': NotRequired[str],
+    'favorite_rank': NotRequired[ModelFanduelRacingFavoriteRank],
+    'form_figures': NotRequired[str],
+    'handicapping': NotRequired[ModelFanduelRacingHandicapping],
+    'jockey': NotRequired[str],
+    'jockey_changed': NotRequired[bool],
+    'medication': NotRequired[str],
+    'name': NotRequired[str],
+    'owner': NotRequired[str],
+    'rating_stars': NotRequired[int],
+    'runner_id': NotRequired[str],
+    'scratched': NotRequired[bool],
+    'sex': NotRequired[str],
+    'sire': NotRequired[str],
+    'timeform': NotRequired[ModelFanduelRacingRunnerTimeform],
+    'trainer': NotRequired[str],
+    'weight': NotRequired[int],
+    'win_probability': NotRequired[float],
+}, total=False)
+
+ModelFanduelRacingRunnerTimeform = TypedDict('ModelFanduelRacingRunnerTimeform', {
+    'analyst_comment': NotRequired[str],
+    'flags': NotRequired[list[str]],
+    'free_pick': NotRequired[ModelFanduelRacingFreePick],
+    'production_comment': NotRequired[str],
+    'tissue_price': NotRequired[float],
+}, total=False)
+
+ModelFanduelRacingSearchCounts = TypedDict('ModelFanduelRacingSearchCounts', {
+    'jockey': NotRequired[int],
+    'owner': NotRequired[int],
+    'runner': NotRequired[int],
+    'trainer': NotRequired[int],
+}, total=False)
+
+ModelFanduelRacingSearchItem = TypedDict('ModelFanduelRacingSearchItem', {
+    'birth_year': NotRequired[int],
+    'id': NotRequired[int],
+    'last_event': NotRequired[ModelFanduelRacingLastEvent],
+    'name': NotRequired[str],
+    'type': NotRequired[str],
+}, total=False)
+
+ModelFanduelRacingSearchResponse = TypedDict('ModelFanduelRacingSearchResponse', {
+    'counts': NotRequired[ModelFanduelRacingSearchCounts],
+    'fetched_at': NotRequired[str],
+    'items': NotRequired[list[ModelFanduelRacingSearchItem]],
+    'limit': NotRequired[int],
+    'order': NotRequired[str],
+    'page': NotRequired[int],
+    'query': NotRequired[str],
+    'sort': NotRequired[str],
+    'total': NotRequired[int],
+    'type': NotRequired[str],
+}, total=False)
+
+ModelFanduelRacingSnapshot = TypedDict('ModelFanduelRacingSnapshot', {
+    'days_off': NotRequired[int],
+    'horse_starts': NotRequired[int],
+    'horse_wins': NotRequired[int],
+    'normalised_power_rating': NotRequired[float],
+    'power_rating': NotRequired[float],
+    'power_rating_ranking': NotRequired[str],
+}, total=False)
+
+ModelFanduelRacingSpeedAndClass = TypedDict('ModelFanduelRacingSpeedAndClass', {
+    'avg_class_rating': NotRequired[float],
+    'avg_distance': NotRequired[float],
+    'avg_speed': NotRequired[float],
+    'high_speed': NotRequired[float],
+    'high_speed_ranking': NotRequired[str],
+    'last_class_rating': NotRequired[float],
+    'normalised_speed_rating': NotRequired[float],
+}, total=False)
+
+ModelFanduelRacingTrack = TypedDict('ModelFanduelRacingTrack', {
+    'city': NotRequired[str],
+    'code': NotRequired[str],
+    'country': NotRequired[str],
+    'current_race': NotRequired[ModelFanduelRacingNextRace],
+    'featured': NotRequired[bool],
+    'is_finished': NotRequired[bool],
+    'ivr_code': NotRequired[int],
+    'name': NotRequired[str],
+    'number_of_races': NotRequired[int],
+    'race_types': NotRequired[list[str]],
+    'short_name': NotRequired[str],
+    'state': NotRequired[str],
+}, total=False)
+
+ModelFanduelRacingTrackResponse = TypedDict('ModelFanduelRacingTrackResponse', {
+    'city': NotRequired[str],
+    'code': NotRequired[str],
+    'country': NotRequired[str],
+    'current_race': NotRequired[ModelFanduelRacingNextRace],
+    'featured': NotRequired[bool],
+    'fetched_at': NotRequired[str],
+    'is_finished': NotRequired[bool],
+    'ivr_code': NotRequired[int],
+    'name': NotRequired[str],
+    'number_of_races': NotRequired[int],
+    'race_types': NotRequired[list[str]],
+    'races': NotRequired[list[ModelFanduelRacingRaceSummary]],
+    'short_name': NotRequired[str],
+    'state': NotRequired[str],
+}, total=False)
+
+ModelFanduelRacingTracksResponse = TypedDict('ModelFanduelRacingTracksResponse', {
+    'fetched_at': NotRequired[str],
+    'limit': NotRequired[int],
+    'page': NotRequired[int],
+    'race_date': NotRequired[str],
+    'total': NotRequired[int],
+    'tracks': NotRequired[list[ModelFanduelRacingTrack]],
+}, total=False)
+
+ModelFanduelRacingWager = TypedDict('ModelFanduelRacingWager', {
+    'max_wager': NotRequired[float],
+    'min_wager': NotRequired[float],
+    'wager_type': NotRequired[ModelFanduelRacingCodeName],
+}, total=False)
+
+ModelFanduelRacingWagerType = TypedDict('ModelFanduelRacingWagerType', {
+    'code': NotRequired[str],
+    'column_count': NotRequired[int],
+    'column_type': NotRequired[str],
+    'description': NotRequired[str],
+    'group': NotRequired[ModelFanduelRacingCodeName],
+    'id': NotRequired[int],
+    'is_box': NotRequired[bool],
+    'is_key': NotRequired[bool],
+    'is_wheel': NotRequired[bool],
+    'leg_count': NotRequired[int],
+    'max_wager': NotRequired[float],
+    'min_wager': NotRequired[float],
+    'name': NotRequired[str],
+    'pools_per_entry': NotRequired[int],
+    'position_count': NotRequired[int],
+}, total=False)
+
+ModelFanduelRacingWagerTypesResponse = TypedDict('ModelFanduelRacingWagerTypesResponse', {
+    'count': NotRequired[int],
+    'fetched_at': NotRequired[str],
+    'wager_types': NotRequired[list[ModelFanduelRacingWagerType]],
+}, total=False)
+
+ModelFanduelRacingWillPay = TypedDict('ModelFanduelRacingWillPay', {
+    'leg_results': NotRequired[list[ModelFanduelRacingLegResult]],
+    'payoff_type': NotRequired[str],
+    'payouts': NotRequired[list[ModelFanduelRacingWillPayment]],
+    'wager_amount': NotRequired[float],
+    'wager_type': NotRequired[ModelFanduelRacingCodeName],
+}, total=False)
+
+ModelFanduelRacingWillPayment = TypedDict('ModelFanduelRacingWillPayment', {
+    'entry': NotRequired[int],
+    'payout': NotRequired[float],
+    'required': NotRequired[float],
+}, total=False)
+
+ModelFanduelResearchArticleResponse = TypedDict('ModelFanduelResearchArticleResponse', {
+    'author': NotRequired[ModelFanduelResearchAuthorRef],
+    'blocks': NotRequired[list[ModelFanduelResearchBlock]],
+    'description': NotRequired[str],
+    'fetched_at': NotRequired[str],
+    'hero_type': NotRequired[str],
+    'id': NotRequired[str],
+    'keywords': NotRequired[list[str]],
+    'omitted_blocks': NotRequired[dict[str, int]],
+    'published_at': NotRequired[str],
+    'slug': NotRequired[str],
+    'sport': NotRequired[ModelFanduelResearchSportRef],
+    'sub_heading': NotRequired[str],
+    'tags': NotRequired[list[ModelFanduelResearchTag]],
+    'text': NotRequired[str],
+    'thumbnail_url': NotRequired[str],
+    'title': NotRequired[str],
+    'updated_at': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelFanduelResearchArticleSummary = TypedDict('ModelFanduelResearchArticleSummary', {
+    'author': NotRequired[ModelFanduelResearchAuthorRef],
+    'description': NotRequired[str],
+    'hero_type': NotRequired[str],
+    'id': NotRequired[str],
+    'published_at': NotRequired[str],
+    'slug': NotRequired[str],
+    'sport': NotRequired[ModelFanduelResearchSportRef],
+    'sub_heading': NotRequired[str],
+    'tags': NotRequired[list[ModelFanduelResearchTag]],
+    'thumbnail_url': NotRequired[str],
+    'title': NotRequired[str],
+    'updated_at': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelFanduelResearchArticlesResponse = TypedDict('ModelFanduelResearchArticlesResponse', {
+    'articles': NotRequired[list[ModelFanduelResearchArticleSummary]],
+    'fetched_at': NotRequired[str],
+    'has_more': NotRequired[bool],
+    'next_cursor': NotRequired[str],
+}, total=False)
+
+ModelFanduelResearchAuthor = TypedDict('ModelFanduelResearchAuthor', {
+    'bio': NotRequired[str],
+    'id': NotRequired[str],
+    'name': NotRequired[str],
+    'profile_image_url': NotRequired[str],
+    'slug': NotRequired[str],
+    'social': NotRequired[list[ModelFanduelResearchSocial]],
+    'sports': NotRequired[list[str]],
+    'sub_categories': NotRequired[list[str]],
+    'thumbnail_url': NotRequired[str],
+}, total=False)
+
+ModelFanduelResearchAuthorRef = TypedDict('ModelFanduelResearchAuthorRef', {
+    'id': NotRequired[str],
+    'name': NotRequired[str],
+    'slug': NotRequired[str],
+}, total=False)
+
+ModelFanduelResearchAuthorResponse = TypedDict('ModelFanduelResearchAuthorResponse', {
+    'bio': NotRequired[str],
+    'fetched_at': NotRequired[str],
+    'id': NotRequired[str],
+    'name': NotRequired[str],
+    'profile_image_url': NotRequired[str],
+    'slug': NotRequired[str],
+    'social': NotRequired[list[ModelFanduelResearchSocial]],
+    'sports': NotRequired[list[str]],
+    'sub_categories': NotRequired[list[str]],
+    'thumbnail_url': NotRequired[str],
+}, total=False)
+
+ModelFanduelResearchAuthorsResponse = TypedDict('ModelFanduelResearchAuthorsResponse', {
+    'authors': NotRequired[list[ModelFanduelResearchAuthor]],
+    'fetched_at': NotRequired[str],
+    'has_more': NotRequired[bool],
+    'next_cursor': NotRequired[str],
+}, total=False)
+
+ModelFanduelResearchBetLine = TypedDict('ModelFanduelResearchBetLine', {
+    'market_id': NotRequired[str],
+    'odds': NotRequired[str],
+    'selection_id': NotRequired[str],
+    'url': NotRequired[str],
+    'value': NotRequired[str],
+}, total=False)
+
+ModelFanduelResearchBlock = TypedDict('ModelFanduelResearchBlock', {
+    'event_id': NotRequired[int],
+    'event_name': NotRequired[str],
+    'headers': NotRequired[list[str]],
+    'league': NotRequired[str],
+    'level': NotRequired[int],
+    'market_id': NotRequired[str],
+    'market_name': NotRequired[str],
+    'rows': NotRequired[list[list[str]]],
+    'selection_ids': NotRequired[list[int]],
+    'text': NotRequired[str],
+    'title': NotRequired[str],
+    'type': NotRequired[str],
+}, total=False)
+
+ModelFanduelResearchClosingLines = TypedDict('ModelFanduelResearchClosingLines', {
+    'spread': NotRequired[float],
+    'total': NotRequired[float],
+}, total=False)
+
+ModelFanduelResearchFeaturedArticlesResponse = TypedDict('ModelFanduelResearchFeaturedArticlesResponse', {
+    'articles': NotRequired[list[ModelFanduelResearchArticleSummary]],
+    'count': NotRequired[int],
+    'fetched_at': NotRequired[str],
+    'sport': NotRequired[ModelFanduelResearchSportRef],
+}, total=False)
+
+ModelFanduelResearchFixture = TypedDict('ModelFanduelResearchFixture', {
+    'event_url': NotRequired[str],
+    'game_clock': NotRequired[str],
+    'head_to_head_slug': NotRequired[str],
+    'id': NotRequired[str],
+    'network': NotRequired[str],
+    'scheduled_end': NotRequired[str],
+    'scheduled_start': NotRequired[str],
+    'sport': NotRequired[ModelFanduelResearchSportRef],
+    'status': NotRequired[str],
+    'teams': NotRequired[list[ModelFanduelResearchFixtureTeam]],
+}, total=False)
+
+ModelFanduelResearchFixtureLine = TypedDict('ModelFanduelResearchFixtureLine', {
+    'market_id': NotRequired[str],
+    'odds': NotRequired[int],
+    'points': NotRequired[float],
+    'selection_id': NotRequired[str],
+    'side': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelFanduelResearchFixtureTeam = TypedDict('ModelFanduelResearchFixtureTeam', {
+    'abbreviation': NotRequired[str],
+    'id': NotRequired[str],
+    'money_line': NotRequired[ModelFanduelResearchFixtureLine],
+    'name': NotRequired[str],
+    'number_fire_id': NotRequired[int],
+    'score': NotRequired[int],
+    'side': NotRequired[str],
+    'spread': NotRequired[ModelFanduelResearchFixtureLine],
+    'total': NotRequired[ModelFanduelResearchFixtureLine],
+    'win_probability': NotRequired[float],
+}, total=False)
+
+ModelFanduelResearchFixturesResponse = TypedDict('ModelFanduelResearchFixturesResponse', {
+    'count': NotRequired[int],
+    'fetched_at': NotRequired[str],
+    'fixtures': NotRequired[list[ModelFanduelResearchFixture]],
+    'sport': NotRequired[str],
+}, total=False)
+
+ModelFanduelResearchItem = TypedDict('ModelFanduelResearchItem', {
+    'guid': NotRequired[str],
+    'image_url': NotRequired[str],
+    'published_at': NotRequired[str],
+    'summary': NotRequired[str],
+    'title': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelFanduelResearchNewsType = TypedDict('ModelFanduelResearchNewsType', {
+    'code': NotRequired[str],
+    'name': NotRequired[str],
+}, total=False)
+
+ModelFanduelResearchNflGame = TypedDict('ModelFanduelResearchNflGame', {
+    'away_team': NotRequired[ModelFanduelResearchNflTeam],
+    'clock': NotRequired[str],
+    'closing_lines': NotRequired[ModelFanduelResearchClosingLines],
+    'head_to_head_slug': NotRequired[str],
+    'home_team': NotRequired[ModelFanduelResearchNflTeam],
+    'id': NotRequired[str],
+    'network': NotRequired[str],
+    'number_fire_id': NotRequired[int],
+    'odds': NotRequired[ModelFanduelResearchNflOdds],
+    'quarter': NotRequired[str],
+    'scheduled_time': NotRequired[str],
+    'season_type': NotRequired[str],
+    'status': NotRequired[str],
+    'venue': NotRequired[str],
+    'venue_type': NotRequired[str],
+    'weather': NotRequired[ModelFanduelResearchWeather],
+    'week': NotRequired[int],
+}, total=False)
+
+ModelFanduelResearchNflGameStats = TypedDict('ModelFanduelResearchNflGameStats', {
+    'fumbles_forced': NotRequired[int],
+    'interceptions_thrown': NotRequired[int],
+    'passing_yards': NotRequired[int],
+    'points': NotRequired[int],
+    'rushing_yards': NotRequired[int],
+}, total=False)
+
+ModelFanduelResearchNflLeader = TypedDict('ModelFanduelResearchNflLeader', {
+    'attempts': NotRequired[int],
+    'carries': NotRequired[int],
+    'completions': NotRequired[int],
+    'name': NotRequired[str],
+    'position': NotRequired[str],
+    'receptions': NotRequired[int],
+    'targets': NotRequired[int],
+    'touchdowns': NotRequired[int],
+    'yards': NotRequired[int],
+}, total=False)
+
+ModelFanduelResearchNflLeaders = TypedDict('ModelFanduelResearchNflLeaders', {
+    'passing': NotRequired[ModelFanduelResearchNflLeader],
+    'receiving': NotRequired[ModelFanduelResearchNflLeader],
+    'rushing': NotRequired[ModelFanduelResearchNflLeader],
+}, total=False)
+
+ModelFanduelResearchNflOdds = TypedDict('ModelFanduelResearchNflOdds', {
+    'away': NotRequired[ModelFanduelResearchNflSideOdds],
+    'event_id': NotRequired[int],
+    'home': NotRequired[ModelFanduelResearchNflSideOdds],
+    'scheduled_time': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelFanduelResearchNflRanks = TypedDict('ModelFanduelResearchNflRanks', {
+    'defense': NotRequired[int],
+    'offense': NotRequired[int],
+    'passing_yards_per_game': NotRequired[int],
+    'rushing_yards_per_game': NotRequired[int],
+}, total=False)
+
+ModelFanduelResearchNflRecord = TypedDict('ModelFanduelResearchNflRecord', {
+    'losses': NotRequired[int],
+    'ties': NotRequired[int],
+    'wins': NotRequired[int],
+}, total=False)
+
+ModelFanduelResearchNflScheduleResponse = TypedDict('ModelFanduelResearchNflScheduleResponse', {
+    'count': NotRequired[int],
+    'fetched_at': NotRequired[str],
+    'games': NotRequired[list[ModelFanduelResearchNflGame]],
+    'season_type': NotRequired[str],
+    'week': NotRequired[int],
+}, total=False)
+
+ModelFanduelResearchNflSideOdds = TypedDict('ModelFanduelResearchNflSideOdds', {
+    'money_line': NotRequired[ModelFanduelResearchBetLine],
+    'spread': NotRequired[ModelFanduelResearchBetLine],
+    'team_code': NotRequired[str],
+    'total': NotRequired[ModelFanduelResearchBetLine],
+}, total=False)
+
+ModelFanduelResearchNflTeam = TypedDict('ModelFanduelResearchNflTeam', {
+    'average_passing_yards_per_game': NotRequired[float],
+    'average_rushing_yards_per_game': NotRequired[float],
+    'code': NotRequired[str],
+    'conference': NotRequired[str],
+    'division': NotRequired[str],
+    'game_stats': NotRequired[ModelFanduelResearchNflGameStats],
+    'leaders': NotRequired[ModelFanduelResearchNflLeaders],
+    'logo_url': NotRequired[str],
+    'name': NotRequired[str],
+    'number_fire_id': NotRequired[int],
+    'primary_color': NotRequired[str],
+    'ranks': NotRequired[ModelFanduelResearchNflRanks],
+    'record': NotRequired[ModelFanduelResearchNflRecord],
+    'secondary_color': NotRequired[str],
+    'short_name': NotRequired[str],
+    'slug': NotRequired[str],
+    'sportsbook_link': NotRequired[str],
+    'win_probability': NotRequired[float],
+}, total=False)
+
+ModelFanduelResearchPlayerNewsItem = TypedDict('ModelFanduelResearchPlayerNewsItem', {
+    'analysis': NotRequired[str],
+    'attribution': NotRequired[str],
+    'author': NotRequired[ModelFanduelResearchAuthorRef],
+    'fact': NotRequired[str],
+    'id': NotRequired[str],
+    'news_type': NotRequired[ModelFanduelResearchNewsType],
+    'published_at': NotRequired[str],
+    'quant': NotRequired[str],
+    'slug': NotRequired[str],
+    'sport': NotRequired[ModelFanduelResearchSportRef],
+    'subject': NotRequired[ModelFanduelResearchSubject],
+    'title': NotRequired[str],
+    'updated_at': NotRequired[str],
+}, total=False)
+
+ModelFanduelResearchPlayerNewsResponse = TypedDict('ModelFanduelResearchPlayerNewsResponse', {
+    'fetched_at': NotRequired[str],
+    'has_more': NotRequired[bool],
+    'items': NotRequired[list[ModelFanduelResearchPlayerNewsItem]],
+    'next_cursor': NotRequired[str],
+}, total=False)
+
+ModelFanduelResearchPlayerTeam = TypedDict('ModelFanduelResearchPlayerTeam', {
+    'abbreviation': NotRequired[str],
+    'name': NotRequired[str],
+    'number_fire_id': NotRequired[int],
+}, total=False)
+
+ModelFanduelResearchProjectionEvent = TypedDict('ModelFanduelResearchProjectionEvent', {
+    'id': NotRequired[str],
+    'name': NotRequired[str],
+}, total=False)
+
+ModelFanduelResearchProjectionGame = TypedDict('ModelFanduelResearchProjectionGame', {
+    'away_team': NotRequired[ModelFanduelResearchProjectionTeam],
+    'game_time': NotRequired[str],
+    'home_team': NotRequired[ModelFanduelResearchProjectionTeam],
+}, total=False)
+
+ModelFanduelResearchProjectionPlayer = TypedDict('ModelFanduelResearchProjectionPlayer', {
+    'handedness': NotRequired[str],
+    'id': NotRequired[int],
+    'image_url': NotRequired[str],
+    'name': NotRequired[str],
+    'page_url': NotRequired[str],
+    'position': NotRequired[str],
+}, total=False)
+
+ModelFanduelResearchProjectionPosition = TypedDict('ModelFanduelResearchProjectionPosition', {
+    'default': NotRequired[bool],
+    'label': NotRequired[str],
+    'matches': NotRequired[list[str]],
+    'player_kind': NotRequired[str],
+    'slug': NotRequired[str],
+}, total=False)
+
+ModelFanduelResearchProjectionRow = TypedDict('ModelFanduelResearchProjectionRow', {
+    'game': NotRequired[ModelFanduelResearchProjectionGame],
+    'player': NotRequired[ModelFanduelResearchProjectionPlayer],
+    'salary': NotRequired[int],
+    'stats': NotRequired[dict[str, Any]],
+    'team': NotRequired[ModelFanduelResearchProjectionTeam],
+    'value': NotRequired[float],
+}, total=False)
+
+ModelFanduelResearchProjectionSlate = TypedDict('ModelFanduelResearchProjectionSlate', {
+    'id': NotRequired[str],
+    'name': NotRequired[str],
+}, total=False)
+
+ModelFanduelResearchProjectionSlatesResponse = TypedDict('ModelFanduelResearchProjectionSlatesResponse', {
+    'count': NotRequired[int],
+    'date': NotRequired[str],
+    'events': NotRequired[list[ModelFanduelResearchProjectionEvent]],
+    'fetched_at': NotRequired[str],
+    'season': NotRequired[int],
+    'slates': NotRequired[list[ModelFanduelResearchProjectionSlate]],
+    'sport': NotRequired[str],
+    'week': NotRequired[int],
+}, total=False)
+
+ModelFanduelResearchProjectionTable = TypedDict('ModelFanduelResearchProjectionTable', {
+    'name': NotRequired[str],
+    'needs_event': NotRequired[bool],
+    'needs_slate': NotRequired[bool],
+    'positions': NotRequired[list[ModelFanduelResearchProjectionPosition]],
+    'scopes': NotRequired[list[str]],
+    'sport': NotRequired[str],
+    'table': NotRequired[str],
+    'type': NotRequired[str],
+}, total=False)
+
+ModelFanduelResearchProjectionTablesResponse = TypedDict('ModelFanduelResearchProjectionTablesResponse', {
+    'count': NotRequired[int],
+    'fetched_at': NotRequired[str],
+    'sports': NotRequired[list[str]],
+    'tables': NotRequired[list[ModelFanduelResearchProjectionTable]],
+    'types': NotRequired[list[str]],
+}, total=False)
+
+ModelFanduelResearchProjectionTeam = TypedDict('ModelFanduelResearchProjectionTeam', {
+    'abbreviation': NotRequired[str],
+    'id': NotRequired[int],
+    'image_url': NotRequired[str],
+    'name': NotRequired[str],
+}, total=False)
+
+ModelFanduelResearchProjectionsResponse = TypedDict('ModelFanduelResearchProjectionsResponse', {
+    'event_id': NotRequired[str],
+    'event_name': NotRequired[str],
+    'fetched_at': NotRequired[str],
+    'limit': NotRequired[int],
+    'page': NotRequired[int],
+    'position': NotRequired[str],
+    'position_label': NotRequired[str],
+    'rows': NotRequired[list[ModelFanduelResearchProjectionRow]],
+    'scope': NotRequired[str],
+    'slate_id': NotRequired[str],
+    'slate_name': NotRequired[str],
+    'sport': NotRequired[str],
+    'table': NotRequired[str],
+    'table_name': NotRequired[str],
+    'total': NotRequired[int],
+    'type': NotRequired[str],
+}, total=False)
+
+ModelFanduelResearchResponse = TypedDict('ModelFanduelResearchResponse', {
+    'copyright': NotRequired[str],
+    'description': NotRequired[str],
+    'fetched_at': NotRequired[str],
+    'items': NotRequired[list[ModelFanduelResearchItem]],
+    'language': NotRequired[str],
+    'last_build_date': NotRequired[str],
+    'site_url': NotRequired[str],
+    'source_url': NotRequired[str],
+    'title': NotRequired[str],
+}, total=False)
+
+ModelFanduelResearchSocial = TypedDict('ModelFanduelResearchSocial', {
+    'account': NotRequired[str],
+    'type': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelFanduelResearchSport = TypedDict('ModelFanduelResearchSport', {
+    'content_sport': NotRequired[str],
+    'has_live_scoring': NotRequired[bool],
+    'has_player_updates': NotRequired[bool],
+    'name': NotRequired[str],
+    'player_news_types': NotRequired[list[str]],
+    'positions': NotRequired[list[str]],
+    'show_authors': NotRequired[bool],
+    'slug': NotRequired[str],
+    'team_count': NotRequired[int],
+    'teams': NotRequired[list[ModelFanduelResearchTeam]],
+}, total=False)
+
+ModelFanduelResearchSportRef = TypedDict('ModelFanduelResearchSportRef', {
+    'name': NotRequired[str],
+    'slug': NotRequired[str],
+}, total=False)
+
+ModelFanduelResearchSportsResponse = TypedDict('ModelFanduelResearchSportsResponse', {
+    'count': NotRequired[int],
+    'fetched_at': NotRequired[str],
+    'sports': NotRequired[list[ModelFanduelResearchSport]],
+}, total=False)
+
+ModelFanduelResearchSubCategoriesResponse = TypedDict('ModelFanduelResearchSubCategoriesResponse', {
+    'count': NotRequired[int],
+    'fetched_at': NotRequired[str],
+    'sub_categories': NotRequired[list[ModelFanduelResearchSubCategory]],
+}, total=False)
+
+ModelFanduelResearchSubCategory = TypedDict('ModelFanduelResearchSubCategory', {
+    'slug': NotRequired[str],
+    'sport': NotRequired[ModelFanduelResearchSportRef],
+    'title': NotRequired[str],
+}, total=False)
+
+ModelFanduelResearchSubject = TypedDict('ModelFanduelResearchSubject', {
+    'abbreviation': NotRequired[str],
+    'name': NotRequired[str],
+    'number': NotRequired[int],
+    'number_fire_id': NotRequired[int],
+    'page_url': NotRequired[str],
+    'position': NotRequired[str],
+    'slug': NotRequired[str],
+    'team': NotRequired[ModelFanduelResearchPlayerTeam],
+    'type': NotRequired[str],
+}, total=False)
+
+ModelFanduelResearchTag = TypedDict('ModelFanduelResearchTag', {
+    'name': NotRequired[str],
+    'type': NotRequired[str],
+}, total=False)
+
+ModelFanduelResearchTeam = TypedDict('ModelFanduelResearchTeam', {
+    'abbreviation': NotRequired[str],
+    'identifier': NotRequired[str],
+    'name': NotRequired[str],
+    'number_fire_id': NotRequired[int],
+}, total=False)
+
+ModelFanduelResearchWeather = TypedDict('ModelFanduelResearchWeather', {
+    'condition': NotRequired[str],
+    'humidity_pct': NotRequired[int],
+    'temp_f': NotRequired[int],
+    'wind_direction': NotRequired[str],
+    'wind_mph': NotRequired[int],
+}, total=False)
+
+ModelFanduelSportsbookAutocompleteResponse = TypedDict('ModelFanduelSportsbookAutocompleteResponse', {
+    'fetched_at': NotRequired[str],
+    'query': NotRequired[str],
+    'suggestions': NotRequired[list[ModelFanduelSportsbookSuggestion]],
+}, total=False)
+
+ModelFanduelSportsbookBetRecords = TypedDict('ModelFanduelSportsbookBetRecords', {
+    'against_spread': NotRequired[ModelFanduelSportsbookWinLoss],
+    'money_line': NotRequired[ModelFanduelSportsbookWinLoss],
+    'over_under': NotRequired[ModelFanduelSportsbookWinLoss],
+}, total=False)
+
+ModelFanduelSportsbookBoxScoreColumn = TypedDict('ModelFanduelSportsbookBoxScoreColumn', {
+    'key': NotRequired[str],
+    'label': NotRequired[str],
+}, total=False)
+
+ModelFanduelSportsbookBoxScoreGroup = TypedDict('ModelFanduelSportsbookBoxScoreGroup', {
+    'columns': NotRequired[list[ModelFanduelSportsbookBoxScoreColumn]],
+    'key': NotRequired[str],
+    'label': NotRequired[str],
+    'rows': NotRequired[list[ModelFanduelSportsbookBoxScoreRow]],
+}, total=False)
+
+ModelFanduelSportsbookBoxScoreResponse = TypedDict('ModelFanduelSportsbookBoxScoreResponse', {
+    'available': NotRequired[bool],
+    'event_id': NotRequired[int],
+    'fetched_at': NotRequired[str],
+    'groups': NotRequired[list[ModelFanduelSportsbookBoxScoreGroup]],
+    'score': NotRequired[ModelFanduelSportsbookScore],
+    'status': NotRequired[str],
+}, total=False)
+
+ModelFanduelSportsbookBoxScoreRow = TypedDict('ModelFanduelSportsbookBoxScoreRow', {
+    'id': NotRequired[str],
+    'name': NotRequired[str],
+    'player_id': NotRequired[str],
+    'position': NotRequired[str],
+    'stats': NotRequired[dict[str, str]],
+    'team': NotRequired[str],
+}, total=False)
+
+ModelFanduelSportsbookBuilderCard = TypedDict('ModelFanduelSportsbookBuilderCard', {
+    'available_options': NotRequired[dict[str, Any]],
+    'description_template': NotRequired[str],
+    'id': NotRequired[str],
+    'legs': NotRequired[list[dict[str, Any]]],
+    'prop_key': NotRequired[str],
+    'props': NotRequired[list[str]],
+    'selected_options': NotRequired[dict[str, Any]],
+    'title': NotRequired[str],
+    'type': NotRequired[str],
+}, total=False)
+
+ModelFanduelSportsbookBuilderChoice = TypedDict('ModelFanduelSportsbookBuilderChoice', {
+    'choice_id': NotRequired[str],
+    'description': NotRequired[str],
+    'status': NotRequired[str],
+    'template_id': NotRequired[str],
+}, total=False)
+
+ModelFanduelSportsbookBuilderCompetition = TypedDict('ModelFanduelSportsbookBuilderCompetition', {
+    'competition_id': NotRequired[int],
+    'event_ids': NotRequired[list[int]],
+    'first_event_id': NotRequired[int],
+    'logo_url': NotRequired[str],
+    'name': NotRequired[str],
+}, total=False)
+
+ModelFanduelSportsbookBuilderEvent = TypedDict('ModelFanduelSportsbookBuilderEvent', {
+    'abbreviation': NotRequired[str],
+    'away_logo_url': NotRequired[str],
+    'competition': NotRequired[str],
+    'competition_id': NotRequired[int],
+    'event_id': NotRequired[int],
+    'home_logo_url': NotRequired[str],
+    'name': NotRequired[str],
+    'start_time': NotRequired[str],
+}, total=False)
+
+ModelFanduelSportsbookBuilderEventsResponse = TypedDict('ModelFanduelSportsbookBuilderEventsResponse', {
+    'competitions': NotRequired[list[ModelFanduelSportsbookBuilderCompetition]],
+    'events': NotRequired[list[ModelFanduelSportsbookBuilderEvent]],
+    'experience': NotRequired[str],
+    'fetched_at': NotRequired[str],
+    'first_event_id': NotRequired[int],
+    'state': NotRequired[str],
+}, total=False)
+
+ModelFanduelSportsbookBuilderGroup = TypedDict('ModelFanduelSportsbookBuilderGroup', {
+    'card_ids': NotRequired[list[str]],
+    'id': NotRequired[str],
+    'layout_type': NotRequired[str],
+    'title': NotRequired[str],
+    'type': NotRequired[str],
+}, total=False)
+
+ModelFanduelSportsbookBuilderPlayer = TypedDict('ModelFanduelSportsbookBuilderPlayer', {
+    'headshot_url': NotRequired[str],
+    'id': NotRequired[str],
+    'name': NotRequired[str],
+    'short_name': NotRequired[str],
+    'team_id': NotRequired[str],
+}, total=False)
+
+ModelFanduelSportsbookBuilderResponse = TypedDict('ModelFanduelSportsbookBuilderResponse', {
+    'cards': NotRequired[list[ModelFanduelSportsbookBuilderCard]],
+    'choices': NotRequired[list[ModelFanduelSportsbookBuilderChoice]],
+    'competition': NotRequired[str],
+    'competition_id': NotRequired[int],
+    'event_id': NotRequired[int],
+    'event_name': NotRequired[str],
+    'experience': NotRequired[str],
+    'fetched_at': NotRequired[str],
+    'game_status': NotRequired[str],
+    'groups': NotRequired[list[ModelFanduelSportsbookBuilderGroup]],
+    'layout': NotRequired[list[str]],
+    'periods': NotRequired[list[str]],
+    'players': NotRequired[list[ModelFanduelSportsbookBuilderPlayer]],
+    'ramp_event_id': NotRequired[int],
+    'start_time': NotRequired[str],
+    'state': NotRequired[str],
+    'status': NotRequired[str],
+    'teams': NotRequired[list[ModelFanduelSportsbookBuilderTeam]],
+}, total=False)
+
+ModelFanduelSportsbookBuilderTeam = TypedDict('ModelFanduelSportsbookBuilderTeam', {
+    'abbr': NotRequired[str],
+    'id': NotRequired[str],
+    'logo_url': NotRequired[str],
+    'name': NotRequired[str],
+    'side': NotRequired[str],
+}, total=False)
+
+ModelFanduelSportsbookChoiceFailure = TypedDict('ModelFanduelSportsbookChoiceFailure', {
+    'choice_id': NotRequired[str],
+    'code': NotRequired[str],
+}, total=False)
+
+ModelFanduelSportsbookChoiceQuote = TypedDict('ModelFanduelSportsbookChoiceQuote', {
+    'american_odds': NotRequired[int],
+    'bet_type': NotRequired[str],
+    'choice_id': NotRequired[str],
+    'decimal_odds': NotRequired[float],
+    'display_decimal_odds': NotRequired[float],
+    'features': NotRequired[list[str]],
+    'fractional_odds': NotRequired[str],
+    'same_game_multi': NotRequired[bool],
+}, total=False)
+
+ModelFanduelSportsbookChoiceQuotesResponse = TypedDict('ModelFanduelSportsbookChoiceQuotesResponse', {
+    'failures': NotRequired[list[ModelFanduelSportsbookChoiceFailure]],
+    'fetched_at': NotRequired[str],
+    'quotes': NotRequired[list[ModelFanduelSportsbookChoiceQuote]],
+    'ramp_event_id': NotRequired[int],
+    'state': NotRequired[str],
+}, total=False)
+
+ModelFanduelSportsbookCompetition = TypedDict('ModelFanduelSportsbookCompetition', {
+    'competition_id': NotRequired[int],
+    'event_type_id': NotRequired[int],
+    'name': NotRequired[str],
+    'region': NotRequired[str],
+}, total=False)
+
+ModelFanduelSportsbookDepthChartPlayer = TypedDict('ModelFanduelSportsbookDepthChartPlayer', {
+    'age': NotRequired[int],
+    'college': NotRequired[str],
+    'draft_pick': NotRequired[str],
+    'draft_round': NotRequired[str],
+    'draft_year': NotRequired[str],
+    'name': NotRequired[str],
+    'position': NotRequired[str],
+    'rank': NotRequired[str],
+    'slug': NotRequired[str],
+}, total=False)
+
+ModelFanduelSportsbookDepthChartResponse = TypedDict('ModelFanduelSportsbookDepthChartResponse', {
+    'fetched_at': NotRequired[str],
+    'league': NotRequired[str],
+    'players': NotRequired[list[ModelFanduelSportsbookDepthChartPlayer]],
+    'team': NotRequired[str],
+    'team_leaders': NotRequired[dict[str, Any]],
+}, total=False)
+
+ModelFanduelSportsbookDirectoryPlayer = TypedDict('ModelFanduelSportsbookDirectoryPlayer', {
+    'name': NotRequired[str],
+    'player_id': NotRequired[int],
+    'slug': NotRequired[str],
+}, total=False)
+
+ModelFanduelSportsbookEvent = TypedDict('ModelFanduelSportsbookEvent', {
+    'competition_id': NotRequired[int],
+    'event_id': NotRequired[int],
+    'event_type_id': NotRequired[int],
+    'in_play': NotRequired[bool],
+    'markets': NotRequired[list[ModelFanduelSportsbookMarket]],
+    'name': NotRequired[str],
+    'open_date': NotRequired[str],
+    'video_available': NotRequired[bool],
+}, total=False)
+
+ModelFanduelSportsbookEventPlayersResponse = TypedDict('ModelFanduelSportsbookEventPlayersResponse', {
+    'away_team': NotRequired[ModelFanduelSportsbookTeam],
+    'competition': NotRequired[str],
+    'event_id': NotRequired[int],
+    'event_name': NotRequired[str],
+    'fetched_at': NotRequired[str],
+    'home_team': NotRequired[ModelFanduelSportsbookTeam],
+    'players': NotRequired[list[ModelFanduelSportsbookPlayer]],
+    'scheduled_at': NotRequired[str],
+}, total=False)
+
+ModelFanduelSportsbookEventResponse = TypedDict('ModelFanduelSportsbookEventResponse', {
+    'competition': NotRequired[ModelFanduelSportsbookCompetition],
+    'default_tab': NotRequired[str],
+    'event': NotRequired[ModelFanduelSportsbookEvent],
+    'fetched_at': NotRequired[str],
+    'market_types': NotRequired[list[ModelFanduelSportsbookMarketTypeCount]],
+    'notes': NotRequired[list[str]],
+    'selected_tab': NotRequired[str],
+    'state': NotRequired[str],
+    'tabs': NotRequired[list[ModelFanduelSportsbookTab]],
+}, total=False)
+
+ModelFanduelSportsbookEventScoreResponse = TypedDict('ModelFanduelSportsbookEventScoreResponse', {
+    'event_id': NotRequired[int],
+    'fetched_at': NotRequired[str],
+    'live': NotRequired[ModelFanduelSportsbookLiveStatus],
+    'media_types': NotRequired[list[str]],
+    'score': NotRequired[ModelFanduelSportsbookScore],
+}, total=False)
+
+ModelFanduelSportsbookEventStats = TypedDict('ModelFanduelSportsbookEventStats', {
+    'competition': NotRequired[str],
+    'competition_id': NotRequired[int],
+    'event_id': NotRequired[int],
+    'last_five_games': NotRequired[list[ModelFanduelSportsbookFormLine]],
+    'other_widgets': NotRequired[dict[str, Any]],
+    'spread_bets_percent': NotRequired[list[ModelFanduelSportsbookSplit]],
+    'spread_money_percent': NotRequired[list[ModelFanduelSportsbookSplit]],
+    'teams': NotRequired[list[ModelFanduelSportsbookStatsTeam]],
+}, total=False)
+
+ModelFanduelSportsbookEventStatsResponse = TypedDict('ModelFanduelSportsbookEventStatsResponse', {
+    'fetched_at': NotRequired[str],
+    'stats': NotRequired[ModelFanduelSportsbookEventStats],
+}, total=False)
+
+ModelFanduelSportsbookEventStatus = TypedDict('ModelFanduelSportsbookEventStatus', {
+    'event_id': NotRequired[int],
+    'game_phase': NotRequired[str],
+    'price_clock': NotRequired[str],
+    'status': NotRequired[str],
+    'status_clock': NotRequired[str],
+    'structure_clock': NotRequired[str],
+}, total=False)
+
+ModelFanduelSportsbookEventsStatusResponse = TypedDict('ModelFanduelSportsbookEventsStatusResponse', {
+    'events': NotRequired[list[ModelFanduelSportsbookEventStatus]],
+    'fetched_at': NotRequired[str],
+    'not_found': NotRequired[list[int]],
+    'state': NotRequired[str],
+}, total=False)
+
+ModelFanduelSportsbookFormLine = TypedDict('ModelFanduelSportsbookFormLine', {
+    'name': NotRequired[str],
+    'results': NotRequired[list[str]],
+    'selection_id': NotRequired[int],
+}, total=False)
+
+ModelFanduelSportsbookFutureOdd = TypedDict('ModelFanduelSportsbookFutureOdd', {
+    'description': NotRequired[str],
+    'market_type': NotRequired[str],
+    'odds': NotRequired[str],
+    'team': NotRequired[str],
+    'team_slug': NotRequired[str],
+}, total=False)
+
+ModelFanduelSportsbookGameLine = TypedDict('ModelFanduelSportsbookGameLine', {
+    'odds': NotRequired[str],
+    'value': NotRequired[str],
+}, total=False)
+
+ModelFanduelSportsbookGameSummary = TypedDict('ModelFanduelSportsbookGameSummary', {
+    'away_score': NotRequired[int],
+    'away_slug': NotRequired[str],
+    'away_team': NotRequired[str],
+    'date': NotRequired[str],
+    'home_score': NotRequired[int],
+    'home_slug': NotRequired[str],
+    'home_team': NotRequired[str],
+    'title': NotRequired[str],
+    'venue': NotRequired[str],
+}, total=False)
+
+ModelFanduelSportsbookLeagueGame = TypedDict('ModelFanduelSportsbookLeagueGame', {
+    'away_code': NotRequired[str],
+    'away_score': NotRequired[int],
+    'away_slug': NotRequired[str],
+    'away_team': NotRequired[str],
+    'broadcast': NotRequired[str],
+    'bye_week': NotRequired[bool],
+    'conference_game': NotRequired[bool],
+    'home_code': NotRequired[str],
+    'home_score': NotRequired[int],
+    'home_slug': NotRequired[str],
+    'home_team': NotRequired[str],
+    'scheduled_time': NotRequired[str],
+    'status': NotRequired[str],
+    'title': NotRequired[str],
+    'venue': NotRequired[str],
+    'week': NotRequired[int],
+}, total=False)
+
+ModelFanduelSportsbookLeagueScheduleResponse = TypedDict('ModelFanduelSportsbookLeagueScheduleResponse', {
+    'date': NotRequired[str],
+    'end_date': NotRequired[str],
+    'fetched_at': NotRequired[str],
+    'game_count': NotRequired[int],
+    'groups': NotRequired[list[ModelFanduelSportsbookScheduleGroup]],
+    'league': NotRequired[str],
+    'week': NotRequired[ModelFanduelSportsbookScheduleWeek],
+    'weeks': NotRequired[list[ModelFanduelSportsbookScheduleWeek]],
+}, total=False)
+
+ModelFanduelSportsbookLiveCountResponse = TypedDict('ModelFanduelSportsbookLiveCountResponse', {
+    'fetched_at': NotRequired[str],
+    'live_events': NotRequired[int],
+    'state': NotRequired[str],
+}, total=False)
+
+ModelFanduelSportsbookLiveDataResponse = TypedDict('ModelFanduelSportsbookLiveDataResponse', {
+    'events': NotRequired[list[ModelFanduelSportsbookLiveEvent]],
+    'fetched_at': NotRequired[str],
+    'missing': NotRequired[list[int]],
+}, total=False)
+
+ModelFanduelSportsbookLiveEvent = TypedDict('ModelFanduelSportsbookLiveEvent', {
+    'away_score': NotRequired[int],
+    'details': NotRequired[dict[str, Any]],
+    'event_id': NotRequired[int],
+    'home_score': NotRequired[int],
+    'live': NotRequired[bool],
+    'media_types': NotRequired[list[str]],
+    'player_progress': NotRequired[dict[str, Any]],
+    'player_stats': NotRequired[dict[str, Any]],
+    'provider': NotRequired[str],
+    'sport': NotRequired[str],
+}, total=False)
+
+ModelFanduelSportsbookLiveScore = TypedDict('ModelFanduelSportsbookLiveScore', {
+    'away_score': NotRequired[int],
+    'current_period': NotRequired[int],
+    'details': NotRequired[dict[str, Any]],
+    'event_id': NotRequired[int],
+    'home_score': NotRequired[int],
+    'media_types': NotRequired[list[str]],
+    'model_type': NotRequired[str],
+    'period': NotRequired[str],
+    'period_remaining_milliseconds': NotRequired[int],
+    'provider': NotRequired[str],
+    'sport': NotRequired[str],
+}, total=False)
+
+ModelFanduelSportsbookLiveScoresResponse = TypedDict('ModelFanduelSportsbookLiveScoresResponse', {
+    'events': NotRequired[list[ModelFanduelSportsbookLiveScore]],
+    'fetched_at': NotRequired[str],
+    'not_found': NotRequired[list[int]],
+    'state': NotRequired[str],
+}, total=False)
+
+ModelFanduelSportsbookLiveStatus = TypedDict('ModelFanduelSportsbookLiveStatus', {
+    'box_score_available': NotRequired[bool],
+    'competition': NotRequired[str],
+    'play_by_play_available': NotRequired[bool],
+    'provider': NotRequired[str],
+    'quick_bets_available': NotRequired[bool],
+    'score_available': NotRequired[bool],
+    'status': NotRequired[str],
+}, total=False)
+
+ModelFanduelSportsbookMarket = TypedDict('ModelFanduelSportsbookMarket', {
+    'betting_type': NotRequired[str],
+    'in_play': NotRequired[bool],
+    'market_id': NotRequired[str],
+    'market_time': NotRequired[str],
+    'name': NotRequired[str],
+    'runners': NotRequired[list[ModelFanduelSportsbookRunner]],
+    'same_game_parlay_eligible': NotRequired[bool],
+    'status': NotRequired[str],
+    'type': NotRequired[str],
+}, total=False)
+
+ModelFanduelSportsbookMarketPrice = TypedDict('ModelFanduelSportsbookMarketPrice', {
+    'bet_delay_seconds': NotRequired[int],
+    'betting_type': NotRequired[str],
+    'in_play': NotRequired[bool],
+    'market_id': NotRequired[str],
+    'runners': NotRequired[list[ModelFanduelSportsbookPriceRunner]],
+    'same_game_parlay_eligible': NotRequired[bool],
+    'status': NotRequired[str],
+}, total=False)
+
+ModelFanduelSportsbookMarketPricesResponse = TypedDict('ModelFanduelSportsbookMarketPricesResponse', {
+    'fetched_at': NotRequired[str],
+    'markets': NotRequired[list[ModelFanduelSportsbookMarketPrice]],
+    'missing': NotRequired[list[str]],
+    'state': NotRequired[str],
+}, total=False)
+
+ModelFanduelSportsbookMarketTypeCount = TypedDict('ModelFanduelSportsbookMarketTypeCount', {
+    'count': NotRequired[int],
+    'type': NotRequired[str],
+}, total=False)
+
+ModelFanduelSportsbookNavLink = TypedDict('ModelFanduelSportsbookNavLink', {
+    'custom_page_id': NotRequired[str],
+    'display_order': NotRequired[int],
+    'icon': NotRequired[str],
+    'id': NotRequired[int],
+    'kind': NotRequired[str],
+    'title': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelFanduelSportsbookPageResponse = TypedDict('ModelFanduelSportsbookPageResponse', {
+    'competition_id': NotRequired[int],
+    'competitions': NotRequired[list[ModelFanduelSportsbookCompetition]],
+    'custom_page_id': NotRequired[str],
+    'default_tab': NotRequired[str],
+    'description': NotRequired[str],
+    'event_type_id': NotRequired[int],
+    'events': NotRequired[list[ModelFanduelSportsbookEvent]],
+    'fetched_at': NotRequired[str],
+    'market_types': NotRequired[list[ModelFanduelSportsbookMarketTypeCount]],
+    'page_type': NotRequired[str],
+    'selected_tab': NotRequired[str],
+    'state': NotRequired[str],
+    'tabs': NotRequired[list[ModelFanduelSportsbookTab]],
+    'title': NotRequired[str],
+}, total=False)
+
+ModelFanduelSportsbookParlay = TypedDict('ModelFanduelSportsbookParlay', {
+    'american_odds': NotRequired[int],
+    'away_team': NotRequired[str],
+    'competition_id': NotRequired[int],
+    'competition_name': NotRequired[str],
+    'decimal_odds': NotRequired[float],
+    'event_id': NotRequired[int],
+    'event_name': NotRequired[str],
+    'featured_by': NotRequired[str],
+    'home_team': NotRequired[str],
+    'id': NotRequired[str],
+    'is_editable': NotRequired[bool],
+    'is_manually_created': NotRequired[bool],
+    'legs': NotRequired[list[ModelFanduelSportsbookParlayLeg]],
+    'narrative': NotRequired[str],
+    'total_bets': NotRequired[int],
+    'type': NotRequired[str],
+}, total=False)
+
+ModelFanduelSportsbookParlayEventGroup = TypedDict('ModelFanduelSportsbookParlayEventGroup', {
+    'away_team': NotRequired[str],
+    'event_id': NotRequired[int],
+    'event_name': NotRequired[str],
+    'home_team': NotRequired[str],
+    'open_date': NotRequired[str],
+    'parlay_ids': NotRequired[list[str]],
+}, total=False)
+
+ModelFanduelSportsbookParlayFilter = TypedDict('ModelFanduelSportsbookParlayFilter', {
+    'competition_ids': NotRequired[list[int]],
+    'id': NotRequired[str],
+    'text': NotRequired[str],
+}, total=False)
+
+ModelFanduelSportsbookParlayLeg = TypedDict('ModelFanduelSportsbookParlayLeg', {
+    'competition_id': NotRequired[int],
+    'event_id': NotRequired[int],
+    'event_name': NotRequired[str],
+    'market': NotRequired[str],
+    'market_id': NotRequired[str],
+    'market_type': NotRequired[str],
+    'selection': NotRequired[str],
+    'selection_id': NotRequired[int],
+}, total=False)
+
+ModelFanduelSportsbookParlayTypeCount = TypedDict('ModelFanduelSportsbookParlayTypeCount', {
+    'count': NotRequired[int],
+    'type': NotRequired[str],
+}, total=False)
+
+ModelFanduelSportsbookParlaysResponse = TypedDict('ModelFanduelSportsbookParlaysResponse', {
+    'card_cap': NotRequired[int],
+    'event_groups': NotRequired[list[ModelFanduelSportsbookParlayEventGroup]],
+    'event_id': NotRequired[int],
+    'fetched_at': NotRequired[str],
+    'filters': NotRequired[list[ModelFanduelSportsbookParlayFilter]],
+    'parlays': NotRequired[list[ModelFanduelSportsbookParlay]],
+    'state': NotRequired[str],
+    'truncated': NotRequired[bool],
+    'types': NotRequired[list[ModelFanduelSportsbookParlayTypeCount]],
+    'view': NotRequired[str],
+}, total=False)
+
+ModelFanduelSportsbookPeriodScore = TypedDict('ModelFanduelSportsbookPeriodScore', {
+    'away': NotRequired[int],
+    'home': NotRequired[int],
+    'period': NotRequired[str],
+}, total=False)
+
+ModelFanduelSportsbookPlacement = TypedDict('ModelFanduelSportsbookPlacement', {
+    'placement': NotRequired[str],
+    'promo_codes': NotRequired[list[str]],
+}, total=False)
+
+ModelFanduelSportsbookPlayByPlayResponse = TypedDict('ModelFanduelSportsbookPlayByPlayResponse', {
+    'available': NotRequired[bool],
+    'current': NotRequired[bool],
+    'event_id': NotRequired[int],
+    'feed': NotRequired[dict[str, Any]],
+    'fetched_at': NotRequired[str],
+    'status': NotRequired[str],
+}, total=False)
+
+ModelFanduelSportsbookPlayer = TypedDict('ModelFanduelSportsbookPlayer', {
+    'abbreviated_name': NotRequired[str],
+    'name': NotRequired[str],
+    'number': NotRequired[str],
+    'player_id': NotRequired[str],
+    'position': NotRequired[str],
+    'team': NotRequired[str],
+}, total=False)
+
+ModelFanduelSportsbookPlayerNewsResponse = TypedDict('ModelFanduelSportsbookPlayerNewsResponse', {
+    'articles': NotRequired[list[ModelFanduelSportsbookTeamArticle]],
+    'fetched_at': NotRequired[str],
+    'has_more': NotRequired[bool],
+    'league': NotRequired[str],
+    'name': NotRequired[str],
+    'next_cursor': NotRequired[str],
+    'player': NotRequired[str],
+    'player_updates': NotRequired[list[dict[str, Any]]],
+}, total=False)
+
+ModelFanduelSportsbookPlayerPropEvent = TypedDict('ModelFanduelSportsbookPlayerPropEvent', {
+    'date': NotRequired[str],
+    'event_id': NotRequired[int],
+    'event_name': NotRequired[str],
+    'markets': NotRequired[list[ModelFanduelSportsbookPlayerPropMarket]],
+}, total=False)
+
+ModelFanduelSportsbookPlayerPropMarket = TypedDict('ModelFanduelSportsbookPlayerPropMarket', {
+    'market_id': NotRequired[str],
+    'market_type': NotRequired[str],
+    'name': NotRequired[str],
+    'selections': NotRequired[list[ModelFanduelSportsbookPlayerPropSelection]],
+}, total=False)
+
+ModelFanduelSportsbookPlayerPropSelection = TypedDict('ModelFanduelSportsbookPlayerPropSelection', {
+    'handicap': NotRequired[float],
+    'odds': NotRequired[str],
+    'runner': NotRequired[str],
+    'selection_id': NotRequired[int],
+}, total=False)
+
+ModelFanduelSportsbookPlayerProps = TypedDict('ModelFanduelSportsbookPlayerProps', {
+    'events': NotRequired[list[ModelFanduelSportsbookPlayerPropEvent]],
+    'player': NotRequired[str],
+    'slug': NotRequired[str],
+}, total=False)
+
+ModelFanduelSportsbookPlayerPropsResponse = TypedDict('ModelFanduelSportsbookPlayerPropsResponse', {
+    'content_text': NotRequired[str],
+    'events': NotRequired[list[ModelFanduelSportsbookPlayerPropEvent]],
+    'fetched_at': NotRequired[str],
+    'league': NotRequired[str],
+    'name': NotRequired[str],
+    'player': NotRequired[str],
+}, total=False)
+
+ModelFanduelSportsbookPlayerResponse = TypedDict('ModelFanduelSportsbookPlayerResponse', {
+    'fetched_at': NotRequired[str],
+    'game_log': NotRequired[Any],
+    'league': NotRequired[str],
+    'name': NotRequired[str],
+    'news': NotRequired[list[ModelFanduelSportsbookTeamArticle]],
+    'player': NotRequired[str],
+    'player_updates': NotRequired[list[dict[str, Any]]],
+    'position': NotRequired[str],
+    'projections': NotRequired[Any],
+    'season': NotRequired[dict[str, Any]],
+    'season_totals': NotRequired[Any],
+    'stats': NotRequired[dict[str, Any]],
+    'team': NotRequired[str],
+    'team_slug': NotRequired[str],
+}, total=False)
+
+ModelFanduelSportsbookPlayerStatsResponse = TypedDict('ModelFanduelSportsbookPlayerStatsResponse', {
+    'fetched_at': NotRequired[str],
+    'league': NotRequired[str],
+    'name': NotRequired[str],
+    'player': NotRequired[str],
+    'position': NotRequired[str],
+    'stats': NotRequired[dict[str, Any]],
+}, total=False)
+
+ModelFanduelSportsbookPlayersResponse = TypedDict('ModelFanduelSportsbookPlayersResponse', {
+    'fetched_at': NotRequired[str],
+    'league': NotRequired[str],
+    'limit': NotRequired[int],
+    'offset': NotRequired[int],
+    'players': NotRequired[list[ModelFanduelSportsbookDirectoryPlayer]],
+    'total': NotRequired[int],
+}, total=False)
+
+ModelFanduelSportsbookPriceRunner = TypedDict('ModelFanduelSportsbookPriceRunner', {
+    'american_odds': NotRequired[int],
+    'decimal_odds': NotRequired[float],
+    'fractional_odds': NotRequired[str],
+    'handicap': NotRequired[float],
+    'previous_american_odds': NotRequired[int],
+    'previous_decimal_odds': NotRequired[float],
+    'selection_id': NotRequired[int],
+    'status': NotRequired[str],
+}, total=False)
+
+ModelFanduelSportsbookPromotion = TypedDict('ModelFanduelSportsbookPromotion', {
+    'button_text': NotRequired[str],
+    'button_url': NotRequired[str],
+    'ends_at': NotRequired[str],
+    'image_url': NotRequired[str],
+    'name': NotRequired[str],
+    'products': NotRequired[list[str]],
+    'promo_code': NotRequired[str],
+    'tags': NotRequired[list[str]],
+    'title': NotRequired[str],
+}, total=False)
+
+ModelFanduelSportsbookPromotionsResponse = TypedDict('ModelFanduelSportsbookPromotionsResponse', {
+    'context': NotRequired[str],
+    'custom_page_id': NotRequired[str],
+    'event_type_id': NotRequired[int],
+    'fetched_at': NotRequired[str],
+    'placements': NotRequired[list[ModelFanduelSportsbookPlacement]],
+    'promotions': NotRequired[list[ModelFanduelSportsbookPromotion]],
+    'state': NotRequired[str],
+    'tags': NotRequired[list[ModelFanduelSportsbookTagCount]],
+}, total=False)
+
+ModelFanduelSportsbookRosterPlayer = TypedDict('ModelFanduelSportsbookRosterPlayer', {
+    'college': NotRequired[str],
+    'experience': NotRequired[str],
+    'height': NotRequired[str],
+    'injury_status': NotRequired[str],
+    'name': NotRequired[str],
+    'number': NotRequired[str],
+    'photo_url': NotRequired[str],
+    'position': NotRequired[str],
+    'slug': NotRequired[str],
+    'status': NotRequired[str],
+    'weight': NotRequired[int],
+}, total=False)
+
+ModelFanduelSportsbookRosterResponse = TypedDict('ModelFanduelSportsbookRosterResponse', {
+    'fetched_at': NotRequired[str],
+    'injury_statuses': NotRequired[list[ModelFanduelSportsbookValueCount]],
+    'league': NotRequired[str],
+    'players': NotRequired[list[ModelFanduelSportsbookRosterPlayer]],
+    'positions': NotRequired[list[ModelFanduelSportsbookValueCount]],
+    'statuses': NotRequired[list[ModelFanduelSportsbookValueCount]],
+    'team': NotRequired[str],
+}, total=False)
+
+ModelFanduelSportsbookRunner = TypedDict('ModelFanduelSportsbookRunner', {
+    'abbreviation': NotRequired[str],
+    'american_odds': NotRequired[int],
+    'decimal_odds': NotRequired[float],
+    'fractional_odds': NotRequired[str],
+    'handicap': NotRequired[float],
+    'is_player': NotRequired[bool],
+    'jersey_number': NotRequired[str],
+    'logo_url': NotRequired[str],
+    'name': NotRequired[str],
+    'previous_american_odds': NotRequired[int],
+    'previous_decimal_odds': NotRequired[float],
+    'selection_id': NotRequired[int],
+    'side': NotRequired[str],
+    'status': NotRequired[str],
+}, total=False)
+
+ModelFanduelSportsbookScheduleGame = TypedDict('ModelFanduelSportsbookScheduleGame', {
+    'bye_week': NotRequired[bool],
+    'cancelled': NotRequired[bool],
+    'date': NotRequired[str],
+    'location': NotRequired[str],
+    'opponent': NotRequired[ModelFanduelSportsbookTeamRef],
+    'opponent_record': NotRequired[str],
+    'opponent_score': NotRequired[int],
+    'postponed': NotRequired[bool],
+    'team_score': NotRequired[int],
+    'venue': NotRequired[str],
+    'week': NotRequired[int],
+}, total=False)
+
+ModelFanduelSportsbookScheduleGroup = TypedDict('ModelFanduelSportsbookScheduleGroup', {
+    'games': NotRequired[list[ModelFanduelSportsbookLeagueGame]],
+    'season_type': NotRequired[str],
+    'title': NotRequired[str],
+}, total=False)
+
+ModelFanduelSportsbookScheduleResponse = TypedDict('ModelFanduelSportsbookScheduleResponse', {
+    'fetched_at': NotRequired[str],
+    'league': NotRequired[str],
+    'next_game': NotRequired[ModelFanduelSportsbookGameSummary],
+    'previous_game': NotRequired[ModelFanduelSportsbookGameSummary],
+    'seasons': NotRequired[list[ModelFanduelSportsbookScheduleSeason]],
+    'team': NotRequired[str],
+}, total=False)
+
+ModelFanduelSportsbookScheduleSeason = TypedDict('ModelFanduelSportsbookScheduleSeason', {
+    'games': NotRequired[list[ModelFanduelSportsbookScheduleGame]],
+    'season_type': NotRequired[str],
+    'title': NotRequired[str],
+}, total=False)
+
+ModelFanduelSportsbookScheduleWeek = TypedDict('ModelFanduelSportsbookScheduleWeek', {
+    'current_week': NotRequired[bool],
+    'end_date': NotRequired[str],
+    'id': NotRequired[int],
+    'label': NotRequired[str],
+    'season_type': NotRequired[str],
+    'start_date': NotRequired[str],
+}, total=False)
+
+ModelFanduelSportsbookScore = TypedDict('ModelFanduelSportsbookScore', {
+    'away': NotRequired[int],
+    'clock': NotRequired[str],
+    'home': NotRequired[int],
+    'period_scores': NotRequired[list[ModelFanduelSportsbookPeriodScore]],
+}, total=False)
+
+ModelFanduelSportsbookSearchAncestor = TypedDict('ModelFanduelSportsbookSearchAncestor', {
+    'id': NotRequired[str],
+    'name': NotRequired[str],
+}, total=False)
+
+ModelFanduelSportsbookSearchCompetition = TypedDict('ModelFanduelSportsbookSearchCompetition', {
+    'competition_id': NotRequired[int],
+    'event_type_id': NotRequired[int],
+    'event_type_name': NotRequired[str],
+    'match_count': NotRequired[int],
+    'name': NotRequired[str],
+}, total=False)
+
+ModelFanduelSportsbookSearchEvent = TypedDict('ModelFanduelSportsbookSearchEvent', {
+    'competition_id': NotRequired[int],
+    'competition_name': NotRequired[str],
+    'event_id': NotRequired[int],
+    'event_type_id': NotRequired[int],
+    'event_type_name': NotRequired[str],
+    'in_play': NotRequired[bool],
+    'name': NotRequired[str],
+    'open_date': NotRequired[str],
+}, total=False)
+
+ModelFanduelSportsbookSearchHit = TypedDict('ModelFanduelSportsbookSearchHit', {
+    'ancestry': NotRequired[list[ModelFanduelSportsbookSearchAncestor]],
+    'competition': NotRequired[str],
+    'competition_id': NotRequired[str],
+    'event_category': NotRequired[int],
+    'exchange_id': NotRequired[int],
+    'result_id': NotRequired[str],
+    'sport': NotRequired[str],
+    'sport_id': NotRequired[str],
+    'start_date': NotRequired[str],
+    'subtype': NotRequired[str],
+    'title': NotRequired[str],
+    'type': NotRequired[str],
+}, total=False)
+
+ModelFanduelSportsbookSearchPill = TypedDict('ModelFanduelSportsbookSearchPill', {
+    'id': NotRequired[int],
+    'title': NotRequired[str],
+}, total=False)
+
+ModelFanduelSportsbookSearchResponse = TypedDict('ModelFanduelSportsbookSearchResponse', {
+    'competitions': NotRequired[list[ModelFanduelSportsbookSearchCompetition]],
+    'events': NotRequired[list[ModelFanduelSportsbookSearchEvent]],
+    'fetched_at': NotRequired[str],
+    'query': NotRequired[str],
+    'state': NotRequired[str],
+    'type': NotRequired[str],
+}, total=False)
+
+ModelFanduelSportsbookSearchTab = TypedDict('ModelFanduelSportsbookSearchTab', {
+    'id': NotRequired[str],
+    'title': NotRequired[str],
+}, total=False)
+
+ModelFanduelSportsbookSearchTabsResponse = TypedDict('ModelFanduelSportsbookSearchTabsResponse', {
+    'fetched_at': NotRequired[str],
+    'found': NotRequired[int],
+    'next_start_index': NotRequired[int],
+    'page_size': NotRequired[int],
+    'pill': NotRequired[str],
+    'pills': NotRequired[list[ModelFanduelSportsbookSearchPill]],
+    'query': NotRequired[str],
+    'results': NotRequired[list[ModelFanduelSportsbookSearchHit]],
+    'start_index': NotRequired[int],
+    'state': NotRequired[str],
+    'tab': NotRequired[str],
+    'tabs': NotRequired[list[ModelFanduelSportsbookSearchTab]],
+    'total_results': NotRequired[int],
+}, total=False)
+
+ModelFanduelSportsbookSplit = TypedDict('ModelFanduelSportsbookSplit', {
+    'name': NotRequired[str],
+    'percent': NotRequired[int],
+    'selection_id': NotRequired[int],
+}, total=False)
+
+ModelFanduelSportsbookSport = TypedDict('ModelFanduelSportsbookSport', {
+    'event_type_id': NotRequired[int],
+    'name': NotRequired[str],
+}, total=False)
+
+ModelFanduelSportsbookSportsResponse = TypedDict('ModelFanduelSportsbookSportsResponse', {
+    'fetched_at': NotRequired[str],
+    'popular_links': NotRequired[list[ModelFanduelSportsbookNavLink]],
+    'quick_links': NotRequired[list[ModelFanduelSportsbookNavLink]],
+    'sports': NotRequired[list[ModelFanduelSportsbookSport]],
+    'state': NotRequired[str],
+    'states': NotRequired[list[ModelFanduelSportsbookState]],
+    'teaser_competitions': NotRequired[list[ModelFanduelSportsbookTeaserCompetition]],
+}, total=False)
+
+ModelFanduelSportsbookStandingsResponse = TypedDict('ModelFanduelSportsbookStandingsResponse', {
+    'fetched_at': NotRequired[str],
+    'league': NotRequired[str],
+    'team_count': NotRequired[int],
+    'teams': NotRequired[list[ModelFanduelSportsbookStandingsTeam]],
+}, total=False)
+
+ModelFanduelSportsbookStandingsTeam = TypedDict('ModelFanduelSportsbookStandingsTeam', {
+    'code': NotRequired[str],
+    'conference': NotRequired[str],
+    'division': NotRequired[str],
+    'logo_url': NotRequired[str],
+    'name': NotRequired[str],
+    'short_name': NotRequired[str],
+    'slug': NotRequired[str],
+    'standing': NotRequired[dict[str, Any]],
+}, total=False)
+
+ModelFanduelSportsbookState = TypedDict('ModelFanduelSportsbookState', {
+    'code': NotRequired[str],
+    'name': NotRequired[str],
+}, total=False)
+
+ModelFanduelSportsbookStatsListResponse = TypedDict('ModelFanduelSportsbookStatsListResponse', {
+    'events': NotRequired[list[ModelFanduelSportsbookEventStats]],
+    'fetched_at': NotRequired[str],
+}, total=False)
+
+ModelFanduelSportsbookStatsTeam = TypedDict('ModelFanduelSportsbookStatsTeam', {
+    'name': NotRequired[str],
+    'primary_color': NotRequired[str],
+    'secondary_color': NotRequired[str],
+    'selection_id': NotRequired[int],
+    'side': NotRequired[str],
+}, total=False)
+
+ModelFanduelSportsbookSuggestion = TypedDict('ModelFanduelSportsbookSuggestion', {
+    'highlighted': NotRequired[str],
+    'text': NotRequired[str],
+}, total=False)
+
+ModelFanduelSportsbookTab = TypedDict('ModelFanduelSportsbookTab', {
+    'event_count': NotRequired[int],
+    'id': NotRequired[str],
+    'live_count': NotRequired[int],
+    'market_count': NotRequired[int],
+    'slug': NotRequired[str],
+    'title': NotRequired[str],
+}, total=False)
+
+ModelFanduelSportsbookTagCount = TypedDict('ModelFanduelSportsbookTagCount', {
+    'count': NotRequired[int],
+    'tag': NotRequired[str],
+}, total=False)
+
+ModelFanduelSportsbookTeam = TypedDict('ModelFanduelSportsbookTeam', {
+    'abbreviation': NotRequired[str],
+    'color': NotRequired[str],
+    'conference': NotRequired[str],
+    'logo_url': NotRequired[str],
+    'name': NotRequired[str],
+    'short_name': NotRequired[str],
+}, total=False)
+
+ModelFanduelSportsbookTeamArticle = TypedDict('ModelFanduelSportsbookTeamArticle', {
+    'author': NotRequired[str],
+    'id': NotRequired[str],
+    'published_at': NotRequired[str],
+    'source': NotRequired[str],
+    'summary': NotRequired[str],
+    'thumbnail_url': NotRequired[str],
+    'title': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelFanduelSportsbookTeamGameOdds = TypedDict('ModelFanduelSportsbookTeamGameOdds', {
+    'money_line': NotRequired[ModelFanduelSportsbookGameLine],
+    'spread': NotRequired[ModelFanduelSportsbookGameLine],
+    'total': NotRequired[ModelFanduelSportsbookGameLine],
+}, total=False)
+
+ModelFanduelSportsbookTeamGameRef = TypedDict('ModelFanduelSportsbookTeamGameRef', {
+    'event_url': NotRequired[str],
+    'home_game': NotRequired[bool],
+    'opponent': NotRequired[str],
+    'scheduled_time': NotRequired[str],
+    'status': NotRequired[str],
+}, total=False)
+
+ModelFanduelSportsbookTeamGroup = TypedDict('ModelFanduelSportsbookTeamGroup', {
+    'teams': NotRequired[list[ModelFanduelSportsbookTeamSummary]],
+    'title': NotRequired[str],
+}, total=False)
+
+ModelFanduelSportsbookTeamNewsResponse = TypedDict('ModelFanduelSportsbookTeamNewsResponse', {
+    'articles': NotRequired[list[ModelFanduelSportsbookTeamArticle]],
+    'fetched_at': NotRequired[str],
+    'has_more': NotRequired[bool],
+    'league': NotRequired[str],
+    'next_cursor': NotRequired[str],
+    'player_updates': NotRequired[list[dict[str, Any]]],
+    'team': NotRequired[str],
+}, total=False)
+
+ModelFanduelSportsbookTeamOddsResponse = TypedDict('ModelFanduelSportsbookTeamOddsResponse', {
+    'championship': NotRequired[str],
+    'championship_tab': NotRequired[str],
+    'fetched_at': NotRequired[str],
+    'future_odds': NotRequired[list[ModelFanduelSportsbookFutureOdd]],
+    'league': NotRequired[str],
+    'next_games': NotRequired[list[ModelFanduelSportsbookUpcomingGame]],
+    'player_props': NotRequired[list[ModelFanduelSportsbookPlayerProps]],
+    'team': NotRequired[ModelFanduelSportsbookTeamRef],
+}, total=False)
+
+ModelFanduelSportsbookTeamRef = TypedDict('ModelFanduelSportsbookTeamRef', {
+    'code': NotRequired[str],
+    'logo_url': NotRequired[str],
+    'name': NotRequired[str],
+    'short_name': NotRequired[str],
+    'slug': NotRequired[str],
+}, total=False)
+
+ModelFanduelSportsbookTeamStatsResponse = TypedDict('ModelFanduelSportsbookTeamStatsResponse', {
+    'fetched_at': NotRequired[str],
+    'league': NotRequired[str],
+    'stats': NotRequired[dict[str, Any]],
+    'team': NotRequired[str],
+}, total=False)
+
+ModelFanduelSportsbookTeamSummary = TypedDict('ModelFanduelSportsbookTeamSummary', {
+    'bet_records': NotRequired[ModelFanduelSportsbookBetRecords],
+    'code': NotRequired[str],
+    'conference': NotRequired[str],
+    'division': NotRequired[str],
+    'head_coach': NotRequired[str],
+    'logo_url': NotRequired[str],
+    'market': NotRequired[str],
+    'name': NotRequired[str],
+    'next_game': NotRequired[ModelFanduelSportsbookTeamGameRef],
+    'primary_color': NotRequired[str],
+    'secondary_color': NotRequired[str],
+    'short_name': NotRequired[str],
+    'slug': NotRequired[str],
+    'sub_division': NotRequired[str],
+}, total=False)
+
+ModelFanduelSportsbookTeamsResponse = TypedDict('ModelFanduelSportsbookTeamsResponse', {
+    'fetched_at': NotRequired[str],
+    'groups': NotRequired[list[ModelFanduelSportsbookTeamGroup]],
+    'league': NotRequired[str],
+    'sections': NotRequired[list[str]],
+    'team_count': NotRequired[int],
+}, total=False)
+
+ModelFanduelSportsbookTeaserCompetition = TypedDict('ModelFanduelSportsbookTeaserCompetition', {
+    'competition_id': NotRequired[int],
+    'icon': NotRequired[str],
+    'name': NotRequired[str],
+    'starting_spread': NotRequired[float],
+}, total=False)
+
+ModelFanduelSportsbookTrendingItem = TypedDict('ModelFanduelSportsbookTrendingItem', {
+    'competition': NotRequired[str],
+    'display_name': NotRequired[str],
+    'event_id': NotRequired[int],
+    'event_name': NotRequired[str],
+    'expires_at': NotRequired[str],
+    'metadata': NotRequired[dict[str, Any]],
+    'term': NotRequired[str],
+    'type': NotRequired[str],
+}, total=False)
+
+ModelFanduelSportsbookTrendingResponse = TypedDict('ModelFanduelSportsbookTrendingResponse', {
+    'enriched': NotRequired[bool],
+    'fetched_at': NotRequired[str],
+    'results': NotRequired[list[ModelFanduelSportsbookTrendingItem]],
+    'terms': NotRequired[list[str]],
+}, total=False)
+
+ModelFanduelSportsbookUpcomingGame = TypedDict('ModelFanduelSportsbookUpcomingGame', {
+    'away_odds': NotRequired[ModelFanduelSportsbookTeamGameOdds],
+    'event_url': NotRequired[str],
+    'home_game': NotRequired[bool],
+    'home_odds': NotRequired[ModelFanduelSportsbookTeamGameOdds],
+    'opponent': NotRequired[str],
+    'opponent_team': NotRequired[ModelFanduelSportsbookTeamRef],
+    'scheduled_time': NotRequired[str],
+    'status': NotRequired[str],
+    'venue': NotRequired[str],
+    'venue_type': NotRequired[str],
+    'week': NotRequired[int],
+}, total=False)
+
+ModelFanduelSportsbookValueCount = TypedDict('ModelFanduelSportsbookValueCount', {
+    'count': NotRequired[int],
+    'value': NotRequired[str],
+}, total=False)
+
+ModelFanduelSportsbookWinLoss = TypedDict('ModelFanduelSportsbookWinLoss', {
+    'losses': NotRequired[int],
+    'ties': NotRequired[int],
+    'wins': NotRequired[int],
+}, total=False)
+
+ModelFanduelCasinoCategoriesResponseDoc = TypedDict('ModelFanduelCasinoCategoriesResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelFanduelCasinoCategoriesResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelFanduelCasinoCategoryResponseDoc = TypedDict('ModelFanduelCasinoCategoryResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelFanduelCasinoCategoryResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelFanduelCasinoGameResponseDoc = TypedDict('ModelFanduelCasinoGameResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelFanduelCasinoGameResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelFanduelQuickPicksDailyResponseDoc = TypedDict('ModelFanduelQuickPicksDailyResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelFanduelQuickPicksDailyResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelFanduelRacingCarryoverResponseDoc = TypedDict('ModelFanduelRacingCarryoverResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelFanduelRacingCarryoverResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelFanduelRacingFiltersResponseDoc = TypedDict('ModelFanduelRacingFiltersResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelFanduelRacingFiltersResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelFanduelRacingHorseResponseDoc = TypedDict('ModelFanduelRacingHorseResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelFanduelRacingHorseResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelFanduelRacingPastRaceResponseDoc = TypedDict('ModelFanduelRacingPastRaceResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelFanduelRacingPastRaceResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelFanduelRacingPastRacesResponseDoc = TypedDict('ModelFanduelRacingPastRacesResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelFanduelRacingPastRacesResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelFanduelRacingPastTracksResponseDoc = TypedDict('ModelFanduelRacingPastTracksResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelFanduelRacingPastTracksResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelFanduelRacingRaceResponseDoc = TypedDict('ModelFanduelRacingRaceResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelFanduelRacingRaceResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelFanduelRacingRacesResponseDoc = TypedDict('ModelFanduelRacingRacesResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelFanduelRacingRacesResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelFanduelRacingResultsResponseDoc = TypedDict('ModelFanduelRacingResultsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelFanduelRacingResultsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelFanduelRacingSearchResponseDoc = TypedDict('ModelFanduelRacingSearchResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelFanduelRacingSearchResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelFanduelRacingTrackResponseDoc = TypedDict('ModelFanduelRacingTrackResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelFanduelRacingTrackResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelFanduelRacingTracksResponseDoc = TypedDict('ModelFanduelRacingTracksResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelFanduelRacingTracksResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelFanduelRacingWagerTypesResponseDoc = TypedDict('ModelFanduelRacingWagerTypesResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelFanduelRacingWagerTypesResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelFanduelResearchArticleResponseDoc = TypedDict('ModelFanduelResearchArticleResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelFanduelResearchArticleResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelFanduelResearchArticlesResponseDoc = TypedDict('ModelFanduelResearchArticlesResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelFanduelResearchArticlesResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelFanduelResearchAuthorResponseDoc = TypedDict('ModelFanduelResearchAuthorResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelFanduelResearchAuthorResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelFanduelResearchAuthorsResponseDoc = TypedDict('ModelFanduelResearchAuthorsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelFanduelResearchAuthorsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelFanduelResearchFeaturedArticlesResponseDoc = TypedDict('ModelFanduelResearchFeaturedArticlesResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelFanduelResearchFeaturedArticlesResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelFanduelResearchFixturesResponseDoc = TypedDict('ModelFanduelResearchFixturesResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelFanduelResearchFixturesResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelFanduelResearchNflScheduleResponseDoc = TypedDict('ModelFanduelResearchNflScheduleResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelFanduelResearchNflScheduleResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelFanduelResearchPlayerNewsResponseDoc = TypedDict('ModelFanduelResearchPlayerNewsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelFanduelResearchPlayerNewsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelFanduelResearchProjectionSlatesResponseDoc = TypedDict('ModelFanduelResearchProjectionSlatesResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelFanduelResearchProjectionSlatesResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelFanduelResearchProjectionTablesResponseDoc = TypedDict('ModelFanduelResearchProjectionTablesResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelFanduelResearchProjectionTablesResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelFanduelResearchProjectionsResponseDoc = TypedDict('ModelFanduelResearchProjectionsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelFanduelResearchProjectionsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelFanduelResearchResponseDoc = TypedDict('ModelFanduelResearchResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelFanduelResearchResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelFanduelResearchSportsResponseDoc = TypedDict('ModelFanduelResearchSportsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelFanduelResearchSportsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelFanduelResearchSubCategoriesResponseDoc = TypedDict('ModelFanduelResearchSubCategoriesResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelFanduelResearchSubCategoriesResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelFanduelSportsbookAutocompleteResponseDoc = TypedDict('ModelFanduelSportsbookAutocompleteResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelFanduelSportsbookAutocompleteResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelFanduelSportsbookBoxScoreResponseDoc = TypedDict('ModelFanduelSportsbookBoxScoreResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelFanduelSportsbookBoxScoreResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelFanduelSportsbookBuilderEventsResponseDoc = TypedDict('ModelFanduelSportsbookBuilderEventsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelFanduelSportsbookBuilderEventsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelFanduelSportsbookBuilderResponseDoc = TypedDict('ModelFanduelSportsbookBuilderResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelFanduelSportsbookBuilderResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelFanduelSportsbookChoiceQuotesResponseDoc = TypedDict('ModelFanduelSportsbookChoiceQuotesResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelFanduelSportsbookChoiceQuotesResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelFanduelSportsbookDepthChartResponseDoc = TypedDict('ModelFanduelSportsbookDepthChartResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelFanduelSportsbookDepthChartResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelFanduelSportsbookEventPlayersResponseDoc = TypedDict('ModelFanduelSportsbookEventPlayersResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelFanduelSportsbookEventPlayersResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelFanduelSportsbookEventResponseDoc = TypedDict('ModelFanduelSportsbookEventResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelFanduelSportsbookEventResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelFanduelSportsbookEventScoreResponseDoc = TypedDict('ModelFanduelSportsbookEventScoreResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelFanduelSportsbookEventScoreResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelFanduelSportsbookEventStatsResponseDoc = TypedDict('ModelFanduelSportsbookEventStatsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelFanduelSportsbookEventStatsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelFanduelSportsbookEventsStatusResponseDoc = TypedDict('ModelFanduelSportsbookEventsStatusResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelFanduelSportsbookEventsStatusResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelFanduelSportsbookLeagueScheduleResponseDoc = TypedDict('ModelFanduelSportsbookLeagueScheduleResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelFanduelSportsbookLeagueScheduleResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelFanduelSportsbookLiveCountResponseDoc = TypedDict('ModelFanduelSportsbookLiveCountResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelFanduelSportsbookLiveCountResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelFanduelSportsbookLiveDataResponseDoc = TypedDict('ModelFanduelSportsbookLiveDataResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelFanduelSportsbookLiveDataResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelFanduelSportsbookLiveScoresResponseDoc = TypedDict('ModelFanduelSportsbookLiveScoresResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelFanduelSportsbookLiveScoresResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelFanduelSportsbookMarketPricesResponseDoc = TypedDict('ModelFanduelSportsbookMarketPricesResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelFanduelSportsbookMarketPricesResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelFanduelSportsbookPageResponseDoc = TypedDict('ModelFanduelSportsbookPageResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelFanduelSportsbookPageResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelFanduelSportsbookParlaysResponseDoc = TypedDict('ModelFanduelSportsbookParlaysResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelFanduelSportsbookParlaysResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelFanduelSportsbookPlayByPlayResponseDoc = TypedDict('ModelFanduelSportsbookPlayByPlayResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelFanduelSportsbookPlayByPlayResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelFanduelSportsbookPlayerNewsResponseDoc = TypedDict('ModelFanduelSportsbookPlayerNewsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelFanduelSportsbookPlayerNewsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelFanduelSportsbookPlayerPropsResponseDoc = TypedDict('ModelFanduelSportsbookPlayerPropsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelFanduelSportsbookPlayerPropsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelFanduelSportsbookPlayerResponseDoc = TypedDict('ModelFanduelSportsbookPlayerResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelFanduelSportsbookPlayerResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelFanduelSportsbookPlayerStatsResponseDoc = TypedDict('ModelFanduelSportsbookPlayerStatsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelFanduelSportsbookPlayerStatsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelFanduelSportsbookPlayersResponseDoc = TypedDict('ModelFanduelSportsbookPlayersResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelFanduelSportsbookPlayersResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelFanduelSportsbookPromotionsResponseDoc = TypedDict('ModelFanduelSportsbookPromotionsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelFanduelSportsbookPromotionsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelFanduelSportsbookRosterResponseDoc = TypedDict('ModelFanduelSportsbookRosterResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelFanduelSportsbookRosterResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelFanduelSportsbookScheduleResponseDoc = TypedDict('ModelFanduelSportsbookScheduleResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelFanduelSportsbookScheduleResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelFanduelSportsbookSearchResponseDoc = TypedDict('ModelFanduelSportsbookSearchResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelFanduelSportsbookSearchResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelFanduelSportsbookSearchTabsResponseDoc = TypedDict('ModelFanduelSportsbookSearchTabsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelFanduelSportsbookSearchTabsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelFanduelSportsbookSportsResponseDoc = TypedDict('ModelFanduelSportsbookSportsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelFanduelSportsbookSportsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelFanduelSportsbookStandingsResponseDoc = TypedDict('ModelFanduelSportsbookStandingsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelFanduelSportsbookStandingsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelFanduelSportsbookStatsListResponseDoc = TypedDict('ModelFanduelSportsbookStatsListResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelFanduelSportsbookStatsListResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelFanduelSportsbookTeamNewsResponseDoc = TypedDict('ModelFanduelSportsbookTeamNewsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelFanduelSportsbookTeamNewsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelFanduelSportsbookTeamOddsResponseDoc = TypedDict('ModelFanduelSportsbookTeamOddsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelFanduelSportsbookTeamOddsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelFanduelSportsbookTeamStatsResponseDoc = TypedDict('ModelFanduelSportsbookTeamStatsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelFanduelSportsbookTeamStatsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelFanduelSportsbookTeamsResponseDoc = TypedDict('ModelFanduelSportsbookTeamsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelFanduelSportsbookTeamsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelFanduelSportsbookTrendingResponseDoc = TypedDict('ModelFanduelSportsbookTrendingResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelFanduelSportsbookTrendingResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
 ModelFarfetchCategoriesResponse = TypedDict('ModelFarfetchCategoriesResponse', {
     'genders': NotRequired[list[ModelFarfetchGenderCategories]],
 }, total=False)
@@ -22521,18 +25038,25 @@ ModelFlashscoreDartsLegDoc = TypedDict('ModelFlashscoreDartsLegDoc', {
     'away_legs': NotRequired[int],
     'checkout': NotRequired[int],
     'home_legs': NotRequired[int],
+    'in_progress': NotRequired[bool],
     'number': NotRequired[int],
+    'set': NotRequired[int],
     'start_score': NotRequired[int],
     'starter': NotRequired[Literal['home', 'away']],
     'visits': NotRequired[list[ModelFlashscoreDartsVisitDoc]],
     'winner': NotRequired[Literal['home', 'away']],
 }, total=False)
 
+ModelFlashscoreDartsSetStatisticsDoc = TypedDict('ModelFlashscoreDartsSetStatisticsDoc', {
+    'set': NotRequired[int],
+    'statistics': NotRequired[list[ModelFlashscoreDartsStatisticDoc]],
+}, total=False)
+
 ModelFlashscoreDartsStatisticDoc = TypedDict('ModelFlashscoreDartsStatisticDoc', {
     'away': NotRequired[str],
     'home': NotRequired[str],
     'id': NotRequired[str],
-    'key': NotRequired[Literal['average_3_darts', '180_thrown', '140_plus_thrown', '100_plus_thrown', 'checkouts', 'checkouts_100_plus', 'highest_checkout']],
+    'key': NotRequired[Literal['average_3_darts', '180_thrown', '140_plus_thrown', '100_plus_thrown', 'checkouts', 'checkouts_100_plus', 'highest_checkout', 'legs_won']],
     'name': NotRequired[str],
 }, total=False)
 
@@ -22629,6 +25153,7 @@ ModelFlashscoreMatchBoxScoreTeamDoc = TypedDict('ModelFlashscoreMatchBoxScoreTea
 ModelFlashscoreMatchDartsDataDoc = TypedDict('ModelFlashscoreMatchDartsDataDoc', {
     'legs': NotRequired[list[ModelFlashscoreDartsLegDoc]],
     'match_id': NotRequired[str],
+    'set_statistics': NotRequired[list[ModelFlashscoreDartsSetStatisticsDoc]],
     'source_url': NotRequired[str],
     'statistics': NotRequired[list[ModelFlashscoreDartsStatisticDoc]],
     'statistics_url': NotRequired[str],
@@ -24452,6 +26977,695 @@ ModelFtNewsResponseDoc = TypedDict('ModelFtNewsResponseDoc', {
 ModelFtSearchResponseDoc = TypedDict('ModelFtSearchResponseDoc', {
     'code': NotRequired[int],
     'data': NotRequired[ModelFtSearchResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelFussballdeAmateurStatRow = TypedDict('ModelFussballdeAmateurStatRow', {
+    'away': NotRequired[ModelFussballdeTeamRef],
+    'competition_id': NotRequired[str],
+    'home': NotRequired[ModelFussballdeTeamRef],
+    'league': NotRequired[str],
+    'match_id': NotRequired[str],
+    'player': NotRequired[str],
+    'player_id': NotRequired[str],
+    'position': NotRequired[int],
+    'result': NotRequired[str],
+    'team': NotRequired[ModelFussballdeTeamRef],
+    'team_type': NotRequired[str],
+    'values': NotRequired[list[ModelFussballdeStatValue]],
+}, total=False)
+
+ModelFussballdeAmateurStatsResponse = TypedDict('ModelFussballdeAmateurStatsResponse', {
+    'count': NotRequired[int],
+    'federation_id': NotRequired[str],
+    'final': NotRequired[bool],
+    'limit': NotRequired[int],
+    'offset': NotRequired[int],
+    'rows': NotRequired[list[ModelFussballdeAmateurStatRow]],
+    'season': NotRequired[str],
+    'stat': NotRequired[str],
+    'stat_name': NotRequired[str],
+    'team_type': NotRequired[str],
+}, total=False)
+
+ModelFussballdeClubDetail = TypedDict('ModelFussballdeClubDetail', {
+    'club_id': NotRequired[str],
+    'federation': NotRequired[str],
+    'federation_id': NotRequired[str],
+    'junior_team_count': NotRequired[int],
+    'name': NotRequired[str],
+    'profile': NotRequired[list[ModelFussballdeFactRow]],
+    'season': NotRequired[str],
+    'senior_team_count': NotRequired[int],
+    'team_count': NotRequired[int],
+    'teams': NotRequired[list[ModelFussballdeClubTeam]],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelFussballdeClubHit = TypedDict('ModelFussballdeClubHit', {
+    'city': NotRequired[str],
+    'club_id': NotRequired[str],
+    'logo_url': NotRequired[str],
+    'name': NotRequired[str],
+    'postal_code': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelFussballdeClubMatchesResponse = TypedDict('ModelFussballdeClubMatchesResponse', {
+    'club_id': NotRequired[str],
+    'count': NotRequired[int],
+    'date_from': NotRequired[str],
+    'date_to': NotRequired[str],
+    'final': NotRequired[bool],
+    'kind': NotRequired[str],
+    'limit': NotRequired[int],
+    'matches': NotRequired[list[ModelFussballdeMatchRow]],
+    'offset': NotRequired[int],
+}, total=False)
+
+ModelFussballdeClubSearchResponse = TypedDict('ModelFussballdeClubSearchResponse', {
+    'clubs': NotRequired[list[ModelFussballdeClubHit]],
+    'count': NotRequired[int],
+    'final': NotRequired[bool],
+    'limit': NotRequired[int],
+    'offset': NotRequired[int],
+    'place': NotRequired[str],
+    'text': NotRequired[str],
+    'total': NotRequired[int],
+}, total=False)
+
+ModelFussballdeClubTeam = TypedDict('ModelFussballdeClubTeam', {
+    'competition': NotRequired[str],
+    'competition_id': NotRequired[str],
+    'competition_type': NotRequired[str],
+    'name': NotRequired[str],
+    'team_id': NotRequired[str],
+    'team_type': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelFussballdeComparisonRow = TypedDict('ModelFussballdeComparisonRow', {
+    'away': NotRequired[str],
+    'home': NotRequired[str],
+    'label': NotRequired[str],
+}, total=False)
+
+ModelFussballdeCompetitionLink = TypedDict('ModelFussballdeCompetitionLink', {
+    'id': NotRequired[str],
+    'kind': NotRequired[str],
+    'name': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelFussballdeCompetitionOptionsResponse = TypedDict('ModelFussballdeCompetitionOptionsResponse', {
+    'competition_type': NotRequired[str],
+    'federation_id': NotRequired[str],
+    'season': NotRequired[str],
+    'team_types': NotRequired[list[ModelFussballdeTeamTypeOption]],
+}, total=False)
+
+ModelFussballdeCompetitionRef = TypedDict('ModelFussballdeCompetitionRef', {
+    'area_id': NotRequired[str],
+    'id': NotRequired[str],
+    'league_id': NotRequired[str],
+    'name': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelFussballdeCompetitionsResponse = TypedDict('ModelFussballdeCompetitionsResponse', {
+    'area': NotRequired[str],
+    'competition_type': NotRequired[str],
+    'competitions': NotRequired[list[ModelFussballdeCompetitionRef]],
+    'federation_id': NotRequired[str],
+    'league': NotRequired[str],
+    'season': NotRequired[str],
+    'team_type': NotRequired[str],
+}, total=False)
+
+ModelFussballdeFactRow = TypedDict('ModelFussballdeFactRow', {
+    'label': NotRequired[str],
+    'url': NotRequired[str],
+    'value': NotRequired[str],
+}, total=False)
+
+ModelFussballdeFederation = TypedDict('ModelFussballdeFederation', {
+    'id': NotRequired[str],
+    'name': NotRequired[str],
+}, total=False)
+
+ModelFussballdeFederationDetail = TypedDict('ModelFussballdeFederationDetail', {
+    'federation_id': NotRequired[str],
+    'name': NotRequired[str],
+    'news': NotRequired[list[ModelFussballdeNewsItem]],
+    'profile': NotRequired[list[ModelFussballdeFactRow]],
+    'regional_association': NotRequired[str],
+    'summary': NotRequired[list[ModelFussballdeFactRow]],
+    'url': NotRequired[str],
+    'verband_id': NotRequired[str],
+}, total=False)
+
+ModelFussballdeFiltersResponse = TypedDict('ModelFussballdeFiltersResponse', {
+    'competition_types': NotRequired[dict[str, dict[str, list[ModelFussballdeOption]]]],
+    'current_season': NotRequired[str],
+    'default_competition_type': NotRequired[str],
+    'federations': NotRequired[list[ModelFussballdeFederation]],
+    'seasons': NotRequired[dict[str, list[ModelFussballdeOption]]],
+}, total=False)
+
+ModelFussballdeGoalEntry = TypedDict('ModelFussballdeGoalEntry', {
+    'minute': NotRequired[int],
+    'player': NotRequired[str],
+    'stoppage_minute': NotRequired[int],
+}, total=False)
+
+ModelFussballdeLeagueOption = TypedDict('ModelFussballdeLeagueOption', {
+    'areas': NotRequired[list[ModelFussballdeOption]],
+    'id': NotRequired[str],
+    'name': NotRequired[str],
+}, total=False)
+
+ModelFussballdeMatchCalendarResponse = TypedDict('ModelFussballdeMatchCalendarResponse', {
+    'count': NotRequired[int],
+    'date_from': NotRequired[str],
+    'date_to': NotRequired[str],
+    'matches': NotRequired[list[ModelFussballdeMatchRow]],
+    'postal_code': NotRequired[str],
+    'truncated': NotRequired[bool],
+}, total=False)
+
+ModelFussballdeMatchComparisonResponse = TypedDict('ModelFussballdeMatchComparisonResponse', {
+    'match_id': NotRequired[str],
+    'meetings': NotRequired[list[ModelFussballdeMatchRow]],
+    'rows': NotRequired[list[ModelFussballdeComparisonRow]],
+    'view': NotRequired[str],
+}, total=False)
+
+ModelFussballdeMatchDetail = TypedDict('ModelFussballdeMatchDetail', {
+    'assistants': NotRequired[list[str]],
+    'away': NotRequired[ModelFussballdeTeamRef],
+    'away_goals': NotRequired[list[ModelFussballdeGoalEntry]],
+    'away_score': NotRequired[int],
+    'competition': NotRequired[str],
+    'competition_id': NotRequired[str],
+    'date': NotRequired[str],
+    'events': NotRequired[list[ModelFussballdeMatchEvent]],
+    'fourth_official': NotRequired[str],
+    'halftime_score': NotRequired[str],
+    'home': NotRequired[ModelFussballdeTeamRef],
+    'home_goals': NotRequired[list[ModelFussballdeGoalEntry]],
+    'home_score': NotRequired[int],
+    'id': NotRequired[str],
+    'match_number': NotRequired[str],
+    'matchday': NotRequired[str],
+    'note': NotRequired[str],
+    'referee': NotRequired[str],
+    'result_qualifier': NotRequired[Literal['after_extra_time', 'after_penalties', 'awarded', 'court_ruling', 'administrative_decision', 'test_match']],
+    'spectators': NotRequired[str],
+    'status': NotRequired[Literal['finished', 'scheduled', 'cancelled', 'annulled', 'abandoned', 'no_show', 'other']],
+    'time': NotRequired[str],
+    'url': NotRequired[str],
+    'venue': NotRequired[str],
+}, total=False)
+
+ModelFussballdeMatchEvent = TypedDict('ModelFussballdeMatchEvent', {
+    'minute': NotRequired[int],
+    'side': NotRequired[str],
+    'type': NotRequired[str],
+}, total=False)
+
+ModelFussballdeMatchPlanResponse = TypedDict('ModelFussballdeMatchPlanResponse', {
+    'competition_id': NotRequired[str],
+    'count': NotRequired[int],
+    'matches': NotRequired[list[ModelFussballdeMatchRow]],
+    'rounds': NotRequired[list[ModelFussballdeRoundRef]],
+    'title': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelFussballdeMatchRow = TypedDict('ModelFussballdeMatchRow', {
+    'away': NotRequired[ModelFussballdeTeamRef],
+    'away_score': NotRequired[int],
+    'competition': NotRequired[str],
+    'date': NotRequired[str],
+    'home': NotRequired[ModelFussballdeTeamRef],
+    'home_score': NotRequired[int],
+    'id': NotRequired[str],
+    'league': NotRequired[str],
+    'match_number': NotRequired[str],
+    'note': NotRequired[str],
+    'result_qualifier': NotRequired[Literal['after_extra_time', 'after_penalties', 'awarded', 'court_ruling', 'administrative_decision', 'test_match']],
+    'round': NotRequired[str],
+    'status': NotRequired[Literal['finished', 'scheduled', 'cancelled', 'annulled', 'abandoned', 'no_show', 'other']],
+    'team_type': NotRequired[str],
+    'time': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelFussballdeMatchdayResponse = TypedDict('ModelFussballdeMatchdayResponse', {
+    'competition_id': NotRequired[str],
+    'count': NotRequired[int],
+    'date': NotRequired[str],
+    'matchday': NotRequired[int],
+    'matchday_count': NotRequired[int],
+    'matches': NotRequired[list[ModelFussballdeMatchRow]],
+    'rounds': NotRequired[list[ModelFussballdeRoundRef]],
+    'title': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelFussballdeNationalScorer = TypedDict('ModelFussballdeNationalScorer', {
+    'club': NotRequired[str],
+    'club_id': NotRequired[str],
+    'goals': NotRequired[int],
+    'matches': NotRequired[int],
+    'name': NotRequired[str],
+    'player_id': NotRequired[str],
+    'position': NotRequired[int],
+}, total=False)
+
+ModelFussballdeNationalTopScorersResponse = TypedDict('ModelFussballdeNationalTopScorersResponse', {
+    'levels': NotRequired[list[ModelFussballdeScorerLevel]],
+    'note': NotRequired[str],
+    'team_type': NotRequired[str],
+}, total=False)
+
+ModelFussballdeNewsArticle = TypedDict('ModelFussballdeNewsArticle', {
+    'category': NotRequired[str],
+    'date': NotRequired[str],
+    'id': NotRequired[str],
+    'image_caption': NotRequired[str],
+    'image_url': NotRequired[str],
+    'paragraphs': NotRequired[list[str]],
+    'time': NotRequired[str],
+    'title': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelFussballdeNewsItem = TypedDict('ModelFussballdeNewsItem', {
+    'category': NotRequired[str],
+    'date': NotRequired[str],
+    'excerpt': NotRequired[str],
+    'id': NotRequired[str],
+    'time': NotRequired[str],
+    'title': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelFussballdeNewsResponse = TypedDict('ModelFussballdeNewsResponse', {
+    'count': NotRequired[int],
+    'final': NotRequired[bool],
+    'items': NotRequired[list[ModelFussballdeNewsItem]],
+    'limit': NotRequired[int],
+    'offset': NotRequired[int],
+    'stream': NotRequired[str],
+}, total=False)
+
+ModelFussballdeNewsSearchResponse = TypedDict('ModelFussballdeNewsSearchResponse', {
+    'channel': NotRequired[str],
+    'count': NotRequired[int],
+    'final': NotRequired[bool],
+    'items': NotRequired[list[ModelFussballdeNewsItem]],
+    'limit': NotRequired[int],
+    'offset': NotRequired[int],
+    'q': NotRequired[str],
+    'total': NotRequired[int],
+}, total=False)
+
+ModelFussballdeOption = TypedDict('ModelFussballdeOption', {
+    'id': NotRequired[str],
+    'name': NotRequired[str],
+}, total=False)
+
+ModelFussballdePlayerAppearance = TypedDict('ModelFussballdePlayerAppearance', {
+    'goals': NotRequired[int],
+    'match': NotRequired[ModelFussballdeMatchRow],
+    'minutes': NotRequired[int],
+    'subbed_in_minute': NotRequired[int],
+    'subbed_out_minute': NotRequired[int],
+}, total=False)
+
+ModelFussballdePlayerDetail = TypedDict('ModelFussballdePlayerDetail', {
+    'birth_date': NotRequired[str],
+    'facts': NotRequired[list[ModelFussballdeFactRow]],
+    'name': NotRequired[str],
+    'player_id': NotRequired[str],
+    'profile_type': NotRequired[str],
+    'stats': NotRequired[list[ModelFussballdeStatEntry]],
+    'stats_season': NotRequired[str],
+    'team': NotRequired[str],
+    'team_id': NotRequired[str],
+    'team_type': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelFussballdePlayerHit = TypedDict('ModelFussballdePlayerHit', {
+    'birth_date': NotRequired[str],
+    'name': NotRequired[str],
+    'player_id': NotRequired[str],
+    'team': NotRequired[str],
+    'team_type': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelFussballdePlayerMatchesResponse = TypedDict('ModelFussballdePlayerMatchesResponse', {
+    'appearances': NotRequired[list[ModelFussballdePlayerAppearance]],
+    'competition': NotRequired[str],
+    'competitions': NotRequired[list[ModelFussballdeOption]],
+    'count': NotRequired[int],
+    'player_id': NotRequired[str],
+    'season': NotRequired[str],
+    'team_id': NotRequired[str],
+    'teams': NotRequired[list[ModelFussballdeOption]],
+}, total=False)
+
+ModelFussballdePlayerSearchResponse = TypedDict('ModelFussballdePlayerSearchResponse', {
+    'count': NotRequired[int],
+    'final': NotRequired[bool],
+    'first_name': NotRequired[str],
+    'last_name': NotRequired[str],
+    'limit': NotRequired[int],
+    'offset': NotRequired[int],
+    'place': NotRequired[str],
+    'players': NotRequired[list[ModelFussballdePlayerHit]],
+    'total': NotRequired[int],
+}, total=False)
+
+ModelFussballdePositionHistoryResponse = TypedDict('ModelFussballdePositionHistoryResponse', {
+    'competition_id': NotRequired[str],
+    'matchdays': NotRequired[int],
+    'teams': NotRequired[list[ModelFussballdeTeamPositions]],
+}, total=False)
+
+ModelFussballdePostalCode = TypedDict('ModelFussballdePostalCode', {
+    'city': NotRequired[str],
+    'district': NotRequired[str],
+    'postal_code': NotRequired[str],
+}, total=False)
+
+ModelFussballdePostalCodesResponse = TypedDict('ModelFussballdePostalCodesResponse', {
+    'count': NotRequired[int],
+    'postal_codes': NotRequired[list[ModelFussballdePostalCode]],
+    'q': NotRequired[str],
+}, total=False)
+
+ModelFussballdeRoundRef = TypedDict('ModelFussballdeRoundRef', {
+    'id': NotRequired[str],
+    'name': NotRequired[str],
+    'open': NotRequired[bool],
+}, total=False)
+
+ModelFussballdeScorerLevel = TypedDict('ModelFussballdeScorerLevel', {
+    'level': NotRequired[str],
+    'scorers': NotRequired[list[ModelFussballdeNationalScorer]],
+}, total=False)
+
+ModelFussballdeScorerRow = TypedDict('ModelFussballdeScorerRow', {
+    'goals': NotRequired[int],
+    'name': NotRequired[str],
+    'player_id': NotRequired[str],
+    'position': NotRequired[int],
+    'team': NotRequired[ModelFussballdeTeamRef],
+}, total=False)
+
+ModelFussballdeSeasonResult = TypedDict('ModelFussballdeSeasonResult', {
+    'competition': NotRequired[str],
+    'result': NotRequired[str],
+    'season': NotRequired[str],
+}, total=False)
+
+ModelFussballdeSquadPlayer = TypedDict('ModelFussballdeSquadPlayer', {
+    'appearances': NotRequired[int],
+    'cells': NotRequired[list[str]],
+    'goals': NotRequired[int],
+    'minutes': NotRequired[int],
+    'name': NotRequired[str],
+    'player_id': NotRequired[str],
+}, total=False)
+
+ModelFussballdeStandingsRow = TypedDict('ModelFussballdeStandingsRow', {
+    'cells': NotRequired[list[str]],
+    'drawn': NotRequired[int],
+    'goal_difference': NotRequired[int],
+    'goals_against': NotRequired[int],
+    'goals_for': NotRequired[int],
+    'lost': NotRequired[int],
+    'played': NotRequired[int],
+    'points': NotRequired[int],
+    'position': NotRequired[int],
+    'team': NotRequired[ModelFussballdeTeamRef],
+    'won': NotRequired[int],
+}, total=False)
+
+ModelFussballdeStandingsTable = TypedDict('ModelFussballdeStandingsTable', {
+    'columns': NotRequired[list[str]],
+    'rows': NotRequired[list[ModelFussballdeStandingsRow]],
+    'title': NotRequired[str],
+}, total=False)
+
+ModelFussballdeStatEntry = TypedDict('ModelFussballdeStatEntry', {
+    'label': NotRequired[str],
+    'value': NotRequired[str],
+}, total=False)
+
+ModelFussballdeStatValue = TypedDict('ModelFussballdeStatValue', {
+    'label': NotRequired[str],
+    'value': NotRequired[str],
+}, total=False)
+
+ModelFussballdeTableResponse = TypedDict('ModelFussballdeTableResponse', {
+    'competition_id': NotRequired[str],
+    'matchday': NotRequired[int],
+    'tables': NotRequired[list[ModelFussballdeStandingsTable]],
+    'view': NotRequired[str],
+}, total=False)
+
+ModelFussballdeTeamDetail = TypedDict('ModelFussballdeTeamDetail', {
+    'club_id': NotRequired[str],
+    'club_profile': NotRequired[list[ModelFussballdeFactRow]],
+    'club_url': NotRequired[str],
+    'competitions': NotRequired[list[ModelFussballdeCompetitionLink]],
+    'federation': NotRequired[str],
+    'federation_id': NotRequired[str],
+    'highest_league': NotRequired[str],
+    'history': NotRequired[list[ModelFussballdeSeasonResult]],
+    'logo_url': NotRequired[str],
+    'name': NotRequired[str],
+    'summary': NotRequired[list[ModelFussballdeFactRow]],
+    'team_id': NotRequired[str],
+    'team_type': NotRequired[str],
+    'url': NotRequired[str],
+    'venues': NotRequired[list[ModelFussballdeFactRow]],
+}, total=False)
+
+ModelFussballdeTeamMatchesResponse = TypedDict('ModelFussballdeTeamMatchesResponse', {
+    'count': NotRequired[int],
+    'date_from': NotRequired[str],
+    'date_to': NotRequired[str],
+    'final': NotRequired[bool],
+    'kind': NotRequired[str],
+    'limit': NotRequired[int],
+    'matches': NotRequired[list[ModelFussballdeMatchRow]],
+    'offset': NotRequired[int],
+    'team_id': NotRequired[str],
+}, total=False)
+
+ModelFussballdeTeamPositions = TypedDict('ModelFussballdeTeamPositions', {
+    'positions': NotRequired[list[int]],
+    'team': NotRequired[ModelFussballdeTeamRef],
+}, total=False)
+
+ModelFussballdeTeamRef = TypedDict('ModelFussballdeTeamRef', {
+    'club_id': NotRequired[str],
+    'logo_url': NotRequired[str],
+    'name': NotRequired[str],
+    'team_id': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelFussballdeTeamSquadResponse = TypedDict('ModelFussballdeTeamSquadResponse', {
+    'columns': NotRequired[list[str]],
+    'count': NotRequired[int],
+    'kind': NotRequired[str],
+    'players': NotRequired[list[ModelFussballdeSquadPlayer]],
+    'season': NotRequired[str],
+    'team_id': NotRequired[str],
+}, total=False)
+
+ModelFussballdeTeamTypeOption = TypedDict('ModelFussballdeTeamTypeOption', {
+    'id': NotRequired[str],
+    'leagues': NotRequired[list[ModelFussballdeLeagueOption]],
+    'name': NotRequired[str],
+}, total=False)
+
+ModelFussballdeTopScorersResponse = TypedDict('ModelFussballdeTopScorersResponse', {
+    'competition_id': NotRequired[str],
+    'count': NotRequired[int],
+    'final': NotRequired[bool],
+    'limit': NotRequired[int],
+    'offset': NotRequired[int],
+    'scorers': NotRequired[list[ModelFussballdeScorerRow]],
+    'title': NotRequired[str],
+}, total=False)
+
+ModelFussballdeAmateurStatsResponseDoc = TypedDict('ModelFussballdeAmateurStatsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelFussballdeAmateurStatsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelFussballdeClubMatchesResponseDoc = TypedDict('ModelFussballdeClubMatchesResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelFussballdeClubMatchesResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelFussballdeClubResponseDoc = TypedDict('ModelFussballdeClubResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelFussballdeClubDetail],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelFussballdeClubSearchResponseDoc = TypedDict('ModelFussballdeClubSearchResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelFussballdeClubSearchResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelFussballdeCompetitionOptionsResponseDoc = TypedDict('ModelFussballdeCompetitionOptionsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelFussballdeCompetitionOptionsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelFussballdeCompetitionsResponseDoc = TypedDict('ModelFussballdeCompetitionsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelFussballdeCompetitionsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelFussballdeFederationResponseDoc = TypedDict('ModelFussballdeFederationResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelFussballdeFederationDetail],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelFussballdeFiltersResponseDoc = TypedDict('ModelFussballdeFiltersResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelFussballdeFiltersResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelFussballdeMatchCalendarResponseDoc = TypedDict('ModelFussballdeMatchCalendarResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelFussballdeMatchCalendarResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelFussballdeMatchComparisonResponseDoc = TypedDict('ModelFussballdeMatchComparisonResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelFussballdeMatchComparisonResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelFussballdeMatchPlanResponseDoc = TypedDict('ModelFussballdeMatchPlanResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelFussballdeMatchPlanResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelFussballdeMatchResponseDoc = TypedDict('ModelFussballdeMatchResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelFussballdeMatchDetail],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelFussballdeMatchdayResponseDoc = TypedDict('ModelFussballdeMatchdayResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelFussballdeMatchdayResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelFussballdeNationalTopScorersResponseDoc = TypedDict('ModelFussballdeNationalTopScorersResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelFussballdeNationalTopScorersResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelFussballdeNewsArticleResponseDoc = TypedDict('ModelFussballdeNewsArticleResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelFussballdeNewsArticle],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelFussballdeNewsResponseDoc = TypedDict('ModelFussballdeNewsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelFussballdeNewsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelFussballdeNewsSearchResponseDoc = TypedDict('ModelFussballdeNewsSearchResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelFussballdeNewsSearchResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelFussballdePlayerMatchesResponseDoc = TypedDict('ModelFussballdePlayerMatchesResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelFussballdePlayerMatchesResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelFussballdePlayerResponseDoc = TypedDict('ModelFussballdePlayerResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelFussballdePlayerDetail],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelFussballdePlayerSearchResponseDoc = TypedDict('ModelFussballdePlayerSearchResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelFussballdePlayerSearchResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelFussballdePositionHistoryResponseDoc = TypedDict('ModelFussballdePositionHistoryResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelFussballdePositionHistoryResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelFussballdePostalCodesResponseDoc = TypedDict('ModelFussballdePostalCodesResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelFussballdePostalCodesResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelFussballdeTableResponseDoc = TypedDict('ModelFussballdeTableResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelFussballdeTableResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelFussballdeTeamMatchesResponseDoc = TypedDict('ModelFussballdeTeamMatchesResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelFussballdeTeamMatchesResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelFussballdeTeamResponseDoc = TypedDict('ModelFussballdeTeamResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelFussballdeTeamDetail],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelFussballdeTeamSquadResponseDoc = TypedDict('ModelFussballdeTeamSquadResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelFussballdeTeamSquadResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelFussballdeTopScorersResponseDoc = TypedDict('ModelFussballdeTopScorersResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelFussballdeTopScorersResponse],
     'msg': NotRequired[str],
 }, total=False)
 
@@ -31120,6 +34334,51 @@ ModelInstagramImageVersions2 = TypedDict('ModelInstagramImageVersions2', {
     'candidates': NotRequired[list[ModelInstagramImageCandidate]],
 }, total=False)
 
+ModelInstagramInstagramComment = TypedDict('ModelInstagramInstagramComment', {
+    'comment_like_count': NotRequired[int],
+    'created_at': NotRequired[int],
+    'id': NotRequired[str],
+    'parent_comment_id': NotRequired[str],
+    'reply_count': NotRequired[int],
+    'text': NotRequired[str],
+    'user': NotRequired[ModelInstagramInstagramCommentUser],
+}, total=False)
+
+ModelInstagramInstagramCommentUser = TypedDict('ModelInstagramInstagramCommentUser', {
+    'id': NotRequired[str],
+    'profile_pic_url': NotRequired[str],
+    'username': NotRequired[str],
+}, total=False)
+
+ModelInstagramInstagramCommentsResponse = TypedDict('ModelInstagramInstagramCommentsResponse', {
+    'comments': NotRequired[list[ModelInstagramInstagramComment]],
+    'paging_info': NotRequired[ModelInstagramPagingInfo],
+    'shortcode': NotRequired[str],
+}, total=False)
+
+ModelInstagramInstagramPostAuthor = TypedDict('ModelInstagramInstagramPostAuthor', {
+    'id': NotRequired[str],
+    'username': NotRequired[str],
+}, total=False)
+
+ModelInstagramInstagramUserPost = TypedDict('ModelInstagramInstagramUserPost', {
+    'accessibility_caption': NotRequired[str],
+    'caption': NotRequired[str],
+    'carousel_media_count': NotRequired[int],
+    'display_uri': NotRequired[str],
+    'id': NotRequired[str],
+    'media_type': NotRequired[int],
+    'product_type': NotRequired[str],
+    'shortcode': NotRequired[str],
+    'user': NotRequired[ModelInstagramInstagramPostAuthor],
+}, total=False)
+
+ModelInstagramInstagramUserPostsResponse = TypedDict('ModelInstagramInstagramUserPostsResponse', {
+    'items': NotRequired[list[ModelInstagramInstagramUserPost]],
+    'paging_info': NotRequired[ModelInstagramPagingInfo],
+    'username': NotRequired[str],
+}, total=False)
+
 ModelInstagramItem = TypedDict('ModelInstagramItem', {
     'media': NotRequired[ModelInstagramMedia],
 }, total=False)
@@ -31248,6 +34507,12 @@ ModelInstagramVideoVersion = TypedDict('ModelInstagramVideoVersion', {
     'width': NotRequired[int],
 }, total=False)
 
+ModelInstagramCommentsResponseDoc = TypedDict('ModelInstagramCommentsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelInstagramInstagramCommentsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
 ModelInstagramPostResponseDoc = TypedDict('ModelInstagramPostResponseDoc', {
     'code': NotRequired[int],
     'data': NotRequired[ModelInstagramMediaItem],
@@ -31263,6 +34528,12 @@ ModelInstagramProfileResponseDoc = TypedDict('ModelInstagramProfileResponseDoc',
 ModelInstagramReelsResponseDoc = TypedDict('ModelInstagramReelsResponseDoc', {
     'code': NotRequired[int],
     'data': NotRequired[ModelInstagramReelResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelInstagramUserPostsResponseDoc = TypedDict('ModelInstagramUserPostsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelInstagramInstagramUserPostsResponse],
     'msg': NotRequired[str],
 }, total=False)
 
@@ -31901,6 +35172,127 @@ ModelJobsSearchResponseDoc = TypedDict('ModelJobsSearchResponseDoc', {
 ModelJobsSignalsResponseDoc = TypedDict('ModelJobsSignalsResponseDoc', {
     'code': NotRequired[int],
     'data': NotRequired[ModelJobsHiringSignals],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelJumiaCategoriesResponse = TypedDict('ModelJumiaCategoriesResponse', {
+    'categories': NotRequired[list[ModelJumiaCategoryNode]],
+    'category': NotRequired[str],
+    'count': NotRequired[int],
+    'country': NotRequired[str],
+    'fetched_at': NotRequired[str],
+    'source_url': NotRequired[str],
+}, total=False)
+
+ModelJumiaCategoryNode = TypedDict('ModelJumiaCategoryNode', {
+    'children': NotRequired[list[ModelJumiaCategoryNode]],
+    'id': NotRequired[str],
+    'name': NotRequired[str],
+    'slug': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelJumiaCountriesResponse = TypedDict('ModelJumiaCountriesResponse', {
+    'count': NotRequired[int],
+    'countries': NotRequired[list[ModelJumiaCountry]],
+}, total=False)
+
+ModelJumiaCountry = TypedDict('ModelJumiaCountry', {
+    'code': NotRequired[str],
+    'currency': NotRequired[str],
+    'domain': NotRequired[str],
+    'name': NotRequired[str],
+}, total=False)
+
+ModelJumiaListing = TypedDict('ModelJumiaListing', {
+    'brand': NotRequired[str],
+    'categories': NotRequired[list[str]],
+    'currency': NotRequired[str],
+    'discount_percent': NotRequired[int],
+    'image': NotRequired[str],
+    'jumia_express': NotRequired[bool],
+    'name': NotRequired[str],
+    'official_store': NotRequired[bool],
+    'original_price': NotRequired[float],
+    'out_of_stock': NotRequired[bool],
+    'price': NotRequired[float],
+    'price_max': NotRequired[float],
+    'rating': NotRequired[float],
+    'rating_count': NotRequired[int],
+    'sku': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelJumiaListingResponse = TypedDict('ModelJumiaListingResponse', {
+    'category': NotRequired[str],
+    'count': NotRequired[int],
+    'country': NotRequired[str],
+    'fetched_at': NotRequired[str],
+    'has_next': NotRequired[bool],
+    'page': NotRequired[int],
+    'products': NotRequired[list[ModelJumiaListing]],
+    'query': NotRequired[str],
+    'source_url': NotRequired[str],
+    'total_count': NotRequired[int],
+}, total=False)
+
+ModelJumiaProduct = TypedDict('ModelJumiaProduct', {
+    'availability': NotRequired[str],
+    'brand': NotRequired[str],
+    'categories': NotRequired[list[str]],
+    'country': NotRequired[str],
+    'currency': NotRequired[str],
+    'description': NotRequired[str],
+    'discount_percent': NotRequired[int],
+    'fetched_at': NotRequired[str],
+    'images': NotRequired[list[str]],
+    'key_features': NotRequired[str],
+    'name': NotRequired[str],
+    'original_price': NotRequired[float],
+    'price': NotRequired[float],
+    'rating': NotRequired[float],
+    'rating_count': NotRequired[int],
+    'seller': NotRequired[ModelJumiaSeller],
+    'sku': NotRequired[str],
+    'specifications': NotRequired[list[ModelJumiaSpecification]],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelJumiaSeller = TypedDict('ModelJumiaSeller', {
+    'followers': NotRequired[int],
+    'id': NotRequired[str],
+    'name': NotRequired[str],
+    'score_percent': NotRequired[float],
+    'shipping_speed': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelJumiaSpecification = TypedDict('ModelJumiaSpecification', {
+    'name': NotRequired[str],
+    'value': NotRequired[str],
+}, total=False)
+
+ModelJumiaCategoriesResponseDoc = TypedDict('ModelJumiaCategoriesResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelJumiaCategoriesResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelJumiaCountriesResponseDoc = TypedDict('ModelJumiaCountriesResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelJumiaCountriesResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelJumiaListingResponseDoc = TypedDict('ModelJumiaListingResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelJumiaListingResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelJumiaProductResponseDoc = TypedDict('ModelJumiaProductResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelJumiaProduct],
     'msg': NotRequired[str],
 }, total=False)
 
@@ -42096,6 +45488,83 @@ ModelPhonearenaAuthorSocialLink = TypedDict('ModelPhonearenaAuthorSocialLink', {
     'url': NotRequired[str],
 }, total=False)
 
+ModelPick6Pick6RuleDetailResponse = TypedDict('ModelPick6Pick6RuleDetailResponse', {
+    'fetched_at': NotRequired[str],
+    'section_count': NotRequired[int],
+    'sections': NotRequired[list[ModelPick6Pick6RuleSection]],
+    'slug': NotRequired[str],
+    'source_url': NotRequired[str],
+    'sport': NotRequired[str],
+}, total=False)
+
+ModelPick6Pick6RulePage = TypedDict('ModelPick6Pick6RulePage', {
+    'detail_endpoint_supported': NotRequired[bool],
+    'slug': NotRequired[str],
+    'title': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelPick6Pick6RuleSection = TypedDict('ModelPick6Pick6RuleSection', {
+    'text': NotRequired[str],
+    'title': NotRequired[str],
+}, total=False)
+
+ModelPick6Pick6RulesResponse = TypedDict('ModelPick6Pick6RulesResponse', {
+    'fetched_at': NotRequired[str],
+    'rule_page_count': NotRequired[int],
+    'rule_pages': NotRequired[list[ModelPick6Pick6RulePage]],
+    'section_count': NotRequired[int],
+    'sections': NotRequired[list[ModelPick6Pick6RuleSection]],
+    'source_url': NotRequired[str],
+    'sport': NotRequired[str],
+}, total=False)
+
+ModelPick6Pick6Sport = TypedDict('ModelPick6Pick6Sport', {
+    'has_help_center_link': NotRequired[bool],
+    'name': NotRequired[str],
+    'sport_code': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelPick6Pick6SportCategory = TypedDict('ModelPick6Pick6SportCategory', {
+    'items': NotRequired[list[ModelPick6Pick6Sport]],
+    'name': NotRequired[str],
+}, total=False)
+
+ModelPick6Pick6SportsResponse = TypedDict('ModelPick6Pick6SportsResponse', {
+    'categories': NotRequired[list[ModelPick6Pick6SportCategory]],
+    'category_count': NotRequired[int],
+    'linked_page_count': NotRequired[int],
+    'listed_item_count': NotRequired[int],
+    'restrictions': NotRequired[list[ModelPick6Pick6SportsRestriction]],
+    'source_url': NotRequired[str],
+    'verified_on': NotRequired[str],
+}, total=False)
+
+ModelPick6Pick6SportsRestriction = TypedDict('ModelPick6Pick6SportsRestriction', {
+    'jurisdictions': NotRequired[list[str]],
+    'note': NotRequired[str],
+    'sport_codes': NotRequired[list[str]],
+}, total=False)
+
+ModelPick6Pick6RuleDetailResponseDoc = TypedDict('ModelPick6Pick6RuleDetailResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelPick6Pick6RuleDetailResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelPick6Pick6RulesResponseDoc = TypedDict('ModelPick6Pick6RulesResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelPick6Pick6RulesResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelPick6Pick6SportsResponseDoc = TypedDict('ModelPick6Pick6SportsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelPick6Pick6SportsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
 ModelPinterestBoard = TypedDict('ModelPinterestBoard', {
     'cover_image_url': NotRequired[str],
     'description': NotRequired[str],
@@ -44445,6 +47914,85 @@ ModelPradaStoresResponseDoc = TypedDict('ModelPradaStoresResponseDoc', {
 ModelPradaSuggestResponseDoc = TypedDict('ModelPradaSuggestResponseDoc', {
     'code': NotRequired[int],
     'data': NotRequired[ModelPradaSuggestResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelPredictionsPredictionsAvailabilityRegion = TypedDict('ModelPredictionsPredictionsAvailabilityRegion', {
+    'description': NotRequired[str],
+    'name': NotRequired[str],
+    'region_id': NotRequired[str],
+    'status': NotRequired[ModelPredictionsPredictionsAvailabilityStatus],
+    'status_description': NotRequired[str],
+    'status_label': NotRequired[str],
+}, total=False)
+
+ModelPredictionsPredictionsAvailabilityResponse = TypedDict('ModelPredictionsPredictionsAvailabilityResponse', {
+    'fetched_at': NotRequired[str],
+    'map_note': NotRequired[str],
+    'map_title': NotRequired[str],
+    'region_count': NotRequired[int],
+    'regions': NotRequired[list[ModelPredictionsPredictionsAvailabilityRegion]],
+    'source_url': NotRequired[str],
+}, total=False)
+
+ModelPredictionsPredictionsAvailabilityStatus = Literal['all_markets_available', 'financial_markets_only', 'sports_markets_unavailable', 'no_markets_available']
+
+ModelPredictionsPredictionsCategoriesResponse = TypedDict('ModelPredictionsPredictionsCategoriesResponse', {
+    'categories': NotRequired[list[ModelPredictionsPredictionsCategory]],
+    'count': NotRequired[int],
+    'fetched_at': NotRequired[str],
+    'league_count': NotRequired[int],
+    'source_url': NotRequired[str],
+}, total=False)
+
+ModelPredictionsPredictionsCategory = TypedDict('ModelPredictionsPredictionsCategory', {
+    'id': NotRequired[str],
+    'leagues': NotRequired[list[ModelPredictionsPredictionsLeague]],
+    'name': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelPredictionsPredictionsLeague = TypedDict('ModelPredictionsPredictionsLeague', {
+    'id': NotRequired[str],
+    'name': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelPredictionsPredictionsRuleSource = TypedDict('ModelPredictionsPredictionsRuleSource', {
+    'name': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelPredictionsPredictionsRulesResponse = TypedDict('ModelPredictionsPredictionsRulesResponse', {
+    'fetched_at': NotRequired[str],
+    'rule_source_count': NotRequired[int],
+    'rule_sources': NotRequired[list[ModelPredictionsPredictionsRuleSource]],
+    'settlement_category_count': NotRequired[int],
+    'settlement_link_count': NotRequired[int],
+    'settlement_sources': NotRequired[list[ModelPredictionsPredictionsSettlementSource]],
+    'source_url': NotRequired[str],
+}, total=False)
+
+ModelPredictionsPredictionsSettlementSource = TypedDict('ModelPredictionsPredictionsSettlementSource', {
+    'category': NotRequired[str],
+    'links': NotRequired[list[ModelPredictionsPredictionsRuleSource]],
+}, total=False)
+
+ModelPredictionsPredictionsAvailabilityResponseDoc = TypedDict('ModelPredictionsPredictionsAvailabilityResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelPredictionsPredictionsAvailabilityResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelPredictionsPredictionsCategoriesResponseDoc = TypedDict('ModelPredictionsPredictionsCategoriesResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelPredictionsPredictionsCategoriesResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelPredictionsPredictionsRulesResponseDoc = TypedDict('ModelPredictionsPredictionsRulesResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelPredictionsPredictionsRulesResponse],
     'msg': NotRequired[str],
 }, total=False)
 
@@ -47107,6 +50655,122 @@ ModelQwantSuggestResponseDoc = TypedDict('ModelQwantSuggestResponseDoc', {
     'msg': NotRequired[str],
 }, total=False)
 
+ModelRacingRacingHorse = TypedDict('ModelRacingRacingHorse', {
+    'age': NotRequired[str],
+    'color': NotRequired[str],
+    'dam_name': NotRequired[str],
+    'name': NotRequired[str],
+    'sex': NotRequired[str],
+    'sire_name': NotRequired[str],
+    'where_bred': NotRequired[str],
+    'year_of_birth': NotRequired[int],
+}, total=False)
+
+ModelRacingRacingRace = TypedDict('ModelRacingRacingRace', {
+    'post_time_utc': NotRequired[str],
+    'race_id': NotRequired[str],
+    'race_number': NotRequired[int],
+    'status': NotRequired[str],
+    'track_id': NotRequired[str],
+    'track_name': NotRequired[str],
+}, total=False)
+
+ModelRacingRacingRaceCard = TypedDict('ModelRacingRacingRaceCard', {
+    'distance': NotRequired[str],
+    'entries': NotRequired[list[ModelRacingRacingRaceEntry]],
+    'entry_count': NotRequired[int],
+    'has_changes': NotRequired[bool],
+    'has_results': NotRequired[bool],
+    'id': NotRequired[str],
+    'live_odds_available': NotRequired[bool],
+    'live_stream_status': NotRequired[str],
+    'name': NotRequired[str],
+    'number': NotRequired[int],
+    'post_time_utc': NotRequired[str],
+    'purse': NotRequired[int],
+    'replay_status': NotRequired[str],
+    'runner_count': NotRequired[int],
+    'status': NotRequired[str],
+    'surface': NotRequired[str],
+    'surface_condition': NotRequired[str],
+    'track_type': NotRequired[str],
+    'type': NotRequired[str],
+}, total=False)
+
+ModelRacingRacingRaceEntry = TypedDict('ModelRacingRacingRaceEntry', {
+    'finish_position': NotRequired[int],
+    'horse': NotRequired[ModelRacingRacingHorse],
+    'live_odds': NotRequired[str],
+    'live_odds_favorite': NotRequired[bool],
+    'morning_line_favorite': NotRequired[bool],
+    'morning_line_odds': NotRequired[str],
+    'post_position': NotRequired[int],
+    'program_number': NotRequired[str],
+    'scratched': NotRequired[bool],
+    'weight': NotRequired[str],
+}, total=False)
+
+ModelRacingRacingRaceInfoResponse = TypedDict('ModelRacingRacingRaceInfoResponse', {
+    'fetched_at': NotRequired[str],
+    'is_historic': NotRequired[bool],
+    'race': NotRequired[ModelRacingRacingRaceCard],
+    'source_url': NotRequired[str],
+    'track': NotRequired[ModelRacingRacingRaceTrack],
+}, total=False)
+
+ModelRacingRacingRaceTrack = TypedDict('ModelRacingRacingRaceTrack', {
+    'code': NotRequired[str],
+    'country_code': NotRequired[str],
+    'id': NotRequired[str],
+    'name': NotRequired[str],
+    'type': NotRequired[str],
+}, total=False)
+
+ModelRacingRacingScheduleResponse = TypedDict('ModelRacingRacingScheduleResponse', {
+    'count': NotRequired[int],
+    'fetched_at': NotRequired[str],
+    'races': NotRequired[list[ModelRacingRacingRace]],
+    'source_url': NotRequired[str],
+}, total=False)
+
+ModelRacingRacingTrack = TypedDict('ModelRacingRacingTrack', {
+    'active': NotRequired[bool],
+    'code': NotRequired[str],
+    'country_code': NotRequired[str],
+    'id': NotRequired[str],
+    'live_stream_state': NotRequired[str],
+    'name': NotRequired[str],
+    'race_count': NotRequired[int],
+    'start_time': NotRequired[str],
+    'status': NotRequired[str],
+    'type': NotRequired[str],
+}, total=False)
+
+ModelRacingRacingTracksResponse = TypedDict('ModelRacingRacingTracksResponse', {
+    'count': NotRequired[int],
+    'fetched_at': NotRequired[str],
+    'source_url': NotRequired[str],
+    'tracks': NotRequired[list[ModelRacingRacingTrack]],
+}, total=False)
+
+ModelRacingRacingRaceInfoResponseDoc = TypedDict('ModelRacingRacingRaceInfoResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelRacingRacingRaceInfoResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelRacingRacingScheduleResponseDoc = TypedDict('ModelRacingRacingScheduleResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelRacingRacingScheduleResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelRacingRacingTracksResponseDoc = TypedDict('ModelRacingRacingTracksResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelRacingRacingTracksResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
 ModelRaisingcanesDirectoryChild = TypedDict('ModelRaisingcanesDirectoryChild', {
     'is_store': NotRequired[bool],
     'name': NotRequired[str],
@@ -47313,6 +50977,165 @@ ModelReachplcAuthorResponse = TypedDict('ModelReachplcAuthorResponse', {
     'url': NotRequired[str],
 }, total=False)
 
+ModelRedditArchiveBatchSource = TypedDict('ModelRedditArchiveBatchSource', {
+    'requests': NotRequired[int],
+    'type': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelRedditArchiveComment = TypedDict('ModelRedditArchiveComment', {
+    'author': NotRequired[str],
+    'author_flair_text': NotRequired[str],
+    'author_fullname': NotRequired[str],
+    'body': NotRequired[str],
+    'created_utc': NotRequired[int],
+    'depth': NotRequired[int],
+    'distinguished': NotRequired[str],
+    'id': NotRequired[str],
+    'link_id': NotRequired[str],
+    'name': NotRequired[str],
+    'parent_id': NotRequired[str],
+    'permalink': NotRequired[str],
+    'removed_by_category': NotRequired[str],
+    'retrieved_on': NotRequired[int],
+    'score': NotRequired[int],
+    'subreddit': NotRequired[str],
+    'subreddit_id': NotRequired[str],
+}, total=False)
+
+ModelRedditArchiveCommentTreeEntry = TypedDict('ModelRedditArchiveCommentTreeEntry', {
+    'comment': NotRequired[ModelRedditArchiveCommentTreeNode],
+    'kind': NotRequired[Literal['t1', 'more']],
+    'more': NotRequired[ModelRedditArchiveMoreComments],
+}, total=False)
+
+ModelRedditArchiveCommentTreeNode = TypedDict('ModelRedditArchiveCommentTreeNode', {
+    'comment': NotRequired[ModelRedditArchiveComment],
+    'replies': NotRequired[list[ModelRedditArchiveCommentTreeEntry]],
+}, total=False)
+
+ModelRedditArchiveCommentsIdsResponse = TypedDict('ModelRedditArchiveCommentsIdsResponse', {
+    'comments': NotRequired[list[ModelRedditArchiveComment]],
+    'missing_ids': NotRequired[list[str]],
+    'requested_count': NotRequired[int],
+    'returned_count': NotRequired[int],
+    'source': NotRequired[ModelRedditArchiveBatchSource],
+}, total=False)
+
+ModelRedditArchiveCommentsSearchResponse = TypedDict('ModelRedditArchiveCommentsSearchResponse', {
+    'author': NotRequired[str],
+    'comments': NotRequired[list[ModelRedditArchiveComment]],
+    'created_after': NotRequired[str],
+    'created_before': NotRequired[str],
+    'limit': NotRequired[int],
+    'link_id': NotRequired[str],
+    'parent_id': NotRequired[str],
+    'query': NotRequired[str],
+    'sort': NotRequired[str],
+    'source': NotRequired[ModelRedditSourceDetail],
+    'subreddit': NotRequired[str],
+}, total=False)
+
+ModelRedditArchiveCommentsTreeResponse = TypedDict('ModelRedditArchiveCommentsTreeResponse', {
+    'comments': NotRequired[list[ModelRedditArchiveCommentTreeEntry]],
+    'limit': NotRequired[int],
+    'parent_id': NotRequired[str],
+    'post_id': NotRequired[str],
+    'source': NotRequired[ModelRedditSourceDetail],
+    'start_breadth': NotRequired[int],
+    'start_depth': NotRequired[int],
+}, total=False)
+
+ModelRedditArchiveMoreComments = TypedDict('ModelRedditArchiveMoreComments', {
+    'children': NotRequired[list[str]],
+    'count': NotRequired[int],
+    'depth': NotRequired[int],
+    'id': NotRequired[str],
+    'name': NotRequired[str],
+    'parent_id': NotRequired[str],
+}, total=False)
+
+ModelRedditArchivePost = TypedDict('ModelRedditArchivePost', {
+    'author': NotRequired[str],
+    'author_flair_text': NotRequired[str],
+    'author_fullname': NotRequired[str],
+    'created_utc': NotRequired[int],
+    'crosspost_parent': NotRequired[str],
+    'distinguished': NotRequired[str],
+    'id': NotRequired[str],
+    'link_flair_text': NotRequired[str],
+    'num_comments': NotRequired[int],
+    'over_18': NotRequired[bool],
+    'post_hint': NotRequired[str],
+    'removed_by_category': NotRequired[str],
+    'retrieved_on': NotRequired[int],
+    'score': NotRequired[int],
+    'selftext': NotRequired[str],
+    'spoiler': NotRequired[bool],
+    'subreddit': NotRequired[str],
+    'subreddit_id': NotRequired[str],
+    'title': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelRedditArchivePostsIdsResponse = TypedDict('ModelRedditArchivePostsIdsResponse', {
+    'missing_ids': NotRequired[list[str]],
+    'posts': NotRequired[list[ModelRedditArchivePost]],
+    'requested_count': NotRequired[int],
+    'returned_count': NotRequired[int],
+    'source': NotRequired[ModelRedditArchiveBatchSource],
+}, total=False)
+
+ModelRedditArchivePostsSearchResponse = TypedDict('ModelRedditArchivePostsSearchResponse', {
+    'author': NotRequired[str],
+    'created_after': NotRequired[str],
+    'created_before': NotRequired[str],
+    'limit': NotRequired[int],
+    'posts': NotRequired[list[ModelRedditArchivePost]],
+    'query': NotRequired[str],
+    'sort': NotRequired[str],
+    'source': NotRequired[ModelRedditSourceDetail],
+    'subreddit': NotRequired[str],
+    'url': NotRequired[str],
+    'url_exact': NotRequired[bool],
+}, total=False)
+
+ModelRedditArchiveSubreddit = TypedDict('ModelRedditArchiveSubreddit', {
+    'created_utc': NotRequired[int],
+    'display_name': NotRequired[str],
+    'id': NotRequired[str],
+    'over_18': NotRequired[bool],
+    'retrieved_on': NotRequired[int],
+    'subscribers': NotRequired[int],
+}, total=False)
+
+ModelRedditArchiveSubredditsSearchResponse = TypedDict('ModelRedditArchiveSubredditsSearchResponse', {
+    'limit': NotRequired[int],
+    'max_subscribers': NotRequired[int],
+    'min_subscribers': NotRequired[int],
+    'over_18': NotRequired[bool],
+    'query': NotRequired[str],
+    'sort': NotRequired[str],
+    'sort_by': NotRequired[str],
+    'source': NotRequired[ModelRedditSourceDetail],
+    'subreddits': NotRequired[list[ModelRedditArchiveSubreddit]],
+}, total=False)
+
+ModelRedditArchiveTimeSeriesPoint = TypedDict('ModelRedditArchiveTimeSeriesPoint', {
+    'date': NotRequired[int],
+    'value': NotRequired[float],
+}, total=False)
+
+ModelRedditArchiveTimeSeriesResponse = TypedDict('ModelRedditArchiveTimeSeriesResponse', {
+    'created_after': NotRequired[str],
+    'created_before': NotRequired[str],
+    'metric': NotRequired[str],
+    'points': NotRequired[list[ModelRedditArchiveTimeSeriesPoint]],
+    'precision': NotRequired[str],
+    'source': NotRequired[ModelRedditSourceDetail],
+    'subreddit': NotRequired[str],
+}, total=False)
+
 ModelRedditAuthor = TypedDict('ModelRedditAuthor', {
     'name': NotRequired[str],
     'profile_url': NotRequired[str],
@@ -47462,6 +51285,48 @@ ModelRedditUserPostsResponse = TypedDict('ModelRedditUserPostsResponse', {
     'posts': NotRequired[list[ModelRedditPost]],
     'source': NotRequired[ModelRedditSourceDetail],
     'username': NotRequired[str],
+}, total=False)
+
+ModelRedditArchiveCommentsIdsResponseDoc = TypedDict('ModelRedditArchiveCommentsIdsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelRedditArchiveCommentsIdsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelRedditArchiveCommentsSearchResponseDoc = TypedDict('ModelRedditArchiveCommentsSearchResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelRedditArchiveCommentsSearchResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelRedditArchiveCommentsTreeResponseDoc = TypedDict('ModelRedditArchiveCommentsTreeResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelRedditArchiveCommentsTreeResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelRedditArchivePostsIdsResponseDoc = TypedDict('ModelRedditArchivePostsIdsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelRedditArchivePostsIdsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelRedditArchivePostsSearchResponseDoc = TypedDict('ModelRedditArchivePostsSearchResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelRedditArchivePostsSearchResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelRedditArchiveSubredditsSearchResponseDoc = TypedDict('ModelRedditArchiveSubredditsSearchResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelRedditArchiveSubredditsSearchResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelRedditArchiveTimeSeriesResponseDoc = TypedDict('ModelRedditArchiveTimeSeriesResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelRedditArchiveTimeSeriesResponse],
+    'msg': NotRequired[str],
 }, total=False)
 
 ModelRedditCommentsResponseDoc = TypedDict('ModelRedditCommentsResponseDoc', {
@@ -52189,6 +56054,20 @@ ModelSheinAutocompleteSuggestion = TypedDict('ModelSheinAutocompleteSuggestion',
     'word_id': NotRequired[str],
 }, total=False)
 
+ModelSheinBrandCategory = TypedDict('ModelSheinBrandCategory', {
+    'cat_id': NotRequired[str],
+    'category_name': NotRequired[str],
+}, total=False)
+
+ModelSheinBrandsResponse = TypedDict('ModelSheinBrandsResponse', {
+    'categories': NotRequired[list[ModelSheinBrandCategory]],
+}, total=False)
+
+ModelSheinCategoriesResponse = TypedDict('ModelSheinCategoriesResponse', {
+    'categories': NotRequired[list[ModelSheinCategoryNode]],
+    'filters': NotRequired[list[ModelSheinFilter]],
+}, total=False)
+
 ModelSheinCategoryFiltersResponse = TypedDict('ModelSheinCategoryFiltersResponse', {
     'cat_id': NotRequired[str],
     'currency': NotRequired[str],
@@ -52210,6 +56089,12 @@ ModelSheinCategoryNavResponse = TypedDict('ModelSheinCategoryNavResponse', {
     'navs': NotRequired[list[ModelSheinNavTab]],
 }, total=False)
 
+ModelSheinCategoryNode = TypedDict('ModelSheinCategoryNode', {
+    'cat_id': NotRequired[str],
+    'category_name': NotRequired[str],
+    'children': NotRequired[list[ModelSheinCategoryNode]],
+}, total=False)
+
 ModelSheinColorVariant = TypedDict('ModelSheinColorVariant', {
     'color_image': NotRequired[str],
     'color_name': NotRequired[str],
@@ -52217,6 +56102,47 @@ ModelSheinColorVariant = TypedDict('ModelSheinColorVariant', {
     'goods_sn': NotRequired[str],
     'goods_url_name': NotRequired[str],
     'image': NotRequired[str],
+}, total=False)
+
+ModelSheinDealCategory = TypedDict('ModelSheinDealCategory', {
+    'cat_id': NotRequired[str],
+    'name': NotRequired[str],
+    'type': NotRequired[str],
+}, total=False)
+
+ModelSheinDealProduct = TypedDict('ModelSheinDealProduct', {
+    'brand_code': NotRequired[str],
+    'category_id': NotRequired[str],
+    'category_name': NotRequired[str],
+    'color_img': NotRequired[str],
+    'comment_avg': NotRequired[str],
+    'comment_count': NotRequired[int],
+    'detail_images': NotRequired[list[str]],
+    'goods_id': NotRequired[str],
+    'goods_img': NotRequired[str],
+    'goods_name': NotRequired[str],
+    'goods_sn': NotRequired[str],
+    'goods_url_name': NotRequired[str],
+    'is_new_coupon': NotRequired[bool],
+    'mall_code': NotRequired[str],
+    'on_sale': NotRequired[bool],
+    'retail_price': NotRequired[str],
+    'sale_price': NotRequired[str],
+    'sold_out': NotRequired[bool],
+    'spu': NotRequired[str],
+    'store_code': NotRequired[str],
+    'usd_price': NotRequired[str],
+}, total=False)
+
+ModelSheinDealTabsResponse = TypedDict('ModelSheinDealTabsResponse', {
+    'categories': NotRequired[list[ModelSheinDealCategory]],
+    'for_you_tab': NotRequired[str],
+}, total=False)
+
+ModelSheinDealsProductsResponse = TypedDict('ModelSheinDealsProductsResponse', {
+    'page': NotRequired[int],
+    'products': NotRequired[list[ModelSheinDealProduct]],
+    'total': NotRequired[int],
 }, total=False)
 
 ModelSheinFacetCategory = TypedDict('ModelSheinFacetCategory', {
@@ -52335,6 +56261,63 @@ ModelSheinSkuVariant = TypedDict('ModelSheinSkuVariant', {
     'usd_price': NotRequired[str],
 }, total=False)
 
+ModelSheinStoreCategory = TypedDict('ModelSheinStoreCategory', {
+    'category_id': NotRequired[str],
+    'category_name': NotRequired[str],
+    'level': NotRequired[int],
+    'product_count': NotRequired[int],
+}, total=False)
+
+ModelSheinStoreProductsResponse = TypedDict('ModelSheinStoreProductsResponse', {
+    'category_id': NotRequired[str],
+    'page': NotRequired[int],
+    'products': NotRequired[list[ModelSheinProduct]],
+    'store_code': NotRequired[str],
+    'total': NotRequired[int],
+}, total=False)
+
+ModelSheinStoreResponse = TypedDict('ModelSheinStoreResponse', {
+    'categories': NotRequired[list[ModelSheinStoreCategory]],
+    'followers': NotRequired[str],
+    'is_brand_store': NotRequired[bool],
+    'is_choices_store': NotRequired[bool],
+    'is_lifestyle_store': NotRequired[bool],
+    'is_trends_store': NotRequired[bool],
+    'seller_label': NotRequired[str],
+    'store_code': NotRequired[str],
+    'store_logo': NotRequired[str],
+    'store_name': NotRequired[str],
+}, total=False)
+
+ModelSheinTrendCollection = TypedDict('ModelSheinTrendCollection', {
+    'tab_id': NotRequired[str],
+    'tab_name': NotRequired[str],
+    'tab_name_en': NotRequired[str],
+    'tab_type': NotRequired[str],
+}, total=False)
+
+ModelSheinTrendFilterCategory = TypedDict('ModelSheinTrendFilterCategory', {
+    'cat_id': NotRequired[str],
+    'category_name': NotRequired[str],
+}, total=False)
+
+ModelSheinTrendingCategoriesResponse = TypedDict('ModelSheinTrendingCategoriesResponse', {
+    'categories': NotRequired[list[ModelSheinTrendingCategory]],
+}, total=False)
+
+ModelSheinTrendingCategory = TypedDict('ModelSheinTrendingCategory', {
+    'cat_id': NotRequired[str],
+    'category_name': NotRequired[str],
+    'goods_id': NotRequired[str],
+    'image': NotRequired[str],
+    'store_code': NotRequired[str],
+}, total=False)
+
+ModelSheinTrendingFiltersResponse = TypedDict('ModelSheinTrendingFiltersResponse', {
+    'categories': NotRequired[list[ModelSheinTrendFilterCategory]],
+    'collections': NotRequired[list[ModelSheinTrendCollection]],
+}, total=False)
+
 ModelSheinAggregationFiltersResponseDoc = TypedDict('ModelSheinAggregationFiltersResponseDoc', {
     'code': NotRequired[int],
     'data': NotRequired[ModelSheinAggregationFilters],
@@ -52344,6 +56327,18 @@ ModelSheinAggregationFiltersResponseDoc = TypedDict('ModelSheinAggregationFilter
 ModelSheinAutocompleteResponseDoc = TypedDict('ModelSheinAutocompleteResponseDoc', {
     'code': NotRequired[int],
     'data': NotRequired[ModelSheinAutocompleteResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelSheinBrandsResponseDoc = TypedDict('ModelSheinBrandsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelSheinBrandsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelSheinCategoriesResponseDoc = TypedDict('ModelSheinCategoriesResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelSheinCategoriesResponse],
     'msg': NotRequired[str],
 }, total=False)
 
@@ -52365,6 +56360,18 @@ ModelSheinCategoryNavResponseDoc = TypedDict('ModelSheinCategoryNavResponseDoc',
     'msg': NotRequired[str],
 }, total=False)
 
+ModelSheinDealTabsResponseDoc = TypedDict('ModelSheinDealTabsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelSheinDealTabsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelSheinDealsProductsResponseDoc = TypedDict('ModelSheinDealsProductsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelSheinDealsProductsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
 ModelSheinProductDetailResponseDoc = TypedDict('ModelSheinProductDetailResponseDoc', {
     'code': NotRequired[int],
     'data': NotRequired[ModelSheinProductDetail],
@@ -52380,6 +56387,30 @@ ModelSheinProductsSearchResponseDoc = TypedDict('ModelSheinProductsSearchRespons
 ModelSheinSearchKeywordsResponseDoc = TypedDict('ModelSheinSearchKeywordsResponseDoc', {
     'code': NotRequired[int],
     'data': NotRequired[ModelSheinSearchKeywordsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelSheinStoreProductsResponseDoc = TypedDict('ModelSheinStoreProductsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelSheinStoreProductsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelSheinStoreResponseDoc = TypedDict('ModelSheinStoreResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelSheinStoreResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelSheinTrendingCategoriesResponseDoc = TypedDict('ModelSheinTrendingCategoriesResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelSheinTrendingCategoriesResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelSheinTrendingFiltersResponseDoc = TypedDict('ModelSheinTrendingFiltersResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelSheinTrendingFiltersResponse],
     'msg': NotRequired[str],
 }, total=False)
 
@@ -57616,6 +61647,326 @@ ModelSportingnewsAuthorResponse = TypedDict('ModelSportingnewsAuthorResponse', {
     'slug': NotRequired[str],
     'social_links': NotRequired[list[str]],
     'url': NotRequired[str],
+}, total=False)
+
+ModelSportsbookEvent = TypedDict('ModelSportsbookEvent', {
+    'id': NotRequired[str],
+    'markets': NotRequired[list[ModelSportsbookMarket]],
+    'name': NotRequired[str],
+    'participants': NotRequired[list[ModelSportsbookParticipant]],
+    'start_time': NotRequired[str],
+    'status': NotRequired[str],
+}, total=False)
+
+ModelSportsbookEventContextResponse = TypedDict('ModelSportsbookEventContextResponse', {
+    'event_id': NotRequired[str],
+    'event_seo_id': NotRequired[str],
+    'fetched_at': NotRequired[str],
+    'league_id': NotRequired[str],
+    'league_seo_id': NotRequired[str],
+    'source_url': NotRequired[str],
+    'sport_id': NotRequired[str],
+    'sport_seo_id': NotRequired[str],
+}, total=False)
+
+ModelSportsbookEventMarketsResponse = TypedDict('ModelSportsbookEventMarketsResponse', {
+    'count': NotRequired[int],
+    'event_id': NotRequired[str],
+    'fetched_at': NotRequired[str],
+    'markets': NotRequired[list[ModelSportsbookMarket]],
+    'source_url': NotRequired[str],
+    'subcategory_id': NotRequired[str],
+}, total=False)
+
+ModelSportsbookEventResponse = TypedDict('ModelSportsbookEventResponse', {
+    'fetched_at': NotRequired[str],
+    'id': NotRequired[str],
+    'league_id': NotRequired[str],
+    'name': NotRequired[str],
+    'participants': NotRequired[list[ModelSportsbookParticipant]],
+    'source_url': NotRequired[str],
+    'sport_id': NotRequired[str],
+    'start_time': NotRequired[str],
+    'status': NotRequired[str],
+}, total=False)
+
+ModelSportsbookFeaturedLeague = TypedDict('ModelSportsbookFeaturedLeague', {
+    'featured_order': NotRequired[int],
+    'has_live_offers': NotRequired[bool],
+    'id': NotRequired[str],
+    'name': NotRequired[str],
+    'slug': NotRequired[str],
+    'sport': NotRequired[str],
+    'sport_id': NotRequired[str],
+    'tags': NotRequired[list[str]],
+}, total=False)
+
+ModelSportsbookFeaturedLeaguesResponse = TypedDict('ModelSportsbookFeaturedLeaguesResponse', {
+    'count': NotRequired[int],
+    'fetched_at': NotRequired[str],
+    'leagues': NotRequired[list[ModelSportsbookFeaturedLeague]],
+    'source_url': NotRequired[str],
+}, total=False)
+
+ModelSportsbookFuturesResponse = TypedDict('ModelSportsbookFuturesResponse', {
+    'count': NotRequired[int],
+    'events': NotRequired[list[ModelSportsbookEvent]],
+    'fetched_at': NotRequired[str],
+    'league': NotRequired[str],
+    'league_id': NotRequired[str],
+    'source_url': NotRequired[str],
+    'sport': NotRequired[str],
+    'subcategory_id': NotRequired[str],
+}, total=False)
+
+ModelSportsbookLeague = TypedDict('ModelSportsbookLeague', {
+    'has_live_offers': NotRequired[bool],
+    'id': NotRequired[str],
+    'name': NotRequired[str],
+    'slug': NotRequired[str],
+}, total=False)
+
+ModelSportsbookLeagueEvent = TypedDict('ModelSportsbookLeagueEvent', {
+    'id': NotRequired[str],
+    'name': NotRequired[str],
+    'participant_type': NotRequired[str],
+    'participants': NotRequired[list[ModelSportsbookParticipant]],
+    'start_time': NotRequired[str],
+    'status': NotRequired[str],
+    'tags': NotRequired[list[str]],
+}, total=False)
+
+ModelSportsbookLeagueEventsResponse = TypedDict('ModelSportsbookLeagueEventsResponse', {
+    'count': NotRequired[int],
+    'events': NotRequired[list[ModelSportsbookLeagueEvent]],
+    'fetched_at': NotRequired[str],
+    'league': NotRequired[str],
+    'league_id': NotRequired[str],
+    'source_url': NotRequired[str],
+    'sport': NotRequired[str],
+    'sport_id': NotRequired[str],
+}, total=False)
+
+ModelSportsbookLeaguesResponse = TypedDict('ModelSportsbookLeaguesResponse', {
+    'count': NotRequired[int],
+    'fetched_at': NotRequired[str],
+    'source_url': NotRequired[str],
+    'sports': NotRequired[list[ModelSportsbookSport]],
+}, total=False)
+
+ModelSportsbookLiveEvent = TypedDict('ModelSportsbookLiveEvent', {
+    'categories': NotRequired[list[ModelSportsbookMarketCategory]],
+    'id': NotRequired[str],
+    'league_id': NotRequired[str],
+    'markets': NotRequired[list[ModelSportsbookMarket]],
+    'name': NotRequired[str],
+    'participants': NotRequired[list[ModelSportsbookParticipant]],
+    'period': NotRequired[str],
+    'score': NotRequired[ModelSportsbookLiveScore],
+    'sport_id': NotRequired[str],
+    'start_time': NotRequired[str],
+    'status': NotRequired[str],
+    'subcategories': NotRequired[list[ModelSportsbookMarketSubcategory]],
+}, total=False)
+
+ModelSportsbookLiveResponse = TypedDict('ModelSportsbookLiveResponse', {
+    'count': NotRequired[int],
+    'events': NotRequired[list[ModelSportsbookLiveEvent]],
+    'fetched_at': NotRequired[str],
+    'source_url': NotRequired[str],
+}, total=False)
+
+ModelSportsbookLiveScore = TypedDict('ModelSportsbookLiveScore', {
+    'current': NotRequired[ModelSportsbookLiveScoreLine],
+    'on_serve': NotRequired[str],
+    'periods': NotRequired[list[ModelSportsbookLiveScorePeriod]],
+}, total=False)
+
+ModelSportsbookLiveScoreLine = TypedDict('ModelSportsbookLiveScoreLine', {
+    'away': NotRequired[str],
+    'home': NotRequired[str],
+}, total=False)
+
+ModelSportsbookLiveScorePeriod = TypedDict('ModelSportsbookLiveScorePeriod', {
+    'away': NotRequired[str],
+    'home': NotRequired[str],
+    'name': NotRequired[str],
+}, total=False)
+
+ModelSportsbookMarket = TypedDict('ModelSportsbookMarket', {
+    'id': NotRequired[str],
+    'selections': NotRequired[list[ModelSportsbookSelection]],
+    'subcategory_id': NotRequired[str],
+    'type': NotRequired[str],
+}, total=False)
+
+ModelSportsbookMarketCategory = TypedDict('ModelSportsbookMarketCategory', {
+    'id': NotRequired[str],
+    'name': NotRequired[str],
+}, total=False)
+
+ModelSportsbookMarketSubcategory = TypedDict('ModelSportsbookMarketSubcategory', {
+    'category_id': NotRequired[str],
+    'id': NotRequired[str],
+    'name': NotRequired[str],
+}, total=False)
+
+ModelSportsbookOdds = TypedDict('ModelSportsbookOdds', {
+    'american': NotRequired[str],
+    'decimal': NotRequired[str],
+    'fractional': NotRequired[str],
+}, total=False)
+
+ModelSportsbookOddsResponse = TypedDict('ModelSportsbookOddsResponse', {
+    'count': NotRequired[int],
+    'events': NotRequired[list[ModelSportsbookEvent]],
+    'fetched_at': NotRequired[str],
+    'league': NotRequired[str],
+    'league_id': NotRequired[str],
+    'source_url': NotRequired[str],
+    'sport': NotRequired[str],
+}, total=False)
+
+ModelSportsbookParticipant = TypedDict('ModelSportsbookParticipant', {
+    'id': NotRequired[str],
+    'name': NotRequired[str],
+    'role': NotRequired[str],
+}, total=False)
+
+ModelSportsbookQuickLink = TypedDict('ModelSportsbookQuickLink', {
+    'league_id': NotRequired[str],
+    'name': NotRequired[str],
+    'path': NotRequired[str],
+    'sport_id': NotRequired[str],
+}, total=False)
+
+ModelSportsbookQuickLinksResponse = TypedDict('ModelSportsbookQuickLinksResponse', {
+    'count': NotRequired[int],
+    'fetched_at': NotRequired[str],
+    'links': NotRequired[list[ModelSportsbookQuickLink]],
+    'source_url': NotRequired[str],
+}, total=False)
+
+ModelSportsbookSelection = TypedDict('ModelSportsbookSelection', {
+    'label': NotRequired[str],
+    'odds': NotRequired[ModelSportsbookOdds],
+    'outcome_type': NotRequired[str],
+    'points': NotRequired[float],
+}, total=False)
+
+ModelSportsbookSport = TypedDict('ModelSportsbookSport', {
+    'id': NotRequired[str],
+    'leagues': NotRequired[list[ModelSportsbookLeague]],
+    'name': NotRequired[str],
+    'slug': NotRequired[str],
+}, total=False)
+
+ModelSportsbookTeam = TypedDict('ModelSportsbookTeam', {
+    'id': NotRequired[str],
+    'name': NotRequired[str],
+    'slug': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelSportsbookTeamDetailResponse = TypedDict('ModelSportsbookTeamDetailResponse', {
+    'abbreviation': NotRequired[str],
+    'city': NotRequired[str],
+    'fetched_at': NotRequired[str],
+    'id': NotRequired[str],
+    'leagues': NotRequired[list[ModelSportsbookTeamLeagueRef]],
+    'name': NotRequired[str],
+    'primary_color': NotRequired[str],
+    'secondary_color': NotRequired[str],
+    'short_name': NotRequired[str],
+    'source_url': NotRequired[str],
+    'sport': NotRequired[str],
+    'sport_id': NotRequired[str],
+}, total=False)
+
+ModelSportsbookTeamLeagueRef = TypedDict('ModelSportsbookTeamLeagueRef', {
+    'id': NotRequired[str],
+    'slug': NotRequired[str],
+}, total=False)
+
+ModelSportsbookTeamsResponse = TypedDict('ModelSportsbookTeamsResponse', {
+    'count': NotRequired[int],
+    'fetched_at': NotRequired[str],
+    'league': NotRequired[str],
+    'source_url': NotRequired[str],
+    'sport': NotRequired[str],
+    'teams': NotRequired[list[ModelSportsbookTeam]],
+}, total=False)
+
+ModelSportsbookEventContextResponseDoc = TypedDict('ModelSportsbookEventContextResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelSportsbookEventContextResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelSportsbookEventMarketsResponseDoc = TypedDict('ModelSportsbookEventMarketsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelSportsbookEventMarketsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelSportsbookEventResponseDoc = TypedDict('ModelSportsbookEventResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelSportsbookEventResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelSportsbookFeaturedLeaguesResponseDoc = TypedDict('ModelSportsbookFeaturedLeaguesResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelSportsbookFeaturedLeaguesResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelSportsbookFuturesResponseDoc = TypedDict('ModelSportsbookFuturesResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelSportsbookFuturesResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelSportsbookLeagueEventsResponseDoc = TypedDict('ModelSportsbookLeagueEventsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelSportsbookLeagueEventsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelSportsbookLeaguesResponseDoc = TypedDict('ModelSportsbookLeaguesResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelSportsbookLeaguesResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelSportsbookLiveResponseDoc = TypedDict('ModelSportsbookLiveResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelSportsbookLiveResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelSportsbookOddsResponseDoc = TypedDict('ModelSportsbookOddsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelSportsbookOddsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelSportsbookQuickLinksResponseDoc = TypedDict('ModelSportsbookQuickLinksResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelSportsbookQuickLinksResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelSportsbookTeamResponseDoc = TypedDict('ModelSportsbookTeamResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelSportsbookTeamDetailResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelSportsbookTeamsResponseDoc = TypedDict('ModelSportsbookTeamsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelSportsbookTeamsResponse],
+    'msg': NotRequired[str],
 }, total=False)
 
 ModelSportskeedaAuthorResponse = TypedDict('ModelSportskeedaAuthorResponse', {
@@ -64420,6 +68771,35 @@ ModelTiktokmobileCategoryListResponse = TypedDict('ModelTiktokmobileCategoryList
     'status_msg': NotRequired[str],
 }, total=False)
 
+ModelTiktokmobileCollectionDetailResponse = TypedDict('ModelTiktokmobileCollectionDetailResponse', {
+    'extra': NotRequired[Any],
+    'item_archive': NotRequired[Any],
+    'log_pb': NotRequired[Any],
+    'status_code': NotRequired[int],
+    'status_msg': NotRequired[str],
+}, total=False)
+
+ModelTiktokmobileCollectionListResponse = TypedDict('ModelTiktokmobileCollectionListResponse', {
+    'cursor': NotRequired[int],
+    'extra': NotRequired[Any],
+    'has_more': NotRequired[bool],
+    'item_archive_detail_list': NotRequired[list[Any]],
+    'log_pb': NotRequired[Any],
+    'status_code': NotRequired[int],
+    'status_msg': NotRequired[str],
+}, total=False)
+
+ModelTiktokmobileCollectionVideosResponse = TypedDict('ModelTiktokmobileCollectionVideosResponse', {
+    'extra': NotRequired[Any],
+    'has_more': NotRequired[bool],
+    'items': NotRequired[list[Any]],
+    'log_pb': NotRequired[Any],
+    'max_cursor': NotRequired[int],
+    'min_cursor': NotRequired[int],
+    'status_code': NotRequired[int],
+    'status_msg': NotRequired[str],
+}, total=False)
+
 ModelTiktokmobileCommentRepliesResponse = TypedDict('ModelTiktokmobileCommentRepliesResponse', {
     'comments': NotRequired[list[Any]],
     'cursor': NotRequired[int],
@@ -64440,6 +68820,7 @@ ModelTiktokmobileCommentsResponse = TypedDict('ModelTiktokmobileCommentsResponse
 
 ModelTiktokmobileFeedItem = TypedDict('ModelTiktokmobileFeedItem', {
     'author_id': NotRequired[int],
+    'author_id_str': NotRequired[str],
     'aweme_id': NotRequired[str],
     'create_time': NotRequired[int],
     'share_url': NotRequired[str],
@@ -64502,6 +68883,58 @@ ModelTiktokmobileHotMusicResponse = TypedDict('ModelTiktokmobileHotMusicResponse
     'status_msg': NotRequired[str],
 }, total=False)
 
+ModelTiktokmobileLiveGameCategory = TypedDict('ModelTiktokmobileLiveGameCategory', {
+    'game_type': NotRequired[int],
+    'title': NotRequired[str],
+}, total=False)
+
+ModelTiktokmobileLiveGameTag = TypedDict('ModelTiktokmobileLiveGameTag', {
+    'bundle_id': NotRequired[str],
+    'full_name': NotRequired[str],
+    'game_category': NotRequired[list[ModelTiktokmobileLiveGameCategory]],
+    'gar': NotRequired[list[Any]],
+    'hashtag_id': NotRequired[list[Any]],
+    'hashtag_list': NotRequired[list[ModelTiktokmobileLiveHashtag]],
+    'id': NotRequired[int],
+    'is_new_game': NotRequired[bool],
+    'landscape': NotRequired[int],
+    'package_name': NotRequired[str],
+    'short_name': NotRequired[str],
+    'show_name': NotRequired[str],
+}, total=False)
+
+ModelTiktokmobileLiveHashtag = TypedDict('ModelTiktokmobileLiveHashtag', {
+    'id': NotRequired[int],
+    'image': NotRequired[Any],
+    'namespace': NotRequired[int],
+    'title': NotRequired[str],
+}, total=False)
+
+ModelTiktokmobileLiveRoomOwner = TypedDict('ModelTiktokmobileLiveRoomOwner', {
+    'avatar': NotRequired[Any],
+    'nickname': NotRequired[str],
+    'user_id': NotRequired[str],
+}, total=False)
+
+ModelTiktokmobileLiveRoomStats = TypedDict('ModelTiktokmobileLiveRoomStats', {
+    'comment_count': NotRequired[int],
+    'enter_count': NotRequired[int],
+    'follow_count': NotRequired[int],
+    'like_count': NotRequired[int],
+    'replay_viewers': NotRequired[int],
+    'share_count': NotRequired[int],
+    'total_user': NotRequired[int],
+    'watch_user_count': NotRequired[int],
+}, total=False)
+
+ModelTiktokmobileLiveRoomStream = TypedDict('ModelTiktokmobileLiveRoomStream', {
+    'candidate_resolution': NotRequired[list[str]],
+    'default_resolution': NotRequired[str],
+    'flv_pull_url': NotRequired[dict[str, str]],
+    'hls_pull_url': NotRequired[str],
+    'rtmp_pull_url': NotRequired[str],
+}, total=False)
+
 ModelTiktokmobileLiveSearchResponse = TypedDict('ModelTiktokmobileLiveSearchResponse', {
     'cursor': NotRequired[int],
     'data': NotRequired[list[Any]],
@@ -64524,6 +68957,19 @@ ModelTiktokmobileMusicBeatsSongsResponse = TypedDict('ModelTiktokmobileMusicBeat
     'status_msg': NotRequired[str],
 }, total=False)
 
+ModelTiktokmobileMusicChartResponse = TypedDict('ModelTiktokmobileMusicChartResponse', {
+    'chart_info': NotRequired[Any],
+    'cover_image_url': NotRequired[str],
+    'cursor': NotRequired[int],
+    'extra': NotRequired[Any],
+    'has_more': NotRequired[bool],
+    'log_pb': NotRequired[Any],
+    'msg': NotRequired[str],
+    'music_list': NotRequired[list[Any]],
+    'status_code': NotRequired[int],
+    'status_msg': NotRequired[str],
+}, total=False)
+
 ModelTiktokmobileMusicCollectionFeedResponse = TypedDict('ModelTiktokmobileMusicCollectionFeedResponse', {
     'cursor': NotRequired[int],
     'extra': NotRequired[Any],
@@ -64534,12 +68980,31 @@ ModelTiktokmobileMusicCollectionFeedResponse = TypedDict('ModelTiktokmobileMusic
     'status_msg': NotRequired[str],
 }, total=False)
 
+ModelTiktokmobileMusicDetailResponse = TypedDict('ModelTiktokmobileMusicDetailResponse', {
+    'ai_recommend_music': NotRequired[Any],
+    'ai_recommend_video': NotRequired[Any],
+    'behind_the_song_exist': NotRequired[bool],
+    'cost_time_info': NotRequired[Any],
+    'extra': NotRequired[Any],
+    'log_pb': NotRequired[Any],
+    'msg': NotRequired[str],
+    'music_chart_rank': NotRequired[Any],
+    'music_info': NotRequired[Any],
+    'rec_list': NotRequired[Any],
+    'similar_music': NotRequired[Any],
+    'similar_music_ids': NotRequired[Any],
+    'status_code': NotRequired[int],
+    'status_msg': NotRequired[str],
+}, total=False)
+
 ModelTiktokmobileMusicFreshAwemeResponse = TypedDict('ModelTiktokmobileMusicFreshAwemeResponse', {
     'aweme_list': NotRequired[list[Any]],
+    'can_pin_video': NotRequired[Any],
     'cursor': NotRequired[int],
     'extra': NotRequired[Any],
     'has_more': NotRequired[bool],
     'log_pb': NotRequired[Any],
+    'need_lazy_loading': NotRequired[Any],
     'status_code': NotRequired[int],
     'status_msg': NotRequired[str],
 }, total=False)
@@ -64565,14 +69030,90 @@ ModelTiktokmobileMusicRelatedResponse = TypedDict('ModelTiktokmobileMusicRelated
     'status_msg': NotRequired[str],
 }, total=False)
 
+ModelTiktokmobilePlaceMediaResponse = TypedDict('ModelTiktokmobilePlaceMediaResponse', {
+    'data_version': NotRequired[str],
+    'extra': NotRequired[Any],
+    'has_more': NotRequired[bool],
+    'item_list': NotRequired[list[Any]],
+    'log_pb': NotRequired[Any],
+    'next_cursor': NotRequired[str],
+    'pos': NotRequired[Any],
+    'post_bottom_bar_style': NotRequired[Any],
+    'status_code': NotRequired[int],
+    'status_msg': NotRequired[str],
+    'title': NotRequired[str],
+}, total=False)
+
 ModelTiktokmobilePlacePoicontainer = TypedDict('ModelTiktokmobilePlacePoicontainer', {
     'poi_info': NotRequired[list[Any]],
+}, total=False)
+
+ModelTiktokmobilePlaceReviewsResponse = TypedDict('ModelTiktokmobilePlaceReviewsResponse', {
+    'collect_info': NotRequired[Any],
+    'cursor': NotRequired[int],
+    'extra': NotRequired[Any],
+    'folded_cursor': NotRequired[int],
+    'folded_has_more': NotRequired[bool],
+    'has_more': NotRequired[bool],
+    'is_hide_review_summary': NotRequired[bool],
+    'landing_tab': NotRequired[int],
+    'log_pb': NotRequired[Any],
+    'poi_id': NotRequired[str],
+    'poi_name': NotRequired[str],
+    'post_review_description': NotRequired[str],
+    'post_review_sub_description': NotRequired[str],
+    'review_summary': NotRequired[Any],
+    'review_tags': NotRequired[list[Any]],
+    'reviews': NotRequired[list[Any]],
+    'status_code': NotRequired[int],
+    'status_msg': NotRequired[str],
+}, total=False)
+
+ModelTiktokmobilePlaylistDetailResponse = TypedDict('ModelTiktokmobilePlaylistDetailResponse', {
+    'extra': NotRequired[Any],
+    'is_collect': NotRequired[bool],
+    'log_pb': NotRequired[Any],
+    'mix': NotRequired[ModelTiktokmobilePlaylistSummary],
+    'status_code': NotRequired[int],
+    'status_msg': NotRequired[str],
+}, total=False)
+
+ModelTiktokmobilePlaylistListResponse = TypedDict('ModelTiktokmobilePlaylistListResponse', {
+    'cursor': NotRequired[int],
+    'extra': NotRequired[Any],
+    'has_more': NotRequired[bool],
+    'log_pb': NotRequired[Any],
+    'mix_list': NotRequired[list[ModelTiktokmobilePlaylistSummary]],
+    'status_code': NotRequired[int],
+    'status_msg': NotRequired[str],
+    'total': NotRequired[int],
+}, total=False)
+
+ModelTiktokmobilePlaylistSummary = TypedDict('ModelTiktokmobilePlaylistSummary', {
+    'author': NotRequired[Any],
+    'creator_name': NotRequired[str],
+    'last_add_video_timestamp': NotRequired[int],
+    'mix_id': NotRequired[str],
+    'mix_type': NotRequired[int],
+    'name': NotRequired[str],
+    'share_info': NotRequired[Any],
+    'statistic': NotRequired[Any],
+    'status': NotRequired[Any],
+}, total=False)
+
+ModelTiktokmobilePlaylistVideosResponse = TypedDict('ModelTiktokmobilePlaylistVideosResponse', {
+    'cursor': NotRequired[int],
+    'has_more': NotRequired[bool],
+    'item_list': NotRequired[list[Any]],
+    'status_code': NotRequired[int],
+    'status_msg': NotRequired[str],
 }, total=False)
 
 ModelTiktokmobileSearchGeneralResponse = TypedDict('ModelTiktokmobileSearchGeneralResponse', {
     'cursor': NotRequired[int],
     'data': NotRequired[list[Any]],
     'has_more': NotRequired[bool],
+    'search_id': NotRequired[str],
     'status_code': NotRequired[int],
     'status_msg': NotRequired[str],
 }, total=False)
@@ -64626,12 +69167,100 @@ ModelTiktokmobileSearchUsersResponse = TypedDict('ModelTiktokmobileSearchUsersRe
     'user_list': NotRequired[list[Any]],
 }, total=False)
 
+ModelTiktokmobileSearchVideosResponse = TypedDict('ModelTiktokmobileSearchVideosResponse', {
+    'aweme_list': NotRequired[list[Any]],
+    'cursor': NotRequired[int],
+    'extra': NotRequired[Any],
+    'feedback_type': NotRequired[str],
+    'has_more': NotRequired[bool],
+    'log_pb': NotRequired[Any],
+    'search_id': NotRequired[str],
+    'search_item_list': NotRequired[list[Any]],
+    'status_code': NotRequired[int],
+    'status_msg': NotRequired[str],
+}, total=False)
+
 ModelTiktokmobileStickerDiscoverResponse = TypedDict('ModelTiktokmobileStickerDiscoverResponse', {
     'aweme_list': NotRequired[list[Any]],
     'cursor': NotRequired[int],
     'extra': NotRequired[Any],
     'feed_session_id': NotRequired[str],
     'has_more': NotRequired[bool],
+    'log_pb': NotRequired[Any],
+    'status_code': NotRequired[int],
+    'status_msg': NotRequired[str],
+}, total=False)
+
+ModelTiktokmobileSubtitleCue = TypedDict('ModelTiktokmobileSubtitleCue', {
+    'end': NotRequired[str],
+    'end_ms': NotRequired[int],
+    'start': NotRequired[str],
+    'start_ms': NotRequired[int],
+    'text': NotRequired[str],
+}, total=False)
+
+ModelTiktokmobileUserFollowersResponse = TypedDict('ModelTiktokmobileUserFollowersResponse', {
+    'extra': NotRequired[Any],
+    'followers': NotRequired[list[Any]],
+    'has_more': NotRequired[bool],
+    'log_pb': NotRequired[Any],
+    'max_time': NotRequired[int],
+    'min_time': NotRequired[int],
+    'myself_user_id': NotRequired[str],
+    'next_page_token': NotRequired[str],
+    'offset': NotRequired[int],
+    'status_code': NotRequired[int],
+    'status_msg': NotRequired[str],
+    'total': NotRequired[int],
+}, total=False)
+
+ModelTiktokmobileUserOriginalEffectsResponse = TypedDict('ModelTiktokmobileUserOriginalEffectsResponse', {
+    'cursor': NotRequired[int],
+    'effect': NotRequired[list[Any]],
+    'extra': NotRequired[Any],
+    'has_more': NotRequired[bool],
+    'log_pb': NotRequired[Any],
+    'status_code': NotRequired[int],
+    'status_msg': NotRequired[str],
+}, total=False)
+
+ModelTiktokmobileUserOriginalMusicResponse = TypedDict('ModelTiktokmobileUserOriginalMusicResponse', {
+    'cursor': NotRequired[int],
+    'extra': NotRequired[Any],
+    'groups': NotRequired[list[Any]],
+    'has_more': NotRequired[bool],
+    'honor_label': NotRequired[Any],
+    'log_pb': NotRequired[Any],
+    'music': NotRequired[list[Any]],
+    'status_code': NotRequired[int],
+    'status_msg': NotRequired[str],
+}, total=False)
+
+ModelTiktokmobileUserPostsResponse = TypedDict('ModelTiktokmobileUserPostsResponse', {
+    'aweme_list': NotRequired[list[Any]],
+    'extra': NotRequired[Any],
+    'has_more': NotRequired[bool],
+    'log_pb': NotRequired[Any],
+    'max_cursor': NotRequired[int],
+    'min_cursor': NotRequired[int],
+    'status_code': NotRequired[int],
+    'status_msg': NotRequired[str],
+}, total=False)
+
+ModelTiktokmobileUserProfileResponse = TypedDict('ModelTiktokmobileUserProfileResponse', {
+    'common': NotRequired[Any],
+    'extra': NotRequired[Any],
+    'header': NotRequired[Any],
+    'log_pb': NotRequired[Any],
+    'nav_bar': NotRequired[Any],
+    'profile_tab': NotRequired[Any],
+    'status_code': NotRequired[int],
+    'status_msg': NotRequired[str],
+}, total=False)
+
+ModelTiktokmobileVideoDetailResponse = TypedDict('ModelTiktokmobileVideoDetailResponse', {
+    'aweme_detail': NotRequired[Any],
+    'extra': NotRequired[Any],
     'log_pb': NotRequired[Any],
     'status_code': NotRequired[int],
     'status_msg': NotRequired[str],
@@ -64663,6 +69292,24 @@ ModelTiktokmobileAnchorListResponseDoc = TypedDict('ModelTiktokmobileAnchorListR
 ModelTiktokmobileCategoryListResponseDoc = TypedDict('ModelTiktokmobileCategoryListResponseDoc', {
     'code': NotRequired[int],
     'data': NotRequired[ModelTiktokmobileCategoryListResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelTiktokmobileCollectionDetailResponseDoc = TypedDict('ModelTiktokmobileCollectionDetailResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelTiktokmobileCollectionDetailResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelTiktokmobileCollectionListResponseDoc = TypedDict('ModelTiktokmobileCollectionListResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelTiktokmobileCollectionListResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelTiktokmobileCollectionVideosResponseDoc = TypedDict('ModelTiktokmobileCollectionVideosResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelTiktokmobileCollectionVideosResponse],
     'msg': NotRequired[str],
 }, total=False)
 
@@ -64710,6 +69357,16 @@ ModelTiktokmobileHashtagSearchResponseDoc = TypedDict('ModelTiktokmobileHashtagS
     'msg': NotRequired[str],
 }, total=False)
 
+ModelTiktokmobileHashtagSuggestionsResponseDoc = TypedDict('ModelTiktokmobileHashtagSuggestionsResponseDoc', {
+    'extra': NotRequired[Any],
+    'log_pb': NotRequired[Any],
+    'rid': NotRequired[str],
+    'status_code': NotRequired[int],
+    'status_msg': NotRequired[str],
+    'sug_list': NotRequired[list[Any]],
+    'words_query_record': NotRequired[Any],
+}, total=False)
+
 ModelTiktokmobileHotMusicResponseDoc = TypedDict('ModelTiktokmobileHotMusicResponseDoc', {
     'code': NotRequired[int],
     'data': NotRequired[ModelTiktokmobileHotMusicResponse],
@@ -64728,10 +69385,47 @@ ModelTiktokmobileLiveGiftsResponseDoc = TypedDict('ModelTiktokmobileLiveGiftsRes
     'msg': NotRequired[str],
 }, total=False)
 
+ModelTiktokmobileLiveHashtagCatalogResponseDoc = TypedDict('ModelTiktokmobileLiveHashtagCatalogResponseDoc', {
+    'extra': NotRequired[Any],
+    'fetched_at': NotRequired[str],
+    'game_hashtag': NotRequired[ModelTiktokmobileLiveHashtag],
+    'game_tag_count': NotRequired[int],
+    'game_tag_list': NotRequired[list[ModelTiktokmobileLiveGameTag]],
+    'hashtags': NotRequired[list[ModelTiktokmobileLiveHashtag]],
+    'host': NotRequired[str],
+    'live_studio_hashtags': NotRequired[list[ModelTiktokmobileLiveHashtag]],
+    'live_voice_hashtags': NotRequired[list[ModelTiktokmobileLiveHashtag]],
+    'status_code': NotRequired[int],
+    'status_msg': NotRequired[str],
+    'third_party_hashtags': NotRequired[list[ModelTiktokmobileLiveHashtag]],
+}, total=False)
+
+ModelTiktokmobileLiveRoomInfoResponseDoc = TypedDict('ModelTiktokmobileLiveRoomInfoResponseDoc', {
+    'cover': NotRequired[Any],
+    'create_time': NotRequired[int],
+    'data': NotRequired[Any],
+    'fetched_at': NotRequired[str],
+    'host': NotRequired[str],
+    'owner': NotRequired[ModelTiktokmobileLiveRoomOwner],
+    'room_id': NotRequired[str],
+    'stats': NotRequired[ModelTiktokmobileLiveRoomStats],
+    'status': NotRequired[int],
+    'stream': NotRequired[ModelTiktokmobileLiveRoomStream],
+    'title': NotRequired[str],
+    'user_count': NotRequired[int],
+    'user_id': NotRequired[str],
+}, total=False)
+
 ModelTiktokmobileLiveSearchResponseDoc = TypedDict('ModelTiktokmobileLiveSearchResponseDoc', {
     'code': NotRequired[int],
     'data': NotRequired[ModelTiktokmobileLiveSearchResponse],
     'msg': NotRequired[str],
+}, total=False)
+
+ModelTiktokmobileLiveTabsResponseDoc = TypedDict('ModelTiktokmobileLiveTabsResponseDoc', {
+    'data': NotRequired[list[Any]],
+    'extra': NotRequired[Any],
+    'status_code': NotRequired[int],
 }, total=False)
 
 ModelTiktokmobileMusicBeatsSongsResponseDoc = TypedDict('ModelTiktokmobileMusicBeatsSongsResponseDoc', {
@@ -64740,9 +69434,40 @@ ModelTiktokmobileMusicBeatsSongsResponseDoc = TypedDict('ModelTiktokmobileMusicB
     'msg': NotRequired[str],
 }, total=False)
 
+ModelTiktokmobileMusicChartResponseDoc = TypedDict('ModelTiktokmobileMusicChartResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelTiktokmobileMusicChartResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelTiktokmobileMusicChoicesResponseDoc = TypedDict('ModelTiktokmobileMusicChoicesResponseDoc', {
+    'extra': NotRequired[Any],
+    'log_pb': NotRequired[Any],
+    'music_list': NotRequired[list[Any]],
+    'status_code': NotRequired[int],
+    'status_msg': NotRequired[str],
+}, total=False)
+
 ModelTiktokmobileMusicCollectionFeedResponseDoc = TypedDict('ModelTiktokmobileMusicCollectionFeedResponseDoc', {
     'code': NotRequired[int],
     'data': NotRequired[ModelTiktokmobileMusicCollectionFeedResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelTiktokmobileMusicCollectionListResponseDoc = TypedDict('ModelTiktokmobileMusicCollectionListResponseDoc', {
+    'cursor': NotRequired[int],
+    'extra': NotRequired[Any],
+    'has_more': NotRequired[bool],
+    'log_pb': NotRequired[Any],
+    'mc_list': NotRequired[list[Any]],
+    'msg': NotRequired[str],
+    'status_code': NotRequired[int],
+    'status_msg': NotRequired[str],
+}, total=False)
+
+ModelTiktokmobileMusicDetailResponseDoc = TypedDict('ModelTiktokmobileMusicDetailResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelTiktokmobileMusicDetailResponse],
     'msg': NotRequired[str],
 }, total=False)
 
@@ -64764,6 +69489,140 @@ ModelTiktokmobileMusicRelatedResponseDoc = TypedDict('ModelTiktokmobileMusicRela
     'msg': NotRequired[str],
 }, total=False)
 
+ModelTiktokmobileMvFeedResponseDoc = TypedDict('ModelTiktokmobileMvFeedResponseDoc', {
+    'aweme_list': NotRequired[list[Any]],
+    'cursor': NotRequired[int],
+    'extra': NotRequired[Any],
+    'fetched_at': NotRequired[str],
+    'has_more': NotRequired[bool],
+    'host': NotRequired[str],
+    'item_count': NotRequired[int],
+    'log_pb': NotRequired[Any],
+    'mv_id': NotRequired[str],
+    'original_aweme_id': NotRequired[str],
+    'page_extra': NotRequired[Any],
+    'top_awemes': NotRequired[list[Any]],
+}, total=False)
+
+ModelTiktokmobileOfflineFeedResponseDoc = TypedDict('ModelTiktokmobileOfflineFeedResponseDoc', {
+    'count': NotRequired[int],
+    'fetched_at': NotRequired[str],
+    'host': NotRequired[str],
+    'items': NotRequired[dict[str, Any]],
+    'note': NotRequired[str],
+    'pull_type': NotRequired[int],
+    'strings': NotRequired[list[str]],
+}, total=False)
+
+ModelTiktokmobilePlaceDetailResponseDoc = TypedDict('ModelTiktokmobilePlaceDetailResponseDoc', {
+    'fetched_at': NotRequired[str],
+    'frame_count': NotRequired[int],
+    'frames': NotRequired[list[Any]],
+    'has_more_posts': NotRequired[bool],
+    'has_more_reviews': NotRequired[bool],
+    'host': NotRequired[str],
+    'layout': NotRequired[dict[str, Any]],
+    'nodes': NotRequired[dict[str, Any]],
+    'page_id': NotRequired[str],
+    'poi_id': NotRequired[str],
+    'post_count': NotRequired[int],
+    'post_cursor': NotRequired[int],
+    'review_count': NotRequired[int],
+    'top_video_count': NotRequired[int],
+}, total=False)
+
+ModelTiktokmobilePlaceInfoResponseDoc = TypedDict('ModelTiktokmobilePlaceInfoResponseDoc', {
+    'address': NotRequired[str],
+    'average_price': NotRequired[str],
+    'category': NotRequired[str],
+    'city_code': NotRequired[str],
+    'claim_store_status': NotRequired[bool],
+    'cover': NotRequired[Any],
+    'favorite_count': NotRequired[int],
+    'fetched_at': NotRequired[str],
+    'host': NotRequired[str],
+    'is_collected': NotRequired[bool],
+    'latitude': NotRequired[str],
+    'longitude': NotRequired[str],
+    'name': NotRequired[str],
+    'no_rating': NotRequired[bool],
+    'opening_hours': NotRequired[str],
+    'opening_status': NotRequired[bool],
+    'parent_poi': NotRequired[Any],
+    'place': NotRequired[dict[str, Any]],
+    'poi_id': NotRequired[str],
+    'region_code': NotRequired[str],
+    'review_count': NotRequired[int],
+    'review_score': NotRequired[float],
+    'review_score_display': NotRequired[str],
+    'share_desc': NotRequired[str],
+    'share_url': NotRequired[str],
+    'video_count': NotRequired[int],
+}, total=False)
+
+ModelTiktokmobilePlaceMediaResponseDoc = TypedDict('ModelTiktokmobilePlaceMediaResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelTiktokmobilePlaceMediaResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelTiktokmobilePlacePhotosResponseDoc = TypedDict('ModelTiktokmobilePlacePhotosResponseDoc', {
+    'categories': NotRequired[list[Any]],
+    'category_tab_info': NotRequired[Any],
+    'fetched_at': NotRequired[str],
+    'host': NotRequired[str],
+    'photo_count': NotRequired[int],
+    'poi_id': NotRequired[str],
+    'title': NotRequired[str],
+}, total=False)
+
+ModelTiktokmobilePlaceReviewsResponseDoc = TypedDict('ModelTiktokmobilePlaceReviewsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelTiktokmobilePlaceReviewsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelTiktokmobilePlaceVideosResponseDoc = TypedDict('ModelTiktokmobilePlaceVideosResponseDoc', {
+    'aweme_list': NotRequired[list[Any]],
+    'cursor': NotRequired[int],
+    'fetched_at': NotRequired[str],
+    'has_more': NotRequired[bool],
+    'host': NotRequired[str],
+    'item_count': NotRequired[int],
+    'poi_id': NotRequired[str],
+    'poi_info': NotRequired[Any],
+}, total=False)
+
+ModelTiktokmobilePlaylistDetailResponseDoc = TypedDict('ModelTiktokmobilePlaylistDetailResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelTiktokmobilePlaylistDetailResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelTiktokmobilePlaylistListResponseDoc = TypedDict('ModelTiktokmobilePlaylistListResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelTiktokmobilePlaylistListResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelTiktokmobilePlaylistVideosResponseDoc = TypedDict('ModelTiktokmobilePlaylistVideosResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelTiktokmobilePlaylistVideosResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelTiktokmobileSearchEffectsResponseDoc = TypedDict('ModelTiktokmobileSearchEffectsResponseDoc', {
+    'bind_effects': NotRequired[Any],
+    'collection': NotRequired[Any],
+    'cursor': NotRequired[int],
+    'effects': NotRequired[list[Any]],
+    'has_more': NotRequired[bool],
+    'search_id': NotRequired[str],
+    'status_code': NotRequired[int],
+    'status_msg': NotRequired[str],
+    'use_hot': NotRequired[bool],
+}, total=False)
+
 ModelTiktokmobileSearchGeneralResponseDoc = TypedDict('ModelTiktokmobileSearchGeneralResponseDoc', {
     'code': NotRequired[int],
     'data': NotRequired[ModelTiktokmobileSearchGeneralResponse],
@@ -64774,6 +69633,20 @@ ModelTiktokmobileSearchMusicResponseDoc = TypedDict('ModelTiktokmobileSearchMusi
     'code': NotRequired[int],
     'data': NotRequired[ModelTiktokmobileSearchMusicResponse],
     'msg': NotRequired[str],
+}, total=False)
+
+ModelTiktokmobileSearchPhotosResponseDoc = TypedDict('ModelTiktokmobileSearchPhotosResponseDoc', {
+    'aweme_list': NotRequired[list[Any]],
+    'backtrace': NotRequired[Any],
+    'cursor': NotRequired[int],
+    'extra': NotRequired[Any],
+    'feedback_type': NotRequired[str],
+    'has_more': NotRequired[int],
+    'log_pb': NotRequired[Any],
+    'response_cropped': NotRequired[int],
+    'search_item_list': NotRequired[list[Any]],
+    'status_code': NotRequired[int],
+    'status_msg': NotRequired[str],
 }, total=False)
 
 ModelTiktokmobileSearchPlaceResponseDoc = TypedDict('ModelTiktokmobileSearchPlaceResponseDoc', {
@@ -64787,6 +69660,20 @@ ModelTiktokmobileSearchPreInfoResponseDoc = TypedDict('ModelTiktokmobileSearchPr
     'host': NotRequired[str],
     'pre_info_id': NotRequired[str],
     'ttl': NotRequired[int],
+}, total=False)
+
+ModelTiktokmobileSearchStreamResponseDoc = TypedDict('ModelTiktokmobileSearchStreamResponseDoc', {
+    'count': NotRequired[int],
+    'cursor': NotRequired[int],
+    'documents': NotRequired[list[Any]],
+    'fetched_at': NotRequired[str],
+    'frame_count': NotRequired[int],
+    'frames': NotRequired[list[Any]],
+    'has_more': NotRequired[bool],
+    'host': NotRequired[str],
+    'keyword': NotRequired[str],
+    'offset': NotRequired[int],
+    'search_id': NotRequired[str],
 }, total=False)
 
 ModelTiktokmobileSearchSuggestionResponseDoc = TypedDict('ModelTiktokmobileSearchSuggestionResponseDoc', {
@@ -64809,10 +69696,104 @@ ModelTiktokmobileSearchUsersResponseDoc = TypedDict('ModelTiktokmobileSearchUser
     'msg': NotRequired[str],
 }, total=False)
 
+ModelTiktokmobileSearchVideosResponseDoc = TypedDict('ModelTiktokmobileSearchVideosResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelTiktokmobileSearchVideosResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
 ModelTiktokmobileStickerDiscoverResponseDoc = TypedDict('ModelTiktokmobileStickerDiscoverResponseDoc', {
     'code': NotRequired[int],
     'data': NotRequired[ModelTiktokmobileStickerDiscoverResponse],
     'msg': NotRequired[str],
+}, total=False)
+
+ModelTiktokmobileTranslationDescriptionResponseDoc = TypedDict('ModelTiktokmobileTranslationDescriptionResponseDoc', {
+    'extra': NotRequired[Any],
+    'fetched_at': NotRequired[str],
+    'format': NotRequired[int],
+    'host': NotRequired[str],
+    'item_id': NotRequired[str],
+    'log_pb': NotRequired[Any],
+    'perf_metrics': NotRequired[Any],
+    'status_code': NotRequired[int],
+    'status_msg': NotRequired[str],
+    'target_lang': NotRequired[str],
+    'text': NotRequired[str],
+    'translated_client_text': NotRequired[Any],
+    'variant': NotRequired[str],
+}, total=False)
+
+ModelTiktokmobileUserFollowersResponseDoc = TypedDict('ModelTiktokmobileUserFollowersResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelTiktokmobileUserFollowersResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelTiktokmobileUserFollowingResponseDoc = TypedDict('ModelTiktokmobileUserFollowingResponseDoc', {
+    'extra': NotRequired[Any],
+    'followings': NotRequired[list[Any]],
+    'has_more': NotRequired[bool],
+    'log_pb': NotRequired[Any],
+    'max_time': NotRequired[int],
+    'min_time': NotRequired[int],
+    'myself_user_id': NotRequired[Any],
+    'next_page_token': NotRequired[str],
+    'offset': NotRequired[int],
+    'rec_has_more': NotRequired[bool],
+    'status_code': NotRequired[int],
+    'status_msg': NotRequired[str],
+    'total': NotRequired[int],
+}, total=False)
+
+ModelTiktokmobileUserOriginalEffectsResponseDoc = TypedDict('ModelTiktokmobileUserOriginalEffectsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelTiktokmobileUserOriginalEffectsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelTiktokmobileUserOriginalMusicResponseDoc = TypedDict('ModelTiktokmobileUserOriginalMusicResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelTiktokmobileUserOriginalMusicResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelTiktokmobileUserPostsResponseDoc = TypedDict('ModelTiktokmobileUserPostsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelTiktokmobileUserPostsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelTiktokmobileUserProfileResponseDoc = TypedDict('ModelTiktokmobileUserProfileResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelTiktokmobileUserProfileResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelTiktokmobileUserRecommendationsResponseDoc = TypedDict('ModelTiktokmobileUserRecommendationsResponseDoc', {
+    'extra': NotRequired[Any],
+    'log_pb': NotRequired[Any],
+    'status_code': NotRequired[int],
+    'status_msg': NotRequired[str],
+    'user_list': NotRequired[list[Any]],
+}, total=False)
+
+ModelTiktokmobileVideoDetailResponseDoc = TypedDict('ModelTiktokmobileVideoDetailResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelTiktokmobileVideoDetailResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelTiktokmobileVideoSubtitlesResponseDoc = TypedDict('ModelTiktokmobileVideoSubtitlesResponseDoc', {
+    'content_source': NotRequired[str],
+    'cue_count': NotRequired[int],
+    'cues': NotRequired[list[ModelTiktokmobileSubtitleCue]],
+    'fetched_at': NotRequired[str],
+    'host': NotRequired[str],
+    'language': NotRequired[str],
+    'variant': NotRequired[str],
+    'video_id': NotRequired[str],
+    'webvtt': NotRequired[str],
 }, total=False)
 
 ModelTimeAuthorArticle = TypedDict('ModelTimeAuthorArticle', {
@@ -72657,6 +77638,7 @@ ModelYoutubeChannelShortsResponse = TypedDict('ModelYoutubeChannelShortsResponse
     'channel_id': NotRequired[str],
     'channel_title': NotRequired[str],
     'channel_url': NotRequired[str],
+    'continuation_token': NotRequired[str],
     'handle': NotRequired[str],
     'shorts': NotRequired[list[ModelYoutubeChannelShort]],
     'thumbnail': NotRequired[str],
@@ -82760,7 +87742,142 @@ DoorDashDoordashStoreReviewsParams = TypedDict('DoorDashDoordashStoreReviewsPara
     'longitude': Required[float],
 }, total=False)
 
-DraftKingsSportsbookDraftkingsEventResponse = ModelDraftkingsEventResponseDoc
+DraftKingsCasinoDraftkingsCasinoDirectoryResponse = ModelCasinoCasinoDirectoryResponseDoc
+DraftKingsCasinoDraftkingsCasinoDirectoryParams = TypedDict('DraftKingsCasinoDraftkingsCasinoDirectoryParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+}, total=False)
+
+DraftKingsCasinoDraftkingsCasinoSlotsGuideResponse = ModelCasinoCasinoSlotsGuideResponseDoc
+DraftKingsCasinoDraftkingsCasinoSlotsGuideParams = TypedDict('DraftKingsCasinoDraftkingsCasinoSlotsGuideParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+}, total=False)
+
+DraftKingsCasinoDraftkingsCasinoSlotsCategoriesResponse = ModelCasinoCasinoSlotsCategoriesResponseDoc
+DraftKingsCasinoDraftkingsCasinoSlotsCategoriesParams = TypedDict('DraftKingsCasinoDraftkingsCasinoSlotsCategoriesParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+}, total=False)
+
+DraftKingsCasinoDraftkingsCasinoCleopatraGuideResponse = ModelCasinoCasinoCleopatraGuideResponseDoc
+DraftKingsCasinoDraftkingsCasinoCleopatraGuideParams = TypedDict('DraftKingsCasinoDraftkingsCasinoCleopatraGuideParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+}, total=False)
+
+DraftKingsCasinoDraftkingsCasinoWheelOfFortuneGuideResponse = ModelCasinoCasinoWheelOfFortuneGuideResponseDoc
+DraftKingsCasinoDraftkingsCasinoWheelOfFortuneGuideParams = TypedDict('DraftKingsCasinoDraftkingsCasinoWheelOfFortuneGuideParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+}, total=False)
+
+DraftKingsDailyFantasySportsDraftkingsDfsGlossaryResponse = ModelDfsDfsGlossaryResponseDoc
+DraftKingsDailyFantasySportsDraftkingsDfsGlossaryParams = TypedDict('DraftKingsDailyFantasySportsDraftkingsDfsGlossaryParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+}, total=False)
+
+DraftKingsDailyFantasySportsDraftkingsDfsGuideResponse = ModelDfsDfsGuideResponseDoc
+DraftKingsDailyFantasySportsDraftkingsDfsGuideParams = TypedDict('DraftKingsDailyFantasySportsDraftkingsDfsGuideParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+}, total=False)
+
+DraftKingsDailyFantasySportsDraftkingsDfsNflBestBallFeaturedContestsResponse = ModelDfsDfsNflbestBallFeaturedContestsResponseDoc
+DraftKingsDailyFantasySportsDraftkingsDfsNflBestBallFeaturedContestsParams = TypedDict('DraftKingsDailyFantasySportsDraftkingsDfsNflBestBallFeaturedContestsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+}, total=False)
+
+DraftKingsDailyFantasySportsDraftkingsDfsRulesAndScoringResponse = ModelDfsDfsRulesAndScoringResponseDoc
+DraftKingsDailyFantasySportsDraftkingsDfsRulesAndScoringParams = TypedDict('DraftKingsDailyFantasySportsDraftkingsDfsRulesAndScoringParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+}, total=False)
+
+DraftKingsDailyFantasySportsDraftkingsDfsSportsResponse = ModelDfsDfsSportsResponseDoc
+DraftKingsDailyFantasySportsDraftkingsDfsSportsParams = TypedDict('DraftKingsDailyFantasySportsDraftkingsDfsSportsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+}, total=False)
+
+DraftKingsPick6DraftkingsPick6RulesResponse = ModelPick6Pick6RulesResponseDoc
+DraftKingsPick6DraftkingsPick6RulesParams = TypedDict('DraftKingsPick6DraftkingsPick6RulesParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+}, total=False)
+
+DraftKingsPick6DraftkingsPick6RulePageResponse = ModelPick6Pick6RuleDetailResponseDoc
+DraftKingsPick6DraftkingsPick6RulePageParams = TypedDict('DraftKingsPick6DraftkingsPick6RulePageParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'slug': Required[Literal['nfl', 'nba', 'nhl', 'pga-full-tournament', 'pga-single-round', 'mlb', 'wnba', 'nascar', 'cfb', 'cbb', 'soccer', 'valorant', 'miscellaneous', 'league-of-legends', 'counter-strike', 'call-of-duty', 'nfl-season-long', 'nba-season-long']],
+}, total=False)
+
+DraftKingsPick6DraftkingsPick6SportsResponse = ModelPick6Pick6SportsResponseDoc
+DraftKingsPick6DraftkingsPick6SportsParams = TypedDict('DraftKingsPick6DraftkingsPick6SportsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+}, total=False)
+
+DraftKingsPredictionsDraftkingsPredictionsAvailabilityResponse = ModelPredictionsPredictionsAvailabilityResponseDoc
+DraftKingsPredictionsDraftkingsPredictionsAvailabilityParams = TypedDict('DraftKingsPredictionsDraftkingsPredictionsAvailabilityParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+}, total=False)
+
+DraftKingsPredictionsDraftkingsPredictionsCategoriesResponse = ModelPredictionsPredictionsCategoriesResponseDoc
+DraftKingsPredictionsDraftkingsPredictionsCategoriesParams = TypedDict('DraftKingsPredictionsDraftkingsPredictionsCategoriesParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+}, total=False)
+
+DraftKingsPredictionsDraftkingsPredictionsRulesResponse = ModelPredictionsPredictionsRulesResponseDoc
+DraftKingsPredictionsDraftkingsPredictionsRulesParams = TypedDict('DraftKingsPredictionsDraftkingsPredictionsRulesParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+}, total=False)
+
+DraftKingsRacingDraftkingsRacingRaceInfoResponse = ModelRacingRacingRaceInfoResponseDoc
+DraftKingsRacingDraftkingsRacingRaceInfoParams = TypedDict('DraftKingsRacingDraftkingsRacingRaceInfoParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'race_id': Required[int],
+}, total=False)
+
+DraftKingsRacingDraftkingsRacingScheduleResponse = ModelRacingRacingScheduleResponseDoc
+DraftKingsRacingDraftkingsRacingScheduleParams = TypedDict('DraftKingsRacingDraftkingsRacingScheduleParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+}, total=False)
+
+DraftKingsRacingDraftkingsRacingTracksResponse = ModelRacingRacingTracksResponseDoc
+DraftKingsRacingDraftkingsRacingTracksParams = TypedDict('DraftKingsRacingDraftkingsRacingTracksParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+}, total=False)
+
+DraftKingsSportsbookDraftkingsEventResponse = ModelSportsbookEventResponseDoc
 DraftKingsSportsbookDraftkingsEventParams = TypedDict('DraftKingsSportsbookDraftkingsEventParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -82768,7 +87885,7 @@ DraftKingsSportsbookDraftkingsEventParams = TypedDict('DraftKingsSportsbookDraft
     'event_id': Required[str],
 }, total=False)
 
-DraftKingsSportsbookDraftkingsEventContextResponse = ModelDraftkingsEventContextResponseDoc
+DraftKingsSportsbookDraftkingsEventContextResponse = ModelSportsbookEventContextResponseDoc
 DraftKingsSportsbookDraftkingsEventContextParams = TypedDict('DraftKingsSportsbookDraftkingsEventContextParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -82776,7 +87893,7 @@ DraftKingsSportsbookDraftkingsEventContextParams = TypedDict('DraftKingsSportsbo
     'event_id': Required[str],
 }, total=False)
 
-DraftKingsSportsbookDraftkingsEventMarketsResponse = ModelDraftkingsEventMarketsResponseDoc
+DraftKingsSportsbookDraftkingsEventMarketsResponse = ModelSportsbookEventMarketsResponseDoc
 DraftKingsSportsbookDraftkingsEventMarketsParams = TypedDict('DraftKingsSportsbookDraftkingsEventMarketsParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -82785,14 +87902,14 @@ DraftKingsSportsbookDraftkingsEventMarketsParams = TypedDict('DraftKingsSportsbo
     'subcategory_id': Required[str],
 }, total=False)
 
-DraftKingsSportsbookDraftkingsFeaturedLeaguesResponse = ModelDraftkingsFeaturedLeaguesResponseDoc
+DraftKingsSportsbookDraftkingsFeaturedLeaguesResponse = ModelSportsbookFeaturedLeaguesResponseDoc
 DraftKingsSportsbookDraftkingsFeaturedLeaguesParams = TypedDict('DraftKingsSportsbookDraftkingsFeaturedLeaguesParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
     '_headers': NotRequired[Mapping[str, str]],
 }, total=False)
 
-DraftKingsSportsbookDraftkingsFuturesResponse = ModelDraftkingsFuturesResponseDoc
+DraftKingsSportsbookDraftkingsFuturesResponse = ModelSportsbookFuturesResponseDoc
 DraftKingsSportsbookDraftkingsFuturesParams = TypedDict('DraftKingsSportsbookDraftkingsFuturesParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -82801,7 +87918,7 @@ DraftKingsSportsbookDraftkingsFuturesParams = TypedDict('DraftKingsSportsbookDra
     'subcategory_id': Required[str],
 }, total=False)
 
-DraftKingsSportsbookDraftkingsLeagueEventsResponse = ModelDraftkingsLeagueEventsResponseDoc
+DraftKingsSportsbookDraftkingsLeagueEventsResponse = ModelSportsbookLeagueEventsResponseDoc
 DraftKingsSportsbookDraftkingsLeagueEventsParams = TypedDict('DraftKingsSportsbookDraftkingsLeagueEventsParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -82809,21 +87926,21 @@ DraftKingsSportsbookDraftkingsLeagueEventsParams = TypedDict('DraftKingsSportsbo
     'league_id': Required[str],
 }, total=False)
 
-DraftKingsSportsbookDraftkingsLeaguesResponse = ModelDraftkingsLeaguesResponseDoc
+DraftKingsSportsbookDraftkingsLeaguesResponse = ModelSportsbookLeaguesResponseDoc
 DraftKingsSportsbookDraftkingsLeaguesParams = TypedDict('DraftKingsSportsbookDraftkingsLeaguesParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
     '_headers': NotRequired[Mapping[str, str]],
 }, total=False)
 
-DraftKingsSportsbookDraftkingsLiveResponse = ModelDraftkingsLiveResponseDoc
+DraftKingsSportsbookDraftkingsLiveResponse = ModelSportsbookLiveResponseDoc
 DraftKingsSportsbookDraftkingsLiveParams = TypedDict('DraftKingsSportsbookDraftkingsLiveParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
     '_headers': NotRequired[Mapping[str, str]],
 }, total=False)
 
-DraftKingsSportsbookDraftkingsOddsResponse = ModelDraftkingsOddsResponseDoc
+DraftKingsSportsbookDraftkingsOddsResponse = ModelSportsbookOddsResponseDoc
 DraftKingsSportsbookDraftkingsOddsParams = TypedDict('DraftKingsSportsbookDraftkingsOddsParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -82831,14 +87948,14 @@ DraftKingsSportsbookDraftkingsOddsParams = TypedDict('DraftKingsSportsbookDraftk
     'league_id': Required[str],
 }, total=False)
 
-DraftKingsSportsbookDraftkingsQuickLinksResponse = ModelDraftkingsQuickLinksResponseDoc
+DraftKingsSportsbookDraftkingsQuickLinksResponse = ModelSportsbookQuickLinksResponseDoc
 DraftKingsSportsbookDraftkingsQuickLinksParams = TypedDict('DraftKingsSportsbookDraftkingsQuickLinksParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
     '_headers': NotRequired[Mapping[str, str]],
 }, total=False)
 
-DraftKingsSportsbookDraftkingsTeamResponse = ModelDraftkingsTeamResponseDoc
+DraftKingsSportsbookDraftkingsTeamResponse = ModelSportsbookTeamResponseDoc
 DraftKingsSportsbookDraftkingsTeamParams = TypedDict('DraftKingsSportsbookDraftkingsTeamParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -82848,7 +87965,7 @@ DraftKingsSportsbookDraftkingsTeamParams = TypedDict('DraftKingsSportsbookDraftk
     'slug': Required[str],
 }, total=False)
 
-DraftKingsSportsbookDraftkingsTeamsResponse = ModelDraftkingsTeamsResponseDoc
+DraftKingsSportsbookDraftkingsTeamsResponse = ModelSportsbookTeamsResponseDoc
 DraftKingsSportsbookDraftkingsTeamsParams = TypedDict('DraftKingsSportsbookDraftkingsTeamsParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
@@ -83847,6 +88964,741 @@ FanaticsLiveFanaticsliveInstantRipsParams = TypedDict('FanaticsLiveFanaticsliveI
     '_timeout': NotRequired[float],
     '_headers': NotRequired[Mapping[str, str]],
     'id': Required[str],
+}, total=False)
+
+FanDuelFanduelCasinoCategoriesResponse = ModelFanduelCasinoCategoriesResponseDoc
+FanDuelFanduelCasinoCategoriesParams = TypedDict('FanDuelFanduelCasinoCategoriesParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'region': NotRequired[Literal['mi', 'on']],
+}, total=False)
+
+FanDuelFanduelCasinoCategoryResponse = ModelFanduelCasinoCategoryResponseDoc
+FanDuelFanduelCasinoCategoryParams = TypedDict('FanDuelFanduelCasinoCategoryParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'region': NotRequired[Literal['mi', 'on']],
+    'category': Required[Literal['all-games', 'new', 'slots', 'double-your-bet-category', 'jackpots', 'daily-jackpots', 'hot-slots', 'classic-reels-category', 'bonus-buy-category', 'high-limit-category', 'spooky-slots-category', 'exclusives', 'pick-play', 'arcade', 'blackjack', 'baccarat', 'roulette', 'table', 'livecasino', 'online-casino-favorites', 'explore-videos', 'motorcity-favorites', 'fallsview-favourites-category', 'the-wolf-den-category', 'sports-central']],
+    'q': NotRequired[str],
+    'provider': NotRequired[str],
+    'badge': NotRequired[str],
+    'limit': NotRequired[int],
+    'offset': NotRequired[int],
+}, total=False)
+
+FanDuelFanduelCasinoGameResponse = ModelFanduelCasinoGameResponseDoc
+FanDuelFanduelCasinoGameParams = TypedDict('FanDuelFanduelCasinoGameParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'region': NotRequired[Literal['mi', 'on']],
+    'game': Required[str],
+}, total=False)
+
+FanDuelFanduelRacingCarryoverPoolsResponse = ModelFanduelRacingCarryoverResponseDoc
+FanDuelFanduelRacingCarryoverPoolsParams = TypedDict('FanDuelFanduelRacingCarryoverPoolsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'status': NotRequired[Literal['O', 'IC', 'SK', 'RO']],
+    'track': NotRequired[str],
+    'page': NotRequired[int],
+    'limit': NotRequired[int],
+}, total=False)
+
+FanDuelFanduelRacingFiltersResponse = ModelFanduelRacingFiltersResponseDoc
+FanDuelFanduelRacingFiltersParams = TypedDict('FanDuelFanduelRacingFiltersParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+}, total=False)
+
+FanDuelFanduelRacingHorseResponse = ModelFanduelRacingHorseResponseDoc
+FanDuelFanduelRacingHorseParams = TypedDict('FanDuelFanduelRacingHorseParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': Required[str],
+    'page': NotRequired[int],
+    'limit': NotRequired[int],
+}, total=False)
+
+FanDuelFanduelRacingPastRaceResponse = ModelFanduelRacingPastRaceResponseDoc
+FanDuelFanduelRacingPastRaceParams = TypedDict('FanDuelFanduelRacingPastRaceParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'date': Required[str],
+    'track': Required[str],
+    'number': Required[str],
+}, total=False)
+
+FanDuelFanduelRacingPastRacesResponse = ModelFanduelRacingPastRacesResponseDoc
+FanDuelFanduelRacingPastRacesParams = TypedDict('FanDuelFanduelRacingPastRacesParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'date': Required[str],
+    'track': NotRequired[str],
+    'page': NotRequired[int],
+    'limit': NotRequired[int],
+}, total=False)
+
+FanDuelFanduelRacingPastTracksResponse = ModelFanduelRacingPastTracksResponseDoc
+FanDuelFanduelRacingPastTracksParams = TypedDict('FanDuelFanduelRacingPastTracksParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'date': NotRequired[str],
+    'track': NotRequired[str],
+    'page': NotRequired[int],
+    'limit': NotRequired[int],
+}, total=False)
+
+FanDuelFanduelRacingRaceResponse = ModelFanduelRacingRaceResponseDoc
+FanDuelFanduelRacingRaceParams = TypedDict('FanDuelFanduelRacingRaceParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'track': Required[str],
+    'number': Required[str],
+    'include': NotRequired[Literal['handicapping', 'timeform', 'pool_grids']],
+}, total=False)
+
+FanDuelFanduelRacingRacesResponse = ModelFanduelRacingRacesResponseDoc
+FanDuelFanduelRacingRacesParams = TypedDict('FanDuelFanduelRacingRacesParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'track': NotRequired[str],
+    'country': NotRequired[str],
+    'exclude_country': NotRequired[str],
+    'race_type': NotRequired[Literal['T', 'H', 'Q', 'L']],
+    'status': NotRequired[Literal['O', 'IC', 'SK', 'RO']],
+    'open': NotRequired[bool],
+    'within_minutes': NotRequired[int],
+    'sort': NotRequired[Literal['mtp', 'post_time', 'race_number']],
+    'order': NotRequired[Literal['asc', 'desc']],
+    'page': NotRequired[int],
+    'limit': NotRequired[int],
+}, total=False)
+
+FanDuelFanduelRacingResultsResponse = ModelFanduelRacingResultsResponseDoc
+FanDuelFanduelRacingResultsParams = TypedDict('FanDuelFanduelRacingResultsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'track': NotRequired[str],
+    'country': NotRequired[str],
+    'exclude_country': NotRequired[str],
+    'race_type': NotRequired[Literal['T', 'H', 'Q', 'L']],
+    'page': NotRequired[int],
+    'limit': NotRequired[int],
+}, total=False)
+
+FanDuelFanduelRacingSearchResponse = ModelFanduelRacingSearchResponseDoc
+FanDuelFanduelRacingSearchParams = TypedDict('FanDuelFanduelRacingSearchParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'q': Required[str],
+    'type': NotRequired[Literal['runner', 'jockey', 'trainer', 'owner']],
+    'sort': NotRequired[Literal['name', 'last_event']],
+    'order': NotRequired[Literal['asc', 'desc']],
+    'page': NotRequired[int],
+    'limit': NotRequired[int],
+}, total=False)
+
+FanDuelFanduelRacingTrackResponse = ModelFanduelRacingTrackResponseDoc
+FanDuelFanduelRacingTrackParams = TypedDict('FanDuelFanduelRacingTrackParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'code': Required[str],
+}, total=False)
+
+FanDuelFanduelRacingTracksResponse = ModelFanduelRacingTracksResponseDoc
+FanDuelFanduelRacingTracksParams = TypedDict('FanDuelFanduelRacingTracksParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'country': NotRequired[str],
+    'exclude_country': NotRequired[str],
+    'race_type': NotRequired[Literal['T', 'H', 'Q', 'L']],
+    'code': NotRequired[str],
+    'finished': NotRequired[bool],
+    'featured': NotRequired[bool],
+    'sort': NotRequired[Literal['name', 'mtp', 'wagerable_mtp', 'ivr']],
+    'order': NotRequired[Literal['asc', 'desc']],
+    'page': NotRequired[int],
+    'limit': NotRequired[int],
+}, total=False)
+
+FanDuelFanduelRacingWagerTypesResponse = ModelFanduelRacingWagerTypesResponseDoc
+FanDuelFanduelRacingWagerTypesParams = TypedDict('FanDuelFanduelRacingWagerTypesParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+}, total=False)
+
+FanDuelFanduelResearchResponse = ModelFanduelResearchResponseDoc
+FanDuelFanduelResearchParams = TypedDict('FanDuelFanduelResearchParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+}, total=False)
+
+FanDuelFanduelResearchArticleResponse = ModelFanduelResearchArticleResponseDoc
+FanDuelFanduelResearchArticleParams = TypedDict('FanDuelFanduelResearchArticleParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'article': Required[str],
+}, total=False)
+
+FanDuelFanduelResearchArticlesResponse = ModelFanduelResearchArticlesResponseDoc
+FanDuelFanduelResearchArticlesParams = TypedDict('FanDuelFanduelResearchArticlesParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'sport': NotRequired[Literal['casino', 'nascar', 'ncaab', 'f1', 'ufc', 'boxing', 'ncaaf', 'womenssoccer', 'tv-and-podcast', 'nba', 'pga', 'tennis', 'nhl', 'mma', 'soccer', 'fanduel-sportsbook-promo-codes', 'sports-betting-101', 'horse-racing', 'wnba', 'predicts', 'mlb', 'canada', 'nfl']],
+    'exclude_sport': NotRequired[str],
+    'sub_category': NotRequired[str],
+    'team': NotRequired[int],
+    'player': NotRequired[int],
+    'author': NotRequired[str],
+    'hero_type': NotRequired[Literal['IMAGE', 'JWPLAYER']],
+    'published_after': NotRequired[str],
+    'published_before': NotRequired[str],
+    'hide_deprioritized': NotRequired[bool],
+    'limit': NotRequired[int],
+    'cursor': NotRequired[str],
+}, total=False)
+
+FanDuelFanduelResearchAuthorResponse = ModelFanduelResearchAuthorResponseDoc
+FanDuelFanduelResearchAuthorParams = TypedDict('FanDuelFanduelResearchAuthorParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'author': Required[str],
+}, total=False)
+
+FanDuelFanduelResearchAuthorsResponse = ModelFanduelResearchAuthorsResponseDoc
+FanDuelFanduelResearchAuthorsParams = TypedDict('FanDuelFanduelResearchAuthorsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'sport': NotRequired[Literal['casino', 'nascar', 'ncaab', 'f1', 'ufc', 'boxing', 'ncaaf', 'womenssoccer', 'tv-and-podcast', 'nba', 'pga', 'tennis', 'nhl', 'mma', 'soccer', 'fanduel-sportsbook-promo-codes', 'sports-betting-101', 'horse-racing', 'wnba', 'predicts', 'mlb', 'canada', 'nfl']],
+    'limit': NotRequired[int],
+    'cursor': NotRequired[str],
+}, total=False)
+
+FanDuelFanduelResearchFeaturedArticlesResponse = ModelFanduelResearchFeaturedArticlesResponseDoc
+FanDuelFanduelResearchFeaturedArticlesParams = TypedDict('FanDuelFanduelResearchFeaturedArticlesParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'sport': Required[Literal['casino', 'nascar', 'ncaab', 'f1', 'ufc', 'boxing', 'ncaaf', 'womenssoccer', 'tv-and-podcast', 'nba', 'pga', 'tennis', 'nhl', 'mma', 'soccer', 'fanduel-sportsbook-promo-codes', 'sports-betting-101', 'horse-racing', 'wnba', 'predicts', 'mlb', 'canada', 'nfl']],
+}, total=False)
+
+FanDuelFanduelResearchFixturesResponse = ModelFanduelResearchFixturesResponseDoc
+FanDuelFanduelResearchFixturesParams = TypedDict('FanDuelFanduelResearchFixturesParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'sport': NotRequired[Literal['nba', 'nfl', 'nhl', 'mlb']],
+}, total=False)
+
+FanDuelFanduelResearchNflScheduleResponse = ModelFanduelResearchNflScheduleResponseDoc
+FanDuelFanduelResearchNflScheduleParams = TypedDict('FanDuelFanduelResearchNflScheduleParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'week': Required[int],
+    'season_type': NotRequired[Literal['PRE', 'REGULAR', 'POST']],
+}, total=False)
+
+FanDuelFanduelResearchPlayerNewsResponse = ModelFanduelResearchPlayerNewsResponseDoc
+FanDuelFanduelResearchPlayerNewsParams = TypedDict('FanDuelFanduelResearchPlayerNewsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'sport': Required[Literal['nfl', 'nba', 'mlb', 'nhl']],
+    'news_type': NotRequired[Literal['INJURY', 'RECAP', 'TRANSACTION', 'LINEUP', 'GAME_UPDATE', 'OUTLOOK']],
+    'team': NotRequired[int],
+    'player': NotRequired[int],
+    'position': NotRequired[Literal['G', 'F', 'C', 'W', 'D', 'QB', 'DB', 'DL', 'K', 'LB', 'OL', 'P', 'RB', 'TE', 'WR', 'IF', 'OF', 'DH']],
+    'include_non_primary': NotRequired[bool],
+    'limit': NotRequired[int],
+    'cursor': NotRequired[str],
+}, total=False)
+
+FanDuelFanduelResearchQuickPicksDailyResponse = ModelFanduelQuickPicksDailyResponseDoc
+FanDuelFanduelResearchQuickPicksDailyParams = TypedDict('FanDuelFanduelResearchQuickPicksDailyParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'cursor': NotRequired[str],
+}, total=False)
+
+FanDuelFanduelResearchProjectionSlatesResponse = ModelFanduelResearchProjectionSlatesResponseDoc
+FanDuelFanduelResearchProjectionSlatesParams = TypedDict('FanDuelFanduelResearchProjectionSlatesParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'sport': Required[Literal['mlb', 'nba', 'nfl', 'nhl', 'golf']],
+    'date': NotRequired[str],
+    'week': NotRequired[int],
+    'season': NotRequired[int],
+}, total=False)
+
+FanDuelFanduelResearchProjectionTablesResponse = ModelFanduelResearchProjectionTablesResponseDoc
+FanDuelFanduelResearchProjectionTablesParams = TypedDict('FanDuelFanduelResearchProjectionTablesParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'sport': NotRequired[Literal['mlb', 'nba', 'nfl', 'nhl', 'golf']],
+}, total=False)
+
+FanDuelFanduelResearchProjectionsResponse = ModelFanduelResearchProjectionsResponseDoc
+FanDuelFanduelResearchProjectionsParams = TypedDict('FanDuelFanduelResearchProjectionsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'sport': Required[Literal['mlb', 'nba', 'nfl', 'nhl', 'golf']],
+    'type': Required[Literal['DAILY', 'WEEKLY', 'YEARLY', 'REMAINING', 'PPR', 'SEASON_STATS']],
+    'position': NotRequired[Literal['batters', 'pitchers', 'c', '1b', '2b', '3b', 'ss', 'of', 'sp', 'rp', 'qb', 'rb', 'wr', 'te', 'flex', 'k', 'defense', 'all', 'pg', 'sg', 'guards', 'sf', 'pf', 'forwards', 'centers', 'skaters', 'goalies', 'wingers', 'd', 'idp']],
+    'scope': NotRequired[Literal['TOTAL', 'PER_GAME']],
+    'slate_id': NotRequired[str],
+    'event_id': NotRequired[str],
+    'date': NotRequired[str],
+    'week': NotRequired[int],
+    'season': NotRequired[int],
+    'page': NotRequired[int],
+    'limit': NotRequired[int],
+}, total=False)
+
+FanDuelFanduelResearchSportsResponse = ModelFanduelResearchSportsResponseDoc
+FanDuelFanduelResearchSportsParams = TypedDict('FanDuelFanduelResearchSportsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'sport': NotRequired[Literal['casino', 'nascar', 'ncaab', 'f1', 'ufc', 'boxing', 'ncaaf', 'womenssoccer', 'tv-and-podcast', 'nba', 'pga', 'tennis', 'nhl', 'mma', 'soccer', 'fanduel-sportsbook-promo-codes', 'sports-betting-101', 'horse-racing', 'wnba', 'predicts', 'mlb', 'canada', 'nfl']],
+}, total=False)
+
+FanDuelFanduelResearchSubCategoriesResponse = ModelFanduelResearchSubCategoriesResponseDoc
+FanDuelFanduelResearchSubCategoriesParams = TypedDict('FanDuelFanduelResearchSubCategoriesParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+}, total=False)
+
+FanDuelFanduelSportsbookAutocompleteResponse = ModelFanduelSportsbookAutocompleteResponseDoc
+FanDuelFanduelSportsbookAutocompleteParams = TypedDict('FanDuelFanduelSportsbookAutocompleteParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'q': Required[str],
+    'limit': NotRequired[int],
+}, total=False)
+
+FanDuelFanduelSportsbookBuilderResponse = ModelFanduelSportsbookBuilderResponseDoc
+FanDuelFanduelSportsbookBuilderParams = TypedDict('FanDuelFanduelSportsbookBuilderParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'event_id': Required[int],
+    'experience': NotRequired[Literal['yourway', 'head-to-head', 'player-combos', 'bullseye', 'player-podium', 'or-bets']],
+    'state': NotRequired[str],
+}, total=False)
+
+FanDuelFanduelSportsbookBuilderEventsResponse = ModelFanduelSportsbookBuilderEventsResponseDoc
+FanDuelFanduelSportsbookBuilderEventsParams = TypedDict('FanDuelFanduelSportsbookBuilderEventsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'experience': NotRequired[Literal['yourway', 'head-to-head', 'player-combos', 'bullseye', 'player-podium', 'or-bets']],
+    'state': NotRequired[str],
+}, total=False)
+
+FanDuelFanduelSportsbookBuilderQuotesResponse = ModelFanduelSportsbookChoiceQuotesResponseDoc
+FanDuelFanduelSportsbookBuilderQuotesParams = TypedDict('FanDuelFanduelSportsbookBuilderQuotesParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'ramp_event_id': Required[int],
+    'choice_id': Required[list[str]],
+    'state': NotRequired[str],
+}, total=False)
+
+FanDuelFanduelSportsbookCompetitionResponse = ModelFanduelSportsbookPageResponseDoc
+FanDuelFanduelSportsbookCompetitionParams = TypedDict('FanDuelFanduelSportsbookCompetitionParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'event_type_id': Required[Literal['6423', '1', '7522', '3', '7511', '7524', '2', '26420387', '2593174', '3503', '6', '5', '4', '8', '1477', '6422', '468328', '28608997', '998917', '4726642', '10', '2378961']],
+    'competition_id': Required[int],
+    'state': NotRequired[Literal['ar', 'az', 'co', 'ct', 'dc', 'ia', 'il', 'in', 'ks', 'ky', 'la', 'ma', 'md', 'mi', 'mo', 'mr', 'nc', 'nj', 'ny', 'oh', 'on', 'pa', 'pr', 'tn', 'va', 'vt', 'wv', 'wy']],
+    'tab': NotRequired[str],
+    'market_type': NotRequired[str],
+    'exclude_markets': NotRequired[bool],
+}, total=False)
+
+FanDuelFanduelSportsbookEventResponse = ModelFanduelSportsbookEventResponseDoc
+FanDuelFanduelSportsbookEventParams = TypedDict('FanDuelFanduelSportsbookEventParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'event_id': Required[int],
+    'state': NotRequired[Literal['ar', 'az', 'co', 'ct', 'dc', 'ia', 'il', 'in', 'ks', 'ky', 'la', 'ma', 'md', 'mi', 'mo', 'mr', 'nc', 'nj', 'ny', 'oh', 'on', 'pa', 'pr', 'tn', 'va', 'vt', 'wv', 'wy']],
+    'tab': NotRequired[str],
+    'market_type': NotRequired[str],
+}, total=False)
+
+FanDuelFanduelSportsbookEventBoxScoreResponse = ModelFanduelSportsbookBoxScoreResponseDoc
+FanDuelFanduelSportsbookEventBoxScoreParams = TypedDict('FanDuelFanduelSportsbookEventBoxScoreParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'event_id': Required[int],
+}, total=False)
+
+FanDuelFanduelSportsbookEventPlayByPlayResponse = ModelFanduelSportsbookPlayByPlayResponseDoc
+FanDuelFanduelSportsbookEventPlayByPlayParams = TypedDict('FanDuelFanduelSportsbookEventPlayByPlayParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'event_id': Required[int],
+    'current': NotRequired[bool],
+}, total=False)
+
+FanDuelFanduelSportsbookEventPlayersResponse = ModelFanduelSportsbookEventPlayersResponseDoc
+FanDuelFanduelSportsbookEventPlayersParams = TypedDict('FanDuelFanduelSportsbookEventPlayersParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'event_id': Required[int],
+}, total=False)
+
+FanDuelFanduelSportsbookEventScoreResponse = ModelFanduelSportsbookEventScoreResponseDoc
+FanDuelFanduelSportsbookEventScoreParams = TypedDict('FanDuelFanduelSportsbookEventScoreParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'event_id': Required[int],
+}, total=False)
+
+FanDuelFanduelSportsbookEventStatsResponse = ModelFanduelSportsbookEventStatsResponseDoc
+FanDuelFanduelSportsbookEventStatsParams = TypedDict('FanDuelFanduelSportsbookEventStatsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'event_id': Required[int],
+}, total=False)
+
+FanDuelFanduelSportsbookEventsStatusResponse = ModelFanduelSportsbookEventsStatusResponseDoc
+FanDuelFanduelSportsbookEventsStatusParams = TypedDict('FanDuelFanduelSportsbookEventsStatusParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'event_id': Required[list[str]],
+    'state': NotRequired[str],
+}, total=False)
+
+FanDuelFanduelSportsbookHomeResponse = ModelFanduelSportsbookPageResponseDoc
+FanDuelFanduelSportsbookHomeParams = TypedDict('FanDuelFanduelSportsbookHomeParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'state': NotRequired[Literal['ar', 'az', 'co', 'ct', 'dc', 'ia', 'il', 'in', 'ks', 'ky', 'la', 'ma', 'md', 'mi', 'mo', 'mr', 'nc', 'nj', 'ny', 'oh', 'on', 'pa', 'pr', 'tn', 'va', 'vt', 'wv', 'wy']],
+    'tab': NotRequired[str],
+    'competition_id': NotRequired[int],
+    'market_type': NotRequired[str],
+    'exclude_markets': NotRequired[bool],
+}, total=False)
+
+FanDuelFanduelSportsbookLeagueResponse = ModelFanduelSportsbookPageResponseDoc
+FanDuelFanduelSportsbookLeagueParams = TypedDict('FanDuelFanduelSportsbookLeagueParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'custom_page_id': Required[str],
+    'state': NotRequired[Literal['ar', 'az', 'co', 'ct', 'dc', 'ia', 'il', 'in', 'ks', 'ky', 'la', 'ma', 'md', 'mi', 'mo', 'mr', 'nc', 'nj', 'ny', 'oh', 'on', 'pa', 'pr', 'tn', 'va', 'vt', 'wv', 'wy']],
+    'tab': NotRequired[str],
+    'competition_id': NotRequired[int],
+    'market_type': NotRequired[str],
+    'exclude_markets': NotRequired[bool],
+}, total=False)
+
+FanDuelFanduelSportsbookLiveResponse = ModelFanduelSportsbookPageResponseDoc
+FanDuelFanduelSportsbookLiveParams = TypedDict('FanDuelFanduelSportsbookLiveParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'event_type_id': NotRequired[Literal['6423', '1', '7522', '3', '7511', '7524', '2', '26420387', '2593174', '3503', '6', '5', '4', '8', '1477', '6422', '468328', '28608997', '998917', '4726642', '10', '2378961']],
+    'state': NotRequired[Literal['ar', 'az', 'co', 'ct', 'dc', 'ia', 'il', 'in', 'ks', 'ky', 'la', 'ma', 'md', 'mi', 'mo', 'mr', 'nc', 'nj', 'ny', 'oh', 'on', 'pa', 'pr', 'tn', 'va', 'vt', 'wv', 'wy']],
+    'market_type': NotRequired[str],
+    'exclude_markets': NotRequired[bool],
+}, total=False)
+
+FanDuelFanduelSportsbookLiveCountResponse = ModelFanduelSportsbookLiveCountResponseDoc
+FanDuelFanduelSportsbookLiveCountParams = TypedDict('FanDuelFanduelSportsbookLiveCountParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'state': NotRequired[str],
+}, total=False)
+
+FanDuelFanduelSportsbookLiveDataResponse = ModelFanduelSportsbookLiveDataResponseDoc
+FanDuelFanduelSportsbookLiveDataParams = TypedDict('FanDuelFanduelSportsbookLiveDataParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'event_id': Required[str],
+}, total=False)
+
+FanDuelFanduelSportsbookLiveScoresResponse = ModelFanduelSportsbookLiveScoresResponseDoc
+FanDuelFanduelSportsbookLiveScoresParams = TypedDict('FanDuelFanduelSportsbookLiveScoresParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'event_id': Required[list[str]],
+    'state': NotRequired[str],
+}, total=False)
+
+FanDuelFanduelSportsbookMarketPricesResponse = ModelFanduelSportsbookMarketPricesResponseDoc
+FanDuelFanduelSportsbookMarketPricesParams = TypedDict('FanDuelFanduelSportsbookMarketPricesParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'market_id': Required[str],
+    'state': NotRequired[Literal['ar', 'az', 'co', 'ct', 'dc', 'ia', 'il', 'in', 'ks', 'ky', 'la', 'ma', 'md', 'mi', 'mo', 'mr', 'nc', 'nj', 'ny', 'oh', 'on', 'pa', 'pr', 'tn', 'va', 'vt', 'wv', 'wy']],
+}, total=False)
+
+FanDuelFanduelSportsbookParlaysResponse = ModelFanduelSportsbookParlaysResponseDoc
+FanDuelFanduelSportsbookParlaysParams = TypedDict('FanDuelFanduelSportsbookParlaysParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'view': NotRequired[Literal['popular', 'all', 'next-to-start', 'event']],
+    'event_id': NotRequired[int],
+    'type': NotRequired[Literal['PARLAY', 'SGP', 'SGP_PLUS']],
+    'event_type_id': NotRequired[Literal['6423', '1', '7522', '3', '7511', '7524', '2', '26420387', '2593174', '3503', '6', '5', '4', '8', '1477', '6422', '468328', '28608997', '998917', '4726642', '10', '2378961']],
+    'competition_id': NotRequired[str],
+    'min_odds': NotRequired[float],
+    'max_odds': NotRequired[float],
+    'state': NotRequired[Literal['ar', 'az', 'co', 'ct', 'dc', 'ia', 'il', 'in', 'ks', 'ky', 'la', 'ma', 'md', 'mi', 'mo', 'mr', 'nc', 'nj', 'ny', 'oh', 'on', 'pa', 'pr', 'tn', 'va', 'vt', 'wv', 'wy']],
+}, total=False)
+
+FanDuelFanduelSportsbookPlayerResponse = ModelFanduelSportsbookPlayerResponseDoc
+FanDuelFanduelSportsbookPlayerParams = TypedDict('FanDuelFanduelSportsbookPlayerParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'league': Required[Literal['nfl', 'nba']],
+    'player': Required[str],
+}, total=False)
+
+FanDuelFanduelSportsbookPlayerNewsResponse = ModelFanduelSportsbookPlayerNewsResponseDoc
+FanDuelFanduelSportsbookPlayerNewsParams = TypedDict('FanDuelFanduelSportsbookPlayerNewsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'league': Required[Literal['nfl', 'nba']],
+    'player': Required[str],
+    'cursor': NotRequired[str],
+    'limit': NotRequired[int],
+}, total=False)
+
+FanDuelFanduelSportsbookPlayerPropsResponse = ModelFanduelSportsbookPlayerPropsResponseDoc
+FanDuelFanduelSportsbookPlayerPropsParams = TypedDict('FanDuelFanduelSportsbookPlayerPropsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'league': Required[Literal['nfl', 'nba']],
+    'player': Required[str],
+}, total=False)
+
+FanDuelFanduelSportsbookPlayerStatsResponse = ModelFanduelSportsbookPlayerStatsResponseDoc
+FanDuelFanduelSportsbookPlayerStatsParams = TypedDict('FanDuelFanduelSportsbookPlayerStatsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'league': Required[Literal['nfl', 'nba']],
+    'player': Required[str],
+}, total=False)
+
+FanDuelFanduelSportsbookPlayersResponse = ModelFanduelSportsbookPlayersResponseDoc
+FanDuelFanduelSportsbookPlayersParams = TypedDict('FanDuelFanduelSportsbookPlayersParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'league': Required[Literal['nfl', 'nba']],
+    'q': NotRequired[str],
+    'limit': NotRequired[int],
+    'offset': NotRequired[int],
+}, total=False)
+
+FanDuelFanduelSportsbookPromotionsResponse = ModelFanduelSportsbookPromotionsResponseDoc
+FanDuelFanduelSportsbookPromotionsParams = TypedDict('FanDuelFanduelSportsbookPromotionsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'context': NotRequired[Literal['home', 'league', 'sport']],
+    'custom_page_id': NotRequired[str],
+    'event_type_id': NotRequired[Literal['6423', '1', '7522', '3', '7511', '7524', '2', '26420387', '2593174', '3503', '6', '5', '4', '8', '1477', '6422', '468328', '28608997', '998917', '4726642', '10', '2378961']],
+    'tag': NotRequired[str],
+    'state': NotRequired[Literal['ar', 'az', 'co', 'ct', 'dc', 'ia', 'il', 'in', 'ks', 'ky', 'la', 'ma', 'md', 'mi', 'mo', 'mr', 'nc', 'nj', 'ny', 'oh', 'on', 'pa', 'pr', 'tn', 'va', 'vt', 'wv', 'wy']],
+}, total=False)
+
+FanDuelFanduelSportsbookScheduleResponse = ModelFanduelSportsbookLeagueScheduleResponseDoc
+FanDuelFanduelSportsbookScheduleParams = TypedDict('FanDuelFanduelSportsbookScheduleParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'league': Required[Literal['nfl', 'nba', 'mlb', 'college-football']],
+    'week': NotRequired[str],
+    'date': NotRequired[str],
+    'end_date': NotRequired[str],
+}, total=False)
+
+FanDuelFanduelSportsbookSearchResponse = ModelFanduelSportsbookSearchResponseDoc
+FanDuelFanduelSportsbookSearchParams = TypedDict('FanDuelFanduelSportsbookSearchParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'q': Required[str],
+    'type': NotRequired[Literal['all', 'event', 'competition']],
+    'event_type_id': NotRequired[Literal['6423', '1', '7522', '3', '7511', '7524', '2', '26420387', '2593174', '3503', '6', '5', '4', '8', '1477', '6422', '468328', '28608997', '998917', '4726642', '10', '2378961']],
+    'limit': NotRequired[int],
+    'state': NotRequired[Literal['ar', 'az', 'co', 'ct', 'dc', 'ia', 'il', 'in', 'ks', 'ky', 'la', 'ma', 'md', 'mi', 'mo', 'mr', 'nc', 'nj', 'ny', 'oh', 'on', 'pa', 'pr', 'tn', 'va', 'vt', 'wv', 'wy']],
+}, total=False)
+
+FanDuelFanduelSportsbookSearchTabsResponse = ModelFanduelSportsbookSearchTabsResponseDoc
+FanDuelFanduelSportsbookSearchTabsParams = TypedDict('FanDuelFanduelSportsbookSearchTabsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'q': Required[str],
+    'tab': NotRequired[str],
+    'pill': NotRequired[str],
+    'start_index': NotRequired[int],
+    'timezone': NotRequired[str],
+    'state': NotRequired[str],
+}, total=False)
+
+FanDuelFanduelSportsbookSportResponse = ModelFanduelSportsbookPageResponseDoc
+FanDuelFanduelSportsbookSportParams = TypedDict('FanDuelFanduelSportsbookSportParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'event_type_id': Required[Literal['6423', '1', '7522', '3', '7511', '7524', '2', '26420387', '2593174', '3503', '6', '5', '4', '8', '1477', '6422', '468328', '28608997', '998917', '4726642', '10', '2378961']],
+    'state': NotRequired[Literal['ar', 'az', 'co', 'ct', 'dc', 'ia', 'il', 'in', 'ks', 'ky', 'la', 'ma', 'md', 'mi', 'mo', 'mr', 'nc', 'nj', 'ny', 'oh', 'on', 'pa', 'pr', 'tn', 'va', 'vt', 'wv', 'wy']],
+    'tab': NotRequired[str],
+    'competition_id': NotRequired[int],
+    'market_type': NotRequired[str],
+    'exclude_markets': NotRequired[bool],
+}, total=False)
+
+FanDuelFanduelSportsbookSportsResponse = ModelFanduelSportsbookSportsResponseDoc
+FanDuelFanduelSportsbookSportsParams = TypedDict('FanDuelFanduelSportsbookSportsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'state': NotRequired[Literal['ar', 'az', 'co', 'ct', 'dc', 'ia', 'il', 'in', 'ks', 'ky', 'la', 'ma', 'md', 'mi', 'mo', 'mr', 'nc', 'nj', 'ny', 'oh', 'on', 'pa', 'pr', 'tn', 'va', 'vt', 'wv', 'wy']],
+}, total=False)
+
+FanDuelFanduelSportsbookStandingsResponse = ModelFanduelSportsbookStandingsResponseDoc
+FanDuelFanduelSportsbookStandingsParams = TypedDict('FanDuelFanduelSportsbookStandingsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'league': Required[Literal['nfl', 'nba', 'mlb', 'college-football']],
+}, total=False)
+
+FanDuelFanduelSportsbookStatsResponse = ModelFanduelSportsbookStatsListResponseDoc
+FanDuelFanduelSportsbookStatsParams = TypedDict('FanDuelFanduelSportsbookStatsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'competition_id': NotRequired[int],
+}, total=False)
+
+FanDuelFanduelSportsbookTeamDepthChartResponse = ModelFanduelSportsbookDepthChartResponseDoc
+FanDuelFanduelSportsbookTeamDepthChartParams = TypedDict('FanDuelFanduelSportsbookTeamDepthChartParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'league': Required[Literal['nfl', 'nba', 'mlb', 'college-football', 'college-basketball']],
+    'team': Required[str],
+}, total=False)
+
+FanDuelFanduelSportsbookTeamNewsResponse = ModelFanduelSportsbookTeamNewsResponseDoc
+FanDuelFanduelSportsbookTeamNewsParams = TypedDict('FanDuelFanduelSportsbookTeamNewsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'league': Required[Literal['nfl', 'nba', 'mlb', 'college-football', 'college-basketball']],
+    'team': Required[str],
+    'cursor': NotRequired[str],
+    'limit': NotRequired[int],
+}, total=False)
+
+FanDuelFanduelSportsbookTeamOddsResponse = ModelFanduelSportsbookTeamOddsResponseDoc
+FanDuelFanduelSportsbookTeamOddsParams = TypedDict('FanDuelFanduelSportsbookTeamOddsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'league': Required[Literal['nfl', 'nba', 'mlb', 'college-football', 'college-basketball']],
+    'team': Required[str],
+}, total=False)
+
+FanDuelFanduelSportsbookTeamRosterResponse = ModelFanduelSportsbookRosterResponseDoc
+FanDuelFanduelSportsbookTeamRosterParams = TypedDict('FanDuelFanduelSportsbookTeamRosterParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'league': Required[Literal['nfl', 'nba', 'mlb', 'college-football', 'college-basketball']],
+    'team': Required[str],
+    'injured_only': NotRequired[bool],
+    'status': NotRequired[str],
+    'position': NotRequired[str],
+}, total=False)
+
+FanDuelFanduelSportsbookTeamScheduleResponse = ModelFanduelSportsbookScheduleResponseDoc
+FanDuelFanduelSportsbookTeamScheduleParams = TypedDict('FanDuelFanduelSportsbookTeamScheduleParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'league': Required[Literal['nfl', 'nba', 'mlb', 'college-football', 'college-basketball']],
+    'team': Required[str],
+}, total=False)
+
+FanDuelFanduelSportsbookTeamStatsResponse = ModelFanduelSportsbookTeamStatsResponseDoc
+FanDuelFanduelSportsbookTeamStatsParams = TypedDict('FanDuelFanduelSportsbookTeamStatsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'league': Required[Literal['nfl', 'nba', 'mlb', 'college-football', 'college-basketball']],
+    'team': Required[str],
+}, total=False)
+
+FanDuelFanduelSportsbookTeamsResponse = ModelFanduelSportsbookTeamsResponseDoc
+FanDuelFanduelSportsbookTeamsParams = TypedDict('FanDuelFanduelSportsbookTeamsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'league': NotRequired[Literal['nfl', 'nba', 'mlb', 'college-football', 'college-basketball']],
+}, total=False)
+
+FanDuelFanduelSportsbookTrendingResponse = ModelFanduelSportsbookTrendingResponseDoc
+FanDuelFanduelSportsbookTrendingParams = TypedDict('FanDuelFanduelSportsbookTrendingParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'enriched': NotRequired[bool],
 }, total=False)
 
 FarfetchCategoriesResponse = ModelFarfetchCategoriesResponseDoc
@@ -85482,6 +91334,281 @@ FtSearchParams = TypedDict('FtSearchParams', {
     'page': NotRequired[int],
     'sort': NotRequired[Literal['relevance', 'date']],
     'date_range': NotRequired[Literal['now-24h', 'now-7d', 'now-30d', 'now-1y']],
+}, total=False)
+
+FussballDeFussballdeAmateurStatsResponse = ModelFussballdeAmateurStatsResponseDoc
+FussballDeFussballdeAmateurStatsParams = TypedDict('FussballDeFussballdeAmateurStatsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'stat': Required[Literal['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']],
+    'season': NotRequired[str],
+    'team_type': NotRequired[Literal['1', '3', '6', '8', '4', '5', '7', '9']],
+    'federation_id': NotRequired[Literal['89', '32', '31', '66', '61', '02', '03', '34', '62', '23', '22', '01', '41', '43', '63', '64', '04', '33', '42', '65', '21', '35']],
+    'limit': NotRequired[int],
+    'offset': NotRequired[int],
+}, total=False)
+
+FussballDeFussballdeClubResponse = ModelFussballdeClubResponseDoc
+FussballDeFussballdeClubParams = TypedDict('FussballDeFussballdeClubParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'club_id': Required[str],
+    'season': NotRequired[str],
+    'competition_kind': NotRequired[Literal['1', '8', '3', '7', '6', '11', '2', '21', '9']],
+}, total=False)
+
+FussballDeFussballdeClubMatchesResponse = ModelFussballdeClubMatchesResponseDoc
+FussballDeFussballdeClubMatchesParams = TypedDict('FussballDeFussballdeClubMatchesParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'club_id': Required[str],
+    'kind': NotRequired[Literal['all', 'next', 'previous']],
+    'date_from': NotRequired[str],
+    'date_to': NotRequired[str],
+    'competition_kind': NotRequired[Literal['1', '8', '3', '7', '6', '11', '2', '21', '9']],
+    'limit': NotRequired[int],
+    'offset': NotRequired[int],
+}, total=False)
+
+FussballDeFussballdeClubSearchResponse = ModelFussballdeClubSearchResponseDoc
+FussballDeFussballdeClubSearchParams = TypedDict('FussballDeFussballdeClubSearchParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'text': NotRequired[str],
+    'place': NotRequired[str],
+    'limit': NotRequired[int],
+    'offset': NotRequired[int],
+}, total=False)
+
+FussballDeFussballdeCompetitionOptionsResponse = ModelFussballdeCompetitionOptionsResponseDoc
+FussballDeFussballdeCompetitionOptionsParams = TypedDict('FussballDeFussballdeCompetitionOptionsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'federation_id': Required[Literal['89', '32', '31', '66', '61', '02', '03', '34', '62', '23', '22', '01', '41', '43', '63', '64', '04', '33', '42', '65', '21', '35']],
+    'season': Required[str],
+    'competition_type': NotRequired[Literal['1', '308', '300', '70', '305', '-300', '-305', '11', '2', '-2', '12']],
+}, total=False)
+
+FussballDeFussballdeCompetitionsResponse = ModelFussballdeCompetitionsResponseDoc
+FussballDeFussballdeCompetitionsParams = TypedDict('FussballDeFussballdeCompetitionsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'federation_id': Required[Literal['89', '32', '31', '66', '61', '02', '03', '34', '62', '23', '22', '01', '41', '43', '63', '64', '04', '33', '42', '65', '21', '35']],
+    'season': Required[str],
+    'competition_type': NotRequired[Literal['1', '308', '300', '70', '305', '-300', '-305', '11', '2', '-2', '12']],
+    'team_type': Required[str],
+    'league': Required[str],
+    'area': Required[str],
+}, total=False)
+
+FussballDeFussballdeFederationResponse = ModelFussballdeFederationResponseDoc
+FussballDeFussballdeFederationParams = TypedDict('FussballDeFussballdeFederationParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'federation_id': NotRequired[Literal['89', '32', '31', '66', '61', '02', '03', '34', '62', '23', '22', '01', '41', '43', '63', '64', '04', '33', '42', '65', '21', '35']],
+    'regional_association': NotRequired[Literal['nord', 'nordost', 'sued', 'suedwest', 'west']],
+}, total=False)
+
+FussballDeFussballdeFiltersResponse = ModelFussballdeFiltersResponseDoc
+FussballDeFussballdeFiltersParams = TypedDict('FussballDeFussballdeFiltersParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'federation_id': NotRequired[Literal['89', '32', '31', '66', '61', '02', '03', '34', '62', '23', '22', '01', '41', '43', '63', '64', '04', '33', '42', '65', '21', '35']],
+}, total=False)
+
+FussballDeFussballdeMatchResponse = ModelFussballdeMatchResponseDoc
+FussballDeFussballdeMatchParams = TypedDict('FussballDeFussballdeMatchParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'match_id': Required[str],
+}, total=False)
+
+FussballDeFussballdeMatchCalendarResponse = ModelFussballdeMatchCalendarResponseDoc
+FussballDeFussballdeMatchCalendarParams = TypedDict('FussballDeFussballdeMatchCalendarParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'postal_code': Required[str],
+    'date_from': NotRequired[str],
+    'date_to': NotRequired[str],
+    'team_types': NotRequired[str],
+    'competition_kind': NotRequired[Literal['1', '8', '3', '7', '6', '11', '2', '21', '9']],
+}, total=False)
+
+FussballDeFussballdeMatchComparisonResponse = ModelFussballdeMatchComparisonResponseDoc
+FussballDeFussballdeMatchComparisonParams = TypedDict('FussballDeFussballdeMatchComparisonParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'match_id': Required[str],
+    'view': NotRequired[Literal['history', 'meetings', 'season']],
+}, total=False)
+
+FussballDeFussballdeMatchPlanResponse = ModelFussballdeMatchPlanResponseDoc
+FussballDeFussballdeMatchPlanParams = TypedDict('FussballDeFussballdeMatchPlanParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'competition_id': Required[str],
+    'team_id': NotRequired[str],
+    'date_from': NotRequired[str],
+    'date_to': NotRequired[str],
+}, total=False)
+
+FussballDeFussballdeMatchdayResponse = ModelFussballdeMatchdayResponseDoc
+FussballDeFussballdeMatchdayParams = TypedDict('FussballDeFussballdeMatchdayParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'competition_id': Required[str],
+    'date': NotRequired[str],
+    'matchday': NotRequired[int],
+}, total=False)
+
+FussballDeFussballdeNationalTopScorersResponse = ModelFussballdeNationalTopScorersResponseDoc
+FussballDeFussballdeNationalTopScorersParams = TypedDict('FussballDeFussballdeNationalTopScorersParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'team_type': NotRequired[Literal['men', 'women']],
+}, total=False)
+
+FussballDeFussballdeNewsResponse = ModelFussballdeNewsResponseDoc
+FussballDeFussballdeNewsParams = TypedDict('FussballDeFussballdeNewsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'stream': NotRequired[Literal['all_news', 'magazin', 'regionalliga', 'verbaende', 'service', 'aktionen', 'helpcenter']],
+    'regional_league': NotRequired[Literal['nord', 'nordost', 'west', 'suedwest', 'bayern']],
+    'help_category': NotRequired[Literal['allgemeines', 'app', 'liveticker', 'mannschaftsseite', 'profile', 'registrierung', 'training_service', 'widgets']],
+    'limit': NotRequired[int],
+    'offset': NotRequired[int],
+}, total=False)
+
+FussballDeFussballdeNewsArticleResponse = ModelFussballdeNewsArticleResponseDoc
+FussballDeFussballdeNewsArticleParams = TypedDict('FussballDeFussballdeNewsArticleParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'article_id': Required[str],
+}, total=False)
+
+FussballDeFussballdeNewsSearchResponse = ModelFussballdeNewsSearchResponseDoc
+FussballDeFussballdeNewsSearchParams = TypedDict('FussballDeFussballdeNewsSearchParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'q': Required[str],
+    'channel': NotRequired[Literal['news', 'pro_news']],
+    'limit': NotRequired[int],
+    'offset': NotRequired[int],
+}, total=False)
+
+FussballDeFussballdePlayerResponse = ModelFussballdePlayerResponseDoc
+FussballDeFussballdePlayerParams = TypedDict('FussballDeFussballdePlayerParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'player_id': Required[str],
+}, total=False)
+
+FussballDeFussballdePlayerMatchesResponse = ModelFussballdePlayerMatchesResponseDoc
+FussballDeFussballdePlayerMatchesParams = TypedDict('FussballDeFussballdePlayerMatchesParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'player_id': Required[str],
+    'season': NotRequired[str],
+    'team_id': NotRequired[str],
+}, total=False)
+
+FussballDeFussballdePlayerSearchResponse = ModelFussballdePlayerSearchResponseDoc
+FussballDeFussballdePlayerSearchParams = TypedDict('FussballDeFussballdePlayerSearchParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'first_name': NotRequired[str],
+    'last_name': NotRequired[str],
+    'place': NotRequired[str],
+    'limit': NotRequired[int],
+    'offset': NotRequired[int],
+}, total=False)
+
+FussballDeFussballdePositionHistoryResponse = ModelFussballdePositionHistoryResponseDoc
+FussballDeFussballdePositionHistoryParams = TypedDict('FussballDeFussballdePositionHistoryParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'competition_id': Required[str],
+}, total=False)
+
+FussballDeFussballdePostalCodesResponse = ModelFussballdePostalCodesResponseDoc
+FussballDeFussballdePostalCodesParams = TypedDict('FussballDeFussballdePostalCodesParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'q': Required[str],
+}, total=False)
+
+FussballDeFussballdeTableResponse = ModelFussballdeTableResponseDoc
+FussballDeFussballdeTableParams = TypedDict('FussballDeFussballdeTableParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'competition_id': Required[str],
+    'view': NotRequired[Literal['overall', 'home_away', 'rounds', 'fairness', 'cross']],
+    'matchday': NotRequired[int],
+}, total=False)
+
+FussballDeFussballdeTeamResponse = ModelFussballdeTeamResponseDoc
+FussballDeFussballdeTeamParams = TypedDict('FussballDeFussballdeTeamParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'team_id': Required[str],
+}, total=False)
+
+FussballDeFussballdeTeamMatchesResponse = ModelFussballdeTeamMatchesResponseDoc
+FussballDeFussballdeTeamMatchesParams = TypedDict('FussballDeFussballdeTeamMatchesParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'team_id': Required[str],
+    'kind': NotRequired[Literal['all', 'next', 'previous', 'wins', 'draws', 'losses']],
+    'date_from': NotRequired[str],
+    'date_to': NotRequired[str],
+    'competition_kind': NotRequired[Literal['1', '8', '3', '7', '6', '11', '2', '21', '9']],
+    'limit': NotRequired[int],
+    'offset': NotRequired[int],
+}, total=False)
+
+FussballDeFussballdeTeamSquadResponse = ModelFussballdeTeamSquadResponseDoc
+FussballDeFussballdeTeamSquadParams = TypedDict('FussballDeFussballdeTeamSquadParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'team_id': Required[str],
+    'season': NotRequired[str],
+    'kind': NotRequired[Literal['squad', 'arrivals', 'departures']],
+}, total=False)
+
+FussballDeFussballdeTopScorersResponse = ModelFussballdeTopScorersResponseDoc
+FussballDeFussballdeTopScorersParams = TypedDict('FussballDeFussballdeTopScorersParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'competition_id': Required[str],
+    'limit': NotRequired[int],
+    'offset': NotRequired[int],
 }, total=False)
 
 GameRantGamerantArticleResponse = ModelPublicnewsArticleResponseDoc
@@ -89184,6 +95311,15 @@ InstacartTrendingParams = TypedDict('InstacartTrendingParams', {
     'postal_code': Required[str],
 }, total=False)
 
+InstagramCommentsResponse = ModelInstagramCommentsResponseDoc
+InstagramCommentsParams = TypedDict('InstagramCommentsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'url': Required[str],
+    'max_id': NotRequired[str],
+}, total=False)
+
 InstagramPostResponse = ModelInstagramPostResponseDoc
 InstagramPostParams = TypedDict('InstagramPostParams', {
     '_response_type': NotRequired[ResponseType],
@@ -89207,6 +95343,15 @@ InstagramReelsParams = TypedDict('InstagramReelsParams', {
     '_timeout': NotRequired[float],
     '_headers': NotRequired[Mapping[str, str]],
     'id': Required[str],
+    'max_id': NotRequired[str],
+}, total=False)
+
+InstagramUserPostsResponse = ModelInstagramUserPostsResponseDoc
+InstagramUserPostsParams = TypedDict('InstagramUserPostsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'username': Required[str],
     'max_id': NotRequired[str],
 }, total=False)
 
@@ -89885,6 +96030,50 @@ JobsWorkdayJobParams = TypedDict('JobsWorkdayJobParams', {
     'datacenter': Required[str],
     'site': Required[str],
     'path': Required[str],
+}, total=False)
+
+JumiaCategoriesResponse = ModelJumiaCategoriesResponseDoc
+JumiaCategoriesParams = TypedDict('JumiaCategoriesParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'country': Required[Literal['ci', 'eg', 'ke', 'ma', 'ng', 'sn']],
+    'category': NotRequired[str],
+}, total=False)
+
+JumiaCategoryResponse = ModelJumiaListingResponseDoc
+JumiaCategoryParams = TypedDict('JumiaCategoryParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'country': Required[Literal['ci', 'eg', 'ke', 'ma', 'ng', 'sn']],
+    'category': Required[str],
+    'page': NotRequired[int],
+}, total=False)
+
+JumiaCountriesResponse = ModelJumiaCountriesResponseDoc
+JumiaCountriesParams = TypedDict('JumiaCountriesParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+}, total=False)
+
+JumiaProductResponse = ModelJumiaProductResponseDoc
+JumiaProductParams = TypedDict('JumiaProductParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'url': Required[str],
+}, total=False)
+
+JumiaSearchResponse = ModelJumiaListingResponseDoc
+JumiaSearchParams = TypedDict('JumiaSearchParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'country': Required[Literal['ci', 'eg', 'ke', 'ma', 'ng', 'sn']],
+    'q': Required[str],
+    'page': NotRequired[int],
 }, total=False)
 
 JustEatJusteatRestaurantResponse = ModelJusteatRestaurantResponseDoc
@@ -97983,6 +104172,92 @@ RebagStoreParams = TypedDict('RebagStoreParams', {
     '_headers': NotRequired[Mapping[str, str]],
 }, total=False)
 
+RedditArchiveCommentsIdsResponse = ModelRedditArchiveCommentsIdsResponseDoc
+RedditArchiveCommentsIdsParams = TypedDict('RedditArchiveCommentsIdsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'ids': Required[str],
+}, total=False)
+
+RedditArchiveCommentsSearchResponse = ModelRedditArchiveCommentsSearchResponseDoc
+RedditArchiveCommentsSearchParams = TypedDict('RedditArchiveCommentsSearchParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'author': NotRequired[str],
+    'subreddit': NotRequired[str],
+    'query': NotRequired[str],
+    'link_id': NotRequired[str],
+    'parent_id': NotRequired[str],
+    'created_after': NotRequired[str],
+    'created_before': NotRequired[str],
+    'sort': NotRequired[Literal['asc', 'desc']],
+    'limit': NotRequired[int],
+}, total=False)
+
+RedditArchiveCommentsTreeResponse = ModelRedditArchiveCommentsTreeResponseDoc
+RedditArchiveCommentsTreeParams = TypedDict('RedditArchiveCommentsTreeParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': Required[str],
+    'parent_id': NotRequired[str],
+    'limit': NotRequired[int],
+    'start_breadth': NotRequired[int],
+    'start_depth': NotRequired[int],
+}, total=False)
+
+RedditArchivePostsIdsResponse = ModelRedditArchivePostsIdsResponseDoc
+RedditArchivePostsIdsParams = TypedDict('RedditArchivePostsIdsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'ids': Required[str],
+}, total=False)
+
+RedditArchivePostsSearchResponse = ModelRedditArchivePostsSearchResponseDoc
+RedditArchivePostsSearchParams = TypedDict('RedditArchivePostsSearchParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'query': NotRequired[str],
+    'author': NotRequired[str],
+    'subreddit': NotRequired[str],
+    'url': NotRequired[str],
+    'url_exact': NotRequired[bool],
+    'created_after': NotRequired[str],
+    'created_before': NotRequired[str],
+    'sort': NotRequired[Literal['asc', 'desc']],
+    'limit': NotRequired[int],
+}, total=False)
+
+RedditArchiveSubredditsSearchResponse = ModelRedditArchiveSubredditsSearchResponseDoc
+RedditArchiveSubredditsSearchParams = TypedDict('RedditArchiveSubredditsSearchParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'query': Required[str],
+    'min_subscribers': NotRequired[int],
+    'max_subscribers': NotRequired[int],
+    'over_18': NotRequired[bool],
+    'sort_by': NotRequired[Literal['created_utc', 'subscribers', 'subreddit']],
+    'sort': NotRequired[Literal['asc', 'desc']],
+    'limit': NotRequired[int],
+}, total=False)
+
+RedditArchiveTimeSeriesResponse = ModelRedditArchiveTimeSeriesResponseDoc
+RedditArchiveTimeSeriesParams = TypedDict('RedditArchiveTimeSeriesParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'metric': Required[Literal['posts_count', 'comments_count', 'posts_score_sum', 'comments_score_sum', 'posts_retrieval_delay_seconds_sum', 'comments_retrieval_delay_seconds_sum', 'subreddit_subscribers']],
+    'subreddit': NotRequired[str],
+    'precision': Required[Literal['year', 'quarter', 'month', 'week', 'day', 'hour', 'minute']],
+    'created_after': Required[str],
+    'created_before': Required[str],
+}, total=False)
+
 RedditCommentsResponse = ModelRedditCommentsResponseDoc
 RedditCommentsParams = TypedDict('RedditCommentsParams', {
     '_response_type': NotRequired[ResponseType],
@@ -99864,6 +106139,20 @@ ShakeShackShakeshackStoreParams = TypedDict('ShakeShackShakeshackStoreParams', {
     'path': Required[str],
 }, total=False)
 
+SheinBrandsResponse = ModelSheinBrandsResponseDoc
+SheinBrandsParams = TypedDict('SheinBrandsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+}, total=False)
+
+SheinCategoriesResponse = ModelSheinCategoriesResponseDoc
+SheinCategoriesParams = TypedDict('SheinCategoriesParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+}, total=False)
+
 SheinCategoryFiltersResponse = ModelSheinCategoryFiltersResponseDoc
 SheinCategoryFiltersParams = TypedDict('SheinCategoryFiltersParams', {
     '_response_type': NotRequired[ResponseType],
@@ -99889,6 +106178,22 @@ SheinCategoryNavParams = TypedDict('SheinCategoryNavParams', {
     '_timeout': NotRequired[float],
     '_headers': NotRequired[Mapping[str, str]],
     'cat_id': Required[str],
+}, total=False)
+
+SheinDealsProductsResponse = ModelSheinDealsProductsResponseDoc
+SheinDealsProductsParams = TypedDict('SheinDealsProductsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'page': NotRequired[int],
+    'page_size': NotRequired[int],
+}, total=False)
+
+SheinDealsTabsResponse = ModelSheinDealTabsResponseDoc
+SheinDealsTabsParams = TypedDict('SheinDealsTabsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
 }, total=False)
 
 SheinProductsAggregationFiltersResponse = ModelSheinAggregationFiltersResponseDoc
@@ -99935,6 +106240,39 @@ SheinSearchKeywordsParams = TypedDict('SheinSearchKeywordsParams', {
     '_headers': NotRequired[Mapping[str, str]],
     'scene': NotRequired[str],
     'word_type': NotRequired[str],
+}, total=False)
+
+SheinStoreResponse = ModelSheinStoreResponseDoc
+SheinStoreParams = TypedDict('SheinStoreParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'store_code': Required[str],
+}, total=False)
+
+SheinStoreProductsResponse = ModelSheinStoreProductsResponseDoc
+SheinStoreProductsParams = TypedDict('SheinStoreProductsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'store_code': Required[str],
+    'category_id': Required[str],
+    'page': NotRequired[int],
+    'page_size': NotRequired[int],
+}, total=False)
+
+SheinTrendingCategoriesResponse = ModelSheinTrendingCategoriesResponseDoc
+SheinTrendingCategoriesParams = TypedDict('SheinTrendingCategoriesParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+}, total=False)
+
+SheinTrendingFiltersResponse = ModelSheinTrendingFiltersResponseDoc
+SheinTrendingFiltersParams = TypedDict('SheinTrendingFiltersParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
 }, total=False)
 
 ShopAppAnalysisResponse = ModelShopappAnalysisResponseDoc
@@ -105275,6 +111613,34 @@ TiktokMobileAnchorListParams = TypedDict('TiktokMobileAnchorListParams', {
     '_headers': NotRequired[Mapping[str, str]],
 }, total=False)
 
+TiktokMobileCollectionDetailResponse = ModelTiktokmobileCollectionDetailResponseDoc
+TiktokMobileCollectionDetailParams = TypedDict('TiktokMobileCollectionDetailParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'collection_id': Required[str],
+}, total=False)
+
+TiktokMobileCollectionListResponse = ModelTiktokmobileCollectionListResponseDoc
+TiktokMobileCollectionListParams = TypedDict('TiktokMobileCollectionListParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'user_id': Required[str],
+    'cursor': NotRequired[int],
+    'count': NotRequired[int],
+}, total=False)
+
+TiktokMobileCollectionVideosResponse = ModelTiktokmobileCollectionVideosResponseDoc
+TiktokMobileCollectionVideosParams = TypedDict('TiktokMobileCollectionVideosParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'collection_id': Required[str],
+    'cursor': NotRequired[int],
+    'count': NotRequired[int],
+}, total=False)
+
 TiktokMobileCommentRepliesResponse = ModelTiktokmobileCommentRepliesResponseDoc
 TiktokMobileCommentRepliesParams = TypedDict('TiktokMobileCommentRepliesParams', {
     '_response_type': NotRequired[ResponseType],
@@ -105303,6 +111669,15 @@ TiktokMobileFeedParams = TypedDict('TiktokMobileFeedParams', {
     '_headers': NotRequired[Mapping[str, str]],
     'count': NotRequired[int],
     'cursor': NotRequired[int],
+}, total=False)
+
+TiktokMobileFeedOfflineResponse = ModelTiktokmobileOfflineFeedResponseDoc
+TiktokMobileFeedOfflineParams = TypedDict('TiktokMobileFeedOfflineParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'pull_type': NotRequired[int],
+    'count': NotRequired[int],
 }, total=False)
 
 TiktokMobileFeedPostResponse = ModelTiktokmobileFeedPostResponseDoc
@@ -105355,6 +111730,29 @@ TiktokMobileLiveGiftsParams = TypedDict('TiktokMobileLiveGiftsParams', {
     '_headers': NotRequired[Mapping[str, str]],
 }, total=False)
 
+TiktokMobileLiveHashtagsResponse = ModelTiktokmobileLiveHashtagCatalogResponseDoc
+TiktokMobileLiveHashtagsParams = TypedDict('TiktokMobileLiveHashtagsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+}, total=False)
+
+TiktokMobileLiveRoomResponse = ModelTiktokmobileLiveRoomInfoResponseDoc
+TiktokMobileLiveRoomParams = TypedDict('TiktokMobileLiveRoomParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'room_id': Required[str],
+}, total=False)
+
+TiktokMobileLiveRoomByUserResponse = ModelTiktokmobileLiveRoomInfoResponseDoc
+TiktokMobileLiveRoomByUserParams = TypedDict('TiktokMobileLiveRoomByUserParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'user_id': Required[str],
+}, total=False)
+
 TiktokMobileLiveSearchResponse = ModelTiktokmobileLiveSearchResponseDoc
 TiktokMobileLiveSearchParams = TypedDict('TiktokMobileLiveSearchParams', {
     '_response_type': NotRequired[ResponseType],
@@ -105362,6 +111760,13 @@ TiktokMobileLiveSearchParams = TypedDict('TiktokMobileLiveSearchParams', {
     '_headers': NotRequired[Mapping[str, str]],
     'keyword': Required[str],
     'count': NotRequired[int],
+}, total=False)
+
+TiktokMobileLiveTabsResponse = ModelTiktokmobileLiveTabsResponseDoc
+TiktokMobileLiveTabsParams = TypedDict('TiktokMobileLiveTabsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
 }, total=False)
 
 TiktokMobileMusicBeatsResponse = ModelTiktokmobileMusicBeatsSongsResponseDoc
@@ -105372,6 +111777,32 @@ TiktokMobileMusicBeatsParams = TypedDict('TiktokMobileMusicBeatsParams', {
     'count': NotRequired[int],
 }, total=False)
 
+TiktokMobileMusicChartResponse = ModelTiktokmobileMusicChartResponseDoc
+TiktokMobileMusicChartParams = TypedDict('TiktokMobileMusicChartParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'chart_region': NotRequired[str],
+    'cursor': NotRequired[int],
+    'count': NotRequired[int],
+}, total=False)
+
+TiktokMobileMusicChoicesResponse = ModelTiktokmobileMusicChoicesResponseDoc
+TiktokMobileMusicChoicesParams = TypedDict('TiktokMobileMusicChoicesParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+}, total=False)
+
+TiktokMobileMusicCollectionListResponse = ModelTiktokmobileMusicCollectionListResponseDoc
+TiktokMobileMusicCollectionListParams = TypedDict('TiktokMobileMusicCollectionListParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'count': NotRequired[int],
+    'cursor': NotRequired[int],
+}, total=False)
+
 TiktokMobileMusicCollectionsResponse = ModelTiktokmobileMusicCollectionFeedResponseDoc
 TiktokMobileMusicCollectionsParams = TypedDict('TiktokMobileMusicCollectionsParams', {
     '_response_type': NotRequired[ResponseType],
@@ -105379,6 +111810,14 @@ TiktokMobileMusicCollectionsParams = TypedDict('TiktokMobileMusicCollectionsPara
     '_headers': NotRequired[Mapping[str, str]],
     'count': NotRequired[int],
     'cursor': NotRequired[int],
+}, total=False)
+
+TiktokMobileMusicDetailResponse = ModelTiktokmobileMusicDetailResponseDoc
+TiktokMobileMusicDetailParams = TypedDict('TiktokMobileMusicDetailParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'music_id': Required[str],
 }, total=False)
 
 TiktokMobileMusicPickResponse = ModelTiktokmobileMusicPickResponseDoc
@@ -105396,6 +111835,7 @@ TiktokMobileMusicPostsParams = TypedDict('TiktokMobileMusicPostsParams', {
     '_timeout': NotRequired[float],
     '_headers': NotRequired[Mapping[str, str]],
     'music_id': Required[str],
+    'sort': NotRequired[Literal['fresh', 'popular']],
     'count': NotRequired[int],
     'cursor': NotRequired[int],
 }, total=False)
@@ -105419,6 +111859,106 @@ TiktokMobileMusicTrendingParams = TypedDict('TiktokMobileMusicTrendingParams', {
     'cursor': NotRequired[int],
 }, total=False)
 
+TiktokMobileMvVideosResponse = ModelTiktokmobileMvFeedResponseDoc
+TiktokMobileMvVideosParams = TypedDict('TiktokMobileMvVideosParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'mv_id': Required[str],
+    'cursor': NotRequired[int],
+}, total=False)
+
+TiktokMobilePlaceDetailResponse = ModelTiktokmobilePlaceDetailResponseDoc
+TiktokMobilePlaceDetailParams = TypedDict('TiktokMobilePlaceDetailParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'poi_id': Required[str],
+    'review_count': NotRequired[int],
+    'review_cursor': NotRequired[int],
+    'merged_count': NotRequired[int],
+    'video_cursor': NotRequired[int],
+    'enter_from': NotRequired[str],
+}, total=False)
+
+TiktokMobilePlaceInfoResponse = ModelTiktokmobilePlaceInfoResponseDoc
+TiktokMobilePlaceInfoParams = TypedDict('TiktokMobilePlaceInfoParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'poi_id': Required[str],
+}, total=False)
+
+TiktokMobilePlaceMediaResponse = ModelTiktokmobilePlaceMediaResponseDoc
+TiktokMobilePlaceMediaParams = TypedDict('TiktokMobilePlaceMediaParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'poi_id': Required[str],
+    'cursor': NotRequired[str],
+    'size': NotRequired[int],
+    'data_version': NotRequired[str],
+}, total=False)
+
+TiktokMobilePlacePhotosResponse = ModelTiktokmobilePlacePhotosResponseDoc
+TiktokMobilePlacePhotosParams = TypedDict('TiktokMobilePlacePhotosParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'poi_id': Required[str],
+}, total=False)
+
+TiktokMobilePlaceReviewsResponse = ModelTiktokmobilePlaceReviewsResponseDoc
+TiktokMobilePlaceReviewsParams = TypedDict('TiktokMobilePlaceReviewsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'poi_id': Required[str],
+    'cursor': NotRequired[int],
+    'count': NotRequired[int],
+    'sort_type': NotRequired[Literal['1', '2']],
+}, total=False)
+
+TiktokMobilePlaceVideosResponse = ModelTiktokmobilePlaceVideosResponseDoc
+TiktokMobilePlaceVideosParams = TypedDict('TiktokMobilePlaceVideosParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'poi_id': Required[str],
+    'count': NotRequired[int],
+    'cursor': NotRequired[int],
+}, total=False)
+
+TiktokMobilePlaylistDetailResponse = ModelTiktokmobilePlaylistDetailResponseDoc
+TiktokMobilePlaylistDetailParams = TypedDict('TiktokMobilePlaylistDetailParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'mix_id': Required[str],
+    'user_id': NotRequired[str],
+    'sec_user_id': NotRequired[str],
+}, total=False)
+
+TiktokMobilePlaylistListResponse = ModelTiktokmobilePlaylistListResponseDoc
+TiktokMobilePlaylistListParams = TypedDict('TiktokMobilePlaylistListParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'user_id': NotRequired[str],
+    'sec_user_id': NotRequired[str],
+    'cursor': NotRequired[int],
+}, total=False)
+
+TiktokMobilePlaylistVideosResponse = ModelTiktokmobilePlaylistVideosResponseDoc
+TiktokMobilePlaylistVideosParams = TypedDict('TiktokMobilePlaylistVideosParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'mix_id': Required[str],
+    'cursor': NotRequired[int],
+    'count': NotRequired[int],
+}, total=False)
+
 TiktokMobileSearchResponse = ModelTiktokmobileSearchGeneralResponseDoc
 TiktokMobileSearchParams = TypedDict('TiktokMobileSearchParams', {
     '_response_type': NotRequired[ResponseType],
@@ -105427,6 +111967,27 @@ TiktokMobileSearchParams = TypedDict('TiktokMobileSearchParams', {
     'keyword': Required[str],
     'count': NotRequired[int],
     'offset': NotRequired[int],
+    'search_id': NotRequired[str],
+}, total=False)
+
+TiktokMobileSearchEffectsResponse = ModelTiktokmobileSearchEffectsResponseDoc
+TiktokMobileSearchEffectsParams = TypedDict('TiktokMobileSearchEffectsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'keyword': Required[str],
+    'count': NotRequired[int],
+    'cursor': NotRequired[int],
+    'search_id': NotRequired[str],
+}, total=False)
+
+TiktokMobileSearchHashtagsResponse = ModelTiktokmobileHashtagSuggestionsResponseDoc
+TiktokMobileSearchHashtagsParams = TypedDict('TiktokMobileSearchHashtagsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'keyword': Required[str],
+    'count': NotRequired[int],
 }, total=False)
 
 TiktokMobileSearchMusicResponse = ModelTiktokmobileSearchMusicResponseDoc
@@ -105437,6 +111998,19 @@ TiktokMobileSearchMusicParams = TypedDict('TiktokMobileSearchMusicParams', {
     'keyword': Required[str],
     'count': NotRequired[int],
     'offset': NotRequired[int],
+}, total=False)
+
+TiktokMobileSearchPhotosResponse = ModelTiktokmobileSearchPhotosResponseDoc
+TiktokMobileSearchPhotosParams = TypedDict('TiktokMobileSearchPhotosParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'keyword': Required[str],
+    'count': NotRequired[int],
+    'offset': NotRequired[int],
+    'sort_type': NotRequired[int],
+    'publish_time': NotRequired[int],
+    'search_source': NotRequired[str],
 }, total=False)
 
 TiktokMobileSearchPlaceResponse = ModelTiktokmobileSearchPlaceResponseDoc
@@ -105455,6 +112029,20 @@ TiktokMobileSearchPreInfoParams = TypedDict('TiktokMobileSearchPreInfoParams', {
     '_headers': NotRequired[Mapping[str, str]],
     'keyword': NotRequired[str],
     'count': NotRequired[int],
+}, total=False)
+
+TiktokMobileSearchStreamResponse = ModelTiktokmobileSearchStreamResponseDoc
+TiktokMobileSearchStreamParams = TypedDict('TiktokMobileSearchStreamParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'keyword': Required[str],
+    'count': NotRequired[int],
+    'offset': NotRequired[int],
+    'search_source': NotRequired[str],
+    'sort_type': NotRequired[Literal['0', '1', '3']],
+    'publish_time': NotRequired[int],
+    'filter_selected': NotRequired[str],
 }, total=False)
 
 TiktokMobileSearchSugResponse = ModelTiktokmobileSearchSuggestionResponseDoc
@@ -105484,6 +112072,29 @@ TiktokMobileSearchUserParams = TypedDict('TiktokMobileSearchUserParams', {
     'cursor': NotRequired[int],
 }, total=False)
 
+TiktokMobileSearchVideosResponse = ModelTiktokmobileSearchVideosResponseDoc
+TiktokMobileSearchVideosParams = TypedDict('TiktokMobileSearchVideosParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'keyword': Required[str],
+    'count': NotRequired[int],
+    'offset': NotRequired[int],
+    'sort_type': NotRequired[Literal['0', '1', '3']],
+    'publish_time': NotRequired[int],
+    'search_source': NotRequired[str],
+    'search_id': NotRequired[str],
+}, total=False)
+
+TiktokMobileTranslationDescriptionResponse = ModelTiktokmobileTranslationDescriptionResponseDoc
+TiktokMobileTranslationDescriptionParams = TypedDict('TiktokMobileTranslationDescriptionParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'item_id': Required[str],
+    'target_lang': NotRequired[str],
+}, total=False)
+
 TiktokMobileTrendingCategoriesResponse = ModelTiktokmobileCategoryListResponseDoc
 TiktokMobileTrendingCategoriesParams = TypedDict('TiktokMobileTrendingCategoriesParams', {
     '_response_type': NotRequired[ResponseType],
@@ -105500,6 +112111,92 @@ TiktokMobileTrendingEffectsParams = TypedDict('TiktokMobileTrendingEffectsParams
     '_headers': NotRequired[Mapping[str, str]],
     'count': NotRequired[int],
     'cursor': NotRequired[int],
+}, total=False)
+
+TiktokMobileUserFollowersResponse = ModelTiktokmobileUserFollowersResponseDoc
+TiktokMobileUserFollowersParams = TypedDict('TiktokMobileUserFollowersParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'user_id': Required[str],
+    'count': NotRequired[int],
+    'cursor': NotRequired[int],
+}, total=False)
+
+TiktokMobileUserFollowingResponse = ModelTiktokmobileUserFollowingResponseDoc
+TiktokMobileUserFollowingParams = TypedDict('TiktokMobileUserFollowingParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'user_id': Required[str],
+    'count': NotRequired[int],
+    'cursor': NotRequired[int],
+}, total=False)
+
+TiktokMobileUserOriginalEffectsResponse = ModelTiktokmobileUserOriginalEffectsResponseDoc
+TiktokMobileUserOriginalEffectsParams = TypedDict('TiktokMobileUserOriginalEffectsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'user_id': Required[str],
+    'cursor': NotRequired[int],
+    'count': NotRequired[int],
+}, total=False)
+
+TiktokMobileUserOriginalMusicResponse = ModelTiktokmobileUserOriginalMusicResponseDoc
+TiktokMobileUserOriginalMusicParams = TypedDict('TiktokMobileUserOriginalMusicParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'user_id': Required[str],
+    'cursor': NotRequired[int],
+    'count': NotRequired[int],
+}, total=False)
+
+TiktokMobileUserPostsResponse = ModelTiktokmobileUserPostsResponseDoc
+TiktokMobileUserPostsParams = TypedDict('TiktokMobileUserPostsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'user_id': NotRequired[str],
+    'sec_user_id': NotRequired[str],
+    'count': NotRequired[int],
+    'cursor': NotRequired[int],
+    'sort_type': NotRequired[int],
+}, total=False)
+
+TiktokMobileUserProfileResponse = ModelTiktokmobileUserProfileResponseDoc
+TiktokMobileUserProfileParams = TypedDict('TiktokMobileUserProfileParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'user_id': NotRequired[str],
+    'sec_user_id': NotRequired[str],
+}, total=False)
+
+TiktokMobileUserRecommendationsResponse = ModelTiktokmobileUserRecommendationsResponseDoc
+TiktokMobileUserRecommendationsParams = TypedDict('TiktokMobileUserRecommendationsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'count': NotRequired[int],
+}, total=False)
+
+TiktokMobileVideoDetailResponse = ModelTiktokmobileVideoDetailResponseDoc
+TiktokMobileVideoDetailParams = TypedDict('TiktokMobileVideoDetailParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'aweme_id': Required[str],
+}, total=False)
+
+TiktokMobileVideoSubtitlesResponse = ModelTiktokmobileVideoSubtitlesResponseDoc
+TiktokMobileVideoSubtitlesParams = TypedDict('TiktokMobileVideoSubtitlesParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'video_id': Required[str],
+    'language': Required[str],
 }, total=False)
 
 TiktokPopularTrendCountryIndustryMetaResponse = ModelPopulartrendCountryIndustryMetaResponseDoc
@@ -108991,6 +115688,7 @@ YoutubeChannelShortsParams = TypedDict('YoutubeChannelShortsParams', {
     '_timeout': NotRequired[float],
     '_headers': NotRequired[Mapping[str, str]],
     'id': Required[str],
+    'continuation_token': NotRequired[str],
 }, total=False)
 
 YoutubeChannelVideosResponse = ModelYoutubeChannelFeedResponseDoc
@@ -109009,6 +115707,15 @@ YoutubeCommentsParams = TypedDict('YoutubeCommentsParams', {
     '_headers': NotRequired[Mapping[str, str]],
     'id': Required[str],
     'continuation_token': NotRequired[str],
+}, total=False)
+
+YoutubeCommentRepliesResponse = ModelYoutubeCommentsResponseDoc
+YoutubeCommentRepliesParams = TypedDict('YoutubeCommentRepliesParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': Required[str],
+    'continuation_token': Required[str],
 }, total=False)
 
 YoutubePlaylistResponse = ModelYoutubePlaylistResponseDoc
@@ -110461,6 +117168,35 @@ class DoorDashGroup:
     def doordash_store_menu(self, **params: Unpack[DoorDashDoordashStoreMenuParams]) -> DoorDashDoordashStoreMenuResponse: ...
     def doordash_store_reviews(self, **params: Unpack[DoorDashDoordashStoreReviewsParams]) -> DoorDashDoordashStoreReviewsResponse: ...
 
+class DraftKingsCasinoGroup:
+    def draftkings_casino_directory(self, **params: Unpack[DraftKingsCasinoDraftkingsCasinoDirectoryParams]) -> DraftKingsCasinoDraftkingsCasinoDirectoryResponse: ...
+    def draftkings_casino_slots_guide(self, **params: Unpack[DraftKingsCasinoDraftkingsCasinoSlotsGuideParams]) -> DraftKingsCasinoDraftkingsCasinoSlotsGuideResponse: ...
+    def draftkings_casino_slots_categories(self, **params: Unpack[DraftKingsCasinoDraftkingsCasinoSlotsCategoriesParams]) -> DraftKingsCasinoDraftkingsCasinoSlotsCategoriesResponse: ...
+    def draftkings_casino_cleopatra_guide(self, **params: Unpack[DraftKingsCasinoDraftkingsCasinoCleopatraGuideParams]) -> DraftKingsCasinoDraftkingsCasinoCleopatraGuideResponse: ...
+    def draftkings_casino_wheel_of_fortune_guide(self, **params: Unpack[DraftKingsCasinoDraftkingsCasinoWheelOfFortuneGuideParams]) -> DraftKingsCasinoDraftkingsCasinoWheelOfFortuneGuideResponse: ...
+
+class DraftKingsDailyFantasySportsGroup:
+    def draftkings_dfs_glossary(self, **params: Unpack[DraftKingsDailyFantasySportsDraftkingsDfsGlossaryParams]) -> DraftKingsDailyFantasySportsDraftkingsDfsGlossaryResponse: ...
+    def draftkings_dfs_guide(self, **params: Unpack[DraftKingsDailyFantasySportsDraftkingsDfsGuideParams]) -> DraftKingsDailyFantasySportsDraftkingsDfsGuideResponse: ...
+    def draftkings_dfs_nfl_best_ball_featured_contests(self, **params: Unpack[DraftKingsDailyFantasySportsDraftkingsDfsNflBestBallFeaturedContestsParams]) -> DraftKingsDailyFantasySportsDraftkingsDfsNflBestBallFeaturedContestsResponse: ...
+    def draftkings_dfs_rules_and_scoring(self, **params: Unpack[DraftKingsDailyFantasySportsDraftkingsDfsRulesAndScoringParams]) -> DraftKingsDailyFantasySportsDraftkingsDfsRulesAndScoringResponse: ...
+    def draftkings_dfs_sports(self, **params: Unpack[DraftKingsDailyFantasySportsDraftkingsDfsSportsParams]) -> DraftKingsDailyFantasySportsDraftkingsDfsSportsResponse: ...
+
+class DraftKingsPick6Group:
+    def draftkings_pick6_rules(self, **params: Unpack[DraftKingsPick6DraftkingsPick6RulesParams]) -> DraftKingsPick6DraftkingsPick6RulesResponse: ...
+    def draftkings_pick6_rule_page(self, **params: Unpack[DraftKingsPick6DraftkingsPick6RulePageParams]) -> DraftKingsPick6DraftkingsPick6RulePageResponse: ...
+    def draftkings_pick6_sports(self, **params: Unpack[DraftKingsPick6DraftkingsPick6SportsParams]) -> DraftKingsPick6DraftkingsPick6SportsResponse: ...
+
+class DraftKingsPredictionsGroup:
+    def draftkings_predictions_availability(self, **params: Unpack[DraftKingsPredictionsDraftkingsPredictionsAvailabilityParams]) -> DraftKingsPredictionsDraftkingsPredictionsAvailabilityResponse: ...
+    def draftkings_predictions_categories(self, **params: Unpack[DraftKingsPredictionsDraftkingsPredictionsCategoriesParams]) -> DraftKingsPredictionsDraftkingsPredictionsCategoriesResponse: ...
+    def draftkings_predictions_rules(self, **params: Unpack[DraftKingsPredictionsDraftkingsPredictionsRulesParams]) -> DraftKingsPredictionsDraftkingsPredictionsRulesResponse: ...
+
+class DraftKingsRacingGroup:
+    def draftkings_racing_race_info(self, **params: Unpack[DraftKingsRacingDraftkingsRacingRaceInfoParams]) -> DraftKingsRacingDraftkingsRacingRaceInfoResponse: ...
+    def draftkings_racing_schedule(self, **params: Unpack[DraftKingsRacingDraftkingsRacingScheduleParams]) -> DraftKingsRacingDraftkingsRacingScheduleResponse: ...
+    def draftkings_racing_tracks(self, **params: Unpack[DraftKingsRacingDraftkingsRacingTracksParams]) -> DraftKingsRacingDraftkingsRacingTracksResponse: ...
+
 class DraftKingsSportsbookGroup:
     def draftkings_event(self, **params: Unpack[DraftKingsSportsbookDraftkingsEventParams]) -> DraftKingsSportsbookDraftkingsEventResponse: ...
     def draftkings_event_context(self, **params: Unpack[DraftKingsSportsbookDraftkingsEventContextParams]) -> DraftKingsSportsbookDraftkingsEventContextResponse: ...
@@ -110620,6 +117356,80 @@ class FanaticsLiveGroup:
     def fanaticslive_shops(self, **params: Unpack[FanaticsLiveFanaticsliveShopsParams]) -> FanaticsLiveFanaticsliveShopsResponse: ...
     def fanaticslive_show(self, **params: Unpack[FanaticsLiveFanaticsliveShowParams]) -> FanaticsLiveFanaticsliveShowResponse: ...
     def fanaticslive_instant_rips(self, **params: Unpack[FanaticsLiveFanaticsliveInstantRipsParams]) -> FanaticsLiveFanaticsliveInstantRipsResponse: ...
+
+class FanDuelGroup:
+    def fanduel_casino_categories(self, **params: Unpack[FanDuelFanduelCasinoCategoriesParams]) -> FanDuelFanduelCasinoCategoriesResponse: ...
+    def fanduel_casino_category(self, **params: Unpack[FanDuelFanduelCasinoCategoryParams]) -> FanDuelFanduelCasinoCategoryResponse: ...
+    def fanduel_casino_game(self, **params: Unpack[FanDuelFanduelCasinoGameParams]) -> FanDuelFanduelCasinoGameResponse: ...
+    def fanduel_racing_carryover_pools(self, **params: Unpack[FanDuelFanduelRacingCarryoverPoolsParams]) -> FanDuelFanduelRacingCarryoverPoolsResponse: ...
+    def fanduel_racing_filters(self, **params: Unpack[FanDuelFanduelRacingFiltersParams]) -> FanDuelFanduelRacingFiltersResponse: ...
+    def fanduel_racing_horse(self, **params: Unpack[FanDuelFanduelRacingHorseParams]) -> FanDuelFanduelRacingHorseResponse: ...
+    def fanduel_racing_past_race(self, **params: Unpack[FanDuelFanduelRacingPastRaceParams]) -> FanDuelFanduelRacingPastRaceResponse: ...
+    def fanduel_racing_past_races(self, **params: Unpack[FanDuelFanduelRacingPastRacesParams]) -> FanDuelFanduelRacingPastRacesResponse: ...
+    def fanduel_racing_past_tracks(self, **params: Unpack[FanDuelFanduelRacingPastTracksParams]) -> FanDuelFanduelRacingPastTracksResponse: ...
+    def fanduel_racing_race(self, **params: Unpack[FanDuelFanduelRacingRaceParams]) -> FanDuelFanduelRacingRaceResponse: ...
+    def fanduel_racing_races(self, **params: Unpack[FanDuelFanduelRacingRacesParams]) -> FanDuelFanduelRacingRacesResponse: ...
+    def fanduel_racing_results(self, **params: Unpack[FanDuelFanduelRacingResultsParams]) -> FanDuelFanduelRacingResultsResponse: ...
+    def fanduel_racing_search(self, **params: Unpack[FanDuelFanduelRacingSearchParams]) -> FanDuelFanduelRacingSearchResponse: ...
+    def fanduel_racing_track(self, **params: Unpack[FanDuelFanduelRacingTrackParams]) -> FanDuelFanduelRacingTrackResponse: ...
+    def fanduel_racing_tracks(self, **params: Unpack[FanDuelFanduelRacingTracksParams]) -> FanDuelFanduelRacingTracksResponse: ...
+    def fanduel_racing_wager_types(self, **params: Unpack[FanDuelFanduelRacingWagerTypesParams]) -> FanDuelFanduelRacingWagerTypesResponse: ...
+    def fanduel_research(self, **params: Unpack[FanDuelFanduelResearchParams]) -> FanDuelFanduelResearchResponse: ...
+    def fanduel_research_article(self, **params: Unpack[FanDuelFanduelResearchArticleParams]) -> FanDuelFanduelResearchArticleResponse: ...
+    def fanduel_research_articles(self, **params: Unpack[FanDuelFanduelResearchArticlesParams]) -> FanDuelFanduelResearchArticlesResponse: ...
+    def fanduel_research_author(self, **params: Unpack[FanDuelFanduelResearchAuthorParams]) -> FanDuelFanduelResearchAuthorResponse: ...
+    def fanduel_research_authors(self, **params: Unpack[FanDuelFanduelResearchAuthorsParams]) -> FanDuelFanduelResearchAuthorsResponse: ...
+    def fanduel_research_featured_articles(self, **params: Unpack[FanDuelFanduelResearchFeaturedArticlesParams]) -> FanDuelFanduelResearchFeaturedArticlesResponse: ...
+    def fanduel_research_fixtures(self, **params: Unpack[FanDuelFanduelResearchFixturesParams]) -> FanDuelFanduelResearchFixturesResponse: ...
+    def fanduel_research_nfl_schedule(self, **params: Unpack[FanDuelFanduelResearchNflScheduleParams]) -> FanDuelFanduelResearchNflScheduleResponse: ...
+    def fanduel_research_player_news(self, **params: Unpack[FanDuelFanduelResearchPlayerNewsParams]) -> FanDuelFanduelResearchPlayerNewsResponse: ...
+    def fanduel_research_quick_picks_daily(self, **params: Unpack[FanDuelFanduelResearchQuickPicksDailyParams]) -> FanDuelFanduelResearchQuickPicksDailyResponse: ...
+    def fanduel_research_projection_slates(self, **params: Unpack[FanDuelFanduelResearchProjectionSlatesParams]) -> FanDuelFanduelResearchProjectionSlatesResponse: ...
+    def fanduel_research_projection_tables(self, **params: Unpack[FanDuelFanduelResearchProjectionTablesParams]) -> FanDuelFanduelResearchProjectionTablesResponse: ...
+    def fanduel_research_projections(self, **params: Unpack[FanDuelFanduelResearchProjectionsParams]) -> FanDuelFanduelResearchProjectionsResponse: ...
+    def fanduel_research_sports(self, **params: Unpack[FanDuelFanduelResearchSportsParams]) -> FanDuelFanduelResearchSportsResponse: ...
+    def fanduel_research_sub_categories(self, **params: Unpack[FanDuelFanduelResearchSubCategoriesParams]) -> FanDuelFanduelResearchSubCategoriesResponse: ...
+    def fanduel_sportsbook_autocomplete(self, **params: Unpack[FanDuelFanduelSportsbookAutocompleteParams]) -> FanDuelFanduelSportsbookAutocompleteResponse: ...
+    def fanduel_sportsbook_builder(self, **params: Unpack[FanDuelFanduelSportsbookBuilderParams]) -> FanDuelFanduelSportsbookBuilderResponse: ...
+    def fanduel_sportsbook_builder_events(self, **params: Unpack[FanDuelFanduelSportsbookBuilderEventsParams]) -> FanDuelFanduelSportsbookBuilderEventsResponse: ...
+    def fanduel_sportsbook_builder_quotes(self, **params: Unpack[FanDuelFanduelSportsbookBuilderQuotesParams]) -> FanDuelFanduelSportsbookBuilderQuotesResponse: ...
+    def fanduel_sportsbook_competition(self, **params: Unpack[FanDuelFanduelSportsbookCompetitionParams]) -> FanDuelFanduelSportsbookCompetitionResponse: ...
+    def fanduel_sportsbook_event(self, **params: Unpack[FanDuelFanduelSportsbookEventParams]) -> FanDuelFanduelSportsbookEventResponse: ...
+    def fanduel_sportsbook_event_box_score(self, **params: Unpack[FanDuelFanduelSportsbookEventBoxScoreParams]) -> FanDuelFanduelSportsbookEventBoxScoreResponse: ...
+    def fanduel_sportsbook_event_play_by_play(self, **params: Unpack[FanDuelFanduelSportsbookEventPlayByPlayParams]) -> FanDuelFanduelSportsbookEventPlayByPlayResponse: ...
+    def fanduel_sportsbook_event_players(self, **params: Unpack[FanDuelFanduelSportsbookEventPlayersParams]) -> FanDuelFanduelSportsbookEventPlayersResponse: ...
+    def fanduel_sportsbook_event_score(self, **params: Unpack[FanDuelFanduelSportsbookEventScoreParams]) -> FanDuelFanduelSportsbookEventScoreResponse: ...
+    def fanduel_sportsbook_event_stats(self, **params: Unpack[FanDuelFanduelSportsbookEventStatsParams]) -> FanDuelFanduelSportsbookEventStatsResponse: ...
+    def fanduel_sportsbook_events_status(self, **params: Unpack[FanDuelFanduelSportsbookEventsStatusParams]) -> FanDuelFanduelSportsbookEventsStatusResponse: ...
+    def fanduel_sportsbook_home(self, **params: Unpack[FanDuelFanduelSportsbookHomeParams]) -> FanDuelFanduelSportsbookHomeResponse: ...
+    def fanduel_sportsbook_league(self, **params: Unpack[FanDuelFanduelSportsbookLeagueParams]) -> FanDuelFanduelSportsbookLeagueResponse: ...
+    def fanduel_sportsbook_live(self, **params: Unpack[FanDuelFanduelSportsbookLiveParams]) -> FanDuelFanduelSportsbookLiveResponse: ...
+    def fanduel_sportsbook_live_count(self, **params: Unpack[FanDuelFanduelSportsbookLiveCountParams]) -> FanDuelFanduelSportsbookLiveCountResponse: ...
+    def fanduel_sportsbook_live_data(self, **params: Unpack[FanDuelFanduelSportsbookLiveDataParams]) -> FanDuelFanduelSportsbookLiveDataResponse: ...
+    def fanduel_sportsbook_live_scores(self, **params: Unpack[FanDuelFanduelSportsbookLiveScoresParams]) -> FanDuelFanduelSportsbookLiveScoresResponse: ...
+    def fanduel_sportsbook_market_prices(self, **params: Unpack[FanDuelFanduelSportsbookMarketPricesParams]) -> FanDuelFanduelSportsbookMarketPricesResponse: ...
+    def fanduel_sportsbook_parlays(self, **params: Unpack[FanDuelFanduelSportsbookParlaysParams]) -> FanDuelFanduelSportsbookParlaysResponse: ...
+    def fanduel_sportsbook_player(self, **params: Unpack[FanDuelFanduelSportsbookPlayerParams]) -> FanDuelFanduelSportsbookPlayerResponse: ...
+    def fanduel_sportsbook_player_news(self, **params: Unpack[FanDuelFanduelSportsbookPlayerNewsParams]) -> FanDuelFanduelSportsbookPlayerNewsResponse: ...
+    def fanduel_sportsbook_player_props(self, **params: Unpack[FanDuelFanduelSportsbookPlayerPropsParams]) -> FanDuelFanduelSportsbookPlayerPropsResponse: ...
+    def fanduel_sportsbook_player_stats(self, **params: Unpack[FanDuelFanduelSportsbookPlayerStatsParams]) -> FanDuelFanduelSportsbookPlayerStatsResponse: ...
+    def fanduel_sportsbook_players(self, **params: Unpack[FanDuelFanduelSportsbookPlayersParams]) -> FanDuelFanduelSportsbookPlayersResponse: ...
+    def fanduel_sportsbook_promotions(self, **params: Unpack[FanDuelFanduelSportsbookPromotionsParams]) -> FanDuelFanduelSportsbookPromotionsResponse: ...
+    def fanduel_sportsbook_schedule(self, **params: Unpack[FanDuelFanduelSportsbookScheduleParams]) -> FanDuelFanduelSportsbookScheduleResponse: ...
+    def fanduel_sportsbook_search(self, **params: Unpack[FanDuelFanduelSportsbookSearchParams]) -> FanDuelFanduelSportsbookSearchResponse: ...
+    def fanduel_sportsbook_search_tabs(self, **params: Unpack[FanDuelFanduelSportsbookSearchTabsParams]) -> FanDuelFanduelSportsbookSearchTabsResponse: ...
+    def fanduel_sportsbook_sport(self, **params: Unpack[FanDuelFanduelSportsbookSportParams]) -> FanDuelFanduelSportsbookSportResponse: ...
+    def fanduel_sportsbook_sports(self, **params: Unpack[FanDuelFanduelSportsbookSportsParams]) -> FanDuelFanduelSportsbookSportsResponse: ...
+    def fanduel_sportsbook_standings(self, **params: Unpack[FanDuelFanduelSportsbookStandingsParams]) -> FanDuelFanduelSportsbookStandingsResponse: ...
+    def fanduel_sportsbook_stats(self, **params: Unpack[FanDuelFanduelSportsbookStatsParams]) -> FanDuelFanduelSportsbookStatsResponse: ...
+    def fanduel_sportsbook_team_depth_chart(self, **params: Unpack[FanDuelFanduelSportsbookTeamDepthChartParams]) -> FanDuelFanduelSportsbookTeamDepthChartResponse: ...
+    def fanduel_sportsbook_team_news(self, **params: Unpack[FanDuelFanduelSportsbookTeamNewsParams]) -> FanDuelFanduelSportsbookTeamNewsResponse: ...
+    def fanduel_sportsbook_team_odds(self, **params: Unpack[FanDuelFanduelSportsbookTeamOddsParams]) -> FanDuelFanduelSportsbookTeamOddsResponse: ...
+    def fanduel_sportsbook_team_roster(self, **params: Unpack[FanDuelFanduelSportsbookTeamRosterParams]) -> FanDuelFanduelSportsbookTeamRosterResponse: ...
+    def fanduel_sportsbook_team_schedule(self, **params: Unpack[FanDuelFanduelSportsbookTeamScheduleParams]) -> FanDuelFanduelSportsbookTeamScheduleResponse: ...
+    def fanduel_sportsbook_team_stats(self, **params: Unpack[FanDuelFanduelSportsbookTeamStatsParams]) -> FanDuelFanduelSportsbookTeamStatsResponse: ...
+    def fanduel_sportsbook_teams(self, **params: Unpack[FanDuelFanduelSportsbookTeamsParams]) -> FanDuelFanduelSportsbookTeamsResponse: ...
+    def fanduel_sportsbook_trending(self, **params: Unpack[FanDuelFanduelSportsbookTrendingParams]) -> FanDuelFanduelSportsbookTrendingResponse: ...
 
 class FarfetchGroup:
     def categories(self, **params: Unpack[FarfetchCategoriesParams]) -> FarfetchCategoriesResponse: ...
@@ -110845,6 +117655,35 @@ class FtGroup:
     def headlines(self, **params: Unpack[FtHeadlinesParams]) -> FtHeadlinesResponse: ...
     def news(self, **params: Unpack[FtNewsParams]) -> FtNewsResponse: ...
     def search(self, **params: Unpack[FtSearchParams]) -> FtSearchResponse: ...
+
+class FussballDeGroup:
+    def fussballde_amateur_stats(self, **params: Unpack[FussballDeFussballdeAmateurStatsParams]) -> FussballDeFussballdeAmateurStatsResponse: ...
+    def fussballde_club(self, **params: Unpack[FussballDeFussballdeClubParams]) -> FussballDeFussballdeClubResponse: ...
+    def fussballde_club_matches(self, **params: Unpack[FussballDeFussballdeClubMatchesParams]) -> FussballDeFussballdeClubMatchesResponse: ...
+    def fussballde_club_search(self, **params: Unpack[FussballDeFussballdeClubSearchParams]) -> FussballDeFussballdeClubSearchResponse: ...
+    def fussballde_competition_options(self, **params: Unpack[FussballDeFussballdeCompetitionOptionsParams]) -> FussballDeFussballdeCompetitionOptionsResponse: ...
+    def fussballde_competitions(self, **params: Unpack[FussballDeFussballdeCompetitionsParams]) -> FussballDeFussballdeCompetitionsResponse: ...
+    def fussballde_federation(self, **params: Unpack[FussballDeFussballdeFederationParams]) -> FussballDeFussballdeFederationResponse: ...
+    def fussballde_filters(self, **params: Unpack[FussballDeFussballdeFiltersParams]) -> FussballDeFussballdeFiltersResponse: ...
+    def fussballde_match(self, **params: Unpack[FussballDeFussballdeMatchParams]) -> FussballDeFussballdeMatchResponse: ...
+    def fussballde_match_calendar(self, **params: Unpack[FussballDeFussballdeMatchCalendarParams]) -> FussballDeFussballdeMatchCalendarResponse: ...
+    def fussballde_match_comparison(self, **params: Unpack[FussballDeFussballdeMatchComparisonParams]) -> FussballDeFussballdeMatchComparisonResponse: ...
+    def fussballde_match_plan(self, **params: Unpack[FussballDeFussballdeMatchPlanParams]) -> FussballDeFussballdeMatchPlanResponse: ...
+    def fussballde_matchday(self, **params: Unpack[FussballDeFussballdeMatchdayParams]) -> FussballDeFussballdeMatchdayResponse: ...
+    def fussballde_national_top_scorers(self, **params: Unpack[FussballDeFussballdeNationalTopScorersParams]) -> FussballDeFussballdeNationalTopScorersResponse: ...
+    def fussballde_news(self, **params: Unpack[FussballDeFussballdeNewsParams]) -> FussballDeFussballdeNewsResponse: ...
+    def fussballde_news_article(self, **params: Unpack[FussballDeFussballdeNewsArticleParams]) -> FussballDeFussballdeNewsArticleResponse: ...
+    def fussballde_news_search(self, **params: Unpack[FussballDeFussballdeNewsSearchParams]) -> FussballDeFussballdeNewsSearchResponse: ...
+    def fussballde_player(self, **params: Unpack[FussballDeFussballdePlayerParams]) -> FussballDeFussballdePlayerResponse: ...
+    def fussballde_player_matches(self, **params: Unpack[FussballDeFussballdePlayerMatchesParams]) -> FussballDeFussballdePlayerMatchesResponse: ...
+    def fussballde_player_search(self, **params: Unpack[FussballDeFussballdePlayerSearchParams]) -> FussballDeFussballdePlayerSearchResponse: ...
+    def fussballde_position_history(self, **params: Unpack[FussballDeFussballdePositionHistoryParams]) -> FussballDeFussballdePositionHistoryResponse: ...
+    def fussballde_postal_codes(self, **params: Unpack[FussballDeFussballdePostalCodesParams]) -> FussballDeFussballdePostalCodesResponse: ...
+    def fussballde_table(self, **params: Unpack[FussballDeFussballdeTableParams]) -> FussballDeFussballdeTableResponse: ...
+    def fussballde_team(self, **params: Unpack[FussballDeFussballdeTeamParams]) -> FussballDeFussballdeTeamResponse: ...
+    def fussballde_team_matches(self, **params: Unpack[FussballDeFussballdeTeamMatchesParams]) -> FussballDeFussballdeTeamMatchesResponse: ...
+    def fussballde_team_squad(self, **params: Unpack[FussballDeFussballdeTeamSquadParams]) -> FussballDeFussballdeTeamSquadResponse: ...
+    def fussballde_top_scorers(self, **params: Unpack[FussballDeFussballdeTopScorersParams]) -> FussballDeFussballdeTopScorersResponse: ...
 
 class GameRantGroup:
     def gamerant_article(self, **params: Unpack[GameRantGamerantArticleParams]) -> GameRantGamerantArticleResponse: ...
@@ -111344,9 +118183,11 @@ class InstacartGroup:
     def trending(self, **params: Unpack[InstacartTrendingParams]) -> InstacartTrendingResponse: ...
 
 class InstagramGroup:
+    def comments(self, **params: Unpack[InstagramCommentsParams]) -> InstagramCommentsResponse: ...
     def post(self, **params: Unpack[InstagramPostParams]) -> InstagramPostResponse: ...
     def profile(self, **params: Unpack[InstagramProfileParams]) -> InstagramProfileResponse: ...
     def reels(self, **params: Unpack[InstagramReelsParams]) -> InstagramReelsResponse: ...
+    def user_posts(self, **params: Unpack[InstagramUserPostsParams]) -> InstagramUserPostsResponse: ...
 
 class InvestopediaGroup:
     def article(self, **params: Unpack[InvestopediaArticleParams]) -> InvestopediaArticleResponse: ...
@@ -111439,6 +118280,13 @@ class JobsGroup:
     def workable_postings(self, **params: Unpack[JobsWorkablePostingsParams]) -> JobsWorkablePostingsResponse: ...
     def workday_board(self, **params: Unpack[JobsWorkdayBoardParams]) -> JobsWorkdayBoardResponse: ...
     def workday_job(self, **params: Unpack[JobsWorkdayJobParams]) -> JobsWorkdayJobResponse: ...
+
+class JumiaGroup:
+    def categories(self, **params: Unpack[JumiaCategoriesParams]) -> JumiaCategoriesResponse: ...
+    def category(self, **params: Unpack[JumiaCategoryParams]) -> JumiaCategoryResponse: ...
+    def countries(self, **params: Unpack[JumiaCountriesParams]) -> JumiaCountriesResponse: ...
+    def product(self, **params: Unpack[JumiaProductParams]) -> JumiaProductResponse: ...
+    def search(self, **params: Unpack[JumiaSearchParams]) -> JumiaSearchResponse: ...
 
 class JustEatGroup:
     def justeat_restaurant(self, **params: Unpack[JustEatJusteatRestaurantParams]) -> JustEatJusteatRestaurantResponse: ...
@@ -112510,6 +119358,13 @@ class RebagGroup:
     def store(self, **params: Unpack[RebagStoreParams]) -> RebagStoreResponse: ...
 
 class RedditGroup:
+    def archive_comments_ids(self, **params: Unpack[RedditArchiveCommentsIdsParams]) -> RedditArchiveCommentsIdsResponse: ...
+    def archive_comments_search(self, **params: Unpack[RedditArchiveCommentsSearchParams]) -> RedditArchiveCommentsSearchResponse: ...
+    def archive_comments_tree(self, **params: Unpack[RedditArchiveCommentsTreeParams]) -> RedditArchiveCommentsTreeResponse: ...
+    def archive_posts_ids(self, **params: Unpack[RedditArchivePostsIdsParams]) -> RedditArchivePostsIdsResponse: ...
+    def archive_posts_search(self, **params: Unpack[RedditArchivePostsSearchParams]) -> RedditArchivePostsSearchResponse: ...
+    def archive_subreddits_search(self, **params: Unpack[RedditArchiveSubredditsSearchParams]) -> RedditArchiveSubredditsSearchResponse: ...
+    def archive_time_series(self, **params: Unpack[RedditArchiveTimeSeriesParams]) -> RedditArchiveTimeSeriesResponse: ...
     def comments(self, **params: Unpack[RedditCommentsParams]) -> RedditCommentsResponse: ...
     def domain_posts(self, **params: Unpack[RedditDomainPostsParams]) -> RedditDomainPostsResponse: ...
     def leads(self, **params: Unpack[RedditLeadsParams]) -> RedditLeadsResponse: ...
@@ -112774,14 +119629,22 @@ class ShakeShackGroup:
     def shakeshack_store(self, **params: Unpack[ShakeShackShakeshackStoreParams]) -> ShakeShackShakeshackStoreResponse: ...
 
 class SheinGroup:
+    def brands(self, **params: Unpack[SheinBrandsParams]) -> SheinBrandsResponse: ...
+    def categories(self, **params: Unpack[SheinCategoriesParams]) -> SheinCategoriesResponse: ...
     def category_filters(self, **params: Unpack[SheinCategoryFiltersParams]) -> SheinCategoryFiltersResponse: ...
     def category_goods(self, **params: Unpack[SheinCategoryGoodsParams]) -> SheinCategoryGoodsResponse: ...
     def category_nav(self, **params: Unpack[SheinCategoryNavParams]) -> SheinCategoryNavResponse: ...
+    def deals_products(self, **params: Unpack[SheinDealsProductsParams]) -> SheinDealsProductsResponse: ...
+    def deals_tabs(self, **params: Unpack[SheinDealsTabsParams]) -> SheinDealsTabsResponse: ...
     def products_aggregation_filters(self, **params: Unpack[SheinProductsAggregationFiltersParams]) -> SheinProductsAggregationFiltersResponse: ...
     def products_detail(self, **params: Unpack[SheinProductsDetailParams]) -> SheinProductsDetailResponse: ...
     def products_search(self, **params: Unpack[SheinProductsSearchParams]) -> SheinProductsSearchResponse: ...
     def search_autocomplete(self, **params: Unpack[SheinSearchAutocompleteParams]) -> SheinSearchAutocompleteResponse: ...
     def search_keywords(self, **params: Unpack[SheinSearchKeywordsParams]) -> SheinSearchKeywordsResponse: ...
+    def store(self, **params: Unpack[SheinStoreParams]) -> SheinStoreResponse: ...
+    def store_products(self, **params: Unpack[SheinStoreProductsParams]) -> SheinStoreProductsResponse: ...
+    def trending_categories(self, **params: Unpack[SheinTrendingCategoriesParams]) -> SheinTrendingCategoriesResponse: ...
+    def trending_filters(self, **params: Unpack[SheinTrendingFiltersParams]) -> SheinTrendingFiltersResponse: ...
 
 class ShopAppGroup:
     def analysis(self, **params: Unpack[ShopAppAnalysisParams]) -> ShopAppAnalysisResponse: ...
@@ -113485,31 +120348,68 @@ class TiktokGroup:
     def challenge(self, **params: Unpack[TiktokChallengeParams]) -> TiktokChallengeResponse: ...
     def challenge_list(self, **params: Unpack[TiktokChallengeListParams]) -> TiktokChallengeListResponse: ...
     def mobile_anchor_list(self, **params: Unpack[TiktokMobileAnchorListParams]) -> TiktokMobileAnchorListResponse: ...
+    def mobile_collection_detail(self, **params: Unpack[TiktokMobileCollectionDetailParams]) -> TiktokMobileCollectionDetailResponse: ...
+    def mobile_collection_list(self, **params: Unpack[TiktokMobileCollectionListParams]) -> TiktokMobileCollectionListResponse: ...
+    def mobile_collection_videos(self, **params: Unpack[TiktokMobileCollectionVideosParams]) -> TiktokMobileCollectionVideosResponse: ...
     def mobile_comment_replies(self, **params: Unpack[TiktokMobileCommentRepliesParams]) -> TiktokMobileCommentRepliesResponse: ...
     def mobile_comments(self, **params: Unpack[TiktokMobileCommentsParams]) -> TiktokMobileCommentsResponse: ...
     def mobile_feed(self, **params: Unpack[TiktokMobileFeedParams]) -> TiktokMobileFeedResponse: ...
+    def mobile_feed_offline(self, **params: Unpack[TiktokMobileFeedOfflineParams]) -> TiktokMobileFeedOfflineResponse: ...
     def mobile_feed_post(self, **params: Unpack[TiktokMobileFeedPostParams]) -> TiktokMobileFeedPostResponse: ...
     def mobile_hashtag(self, **params: Unpack[TiktokMobileHashtagParams]) -> TiktokMobileHashtagResponse: ...
     def mobile_hashtag_posts(self, **params: Unpack[TiktokMobileHashtagPostsParams]) -> TiktokMobileHashtagPostsResponse: ...
     def mobile_hashtags(self, **params: Unpack[TiktokMobileHashtagsParams]) -> TiktokMobileHashtagsResponse: ...
     def mobile_live_effects(self, **params: Unpack[TiktokMobileLiveEffectsParams]) -> TiktokMobileLiveEffectsResponse: ...
     def mobile_live_gifts(self, **params: Unpack[TiktokMobileLiveGiftsParams]) -> TiktokMobileLiveGiftsResponse: ...
+    def mobile_live_hashtags(self, **params: Unpack[TiktokMobileLiveHashtagsParams]) -> TiktokMobileLiveHashtagsResponse: ...
+    def mobile_live_room(self, **params: Unpack[TiktokMobileLiveRoomParams]) -> TiktokMobileLiveRoomResponse: ...
+    def mobile_live_room_by_user(self, **params: Unpack[TiktokMobileLiveRoomByUserParams]) -> TiktokMobileLiveRoomByUserResponse: ...
     def mobile_live_search(self, **params: Unpack[TiktokMobileLiveSearchParams]) -> TiktokMobileLiveSearchResponse: ...
+    def mobile_live_tabs(self, **params: Unpack[TiktokMobileLiveTabsParams]) -> TiktokMobileLiveTabsResponse: ...
     def mobile_music_beats(self, **params: Unpack[TiktokMobileMusicBeatsParams]) -> TiktokMobileMusicBeatsResponse: ...
+    def mobile_music_chart(self, **params: Unpack[TiktokMobileMusicChartParams]) -> TiktokMobileMusicChartResponse: ...
+    def mobile_music_choices(self, **params: Unpack[TiktokMobileMusicChoicesParams]) -> TiktokMobileMusicChoicesResponse: ...
+    def mobile_music_collection_list(self, **params: Unpack[TiktokMobileMusicCollectionListParams]) -> TiktokMobileMusicCollectionListResponse: ...
     def mobile_music_collections(self, **params: Unpack[TiktokMobileMusicCollectionsParams]) -> TiktokMobileMusicCollectionsResponse: ...
+    def mobile_music_detail(self, **params: Unpack[TiktokMobileMusicDetailParams]) -> TiktokMobileMusicDetailResponse: ...
     def mobile_music_pick(self, **params: Unpack[TiktokMobileMusicPickParams]) -> TiktokMobileMusicPickResponse: ...
     def mobile_music_posts(self, **params: Unpack[TiktokMobileMusicPostsParams]) -> TiktokMobileMusicPostsResponse: ...
     def mobile_music_related(self, **params: Unpack[TiktokMobileMusicRelatedParams]) -> TiktokMobileMusicRelatedResponse: ...
     def mobile_music_trending(self, **params: Unpack[TiktokMobileMusicTrendingParams]) -> TiktokMobileMusicTrendingResponse: ...
+    def mobile_mv_videos(self, **params: Unpack[TiktokMobileMvVideosParams]) -> TiktokMobileMvVideosResponse: ...
+    def mobile_place_detail(self, **params: Unpack[TiktokMobilePlaceDetailParams]) -> TiktokMobilePlaceDetailResponse: ...
+    def mobile_place_info(self, **params: Unpack[TiktokMobilePlaceInfoParams]) -> TiktokMobilePlaceInfoResponse: ...
+    def mobile_place_media(self, **params: Unpack[TiktokMobilePlaceMediaParams]) -> TiktokMobilePlaceMediaResponse: ...
+    def mobile_place_photos(self, **params: Unpack[TiktokMobilePlacePhotosParams]) -> TiktokMobilePlacePhotosResponse: ...
+    def mobile_place_reviews(self, **params: Unpack[TiktokMobilePlaceReviewsParams]) -> TiktokMobilePlaceReviewsResponse: ...
+    def mobile_place_videos(self, **params: Unpack[TiktokMobilePlaceVideosParams]) -> TiktokMobilePlaceVideosResponse: ...
+    def mobile_playlist_detail(self, **params: Unpack[TiktokMobilePlaylistDetailParams]) -> TiktokMobilePlaylistDetailResponse: ...
+    def mobile_playlist_list(self, **params: Unpack[TiktokMobilePlaylistListParams]) -> TiktokMobilePlaylistListResponse: ...
+    def mobile_playlist_videos(self, **params: Unpack[TiktokMobilePlaylistVideosParams]) -> TiktokMobilePlaylistVideosResponse: ...
     def mobile_search(self, **params: Unpack[TiktokMobileSearchParams]) -> TiktokMobileSearchResponse: ...
+    def mobile_search_effects(self, **params: Unpack[TiktokMobileSearchEffectsParams]) -> TiktokMobileSearchEffectsResponse: ...
+    def mobile_search_hashtags(self, **params: Unpack[TiktokMobileSearchHashtagsParams]) -> TiktokMobileSearchHashtagsResponse: ...
     def mobile_search_music(self, **params: Unpack[TiktokMobileSearchMusicParams]) -> TiktokMobileSearchMusicResponse: ...
+    def mobile_search_photos(self, **params: Unpack[TiktokMobileSearchPhotosParams]) -> TiktokMobileSearchPhotosResponse: ...
     def mobile_search_place(self, **params: Unpack[TiktokMobileSearchPlaceParams]) -> TiktokMobileSearchPlaceResponse: ...
     def mobile_search_pre_info(self, **params: Unpack[TiktokMobileSearchPreInfoParams]) -> TiktokMobileSearchPreInfoResponse: ...
+    def mobile_search_stream(self, **params: Unpack[TiktokMobileSearchStreamParams]) -> TiktokMobileSearchStreamResponse: ...
     def mobile_search_sug(self, **params: Unpack[TiktokMobileSearchSugParams]) -> TiktokMobileSearchSugResponse: ...
     def mobile_search_tabs(self, **params: Unpack[TiktokMobileSearchTabsParams]) -> TiktokMobileSearchTabsResponse: ...
     def mobile_search_user(self, **params: Unpack[TiktokMobileSearchUserParams]) -> TiktokMobileSearchUserResponse: ...
+    def mobile_search_videos(self, **params: Unpack[TiktokMobileSearchVideosParams]) -> TiktokMobileSearchVideosResponse: ...
+    def mobile_translation_description(self, **params: Unpack[TiktokMobileTranslationDescriptionParams]) -> TiktokMobileTranslationDescriptionResponse: ...
     def mobile_trending_categories(self, **params: Unpack[TiktokMobileTrendingCategoriesParams]) -> TiktokMobileTrendingCategoriesResponse: ...
     def mobile_trending_effects(self, **params: Unpack[TiktokMobileTrendingEffectsParams]) -> TiktokMobileTrendingEffectsResponse: ...
+    def mobile_user_followers(self, **params: Unpack[TiktokMobileUserFollowersParams]) -> TiktokMobileUserFollowersResponse: ...
+    def mobile_user_following(self, **params: Unpack[TiktokMobileUserFollowingParams]) -> TiktokMobileUserFollowingResponse: ...
+    def mobile_user_original_effects(self, **params: Unpack[TiktokMobileUserOriginalEffectsParams]) -> TiktokMobileUserOriginalEffectsResponse: ...
+    def mobile_user_original_music(self, **params: Unpack[TiktokMobileUserOriginalMusicParams]) -> TiktokMobileUserOriginalMusicResponse: ...
+    def mobile_user_posts(self, **params: Unpack[TiktokMobileUserPostsParams]) -> TiktokMobileUserPostsResponse: ...
+    def mobile_user_profile(self, **params: Unpack[TiktokMobileUserProfileParams]) -> TiktokMobileUserProfileResponse: ...
+    def mobile_user_recommendations(self, **params: Unpack[TiktokMobileUserRecommendationsParams]) -> TiktokMobileUserRecommendationsResponse: ...
+    def mobile_video_detail(self, **params: Unpack[TiktokMobileVideoDetailParams]) -> TiktokMobileVideoDetailResponse: ...
+    def mobile_video_subtitles(self, **params: Unpack[TiktokMobileVideoSubtitlesParams]) -> TiktokMobileVideoSubtitlesResponse: ...
     def popular_trend_country_industry_meta(self, **params: Unpack[TiktokPopularTrendCountryIndustryMetaParams]) -> TiktokPopularTrendCountryIndustryMetaResponse: ...
     def post(self, **params: Unpack[TiktokPostParams]) -> TiktokPostResponse: ...
     def profile_post(self, **params: Unpack[TiktokProfilePostParams]) -> TiktokProfilePostResponse: ...
@@ -114032,6 +120932,7 @@ class YoutubeGroup:
     def channel_shorts(self, **params: Unpack[YoutubeChannelShortsParams]) -> YoutubeChannelShortsResponse: ...
     def channel_videos(self, **params: Unpack[YoutubeChannelVideosParams]) -> YoutubeChannelVideosResponse: ...
     def comments(self, **params: Unpack[YoutubeCommentsParams]) -> YoutubeCommentsResponse: ...
+    def comment_replies(self, **params: Unpack[YoutubeCommentRepliesParams]) -> YoutubeCommentRepliesResponse: ...
     def playlist(self, **params: Unpack[YoutubePlaylistParams]) -> YoutubePlaylistResponse: ...
     def profile(self, **params: Unpack[YoutubeProfileParams]) -> YoutubeProfileResponse: ...
     def search(self, **params: Unpack[YoutubeSearchParams]) -> YoutubeSearchResponse: ...
@@ -114926,6 +121827,25 @@ OperationId = Literal[
     'doordash-store-item',
     'doordash-store-menu',
     'doordash-store-reviews',
+    'draftkings-casino-directory',
+    'draftkings-casino-slots-guide',
+    'draftkings-casino-slots-categories',
+    'draftkings-casino-cleopatra-guide',
+    'draftkings-casino-wheel-of-fortune-guide',
+    'draftkings-dfs-glossary',
+    'draftkings-dfs-guide',
+    'draftkings-dfs-nfl-best-ball-featured-contests',
+    'draftkings-dfs-rules-and-scoring',
+    'draftkings-dfs-sports',
+    'draftkings-pick6-rules',
+    'draftkings-pick6-rule-page',
+    'draftkings-pick6-sports',
+    'draftkings-predictions-availability',
+    'draftkings-predictions-categories',
+    'draftkings-predictions-rules',
+    'draftkings-racing-race-info',
+    'draftkings-racing-schedule',
+    'draftkings-racing-tracks',
     'draftkings-event',
     'draftkings-event-context',
     'draftkings-event-markets',
@@ -115050,6 +121970,78 @@ OperationId = Literal[
     'fanaticslive-shops',
     'fanaticslive-show',
     'fanaticslive-instant-rips',
+    'fanduel-casino-categories',
+    'fanduel-casino-category',
+    'fanduel-casino-game',
+    'fanduel-racing-carryover-pools',
+    'fanduel-racing-filters',
+    'fanduel-racing-horse',
+    'fanduel-racing-past-race',
+    'fanduel-racing-past-races',
+    'fanduel-racing-past-tracks',
+    'fanduel-racing-race',
+    'fanduel-racing-races',
+    'fanduel-racing-results',
+    'fanduel-racing-search',
+    'fanduel-racing-track',
+    'fanduel-racing-tracks',
+    'fanduel-racing-wager-types',
+    'fanduel-research',
+    'fanduel-research-article',
+    'fanduel-research-articles',
+    'fanduel-research-author',
+    'fanduel-research-authors',
+    'fanduel-research-featured-articles',
+    'fanduel-research-fixtures',
+    'fanduel-research-nfl-schedule',
+    'fanduel-research-player-news',
+    'fanduel-research-quick-picks-daily',
+    'fanduel-research-projection-slates',
+    'fanduel-research-projection-tables',
+    'fanduel-research-projections',
+    'fanduel-research-sports',
+    'fanduel-research-sub-categories',
+    'fanduel-sportsbook-autocomplete',
+    'fanduel-sportsbook-builder',
+    'fanduel-sportsbook-builder-events',
+    'fanduel-sportsbook-builder-quotes',
+    'fanduel-sportsbook-competition',
+    'fanduel-sportsbook-event',
+    'fanduel-sportsbook-event-box-score',
+    'fanduel-sportsbook-event-play-by-play',
+    'fanduel-sportsbook-event-players',
+    'fanduel-sportsbook-event-score',
+    'fanduel-sportsbook-event-stats',
+    'fanduel-sportsbook-events-status',
+    'fanduel-sportsbook-home',
+    'fanduel-sportsbook-league',
+    'fanduel-sportsbook-live',
+    'fanduel-sportsbook-live-count',
+    'fanduel-sportsbook-live-data',
+    'fanduel-sportsbook-live-scores',
+    'fanduel-sportsbook-market-prices',
+    'fanduel-sportsbook-parlays',
+    'fanduel-sportsbook-player',
+    'fanduel-sportsbook-player-news',
+    'fanduel-sportsbook-player-props',
+    'fanduel-sportsbook-player-stats',
+    'fanduel-sportsbook-players',
+    'fanduel-sportsbook-promotions',
+    'fanduel-sportsbook-schedule',
+    'fanduel-sportsbook-search',
+    'fanduel-sportsbook-search-tabs',
+    'fanduel-sportsbook-sport',
+    'fanduel-sportsbook-sports',
+    'fanduel-sportsbook-standings',
+    'fanduel-sportsbook-stats',
+    'fanduel-sportsbook-team-depth-chart',
+    'fanduel-sportsbook-team-news',
+    'fanduel-sportsbook-team-odds',
+    'fanduel-sportsbook-team-roster',
+    'fanduel-sportsbook-team-schedule',
+    'fanduel-sportsbook-team-stats',
+    'fanduel-sportsbook-teams',
+    'fanduel-sportsbook-trending',
     'farfetch-categories',
     'farfetch-designers',
     'farfetch-product',
@@ -115239,6 +122231,33 @@ OperationId = Literal[
     'ft-headlines',
     'ft-news',
     'ft-search',
+    'fussballde-amateur-stats',
+    'fussballde-club',
+    'fussballde-club-matches',
+    'fussballde-club-search',
+    'fussballde-competition-options',
+    'fussballde-competitions',
+    'fussballde-federation',
+    'fussballde-filters',
+    'fussballde-match',
+    'fussballde-match-calendar',
+    'fussballde-match-comparison',
+    'fussballde-match-plan',
+    'fussballde-matchday',
+    'fussballde-national-top-scorers',
+    'fussballde-news',
+    'fussballde-news-article',
+    'fussballde-news-search',
+    'fussballde-player',
+    'fussballde-player-matches',
+    'fussballde-player-search',
+    'fussballde-position-history',
+    'fussballde-postal-codes',
+    'fussballde-table',
+    'fussballde-team',
+    'fussballde-team-matches',
+    'fussballde-team-squad',
+    'fussballde-top-scorers',
     'gamerant-article',
     'gamerant-author',
     'gamerant-headlines',
@@ -115636,9 +122655,11 @@ OperationId = Literal[
     'instacart-search-nearby',
     'instacart-stores',
     'instacart-trending',
+    'instagram-comments',
     'instagram-post',
     'instagram-profile',
     'instagram-reels',
+    'instagram-user-posts',
     'investopedia-article',
     'investopedia-author',
     'investopedia-headlines',
@@ -115713,6 +122734,11 @@ OperationId = Literal[
     'jobs-workable-postings',
     'jobs-workday-board',
     'jobs-workday-job',
+    'jumia-categories',
+    'jumia-category',
+    'jumia-countries',
+    'jumia-product',
+    'jumia-search',
     'justeat-restaurant',
     'justeat-restaurant-menu',
     'justeat-search',
@@ -116564,6 +123590,13 @@ OperationId = Literal[
     'rebag-sitemap-urls',
     'rebag-sitemaps',
     'rebag-store',
+    'reddit-archive-comments-ids',
+    'reddit-archive-comments-search',
+    'reddit-archive-comments-tree',
+    'reddit-archive-posts-ids',
+    'reddit-archive-posts-search',
+    'reddit-archive-subreddits-search',
+    'reddit-archive-time-series',
     'reddit-comments',
     'reddit-domain-posts',
     'reddit-leads',
@@ -116768,14 +123801,22 @@ OperationId = Literal[
     'shakeshack-menu',
     'shakeshack-nearby',
     'shakeshack-store',
+    'shein-brands',
+    'shein-categories',
     'shein-category-filters',
     'shein-category-goods',
     'shein-category-nav',
+    'shein-deals-products',
+    'shein-deals-tabs',
     'shein-products-aggregation-filters',
     'shein-products-detail',
     'shein-products-search',
     'shein-search-autocomplete',
     'shein-search-keywords',
+    'shein-store',
+    'shein-store-products',
+    'shein-trending-categories',
+    'shein-trending-filters',
     'shop-app-analysis',
     'shop-app-categories',
     'shop-app-product',
@@ -117359,31 +124400,68 @@ OperationId = Literal[
     'tiktok-challenge',
     'tiktok-challenge-list',
     'tiktok-mobile-anchor-list',
+    'tiktok-mobile-collection-detail',
+    'tiktok-mobile-collection-list',
+    'tiktok-mobile-collection-videos',
     'tiktok-mobile-comment-replies',
     'tiktok-mobile-comments',
     'tiktok-mobile-feed',
+    'tiktok-mobile-feed-offline',
     'tiktok-mobile-feed-post',
     'tiktok-mobile-hashtag',
     'tiktok-mobile-hashtag-posts',
     'tiktok-mobile-hashtags',
     'tiktok-mobile-live-effects',
     'tiktok-mobile-live-gifts',
+    'tiktok-mobile-live-hashtags',
+    'tiktok-mobile-live-room',
+    'tiktok-mobile-live-room-by-user',
     'tiktok-mobile-live-search',
+    'tiktok-mobile-live-tabs',
     'tiktok-mobile-music-beats',
+    'tiktok-mobile-music-chart',
+    'tiktok-mobile-music-choices',
+    'tiktok-mobile-music-collection-list',
     'tiktok-mobile-music-collections',
+    'tiktok-mobile-music-detail',
     'tiktok-mobile-music-pick',
     'tiktok-mobile-music-posts',
     'tiktok-mobile-music-related',
     'tiktok-mobile-music-trending',
+    'tiktok-mobile-mv-videos',
+    'tiktok-mobile-place-detail',
+    'tiktok-mobile-place-info',
+    'tiktok-mobile-place-media',
+    'tiktok-mobile-place-photos',
+    'tiktok-mobile-place-reviews',
+    'tiktok-mobile-place-videos',
+    'tiktok-mobile-playlist-detail',
+    'tiktok-mobile-playlist-list',
+    'tiktok-mobile-playlist-videos',
     'tiktok-mobile-search',
+    'tiktok-mobile-search-effects',
+    'tiktok-mobile-search-hashtags',
     'tiktok-mobile-search-music',
+    'tiktok-mobile-search-photos',
     'tiktok-mobile-search-place',
     'tiktok-mobile-search-pre-info',
+    'tiktok-mobile-search-stream',
     'tiktok-mobile-search-sug',
     'tiktok-mobile-search-tabs',
     'tiktok-mobile-search-user',
+    'tiktok-mobile-search-videos',
+    'tiktok-mobile-translation-description',
     'tiktok-mobile-trending-categories',
     'tiktok-mobile-trending-effects',
+    'tiktok-mobile-user-followers',
+    'tiktok-mobile-user-following',
+    'tiktok-mobile-user-original-effects',
+    'tiktok-mobile-user-original-music',
+    'tiktok-mobile-user-posts',
+    'tiktok-mobile-user-profile',
+    'tiktok-mobile-user-recommendations',
+    'tiktok-mobile-video-detail',
+    'tiktok-mobile-video-subtitles',
     'tiktok-popular-trend-country-industry-meta',
     'tiktok-post',
     'tiktok-profile-post',
@@ -117785,6 +124863,7 @@ OperationId = Literal[
     'youtube-channel-shorts',
     'youtube-channel-videos',
     'youtube-comments',
+    'youtube-comment-replies',
     'youtube-playlist',
     'youtube-profile',
     'youtube-search',
@@ -117938,6 +125017,11 @@ class CrawloraClient:
     discogs: DiscogsGroup
     dominos: DominosGroup
     door_dash: DoorDashGroup
+    draft_kings_casino: DraftKingsCasinoGroup
+    draft_kings_daily_fantasy_sports: DraftKingsDailyFantasySportsGroup
+    draft_kings_pick6: DraftKingsPick6Group
+    draft_kings_predictions: DraftKingsPredictionsGroup
+    draft_kings_racing: DraftKingsRacingGroup
     draft_kings_sportsbook: DraftKingsSportsbookGroup
     duck_duck_go_search: DuckDuckGoSearchGroup
     dunkin: DunkinGroup
@@ -117957,6 +125041,7 @@ class CrawloraClient:
     fanatics: FanaticsGroup
     fanatics_collect: FanaticsCollectGroup
     fanatics_live: FanaticsLiveGroup
+    fan_duel: FanDuelGroup
     farfetch: FarfetchGroup
     fashion_nova: FashionNovaGroup
     fashionphile: FashionphileGroup
@@ -117975,6 +125060,7 @@ class CrawloraClient:
     france_24: France24Group
     free_malaysia_today: FreeMalaysiaTodayGroup
     ft: FtGroup
+    fussball_de: FussballDeGroup
     game_rant: GameRantGroup
     games_radar: GamesRadarGroup
     gb_news: GbNewsGroup
@@ -118035,6 +125121,7 @@ class CrawloraClient:
     jerusalem_post: JerusalemPostGroup
     jimmy_johns: JimmyJohnsGroup
     jobs: JobsGroup
+    jumia: JumiaGroup
     just_eat: JustEatGroup
     just_watch: JustWatchGroup
     kalshi: KalshiGroup
@@ -128422,6 +135509,234 @@ class CrawloraClient:
     @overload
     def operation(
         self,
+        operation_id: Literal['draftkings-casino-directory'],
+        params: DraftKingsCasinoDraftkingsCasinoDirectoryParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DraftKingsCasinoDraftkingsCasinoDirectoryResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['draftkings-casino-slots-guide'],
+        params: DraftKingsCasinoDraftkingsCasinoSlotsGuideParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DraftKingsCasinoDraftkingsCasinoSlotsGuideResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['draftkings-casino-slots-categories'],
+        params: DraftKingsCasinoDraftkingsCasinoSlotsCategoriesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DraftKingsCasinoDraftkingsCasinoSlotsCategoriesResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['draftkings-casino-cleopatra-guide'],
+        params: DraftKingsCasinoDraftkingsCasinoCleopatraGuideParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DraftKingsCasinoDraftkingsCasinoCleopatraGuideResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['draftkings-casino-wheel-of-fortune-guide'],
+        params: DraftKingsCasinoDraftkingsCasinoWheelOfFortuneGuideParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DraftKingsCasinoDraftkingsCasinoWheelOfFortuneGuideResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['draftkings-dfs-glossary'],
+        params: DraftKingsDailyFantasySportsDraftkingsDfsGlossaryParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DraftKingsDailyFantasySportsDraftkingsDfsGlossaryResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['draftkings-dfs-guide'],
+        params: DraftKingsDailyFantasySportsDraftkingsDfsGuideParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DraftKingsDailyFantasySportsDraftkingsDfsGuideResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['draftkings-dfs-nfl-best-ball-featured-contests'],
+        params: DraftKingsDailyFantasySportsDraftkingsDfsNflBestBallFeaturedContestsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DraftKingsDailyFantasySportsDraftkingsDfsNflBestBallFeaturedContestsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['draftkings-dfs-rules-and-scoring'],
+        params: DraftKingsDailyFantasySportsDraftkingsDfsRulesAndScoringParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DraftKingsDailyFantasySportsDraftkingsDfsRulesAndScoringResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['draftkings-dfs-sports'],
+        params: DraftKingsDailyFantasySportsDraftkingsDfsSportsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DraftKingsDailyFantasySportsDraftkingsDfsSportsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['draftkings-pick6-rules'],
+        params: DraftKingsPick6DraftkingsPick6RulesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DraftKingsPick6DraftkingsPick6RulesResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['draftkings-pick6-rule-page'],
+        params: DraftKingsPick6DraftkingsPick6RulePageParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DraftKingsPick6DraftkingsPick6RulePageResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['draftkings-pick6-sports'],
+        params: DraftKingsPick6DraftkingsPick6SportsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DraftKingsPick6DraftkingsPick6SportsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['draftkings-predictions-availability'],
+        params: DraftKingsPredictionsDraftkingsPredictionsAvailabilityParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DraftKingsPredictionsDraftkingsPredictionsAvailabilityResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['draftkings-predictions-categories'],
+        params: DraftKingsPredictionsDraftkingsPredictionsCategoriesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DraftKingsPredictionsDraftkingsPredictionsCategoriesResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['draftkings-predictions-rules'],
+        params: DraftKingsPredictionsDraftkingsPredictionsRulesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DraftKingsPredictionsDraftkingsPredictionsRulesResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['draftkings-racing-race-info'],
+        params: DraftKingsRacingDraftkingsRacingRaceInfoParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DraftKingsRacingDraftkingsRacingRaceInfoResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['draftkings-racing-schedule'],
+        params: DraftKingsRacingDraftkingsRacingScheduleParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DraftKingsRacingDraftkingsRacingScheduleResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['draftkings-racing-tracks'],
+        params: DraftKingsRacingDraftkingsRacingTracksParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DraftKingsRacingDraftkingsRacingTracksResponse: ...
+    @overload
+    def operation(
+        self,
         operation_id: Literal['draftkings-event'],
         params: DraftKingsSportsbookDraftkingsEventParams,
         *,
@@ -129907,6 +137222,870 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> FanaticsLiveFanaticsliveInstantRipsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['fanduel-casino-categories'],
+        params: FanDuelFanduelCasinoCategoriesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FanDuelFanduelCasinoCategoriesResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['fanduel-casino-category'],
+        params: FanDuelFanduelCasinoCategoryParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FanDuelFanduelCasinoCategoryResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['fanduel-casino-game'],
+        params: FanDuelFanduelCasinoGameParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FanDuelFanduelCasinoGameResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['fanduel-racing-carryover-pools'],
+        params: FanDuelFanduelRacingCarryoverPoolsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FanDuelFanduelRacingCarryoverPoolsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['fanduel-racing-filters'],
+        params: FanDuelFanduelRacingFiltersParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FanDuelFanduelRacingFiltersResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['fanduel-racing-horse'],
+        params: FanDuelFanduelRacingHorseParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FanDuelFanduelRacingHorseResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['fanduel-racing-past-race'],
+        params: FanDuelFanduelRacingPastRaceParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FanDuelFanduelRacingPastRaceResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['fanduel-racing-past-races'],
+        params: FanDuelFanduelRacingPastRacesParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FanDuelFanduelRacingPastRacesResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['fanduel-racing-past-tracks'],
+        params: FanDuelFanduelRacingPastTracksParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FanDuelFanduelRacingPastTracksResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['fanduel-racing-race'],
+        params: FanDuelFanduelRacingRaceParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FanDuelFanduelRacingRaceResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['fanduel-racing-races'],
+        params: FanDuelFanduelRacingRacesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FanDuelFanduelRacingRacesResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['fanduel-racing-results'],
+        params: FanDuelFanduelRacingResultsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FanDuelFanduelRacingResultsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['fanduel-racing-search'],
+        params: FanDuelFanduelRacingSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FanDuelFanduelRacingSearchResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['fanduel-racing-track'],
+        params: FanDuelFanduelRacingTrackParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FanDuelFanduelRacingTrackResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['fanduel-racing-tracks'],
+        params: FanDuelFanduelRacingTracksParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FanDuelFanduelRacingTracksResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['fanduel-racing-wager-types'],
+        params: FanDuelFanduelRacingWagerTypesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FanDuelFanduelRacingWagerTypesResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['fanduel-research'],
+        params: FanDuelFanduelResearchParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FanDuelFanduelResearchResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['fanduel-research-article'],
+        params: FanDuelFanduelResearchArticleParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FanDuelFanduelResearchArticleResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['fanduel-research-articles'],
+        params: FanDuelFanduelResearchArticlesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FanDuelFanduelResearchArticlesResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['fanduel-research-author'],
+        params: FanDuelFanduelResearchAuthorParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FanDuelFanduelResearchAuthorResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['fanduel-research-authors'],
+        params: FanDuelFanduelResearchAuthorsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FanDuelFanduelResearchAuthorsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['fanduel-research-featured-articles'],
+        params: FanDuelFanduelResearchFeaturedArticlesParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FanDuelFanduelResearchFeaturedArticlesResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['fanduel-research-fixtures'],
+        params: FanDuelFanduelResearchFixturesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FanDuelFanduelResearchFixturesResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['fanduel-research-nfl-schedule'],
+        params: FanDuelFanduelResearchNflScheduleParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FanDuelFanduelResearchNflScheduleResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['fanduel-research-player-news'],
+        params: FanDuelFanduelResearchPlayerNewsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FanDuelFanduelResearchPlayerNewsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['fanduel-research-quick-picks-daily'],
+        params: FanDuelFanduelResearchQuickPicksDailyParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FanDuelFanduelResearchQuickPicksDailyResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['fanduel-research-projection-slates'],
+        params: FanDuelFanduelResearchProjectionSlatesParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FanDuelFanduelResearchProjectionSlatesResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['fanduel-research-projection-tables'],
+        params: FanDuelFanduelResearchProjectionTablesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FanDuelFanduelResearchProjectionTablesResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['fanduel-research-projections'],
+        params: FanDuelFanduelResearchProjectionsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FanDuelFanduelResearchProjectionsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['fanduel-research-sports'],
+        params: FanDuelFanduelResearchSportsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FanDuelFanduelResearchSportsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['fanduel-research-sub-categories'],
+        params: FanDuelFanduelResearchSubCategoriesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FanDuelFanduelResearchSubCategoriesResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['fanduel-sportsbook-autocomplete'],
+        params: FanDuelFanduelSportsbookAutocompleteParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FanDuelFanduelSportsbookAutocompleteResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['fanduel-sportsbook-builder'],
+        params: FanDuelFanduelSportsbookBuilderParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FanDuelFanduelSportsbookBuilderResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['fanduel-sportsbook-builder-events'],
+        params: FanDuelFanduelSportsbookBuilderEventsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FanDuelFanduelSportsbookBuilderEventsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['fanduel-sportsbook-builder-quotes'],
+        params: FanDuelFanduelSportsbookBuilderQuotesParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FanDuelFanduelSportsbookBuilderQuotesResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['fanduel-sportsbook-competition'],
+        params: FanDuelFanduelSportsbookCompetitionParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FanDuelFanduelSportsbookCompetitionResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['fanduel-sportsbook-event'],
+        params: FanDuelFanduelSportsbookEventParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FanDuelFanduelSportsbookEventResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['fanduel-sportsbook-event-box-score'],
+        params: FanDuelFanduelSportsbookEventBoxScoreParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FanDuelFanduelSportsbookEventBoxScoreResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['fanduel-sportsbook-event-play-by-play'],
+        params: FanDuelFanduelSportsbookEventPlayByPlayParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FanDuelFanduelSportsbookEventPlayByPlayResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['fanduel-sportsbook-event-players'],
+        params: FanDuelFanduelSportsbookEventPlayersParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FanDuelFanduelSportsbookEventPlayersResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['fanduel-sportsbook-event-score'],
+        params: FanDuelFanduelSportsbookEventScoreParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FanDuelFanduelSportsbookEventScoreResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['fanduel-sportsbook-event-stats'],
+        params: FanDuelFanduelSportsbookEventStatsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FanDuelFanduelSportsbookEventStatsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['fanduel-sportsbook-events-status'],
+        params: FanDuelFanduelSportsbookEventsStatusParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FanDuelFanduelSportsbookEventsStatusResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['fanduel-sportsbook-home'],
+        params: FanDuelFanduelSportsbookHomeParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FanDuelFanduelSportsbookHomeResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['fanduel-sportsbook-league'],
+        params: FanDuelFanduelSportsbookLeagueParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FanDuelFanduelSportsbookLeagueResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['fanduel-sportsbook-live'],
+        params: FanDuelFanduelSportsbookLiveParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FanDuelFanduelSportsbookLiveResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['fanduel-sportsbook-live-count'],
+        params: FanDuelFanduelSportsbookLiveCountParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FanDuelFanduelSportsbookLiveCountResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['fanduel-sportsbook-live-data'],
+        params: FanDuelFanduelSportsbookLiveDataParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FanDuelFanduelSportsbookLiveDataResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['fanduel-sportsbook-live-scores'],
+        params: FanDuelFanduelSportsbookLiveScoresParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FanDuelFanduelSportsbookLiveScoresResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['fanduel-sportsbook-market-prices'],
+        params: FanDuelFanduelSportsbookMarketPricesParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FanDuelFanduelSportsbookMarketPricesResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['fanduel-sportsbook-parlays'],
+        params: FanDuelFanduelSportsbookParlaysParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FanDuelFanduelSportsbookParlaysResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['fanduel-sportsbook-player'],
+        params: FanDuelFanduelSportsbookPlayerParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FanDuelFanduelSportsbookPlayerResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['fanduel-sportsbook-player-news'],
+        params: FanDuelFanduelSportsbookPlayerNewsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FanDuelFanduelSportsbookPlayerNewsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['fanduel-sportsbook-player-props'],
+        params: FanDuelFanduelSportsbookPlayerPropsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FanDuelFanduelSportsbookPlayerPropsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['fanduel-sportsbook-player-stats'],
+        params: FanDuelFanduelSportsbookPlayerStatsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FanDuelFanduelSportsbookPlayerStatsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['fanduel-sportsbook-players'],
+        params: FanDuelFanduelSportsbookPlayersParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FanDuelFanduelSportsbookPlayersResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['fanduel-sportsbook-promotions'],
+        params: FanDuelFanduelSportsbookPromotionsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FanDuelFanduelSportsbookPromotionsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['fanduel-sportsbook-schedule'],
+        params: FanDuelFanduelSportsbookScheduleParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FanDuelFanduelSportsbookScheduleResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['fanduel-sportsbook-search'],
+        params: FanDuelFanduelSportsbookSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FanDuelFanduelSportsbookSearchResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['fanduel-sportsbook-search-tabs'],
+        params: FanDuelFanduelSportsbookSearchTabsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FanDuelFanduelSportsbookSearchTabsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['fanduel-sportsbook-sport'],
+        params: FanDuelFanduelSportsbookSportParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FanDuelFanduelSportsbookSportResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['fanduel-sportsbook-sports'],
+        params: FanDuelFanduelSportsbookSportsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FanDuelFanduelSportsbookSportsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['fanduel-sportsbook-standings'],
+        params: FanDuelFanduelSportsbookStandingsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FanDuelFanduelSportsbookStandingsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['fanduel-sportsbook-stats'],
+        params: FanDuelFanduelSportsbookStatsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FanDuelFanduelSportsbookStatsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['fanduel-sportsbook-team-depth-chart'],
+        params: FanDuelFanduelSportsbookTeamDepthChartParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FanDuelFanduelSportsbookTeamDepthChartResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['fanduel-sportsbook-team-news'],
+        params: FanDuelFanduelSportsbookTeamNewsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FanDuelFanduelSportsbookTeamNewsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['fanduel-sportsbook-team-odds'],
+        params: FanDuelFanduelSportsbookTeamOddsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FanDuelFanduelSportsbookTeamOddsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['fanduel-sportsbook-team-roster'],
+        params: FanDuelFanduelSportsbookTeamRosterParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FanDuelFanduelSportsbookTeamRosterResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['fanduel-sportsbook-team-schedule'],
+        params: FanDuelFanduelSportsbookTeamScheduleParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FanDuelFanduelSportsbookTeamScheduleResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['fanduel-sportsbook-team-stats'],
+        params: FanDuelFanduelSportsbookTeamStatsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FanDuelFanduelSportsbookTeamStatsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['fanduel-sportsbook-teams'],
+        params: FanDuelFanduelSportsbookTeamsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FanDuelFanduelSportsbookTeamsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['fanduel-sportsbook-trending'],
+        params: FanDuelFanduelSportsbookTrendingParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FanDuelFanduelSportsbookTrendingResponse: ...
     @overload
     def operation(
         self,
@@ -132175,6 +140354,330 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> FtSearchResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['fussballde-amateur-stats'],
+        params: FussballDeFussballdeAmateurStatsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FussballDeFussballdeAmateurStatsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['fussballde-club'],
+        params: FussballDeFussballdeClubParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FussballDeFussballdeClubResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['fussballde-club-matches'],
+        params: FussballDeFussballdeClubMatchesParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FussballDeFussballdeClubMatchesResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['fussballde-club-search'],
+        params: FussballDeFussballdeClubSearchParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FussballDeFussballdeClubSearchResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['fussballde-competition-options'],
+        params: FussballDeFussballdeCompetitionOptionsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FussballDeFussballdeCompetitionOptionsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['fussballde-competitions'],
+        params: FussballDeFussballdeCompetitionsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FussballDeFussballdeCompetitionsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['fussballde-federation'],
+        params: FussballDeFussballdeFederationParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FussballDeFussballdeFederationResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['fussballde-filters'],
+        params: FussballDeFussballdeFiltersParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FussballDeFussballdeFiltersResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['fussballde-match'],
+        params: FussballDeFussballdeMatchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FussballDeFussballdeMatchResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['fussballde-match-calendar'],
+        params: FussballDeFussballdeMatchCalendarParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FussballDeFussballdeMatchCalendarResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['fussballde-match-comparison'],
+        params: FussballDeFussballdeMatchComparisonParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FussballDeFussballdeMatchComparisonResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['fussballde-match-plan'],
+        params: FussballDeFussballdeMatchPlanParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FussballDeFussballdeMatchPlanResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['fussballde-matchday'],
+        params: FussballDeFussballdeMatchdayParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FussballDeFussballdeMatchdayResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['fussballde-national-top-scorers'],
+        params: FussballDeFussballdeNationalTopScorersParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FussballDeFussballdeNationalTopScorersResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['fussballde-news'],
+        params: FussballDeFussballdeNewsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FussballDeFussballdeNewsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['fussballde-news-article'],
+        params: FussballDeFussballdeNewsArticleParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FussballDeFussballdeNewsArticleResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['fussballde-news-search'],
+        params: FussballDeFussballdeNewsSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FussballDeFussballdeNewsSearchResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['fussballde-player'],
+        params: FussballDeFussballdePlayerParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FussballDeFussballdePlayerResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['fussballde-player-matches'],
+        params: FussballDeFussballdePlayerMatchesParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FussballDeFussballdePlayerMatchesResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['fussballde-player-search'],
+        params: FussballDeFussballdePlayerSearchParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FussballDeFussballdePlayerSearchResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['fussballde-position-history'],
+        params: FussballDeFussballdePositionHistoryParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FussballDeFussballdePositionHistoryResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['fussballde-postal-codes'],
+        params: FussballDeFussballdePostalCodesParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FussballDeFussballdePostalCodesResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['fussballde-table'],
+        params: FussballDeFussballdeTableParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FussballDeFussballdeTableResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['fussballde-team'],
+        params: FussballDeFussballdeTeamParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FussballDeFussballdeTeamResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['fussballde-team-matches'],
+        params: FussballDeFussballdeTeamMatchesParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FussballDeFussballdeTeamMatchesResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['fussballde-team-squad'],
+        params: FussballDeFussballdeTeamSquadParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FussballDeFussballdeTeamSquadResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['fussballde-top-scorers'],
+        params: FussballDeFussballdeTopScorersParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FussballDeFussballdeTopScorersResponse: ...
     @overload
     def operation(
         self,
@@ -136942,6 +145445,18 @@ class CrawloraClient:
     @overload
     def operation(
         self,
+        operation_id: Literal['instagram-comments'],
+        params: InstagramCommentsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> InstagramCommentsResponse: ...
+    @overload
+    def operation(
+        self,
         operation_id: Literal['instagram-post'],
         params: InstagramPostParams,
         *,
@@ -136975,6 +145490,18 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> InstagramReelsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['instagram-user-posts'],
+        params: InstagramUserPostsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> InstagramUserPostsResponse: ...
     @overload
     def operation(
         self,
@@ -137863,6 +146390,66 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> JobsWorkdayJobResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['jumia-categories'],
+        params: JumiaCategoriesParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> JumiaCategoriesResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['jumia-category'],
+        params: JumiaCategoryParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> JumiaCategoryResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['jumia-countries'],
+        params: JumiaCountriesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> JumiaCountriesResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['jumia-product'],
+        params: JumiaProductParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> JumiaProductResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['jumia-search'],
+        params: JumiaSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> JumiaSearchResponse: ...
     @overload
     def operation(
         self,
@@ -148078,6 +156665,90 @@ class CrawloraClient:
     @overload
     def operation(
         self,
+        operation_id: Literal['reddit-archive-comments-ids'],
+        params: RedditArchiveCommentsIdsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> RedditArchiveCommentsIdsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['reddit-archive-comments-search'],
+        params: RedditArchiveCommentsSearchParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> RedditArchiveCommentsSearchResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['reddit-archive-comments-tree'],
+        params: RedditArchiveCommentsTreeParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> RedditArchiveCommentsTreeResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['reddit-archive-posts-ids'],
+        params: RedditArchivePostsIdsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> RedditArchivePostsIdsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['reddit-archive-posts-search'],
+        params: RedditArchivePostsSearchParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> RedditArchivePostsSearchResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['reddit-archive-subreddits-search'],
+        params: RedditArchiveSubredditsSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> RedditArchiveSubredditsSearchResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['reddit-archive-time-series'],
+        params: RedditArchiveTimeSeriesParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> RedditArchiveTimeSeriesResponse: ...
+    @overload
+    def operation(
+        self,
         operation_id: Literal['reddit-comments'],
         params: RedditCommentsParams,
         *,
@@ -150526,6 +159197,30 @@ class CrawloraClient:
     @overload
     def operation(
         self,
+        operation_id: Literal['shein-brands'],
+        params: SheinBrandsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> SheinBrandsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['shein-categories'],
+        params: SheinCategoriesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> SheinCategoriesResponse: ...
+    @overload
+    def operation(
+        self,
         operation_id: Literal['shein-category-filters'],
         params: SheinCategoryFiltersParams,
         *,
@@ -150559,6 +159254,30 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> SheinCategoryNavResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['shein-deals-products'],
+        params: SheinDealsProductsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> SheinDealsProductsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['shein-deals-tabs'],
+        params: SheinDealsTabsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> SheinDealsTabsResponse: ...
     @overload
     def operation(
         self,
@@ -150619,6 +159338,54 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> SheinSearchKeywordsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['shein-store'],
+        params: SheinStoreParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> SheinStoreResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['shein-store-products'],
+        params: SheinStoreProductsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> SheinStoreProductsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['shein-trending-categories'],
+        params: SheinTrendingCategoriesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> SheinTrendingCategoriesResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['shein-trending-filters'],
+        params: SheinTrendingFiltersParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> SheinTrendingFiltersResponse: ...
     @overload
     def operation(
         self,
@@ -157618,6 +166385,42 @@ class CrawloraClient:
     @overload
     def operation(
         self,
+        operation_id: Literal['tiktok-mobile-collection-detail'],
+        params: TiktokMobileCollectionDetailParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TiktokMobileCollectionDetailResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['tiktok-mobile-collection-list'],
+        params: TiktokMobileCollectionListParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TiktokMobileCollectionListResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['tiktok-mobile-collection-videos'],
+        params: TiktokMobileCollectionVideosParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TiktokMobileCollectionVideosResponse: ...
+    @overload
+    def operation(
+        self,
         operation_id: Literal['tiktok-mobile-comment-replies'],
         params: TiktokMobileCommentRepliesParams,
         *,
@@ -157651,6 +166454,18 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> TiktokMobileFeedResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['tiktok-mobile-feed-offline'],
+        params: TiktokMobileFeedOfflineParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TiktokMobileFeedOfflineResponse: ...
     @overload
     def operation(
         self,
@@ -157726,6 +166541,42 @@ class CrawloraClient:
     @overload
     def operation(
         self,
+        operation_id: Literal['tiktok-mobile-live-hashtags'],
+        params: TiktokMobileLiveHashtagsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TiktokMobileLiveHashtagsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['tiktok-mobile-live-room'],
+        params: TiktokMobileLiveRoomParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TiktokMobileLiveRoomResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['tiktok-mobile-live-room-by-user'],
+        params: TiktokMobileLiveRoomByUserParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TiktokMobileLiveRoomByUserResponse: ...
+    @overload
+    def operation(
+        self,
         operation_id: Literal['tiktok-mobile-live-search'],
         params: TiktokMobileLiveSearchParams,
         *,
@@ -157735,6 +166586,18 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> TiktokMobileLiveSearchResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['tiktok-mobile-live-tabs'],
+        params: TiktokMobileLiveTabsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TiktokMobileLiveTabsResponse: ...
     @overload
     def operation(
         self,
@@ -157750,6 +166613,42 @@ class CrawloraClient:
     @overload
     def operation(
         self,
+        operation_id: Literal['tiktok-mobile-music-chart'],
+        params: TiktokMobileMusicChartParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TiktokMobileMusicChartResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['tiktok-mobile-music-choices'],
+        params: TiktokMobileMusicChoicesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TiktokMobileMusicChoicesResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['tiktok-mobile-music-collection-list'],
+        params: TiktokMobileMusicCollectionListParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TiktokMobileMusicCollectionListResponse: ...
+    @overload
+    def operation(
+        self,
         operation_id: Literal['tiktok-mobile-music-collections'],
         params: TiktokMobileMusicCollectionsParams = ...,
         *,
@@ -157759,6 +166658,18 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> TiktokMobileMusicCollectionsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['tiktok-mobile-music-detail'],
+        params: TiktokMobileMusicDetailParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TiktokMobileMusicDetailResponse: ...
     @overload
     def operation(
         self,
@@ -157810,6 +166721,126 @@ class CrawloraClient:
     @overload
     def operation(
         self,
+        operation_id: Literal['tiktok-mobile-mv-videos'],
+        params: TiktokMobileMvVideosParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TiktokMobileMvVideosResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['tiktok-mobile-place-detail'],
+        params: TiktokMobilePlaceDetailParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TiktokMobilePlaceDetailResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['tiktok-mobile-place-info'],
+        params: TiktokMobilePlaceInfoParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TiktokMobilePlaceInfoResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['tiktok-mobile-place-media'],
+        params: TiktokMobilePlaceMediaParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TiktokMobilePlaceMediaResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['tiktok-mobile-place-photos'],
+        params: TiktokMobilePlacePhotosParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TiktokMobilePlacePhotosResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['tiktok-mobile-place-reviews'],
+        params: TiktokMobilePlaceReviewsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TiktokMobilePlaceReviewsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['tiktok-mobile-place-videos'],
+        params: TiktokMobilePlaceVideosParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TiktokMobilePlaceVideosResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['tiktok-mobile-playlist-detail'],
+        params: TiktokMobilePlaylistDetailParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TiktokMobilePlaylistDetailResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['tiktok-mobile-playlist-list'],
+        params: TiktokMobilePlaylistListParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TiktokMobilePlaylistListResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['tiktok-mobile-playlist-videos'],
+        params: TiktokMobilePlaylistVideosParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TiktokMobilePlaylistVideosResponse: ...
+    @overload
+    def operation(
+        self,
         operation_id: Literal['tiktok-mobile-search'],
         params: TiktokMobileSearchParams,
         *,
@@ -157822,6 +166853,30 @@ class CrawloraClient:
     @overload
     def operation(
         self,
+        operation_id: Literal['tiktok-mobile-search-effects'],
+        params: TiktokMobileSearchEffectsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TiktokMobileSearchEffectsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['tiktok-mobile-search-hashtags'],
+        params: TiktokMobileSearchHashtagsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TiktokMobileSearchHashtagsResponse: ...
+    @overload
+    def operation(
+        self,
         operation_id: Literal['tiktok-mobile-search-music'],
         params: TiktokMobileSearchMusicParams,
         *,
@@ -157831,6 +166886,18 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> TiktokMobileSearchMusicResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['tiktok-mobile-search-photos'],
+        params: TiktokMobileSearchPhotosParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TiktokMobileSearchPhotosResponse: ...
     @overload
     def operation(
         self,
@@ -157855,6 +166922,18 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> TiktokMobileSearchPreInfoResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['tiktok-mobile-search-stream'],
+        params: TiktokMobileSearchStreamParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TiktokMobileSearchStreamResponse: ...
     @overload
     def operation(
         self,
@@ -157894,6 +166973,30 @@ class CrawloraClient:
     @overload
     def operation(
         self,
+        operation_id: Literal['tiktok-mobile-search-videos'],
+        params: TiktokMobileSearchVideosParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TiktokMobileSearchVideosResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['tiktok-mobile-translation-description'],
+        params: TiktokMobileTranslationDescriptionParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TiktokMobileTranslationDescriptionResponse: ...
+    @overload
+    def operation(
+        self,
         operation_id: Literal['tiktok-mobile-trending-categories'],
         params: TiktokMobileTrendingCategoriesParams = ...,
         *,
@@ -157915,6 +167018,114 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> TiktokMobileTrendingEffectsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['tiktok-mobile-user-followers'],
+        params: TiktokMobileUserFollowersParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TiktokMobileUserFollowersResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['tiktok-mobile-user-following'],
+        params: TiktokMobileUserFollowingParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TiktokMobileUserFollowingResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['tiktok-mobile-user-original-effects'],
+        params: TiktokMobileUserOriginalEffectsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TiktokMobileUserOriginalEffectsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['tiktok-mobile-user-original-music'],
+        params: TiktokMobileUserOriginalMusicParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TiktokMobileUserOriginalMusicResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['tiktok-mobile-user-posts'],
+        params: TiktokMobileUserPostsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TiktokMobileUserPostsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['tiktok-mobile-user-profile'],
+        params: TiktokMobileUserProfileParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TiktokMobileUserProfileResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['tiktok-mobile-user-recommendations'],
+        params: TiktokMobileUserRecommendationsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TiktokMobileUserRecommendationsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['tiktok-mobile-video-detail'],
+        params: TiktokMobileVideoDetailParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TiktokMobileVideoDetailResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['tiktok-mobile-video-subtitles'],
+        params: TiktokMobileVideoSubtitlesParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TiktokMobileVideoSubtitlesResponse: ...
     @overload
     def operation(
         self,
@@ -162727,6 +171938,18 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> YoutubeCommentsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['youtube-comment-replies'],
+        params: YoutubeCommentRepliesParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> YoutubeCommentRepliesResponse: ...
     @overload
     def operation(
         self,
@@ -173278,6 +182501,234 @@ class CrawloraClient:
     @overload
     def request(
         self,
+        operation_id: Literal['draftkings-casino-directory'],
+        params: DraftKingsCasinoDraftkingsCasinoDirectoryParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DraftKingsCasinoDraftkingsCasinoDirectoryResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['draftkings-casino-slots-guide'],
+        params: DraftKingsCasinoDraftkingsCasinoSlotsGuideParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DraftKingsCasinoDraftkingsCasinoSlotsGuideResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['draftkings-casino-slots-categories'],
+        params: DraftKingsCasinoDraftkingsCasinoSlotsCategoriesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DraftKingsCasinoDraftkingsCasinoSlotsCategoriesResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['draftkings-casino-cleopatra-guide'],
+        params: DraftKingsCasinoDraftkingsCasinoCleopatraGuideParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DraftKingsCasinoDraftkingsCasinoCleopatraGuideResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['draftkings-casino-wheel-of-fortune-guide'],
+        params: DraftKingsCasinoDraftkingsCasinoWheelOfFortuneGuideParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DraftKingsCasinoDraftkingsCasinoWheelOfFortuneGuideResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['draftkings-dfs-glossary'],
+        params: DraftKingsDailyFantasySportsDraftkingsDfsGlossaryParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DraftKingsDailyFantasySportsDraftkingsDfsGlossaryResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['draftkings-dfs-guide'],
+        params: DraftKingsDailyFantasySportsDraftkingsDfsGuideParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DraftKingsDailyFantasySportsDraftkingsDfsGuideResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['draftkings-dfs-nfl-best-ball-featured-contests'],
+        params: DraftKingsDailyFantasySportsDraftkingsDfsNflBestBallFeaturedContestsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DraftKingsDailyFantasySportsDraftkingsDfsNflBestBallFeaturedContestsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['draftkings-dfs-rules-and-scoring'],
+        params: DraftKingsDailyFantasySportsDraftkingsDfsRulesAndScoringParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DraftKingsDailyFantasySportsDraftkingsDfsRulesAndScoringResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['draftkings-dfs-sports'],
+        params: DraftKingsDailyFantasySportsDraftkingsDfsSportsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DraftKingsDailyFantasySportsDraftkingsDfsSportsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['draftkings-pick6-rules'],
+        params: DraftKingsPick6DraftkingsPick6RulesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DraftKingsPick6DraftkingsPick6RulesResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['draftkings-pick6-rule-page'],
+        params: DraftKingsPick6DraftkingsPick6RulePageParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DraftKingsPick6DraftkingsPick6RulePageResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['draftkings-pick6-sports'],
+        params: DraftKingsPick6DraftkingsPick6SportsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DraftKingsPick6DraftkingsPick6SportsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['draftkings-predictions-availability'],
+        params: DraftKingsPredictionsDraftkingsPredictionsAvailabilityParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DraftKingsPredictionsDraftkingsPredictionsAvailabilityResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['draftkings-predictions-categories'],
+        params: DraftKingsPredictionsDraftkingsPredictionsCategoriesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DraftKingsPredictionsDraftkingsPredictionsCategoriesResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['draftkings-predictions-rules'],
+        params: DraftKingsPredictionsDraftkingsPredictionsRulesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DraftKingsPredictionsDraftkingsPredictionsRulesResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['draftkings-racing-race-info'],
+        params: DraftKingsRacingDraftkingsRacingRaceInfoParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DraftKingsRacingDraftkingsRacingRaceInfoResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['draftkings-racing-schedule'],
+        params: DraftKingsRacingDraftkingsRacingScheduleParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DraftKingsRacingDraftkingsRacingScheduleResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['draftkings-racing-tracks'],
+        params: DraftKingsRacingDraftkingsRacingTracksParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DraftKingsRacingDraftkingsRacingTracksResponse: ...
+    @overload
+    def request(
+        self,
         operation_id: Literal['draftkings-event'],
         params: DraftKingsSportsbookDraftkingsEventParams,
         *,
@@ -174763,6 +184214,870 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> FanaticsLiveFanaticsliveInstantRipsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['fanduel-casino-categories'],
+        params: FanDuelFanduelCasinoCategoriesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FanDuelFanduelCasinoCategoriesResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['fanduel-casino-category'],
+        params: FanDuelFanduelCasinoCategoryParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FanDuelFanduelCasinoCategoryResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['fanduel-casino-game'],
+        params: FanDuelFanduelCasinoGameParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FanDuelFanduelCasinoGameResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['fanduel-racing-carryover-pools'],
+        params: FanDuelFanduelRacingCarryoverPoolsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FanDuelFanduelRacingCarryoverPoolsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['fanduel-racing-filters'],
+        params: FanDuelFanduelRacingFiltersParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FanDuelFanduelRacingFiltersResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['fanduel-racing-horse'],
+        params: FanDuelFanduelRacingHorseParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FanDuelFanduelRacingHorseResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['fanduel-racing-past-race'],
+        params: FanDuelFanduelRacingPastRaceParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FanDuelFanduelRacingPastRaceResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['fanduel-racing-past-races'],
+        params: FanDuelFanduelRacingPastRacesParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FanDuelFanduelRacingPastRacesResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['fanduel-racing-past-tracks'],
+        params: FanDuelFanduelRacingPastTracksParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FanDuelFanduelRacingPastTracksResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['fanduel-racing-race'],
+        params: FanDuelFanduelRacingRaceParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FanDuelFanduelRacingRaceResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['fanduel-racing-races'],
+        params: FanDuelFanduelRacingRacesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FanDuelFanduelRacingRacesResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['fanduel-racing-results'],
+        params: FanDuelFanduelRacingResultsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FanDuelFanduelRacingResultsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['fanduel-racing-search'],
+        params: FanDuelFanduelRacingSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FanDuelFanduelRacingSearchResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['fanduel-racing-track'],
+        params: FanDuelFanduelRacingTrackParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FanDuelFanduelRacingTrackResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['fanduel-racing-tracks'],
+        params: FanDuelFanduelRacingTracksParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FanDuelFanduelRacingTracksResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['fanduel-racing-wager-types'],
+        params: FanDuelFanduelRacingWagerTypesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FanDuelFanduelRacingWagerTypesResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['fanduel-research'],
+        params: FanDuelFanduelResearchParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FanDuelFanduelResearchResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['fanduel-research-article'],
+        params: FanDuelFanduelResearchArticleParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FanDuelFanduelResearchArticleResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['fanduel-research-articles'],
+        params: FanDuelFanduelResearchArticlesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FanDuelFanduelResearchArticlesResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['fanduel-research-author'],
+        params: FanDuelFanduelResearchAuthorParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FanDuelFanduelResearchAuthorResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['fanduel-research-authors'],
+        params: FanDuelFanduelResearchAuthorsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FanDuelFanduelResearchAuthorsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['fanduel-research-featured-articles'],
+        params: FanDuelFanduelResearchFeaturedArticlesParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FanDuelFanduelResearchFeaturedArticlesResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['fanduel-research-fixtures'],
+        params: FanDuelFanduelResearchFixturesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FanDuelFanduelResearchFixturesResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['fanduel-research-nfl-schedule'],
+        params: FanDuelFanduelResearchNflScheduleParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FanDuelFanduelResearchNflScheduleResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['fanduel-research-player-news'],
+        params: FanDuelFanduelResearchPlayerNewsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FanDuelFanduelResearchPlayerNewsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['fanduel-research-quick-picks-daily'],
+        params: FanDuelFanduelResearchQuickPicksDailyParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FanDuelFanduelResearchQuickPicksDailyResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['fanduel-research-projection-slates'],
+        params: FanDuelFanduelResearchProjectionSlatesParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FanDuelFanduelResearchProjectionSlatesResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['fanduel-research-projection-tables'],
+        params: FanDuelFanduelResearchProjectionTablesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FanDuelFanduelResearchProjectionTablesResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['fanduel-research-projections'],
+        params: FanDuelFanduelResearchProjectionsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FanDuelFanduelResearchProjectionsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['fanduel-research-sports'],
+        params: FanDuelFanduelResearchSportsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FanDuelFanduelResearchSportsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['fanduel-research-sub-categories'],
+        params: FanDuelFanduelResearchSubCategoriesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FanDuelFanduelResearchSubCategoriesResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['fanduel-sportsbook-autocomplete'],
+        params: FanDuelFanduelSportsbookAutocompleteParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FanDuelFanduelSportsbookAutocompleteResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['fanduel-sportsbook-builder'],
+        params: FanDuelFanduelSportsbookBuilderParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FanDuelFanduelSportsbookBuilderResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['fanduel-sportsbook-builder-events'],
+        params: FanDuelFanduelSportsbookBuilderEventsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FanDuelFanduelSportsbookBuilderEventsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['fanduel-sportsbook-builder-quotes'],
+        params: FanDuelFanduelSportsbookBuilderQuotesParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FanDuelFanduelSportsbookBuilderQuotesResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['fanduel-sportsbook-competition'],
+        params: FanDuelFanduelSportsbookCompetitionParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FanDuelFanduelSportsbookCompetitionResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['fanduel-sportsbook-event'],
+        params: FanDuelFanduelSportsbookEventParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FanDuelFanduelSportsbookEventResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['fanduel-sportsbook-event-box-score'],
+        params: FanDuelFanduelSportsbookEventBoxScoreParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FanDuelFanduelSportsbookEventBoxScoreResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['fanduel-sportsbook-event-play-by-play'],
+        params: FanDuelFanduelSportsbookEventPlayByPlayParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FanDuelFanduelSportsbookEventPlayByPlayResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['fanduel-sportsbook-event-players'],
+        params: FanDuelFanduelSportsbookEventPlayersParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FanDuelFanduelSportsbookEventPlayersResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['fanduel-sportsbook-event-score'],
+        params: FanDuelFanduelSportsbookEventScoreParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FanDuelFanduelSportsbookEventScoreResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['fanduel-sportsbook-event-stats'],
+        params: FanDuelFanduelSportsbookEventStatsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FanDuelFanduelSportsbookEventStatsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['fanduel-sportsbook-events-status'],
+        params: FanDuelFanduelSportsbookEventsStatusParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FanDuelFanduelSportsbookEventsStatusResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['fanduel-sportsbook-home'],
+        params: FanDuelFanduelSportsbookHomeParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FanDuelFanduelSportsbookHomeResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['fanduel-sportsbook-league'],
+        params: FanDuelFanduelSportsbookLeagueParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FanDuelFanduelSportsbookLeagueResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['fanduel-sportsbook-live'],
+        params: FanDuelFanduelSportsbookLiveParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FanDuelFanduelSportsbookLiveResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['fanduel-sportsbook-live-count'],
+        params: FanDuelFanduelSportsbookLiveCountParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FanDuelFanduelSportsbookLiveCountResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['fanduel-sportsbook-live-data'],
+        params: FanDuelFanduelSportsbookLiveDataParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FanDuelFanduelSportsbookLiveDataResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['fanduel-sportsbook-live-scores'],
+        params: FanDuelFanduelSportsbookLiveScoresParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FanDuelFanduelSportsbookLiveScoresResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['fanduel-sportsbook-market-prices'],
+        params: FanDuelFanduelSportsbookMarketPricesParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FanDuelFanduelSportsbookMarketPricesResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['fanduel-sportsbook-parlays'],
+        params: FanDuelFanduelSportsbookParlaysParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FanDuelFanduelSportsbookParlaysResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['fanduel-sportsbook-player'],
+        params: FanDuelFanduelSportsbookPlayerParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FanDuelFanduelSportsbookPlayerResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['fanduel-sportsbook-player-news'],
+        params: FanDuelFanduelSportsbookPlayerNewsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FanDuelFanduelSportsbookPlayerNewsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['fanduel-sportsbook-player-props'],
+        params: FanDuelFanduelSportsbookPlayerPropsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FanDuelFanduelSportsbookPlayerPropsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['fanduel-sportsbook-player-stats'],
+        params: FanDuelFanduelSportsbookPlayerStatsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FanDuelFanduelSportsbookPlayerStatsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['fanduel-sportsbook-players'],
+        params: FanDuelFanduelSportsbookPlayersParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FanDuelFanduelSportsbookPlayersResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['fanduel-sportsbook-promotions'],
+        params: FanDuelFanduelSportsbookPromotionsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FanDuelFanduelSportsbookPromotionsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['fanduel-sportsbook-schedule'],
+        params: FanDuelFanduelSportsbookScheduleParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FanDuelFanduelSportsbookScheduleResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['fanduel-sportsbook-search'],
+        params: FanDuelFanduelSportsbookSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FanDuelFanduelSportsbookSearchResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['fanduel-sportsbook-search-tabs'],
+        params: FanDuelFanduelSportsbookSearchTabsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FanDuelFanduelSportsbookSearchTabsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['fanduel-sportsbook-sport'],
+        params: FanDuelFanduelSportsbookSportParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FanDuelFanduelSportsbookSportResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['fanduel-sportsbook-sports'],
+        params: FanDuelFanduelSportsbookSportsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FanDuelFanduelSportsbookSportsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['fanduel-sportsbook-standings'],
+        params: FanDuelFanduelSportsbookStandingsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FanDuelFanduelSportsbookStandingsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['fanduel-sportsbook-stats'],
+        params: FanDuelFanduelSportsbookStatsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FanDuelFanduelSportsbookStatsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['fanduel-sportsbook-team-depth-chart'],
+        params: FanDuelFanduelSportsbookTeamDepthChartParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FanDuelFanduelSportsbookTeamDepthChartResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['fanduel-sportsbook-team-news'],
+        params: FanDuelFanduelSportsbookTeamNewsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FanDuelFanduelSportsbookTeamNewsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['fanduel-sportsbook-team-odds'],
+        params: FanDuelFanduelSportsbookTeamOddsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FanDuelFanduelSportsbookTeamOddsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['fanduel-sportsbook-team-roster'],
+        params: FanDuelFanduelSportsbookTeamRosterParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FanDuelFanduelSportsbookTeamRosterResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['fanduel-sportsbook-team-schedule'],
+        params: FanDuelFanduelSportsbookTeamScheduleParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FanDuelFanduelSportsbookTeamScheduleResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['fanduel-sportsbook-team-stats'],
+        params: FanDuelFanduelSportsbookTeamStatsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FanDuelFanduelSportsbookTeamStatsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['fanduel-sportsbook-teams'],
+        params: FanDuelFanduelSportsbookTeamsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FanDuelFanduelSportsbookTeamsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['fanduel-sportsbook-trending'],
+        params: FanDuelFanduelSportsbookTrendingParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FanDuelFanduelSportsbookTrendingResponse: ...
     @overload
     def request(
         self,
@@ -177031,6 +187346,330 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> FtSearchResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['fussballde-amateur-stats'],
+        params: FussballDeFussballdeAmateurStatsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FussballDeFussballdeAmateurStatsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['fussballde-club'],
+        params: FussballDeFussballdeClubParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FussballDeFussballdeClubResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['fussballde-club-matches'],
+        params: FussballDeFussballdeClubMatchesParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FussballDeFussballdeClubMatchesResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['fussballde-club-search'],
+        params: FussballDeFussballdeClubSearchParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FussballDeFussballdeClubSearchResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['fussballde-competition-options'],
+        params: FussballDeFussballdeCompetitionOptionsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FussballDeFussballdeCompetitionOptionsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['fussballde-competitions'],
+        params: FussballDeFussballdeCompetitionsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FussballDeFussballdeCompetitionsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['fussballde-federation'],
+        params: FussballDeFussballdeFederationParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FussballDeFussballdeFederationResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['fussballde-filters'],
+        params: FussballDeFussballdeFiltersParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FussballDeFussballdeFiltersResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['fussballde-match'],
+        params: FussballDeFussballdeMatchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FussballDeFussballdeMatchResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['fussballde-match-calendar'],
+        params: FussballDeFussballdeMatchCalendarParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FussballDeFussballdeMatchCalendarResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['fussballde-match-comparison'],
+        params: FussballDeFussballdeMatchComparisonParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FussballDeFussballdeMatchComparisonResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['fussballde-match-plan'],
+        params: FussballDeFussballdeMatchPlanParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FussballDeFussballdeMatchPlanResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['fussballde-matchday'],
+        params: FussballDeFussballdeMatchdayParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FussballDeFussballdeMatchdayResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['fussballde-national-top-scorers'],
+        params: FussballDeFussballdeNationalTopScorersParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FussballDeFussballdeNationalTopScorersResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['fussballde-news'],
+        params: FussballDeFussballdeNewsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FussballDeFussballdeNewsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['fussballde-news-article'],
+        params: FussballDeFussballdeNewsArticleParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FussballDeFussballdeNewsArticleResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['fussballde-news-search'],
+        params: FussballDeFussballdeNewsSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FussballDeFussballdeNewsSearchResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['fussballde-player'],
+        params: FussballDeFussballdePlayerParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FussballDeFussballdePlayerResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['fussballde-player-matches'],
+        params: FussballDeFussballdePlayerMatchesParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FussballDeFussballdePlayerMatchesResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['fussballde-player-search'],
+        params: FussballDeFussballdePlayerSearchParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FussballDeFussballdePlayerSearchResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['fussballde-position-history'],
+        params: FussballDeFussballdePositionHistoryParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FussballDeFussballdePositionHistoryResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['fussballde-postal-codes'],
+        params: FussballDeFussballdePostalCodesParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FussballDeFussballdePostalCodesResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['fussballde-table'],
+        params: FussballDeFussballdeTableParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FussballDeFussballdeTableResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['fussballde-team'],
+        params: FussballDeFussballdeTeamParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FussballDeFussballdeTeamResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['fussballde-team-matches'],
+        params: FussballDeFussballdeTeamMatchesParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FussballDeFussballdeTeamMatchesResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['fussballde-team-squad'],
+        params: FussballDeFussballdeTeamSquadParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FussballDeFussballdeTeamSquadResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['fussballde-top-scorers'],
+        params: FussballDeFussballdeTopScorersParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> FussballDeFussballdeTopScorersResponse: ...
     @overload
     def request(
         self,
@@ -181798,6 +192437,18 @@ class CrawloraClient:
     @overload
     def request(
         self,
+        operation_id: Literal['instagram-comments'],
+        params: InstagramCommentsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> InstagramCommentsResponse: ...
+    @overload
+    def request(
+        self,
         operation_id: Literal['instagram-post'],
         params: InstagramPostParams,
         *,
@@ -181831,6 +192482,18 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> InstagramReelsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['instagram-user-posts'],
+        params: InstagramUserPostsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> InstagramUserPostsResponse: ...
     @overload
     def request(
         self,
@@ -182719,6 +193382,66 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> JobsWorkdayJobResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['jumia-categories'],
+        params: JumiaCategoriesParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> JumiaCategoriesResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['jumia-category'],
+        params: JumiaCategoryParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> JumiaCategoryResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['jumia-countries'],
+        params: JumiaCountriesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> JumiaCountriesResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['jumia-product'],
+        params: JumiaProductParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> JumiaProductResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['jumia-search'],
+        params: JumiaSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> JumiaSearchResponse: ...
     @overload
     def request(
         self,
@@ -192934,6 +203657,90 @@ class CrawloraClient:
     @overload
     def request(
         self,
+        operation_id: Literal['reddit-archive-comments-ids'],
+        params: RedditArchiveCommentsIdsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> RedditArchiveCommentsIdsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['reddit-archive-comments-search'],
+        params: RedditArchiveCommentsSearchParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> RedditArchiveCommentsSearchResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['reddit-archive-comments-tree'],
+        params: RedditArchiveCommentsTreeParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> RedditArchiveCommentsTreeResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['reddit-archive-posts-ids'],
+        params: RedditArchivePostsIdsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> RedditArchivePostsIdsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['reddit-archive-posts-search'],
+        params: RedditArchivePostsSearchParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> RedditArchivePostsSearchResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['reddit-archive-subreddits-search'],
+        params: RedditArchiveSubredditsSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> RedditArchiveSubredditsSearchResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['reddit-archive-time-series'],
+        params: RedditArchiveTimeSeriesParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> RedditArchiveTimeSeriesResponse: ...
+    @overload
+    def request(
+        self,
         operation_id: Literal['reddit-comments'],
         params: RedditCommentsParams,
         *,
@@ -195382,6 +206189,30 @@ class CrawloraClient:
     @overload
     def request(
         self,
+        operation_id: Literal['shein-brands'],
+        params: SheinBrandsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> SheinBrandsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['shein-categories'],
+        params: SheinCategoriesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> SheinCategoriesResponse: ...
+    @overload
+    def request(
+        self,
         operation_id: Literal['shein-category-filters'],
         params: SheinCategoryFiltersParams,
         *,
@@ -195415,6 +206246,30 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> SheinCategoryNavResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['shein-deals-products'],
+        params: SheinDealsProductsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> SheinDealsProductsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['shein-deals-tabs'],
+        params: SheinDealsTabsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> SheinDealsTabsResponse: ...
     @overload
     def request(
         self,
@@ -195475,6 +206330,54 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> SheinSearchKeywordsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['shein-store'],
+        params: SheinStoreParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> SheinStoreResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['shein-store-products'],
+        params: SheinStoreProductsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> SheinStoreProductsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['shein-trending-categories'],
+        params: SheinTrendingCategoriesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> SheinTrendingCategoriesResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['shein-trending-filters'],
+        params: SheinTrendingFiltersParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> SheinTrendingFiltersResponse: ...
     @overload
     def request(
         self,
@@ -202474,6 +213377,42 @@ class CrawloraClient:
     @overload
     def request(
         self,
+        operation_id: Literal['tiktok-mobile-collection-detail'],
+        params: TiktokMobileCollectionDetailParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TiktokMobileCollectionDetailResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['tiktok-mobile-collection-list'],
+        params: TiktokMobileCollectionListParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TiktokMobileCollectionListResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['tiktok-mobile-collection-videos'],
+        params: TiktokMobileCollectionVideosParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TiktokMobileCollectionVideosResponse: ...
+    @overload
+    def request(
+        self,
         operation_id: Literal['tiktok-mobile-comment-replies'],
         params: TiktokMobileCommentRepliesParams,
         *,
@@ -202507,6 +213446,18 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> TiktokMobileFeedResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['tiktok-mobile-feed-offline'],
+        params: TiktokMobileFeedOfflineParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TiktokMobileFeedOfflineResponse: ...
     @overload
     def request(
         self,
@@ -202582,6 +213533,42 @@ class CrawloraClient:
     @overload
     def request(
         self,
+        operation_id: Literal['tiktok-mobile-live-hashtags'],
+        params: TiktokMobileLiveHashtagsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TiktokMobileLiveHashtagsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['tiktok-mobile-live-room'],
+        params: TiktokMobileLiveRoomParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TiktokMobileLiveRoomResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['tiktok-mobile-live-room-by-user'],
+        params: TiktokMobileLiveRoomByUserParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TiktokMobileLiveRoomByUserResponse: ...
+    @overload
+    def request(
+        self,
         operation_id: Literal['tiktok-mobile-live-search'],
         params: TiktokMobileLiveSearchParams,
         *,
@@ -202591,6 +213578,18 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> TiktokMobileLiveSearchResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['tiktok-mobile-live-tabs'],
+        params: TiktokMobileLiveTabsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TiktokMobileLiveTabsResponse: ...
     @overload
     def request(
         self,
@@ -202606,6 +213605,42 @@ class CrawloraClient:
     @overload
     def request(
         self,
+        operation_id: Literal['tiktok-mobile-music-chart'],
+        params: TiktokMobileMusicChartParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TiktokMobileMusicChartResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['tiktok-mobile-music-choices'],
+        params: TiktokMobileMusicChoicesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TiktokMobileMusicChoicesResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['tiktok-mobile-music-collection-list'],
+        params: TiktokMobileMusicCollectionListParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TiktokMobileMusicCollectionListResponse: ...
+    @overload
+    def request(
+        self,
         operation_id: Literal['tiktok-mobile-music-collections'],
         params: TiktokMobileMusicCollectionsParams = ...,
         *,
@@ -202615,6 +213650,18 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> TiktokMobileMusicCollectionsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['tiktok-mobile-music-detail'],
+        params: TiktokMobileMusicDetailParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TiktokMobileMusicDetailResponse: ...
     @overload
     def request(
         self,
@@ -202666,6 +213713,126 @@ class CrawloraClient:
     @overload
     def request(
         self,
+        operation_id: Literal['tiktok-mobile-mv-videos'],
+        params: TiktokMobileMvVideosParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TiktokMobileMvVideosResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['tiktok-mobile-place-detail'],
+        params: TiktokMobilePlaceDetailParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TiktokMobilePlaceDetailResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['tiktok-mobile-place-info'],
+        params: TiktokMobilePlaceInfoParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TiktokMobilePlaceInfoResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['tiktok-mobile-place-media'],
+        params: TiktokMobilePlaceMediaParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TiktokMobilePlaceMediaResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['tiktok-mobile-place-photos'],
+        params: TiktokMobilePlacePhotosParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TiktokMobilePlacePhotosResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['tiktok-mobile-place-reviews'],
+        params: TiktokMobilePlaceReviewsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TiktokMobilePlaceReviewsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['tiktok-mobile-place-videos'],
+        params: TiktokMobilePlaceVideosParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TiktokMobilePlaceVideosResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['tiktok-mobile-playlist-detail'],
+        params: TiktokMobilePlaylistDetailParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TiktokMobilePlaylistDetailResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['tiktok-mobile-playlist-list'],
+        params: TiktokMobilePlaylistListParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TiktokMobilePlaylistListResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['tiktok-mobile-playlist-videos'],
+        params: TiktokMobilePlaylistVideosParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TiktokMobilePlaylistVideosResponse: ...
+    @overload
+    def request(
+        self,
         operation_id: Literal['tiktok-mobile-search'],
         params: TiktokMobileSearchParams,
         *,
@@ -202678,6 +213845,30 @@ class CrawloraClient:
     @overload
     def request(
         self,
+        operation_id: Literal['tiktok-mobile-search-effects'],
+        params: TiktokMobileSearchEffectsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TiktokMobileSearchEffectsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['tiktok-mobile-search-hashtags'],
+        params: TiktokMobileSearchHashtagsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TiktokMobileSearchHashtagsResponse: ...
+    @overload
+    def request(
+        self,
         operation_id: Literal['tiktok-mobile-search-music'],
         params: TiktokMobileSearchMusicParams,
         *,
@@ -202687,6 +213878,18 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> TiktokMobileSearchMusicResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['tiktok-mobile-search-photos'],
+        params: TiktokMobileSearchPhotosParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TiktokMobileSearchPhotosResponse: ...
     @overload
     def request(
         self,
@@ -202711,6 +213914,18 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> TiktokMobileSearchPreInfoResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['tiktok-mobile-search-stream'],
+        params: TiktokMobileSearchStreamParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TiktokMobileSearchStreamResponse: ...
     @overload
     def request(
         self,
@@ -202750,6 +213965,30 @@ class CrawloraClient:
     @overload
     def request(
         self,
+        operation_id: Literal['tiktok-mobile-search-videos'],
+        params: TiktokMobileSearchVideosParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TiktokMobileSearchVideosResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['tiktok-mobile-translation-description'],
+        params: TiktokMobileTranslationDescriptionParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TiktokMobileTranslationDescriptionResponse: ...
+    @overload
+    def request(
+        self,
         operation_id: Literal['tiktok-mobile-trending-categories'],
         params: TiktokMobileTrendingCategoriesParams = ...,
         *,
@@ -202771,6 +214010,114 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> TiktokMobileTrendingEffectsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['tiktok-mobile-user-followers'],
+        params: TiktokMobileUserFollowersParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TiktokMobileUserFollowersResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['tiktok-mobile-user-following'],
+        params: TiktokMobileUserFollowingParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TiktokMobileUserFollowingResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['tiktok-mobile-user-original-effects'],
+        params: TiktokMobileUserOriginalEffectsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TiktokMobileUserOriginalEffectsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['tiktok-mobile-user-original-music'],
+        params: TiktokMobileUserOriginalMusicParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TiktokMobileUserOriginalMusicResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['tiktok-mobile-user-posts'],
+        params: TiktokMobileUserPostsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TiktokMobileUserPostsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['tiktok-mobile-user-profile'],
+        params: TiktokMobileUserProfileParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TiktokMobileUserProfileResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['tiktok-mobile-user-recommendations'],
+        params: TiktokMobileUserRecommendationsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TiktokMobileUserRecommendationsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['tiktok-mobile-video-detail'],
+        params: TiktokMobileVideoDetailParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TiktokMobileVideoDetailResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['tiktok-mobile-video-subtitles'],
+        params: TiktokMobileVideoSubtitlesParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TiktokMobileVideoSubtitlesResponse: ...
     @overload
     def request(
         self,
@@ -207583,6 +218930,18 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> YoutubeCommentsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['youtube-comment-replies'],
+        params: YoutubeCommentRepliesParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> YoutubeCommentRepliesResponse: ...
     @overload
     def request(
         self,
