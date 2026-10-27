@@ -1035,6 +1035,59 @@ ModelAliexpressAttributeValue = TypedDict('ModelAliexpressAttributeValue', {
     'value': NotRequired[str],
 }, total=False)
 
+ModelAliexpressCategoriesResponse = TypedDict('ModelAliexpressCategoriesResponse', {
+    'categories': NotRequired[list[ModelAliexpressCategory]],
+    'category_tab': NotRequired[str],
+    'count': NotRequired[int],
+    'fetched_at': NotRequired[str],
+    'source_url': NotRequired[str],
+}, total=False)
+
+ModelAliexpressCategory = TypedDict('ModelAliexpressCategory', {
+    'category_id': NotRequired[str],
+    'children': NotRequired[list[ModelAliexpressCategory]],
+    'icon_url': NotRequired[str],
+    'id': NotRequired[str],
+    'level': NotRequired[int],
+    'name': NotRequired[str],
+    'parent_id': NotRequired[str],
+    'search_keyword': NotRequired[str],
+    'search_url': NotRequired[str],
+}, total=False)
+
+ModelAliexpressCategoryIdsResponse = TypedDict('ModelAliexpressCategoryIdsResponse', {
+    'categories': NotRequired[list[ModelAliexpressWebCategory]],
+    'category_id': NotRequired[int],
+    'count': NotRequired[int],
+    'fetched_at': NotRequired[str],
+    'page': NotRequired[int],
+    'paths': NotRequired[list[ModelAliexpressCategoryPath]],
+    'query': NotRequired[str],
+    'source': NotRequired[str],
+    'source_url': NotRequired[str],
+    'total_results': NotRequired[int],
+}, total=False)
+
+ModelAliexpressCategoryPath = TypedDict('ModelAliexpressCategoryPath', {
+    'depth': NotRequired[int],
+    'leaf_id': NotRequired[int],
+    'path': NotRequired[list[int]],
+    'products': NotRequired[int],
+}, total=False)
+
+ModelAliexpressCategoryProductsResponse = TypedDict('ModelAliexpressCategoryProductsResponse', {
+    'category_id': NotRequired[int],
+    'count': NotRequired[int],
+    'fetched_at': NotRequired[str],
+    'page': NotRequired[int],
+    'page_size': NotRequired[int],
+    'products': NotRequired[list[ModelAliexpressProductSummary]],
+    'slug': NotRequired[str],
+    'source_url': NotRequired[str],
+    'total_pages': NotRequired[int],
+    'total_results': NotRequired[int],
+}, total=False)
+
 ModelAliexpressFiltersResponse = TypedDict('ModelAliexpressFiltersResponse', {
     'attribute_groups': NotRequired[list[ModelAliexpressAttributeGroup]],
     'fetched_at': NotRequired[str],
@@ -1111,9 +1164,69 @@ ModelAliexpressSortOption = TypedDict('ModelAliexpressSortOption', {
     'value': NotRequired[str],
 }, total=False)
 
+ModelAliexpressSuggestResponse = TypedDict('ModelAliexpressSuggestResponse', {
+    'count': NotRequired[int],
+    'fetched_at': NotRequired[str],
+    'limit': NotRequired[int],
+    'query': NotRequired[str],
+    'source_url': NotRequired[str],
+    'suggestions': NotRequired[list[ModelAliexpressSuggestion]],
+}, total=False)
+
+ModelAliexpressSuggestion = TypedDict('ModelAliexpressSuggestion', {
+    'keyword': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
 ModelAliexpressSwitchOption = TypedDict('ModelAliexpressSwitchOption', {
     'label': NotRequired[str],
     'param': NotRequired[str],
+}, total=False)
+
+ModelAliexpressTrendingSearch = TypedDict('ModelAliexpressTrendingSearch', {
+    'category': NotRequired[str],
+    'display_keyword': NotRequired[str],
+    'image_url': NotRequired[str],
+    'keyword': NotRequired[str],
+    'kind': NotRequired[str],
+    'label': NotRequired[str],
+    'search_url': NotRequired[str],
+}, total=False)
+
+ModelAliexpressTrendingSearchesResponse = TypedDict('ModelAliexpressTrendingSearchesResponse', {
+    'available': NotRequired[int],
+    'count': NotRequired[int],
+    'fetched_at': NotRequired[str],
+    'items': NotRequired[list[ModelAliexpressTrendingSearch]],
+    'limit': NotRequired[int],
+    'source_url': NotRequired[str],
+}, total=False)
+
+ModelAliexpressWebCategory = TypedDict('ModelAliexpressWebCategory', {
+    'category_id': NotRequired[int],
+    'leaf': NotRequired[bool],
+    'level': NotRequired[int],
+    'parent_id': NotRequired[int],
+    'path': NotRequired[list[int]],
+    'product_hits': NotRequired[int],
+}, total=False)
+
+ModelAliexpressCategoriesResponseDoc = TypedDict('ModelAliexpressCategoriesResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelAliexpressCategoriesResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelAliexpressCategoryIdsResponseDoc = TypedDict('ModelAliexpressCategoryIdsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelAliexpressCategoryIdsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelAliexpressCategoryProductsResponseDoc = TypedDict('ModelAliexpressCategoryProductsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelAliexpressCategoryProductsResponse],
+    'msg': NotRequired[str],
 }, total=False)
 
 ModelAliexpressFiltersResponseDoc = TypedDict('ModelAliexpressFiltersResponseDoc', {
@@ -1131,6 +1244,18 @@ ModelAliexpressReviewsResponseDoc = TypedDict('ModelAliexpressReviewsResponseDoc
 ModelAliexpressSearchResponseDoc = TypedDict('ModelAliexpressSearchResponseDoc', {
     'code': NotRequired[int],
     'data': NotRequired[ModelAliexpressSearchResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelAliexpressSuggestResponseDoc = TypedDict('ModelAliexpressSuggestResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelAliexpressSuggestResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelAliexpressTrendingSearchesResponseDoc = TypedDict('ModelAliexpressTrendingSearchesResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelAliexpressTrendingSearchesResponse],
     'msg': NotRequired[str],
 }, total=False)
 
@@ -13556,6 +13681,21 @@ ModelDatasetsAirbnbMarketSearchResponse = TypedDict('ModelDatasetsAirbnbMarketSe
     'total': NotRequired[int],
 }, total=False)
 
+ModelDatasetsApplePlaceFacetResponse = TypedDict('ModelDatasetsApplePlaceFacetResponse', {
+    'dataset': NotRequired[str],
+    'facet': NotRequired[str],
+    'items': NotRequired[list[ModelEsApplePlaceDatasetFacetItem]],
+}, total=False)
+
+ModelDatasetsApplePlaceSearchResponse = TypedDict('ModelDatasetsApplePlaceSearchResponse', {
+    'dataset': NotRequired[str],
+    'items': NotRequired[list[ModelEsApplePlaceDatasetItem]],
+    'page': NotRequired[int],
+    'page_size': NotRequired[int],
+    'sort': NotRequired[str],
+    'total': NotRequired[int],
+}, total=False)
+
 ModelDatasetsApplePodcastsShowsFacetResponse = TypedDict('ModelDatasetsApplePodcastsShowsFacetResponse', {
     'dataset': NotRequired[str],
     'facet': NotRequired[str],
@@ -14320,6 +14460,24 @@ ModelDatasetsAirbnbMarketsNearbyResponseDoc = TypedDict('ModelDatasetsAirbnbMark
 ModelDatasetsAirbnbMarketsSearchResponseDoc = TypedDict('ModelDatasetsAirbnbMarketsSearchResponseDoc', {
     'code': NotRequired[int],
     'data': NotRequired[ModelDatasetsAirbnbMarketSearchResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelDatasetsApplePlaceResponseDoc = TypedDict('ModelDatasetsApplePlaceResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelEsApplePlaceRecord],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelDatasetsApplePlacesFacetResponseDoc = TypedDict('ModelDatasetsApplePlacesFacetResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelDatasetsApplePlaceFacetResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelDatasetsApplePlacesSearchResponseDoc = TypedDict('ModelDatasetsApplePlacesSearchResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelDatasetsApplePlaceSearchResponse],
     'msg': NotRequired[str],
 }, total=False)
 
@@ -16510,6 +16668,365 @@ ModelDoordashStoreReviewsResponseDoc = TypedDict('ModelDoordashStoreReviewsRespo
     'msg': NotRequired[str],
 }, total=False)
 
+ModelDramaboxAppTagRef = TypedDict('ModelDramaboxAppTagRef', {
+    'id': NotRequired[int],
+    'name': NotRequired[str],
+}, total=False)
+
+ModelDramaboxAppTitle = TypedDict('ModelDramaboxAppTitle', {
+    'cover_url': NotRequired[str],
+    'description': NotRequired[str],
+    'episodes': NotRequired[int],
+    'id': NotRequired[str],
+    'in_library': NotRequired[bool],
+    'play_count': NotRequired[int],
+    'protagonist': NotRequired[str],
+    'shelf_time': NotRequired[str],
+    'shelf_time_ms': NotRequired[int],
+    'tag_refs': NotRequired[list[ModelDramaboxAppTagRef]],
+    'tags': NotRequired[list[str]],
+    'title': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelDramaboxBook = TypedDict('ModelDramaboxBook', {
+    'cover_url': NotRequired[str],
+    'description': NotRequired[str],
+    'episodes': NotRequired[int],
+    'follows': NotRequired[int],
+    'genres': NotRequired[list[ModelDramaboxGenre]],
+    'id': NotRequired[str],
+    'language': NotRequired[str],
+    'listed_at': NotRequired[str],
+    'rating': NotRequired[float],
+    'status': NotRequired[str],
+    'tags': NotRequired[list[str]],
+    'title': NotRequired[str],
+    'url': NotRequired[str],
+    'views_display': NotRequired[str],
+}, total=False)
+
+ModelDramaboxBrowseResponse = TypedDict('ModelDramaboxBrowseResponse', {
+    'books': NotRequired[list[ModelDramaboxBook]],
+    'genre_id': NotRequired[int],
+    'genre_name': NotRequired[str],
+    'language': NotRequired[str],
+    'page': NotRequired[int],
+    'total_pages': NotRequired[int],
+}, total=False)
+
+ModelDramaboxCategoriesResponse = TypedDict('ModelDramaboxCategoriesResponse', {
+    'groups': NotRequired[list[ModelDramaboxCategoryGroup]],
+}, total=False)
+
+ModelDramaboxCategoryBooksResponse = TypedDict('ModelDramaboxCategoryBooksResponse', {
+    'has_more': NotRequired[bool],
+    'limit': NotRequired[int],
+    'page': NotRequired[int],
+    'titles': NotRequired[list[ModelDramaboxAppTitle]],
+}, total=False)
+
+ModelDramaboxCategoryGroup = TypedDict('ModelDramaboxCategoryGroup', {
+    'key': NotRequired[str],
+    'options': NotRequired[list[ModelDramaboxCategoryOption]],
+    'row': NotRequired[int],
+    'type': NotRequired[int],
+}, total=False)
+
+ModelDramaboxCategoryOption = TypedDict('ModelDramaboxCategoryOption', {
+    'name': NotRequired[str],
+    'value': NotRequired[str],
+}, total=False)
+
+ModelDramaboxChannel = TypedDict('ModelDramaboxChannel', {
+    'id': NotRequired[int],
+    'name': NotRequired[str],
+}, total=False)
+
+ModelDramaboxChannelsResponse = TypedDict('ModelDramaboxChannelsResponse', {
+    'channels': NotRequired[list[ModelDramaboxChannel]],
+}, total=False)
+
+ModelDramaboxDramaResponse = TypedDict('ModelDramaboxDramaResponse', {
+    'available_languages': NotRequired[list[str]],
+    'cover_url': NotRequired[str],
+    'description': NotRequired[str],
+    'episode_count': NotRequired[int],
+    'episodes': NotRequired[list[ModelDramaboxEpisode]],
+    'follows': NotRequired[int],
+    'genres': NotRequired[list[ModelDramaboxGenre]],
+    'id': NotRequired[str],
+    'language': NotRequired[str],
+    'listed_at': NotRequired[str],
+    'related': NotRequired[list[ModelDramaboxBook]],
+    'tags': NotRequired[list[str]],
+    'title': NotRequired[str],
+    'updated_at': NotRequired[str],
+    'url': NotRequired[str],
+    'views': NotRequired[int],
+}, total=False)
+
+ModelDramaboxEpisode = TypedDict('ModelDramaboxEpisode', {
+    'duration_ms': NotRequired[int],
+    'free': NotRequired[bool],
+    'id': NotRequired[str],
+    'number': NotRequired[int],
+    'thumbnail_url': NotRequired[str],
+    'updated_at': NotRequired[str],
+}, total=False)
+
+ModelDramaboxGenre = TypedDict('ModelDramaboxGenre', {
+    'id': NotRequired[int],
+    'name': NotRequired[str],
+}, total=False)
+
+ModelDramaboxGenresResponse = TypedDict('ModelDramaboxGenresResponse', {
+    'genres': NotRequired[list[ModelDramaboxGenre]],
+    'language': NotRequired[str],
+}, total=False)
+
+ModelDramaboxHomeResponse = TypedDict('ModelDramaboxHomeResponse', {
+    'featured': NotRequired[list[ModelDramaboxBook]],
+    'language': NotRequired[str],
+    'shelves': NotRequired[list[ModelDramaboxShelf]],
+}, total=False)
+
+ModelDramaboxMoreResponse = TypedDict('ModelDramaboxMoreResponse', {
+    'books': NotRequired[list[ModelDramaboxBook]],
+    'language': NotRequired[str],
+    'name': NotRequired[str],
+    'page': NotRequired[int],
+    'position': NotRequired[str],
+    'total_pages': NotRequired[int],
+}, total=False)
+
+ModelDramaboxPerformerResponse = TypedDict('ModelDramaboxPerformerResponse', {
+    'avatar': NotRequired[str],
+    'followed': NotRequired[bool],
+    'gender': NotRequired[int],
+    'has_more': NotRequired[bool],
+    'id': NotRequired[str],
+    'limit': NotRequired[int],
+    'name': NotRequired[str],
+    'page': NotRequired[int],
+    'titles': NotRequired[list[ModelDramaboxAppTitle]],
+    'video_count': NotRequired[int],
+}, total=False)
+
+ModelDramaboxRankMeta = TypedDict('ModelDramaboxRankMeta', {
+    'hot_code': NotRequired[str],
+    'sort': NotRequired[int],
+    'type': NotRequired[int],
+}, total=False)
+
+ModelDramaboxRankResponse = TypedDict('ModelDramaboxRankResponse', {
+    'rank_type': NotRequired[int],
+    'tabs': NotRequired[list[ModelDramaboxRankTab]],
+    'titles': NotRequired[list[ModelDramaboxRankedTitle]],
+}, total=False)
+
+ModelDramaboxRankTab = TypedDict('ModelDramaboxRankTab', {
+    'name': NotRequired[str],
+    'type': NotRequired[int],
+}, total=False)
+
+ModelDramaboxRankedTitle = TypedDict('ModelDramaboxRankedTitle', {
+    'cover_url': NotRequired[str],
+    'data_from': NotRequired[str],
+    'description': NotRequired[str],
+    'episodes': NotRequired[int],
+    'id': NotRequired[str],
+    'in_library': NotRequired[bool],
+    'position': NotRequired[int],
+    'protagonist': NotRequired[str],
+    'rank': NotRequired[ModelDramaboxRankMeta],
+    'shelf_time': NotRequired[str],
+    'shelf_time_ms': NotRequired[int],
+    'tags': NotRequired[list[str]],
+    'title': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelDramaboxRecommendResponse = TypedDict('ModelDramaboxRecommendResponse', {
+    'has_more': NotRequired[bool],
+    'page': NotRequired[int],
+    'page_size': NotRequired[int],
+    'title': NotRequired[str],
+    'titles': NotRequired[list[ModelDramaboxAppTitle]],
+}, total=False)
+
+ModelDramaboxSearchPerson = TypedDict('ModelDramaboxSearchPerson', {
+    'avatar': NotRequired[str],
+    'id': NotRequired[str],
+    'name': NotRequired[str],
+    'videos': NotRequired[int],
+}, total=False)
+
+ModelDramaboxSearchResponse = TypedDict('ModelDramaboxSearchResponse', {
+    'is_more': NotRequired[bool],
+    'keyword': NotRequired[str],
+    'limit': NotRequired[int],
+    'page': NotRequired[int],
+    'people': NotRequired[list[ModelDramaboxSearchPerson]],
+    'titles': NotRequired[list[ModelDramaboxAppTitle]],
+}, total=False)
+
+ModelDramaboxShelf = TypedDict('ModelDramaboxShelf', {
+    'books': NotRequired[list[ModelDramaboxBook]],
+    'id': NotRequired[int],
+    'name': NotRequired[str],
+    'position': NotRequired[str],
+}, total=False)
+
+ModelDramaboxSuggestItem = TypedDict('ModelDramaboxSuggestItem', {
+    'avatar': NotRequired[str],
+    'cover_url': NotRequired[str],
+    'id': NotRequired[str],
+    'kind': NotRequired[str],
+    'name': NotRequired[str],
+    'videos': NotRequired[int],
+}, total=False)
+
+ModelDramaboxSuggestResponse = TypedDict('ModelDramaboxSuggestResponse', {
+    'items': NotRequired[list[ModelDramaboxSuggestItem]],
+    'keyword': NotRequired[str],
+}, total=False)
+
+ModelDramaboxTagResponse = TypedDict('ModelDramaboxTagResponse', {
+    'has_more': NotRequired[bool],
+    'limit': NotRequired[int],
+    'page': NotRequired[int],
+    'tag_id': NotRequired[int],
+    'tag_name': NotRequired[str],
+    'titles': NotRequired[list[ModelDramaboxAppTitle]],
+}, total=False)
+
+ModelDramaboxTheaterBanner = TypedDict('ModelDramaboxTheaterBanner', {
+    'image_url': NotRequired[str],
+    'title': NotRequired[str],
+    'title_id': NotRequired[str],
+}, total=False)
+
+ModelDramaboxTheaterResponse = TypedDict('ModelDramaboxTheaterResponse', {
+    'banners': NotRequired[list[ModelDramaboxTheaterBanner]],
+    'channel': NotRequired[ModelDramaboxChannel],
+    'has_more': NotRequired[bool],
+    'hot_words': NotRequired[list[str]],
+    'limit': NotRequired[int],
+    'page': NotRequired[int],
+    'sections': NotRequired[list[ModelDramaboxTheaterSection]],
+}, total=False)
+
+ModelDramaboxTheaterSection = TypedDict('ModelDramaboxTheaterSection', {
+    'style': NotRequired[str],
+    'title': NotRequired[str],
+    'titles': NotRequired[list[ModelDramaboxAppTitle]],
+}, total=False)
+
+ModelDramaboxTrendingResponse = TypedDict('ModelDramaboxTrendingResponse', {
+    'hot': NotRequired[list[ModelDramaboxAppTitle]],
+    'new_releases': NotRequired[list[ModelDramaboxAppTitle]],
+    'preset_keyword': NotRequired[str],
+    'rank_tabs': NotRequired[list[ModelDramaboxRankTab]],
+    'trending': NotRequired[list[ModelDramaboxAppTitle]],
+}, total=False)
+
+ModelDramaboxBrowseResponseDoc = TypedDict('ModelDramaboxBrowseResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelDramaboxBrowseResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelDramaboxCategoriesResponseDoc = TypedDict('ModelDramaboxCategoriesResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelDramaboxCategoriesResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelDramaboxCategoryBooksResponseDoc = TypedDict('ModelDramaboxCategoryBooksResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelDramaboxCategoryBooksResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelDramaboxChannelsResponseDoc = TypedDict('ModelDramaboxChannelsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelDramaboxChannelsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelDramaboxDramaResponseDoc = TypedDict('ModelDramaboxDramaResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelDramaboxDramaResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelDramaboxGenresResponseDoc = TypedDict('ModelDramaboxGenresResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelDramaboxGenresResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelDramaboxHomeResponseDoc = TypedDict('ModelDramaboxHomeResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelDramaboxHomeResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelDramaboxMoreResponseDoc = TypedDict('ModelDramaboxMoreResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelDramaboxMoreResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelDramaboxPerformerResponseDoc = TypedDict('ModelDramaboxPerformerResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelDramaboxPerformerResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelDramaboxRankResponseDoc = TypedDict('ModelDramaboxRankResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelDramaboxRankResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelDramaboxRecommendResponseDoc = TypedDict('ModelDramaboxRecommendResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelDramaboxRecommendResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelDramaboxSearchResponseDoc = TypedDict('ModelDramaboxSearchResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelDramaboxSearchResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelDramaboxSuggestResponseDoc = TypedDict('ModelDramaboxSuggestResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelDramaboxSuggestResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelDramaboxTagResponseDoc = TypedDict('ModelDramaboxTagResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelDramaboxTagResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelDramaboxTheaterResponseDoc = TypedDict('ModelDramaboxTheaterResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelDramaboxTheaterResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelDramaboxTrendingResponseDoc = TypedDict('ModelDramaboxTrendingResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelDramaboxTrendingResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
 ModelDuckduckgoImageResponse = TypedDict('ModelDuckduckgoImageResponse', {
     'pagination': NotRequired[ModelDuckduckgoSearchPagination],
     'query': NotRequired[str],
@@ -17289,6 +17806,100 @@ ModelEsAppReview = TypedDict('ModelEsAppReview', {
     'url': NotRequired[str],
     'user_name': NotRequired[str],
     'version': NotRequired[str],
+}, total=False)
+
+ModelEsApplePlaceDatasetFacetItem = TypedDict('ModelEsApplePlaceDatasetFacetItem', {
+    'count': NotRequired[int],
+    'key': NotRequired[str],
+}, total=False)
+
+ModelEsApplePlaceDatasetItem = TypedDict('ModelEsApplePlaceDatasetItem', {
+    'address': NotRequired[str],
+    'alt_phones': NotRequired[list[str]],
+    'catalog_country': NotRequired[str],
+    'categories': NotRequired[list[str]],
+    'category': NotRequired[str],
+    'category_ids': NotRequired[list[str]],
+    'city': NotRequired[str],
+    'country': NotRequired[str],
+    'country_code': NotRequired[str],
+    'county': NotRequired[str],
+    'crawled_at': NotRequired[str],
+    'discovery_keyword': NotRequired[str],
+    'distance_m': NotRequired[float],
+    'first_seen_at': NotRequired[str],
+    'hours': NotRequired[list[ModelEsApplePlaceHours]],
+    'hours_type': NotRequired[str],
+    'id': NotRequired[str],
+    'last_seen_at': NotRequired[str],
+    'latitude': NotRequired[float],
+    'location': NotRequired[ModelEsGeoPoint],
+    'longitude': NotRequired[float],
+    'name': NotRequired[str],
+    'neighborhood': NotRequired[str],
+    'phone': NotRequired[str],
+    'photo_url': NotRequired[str],
+    'place_id': NotRequired[str],
+    'postal_code': NotRequired[str],
+    'price_level': NotRequired[int],
+    'price_symbol': NotRequired[str],
+    'rating': NotRequired[float],
+    'rating_count': NotRequired[int],
+    'rating_max': NotRequired[int],
+    'schema_version': NotRequired[int],
+    'state': NotRequired[str],
+    'state_code': NotRequired[str],
+    'street': NotRequired[str],
+    'type': NotRequired[str],
+    'url': NotRequired[str],
+    'website': NotRequired[str],
+}, total=False)
+
+ModelEsApplePlaceHours = TypedDict('ModelEsApplePlaceHours', {
+    'close': NotRequired[str],
+    'day': NotRequired[str],
+    'open': NotRequired[str],
+}, total=False)
+
+ModelEsApplePlaceRecord = TypedDict('ModelEsApplePlaceRecord', {
+    'address': NotRequired[str],
+    'alt_phones': NotRequired[list[str]],
+    'catalog_country': NotRequired[str],
+    'categories': NotRequired[list[str]],
+    'category': NotRequired[str],
+    'category_ids': NotRequired[list[str]],
+    'city': NotRequired[str],
+    'country': NotRequired[str],
+    'country_code': NotRequired[str],
+    'county': NotRequired[str],
+    'crawled_at': NotRequired[str],
+    'discovery_keyword': NotRequired[str],
+    'first_seen_at': NotRequired[str],
+    'hours': NotRequired[list[ModelEsApplePlaceHours]],
+    'hours_type': NotRequired[str],
+    'id': NotRequired[str],
+    'last_seen_at': NotRequired[str],
+    'latitude': NotRequired[float],
+    'location': NotRequired[ModelEsGeoPoint],
+    'longitude': NotRequired[float],
+    'name': NotRequired[str],
+    'neighborhood': NotRequired[str],
+    'phone': NotRequired[str],
+    'photo_url': NotRequired[str],
+    'place_id': NotRequired[str],
+    'postal_code': NotRequired[str],
+    'price_level': NotRequired[int],
+    'price_symbol': NotRequired[str],
+    'rating': NotRequired[float],
+    'rating_count': NotRequired[int],
+    'rating_max': NotRequired[int],
+    'schema_version': NotRequired[int],
+    'state': NotRequired[str],
+    'state_code': NotRequired[str],
+    'street': NotRequired[str],
+    'type': NotRequired[str],
+    'url': NotRequired[str],
+    'website': NotRequired[str],
 }, total=False)
 
 ModelEsApplePodcastsShowRecord = TypedDict('ModelEsApplePodcastsShowRecord', {
@@ -35258,6 +35869,35 @@ ModelJumiaProduct = TypedDict('ModelJumiaProduct', {
     'url': NotRequired[str],
 }, total=False)
 
+ModelJumiaRatingBucket = TypedDict('ModelJumiaRatingBucket', {
+    'count': NotRequired[int],
+    'stars': NotRequired[int],
+}, total=False)
+
+ModelJumiaReview = TypedDict('ModelJumiaReview', {
+    'author': NotRequired[str],
+    'date': NotRequired[str],
+    'rating': NotRequired[int],
+    'text': NotRequired[str],
+    'title': NotRequired[str],
+    'verified': NotRequired[bool],
+}, total=False)
+
+ModelJumiaReviewsResponse = TypedDict('ModelJumiaReviewsResponse', {
+    'average_rating': NotRequired[float],
+    'count': NotRequired[int],
+    'country': NotRequired[str],
+    'fetched_at': NotRequired[str],
+    'has_next': NotRequired[bool],
+    'histogram': NotRequired[list[ModelJumiaRatingBucket]],
+    'page': NotRequired[int],
+    'rating_count': NotRequired[int],
+    'review_count': NotRequired[int],
+    'reviews': NotRequired[list[ModelJumiaReview]],
+    'sku': NotRequired[str],
+    'source_url': NotRequired[str],
+}, total=False)
+
 ModelJumiaSeller = TypedDict('ModelJumiaSeller', {
     'followers': NotRequired[int],
     'id': NotRequired[str],
@@ -35265,6 +35905,42 @@ ModelJumiaSeller = TypedDict('ModelJumiaSeller', {
     'score_percent': NotRequired[float],
     'shipping_speed': NotRequired[str],
     'url': NotRequired[str],
+}, total=False)
+
+ModelJumiaSitemapFile = TypedDict('ModelJumiaSitemapFile', {
+    'language': NotRequired[str],
+    'last_modified': NotRequired[str],
+    'name': NotRequired[str],
+    'type': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelJumiaSitemapUrl = TypedDict('ModelJumiaSitemapUrl', {
+    'image': NotRequired[str],
+    'last_modified': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelJumiaSitemapUrlsResponse = TypedDict('ModelJumiaSitemapUrlsResponse', {
+    'count': NotRequired[int],
+    'country': NotRequired[str],
+    'fetched_at': NotRequired[str],
+    'has_next': NotRequired[bool],
+    'page': NotRequired[int],
+    'page_size': NotRequired[int],
+    'sitemap': NotRequired[str],
+    'source_url': NotRequired[str],
+    'total_count': NotRequired[int],
+    'urls': NotRequired[list[ModelJumiaSitemapUrl]],
+}, total=False)
+
+ModelJumiaSitemapsResponse = TypedDict('ModelJumiaSitemapsResponse', {
+    'count': NotRequired[int],
+    'country': NotRequired[str],
+    'fetched_at': NotRequired[str],
+    'sitemaps': NotRequired[list[ModelJumiaSitemapFile]],
+    'source_url': NotRequired[str],
+    'type': NotRequired[str],
 }, total=False)
 
 ModelJumiaSpecification = TypedDict('ModelJumiaSpecification', {
@@ -35293,6 +35969,24 @@ ModelJumiaListingResponseDoc = TypedDict('ModelJumiaListingResponseDoc', {
 ModelJumiaProductResponseDoc = TypedDict('ModelJumiaProductResponseDoc', {
     'code': NotRequired[int],
     'data': NotRequired[ModelJumiaProduct],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelJumiaReviewsResponseDoc = TypedDict('ModelJumiaReviewsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelJumiaReviewsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelJumiaSitemapUrlsResponseDoc = TypedDict('ModelJumiaSitemapUrlsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelJumiaSitemapUrlsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelJumiaSitemapsResponseDoc = TypedDict('ModelJumiaSitemapsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelJumiaSitemapsResponse],
     'msg': NotRequired[str],
 }, total=False)
 
@@ -36444,6 +37138,490 @@ ModelKhaleejtimesAuthorResponse = TypedDict('ModelKhaleejtimesAuthorResponse', {
     'total_articles': NotRequired[int],
     'twitter_handle': NotRequired[str],
     'url': NotRequired[str],
+}, total=False)
+
+ModelKickCategoriesResponse = TypedDict('ModelKickCategoriesResponse', {
+    'categories': NotRequired[list[ModelKickCategory]],
+}, total=False)
+
+ModelKickCategory = TypedDict('ModelKickCategory', {
+    'icon': NotRequired[str],
+    'id': NotRequired[int],
+    'name': NotRequired[str],
+    'slug': NotRequired[str],
+}, total=False)
+
+ModelKickCategoryHit = TypedDict('ModelKickCategoryHit', {
+    'id': NotRequired[int],
+    'mature': NotRequired[bool],
+    'name': NotRequired[str],
+    'slug': NotRequired[str],
+    'tags': NotRequired[list[str]],
+    'thumbnail_url': NotRequired[str],
+    'url': NotRequired[str],
+    'viewers': NotRequired[int],
+}, total=False)
+
+ModelKickCategoryRef = TypedDict('ModelKickCategoryRef', {
+    'id': NotRequired[int],
+    'name': NotRequired[str],
+    'slug': NotRequired[str],
+}, total=False)
+
+ModelKickChannelChatroomResponse = TypedDict('ModelKickChannelChatroomResponse', {
+    'account_age': NotRequired[ModelKickChatMode],
+    'chatroom_id': NotRequired[int],
+    'emotes_only': NotRequired[ModelKickChatMode],
+    'followers_only': NotRequired[ModelKickChatMode],
+    'gifts_enabled': NotRequired[bool],
+    'rules': NotRequired[str],
+    'slow_mode': NotRequired[ModelKickChatMode],
+    'slug': NotRequired[str],
+    'subscribers_only': NotRequired[ModelKickChatMode],
+}, total=False)
+
+ModelKickChannelEmotesResponse = TypedDict('ModelKickChannelEmotesResponse', {
+    'channel': NotRequired[list[ModelKickEmote]],
+    'emoji': NotRequired[list[ModelKickEmote]],
+    'global': NotRequired[list[ModelKickEmote]],
+    'slug': NotRequired[str],
+}, total=False)
+
+ModelKickChannelHit = TypedDict('ModelKickChannelHit', {
+    'followers': NotRequired[int],
+    'id': NotRequired[int],
+    'live': NotRequired[bool],
+    'profile_picture': NotRequired[str],
+    'slug': NotRequired[str],
+    'url': NotRequired[str],
+    'username': NotRequired[str],
+    'verified': NotRequired[bool],
+}, total=False)
+
+ModelKickChannelLink = TypedDict('ModelKickChannelLink', {
+    'description': NotRequired[str],
+    'id': NotRequired[int],
+    'image_url': NotRequired[str],
+    'kind': NotRequired[str],
+    'order': NotRequired[int],
+    'title': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelKickChannelLinksResponse = TypedDict('ModelKickChannelLinksResponse', {
+    'links': NotRequired[list[ModelKickChannelLink]],
+    'slug': NotRequired[str],
+}, total=False)
+
+ModelKickChannelRef = TypedDict('ModelKickChannelRef', {
+    'id': NotRequired[int],
+    'profile_picture': NotRequired[str],
+    'slug': NotRequired[str],
+    'url': NotRequired[str],
+    'username': NotRequired[str],
+    'verified': NotRequired[bool],
+}, total=False)
+
+ModelKickChannelResponse = TypedDict('ModelKickChannelResponse', {
+    'affiliate': NotRequired[bool],
+    'banned': NotRequired[bool],
+    'banner_url': NotRequired[str],
+    'bio': NotRequired[str],
+    'followers': NotRequired[int],
+    'id': NotRequired[int],
+    'live': NotRequired[ModelKickLiveStream],
+    'profile_picture': NotRequired[str],
+    'recent_categories': NotRequired[list[ModelKickCategoryRef]],
+    'slug': NotRequired[str],
+    'socials': NotRequired[ModelKickSocials],
+    'subscription_enabled': NotRequired[bool],
+    'url': NotRequired[str],
+    'username': NotRequired[str],
+    'verified': NotRequired[bool],
+    'vod_enabled': NotRequired[bool],
+}, total=False)
+
+ModelKickChannelStreamsResponse = TypedDict('ModelKickChannelStreamsResponse', {
+    'slug': NotRequired[str],
+    'streams': NotRequired[list[ModelKickStreamSession]],
+}, total=False)
+
+ModelKickChannelVideosResponse = TypedDict('ModelKickChannelVideosResponse', {
+    'slug': NotRequired[str],
+    'videos': NotRequired[list[ModelKickVideo]],
+}, total=False)
+
+ModelKickChatMode = TypedDict('ModelKickChatMode', {
+    'enabled': NotRequired[bool],
+    'interval_seconds': NotRequired[int],
+    'minutes': NotRequired[int],
+}, total=False)
+
+ModelKickClip = TypedDict('ModelKickClip', {
+    'category': NotRequired[ModelKickCategoryRef],
+    'channel': NotRequired[ModelKickChannelRef],
+    'created_at': NotRequired[str],
+    'duration_seconds': NotRequired[int],
+    'id': NotRequired[str],
+    'likes': NotRequired[int],
+    'mature': NotRequired[bool],
+    'started_at': NotRequired[str],
+    'thumbnail_url': NotRequired[str],
+    'title': NotRequired[str],
+    'url': NotRequired[str],
+    'video_id': NotRequired[str],
+    'video_offset_seconds': NotRequired[int],
+    'views': NotRequired[int],
+}, total=False)
+
+ModelKickClipResponse = TypedDict('ModelKickClipResponse', {
+    'clip': NotRequired[ModelKickClip],
+}, total=False)
+
+ModelKickClipsResponse = TypedDict('ModelKickClipsResponse', {
+    'category': NotRequired[str],
+    'clips': NotRequired[list[ModelKickClip]],
+    'next_cursor': NotRequired[str],
+    'slug': NotRequired[str],
+    'sort': NotRequired[str],
+    'time': NotRequired[str],
+}, total=False)
+
+ModelKickDirectoryStream = TypedDict('ModelKickDirectoryStream', {
+    'category': NotRequired[ModelKickCategoryRef],
+    'channel': NotRequired[ModelKickChannelRef],
+    'id': NotRequired[str],
+    'language': NotRequired[str],
+    'mature': NotRequired[bool],
+    'started_at': NotRequired[str],
+    'tags': NotRequired[list[str]],
+    'thumbnail_url': NotRequired[str],
+    'title': NotRequired[str],
+    'viewers': NotRequired[int],
+}, total=False)
+
+ModelKickDropCampaign = TypedDict('ModelKickDropCampaign', {
+    'category': NotRequired[ModelKickCategoryRef],
+    'channel_count': NotRequired[int],
+    'channels': NotRequired[list[ModelKickDropChannel]],
+    'ends_at': NotRequired[str],
+    'id': NotRequired[str],
+    'name': NotRequired[str],
+    'organization': NotRequired[ModelKickDropOrganization],
+    'rewards': NotRequired[list[ModelKickDropReward]],
+    'rule': NotRequired[str],
+    'starts_at': NotRequired[str],
+    'status': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelKickDropChannel = TypedDict('ModelKickDropChannel', {
+    'id': NotRequired[int],
+    'profile_picture': NotRequired[str],
+    'slug': NotRequired[str],
+    'url': NotRequired[str],
+    'username': NotRequired[str],
+}, total=False)
+
+ModelKickDropOrganization = TypedDict('ModelKickDropOrganization', {
+    'id': NotRequired[str],
+    'logo_url': NotRequired[str],
+    'name': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelKickDropReward = TypedDict('ModelKickDropReward', {
+    'category_id': NotRequired[int],
+    'id': NotRequired[str],
+    'image_url': NotRequired[str],
+    'name': NotRequired[str],
+    'required_units': NotRequired[int],
+}, total=False)
+
+ModelKickDropsResponse = TypedDict('ModelKickDropsResponse', {
+    'campaigns': NotRequired[list[ModelKickDropCampaign]],
+    'status': NotRequired[str],
+    'total': NotRequired[int],
+}, total=False)
+
+ModelKickEmote = TypedDict('ModelKickEmote', {
+    'id': NotRequired[int],
+    'image_url': NotRequired[str],
+    'name': NotRequired[str],
+    'subscribers_only': NotRequired[bool],
+}, total=False)
+
+ModelKickGift = TypedDict('ModelKickGift', {
+    'character_limit': NotRequired[int],
+    'id': NotRequired[str],
+    'kicks': NotRequired[int],
+    'name': NotRequired[str],
+    'pinned_seconds': NotRequired[int],
+    'tier': NotRequired[str],
+    'type': NotRequired[str],
+}, total=False)
+
+ModelKickGiftsResponse = TypedDict('ModelKickGiftsResponse', {
+    'gifts': NotRequired[list[ModelKickGift]],
+}, total=False)
+
+ModelKickLanguage = TypedDict('ModelKickLanguage', {
+    'code': NotRequired[str],
+    'name': NotRequired[str],
+}, total=False)
+
+ModelKickLanguagesResponse = TypedDict('ModelKickLanguagesResponse', {
+    'languages': NotRequired[list[ModelKickLanguage]],
+}, total=False)
+
+ModelKickLiveStream = TypedDict('ModelKickLiveStream', {
+    'categories': NotRequired[list[ModelKickCategoryRef]],
+    'id': NotRequired[int],
+    'language': NotRequired[str],
+    'mature': NotRequired[bool],
+    'started_at': NotRequired[str],
+    'tags': NotRequired[list[str]],
+    'thumbnail_url': NotRequired[str],
+    'title': NotRequired[str],
+    'viewers': NotRequired[int],
+}, total=False)
+
+ModelKickLivestreamsResponse = TypedDict('ModelKickLivestreamsResponse', {
+    'category_id': NotRequired[int],
+    'language': NotRequired[str],
+    'livestreams': NotRequired[list[ModelKickDirectoryStream]],
+    'next_cursor': NotRequired[str],
+    'sort': NotRequired[str],
+}, total=False)
+
+ModelKickSearchCategoriesResponse = TypedDict('ModelKickSearchCategoriesResponse', {
+    'categories': NotRequired[list[ModelKickCategoryHit]],
+    'query': NotRequired[str],
+}, total=False)
+
+ModelKickSearchChannelsResponse = TypedDict('ModelKickSearchChannelsResponse', {
+    'channels': NotRequired[list[ModelKickChannelHit]],
+    'query': NotRequired[str],
+}, total=False)
+
+ModelKickSocials = TypedDict('ModelKickSocials', {
+    'discord': NotRequired[str],
+    'facebook': NotRequired[str],
+    'instagram': NotRequired[str],
+    'tiktok': NotRequired[str],
+    'twitter': NotRequired[str],
+    'youtube': NotRequired[str],
+}, total=False)
+
+ModelKickStreamSession = TypedDict('ModelKickStreamSession', {
+    'categories': NotRequired[list[ModelKickCategoryRef]],
+    'duration_ms': NotRequired[int],
+    'id': NotRequired[int],
+    'language': NotRequired[str],
+    'live': NotRequired[bool],
+    'mature': NotRequired[bool],
+    'started_at': NotRequired[str],
+    'tags': NotRequired[list[str]],
+    'thumbnail_url': NotRequired[str],
+    'title': NotRequired[str],
+    'video_url': NotRequired[str],
+    'video_uuid': NotRequired[str],
+    'video_views': NotRequired[int],
+    'viewer_count': NotRequired[int],
+}, total=False)
+
+ModelKickSubcategoriesResponse = TypedDict('ModelKickSubcategoriesResponse', {
+    'category': NotRequired[str],
+    'limit': NotRequired[int],
+    'page': NotRequired[int],
+    'reachable': NotRequired[int],
+    'subcategories': NotRequired[list[ModelKickSubcategory]],
+    'total': NotRequired[int],
+}, total=False)
+
+ModelKickSubcategory = TypedDict('ModelKickSubcategory', {
+    'banner_url': NotRequired[str],
+    'description': NotRequired[str],
+    'followers': NotRequired[int],
+    'id': NotRequired[int],
+    'mature': NotRequired[bool],
+    'name': NotRequired[str],
+    'parent_id': NotRequired[int],
+    'parent_name': NotRequired[str],
+    'parent_slug': NotRequired[str],
+    'slug': NotRequired[str],
+    'tags': NotRequired[list[str]],
+    'url': NotRequired[str],
+    'viewers': NotRequired[int],
+}, total=False)
+
+ModelKickSubcategoryResponse = TypedDict('ModelKickSubcategoryResponse', {
+    'subcategory': NotRequired[ModelKickSubcategory],
+}, total=False)
+
+ModelKickTopChannelsResponse = TypedDict('ModelKickTopChannelsResponse', {
+    'channels': NotRequired[list[ModelKickChannelHit]],
+}, total=False)
+
+ModelKickVideo = TypedDict('ModelKickVideo', {
+    'categories': NotRequired[list[ModelKickCategoryRef]],
+    'duration_ms': NotRequired[int],
+    'id': NotRequired[int],
+    'language': NotRequired[str],
+    'live': NotRequired[bool],
+    'mature': NotRequired[bool],
+    'started_at': NotRequired[str],
+    'tags': NotRequired[list[str]],
+    'thumbnail_url': NotRequired[str],
+    'title': NotRequired[str],
+    'url': NotRequired[str],
+    'uuid': NotRequired[str],
+    'views': NotRequired[int],
+}, total=False)
+
+ModelKickVideoResponse = TypedDict('ModelKickVideoResponse', {
+    'categories': NotRequired[list[ModelKickCategoryRef]],
+    'channel': NotRequired[ModelKickChannelRef],
+    'created_at': NotRequired[str],
+    'duration_ms': NotRequired[int],
+    'id': NotRequired[int],
+    'language': NotRequired[str],
+    'mature': NotRequired[bool],
+    'started_at': NotRequired[str],
+    'status': NotRequired[str],
+    'tags': NotRequired[list[str]],
+    'thumbnail_url': NotRequired[str],
+    'title': NotRequired[str],
+    'url': NotRequired[str],
+    'uuid': NotRequired[str],
+    'viewer_count': NotRequired[int],
+    'views': NotRequired[int],
+}, total=False)
+
+ModelKickCategoriesResponseDoc = TypedDict('ModelKickCategoriesResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelKickCategoriesResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelKickCategoryClipsResponseDoc = TypedDict('ModelKickCategoryClipsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelKickClipsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelKickChannelChatroomResponseDoc = TypedDict('ModelKickChannelChatroomResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelKickChannelChatroomResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelKickChannelClipsResponseDoc = TypedDict('ModelKickChannelClipsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelKickClipsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelKickChannelEmotesResponseDoc = TypedDict('ModelKickChannelEmotesResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelKickChannelEmotesResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelKickChannelLinksResponseDoc = TypedDict('ModelKickChannelLinksResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelKickChannelLinksResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelKickChannelResponseDoc = TypedDict('ModelKickChannelResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelKickChannelResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelKickChannelStreamsResponseDoc = TypedDict('ModelKickChannelStreamsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelKickChannelStreamsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelKickChannelVideosResponseDoc = TypedDict('ModelKickChannelVideosResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelKickChannelVideosResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelKickClipResponseDoc = TypedDict('ModelKickClipResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelKickClipResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelKickClipsResponseDoc = TypedDict('ModelKickClipsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelKickClipsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelKickDropsResponseDoc = TypedDict('ModelKickDropsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelKickDropsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelKickGiftsResponseDoc = TypedDict('ModelKickGiftsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelKickGiftsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelKickLanguagesResponseDoc = TypedDict('ModelKickLanguagesResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelKickLanguagesResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelKickLivestreamsResponseDoc = TypedDict('ModelKickLivestreamsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelKickLivestreamsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelKickSearchCategoriesResponseDoc = TypedDict('ModelKickSearchCategoriesResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelKickSearchCategoriesResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelKickSearchChannelsResponseDoc = TypedDict('ModelKickSearchChannelsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelKickSearchChannelsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelKickSubcategoriesResponseDoc = TypedDict('ModelKickSubcategoriesResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelKickSubcategoriesResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelKickSubcategoryResponseDoc = TypedDict('ModelKickSubcategoryResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelKickSubcategoryResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelKickTopChannelsResponseDoc = TypedDict('ModelKickTopChannelsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelKickTopChannelsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelKickVideoResponseDoc = TypedDict('ModelKickVideoResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelKickVideoResponse],
+    'msg': NotRequired[str],
 }, total=False)
 
 ModelKickstarterCategory = TypedDict('ModelKickstarterCategory', {
@@ -47996,6 +49174,192 @@ ModelPredictionsPredictionsRulesResponseDoc = TypedDict('ModelPredictionsPredict
     'msg': NotRequired[str],
 }, total=False)
 
+ModelPricechartingBigMover = TypedDict('ModelPricechartingBigMover', {
+    'change': NotRequired[float],
+    'console': NotRequired[str],
+    'console_slug': NotRequired[str],
+    'id': NotRequired[int],
+    'name': NotRequired[str],
+    'price': NotRequired[float],
+    'slug': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelPricechartingBigMoversResponse = TypedDict('ModelPricechartingBigMoversResponse', {
+    'categories': NotRequired[list[ModelPricechartingCategory]],
+    'category': NotRequired[str],
+    'change_unit': NotRequired[str],
+    'price_label': NotRequired[str],
+    'products': NotRequired[list[ModelPricechartingBigMover]],
+    'region': NotRequired[str],
+    'sort': NotRequired[str],
+    'title': NotRequired[str],
+}, total=False)
+
+ModelPricechartingCategoriesResponse = TypedDict('ModelPricechartingCategoriesResponse', {
+    'categories': NotRequired[list[ModelPricechartingCategory]],
+    'category': NotRequired[str],
+    'consoles': NotRequired[list[ModelPricechartingConsole]],
+}, total=False)
+
+ModelPricechartingCategory = TypedDict('ModelPricechartingCategory', {
+    'name': NotRequired[str],
+    'slug': NotRequired[str],
+}, total=False)
+
+ModelPricechartingConsole = TypedDict('ModelPricechartingConsole', {
+    'name': NotRequired[str],
+    'slug': NotRequired[str],
+}, total=False)
+
+ModelPricechartingConsoleProduct = TypedDict('ModelPricechartingConsoleProduct', {
+    'complete_price': NotRequired[float],
+    'id': NotRequired[int],
+    'image_url': NotRequired[str],
+    'loose_price': NotRequired[float],
+    'name': NotRequired[str],
+    'new_price': NotRequired[float],
+    'slug': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelPricechartingConsoleResponse = TypedDict('ModelPricechartingConsoleResponse', {
+    'console': NotRequired[str],
+    'cursor': NotRequired[int],
+    'next_cursor': NotRequired[int],
+    'price_labels': NotRequired[list[str]],
+    'products': NotRequired[list[ModelPricechartingConsoleProduct]],
+    'sort': NotRequired[str],
+    'title': NotRequired[str],
+}, total=False)
+
+ModelPricechartingGradeCount = TypedDict('ModelPricechartingGradeCount', {
+    'count': NotRequired[int],
+    'grade': NotRequired[int],
+}, total=False)
+
+ModelPricechartingPopulation = TypedDict('ModelPricechartingPopulation', {
+    'cgc': NotRequired[list[ModelPricechartingGradeCount]],
+    'psa': NotRequired[list[ModelPricechartingGradeCount]],
+}, total=False)
+
+ModelPricechartingPriceCell = TypedDict('ModelPricechartingPriceCell', {
+    'change': NotRequired[float],
+    'label': NotRequired[str],
+    'price': NotRequired[float],
+}, total=False)
+
+ModelPricechartingPriceHistoryResponse = TypedDict('ModelPricechartingPriceHistoryResponse', {
+    'currency': NotRequired[str],
+    'population': NotRequired[ModelPricechartingPopulation],
+    'product': NotRequired[ModelPricechartingProductRef],
+    'series': NotRequired[list[ModelPricechartingPriceSeries]],
+}, total=False)
+
+ModelPricechartingPricePoint = TypedDict('ModelPricechartingPricePoint', {
+    'date': NotRequired[str],
+    'price': NotRequired[float],
+}, total=False)
+
+ModelPricechartingPriceSeries = TypedDict('ModelPricechartingPriceSeries', {
+    'label': NotRequired[str],
+    'points': NotRequired[list[ModelPricechartingPricePoint]],
+    'tab': NotRequired[str],
+}, total=False)
+
+ModelPricechartingProduct = TypedDict('ModelPricechartingProduct', {
+    'attributes': NotRequired[dict[str, str]],
+    'console': NotRequired[str],
+    'console_slug': NotRequired[str],
+    'full_prices': NotRequired[list[ModelPricechartingPriceCell]],
+    'id': NotRequired[int],
+    'image_url': NotRequired[str],
+    'name': NotRequired[str],
+    'prices': NotRequired[list[ModelPricechartingPriceCell]],
+    'recent_sales': NotRequired[list[ModelPricechartingSale]],
+    'slug': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelPricechartingProductRef = TypedDict('ModelPricechartingProductRef', {
+    'console': NotRequired[str],
+    'console_slug': NotRequired[str],
+    'id': NotRequired[int],
+    'name': NotRequired[str],
+    'slug': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelPricechartingProductResponse = TypedDict('ModelPricechartingProductResponse', {
+    'product': NotRequired[ModelPricechartingProduct],
+}, total=False)
+
+ModelPricechartingSale = TypedDict('ModelPricechartingSale', {
+    'date': NotRequired[str],
+    'grade': NotRequired[str],
+    'item_id': NotRequired[str],
+    'item_url': NotRequired[str],
+    'price': NotRequired[float],
+    'source': NotRequired[str],
+    'tab': NotRequired[str],
+    'title': NotRequired[str],
+}, total=False)
+
+ModelPricechartingSearchProduct = TypedDict('ModelPricechartingSearchProduct', {
+    'category': NotRequired[str],
+    'complete_price': NotRequired[float],
+    'console': NotRequired[str],
+    'console_uid': NotRequired[str],
+    'id': NotRequired[int],
+    'image_url': NotRequired[str],
+    'loose_price': NotRequired[float],
+    'name': NotRequired[str],
+    'new_price': NotRequired[float],
+}, total=False)
+
+ModelPricechartingSearchResponse = TypedDict('ModelPricechartingSearchResponse', {
+    'products': NotRequired[list[ModelPricechartingSearchProduct]],
+    'query': NotRequired[str],
+    'sort': NotRequired[str],
+    'total': NotRequired[int],
+}, total=False)
+
+ModelPricechartingBigMoversResponseDoc = TypedDict('ModelPricechartingBigMoversResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelPricechartingBigMoversResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelPricechartingCategoriesResponseDoc = TypedDict('ModelPricechartingCategoriesResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelPricechartingCategoriesResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelPricechartingConsoleResponseDoc = TypedDict('ModelPricechartingConsoleResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelPricechartingConsoleResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelPricechartingPriceHistoryResponseDoc = TypedDict('ModelPricechartingPriceHistoryResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelPricechartingPriceHistoryResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelPricechartingProductResponseDoc = TypedDict('ModelPricechartingProductResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelPricechartingProductResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelPricechartingSearchResponseDoc = TypedDict('ModelPricechartingSearchResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelPricechartingSearchResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
 ModelPristineauctionAuctionStatus = TypedDict('ModelPristineauctionAuctionStatus', {
     'slug': NotRequired[str],
 }, total=False)
@@ -49293,6 +50657,24 @@ ModelPsaPriceGuideSetResponse = TypedDict('ModelPsaPriceGuideSetResponse', {
     'title': NotRequired[str],
 }, total=False)
 
+ModelPsaPriceGuideSetSummary = TypedDict('ModelPsaPriceGuideSetSummary', {
+    'category_name': NotRequired[str],
+    'category_path': NotRequired[str],
+    'set_id': NotRequired[int],
+    'set_name': NotRequired[str],
+    'set_path': NotRequired[str],
+}, total=False)
+
+ModelPsaPriceGuideSetsResponse = TypedDict('ModelPsaPriceGuideSetsResponse', {
+    'category_path': NotRequired[str],
+    'page': NotRequired[int],
+    'page_size': NotRequired[int],
+    'query': NotRequired[str],
+    'sets': NotRequired[list[ModelPsaPriceGuideSetSummary]],
+    'total_count': NotRequired[int],
+    'unavailable_categories': NotRequired[list[str]],
+}, total=False)
+
 ModelPsaProBatFactsCategoriesResponse = TypedDict('ModelPsaProBatFactsCategoriesResponse', {
     'categories': NotRequired[list[ModelPsaProBatFactsCategory]],
 }, total=False)
@@ -49435,6 +50817,12 @@ ModelPsaPriceGuideSearchResponseDoc = TypedDict('ModelPsaPriceGuideSearchRespons
 ModelPsaPriceGuideSetResponseDoc = TypedDict('ModelPsaPriceGuideSetResponseDoc', {
     'code': NotRequired[int],
     'data': NotRequired[ModelPsaPriceGuideSetResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelPsaPriceGuideSetsResponseDoc = TypedDict('ModelPsaPriceGuideSetsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelPsaPriceGuideSetsResponse],
     'msg': NotRequired[str],
 }, total=False)
 
@@ -51536,6 +52924,263 @@ ModelRedfinSearchResponse = TypedDict('ModelRedfinSearchResponse', {
 ModelRedfinSimilarResponse = TypedDict('ModelRedfinSimilarResponse', {
     'property_id': NotRequired[str],
     'results': NotRequired[list[ModelRedfinPropertyItem]],
+}, total=False)
+
+ModelReelshortActor = TypedDict('ModelReelshortActor', {
+    'imdb_url': NotRequired[str],
+    'name': NotRequired[str],
+    'photo_url': NotRequired[str],
+}, total=False)
+
+ModelReelshortBook = TypedDict('ModelReelshortBook', {
+    'cover_url': NotRequired[str],
+    'description': NotRequired[str],
+    'episodes': NotRequired[int],
+    'favorites': NotRequired[int],
+    'first_paid_episode': NotRequired[int],
+    'has_trailer': NotRequired[bool],
+    'id': NotRequired[str],
+    'language': NotRequired[str],
+    'plays': NotRequired[int],
+    'tags': NotRequired[list[str]],
+    'title': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelReelshortEpisode = TypedDict('ModelReelshortEpisode', {
+    'free': NotRequired[bool],
+    'id': NotRequired[str],
+    'kind': NotRequired[str],
+    'likes': NotRequired[int],
+    'number': NotRequired[int],
+    'published_at': NotRequired[str],
+    'thumbnail_url': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelReelshortFandomCategoriesResponse = TypedDict('ModelReelshortFandomCategoriesResponse', {
+    'categories': NotRequired[list[ModelReelshortFandomCategory]],
+}, total=False)
+
+ModelReelshortFandomCategory = TypedDict('ModelReelshortFandomCategory', {
+    'description': NotRequired[str],
+    'id': NotRequired[int],
+    'name': NotRequired[str],
+    'posts': NotRequired[int],
+    'slug': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelReelshortFandomPost = TypedDict('ModelReelshortFandomPost', {
+    'categories': NotRequired[list[str]],
+    'excerpt': NotRequired[str],
+    'id': NotRequired[int],
+    'image_url': NotRequired[str],
+    'modified_at': NotRequired[str],
+    'published_at': NotRequired[str],
+    'slug': NotRequired[str],
+    'title': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelReelshortFandomPostResponse = TypedDict('ModelReelshortFandomPostResponse', {
+    'categories': NotRequired[list[str]],
+    'content': NotRequired[str],
+    'excerpt': NotRequired[str],
+    'id': NotRequired[int],
+    'image_url': NotRequired[str],
+    'modified_at': NotRequired[str],
+    'published_at': NotRequired[str],
+    'slug': NotRequired[str],
+    'title': NotRequired[str],
+    'title_ids': NotRequired[list[str]],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelReelshortFandomPostsResponse = TypedDict('ModelReelshortFandomPostsResponse', {
+    'category': NotRequired[str],
+    'limit': NotRequired[int],
+    'page': NotRequired[int],
+    'posts': NotRequired[list[ModelReelshortFandomPost]],
+    'search': NotRequired[str],
+    'total': NotRequired[int],
+    'total_pages': NotRequired[int],
+}, total=False)
+
+ModelReelshortHomeResponse = TypedDict('ModelReelshortHomeResponse', {
+    'language': NotRequired[str],
+    'shelves': NotRequired[list[ModelReelshortShelf]],
+}, total=False)
+
+ModelReelshortMovieResponse = TypedDict('ModelReelshortMovieResponse', {
+    'actors': NotRequired[list[ModelReelshortActor]],
+    'ai_generated': NotRequired[bool],
+    'badge': NotRequired[str],
+    'cover_url': NotRequired[str],
+    'description': NotRequired[str],
+    'dubbed': NotRequired[bool],
+    'episode_count': NotRequired[int],
+    'episodes': NotRequired[list[ModelReelshortEpisode]],
+    'favorites': NotRequired[int],
+    'first_paid_episode': NotRequired[int],
+    'id': NotRequired[str],
+    'imdb_url': NotRequired[str],
+    'language': NotRequired[str],
+    'online_at': NotRequired[str],
+    'original_language': NotRequired[str],
+    'plays': NotRequired[int],
+    'published_at': NotRequired[str],
+    'tags': NotRequired[list[ModelReelshortTag]],
+    'title': NotRequired[str],
+    'update_status': NotRequired[int],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelReelshortNewReleasesResponse = TypedDict('ModelReelshortNewReleasesResponse', {
+    'books': NotRequired[list[ModelReelshortBook]],
+    'language': NotRequired[str],
+}, total=False)
+
+ModelReelshortRelatedTag = TypedDict('ModelReelshortRelatedTag', {
+    'id': NotRequired[str],
+    'name': NotRequired[str],
+}, total=False)
+
+ModelReelshortSearchResponse = TypedDict('ModelReelshortSearchResponse', {
+    'books': NotRequired[list[ModelReelshortBook]],
+    'keywords': NotRequired[str],
+    'language': NotRequired[str],
+    'page': NotRequired[int],
+    'total': NotRequired[int],
+    'total_pages': NotRequired[int],
+}, total=False)
+
+ModelReelshortShelf = TypedDict('ModelReelshortShelf', {
+    'books': NotRequired[list[ModelReelshortBook]],
+    'id': NotRequired[int],
+    'name': NotRequired[str],
+}, total=False)
+
+ModelReelshortShelfResponse = TypedDict('ModelReelshortShelfResponse', {
+    'books': NotRequired[list[ModelReelshortBook]],
+    'id': NotRequired[int],
+    'name': NotRequired[str],
+    'total': NotRequired[int],
+}, total=False)
+
+ModelReelshortTag = TypedDict('ModelReelshortTag', {
+    'category_id': NotRequired[str],
+    'id': NotRequired[str],
+    'kind': NotRequired[str],
+    'name': NotRequired[str],
+}, total=False)
+
+ModelReelshortTagBooksResponse = TypedDict('ModelReelshortTagBooksResponse', {
+    'books': NotRequired[list[ModelReelshortBook]],
+    'description': NotRequired[str],
+    'limit': NotRequired[int],
+    'page': NotRequired[int],
+    'related_tags': NotRequired[list[ModelReelshortRelatedTag]],
+    'tag': NotRequired[ModelReelshortTag],
+    'top_titles': NotRequired[list[ModelReelshortTitleRef]],
+    'total_items': NotRequired[int],
+}, total=False)
+
+ModelReelshortTagMatch = TypedDict('ModelReelshortTagMatch', {
+    'category_id': NotRequired[int],
+    'description': NotRequired[str],
+    'id': NotRequired[str],
+    'image_url': NotRequired[str],
+    'kind': NotRequired[str],
+    'name': NotRequired[str],
+    'titles': NotRequired[int],
+}, total=False)
+
+ModelReelshortTagSearchResponse = TypedDict('ModelReelshortTagSearchResponse', {
+    'language': NotRequired[str],
+    'page': NotRequired[int],
+    'page_size': NotRequired[int],
+    'tags': NotRequired[list[ModelReelshortTagMatch]],
+    'total': NotRequired[int],
+    'word': NotRequired[str],
+}, total=False)
+
+ModelReelshortTagsResponse = TypedDict('ModelReelshortTagsResponse', {
+    'category': NotRequired[str],
+    'category_id': NotRequired[int],
+    'language': NotRequired[str],
+    'tags': NotRequired[list[ModelReelshortTag]],
+}, total=False)
+
+ModelReelshortTitleRef = TypedDict('ModelReelshortTitleRef', {
+    'id': NotRequired[str],
+    'title': NotRequired[str],
+}, total=False)
+
+ModelReelshortFandomCategoriesResponseDoc = TypedDict('ModelReelshortFandomCategoriesResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelReelshortFandomCategoriesResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelReelshortFandomPostResponseDoc = TypedDict('ModelReelshortFandomPostResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelReelshortFandomPostResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelReelshortFandomPostsResponseDoc = TypedDict('ModelReelshortFandomPostsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelReelshortFandomPostsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelReelshortHomeResponseDoc = TypedDict('ModelReelshortHomeResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelReelshortHomeResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelReelshortMovieResponseDoc = TypedDict('ModelReelshortMovieResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelReelshortMovieResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelReelshortNewReleasesResponseDoc = TypedDict('ModelReelshortNewReleasesResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelReelshortNewReleasesResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelReelshortSearchResponseDoc = TypedDict('ModelReelshortSearchResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelReelshortSearchResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelReelshortShelfResponseDoc = TypedDict('ModelReelshortShelfResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelReelshortShelfResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelReelshortTagBooksResponseDoc = TypedDict('ModelReelshortTagBooksResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelReelshortTagBooksResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelReelshortTagSearchResponseDoc = TypedDict('ModelReelshortTagSearchResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelReelshortTagSearchResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelReelshortTagsResponseDoc = TypedDict('ModelReelshortTagsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelReelshortTagsResponse],
+    'msg': NotRequired[str],
 }, total=False)
 
 ModelReferralsReferralAttributionDoc = TypedDict('ModelReferralsReferralAttributionDoc', {
@@ -66832,6 +68477,297 @@ ModelTargetStoresResponseDoc = TypedDict('ModelTargetStoresResponseDoc', {
     'msg': NotRequired[str],
 }, total=False)
 
+ModelTcgplayerFacet = TypedDict('ModelTcgplayerFacet', {
+    'count': NotRequired[int],
+    'url_value': NotRequired[str],
+    'value': NotRequired[str],
+}, total=False)
+
+ModelTcgplayerFacets = TypedDict('ModelTcgplayerFacets', {
+    'card_types': NotRequired[list[ModelTcgplayerFacet]],
+    'energy_types': NotRequired[list[ModelTcgplayerFacet]],
+    'product_lines': NotRequired[list[ModelTcgplayerFacet]],
+    'product_types': NotRequired[list[ModelTcgplayerFacet]],
+    'rarities': NotRequired[list[ModelTcgplayerFacet]],
+    'sets': NotRequired[list[ModelTcgplayerFacet]],
+}, total=False)
+
+ModelTcgplayerFilterValue = TypedDict('ModelTcgplayerFilterValue', {
+    'abbreviation': NotRequired[str],
+    'id': NotRequired[int],
+    'name': NotRequired[str],
+}, total=False)
+
+ModelTcgplayerFiltersResponse = TypedDict('ModelTcgplayerFiltersResponse', {
+    'conditions': NotRequired[list[ModelTcgplayerFilterValue]],
+    'languages': NotRequired[list[ModelTcgplayerFilterValue]],
+    'listing_types': NotRequired[list[str]],
+    'product_id': NotRequired[int],
+    'product_line': NotRequired[str],
+    'product_line_id': NotRequired[int],
+    'variants': NotRequired[list[ModelTcgplayerFilterValue]],
+}, total=False)
+
+ModelTcgplayerListing = TypedDict('ModelTcgplayerListing', {
+    'condition': NotRequired[str],
+    'direct_seller': NotRequired[bool],
+    'gold_seller': NotRequired[bool],
+    'language': NotRequired[str],
+    'listing_id': NotRequired[int],
+    'listing_type': NotRequired[str],
+    'price': NotRequired[float],
+    'printing': NotRequired[str],
+    'quantity': NotRequired[int],
+    'seller_city': NotRequired[str],
+    'seller_country': NotRequired[str],
+    'seller_name': NotRequired[str],
+    'seller_rating': NotRequired[float],
+    'seller_sales': NotRequired[str],
+    'seller_state': NotRequired[str],
+    'shipping_price': NotRequired[float],
+    'verified_seller': NotRequired[bool],
+}, total=False)
+
+ModelTcgplayerListingFacets = TypedDict('ModelTcgplayerListingFacets', {
+    'conditions': NotRequired[list[ModelTcgplayerFacet]],
+    'languages': NotRequired[list[ModelTcgplayerFacet]],
+    'printings': NotRequired[list[ModelTcgplayerFacet]],
+}, total=False)
+
+ModelTcgplayerListingsResponse = TypedDict('ModelTcgplayerListingsResponse', {
+    'facets': NotRequired[ModelTcgplayerListingFacets],
+    'limit': NotRequired[int],
+    'listings': NotRequired[list[ModelTcgplayerListing]],
+    'next_offset': NotRequired[int],
+    'offset': NotRequired[int],
+    'product_id': NotRequired[int],
+    'total': NotRequired[int],
+}, total=False)
+
+ModelTcgplayerPriceBucket = TypedDict('ModelTcgplayerPriceBucket', {
+    'high_sale_price': NotRequired[float],
+    'high_sale_price_with_shipping': NotRequired[float],
+    'low_sale_price': NotRequired[float],
+    'low_sale_price_with_shipping': NotRequired[float],
+    'market_price': NotRequired[float],
+    'quantity_sold': NotRequired[int],
+    'start_date': NotRequired[str],
+    'transaction_count': NotRequired[int],
+}, total=False)
+
+ModelTcgplayerPriceGuideResponse = TypedDict('ModelTcgplayerPriceGuideResponse', {
+    'game': NotRequired[str],
+    'limit': NotRequired[int],
+    'next_offset': NotRequired[int],
+    'offset': NotRequired[int],
+    'rows': NotRequired[list[ModelTcgplayerPriceGuideRow]],
+    'set_abbreviation': NotRequired[str],
+    'set_id': NotRequired[int],
+    'set_name': NotRequired[str],
+    'total': NotRequired[int],
+}, total=False)
+
+ModelTcgplayerPriceGuideRow = TypedDict('ModelTcgplayerPriceGuideRow', {
+    'condition': NotRequired[str],
+    'language': NotRequired[str],
+    'low_price': NotRequired[float],
+    'market_price': NotRequired[float],
+    'name': NotRequired[str],
+    'number': NotRequired[str],
+    'printing': NotRequired[str],
+    'product_id': NotRequired[int],
+    'rarity': NotRequired[str],
+    'sales': NotRequired[int],
+}, total=False)
+
+ModelTcgplayerPriceHistoryResponse = TypedDict('ModelTcgplayerPriceHistoryResponse', {
+    'product_id': NotRequired[int],
+    'range': NotRequired[str],
+    'skus': NotRequired[list[ModelTcgplayerSkuhistory]],
+}, total=False)
+
+ModelTcgplayerPricePoint = TypedDict('ModelTcgplayerPricePoint', {
+    'buylist_market_price': NotRequired[float],
+    'listed_median_price': NotRequired[float],
+    'market_price': NotRequired[float],
+    'printing': NotRequired[str],
+}, total=False)
+
+ModelTcgplayerProduct = TypedDict('ModelTcgplayerProduct', {
+    'attributes': NotRequired[dict[str, str]],
+    'description': NotRequired[str],
+    'foil_only': NotRequired[bool],
+    'image_url': NotRequired[str],
+    'lowest_price': NotRequired[float],
+    'lowest_price_with_shipping': NotRequired[float],
+    'market_price': NotRequired[float],
+    'median_price': NotRequired[float],
+    'name': NotRequired[str],
+    'normal_only': NotRequired[bool],
+    'number': NotRequired[str],
+    'price_points': NotRequired[list[ModelTcgplayerPricePoint]],
+    'product_id': NotRequired[int],
+    'product_line': NotRequired[str],
+    'product_line_url_name': NotRequired[str],
+    'product_type': NotRequired[str],
+    'rarity': NotRequired[str],
+    'sealed': NotRequired[bool],
+    'set_code': NotRequired[str],
+    'set_name': NotRequired[str],
+    'skus': NotRequired[list[ModelTcgplayerSku]],
+    'total_listings': NotRequired[int],
+    'total_sellers': NotRequired[int],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelTcgplayerProductLine = TypedDict('ModelTcgplayerProductLine', {
+    'direct': NotRequired[bool],
+    'id': NotRequired[int],
+    'name': NotRequired[str],
+    'url_name': NotRequired[str],
+}, total=False)
+
+ModelTcgplayerProductLinesResponse = TypedDict('ModelTcgplayerProductLinesResponse', {
+    'product_lines': NotRequired[list[ModelTcgplayerProductLine]],
+}, total=False)
+
+ModelTcgplayerProductResponse = TypedDict('ModelTcgplayerProductResponse', {
+    'product': NotRequired[ModelTcgplayerProduct],
+}, total=False)
+
+ModelTcgplayerProductSummary = TypedDict('ModelTcgplayerProductSummary', {
+    'card_types': NotRequired[list[str]],
+    'foil_only': NotRequired[bool],
+    'image_url': NotRequired[str],
+    'lowest_price': NotRequired[float],
+    'lowest_price_with_shipping': NotRequired[float],
+    'market_price': NotRequired[float],
+    'median_price': NotRequired[float],
+    'name': NotRequired[str],
+    'number': NotRequired[str],
+    'product_id': NotRequired[int],
+    'product_line': NotRequired[str],
+    'rarity': NotRequired[str],
+    'sealed': NotRequired[bool],
+    'set_code': NotRequired[str],
+    'set_name': NotRequired[str],
+    'total_listings': NotRequired[int],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelTcgplayerSku = TypedDict('ModelTcgplayerSku', {
+    'condition': NotRequired[str],
+    'language': NotRequired[str],
+    'sku': NotRequired[int],
+    'variant': NotRequired[str],
+}, total=False)
+
+ModelTcgplayerSkuhistory = TypedDict('ModelTcgplayerSkuhistory', {
+    'average_daily_quantity_sold': NotRequired[float],
+    'average_daily_transaction_count': NotRequired[float],
+    'buckets': NotRequired[list[ModelTcgplayerPriceBucket]],
+    'condition': NotRequired[str],
+    'language': NotRequired[str],
+    'sku': NotRequired[int],
+    'total_quantity_sold': NotRequired[int],
+    'total_transaction_count': NotRequired[int],
+    'variant': NotRequired[str],
+}, total=False)
+
+ModelTcgplayerSale = TypedDict('ModelTcgplayerSale', {
+    'condition': NotRequired[str],
+    'language': NotRequired[str],
+    'listing_type': NotRequired[str],
+    'order_date': NotRequired[str],
+    'purchase_price': NotRequired[float],
+    'quantity': NotRequired[int],
+    'shipping_price': NotRequired[float],
+    'variant': NotRequired[str],
+}, total=False)
+
+ModelTcgplayerSalesResponse = TypedDict('ModelTcgplayerSalesResponse', {
+    'product_id': NotRequired[int],
+    'sales': NotRequired[list[ModelTcgplayerSale]],
+}, total=False)
+
+ModelTcgplayerSearchResponse = TypedDict('ModelTcgplayerSearchResponse', {
+    'facets': NotRequired[ModelTcgplayerFacets],
+    'limit': NotRequired[int],
+    'next_offset': NotRequired[int],
+    'offset': NotRequired[int],
+    'products': NotRequired[list[ModelTcgplayerProductSummary]],
+    'query': NotRequired[str],
+    'total': NotRequired[int],
+}, total=False)
+
+ModelTcgplayerSet = TypedDict('ModelTcgplayerSet', {
+    'abbreviation': NotRequired[str],
+    'id': NotRequired[int],
+    'name': NotRequired[str],
+    'release_date': NotRequired[str],
+    'supplemental': NotRequired[bool],
+    'url_name': NotRequired[str],
+}, total=False)
+
+ModelTcgplayerSetsResponse = TypedDict('ModelTcgplayerSetsResponse', {
+    'product_line': NotRequired[str],
+    'sets': NotRequired[list[ModelTcgplayerSet]],
+}, total=False)
+
+ModelTcgplayerFiltersResponseDoc = TypedDict('ModelTcgplayerFiltersResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelTcgplayerFiltersResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelTcgplayerListingsResponseDoc = TypedDict('ModelTcgplayerListingsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelTcgplayerListingsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelTcgplayerPriceGuideResponseDoc = TypedDict('ModelTcgplayerPriceGuideResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelTcgplayerPriceGuideResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelTcgplayerPriceHistoryResponseDoc = TypedDict('ModelTcgplayerPriceHistoryResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelTcgplayerPriceHistoryResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelTcgplayerProductLinesResponseDoc = TypedDict('ModelTcgplayerProductLinesResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelTcgplayerProductLinesResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelTcgplayerProductResponseDoc = TypedDict('ModelTcgplayerProductResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelTcgplayerProductResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelTcgplayerSalesResponseDoc = TypedDict('ModelTcgplayerSalesResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelTcgplayerSalesResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelTcgplayerSearchResponseDoc = TypedDict('ModelTcgplayerSearchResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelTcgplayerSearchResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelTcgplayerSetsResponseDoc = TypedDict('ModelTcgplayerSetsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelTcgplayerSetsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
 ModelTechcrunchAuthorArticle = TypedDict('ModelTechcrunchAuthorArticle', {
     'category': NotRequired[str],
     'title': NotRequired[str],
@@ -66877,6 +68813,135 @@ ModelTechstackTechnology = TypedDict('ModelTechstackTechnology', {
 ModelTechstackUnmatchedEvidence = TypedDict('ModelTechstackUnmatchedEvidence', {
     'domains': NotRequired[list[str]],
     'generator': NotRequired[str],
+}, total=False)
+
+ModelTelegramBotResponse = TypedDict('ModelTelegramBotResponse', {
+    'avatar_url': NotRequired[str],
+    'description': NotRequired[str],
+    'monthly_users': NotRequired[int],
+    'name': NotRequired[str],
+    'url': NotRequired[str],
+    'username': NotRequired[str],
+    'verified': NotRequired[bool],
+}, total=False)
+
+ModelTelegramChannelPostsResponse = TypedDict('ModelTelegramChannelPostsResponse', {
+    'has_more': NotRequired[bool],
+    'next_before': NotRequired[int],
+    'posts': NotRequired[list[ModelTelegramPost]],
+    'query': NotRequired[str],
+    'title': NotRequired[str],
+    'username': NotRequired[str],
+}, total=False)
+
+ModelTelegramChannelResponse = TypedDict('ModelTelegramChannelResponse', {
+    'avatar_url': NotRequired[str],
+    'description': NotRequired[str],
+    'files_count': NotRequired[int],
+    'links_count': NotRequired[int],
+    'photos_count': NotRequired[int],
+    'preview_url': NotRequired[str],
+    'subscribers': NotRequired[int],
+    'subscribers_approximate': NotRequired[bool],
+    'title': NotRequired[str],
+    'url': NotRequired[str],
+    'username': NotRequired[str],
+    'verified': NotRequired[bool],
+    'videos_count': NotRequired[int],
+}, total=False)
+
+ModelTelegramForwardedRef = TypedDict('ModelTelegramForwardedRef', {
+    'name': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelTelegramGroupResponse = TypedDict('ModelTelegramGroupResponse', {
+    'avatar_url': NotRequired[str],
+    'description': NotRequired[str],
+    'members': NotRequired[int],
+    'online': NotRequired[int],
+    'title': NotRequired[str],
+    'url': NotRequired[str],
+    'username': NotRequired[str],
+}, total=False)
+
+ModelTelegramLinkPreview = TypedDict('ModelTelegramLinkPreview', {
+    'description': NotRequired[str],
+    'image_url': NotRequired[str],
+    'site_name': NotRequired[str],
+    'title': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelTelegramMedia = TypedDict('ModelTelegramMedia', {
+    'thumbnail_url': NotRequired[str],
+    'type': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelTelegramPost = TypedDict('ModelTelegramPost', {
+    'author': NotRequired[str],
+    'edited': NotRequired[bool],
+    'forwarded_from': NotRequired[ModelTelegramForwardedRef],
+    'id': NotRequired[int],
+    'link_preview': NotRequired[ModelTelegramLinkPreview],
+    'links': NotRequired[list[str]],
+    'media': NotRequired[list[ModelTelegramMedia]],
+    'published_at': NotRequired[str],
+    'reactions': NotRequired[list[ModelTelegramReaction]],
+    'reply_to': NotRequired[ModelTelegramReplyRef],
+    'text': NotRequired[str],
+    'url': NotRequired[str],
+    'username': NotRequired[str],
+    'views': NotRequired[int],
+}, total=False)
+
+ModelTelegramPostResponse = TypedDict('ModelTelegramPostResponse', {
+    'post': NotRequired[ModelTelegramPost],
+}, total=False)
+
+ModelTelegramReaction = TypedDict('ModelTelegramReaction', {
+    'count': NotRequired[int],
+    'custom_emoji_id': NotRequired[str],
+    'emoji': NotRequired[str],
+    'paid': NotRequired[bool],
+}, total=False)
+
+ModelTelegramReplyRef = TypedDict('ModelTelegramReplyRef', {
+    'author': NotRequired[str],
+    'id': NotRequired[int],
+    'text': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelTelegramBotResponseDoc = TypedDict('ModelTelegramBotResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelTelegramBotResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelTelegramChannelPostsResponseDoc = TypedDict('ModelTelegramChannelPostsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelTelegramChannelPostsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelTelegramChannelResponseDoc = TypedDict('ModelTelegramChannelResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelTelegramChannelResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelTelegramGroupResponseDoc = TypedDict('ModelTelegramGroupResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelTelegramGroupResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelTelegramPostResponseDoc = TypedDict('ModelTelegramPostResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelTelegramPostResponse],
+    'msg': NotRequired[str],
 }, total=False)
 
 ModelTelegraphAuthorArticle = TypedDict('ModelTelegraphAuthorArticle', {
@@ -73536,6 +75601,200 @@ ModelWalgreensStoresResponseDoc = TypedDict('ModelWalgreensStoresResponseDoc', {
     'msg': NotRequired[str],
 }, total=False)
 
+ModelWallapopCategoriesResponse = TypedDict('ModelWallapopCategoriesResponse', {
+    'categories': NotRequired[list[ModelWallapopCategory]],
+    'count': NotRequired[int],
+    'fetched_at': NotRequired[str],
+    'max_depth': NotRequired[int],
+    'root_count': NotRequired[int],
+    'source_url': NotRequired[str],
+}, total=False)
+
+ModelWallapopCategory = TypedDict('ModelWallapopCategory', {
+    'depth': NotRequired[int],
+    'id': NotRequired[int],
+    'is_leaf': NotRequired[bool],
+    'name': NotRequired[str],
+    'parent_id': NotRequired[int],
+    'path': NotRequired[str],
+    'root_id': NotRequired[int],
+    'vertical_id': NotRequired[str],
+}, total=False)
+
+ModelWallapopFilterDefinition = TypedDict('ModelWallapopFilterDefinition', {
+    'format': NotRequired[str],
+    'id': NotRequired[str],
+    'is_search_enabled': NotRequired[bool],
+    'label': NotRequired[str],
+    'options': NotRequired[list[ModelWallapopFilterOption]],
+    'options_endpoint': NotRequired[str],
+    'reload_when_changed': NotRequired[bool],
+    'search_params': NotRequired[dict[str, ModelWallapopFilterParamBinding]],
+    'selection': NotRequired[str],
+    'source': NotRequired[str],
+    'steps': NotRequired[list[ModelWallapopFilterRangeStep]],
+    'title': NotRequired[str],
+    'type': NotRequired[str],
+    'unit': NotRequired[str],
+}, total=False)
+
+ModelWallapopFilterOption = TypedDict('ModelWallapopFilterOption', {
+    'id': NotRequired[str],
+    'title': NotRequired[str],
+}, total=False)
+
+ModelWallapopFilterOptionsResponse = TypedDict('ModelWallapopFilterOptionsResponse', {
+    'brand': NotRequired[str],
+    'category_id': NotRequired[int],
+    'fetched_at': NotRequired[str],
+    'filter_id': NotRequired[str],
+    'next_cursor': NotRequired[str],
+    'options': NotRequired[list[ModelWallapopFilterOption]],
+    'options_query': NotRequired[str],
+    'page_size': NotRequired[int],
+    'q': NotRequired[str],
+    'sort': NotRequired[str],
+    'source_url': NotRequired[str],
+}, total=False)
+
+ModelWallapopFilterParamBinding = TypedDict('ModelWallapopFilterParamBinding', {
+    'param_key': NotRequired[str],
+    'param_value': NotRequired[str],
+}, total=False)
+
+ModelWallapopFilterRangeStep = TypedDict('ModelWallapopFilterRangeStep', {
+    'end': NotRequired[float],
+    'increment': NotRequired[float],
+    'start': NotRequired[float],
+}, total=False)
+
+ModelWallapopFiltersResponse = TypedDict('ModelWallapopFiltersResponse', {
+    'category_id': NotRequired[int],
+    'count': NotRequired[int],
+    'fetched_at': NotRequired[str],
+    'filters': NotRequired[list[ModelWallapopFilterDefinition]],
+    'query': NotRequired[str],
+    'root_category_id': NotRequired[int],
+    'source_url': NotRequired[str],
+}, total=False)
+
+ModelWallapopItemDetailAttribute = TypedDict('ModelWallapopItemDetailAttribute', {
+    'key': NotRequired[str],
+    'text': NotRequired[str],
+    'title': NotRequired[str],
+    'value': NotRequired[str],
+}, total=False)
+
+ModelWallapopItemDetailCharacteristic = TypedDict('ModelWallapopItemDetailCharacteristic', {
+    'attribute': NotRequired[str],
+    'value': NotRequired[str],
+}, total=False)
+
+ModelWallapopItemDetailCondition = TypedDict('ModelWallapopItemDetailCondition', {
+    'text': NotRequired[str],
+    'title': NotRequired[str],
+    'value': NotRequired[str],
+}, total=False)
+
+ModelWallapopItemDetailRelatedSearch = TypedDict('ModelWallapopItemDetailRelatedSearch', {
+    'title': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelWallapopItemDetailResponse = TypedDict('ModelWallapopItemDetailResponse', {
+    'attributes': NotRequired[list[ModelWallapopItemDetailAttribute]],
+    'category_id': NotRequired[int],
+    'characteristics': NotRequired[list[ModelWallapopItemDetailCharacteristic]],
+    'condition': NotRequired[ModelWallapopItemDetailCondition],
+    'currency': NotRequired[str],
+    'description': NotRequired[str],
+    'fetched_at': NotRequired[str],
+    'hashtags': NotRequired[list[str]],
+    'id': NotRequired[str],
+    'images': NotRequired[list[str]],
+    'location': NotRequired[ModelWallapopListingLocation],
+    'price': NotRequired[float],
+    'related_searches': NotRequired[list[ModelWallapopItemDetailRelatedSearch]],
+    'shipping': NotRequired[ModelWallapopListingShipping],
+    'slug': NotRequired[str],
+    'taxonomy': NotRequired[list[ModelWallapopListingTaxonomy]],
+    'title': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelWallapopListingCard = TypedDict('ModelWallapopListingCard', {
+    'category_id': NotRequired[int],
+    'currency': NotRequired[str],
+    'id': NotRequired[str],
+    'images': NotRequired[list[str]],
+    'location': NotRequired[ModelWallapopListingLocation],
+    'price': NotRequired[float],
+    'shipping': NotRequired[ModelWallapopListingShipping],
+    'slug': NotRequired[str],
+    'taxonomy': NotRequired[list[ModelWallapopListingTaxonomy]],
+    'title': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelWallapopListingLocation = TypedDict('ModelWallapopListingLocation', {
+    'city': NotRequired[str],
+    'country_code': NotRequired[str],
+    'region': NotRequired[str],
+    'region2': NotRequired[str],
+}, total=False)
+
+ModelWallapopListingShipping = TypedDict('ModelWallapopListingShipping', {
+    'item_is_shippable': NotRequired[bool],
+    'user_allows_shipping': NotRequired[bool],
+}, total=False)
+
+ModelWallapopListingTaxonomy = TypedDict('ModelWallapopListingTaxonomy', {
+    'id': NotRequired[int],
+    'name': NotRequired[str],
+}, total=False)
+
+ModelWallapopSearchResponse = TypedDict('ModelWallapopSearchResponse', {
+    'category_id': NotRequired[int],
+    'count': NotRequired[int],
+    'country_code': NotRequired[str],
+    'fetched_at': NotRequired[str],
+    'items': NotRequired[list[ModelWallapopListingCard]],
+    'next_cursor': NotRequired[str],
+    'query': NotRequired[str],
+    'sort': NotRequired[str],
+    'source_url': NotRequired[str],
+}, total=False)
+
+ModelWallapopCategoriesResponseDoc = TypedDict('ModelWallapopCategoriesResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelWallapopCategoriesResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelWallapopFilterOptionsResponseDoc = TypedDict('ModelWallapopFilterOptionsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelWallapopFilterOptionsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelWallapopFiltersResponseDoc = TypedDict('ModelWallapopFiltersResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelWallapopFiltersResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelWallapopItemDetailResponseDoc = TypedDict('ModelWallapopItemDetailResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelWallapopItemDetailResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelWallapopSearchResponseDoc = TypedDict('ModelWallapopSearchResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelWallapopSearchResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
 ModelWalmartProduct = TypedDict('ModelWalmartProduct', {
     'attributes': NotRequired[dict[str, str]],
     'availability': NotRequired[str],
@@ -73729,6 +75988,272 @@ ModelWapoNewsResponseDoc = TypedDict('ModelWapoNewsResponseDoc', {
 ModelWapoSectionsResponseDoc = TypedDict('ModelWapoSectionsResponseDoc', {
     'code': NotRequired[int],
     'data': NotRequired[ModelWapoSectionsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelWattpadAuthor = TypedDict('ModelWattpadAuthor', {
+    'avatar': NotRequired[str],
+    'name': NotRequired[str],
+    'username': NotRequired[str],
+    'verified': NotRequired[bool],
+}, total=False)
+
+ModelWattpadCategoriesResponse = TypedDict('ModelWattpadCategoriesResponse', {
+    'categories': NotRequired[list[ModelWattpadCategory]],
+}, total=False)
+
+ModelWattpadCategory = TypedDict('ModelWattpadCategory', {
+    'id': NotRequired[int],
+    'name': NotRequired[str],
+    'name_english': NotRequired[str],
+}, total=False)
+
+ModelWattpadComment = TypedDict('ModelWattpadComment', {
+    'author': NotRequired[str],
+    'author_avatar': NotRequired[str],
+    'body': NotRequired[str],
+    'created_at': NotRequired[str],
+    'id': NotRequired[str],
+    'is_reply': NotRequired[bool],
+    'parent_id': NotRequired[str],
+    'replies': NotRequired[int],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelWattpadLanguage = TypedDict('ModelWattpadLanguage', {
+    'id': NotRequired[int],
+    'name': NotRequired[str],
+}, total=False)
+
+ModelWattpadLanguagesResponse = TypedDict('ModelWattpadLanguagesResponse', {
+    'languages': NotRequired[list[ModelWattpadLanguage]],
+}, total=False)
+
+ModelWattpadPart = TypedDict('ModelWattpadPart', {
+    'comments': NotRequired[int],
+    'created_at': NotRequired[str],
+    'draft': NotRequired[bool],
+    'id': NotRequired[str],
+    'length': NotRequired[int],
+    'modified_at': NotRequired[str],
+    'reads': NotRequired[int],
+    'title': NotRequired[str],
+    'url': NotRequired[str],
+    'votes': NotRequired[int],
+    'word_count': NotRequired[int],
+}, total=False)
+
+ModelWattpadPartCommentsResponse = TypedDict('ModelWattpadPartCommentsResponse', {
+    'comments': NotRequired[list[ModelWattpadComment]],
+    'limit': NotRequired[int],
+    'next_offset': NotRequired[int],
+    'offset': NotRequired[int],
+    'part_id': NotRequired[str],
+}, total=False)
+
+ModelWattpadPartDetail = TypedDict('ModelWattpadPartDetail', {
+    'comments': NotRequired[int],
+    'created_at': NotRequired[str],
+    'draft': NotRequired[bool],
+    'id': NotRequired[str],
+    'length': NotRequired[int],
+    'modified_at': NotRequired[str],
+    'reads': NotRequired[int],
+    'story_id': NotRequired[str],
+    'story_title': NotRequired[str],
+    'title': NotRequired[str],
+    'url': NotRequired[str],
+    'votes': NotRequired[int],
+    'word_count': NotRequired[int],
+}, total=False)
+
+ModelWattpadPartResponse = TypedDict('ModelWattpadPartResponse', {
+    'part': NotRequired[ModelWattpadPartDetail],
+}, total=False)
+
+ModelWattpadRecommendationsResponse = TypedDict('ModelWattpadRecommendationsResponse', {
+    'stories': NotRequired[list[ModelWattpadStory]],
+    'story_id': NotRequired[str],
+}, total=False)
+
+ModelWattpadSearchResponse = TypedDict('ModelWattpadSearchResponse', {
+    'limit': NotRequired[int],
+    'next_offset': NotRequired[int],
+    'offset': NotRequired[int],
+    'stories': NotRequired[list[ModelWattpadStory]],
+    'total': NotRequired[int],
+}, total=False)
+
+ModelWattpadSearchUsersResponse = TypedDict('ModelWattpadSearchUsersResponse', {
+    'limit': NotRequired[int],
+    'next_offset': NotRequired[int],
+    'offset': NotRequired[int],
+    'users': NotRequired[list[ModelWattpadUserSummary]],
+}, total=False)
+
+ModelWattpadStory = TypedDict('ModelWattpadStory', {
+    'author': NotRequired[ModelWattpadAuthor],
+    'category_ids': NotRequired[list[int]],
+    'comments': NotRequired[int],
+    'completed': NotRequired[bool],
+    'cover': NotRequired[str],
+    'created_at': NotRequired[str],
+    'description': NotRequired[str],
+    'id': NotRequired[str],
+    'language': NotRequired[ModelWattpadLanguage],
+    'mature': NotRequired[bool],
+    'modified_at': NotRequired[str],
+    'parts': NotRequired[int],
+    'reads': NotRequired[int],
+    'tags': NotRequired[list[str]],
+    'title': NotRequired[str],
+    'url': NotRequired[str],
+    'votes': NotRequired[int],
+}, total=False)
+
+ModelWattpadStoryDetail = TypedDict('ModelWattpadStoryDetail', {
+    'author': NotRequired[ModelWattpadAuthor],
+    'category_ids': NotRequired[list[int]],
+    'comments': NotRequired[int],
+    'completed': NotRequired[bool],
+    'copyright': NotRequired[int],
+    'cover': NotRequired[str],
+    'created_at': NotRequired[str],
+    'description': NotRequired[str],
+    'first_part_id': NotRequired[str],
+    'id': NotRequired[str],
+    'language': NotRequired[ModelWattpadLanguage],
+    'last_published_at': NotRequired[str],
+    'mature': NotRequired[bool],
+    'modified_at': NotRequired[str],
+    'paid_model': NotRequired[str],
+    'parts': NotRequired[int],
+    'paywalled': NotRequired[bool],
+    'rating': NotRequired[int],
+    'reads': NotRequired[int],
+    'tags': NotRequired[list[str]],
+    'title': NotRequired[str],
+    'url': NotRequired[str],
+    'votes': NotRequired[int],
+}, total=False)
+
+ModelWattpadStoryPartsResponse = TypedDict('ModelWattpadStoryPartsResponse', {
+    'parts': NotRequired[list[ModelWattpadPart]],
+    'story_id': NotRequired[str],
+    'title': NotRequired[str],
+    'total': NotRequired[int],
+}, total=False)
+
+ModelWattpadStoryResponse = TypedDict('ModelWattpadStoryResponse', {
+    'story': NotRequired[ModelWattpadStoryDetail],
+}, total=False)
+
+ModelWattpadUserProfile = TypedDict('ModelWattpadUserProfile', {
+    'ambassador': NotRequired[bool],
+    'avatar': NotRequired[str],
+    'background': NotRequired[str],
+    'description': NotRequired[str],
+    'followers': NotRequired[int],
+    'following': NotRequired[int],
+    'joined_at': NotRequired[str],
+    'lists': NotRequired[int],
+    'location': NotRequired[str],
+    'modified_at': NotRequired[str],
+    'name': NotRequired[str],
+    'stories_published': NotRequired[int],
+    'url': NotRequired[str],
+    'username': NotRequired[str],
+    'verified': NotRequired[bool],
+    'votes_received': NotRequired[int],
+    'website': NotRequired[str],
+}, total=False)
+
+ModelWattpadUserResponse = TypedDict('ModelWattpadUserResponse', {
+    'user': NotRequired[ModelWattpadUserProfile],
+}, total=False)
+
+ModelWattpadUserStoriesResponse = TypedDict('ModelWattpadUserStoriesResponse', {
+    'limit': NotRequired[int],
+    'next_offset': NotRequired[int],
+    'offset': NotRequired[int],
+    'stories': NotRequired[list[ModelWattpadStory]],
+    'total': NotRequired[int],
+    'username': NotRequired[str],
+}, total=False)
+
+ModelWattpadUserSummary = TypedDict('ModelWattpadUserSummary', {
+    'avatar': NotRequired[str],
+    'description': NotRequired[str],
+    'followers': NotRequired[int],
+    'name': NotRequired[str],
+    'stories_published': NotRequired[int],
+    'username': NotRequired[str],
+    'verified': NotRequired[bool],
+}, total=False)
+
+ModelWattpadCategoriesResponseDoc = TypedDict('ModelWattpadCategoriesResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelWattpadCategoriesResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelWattpadLanguagesResponseDoc = TypedDict('ModelWattpadLanguagesResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelWattpadLanguagesResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelWattpadPartCommentsResponseDoc = TypedDict('ModelWattpadPartCommentsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelWattpadPartCommentsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelWattpadPartResponseDoc = TypedDict('ModelWattpadPartResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelWattpadPartResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelWattpadRecommendationsResponseDoc = TypedDict('ModelWattpadRecommendationsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelWattpadRecommendationsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelWattpadSearchResponseDoc = TypedDict('ModelWattpadSearchResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelWattpadSearchResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelWattpadSearchUsersResponseDoc = TypedDict('ModelWattpadSearchUsersResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelWattpadSearchUsersResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelWattpadStoryPartsResponseDoc = TypedDict('ModelWattpadStoryPartsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelWattpadStoryPartsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelWattpadStoryResponseDoc = TypedDict('ModelWattpadStoryResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelWattpadStoryResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelWattpadUserResponseDoc = TypedDict('ModelWattpadUserResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelWattpadUserResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelWattpadUserStoriesResponseDoc = TypedDict('ModelWattpadUserStoriesResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelWattpadUserStoriesResponse],
     'msg': NotRequired[str],
 }, total=False)
 
@@ -79577,6 +82102,34 @@ AlComAlcomSectionsParams = TypedDict('AlComAlcomSectionsParams', {
     '_headers': NotRequired[Mapping[str, str]],
 }, total=False)
 
+AliExpressAliexpressCategoriesResponse = ModelAliexpressCategoriesResponseDoc
+AliExpressAliexpressCategoriesParams = TypedDict('AliExpressAliexpressCategoriesParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'category_tab': NotRequired[str],
+}, total=False)
+
+AliExpressAliexpressCategoryIdsResponse = ModelAliexpressCategoryIdsResponseDoc
+AliExpressAliexpressCategoryIdsParams = TypedDict('AliExpressAliexpressCategoryIdsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'q': NotRequired[str],
+    'category_id': NotRequired[int],
+    'page': NotRequired[int],
+}, total=False)
+
+AliExpressAliexpressCategoryProductsResponse = ModelAliexpressCategoryProductsResponseDoc
+AliExpressAliexpressCategoryProductsParams = TypedDict('AliExpressAliexpressCategoryProductsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'category_id': Required[int],
+    'slug': NotRequired[str],
+    'page': NotRequired[int],
+}, total=False)
+
 AliExpressAliexpressReviewsResponse = ModelAliexpressReviewsResponseDoc
 AliExpressAliexpressReviewsParams = TypedDict('AliExpressAliexpressReviewsParams', {
     '_response_type': NotRequired[ResponseType],
@@ -79599,6 +82152,7 @@ AliExpressAliexpressSearchParams = TypedDict('AliExpressAliexpressSearchParams',
     'free_shipping': NotRequired[bool],
     'choice': NotRequired[bool],
     'attr': NotRequired[str],
+    'cat_id': NotRequired[int],
 }, total=False)
 
 AliExpressAliexpressSearchFiltersResponse = ModelAliexpressFiltersResponseDoc
@@ -79607,6 +82161,23 @@ AliExpressAliexpressSearchFiltersParams = TypedDict('AliExpressAliexpressSearchF
     '_timeout': NotRequired[float],
     '_headers': NotRequired[Mapping[str, str]],
     'q': Required[str],
+}, total=False)
+
+AliExpressAliexpressSuggestResponse = ModelAliexpressSuggestResponseDoc
+AliExpressAliexpressSuggestParams = TypedDict('AliExpressAliexpressSuggestParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'q': Required[str],
+    'limit': NotRequired[int],
+}, total=False)
+
+AliExpressAliexpressTrendingSearchesResponse = ModelAliexpressTrendingSearchesResponseDoc
+AliExpressAliexpressTrendingSearchesParams = TypedDict('AliExpressAliexpressTrendingSearchesParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'limit': NotRequired[int],
 }, total=False)
 
 AlJazeeraAljazeeraArticleResponse = ModelAljazeeraArticleResponseDoc
@@ -84976,6 +87547,73 @@ DatasetsAirbnbMarketsSearchParams = TypedDict('DatasetsAirbnbMarketsSearchParams
     'page_size': NotRequired[int],
 }, total=False)
 
+DatasetsAppleMapsPlacesFacetsResponse = ModelDatasetsApplePlacesFacetResponseDoc
+DatasetsAppleMapsPlacesFacetsParams = TypedDict('DatasetsAppleMapsPlacesFacetsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'facet': Required[Literal['category', 'country_code', 'state', 'city', 'price_symbol', 'catalog_country']],
+    'q': NotRequired[str],
+    'category': NotRequired[str],
+    'city': NotRequired[str],
+    'state': NotRequired[str],
+    'country_code': NotRequired[str],
+    'postal_code': NotRequired[str],
+    'min_rating': NotRequired[float],
+    'min_rating_count': NotRequired[int],
+    'has_website': NotRequired[bool],
+    'has_phone': NotRequired[bool],
+    'lat': NotRequired[float],
+    'lon': NotRequired[float],
+    'radius_m': NotRequired[int],
+}, total=False)
+
+DatasetsAppleMapsPlacesItemResponse = ModelDatasetsApplePlaceResponseDoc
+DatasetsAppleMapsPlacesItemParams = TypedDict('DatasetsAppleMapsPlacesItemParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'place_id': Required[str],
+}, total=False)
+
+DatasetsAppleMapsPlacesNearbyResponse = ModelDatasetsApplePlacesSearchResponseDoc
+DatasetsAppleMapsPlacesNearbyParams = TypedDict('DatasetsAppleMapsPlacesNearbyParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'lat': Required[float],
+    'lon': Required[float],
+    'radius_m': Required[int],
+    'category': NotRequired[str],
+    'min_rating': NotRequired[float],
+    'min_rating_count': NotRequired[int],
+    'page': NotRequired[int],
+    'page_size': NotRequired[int],
+}, total=False)
+
+DatasetsAppleMapsPlacesSearchResponse = ModelDatasetsApplePlacesSearchResponseDoc
+DatasetsAppleMapsPlacesSearchParams = TypedDict('DatasetsAppleMapsPlacesSearchParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'q': NotRequired[str],
+    'category': NotRequired[str],
+    'city': NotRequired[str],
+    'state': NotRequired[str],
+    'country_code': NotRequired[str],
+    'postal_code': NotRequired[str],
+    'min_rating': NotRequired[float],
+    'min_rating_count': NotRequired[int],
+    'has_website': NotRequired[bool],
+    'has_phone': NotRequired[bool],
+    'lat': NotRequired[float],
+    'lon': NotRequired[float],
+    'radius_m': NotRequired[int],
+    'sort': NotRequired[Literal['relevance', 'rating_desc', 'review_count_desc', 'updated_at_desc', 'distance_asc']],
+    'page': NotRequired[int],
+    'page_size': NotRequired[int],
+}, total=False)
+
 DatasetsApplePodcastsShowsFacetsResponse = ModelDatasetsApplePodcastsShowsFacetResponseDoc
 DatasetsApplePodcastsShowsFacetsParams = TypedDict('DatasetsApplePodcastsShowsFacetsParams', {
     '_response_type': NotRequired[ResponseType],
@@ -87971,6 +90609,151 @@ DraftKingsSportsbookDraftkingsTeamsParams = TypedDict('DraftKingsSportsbookDraft
     '_timeout': NotRequired[float],
     '_headers': NotRequired[Mapping[str, str]],
     'league': Required[Literal['nfl', 'nhl', 'nba', 'cbb', 'mlb', 'cfb']],
+}, total=False)
+
+DramaBoxDramaboxBrowseResponse = ModelDramaboxBrowseResponseDoc
+DramaBoxDramaboxBrowseParams = TypedDict('DramaBoxDramaboxBrowseParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'genre_id': NotRequired[int],
+    'page': NotRequired[int],
+    'language': NotRequired[Literal['en', 'ko', 'zhHans', 'zh', 'es', 'ja', 'de', 'in', 'th', 'tl', 'pt', 'fr', 'ar', 'it']],
+}, total=False)
+
+DramaBoxDramaboxCategoriesResponse = ModelDramaboxCategoriesResponseDoc
+DramaBoxDramaboxCategoriesParams = TypedDict('DramaBoxDramaboxCategoriesParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+}, total=False)
+
+DramaBoxDramaboxCategoryBooksResponse = ModelDramaboxCategoryBooksResponseDoc
+DramaBoxDramaboxCategoryBooksParams = TypedDict('DramaBoxDramaboxCategoryBooksParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'language': NotRequired[str],
+    'production': NotRequired[Literal['3', '1', '2']],
+    'dub': NotRequired[Literal['1', '0']],
+    'genre': NotRequired[str],
+    'genre_2': NotRequired[str],
+    'sort': NotRequired[Literal['1', '2', '3']],
+    'page': NotRequired[int],
+    'limit': NotRequired[int],
+}, total=False)
+
+DramaBoxDramaboxChannelsResponse = ModelDramaboxChannelsResponseDoc
+DramaBoxDramaboxChannelsParams = TypedDict('DramaBoxDramaboxChannelsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+}, total=False)
+
+DramaBoxDramaboxDramaResponse = ModelDramaboxDramaResponseDoc
+DramaBoxDramaboxDramaParams = TypedDict('DramaBoxDramaboxDramaParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': Required[str],
+}, total=False)
+
+DramaBoxDramaboxGenresResponse = ModelDramaboxGenresResponseDoc
+DramaBoxDramaboxGenresParams = TypedDict('DramaBoxDramaboxGenresParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'language': NotRequired[Literal['en', 'ko', 'zhHans', 'zh', 'es', 'ja', 'de', 'in', 'th', 'tl', 'pt', 'fr', 'ar', 'it']],
+}, total=False)
+
+DramaBoxDramaboxHomeResponse = ModelDramaboxHomeResponseDoc
+DramaBoxDramaboxHomeParams = TypedDict('DramaBoxDramaboxHomeParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'language': NotRequired[Literal['en', 'ko', 'zhHans', 'zh', 'es', 'ja', 'de', 'in', 'th', 'tl', 'pt', 'fr', 'ar', 'it']],
+}, total=False)
+
+DramaBoxDramaboxMoreResponse = ModelDramaboxMoreResponseDoc
+DramaBoxDramaboxMoreParams = TypedDict('DramaBoxDramaboxMoreParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'position': Required[Literal['trending', 'must-sees', 'hidden-gems']],
+    'page': NotRequired[int],
+    'language': NotRequired[Literal['en', 'ko', 'zhHans', 'zh', 'es', 'ja', 'de', 'in', 'th', 'tl', 'pt', 'fr', 'ar', 'it']],
+}, total=False)
+
+DramaBoxDramaboxPerformerResponse = ModelDramaboxPerformerResponseDoc
+DramaBoxDramaboxPerformerParams = TypedDict('DramaBoxDramaboxPerformerParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'performer_id': Required[int],
+    'page': NotRequired[int],
+    'limit': NotRequired[int],
+}, total=False)
+
+DramaBoxDramaboxRankResponse = ModelDramaboxRankResponseDoc
+DramaBoxDramaboxRankParams = TypedDict('DramaBoxDramaboxRankParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'rank_type': NotRequired[Literal['1', '2', '3']],
+}, total=False)
+
+DramaBoxDramaboxRecommendResponse = ModelDramaboxRecommendResponseDoc
+DramaBoxDramaboxRecommendParams = TypedDict('DramaBoxDramaboxRecommendParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'page': NotRequired[int],
+}, total=False)
+
+DramaBoxDramaboxSearchResponse = ModelDramaboxSearchResponseDoc
+DramaBoxDramaboxSearchParams = TypedDict('DramaBoxDramaboxSearchParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'keyword': Required[str],
+    'page': NotRequired[int],
+    'limit': NotRequired[int],
+    'sort': NotRequired[Literal['1', '2', '3']],
+}, total=False)
+
+DramaBoxDramaboxSuggestResponse = ModelDramaboxSuggestResponseDoc
+DramaBoxDramaboxSuggestParams = TypedDict('DramaBoxDramaboxSuggestParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'keyword': Required[str],
+}, total=False)
+
+DramaBoxDramaboxTagResponse = ModelDramaboxTagResponseDoc
+DramaBoxDramaboxTagParams = TypedDict('DramaBoxDramaboxTagParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'tag_id': Required[int],
+    'page': NotRequired[int],
+    'limit': NotRequired[int],
+}, total=False)
+
+DramaBoxDramaboxTheaterResponse = ModelDramaboxTheaterResponseDoc
+DramaBoxDramaboxTheaterParams = TypedDict('DramaBoxDramaboxTheaterParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'channel': Required[Literal['popular', 'new', 'rankings', 'categories', 'anime', 'live-action', 'vip', 'original']],
+    'page': NotRequired[int],
+    'limit': NotRequired[int],
+}, total=False)
+
+DramaBoxDramaboxTrendingResponse = ModelDramaboxTrendingResponseDoc
+DramaBoxDramaboxTrendingParams = TypedDict('DramaBoxDramaboxTrendingParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
 }, total=False)
 
 DuckDuckGoSearchDuckduckgoImageResponse = ModelDuckduckgoImageResponseDoc
@@ -96066,6 +98849,16 @@ JumiaProductParams = TypedDict('JumiaProductParams', {
     'url': Required[str],
 }, total=False)
 
+JumiaReviewsResponse = ModelJumiaReviewsResponseDoc
+JumiaReviewsParams = TypedDict('JumiaReviewsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'country': Required[Literal['ci', 'eg', 'ke', 'ma', 'ng', 'sn']],
+    'sku': Required[str],
+    'page': NotRequired[int],
+}, total=False)
+
 JumiaSearchResponse = ModelJumiaListingResponseDoc
 JumiaSearchParams = TypedDict('JumiaSearchParams', {
     '_response_type': NotRequired[ResponseType],
@@ -96074,6 +98867,26 @@ JumiaSearchParams = TypedDict('JumiaSearchParams', {
     'country': Required[Literal['ci', 'eg', 'ke', 'ma', 'ng', 'sn']],
     'q': Required[str],
     'page': NotRequired[int],
+}, total=False)
+
+JumiaSitemapUrlsResponse = ModelJumiaSitemapUrlsResponseDoc
+JumiaSitemapUrlsParams = TypedDict('JumiaSitemapUrlsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'country': Required[Literal['ci', 'eg', 'ke', 'ma', 'ng', 'sn']],
+    'sitemap': Required[str],
+    'page': NotRequired[int],
+    'page_size': NotRequired[int],
+}, total=False)
+
+JumiaSitemapsResponse = ModelJumiaSitemapsResponseDoc
+JumiaSitemapsParams = TypedDict('JumiaSitemapsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'country': Required[Literal['ci', 'eg', 'ke', 'ma', 'ng', 'sn']],
+    'type': NotRequired[Literal['products', 'brands', 'categories', 'mlps']],
 }, total=False)
 
 JustEatJusteatRestaurantResponse = ModelJusteatRestaurantResponseDoc
@@ -96658,6 +99471,183 @@ KhaleejTimesKhaleejtimesSectionsParams = TypedDict('KhaleejTimesKhaleejtimesSect
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
     '_headers': NotRequired[Mapping[str, str]],
+}, total=False)
+
+KickCategoriesResponse = ModelKickCategoriesResponseDoc
+KickCategoriesParams = TypedDict('KickCategoriesParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+}, total=False)
+
+KickCategoryClipsResponse = ModelKickCategoryClipsResponseDoc
+KickCategoryClipsParams = TypedDict('KickCategoryClipsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'slug': Required[str],
+    'cursor': NotRequired[str],
+}, total=False)
+
+KickChannelResponse = ModelKickChannelResponseDoc
+KickChannelParams = TypedDict('KickChannelParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'slug': Required[str],
+}, total=False)
+
+KickChannelChatroomResponse = ModelKickChannelChatroomResponseDoc
+KickChannelChatroomParams = TypedDict('KickChannelChatroomParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'slug': Required[str],
+}, total=False)
+
+KickChannelClipsResponse = ModelKickChannelClipsResponseDoc
+KickChannelClipsParams = TypedDict('KickChannelClipsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'slug': Required[str],
+    'cursor': NotRequired[str],
+}, total=False)
+
+KickChannelEmotesResponse = ModelKickChannelEmotesResponseDoc
+KickChannelEmotesParams = TypedDict('KickChannelEmotesParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'slug': Required[str],
+}, total=False)
+
+KickChannelLinksResponse = ModelKickChannelLinksResponseDoc
+KickChannelLinksParams = TypedDict('KickChannelLinksParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'slug': Required[str],
+}, total=False)
+
+KickChannelStreamsResponse = ModelKickChannelStreamsResponseDoc
+KickChannelStreamsParams = TypedDict('KickChannelStreamsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'slug': Required[str],
+}, total=False)
+
+KickChannelVideosResponse = ModelKickChannelVideosResponseDoc
+KickChannelVideosParams = TypedDict('KickChannelVideosParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'slug': Required[str],
+}, total=False)
+
+KickClipResponse = ModelKickClipResponseDoc
+KickClipParams = TypedDict('KickClipParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': Required[str],
+}, total=False)
+
+KickClipsResponse = ModelKickClipsResponseDoc
+KickClipsParams = TypedDict('KickClipsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'sort': NotRequired[Literal['date', 'views']],
+    'time': NotRequired[Literal['day', 'week', 'month', 'all']],
+    'cursor': NotRequired[str],
+}, total=False)
+
+KickDropsResponse = ModelKickDropsResponseDoc
+KickDropsParams = TypedDict('KickDropsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'status': NotRequired[Literal['active', 'expired', 'all']],
+}, total=False)
+
+KickGiftsResponse = ModelKickGiftsResponseDoc
+KickGiftsParams = TypedDict('KickGiftsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+}, total=False)
+
+KickLanguagesResponse = ModelKickLanguagesResponseDoc
+KickLanguagesParams = TypedDict('KickLanguagesParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+}, total=False)
+
+KickLivestreamsResponse = ModelKickLivestreamsResponseDoc
+KickLivestreamsParams = TypedDict('KickLivestreamsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'sort': NotRequired[Literal['viewer_count_desc', 'featured']],
+    'language': NotRequired[str],
+    'category_id': NotRequired[int],
+    'limit': NotRequired[int],
+    'after': NotRequired[str],
+}, total=False)
+
+KickSearchCategoriesResponse = ModelKickSearchCategoriesResponseDoc
+KickSearchCategoriesParams = TypedDict('KickSearchCategoriesParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'query': Required[str],
+    'limit': NotRequired[int],
+}, total=False)
+
+KickSearchChannelsResponse = ModelKickSearchChannelsResponseDoc
+KickSearchChannelsParams = TypedDict('KickSearchChannelsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'query': Required[str],
+    'live': NotRequired[bool],
+    'limit': NotRequired[int],
+}, total=False)
+
+KickSubcategoriesResponse = ModelKickSubcategoriesResponseDoc
+KickSubcategoriesParams = TypedDict('KickSubcategoriesParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'category': NotRequired[Literal['games', 'irl', 'music', 'gambling', 'creative', 'alternative', 'chat-roulette']],
+    'page': NotRequired[int],
+    'limit': NotRequired[int],
+}, total=False)
+
+KickSubcategoryResponse = ModelKickSubcategoryResponseDoc
+KickSubcategoryParams = TypedDict('KickSubcategoryParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'slug': Required[str],
+}, total=False)
+
+KickTopChannelsResponse = ModelKickTopChannelsResponseDoc
+KickTopChannelsParams = TypedDict('KickTopChannelsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+}, total=False)
+
+KickVideoResponse = ModelKickVideoResponseDoc
+KickVideoParams = TypedDict('KickVideoParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': Required[str],
 }, total=False)
 
 KickstarterCommentsResponse = ModelKickstarterCommentsResponseDoc
@@ -103256,6 +106246,67 @@ PradaSuggestParams = TypedDict('PradaSuggestParams', {
     'limit': NotRequired[int],
 }, total=False)
 
+PriceChartingPricechartingBigMoversResponse = ModelPricechartingBigMoversResponseDoc
+PriceChartingPricechartingBigMoversParams = TypedDict('PriceChartingPricechartingBigMoversParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'category': NotRequired[Literal['video-games', 'coins', 'comic-books', 'funko-pops', 'pokemon-cards', 'dragon-ball-cards', 'lorcana-cards', 'magic-cards', 'marvel-cards', 'one-piece-cards', 'star-wars-cards', 'yugioh-cards', 'garbage-pail-cards', 'other-tcg-cards', 'other-cards', 'lego-sets']],
+    'sort': NotRequired[Literal['dollar-increase', 'dollar-decrease', 'percent-increase', 'percent-decrease']],
+    'region': NotRequired[Literal['all', 'japan', 'ntsc', 'pal']],
+}, total=False)
+
+PriceChartingPricechartingCategoriesResponse = ModelPricechartingCategoriesResponseDoc
+PriceChartingPricechartingCategoriesParams = TypedDict('PriceChartingPricechartingCategoriesParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'category': NotRequired[str],
+}, total=False)
+
+PriceChartingPricechartingConsoleResponse = ModelPricechartingConsoleResponseDoc
+PriceChartingPricechartingConsoleParams = TypedDict('PriceChartingPricechartingConsoleParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'console': Required[str],
+    'sort': NotRequired[Literal['popularity', 'highest-price', 'lowest-price', 'name']],
+    'cursor': NotRequired[int],
+}, total=False)
+
+PriceChartingPricechartingPriceHistoryResponse = ModelPricechartingPriceHistoryResponseDoc
+PriceChartingPricechartingPriceHistoryParams = TypedDict('PriceChartingPricechartingPriceHistoryParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': NotRequired[int],
+    'url': NotRequired[str],
+    'console': NotRequired[str],
+    'slug': NotRequired[str],
+}, total=False)
+
+PriceChartingPricechartingProductResponse = ModelPricechartingProductResponseDoc
+PriceChartingPricechartingProductParams = TypedDict('PriceChartingPricechartingProductParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': NotRequired[int],
+    'console': NotRequired[str],
+    'slug': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+PriceChartingPricechartingSearchResponse = ModelPricechartingSearchResponseDoc
+PriceChartingPricechartingSearchParams = TypedDict('PriceChartingPricechartingSearchParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'q': Required[str],
+    'console_uid': NotRequired[str],
+    'exclude_variants': NotRequired[bool],
+    'sort': NotRequired[Literal['popularity', 'highest-price', 'name']],
+}, total=False)
+
 PristineAuctionCategoriesResponse = ModelPristineauctionCategoriesResponseDoc
 PristineAuctionCategoriesParams = TypedDict('PristineAuctionCategoriesParams', {
     '_response_type': NotRequired[ResponseType],
@@ -103643,6 +106694,17 @@ PsaPriceGuideSetParams = TypedDict('PsaPriceGuideSetParams', {
     'category_path': Required[str],
     'set_path': Required[str],
     'set_id': Required[str],
+}, total=False)
+
+PsaPriceGuideSetsResponse = ModelPsaPriceGuideSetsResponseDoc
+PsaPriceGuideSetsParams = TypedDict('PsaPriceGuideSetsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'query': Required[str],
+    'category_path': NotRequired[Literal['baseball-card-values', 'basketball-card-values', 'boxing-card-values', 'football-card-values', 'golf-card-values', 'hockey-card-values', 'soccer-card-values', 'non-sports-tcg-card-values', 'racing-card-values', 'sports-ticket-values', 'tennis-card-values', 'unopened-pack-values', 'presidential-autograph-values', 'sports-autograph-values', 'game-used-bat-values', 'graded-baseball-values']],
+    'page': NotRequired[int],
+    'page_size': NotRequired[int],
 }, total=False)
 
 PsaProbatfactsCategoriesResponse = ModelPsaProbatFactsCategoriesResponseDoc
@@ -104441,6 +107503,105 @@ RedfinSimilarParams = TypedDict('RedfinSimilarParams', {
     '_timeout': NotRequired[float],
     '_headers': NotRequired[Mapping[str, str]],
     'property_id': Required[str],
+}, total=False)
+
+ReelShortReelshortFandomCategoriesResponse = ModelReelshortFandomCategoriesResponseDoc
+ReelShortReelshortFandomCategoriesParams = TypedDict('ReelShortReelshortFandomCategoriesParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+}, total=False)
+
+ReelShortReelshortFandomPostResponse = ModelReelshortFandomPostResponseDoc
+ReelShortReelshortFandomPostParams = TypedDict('ReelShortReelshortFandomPostParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': Required[str],
+}, total=False)
+
+ReelShortReelshortFandomPostsResponse = ModelReelshortFandomPostsResponseDoc
+ReelShortReelshortFandomPostsParams = TypedDict('ReelShortReelshortFandomPostsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'search': NotRequired[str],
+    'category': NotRequired[Literal['general-topic', 'movie-cast-list', 'top-movie-stories', 'where-to-watch', 'where-to-watch-2']],
+    'page': NotRequired[int],
+    'limit': NotRequired[int],
+}, total=False)
+
+ReelShortReelshortHomeResponse = ModelReelshortHomeResponseDoc
+ReelShortReelshortHomeParams = TypedDict('ReelShortReelshortHomeParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'language': NotRequired[Literal['en', 'es', 'pt', 'fr', 'de', 'it', 'ja', 'ko', 'th', 'id', 'tr', 'ar', 'ru', 'pl', 'ro', 'cs', 'bg', 'vi', 'zh-TW']],
+}, total=False)
+
+ReelShortReelshortMovieResponse = ModelReelshortMovieResponseDoc
+ReelShortReelshortMovieParams = TypedDict('ReelShortReelshortMovieParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': Required[str],
+}, total=False)
+
+ReelShortReelshortNewReleasesResponse = ModelReelshortNewReleasesResponseDoc
+ReelShortReelshortNewReleasesParams = TypedDict('ReelShortReelshortNewReleasesParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'book_id': Required[str],
+    'language': NotRequired[Literal['en', 'es', 'pt', 'fr', 'de', 'it', 'ja', 'ko', 'th', 'id', 'tr', 'ar', 'ru', 'pl', 'ro', 'cs', 'bg', 'vi', 'zh-TW']],
+}, total=False)
+
+ReelShortReelshortSearchResponse = ModelReelshortSearchResponseDoc
+ReelShortReelshortSearchParams = TypedDict('ReelShortReelshortSearchParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'keywords': Required[str],
+    'page': NotRequired[int],
+    'language': NotRequired[Literal['en', 'es', 'pt', 'fr', 'de', 'it', 'ja', 'ko', 'th', 'id', 'tr', 'ar', 'ru', 'pl', 'ro', 'cs', 'bg', 'vi', 'zh-TW']],
+}, total=False)
+
+ReelShortReelshortShelfResponse = ModelReelshortShelfResponseDoc
+ReelShortReelshortShelfParams = TypedDict('ReelShortReelshortShelfParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': Required[str],
+}, total=False)
+
+ReelShortReelshortTagBooksResponse = ModelReelshortTagBooksResponseDoc
+ReelShortReelshortTagBooksParams = TypedDict('ReelShortReelshortTagBooksParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'tag_id': Required[str],
+    'page': NotRequired[int],
+    'limit': NotRequired[int],
+    'language': NotRequired[Literal['en', 'es', 'pt', 'fr', 'de', 'it', 'ja', 'ko', 'th', 'id', 'tr', 'ar', 'ru', 'pl', 'ro', 'cs', 'bg', 'vi', 'zh-TW']],
+}, total=False)
+
+ReelShortReelshortTagSearchResponse = ModelReelshortTagSearchResponseDoc
+ReelShortReelshortTagSearchParams = TypedDict('ReelShortReelshortTagSearchParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'word': Required[str],
+    'page': NotRequired[int],
+    'language': NotRequired[Literal['en', 'es', 'pt', 'fr', 'de', 'it', 'ja', 'ko', 'th', 'id', 'tr', 'ar', 'ru', 'pl', 'ro', 'cs', 'bg', 'vi', 'zh-TW']],
+}, total=False)
+
+ReelShortReelshortTagsResponse = ModelReelshortTagsResponseDoc
+ReelShortReelshortTagsParams = TypedDict('ReelShortReelshortTagsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'category': Required[Literal['actor', 'actress', 'identity', 'trope']],
+    'language': NotRequired[Literal['en', 'es', 'pt', 'fr', 'de', 'it', 'ja', 'ko', 'th', 'id', 'tr', 'ar', 'ru', 'pl', 'ro', 'cs', 'bg', 'vi', 'zh-TW']],
 }, total=False)
 
 ReferralsClickBody = ModelReferralsReferralClickRequestDoc
@@ -110371,6 +113532,103 @@ TargetStoresParams = TypedDict('TargetStoresParams', {
     'within': NotRequired[int],
 }, total=False)
 
+TcgplayerFiltersResponse = ModelTcgplayerFiltersResponseDoc
+TcgplayerFiltersParams = TypedDict('TcgplayerFiltersParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'product_line': NotRequired[str],
+    'id': NotRequired[int],
+}, total=False)
+
+TcgplayerListingsResponse = ModelTcgplayerListingsResponseDoc
+TcgplayerListingsParams = TypedDict('TcgplayerListingsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': Required[int],
+    'condition': NotRequired[Literal['near-mint', 'lightly-played', 'moderately-played', 'heavily-played', 'damaged']],
+    'printing': NotRequired[str],
+    'language': NotRequired[str],
+    'sort': NotRequired[Literal['price', 'price-with-shipping']],
+    'order': NotRequired[Literal['asc', 'desc']],
+    'limit': NotRequired[int],
+    'offset': NotRequired[int],
+}, total=False)
+
+TcgplayerPriceGuideResponse = ModelTcgplayerPriceGuideResponseDoc
+TcgplayerPriceGuideParams = TypedDict('TcgplayerPriceGuideParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'set_id': Required[int],
+    'limit': NotRequired[int],
+    'offset': NotRequired[int],
+}, total=False)
+
+TcgplayerPriceHistoryResponse = ModelTcgplayerPriceHistoryResponseDoc
+TcgplayerPriceHistoryParams = TypedDict('TcgplayerPriceHistoryParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': Required[int],
+    'range': NotRequired[Literal['month', 'quarter', 'semi-annual', 'annual']],
+}, total=False)
+
+TcgplayerProductResponse = ModelTcgplayerProductResponseDoc
+TcgplayerProductParams = TypedDict('TcgplayerProductParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': Required[int],
+}, total=False)
+
+TcgplayerProductLinesResponse = ModelTcgplayerProductLinesResponseDoc
+TcgplayerProductLinesParams = TypedDict('TcgplayerProductLinesParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+}, total=False)
+
+TcgplayerSalesResponse = ModelTcgplayerSalesResponseDoc
+TcgplayerSalesParams = TypedDict('TcgplayerSalesParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': Required[int],
+    'condition': NotRequired[Literal['near-mint', 'lightly-played', 'moderately-played', 'heavily-played', 'damaged', 'unopened']],
+    'variant': NotRequired[str],
+    'language': NotRequired[str],
+    'listing_type': NotRequired[Literal['all', 'with-photos', 'without-photos']],
+}, total=False)
+
+TcgplayerSearchResponse = ModelTcgplayerSearchResponseDoc
+TcgplayerSearchParams = TypedDict('TcgplayerSearchParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'q': NotRequired[str],
+    'product_line': NotRequired[str],
+    'set': NotRequired[str],
+    'product_type': NotRequired[str],
+    'rarity': NotRequired[str],
+    'card_type': NotRequired[str],
+    'min_price': NotRequired[float],
+    'max_price': NotRequired[float],
+    'sort': NotRequired[Literal['market-price', 'lowest-price', 'lowest-price-with-shipping', 'median-price', 'listings', 'sales', 'product-name']],
+    'order': NotRequired[Literal['asc', 'desc']],
+    'limit': NotRequired[int],
+    'offset': NotRequired[int],
+}, total=False)
+
+TcgplayerSetsResponse = ModelTcgplayerSetsResponseDoc
+TcgplayerSetsParams = TypedDict('TcgplayerSetsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'product_line': Required[str],
+}, total=False)
+
 TechCrunchTechcrunchArticleResponse = ModelPublicnewsArticleResponseDoc
 TechCrunchTechcrunchArticleParams = TypedDict('TechCrunchTechcrunchArticleParams', {
     '_response_type': NotRequired[ResponseType],
@@ -110448,6 +113706,49 @@ TechRadarTechradarSectionsParams = TypedDict('TechRadarTechradarSectionsParams',
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
     '_headers': NotRequired[Mapping[str, str]],
+}, total=False)
+
+TelegramBotResponse = ModelTelegramBotResponseDoc
+TelegramBotParams = TypedDict('TelegramBotParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'username': Required[str],
+}, total=False)
+
+TelegramChannelResponse = ModelTelegramChannelResponseDoc
+TelegramChannelParams = TypedDict('TelegramChannelParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'username': Required[str],
+}, total=False)
+
+TelegramChannelPostsResponse = ModelTelegramChannelPostsResponseDoc
+TelegramChannelPostsParams = TypedDict('TelegramChannelPostsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'username': Required[str],
+    'before': NotRequired[int],
+    'query': NotRequired[str],
+}, total=False)
+
+TelegramGroupResponse = ModelTelegramGroupResponseDoc
+TelegramGroupParams = TypedDict('TelegramGroupParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'username': Required[str],
+}, total=False)
+
+TelegramPostResponse = ModelTelegramPostResponseDoc
+TelegramPostParams = TypedDict('TelegramPostParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'username': Required[str],
+    'id': Required[int],
 }, total=False)
 
 TheTelegraphTelegraphArticleResponse = ModelPublicnewsArticleResponseDoc
@@ -111782,7 +115083,7 @@ TiktokMobileMusicChartParams = TypedDict('TiktokMobileMusicChartParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
     '_headers': NotRequired[Mapping[str, str]],
-    'chart_region': NotRequired[str],
+    'chart_region': NotRequired[Literal['AE', 'BR', 'CA', 'DE', 'EG', 'FR', 'JP', 'KR', 'LB', 'MX', 'NG', 'SA', 'TR', 'US', 'ZA']],
     'cursor': NotRequired[int],
     'count': NotRequired[int],
 }, total=False)
@@ -113981,6 +117282,64 @@ WalgreensStoresParams = TypedDict('WalgreensStoresParams', {
     'zip': NotRequired[str],
 }, total=False)
 
+WallapopCategoriesResponse = ModelWallapopCategoriesResponseDoc
+WallapopCategoriesParams = TypedDict('WallapopCategoriesParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+}, total=False)
+
+WallapopFilterOptionsResponse = ModelWallapopFilterOptionsResponseDoc
+WallapopFilterOptionsParams = TypedDict('WallapopFilterOptionsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'filter_id': Required[str],
+    'category_id': Required[int],
+    'brand': NotRequired[str],
+    'q': NotRequired[str],
+    'sort': NotRequired[Literal['closest', 'most_relevance', 'newest', 'price_low_to_high', 'price_high_to_low']],
+    'options_query': NotRequired[str],
+    'cursor': NotRequired[str],
+}, total=False)
+
+WallapopFiltersResponse = ModelWallapopFiltersResponseDoc
+WallapopFiltersParams = TypedDict('WallapopFiltersParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'q': NotRequired[str],
+    'category_id': NotRequired[int],
+}, total=False)
+
+WallapopItemDetailResponse = ModelWallapopItemDetailResponseDoc
+WallapopItemDetailParams = TypedDict('WallapopItemDetailParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'url': Required[str],
+}, total=False)
+
+WallapopSearchResponse = ModelWallapopSearchResponseDoc
+WallapopSearchParams = TypedDict('WallapopSearchParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'q': Required[str],
+    'latitude': Required[float],
+    'longitude': Required[float],
+    'category_id': NotRequired[int],
+    'sort': NotRequired[Literal['closest', 'most_relevance', 'newest', 'price_low_to_high', 'price_high_to_low']],
+    'min_price': NotRequired[float],
+    'max_price': NotRequired[float],
+    'condition': NotRequired[str],
+    'is_shippable': NotRequired[Literal['true']],
+    'time_filter': NotRequired[Literal['today', 'lastWeek', 'lastMonth']],
+    'distance_in_km': NotRequired[int],
+    'filter': NotRequired[list[str]],
+    'cursor': NotRequired[str],
+}, total=False)
+
 WalmartProductResponse = ModelWalmartProductResponseDoc
 WalmartProductParams = TypedDict('WalmartProductParams', {
     '_response_type': NotRequired[ResponseType],
@@ -114045,6 +117404,104 @@ WashingtonPostWapoSectionsParams = TypedDict('WashingtonPostWapoSectionsParams',
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
     '_headers': NotRequired[Mapping[str, str]],
+}, total=False)
+
+WattpadCategoriesResponse = ModelWattpadCategoriesResponseDoc
+WattpadCategoriesParams = TypedDict('WattpadCategoriesParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+}, total=False)
+
+WattpadLanguagesResponse = ModelWattpadLanguagesResponseDoc
+WattpadLanguagesParams = TypedDict('WattpadLanguagesParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+}, total=False)
+
+WattpadPartResponse = ModelWattpadPartResponseDoc
+WattpadPartParams = TypedDict('WattpadPartParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'part_id': Required[str],
+}, total=False)
+
+WattpadPartCommentsResponse = ModelWattpadPartCommentsResponseDoc
+WattpadPartCommentsParams = TypedDict('WattpadPartCommentsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'part_id': Required[str],
+    'limit': NotRequired[int],
+    'offset': NotRequired[int],
+}, total=False)
+
+WattpadSearchResponse = ModelWattpadSearchResponseDoc
+WattpadSearchParams = TypedDict('WattpadSearchParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'query': NotRequired[str],
+    'filter': NotRequired[Literal['hot', 'new', 'featured']],
+    'category': NotRequired[int],
+    'language': NotRequired[Literal['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '32', '33', '34', '35', '36', '37', '38', '39', '40', '41', '42', '43', '44', '46', '47', '48', '49', '50', '51', '53']],
+    'limit': NotRequired[int],
+    'offset': NotRequired[int],
+}, total=False)
+
+WattpadSearchUsersResponse = ModelWattpadSearchUsersResponseDoc
+WattpadSearchUsersParams = TypedDict('WattpadSearchUsersParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'query': Required[str],
+    'limit': NotRequired[int],
+    'offset': NotRequired[int],
+}, total=False)
+
+WattpadStoryResponse = ModelWattpadStoryResponseDoc
+WattpadStoryParams = TypedDict('WattpadStoryParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'story_id': Required[str],
+}, total=False)
+
+WattpadStoryPartsResponse = ModelWattpadStoryPartsResponseDoc
+WattpadStoryPartsParams = TypedDict('WattpadStoryPartsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'story_id': Required[str],
+}, total=False)
+
+WattpadStoryRecommendationsResponse = ModelWattpadRecommendationsResponseDoc
+WattpadStoryRecommendationsParams = TypedDict('WattpadStoryRecommendationsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'story_id': Required[str],
+    'limit': NotRequired[int],
+}, total=False)
+
+WattpadUserResponse = ModelWattpadUserResponseDoc
+WattpadUserParams = TypedDict('WattpadUserParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'username': Required[str],
+}, total=False)
+
+WattpadUserStoriesResponse = ModelWattpadUserStoriesResponseDoc
+WattpadUserStoriesParams = TypedDict('WattpadUserStoriesParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'username': Required[str],
+    'limit': NotRequired[int],
+    'offset': NotRequired[int],
 }, total=False)
 
 WayfairCategoriesResponse = ModelWayfairCategoriesResponseDoc
@@ -116184,9 +119641,14 @@ class AlComGroup:
     def alcom_sections(self, **params: Unpack[AlComAlcomSectionsParams]) -> AlComAlcomSectionsResponse: ...
 
 class AliExpressGroup:
+    def aliexpress_categories(self, **params: Unpack[AliExpressAliexpressCategoriesParams]) -> AliExpressAliexpressCategoriesResponse: ...
+    def aliexpress_category_ids(self, **params: Unpack[AliExpressAliexpressCategoryIdsParams]) -> AliExpressAliexpressCategoryIdsResponse: ...
+    def aliexpress_category_products(self, **params: Unpack[AliExpressAliexpressCategoryProductsParams]) -> AliExpressAliexpressCategoryProductsResponse: ...
     def aliexpress_reviews(self, **params: Unpack[AliExpressAliexpressReviewsParams]) -> AliExpressAliexpressReviewsResponse: ...
     def aliexpress_search(self, **params: Unpack[AliExpressAliexpressSearchParams]) -> AliExpressAliexpressSearchResponse: ...
     def aliexpress_search_filters(self, **params: Unpack[AliExpressAliexpressSearchFiltersParams]) -> AliExpressAliexpressSearchFiltersResponse: ...
+    def aliexpress_suggest(self, **params: Unpack[AliExpressAliexpressSuggestParams]) -> AliExpressAliexpressSuggestResponse: ...
+    def aliexpress_trending_searches(self, **params: Unpack[AliExpressAliexpressTrendingSearchesParams]) -> AliExpressAliexpressTrendingSearchesResponse: ...
 
 class AlJazeeraGroup:
     def aljazeera_article(self, **params: Unpack[AlJazeeraAljazeeraArticleParams]) -> AlJazeeraAljazeeraArticleResponse: ...
@@ -116954,6 +120416,10 @@ class DatasetsGroup:
     def airbnb_markets_item(self, **params: Unpack[DatasetsAirbnbMarketsItemParams]) -> DatasetsAirbnbMarketsItemResponse: ...
     def airbnb_markets_nearby(self, **params: Unpack[DatasetsAirbnbMarketsNearbyParams]) -> DatasetsAirbnbMarketsNearbyResponse: ...
     def airbnb_markets_search(self, **params: Unpack[DatasetsAirbnbMarketsSearchParams]) -> DatasetsAirbnbMarketsSearchResponse: ...
+    def apple_maps_places_facets(self, **params: Unpack[DatasetsAppleMapsPlacesFacetsParams]) -> DatasetsAppleMapsPlacesFacetsResponse: ...
+    def apple_maps_places_item(self, **params: Unpack[DatasetsAppleMapsPlacesItemParams]) -> DatasetsAppleMapsPlacesItemResponse: ...
+    def apple_maps_places_nearby(self, **params: Unpack[DatasetsAppleMapsPlacesNearbyParams]) -> DatasetsAppleMapsPlacesNearbyResponse: ...
+    def apple_maps_places_search(self, **params: Unpack[DatasetsAppleMapsPlacesSearchParams]) -> DatasetsAppleMapsPlacesSearchResponse: ...
     def apple_podcasts_shows_facets(self, **params: Unpack[DatasetsApplePodcastsShowsFacetsParams]) -> DatasetsApplePodcastsShowsFacetsResponse: ...
     def apple_podcasts_shows_item(self, **params: Unpack[DatasetsApplePodcastsShowsItemParams]) -> DatasetsApplePodcastsShowsItemResponse: ...
     def apple_podcasts_shows_search(self, **params: Unpack[DatasetsApplePodcastsShowsSearchParams]) -> DatasetsApplePodcastsShowsSearchResponse: ...
@@ -117210,6 +120676,24 @@ class DraftKingsSportsbookGroup:
     def draftkings_quick_links(self, **params: Unpack[DraftKingsSportsbookDraftkingsQuickLinksParams]) -> DraftKingsSportsbookDraftkingsQuickLinksResponse: ...
     def draftkings_team(self, **params: Unpack[DraftKingsSportsbookDraftkingsTeamParams]) -> DraftKingsSportsbookDraftkingsTeamResponse: ...
     def draftkings_teams(self, **params: Unpack[DraftKingsSportsbookDraftkingsTeamsParams]) -> DraftKingsSportsbookDraftkingsTeamsResponse: ...
+
+class DramaBoxGroup:
+    def dramabox_browse(self, **params: Unpack[DramaBoxDramaboxBrowseParams]) -> DramaBoxDramaboxBrowseResponse: ...
+    def dramabox_categories(self, **params: Unpack[DramaBoxDramaboxCategoriesParams]) -> DramaBoxDramaboxCategoriesResponse: ...
+    def dramabox_category_books(self, **params: Unpack[DramaBoxDramaboxCategoryBooksParams]) -> DramaBoxDramaboxCategoryBooksResponse: ...
+    def dramabox_channels(self, **params: Unpack[DramaBoxDramaboxChannelsParams]) -> DramaBoxDramaboxChannelsResponse: ...
+    def dramabox_drama(self, **params: Unpack[DramaBoxDramaboxDramaParams]) -> DramaBoxDramaboxDramaResponse: ...
+    def dramabox_genres(self, **params: Unpack[DramaBoxDramaboxGenresParams]) -> DramaBoxDramaboxGenresResponse: ...
+    def dramabox_home(self, **params: Unpack[DramaBoxDramaboxHomeParams]) -> DramaBoxDramaboxHomeResponse: ...
+    def dramabox_more(self, **params: Unpack[DramaBoxDramaboxMoreParams]) -> DramaBoxDramaboxMoreResponse: ...
+    def dramabox_performer(self, **params: Unpack[DramaBoxDramaboxPerformerParams]) -> DramaBoxDramaboxPerformerResponse: ...
+    def dramabox_rank(self, **params: Unpack[DramaBoxDramaboxRankParams]) -> DramaBoxDramaboxRankResponse: ...
+    def dramabox_recommend(self, **params: Unpack[DramaBoxDramaboxRecommendParams]) -> DramaBoxDramaboxRecommendResponse: ...
+    def dramabox_search(self, **params: Unpack[DramaBoxDramaboxSearchParams]) -> DramaBoxDramaboxSearchResponse: ...
+    def dramabox_suggest(self, **params: Unpack[DramaBoxDramaboxSuggestParams]) -> DramaBoxDramaboxSuggestResponse: ...
+    def dramabox_tag(self, **params: Unpack[DramaBoxDramaboxTagParams]) -> DramaBoxDramaboxTagResponse: ...
+    def dramabox_theater(self, **params: Unpack[DramaBoxDramaboxTheaterParams]) -> DramaBoxDramaboxTheaterResponse: ...
+    def dramabox_trending(self, **params: Unpack[DramaBoxDramaboxTrendingParams]) -> DramaBoxDramaboxTrendingResponse: ...
 
 class DuckDuckGoSearchGroup:
     def duckduckgo_image(self, **params: Unpack[DuckDuckGoSearchDuckduckgoImageParams]) -> DuckDuckGoSearchDuckduckgoImageResponse: ...
@@ -118286,7 +121770,10 @@ class JumiaGroup:
     def category(self, **params: Unpack[JumiaCategoryParams]) -> JumiaCategoryResponse: ...
     def countries(self, **params: Unpack[JumiaCountriesParams]) -> JumiaCountriesResponse: ...
     def product(self, **params: Unpack[JumiaProductParams]) -> JumiaProductResponse: ...
+    def reviews(self, **params: Unpack[JumiaReviewsParams]) -> JumiaReviewsResponse: ...
     def search(self, **params: Unpack[JumiaSearchParams]) -> JumiaSearchResponse: ...
+    def sitemap_urls(self, **params: Unpack[JumiaSitemapUrlsParams]) -> JumiaSitemapUrlsResponse: ...
+    def sitemaps(self, **params: Unpack[JumiaSitemapsParams]) -> JumiaSitemapsResponse: ...
 
 class JustEatGroup:
     def justeat_restaurant(self, **params: Unpack[JustEatJusteatRestaurantParams]) -> JustEatJusteatRestaurantResponse: ...
@@ -118355,6 +121842,29 @@ class KhaleejTimesGroup:
     def khaleejtimes_headlines(self, **params: Unpack[KhaleejTimesKhaleejtimesHeadlinesParams]) -> KhaleejTimesKhaleejtimesHeadlinesResponse: ...
     def khaleejtimes_news(self, **params: Unpack[KhaleejTimesKhaleejtimesNewsParams]) -> KhaleejTimesKhaleejtimesNewsResponse: ...
     def khaleejtimes_sections(self, **params: Unpack[KhaleejTimesKhaleejtimesSectionsParams]) -> KhaleejTimesKhaleejtimesSectionsResponse: ...
+
+class KickGroup:
+    def categories(self, **params: Unpack[KickCategoriesParams]) -> KickCategoriesResponse: ...
+    def category_clips(self, **params: Unpack[KickCategoryClipsParams]) -> KickCategoryClipsResponse: ...
+    def channel(self, **params: Unpack[KickChannelParams]) -> KickChannelResponse: ...
+    def channel_chatroom(self, **params: Unpack[KickChannelChatroomParams]) -> KickChannelChatroomResponse: ...
+    def channel_clips(self, **params: Unpack[KickChannelClipsParams]) -> KickChannelClipsResponse: ...
+    def channel_emotes(self, **params: Unpack[KickChannelEmotesParams]) -> KickChannelEmotesResponse: ...
+    def channel_links(self, **params: Unpack[KickChannelLinksParams]) -> KickChannelLinksResponse: ...
+    def channel_streams(self, **params: Unpack[KickChannelStreamsParams]) -> KickChannelStreamsResponse: ...
+    def channel_videos(self, **params: Unpack[KickChannelVideosParams]) -> KickChannelVideosResponse: ...
+    def clip(self, **params: Unpack[KickClipParams]) -> KickClipResponse: ...
+    def clips(self, **params: Unpack[KickClipsParams]) -> KickClipsResponse: ...
+    def drops(self, **params: Unpack[KickDropsParams]) -> KickDropsResponse: ...
+    def gifts(self, **params: Unpack[KickGiftsParams]) -> KickGiftsResponse: ...
+    def languages(self, **params: Unpack[KickLanguagesParams]) -> KickLanguagesResponse: ...
+    def livestreams(self, **params: Unpack[KickLivestreamsParams]) -> KickLivestreamsResponse: ...
+    def search_categories(self, **params: Unpack[KickSearchCategoriesParams]) -> KickSearchCategoriesResponse: ...
+    def search_channels(self, **params: Unpack[KickSearchChannelsParams]) -> KickSearchChannelsResponse: ...
+    def subcategories(self, **params: Unpack[KickSubcategoriesParams]) -> KickSubcategoriesResponse: ...
+    def subcategory(self, **params: Unpack[KickSubcategoryParams]) -> KickSubcategoryResponse: ...
+    def top_channels(self, **params: Unpack[KickTopChannelsParams]) -> KickTopChannelsResponse: ...
+    def video(self, **params: Unpack[KickVideoParams]) -> KickVideoResponse: ...
 
 class KickstarterGroup:
     def comments(self, **params: Unpack[KickstarterCommentsParams]) -> KickstarterCommentsResponse: ...
@@ -119226,6 +122736,14 @@ class PradaGroup:
     def stores(self, **params: Unpack[PradaStoresParams]) -> PradaStoresResponse: ...
     def suggest(self, **params: Unpack[PradaSuggestParams]) -> PradaSuggestResponse: ...
 
+class PriceChartingGroup:
+    def pricecharting_big_movers(self, **params: Unpack[PriceChartingPricechartingBigMoversParams]) -> PriceChartingPricechartingBigMoversResponse: ...
+    def pricecharting_categories(self, **params: Unpack[PriceChartingPricechartingCategoriesParams]) -> PriceChartingPricechartingCategoriesResponse: ...
+    def pricecharting_console(self, **params: Unpack[PriceChartingPricechartingConsoleParams]) -> PriceChartingPricechartingConsoleResponse: ...
+    def pricecharting_price_history(self, **params: Unpack[PriceChartingPricechartingPriceHistoryParams]) -> PriceChartingPricechartingPriceHistoryResponse: ...
+    def pricecharting_product(self, **params: Unpack[PriceChartingPricechartingProductParams]) -> PriceChartingPricechartingProductResponse: ...
+    def pricecharting_search(self, **params: Unpack[PriceChartingPricechartingSearchParams]) -> PriceChartingPricechartingSearchResponse: ...
+
 class PristineAuctionGroup:
     def categories(self, **params: Unpack[PristineAuctionCategoriesParams]) -> PristineAuctionCategoriesResponse: ...
     def lot_detail(self, **params: Unpack[PristineAuctionLotDetailParams]) -> PristineAuctionLotDetailResponse: ...
@@ -119278,6 +122796,7 @@ class PsaGroup:
     def price_guide_categories(self, **params: Unpack[PsaPriceGuideCategoriesParams]) -> PsaPriceGuideCategoriesResponse: ...
     def price_guide_search(self, **params: Unpack[PsaPriceGuideSearchParams]) -> PsaPriceGuideSearchResponse: ...
     def price_guide_set(self, **params: Unpack[PsaPriceGuideSetParams]) -> PsaPriceGuideSetResponse: ...
+    def price_guide_sets(self, **params: Unpack[PsaPriceGuideSetsParams]) -> PsaPriceGuideSetsResponse: ...
     def probatfacts_categories(self, **params: Unpack[PsaProbatfactsCategoriesParams]) -> PsaProbatfactsCategoriesResponse: ...
     def probatfacts_gallery(self, **params: Unpack[PsaProbatfactsGalleryParams]) -> PsaProbatfactsGalleryResponse: ...
     def probatfacts_subject(self, **params: Unpack[PsaProbatfactsSubjectParams]) -> PsaProbatfactsSubjectResponse: ...
@@ -119384,6 +122903,19 @@ class RedfinGroup:
     def region_trends(self, **params: Unpack[RedfinRegionTrendsParams]) -> RedfinRegionTrendsResponse: ...
     def search(self, **params: Unpack[RedfinSearchParams]) -> RedfinSearchResponse: ...
     def similar(self, **params: Unpack[RedfinSimilarParams]) -> RedfinSimilarResponse: ...
+
+class ReelShortGroup:
+    def reelshort_fandom_categories(self, **params: Unpack[ReelShortReelshortFandomCategoriesParams]) -> ReelShortReelshortFandomCategoriesResponse: ...
+    def reelshort_fandom_post(self, **params: Unpack[ReelShortReelshortFandomPostParams]) -> ReelShortReelshortFandomPostResponse: ...
+    def reelshort_fandom_posts(self, **params: Unpack[ReelShortReelshortFandomPostsParams]) -> ReelShortReelshortFandomPostsResponse: ...
+    def reelshort_home(self, **params: Unpack[ReelShortReelshortHomeParams]) -> ReelShortReelshortHomeResponse: ...
+    def reelshort_movie(self, **params: Unpack[ReelShortReelshortMovieParams]) -> ReelShortReelshortMovieResponse: ...
+    def reelshort_new_releases(self, **params: Unpack[ReelShortReelshortNewReleasesParams]) -> ReelShortReelshortNewReleasesResponse: ...
+    def reelshort_search(self, **params: Unpack[ReelShortReelshortSearchParams]) -> ReelShortReelshortSearchResponse: ...
+    def reelshort_shelf(self, **params: Unpack[ReelShortReelshortShelfParams]) -> ReelShortReelshortShelfResponse: ...
+    def reelshort_tag_books(self, **params: Unpack[ReelShortReelshortTagBooksParams]) -> ReelShortReelshortTagBooksResponse: ...
+    def reelshort_tag_search(self, **params: Unpack[ReelShortReelshortTagSearchParams]) -> ReelShortReelshortTagSearchResponse: ...
+    def reelshort_tags(self, **params: Unpack[ReelShortReelshortTagsParams]) -> ReelShortReelshortTagsResponse: ...
 
 class ReferralsGroup:
     def click(self, **params: Unpack[ReferralsClickParams]) -> ReferralsClickResponse: ...
@@ -120157,6 +123689,17 @@ class TargetGroup:
     def search(self, **params: Unpack[TargetSearchParams]) -> TargetSearchResponse: ...
     def stores(self, **params: Unpack[TargetStoresParams]) -> TargetStoresResponse: ...
 
+class TcgplayerGroup:
+    def filters(self, **params: Unpack[TcgplayerFiltersParams]) -> TcgplayerFiltersResponse: ...
+    def listings(self, **params: Unpack[TcgplayerListingsParams]) -> TcgplayerListingsResponse: ...
+    def price_guide(self, **params: Unpack[TcgplayerPriceGuideParams]) -> TcgplayerPriceGuideResponse: ...
+    def price_history(self, **params: Unpack[TcgplayerPriceHistoryParams]) -> TcgplayerPriceHistoryResponse: ...
+    def product(self, **params: Unpack[TcgplayerProductParams]) -> TcgplayerProductResponse: ...
+    def product_lines(self, **params: Unpack[TcgplayerProductLinesParams]) -> TcgplayerProductLinesResponse: ...
+    def sales(self, **params: Unpack[TcgplayerSalesParams]) -> TcgplayerSalesResponse: ...
+    def search(self, **params: Unpack[TcgplayerSearchParams]) -> TcgplayerSearchResponse: ...
+    def sets(self, **params: Unpack[TcgplayerSetsParams]) -> TcgplayerSetsResponse: ...
+
 class TechCrunchGroup:
     def techcrunch_article(self, **params: Unpack[TechCrunchTechcrunchArticleParams]) -> TechCrunchTechcrunchArticleResponse: ...
     def techcrunch_author(self, **params: Unpack[TechCrunchTechcrunchAuthorParams]) -> TechCrunchTechcrunchAuthorResponse: ...
@@ -120170,6 +123713,13 @@ class TechRadarGroup:
     def techradar_headlines(self, **params: Unpack[TechRadarTechradarHeadlinesParams]) -> TechRadarTechradarHeadlinesResponse: ...
     def techradar_news(self, **params: Unpack[TechRadarTechradarNewsParams]) -> TechRadarTechradarNewsResponse: ...
     def techradar_sections(self, **params: Unpack[TechRadarTechradarSectionsParams]) -> TechRadarTechradarSectionsResponse: ...
+
+class TelegramGroup:
+    def bot(self, **params: Unpack[TelegramBotParams]) -> TelegramBotResponse: ...
+    def channel(self, **params: Unpack[TelegramChannelParams]) -> TelegramChannelResponse: ...
+    def channel_posts(self, **params: Unpack[TelegramChannelPostsParams]) -> TelegramChannelPostsResponse: ...
+    def group(self, **params: Unpack[TelegramGroupParams]) -> TelegramGroupResponse: ...
+    def post(self, **params: Unpack[TelegramPostParams]) -> TelegramPostResponse: ...
 
 class TheTelegraphGroup:
     def telegraph_article(self, **params: Unpack[TheTelegraphTelegraphArticleParams]) -> TheTelegraphTelegraphArticleResponse: ...
@@ -120685,6 +124235,13 @@ class WalesOnlineGroup:
 class WalgreensGroup:
     def stores(self, **params: Unpack[WalgreensStoresParams]) -> WalgreensStoresResponse: ...
 
+class WallapopGroup:
+    def categories(self, **params: Unpack[WallapopCategoriesParams]) -> WallapopCategoriesResponse: ...
+    def filter_options(self, **params: Unpack[WallapopFilterOptionsParams]) -> WallapopFilterOptionsResponse: ...
+    def filters(self, **params: Unpack[WallapopFiltersParams]) -> WallapopFiltersResponse: ...
+    def item_detail(self, **params: Unpack[WallapopItemDetailParams]) -> WallapopItemDetailResponse: ...
+    def search(self, **params: Unpack[WallapopSearchParams]) -> WallapopSearchResponse: ...
+
 class WalmartGroup:
     def product(self, **params: Unpack[WalmartProductParams]) -> WalmartProductResponse: ...
     def product_reviews(self, **params: Unpack[WalmartProductReviewsParams]) -> WalmartProductReviewsResponse: ...
@@ -120696,6 +124253,19 @@ class WashingtonPostGroup:
     def wapo_headlines(self, **params: Unpack[WashingtonPostWapoHeadlinesParams]) -> WashingtonPostWapoHeadlinesResponse: ...
     def wapo_news(self, **params: Unpack[WashingtonPostWapoNewsParams]) -> WashingtonPostWapoNewsResponse: ...
     def wapo_sections(self, **params: Unpack[WashingtonPostWapoSectionsParams]) -> WashingtonPostWapoSectionsResponse: ...
+
+class WattpadGroup:
+    def categories(self, **params: Unpack[WattpadCategoriesParams]) -> WattpadCategoriesResponse: ...
+    def languages(self, **params: Unpack[WattpadLanguagesParams]) -> WattpadLanguagesResponse: ...
+    def part(self, **params: Unpack[WattpadPartParams]) -> WattpadPartResponse: ...
+    def part_comments(self, **params: Unpack[WattpadPartCommentsParams]) -> WattpadPartCommentsResponse: ...
+    def search(self, **params: Unpack[WattpadSearchParams]) -> WattpadSearchResponse: ...
+    def search_users(self, **params: Unpack[WattpadSearchUsersParams]) -> WattpadSearchUsersResponse: ...
+    def story(self, **params: Unpack[WattpadStoryParams]) -> WattpadStoryResponse: ...
+    def story_parts(self, **params: Unpack[WattpadStoryPartsParams]) -> WattpadStoryPartsResponse: ...
+    def story_recommendations(self, **params: Unpack[WattpadStoryRecommendationsParams]) -> WattpadStoryRecommendationsResponse: ...
+    def user(self, **params: Unpack[WattpadUserParams]) -> WattpadUserResponse: ...
+    def user_stories(self, **params: Unpack[WattpadUserStoriesParams]) -> WattpadUserStoriesResponse: ...
 
 class WayfairGroup:
     def categories(self, **params: Unpack[WayfairCategoriesParams]) -> WayfairCategoriesResponse: ...
@@ -121051,9 +124621,14 @@ OperationId = Literal[
     'alcom-headlines',
     'alcom-news',
     'alcom-sections',
+    'aliexpress-categories',
+    'aliexpress-category-ids',
+    'aliexpress-category-products',
     'aliexpress-reviews',
     'aliexpress-search',
     'aliexpress-search-filters',
+    'aliexpress-suggest',
+    'aliexpress-trending-searches',
     'aljazeera-article',
     'aljazeera-author',
     'aljazeera-categories',
@@ -121638,6 +125213,10 @@ OperationId = Literal[
     'datasets-airbnb-markets-item',
     'datasets-airbnb-markets-nearby',
     'datasets-airbnb-markets-search',
+    'datasets-apple-maps-places-facets',
+    'datasets-apple-maps-places-item',
+    'datasets-apple-maps-places-nearby',
+    'datasets-apple-maps-places-search',
     'datasets-apple-podcasts-shows-facets',
     'datasets-apple-podcasts-shows-item',
     'datasets-apple-podcasts-shows-search',
@@ -121858,6 +125437,22 @@ OperationId = Literal[
     'draftkings-quick-links',
     'draftkings-team',
     'draftkings-teams',
+    'dramabox-browse',
+    'dramabox-categories',
+    'dramabox-category-books',
+    'dramabox-channels',
+    'dramabox-drama',
+    'dramabox-genres',
+    'dramabox-home',
+    'dramabox-more',
+    'dramabox-performer',
+    'dramabox-rank',
+    'dramabox-recommend',
+    'dramabox-search',
+    'dramabox-suggest',
+    'dramabox-tag',
+    'dramabox-theater',
+    'dramabox-trending',
     'duckduckgo-image',
     'duckduckgo-news',
     'duckduckgo-search',
@@ -122738,7 +126333,10 @@ OperationId = Literal[
     'jumia-category',
     'jumia-countries',
     'jumia-product',
+    'jumia-reviews',
     'jumia-search',
+    'jumia-sitemap-urls',
+    'jumia-sitemaps',
     'justeat-restaurant',
     'justeat-restaurant-menu',
     'justeat-search',
@@ -122797,6 +126395,27 @@ OperationId = Literal[
     'khaleejtimes-headlines',
     'khaleejtimes-news',
     'khaleejtimes-sections',
+    'kick-categories',
+    'kick-category-clips',
+    'kick-channel',
+    'kick-channel-chatroom',
+    'kick-channel-clips',
+    'kick-channel-emotes',
+    'kick-channel-links',
+    'kick-channel-streams',
+    'kick-channel-videos',
+    'kick-clip',
+    'kick-clips',
+    'kick-drops',
+    'kick-gifts',
+    'kick-languages',
+    'kick-livestreams',
+    'kick-search-categories',
+    'kick-search-channels',
+    'kick-subcategories',
+    'kick-subcategory',
+    'kick-top-channels',
+    'kick-video',
     'kickstarter-comments',
     'kickstarter-discover',
     'kickstarter-project',
@@ -123484,6 +127103,12 @@ OperationId = Literal[
     'prada-search',
     'prada-stores',
     'prada-suggest',
+    'pricecharting-big-movers',
+    'pricecharting-categories',
+    'pricecharting-console',
+    'pricecharting-price-history',
+    'pricecharting-product',
+    'pricecharting-search',
     'pristine-auction-categories',
     'pristine-auction-lot-detail',
     'pristine-auction-search',
@@ -123527,6 +127152,7 @@ OperationId = Literal[
     'psa-price-guide-categories',
     'psa-price-guide-search',
     'psa-price-guide-set',
+    'psa-price-guide-sets',
     'psa-probatfacts-categories',
     'psa-probatfacts-gallery',
     'psa-probatfacts-subject',
@@ -123614,6 +127240,17 @@ OperationId = Literal[
     'redfin-region-trends',
     'redfin-search',
     'redfin-similar',
+    'reelshort-fandom-categories',
+    'reelshort-fandom-post',
+    'reelshort-fandom-posts',
+    'reelshort-home',
+    'reelshort-movie',
+    'reelshort-new-releases',
+    'reelshort-search',
+    'reelshort-shelf',
+    'reelshort-tag-books',
+    'reelshort-tag-search',
+    'reelshort-tags',
     'referrals-click',
     'referrals-me',
     'referrals-me-events',
@@ -124254,6 +127891,15 @@ OperationId = Literal[
     'target-reviews',
     'target-search',
     'target-stores',
+    'tcgplayer-filters',
+    'tcgplayer-listings',
+    'tcgplayer-price-guide',
+    'tcgplayer-price-history',
+    'tcgplayer-product',
+    'tcgplayer-product-lines',
+    'tcgplayer-sales',
+    'tcgplayer-search',
+    'tcgplayer-sets',
     'techcrunch-article',
     'techcrunch-author',
     'techcrunch-headlines',
@@ -124264,6 +127910,11 @@ OperationId = Literal[
     'techradar-headlines',
     'techradar-news',
     'techradar-sections',
+    'telegram-bot',
+    'telegram-channel',
+    'telegram-channel-posts',
+    'telegram-group',
+    'telegram-post',
     'telegraph-article',
     'telegraph-author',
     'telegraph-headlines',
@@ -124666,6 +128317,11 @@ OperationId = Literal[
     'walesonline-news',
     'walesonline-sections',
     'walgreens-stores',
+    'wallapop-categories',
+    'wallapop-filter-options',
+    'wallapop-filters',
+    'wallapop-item-detail',
+    'wallapop-search',
     'walmart-product',
     'walmart-product-reviews',
     'walmart-search',
@@ -124674,6 +128330,17 @@ OperationId = Literal[
     'wapo-headlines',
     'wapo-news',
     'wapo-sections',
+    'wattpad-categories',
+    'wattpad-languages',
+    'wattpad-part',
+    'wattpad-part-comments',
+    'wattpad-search',
+    'wattpad-search-users',
+    'wattpad-story',
+    'wattpad-story-parts',
+    'wattpad-story-recommendations',
+    'wattpad-user',
+    'wattpad-user-stories',
     'wayfair-categories',
     'wayfair-category',
     'wayfair-product',
@@ -125023,6 +128690,7 @@ class CrawloraClient:
     draft_kings_predictions: DraftKingsPredictionsGroup
     draft_kings_racing: DraftKingsRacingGroup
     draft_kings_sportsbook: DraftKingsSportsbookGroup
+    drama_box: DramaBoxGroup
     duck_duck_go_search: DuckDuckGoSearchGroup
     dunkin: DunkinGroup
     dw: DwGroup
@@ -125127,6 +128795,7 @@ class CrawloraClient:
     kalshi: KalshiGroup
     kfc: KfcGroup
     khaleej_times: KhaleejTimesGroup
+    kick: KickGroup
     kickstarter: KickstarterGroup
     kohl_s: KohlSGroup
     kotaku: KotakuGroup
@@ -125218,6 +128887,7 @@ class CrawloraClient:
     popular_mechanics: PopularMechanicsGroup
     poshmark: PoshmarkGroup
     prada: PradaGroup
+    price_charting: PriceChartingGroup
     pristine_auction: PristineAuctionGroup
     pristine_marketplace: PristineMarketplaceGroup
     product_hunt: ProductHuntGroup
@@ -125233,6 +128903,7 @@ class CrawloraClient:
     rebag: RebagGroup
     reddit: RedditGroup
     redfin: RedfinGroup
+    reel_short: ReelShortGroup
     referrals: ReferralsGroup
     research_jobs: ResearchJobsGroup
     research: ResearchGroup
@@ -125299,8 +128970,10 @@ class CrawloraClient:
     swiggy: SwiggyGroup
     taco_bell: TacoBellGroup
     target: TargetGroup
+    tcgplayer: TcgplayerGroup
     tech_crunch: TechCrunchGroup
     tech_radar: TechRadarGroup
+    telegram: TelegramGroup
     the_telegraph: TheTelegraphGroup
     tes: TesGroup
     tesla_jobs: TeslaJobsGroup
@@ -125357,8 +129030,10 @@ class CrawloraClient:
     vrbo: VrboGroup
     wales_online: WalesOnlineGroup
     walgreens: WalgreensGroup
+    wallapop: WallapopGroup
     walmart: WalmartGroup
     washington_post: WashingtonPostGroup
+    wattpad: WattpadGroup
     wayfair: WayfairGroup
     wccftech: WccftechGroup
     wendys: WendysGroup
@@ -126197,6 +129872,42 @@ class CrawloraClient:
     @overload
     def operation(
         self,
+        operation_id: Literal['aliexpress-categories'],
+        params: AliExpressAliexpressCategoriesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> AliExpressAliexpressCategoriesResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['aliexpress-category-ids'],
+        params: AliExpressAliexpressCategoryIdsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> AliExpressAliexpressCategoryIdsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['aliexpress-category-products'],
+        params: AliExpressAliexpressCategoryProductsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> AliExpressAliexpressCategoryProductsResponse: ...
+    @overload
+    def operation(
+        self,
         operation_id: Literal['aliexpress-reviews'],
         params: AliExpressAliexpressReviewsParams,
         *,
@@ -126230,6 +129941,30 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> AliExpressAliexpressSearchFiltersResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['aliexpress-suggest'],
+        params: AliExpressAliexpressSuggestParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> AliExpressAliexpressSuggestResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['aliexpress-trending-searches'],
+        params: AliExpressAliexpressTrendingSearchesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> AliExpressAliexpressTrendingSearchesResponse: ...
     @overload
     def operation(
         self,
@@ -133241,6 +136976,54 @@ class CrawloraClient:
     @overload
     def operation(
         self,
+        operation_id: Literal['datasets-apple-maps-places-facets'],
+        params: DatasetsAppleMapsPlacesFacetsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsAppleMapsPlacesFacetsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['datasets-apple-maps-places-item'],
+        params: DatasetsAppleMapsPlacesItemParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsAppleMapsPlacesItemResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['datasets-apple-maps-places-nearby'],
+        params: DatasetsAppleMapsPlacesNearbyParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsAppleMapsPlacesNearbyResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['datasets-apple-maps-places-search'],
+        params: DatasetsAppleMapsPlacesSearchParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsAppleMapsPlacesSearchResponse: ...
+    @overload
+    def operation(
+        self,
         operation_id: Literal['datasets-apple-podcasts-shows-facets'],
         params: DatasetsApplePodcastsShowsFacetsParams,
         *,
@@ -135878,6 +139661,198 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> DraftKingsSportsbookDraftkingsTeamsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['dramabox-browse'],
+        params: DramaBoxDramaboxBrowseParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DramaBoxDramaboxBrowseResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['dramabox-categories'],
+        params: DramaBoxDramaboxCategoriesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DramaBoxDramaboxCategoriesResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['dramabox-category-books'],
+        params: DramaBoxDramaboxCategoryBooksParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DramaBoxDramaboxCategoryBooksResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['dramabox-channels'],
+        params: DramaBoxDramaboxChannelsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DramaBoxDramaboxChannelsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['dramabox-drama'],
+        params: DramaBoxDramaboxDramaParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DramaBoxDramaboxDramaResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['dramabox-genres'],
+        params: DramaBoxDramaboxGenresParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DramaBoxDramaboxGenresResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['dramabox-home'],
+        params: DramaBoxDramaboxHomeParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DramaBoxDramaboxHomeResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['dramabox-more'],
+        params: DramaBoxDramaboxMoreParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DramaBoxDramaboxMoreResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['dramabox-performer'],
+        params: DramaBoxDramaboxPerformerParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DramaBoxDramaboxPerformerResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['dramabox-rank'],
+        params: DramaBoxDramaboxRankParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DramaBoxDramaboxRankResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['dramabox-recommend'],
+        params: DramaBoxDramaboxRecommendParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DramaBoxDramaboxRecommendResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['dramabox-search'],
+        params: DramaBoxDramaboxSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DramaBoxDramaboxSearchResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['dramabox-suggest'],
+        params: DramaBoxDramaboxSuggestParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DramaBoxDramaboxSuggestResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['dramabox-tag'],
+        params: DramaBoxDramaboxTagParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DramaBoxDramaboxTagResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['dramabox-theater'],
+        params: DramaBoxDramaboxTheaterParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DramaBoxDramaboxTheaterResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['dramabox-trending'],
+        params: DramaBoxDramaboxTrendingParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DramaBoxDramaboxTrendingResponse: ...
     @overload
     def operation(
         self,
@@ -146441,6 +150416,18 @@ class CrawloraClient:
     @overload
     def operation(
         self,
+        operation_id: Literal['jumia-reviews'],
+        params: JumiaReviewsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> JumiaReviewsResponse: ...
+    @overload
+    def operation(
+        self,
         operation_id: Literal['jumia-search'],
         params: JumiaSearchParams,
         *,
@@ -146450,6 +150437,30 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> JumiaSearchResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['jumia-sitemap-urls'],
+        params: JumiaSitemapUrlsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> JumiaSitemapUrlsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['jumia-sitemaps'],
+        params: JumiaSitemapsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> JumiaSitemapsResponse: ...
     @overload
     def operation(
         self,
@@ -147146,6 +151157,258 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> KhaleejTimesKhaleejtimesSectionsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['kick-categories'],
+        params: KickCategoriesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> KickCategoriesResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['kick-category-clips'],
+        params: KickCategoryClipsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> KickCategoryClipsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['kick-channel'],
+        params: KickChannelParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> KickChannelResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['kick-channel-chatroom'],
+        params: KickChannelChatroomParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> KickChannelChatroomResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['kick-channel-clips'],
+        params: KickChannelClipsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> KickChannelClipsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['kick-channel-emotes'],
+        params: KickChannelEmotesParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> KickChannelEmotesResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['kick-channel-links'],
+        params: KickChannelLinksParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> KickChannelLinksResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['kick-channel-streams'],
+        params: KickChannelStreamsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> KickChannelStreamsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['kick-channel-videos'],
+        params: KickChannelVideosParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> KickChannelVideosResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['kick-clip'],
+        params: KickClipParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> KickClipResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['kick-clips'],
+        params: KickClipsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> KickClipsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['kick-drops'],
+        params: KickDropsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> KickDropsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['kick-gifts'],
+        params: KickGiftsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> KickGiftsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['kick-languages'],
+        params: KickLanguagesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> KickLanguagesResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['kick-livestreams'],
+        params: KickLivestreamsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> KickLivestreamsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['kick-search-categories'],
+        params: KickSearchCategoriesParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> KickSearchCategoriesResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['kick-search-channels'],
+        params: KickSearchChannelsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> KickSearchChannelsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['kick-subcategories'],
+        params: KickSubcategoriesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> KickSubcategoriesResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['kick-subcategory'],
+        params: KickSubcategoryParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> KickSubcategoryResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['kick-top-channels'],
+        params: KickTopChannelsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> KickTopChannelsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['kick-video'],
+        params: KickVideoParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> KickVideoResponse: ...
     @overload
     def operation(
         self,
@@ -155393,6 +159656,78 @@ class CrawloraClient:
     @overload
     def operation(
         self,
+        operation_id: Literal['pricecharting-big-movers'],
+        params: PriceChartingPricechartingBigMoversParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> PriceChartingPricechartingBigMoversResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['pricecharting-categories'],
+        params: PriceChartingPricechartingCategoriesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> PriceChartingPricechartingCategoriesResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['pricecharting-console'],
+        params: PriceChartingPricechartingConsoleParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> PriceChartingPricechartingConsoleResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['pricecharting-price-history'],
+        params: PriceChartingPricechartingPriceHistoryParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> PriceChartingPricechartingPriceHistoryResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['pricecharting-product'],
+        params: PriceChartingPricechartingProductParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> PriceChartingPricechartingProductResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['pricecharting-search'],
+        params: PriceChartingPricechartingSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> PriceChartingPricechartingSearchResponse: ...
+    @overload
+    def operation(
+        self,
         operation_id: Literal['pristine-auction-categories'],
         params: PristineAuctionCategoriesParams = ...,
         *,
@@ -155906,6 +160241,18 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> PsaPriceGuideSetResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['psa-price-guide-sets'],
+        params: PsaPriceGuideSetsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> PsaPriceGuideSetsResponse: ...
     @overload
     def operation(
         self,
@@ -156950,6 +161297,138 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> RedfinSimilarResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['reelshort-fandom-categories'],
+        params: ReelShortReelshortFandomCategoriesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ReelShortReelshortFandomCategoriesResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['reelshort-fandom-post'],
+        params: ReelShortReelshortFandomPostParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ReelShortReelshortFandomPostResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['reelshort-fandom-posts'],
+        params: ReelShortReelshortFandomPostsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ReelShortReelshortFandomPostsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['reelshort-home'],
+        params: ReelShortReelshortHomeParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ReelShortReelshortHomeResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['reelshort-movie'],
+        params: ReelShortReelshortMovieParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ReelShortReelshortMovieResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['reelshort-new-releases'],
+        params: ReelShortReelshortNewReleasesParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ReelShortReelshortNewReleasesResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['reelshort-search'],
+        params: ReelShortReelshortSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ReelShortReelshortSearchResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['reelshort-shelf'],
+        params: ReelShortReelshortShelfParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ReelShortReelshortShelfResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['reelshort-tag-books'],
+        params: ReelShortReelshortTagBooksParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ReelShortReelshortTagBooksResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['reelshort-tag-search'],
+        params: ReelShortReelshortTagSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ReelShortReelshortTagSearchResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['reelshort-tags'],
+        params: ReelShortReelshortTagsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ReelShortReelshortTagsResponse: ...
     @overload
     def operation(
         self,
@@ -164633,6 +169112,114 @@ class CrawloraClient:
     @overload
     def operation(
         self,
+        operation_id: Literal['tcgplayer-filters'],
+        params: TcgplayerFiltersParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TcgplayerFiltersResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['tcgplayer-listings'],
+        params: TcgplayerListingsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TcgplayerListingsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['tcgplayer-price-guide'],
+        params: TcgplayerPriceGuideParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TcgplayerPriceGuideResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['tcgplayer-price-history'],
+        params: TcgplayerPriceHistoryParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TcgplayerPriceHistoryResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['tcgplayer-product'],
+        params: TcgplayerProductParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TcgplayerProductResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['tcgplayer-product-lines'],
+        params: TcgplayerProductLinesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TcgplayerProductLinesResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['tcgplayer-sales'],
+        params: TcgplayerSalesParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TcgplayerSalesResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['tcgplayer-search'],
+        params: TcgplayerSearchParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TcgplayerSearchResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['tcgplayer-sets'],
+        params: TcgplayerSetsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TcgplayerSetsResponse: ...
+    @overload
+    def operation(
+        self,
         operation_id: Literal['techcrunch-article'],
         params: TechCrunchTechcrunchArticleParams,
         *,
@@ -164750,6 +169337,66 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> TechRadarTechradarSectionsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['telegram-bot'],
+        params: TelegramBotParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TelegramBotResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['telegram-channel'],
+        params: TelegramChannelParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TelegramChannelResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['telegram-channel-posts'],
+        params: TelegramChannelPostsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TelegramChannelPostsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['telegram-group'],
+        params: TelegramGroupParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TelegramGroupResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['telegram-post'],
+        params: TelegramPostParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TelegramPostResponse: ...
     @overload
     def operation(
         self,
@@ -169577,6 +174224,66 @@ class CrawloraClient:
     @overload
     def operation(
         self,
+        operation_id: Literal['wallapop-categories'],
+        params: WallapopCategoriesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> WallapopCategoriesResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['wallapop-filter-options'],
+        params: WallapopFilterOptionsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> WallapopFilterOptionsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['wallapop-filters'],
+        params: WallapopFiltersParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> WallapopFiltersResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['wallapop-item-detail'],
+        params: WallapopItemDetailParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> WallapopItemDetailResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['wallapop-search'],
+        params: WallapopSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> WallapopSearchResponse: ...
+    @overload
+    def operation(
+        self,
         operation_id: Literal['walmart-product'],
         params: WalmartProductParams,
         *,
@@ -169670,6 +174377,138 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> WashingtonPostWapoSectionsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['wattpad-categories'],
+        params: WattpadCategoriesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> WattpadCategoriesResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['wattpad-languages'],
+        params: WattpadLanguagesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> WattpadLanguagesResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['wattpad-part'],
+        params: WattpadPartParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> WattpadPartResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['wattpad-part-comments'],
+        params: WattpadPartCommentsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> WattpadPartCommentsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['wattpad-search'],
+        params: WattpadSearchParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> WattpadSearchResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['wattpad-search-users'],
+        params: WattpadSearchUsersParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> WattpadSearchUsersResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['wattpad-story'],
+        params: WattpadStoryParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> WattpadStoryResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['wattpad-story-parts'],
+        params: WattpadStoryPartsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> WattpadStoryPartsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['wattpad-story-recommendations'],
+        params: WattpadStoryRecommendationsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> WattpadStoryRecommendationsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['wattpad-user'],
+        params: WattpadUserParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> WattpadUserResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['wattpad-user-stories'],
+        params: WattpadUserStoriesParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> WattpadUserStoriesResponse: ...
     @overload
     def operation(
         self,
@@ -173189,6 +178028,42 @@ class CrawloraClient:
     @overload
     def request(
         self,
+        operation_id: Literal['aliexpress-categories'],
+        params: AliExpressAliexpressCategoriesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> AliExpressAliexpressCategoriesResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['aliexpress-category-ids'],
+        params: AliExpressAliexpressCategoryIdsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> AliExpressAliexpressCategoryIdsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['aliexpress-category-products'],
+        params: AliExpressAliexpressCategoryProductsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> AliExpressAliexpressCategoryProductsResponse: ...
+    @overload
+    def request(
+        self,
         operation_id: Literal['aliexpress-reviews'],
         params: AliExpressAliexpressReviewsParams,
         *,
@@ -173222,6 +178097,30 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> AliExpressAliexpressSearchFiltersResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['aliexpress-suggest'],
+        params: AliExpressAliexpressSuggestParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> AliExpressAliexpressSuggestResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['aliexpress-trending-searches'],
+        params: AliExpressAliexpressTrendingSearchesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> AliExpressAliexpressTrendingSearchesResponse: ...
     @overload
     def request(
         self,
@@ -180233,6 +185132,54 @@ class CrawloraClient:
     @overload
     def request(
         self,
+        operation_id: Literal['datasets-apple-maps-places-facets'],
+        params: DatasetsAppleMapsPlacesFacetsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsAppleMapsPlacesFacetsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['datasets-apple-maps-places-item'],
+        params: DatasetsAppleMapsPlacesItemParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsAppleMapsPlacesItemResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['datasets-apple-maps-places-nearby'],
+        params: DatasetsAppleMapsPlacesNearbyParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsAppleMapsPlacesNearbyResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['datasets-apple-maps-places-search'],
+        params: DatasetsAppleMapsPlacesSearchParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DatasetsAppleMapsPlacesSearchResponse: ...
+    @overload
+    def request(
+        self,
         operation_id: Literal['datasets-apple-podcasts-shows-facets'],
         params: DatasetsApplePodcastsShowsFacetsParams,
         *,
@@ -182870,6 +187817,198 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> DraftKingsSportsbookDraftkingsTeamsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['dramabox-browse'],
+        params: DramaBoxDramaboxBrowseParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DramaBoxDramaboxBrowseResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['dramabox-categories'],
+        params: DramaBoxDramaboxCategoriesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DramaBoxDramaboxCategoriesResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['dramabox-category-books'],
+        params: DramaBoxDramaboxCategoryBooksParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DramaBoxDramaboxCategoryBooksResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['dramabox-channels'],
+        params: DramaBoxDramaboxChannelsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DramaBoxDramaboxChannelsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['dramabox-drama'],
+        params: DramaBoxDramaboxDramaParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DramaBoxDramaboxDramaResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['dramabox-genres'],
+        params: DramaBoxDramaboxGenresParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DramaBoxDramaboxGenresResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['dramabox-home'],
+        params: DramaBoxDramaboxHomeParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DramaBoxDramaboxHomeResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['dramabox-more'],
+        params: DramaBoxDramaboxMoreParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DramaBoxDramaboxMoreResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['dramabox-performer'],
+        params: DramaBoxDramaboxPerformerParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DramaBoxDramaboxPerformerResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['dramabox-rank'],
+        params: DramaBoxDramaboxRankParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DramaBoxDramaboxRankResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['dramabox-recommend'],
+        params: DramaBoxDramaboxRecommendParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DramaBoxDramaboxRecommendResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['dramabox-search'],
+        params: DramaBoxDramaboxSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DramaBoxDramaboxSearchResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['dramabox-suggest'],
+        params: DramaBoxDramaboxSuggestParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DramaBoxDramaboxSuggestResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['dramabox-tag'],
+        params: DramaBoxDramaboxTagParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DramaBoxDramaboxTagResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['dramabox-theater'],
+        params: DramaBoxDramaboxTheaterParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DramaBoxDramaboxTheaterResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['dramabox-trending'],
+        params: DramaBoxDramaboxTrendingParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> DramaBoxDramaboxTrendingResponse: ...
     @overload
     def request(
         self,
@@ -193433,6 +198572,18 @@ class CrawloraClient:
     @overload
     def request(
         self,
+        operation_id: Literal['jumia-reviews'],
+        params: JumiaReviewsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> JumiaReviewsResponse: ...
+    @overload
+    def request(
+        self,
         operation_id: Literal['jumia-search'],
         params: JumiaSearchParams,
         *,
@@ -193442,6 +198593,30 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> JumiaSearchResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['jumia-sitemap-urls'],
+        params: JumiaSitemapUrlsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> JumiaSitemapUrlsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['jumia-sitemaps'],
+        params: JumiaSitemapsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> JumiaSitemapsResponse: ...
     @overload
     def request(
         self,
@@ -194138,6 +199313,258 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> KhaleejTimesKhaleejtimesSectionsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['kick-categories'],
+        params: KickCategoriesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> KickCategoriesResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['kick-category-clips'],
+        params: KickCategoryClipsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> KickCategoryClipsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['kick-channel'],
+        params: KickChannelParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> KickChannelResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['kick-channel-chatroom'],
+        params: KickChannelChatroomParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> KickChannelChatroomResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['kick-channel-clips'],
+        params: KickChannelClipsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> KickChannelClipsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['kick-channel-emotes'],
+        params: KickChannelEmotesParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> KickChannelEmotesResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['kick-channel-links'],
+        params: KickChannelLinksParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> KickChannelLinksResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['kick-channel-streams'],
+        params: KickChannelStreamsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> KickChannelStreamsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['kick-channel-videos'],
+        params: KickChannelVideosParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> KickChannelVideosResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['kick-clip'],
+        params: KickClipParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> KickClipResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['kick-clips'],
+        params: KickClipsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> KickClipsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['kick-drops'],
+        params: KickDropsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> KickDropsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['kick-gifts'],
+        params: KickGiftsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> KickGiftsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['kick-languages'],
+        params: KickLanguagesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> KickLanguagesResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['kick-livestreams'],
+        params: KickLivestreamsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> KickLivestreamsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['kick-search-categories'],
+        params: KickSearchCategoriesParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> KickSearchCategoriesResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['kick-search-channels'],
+        params: KickSearchChannelsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> KickSearchChannelsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['kick-subcategories'],
+        params: KickSubcategoriesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> KickSubcategoriesResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['kick-subcategory'],
+        params: KickSubcategoryParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> KickSubcategoryResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['kick-top-channels'],
+        params: KickTopChannelsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> KickTopChannelsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['kick-video'],
+        params: KickVideoParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> KickVideoResponse: ...
     @overload
     def request(
         self,
@@ -202385,6 +207812,78 @@ class CrawloraClient:
     @overload
     def request(
         self,
+        operation_id: Literal['pricecharting-big-movers'],
+        params: PriceChartingPricechartingBigMoversParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> PriceChartingPricechartingBigMoversResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['pricecharting-categories'],
+        params: PriceChartingPricechartingCategoriesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> PriceChartingPricechartingCategoriesResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['pricecharting-console'],
+        params: PriceChartingPricechartingConsoleParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> PriceChartingPricechartingConsoleResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['pricecharting-price-history'],
+        params: PriceChartingPricechartingPriceHistoryParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> PriceChartingPricechartingPriceHistoryResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['pricecharting-product'],
+        params: PriceChartingPricechartingProductParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> PriceChartingPricechartingProductResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['pricecharting-search'],
+        params: PriceChartingPricechartingSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> PriceChartingPricechartingSearchResponse: ...
+    @overload
+    def request(
+        self,
         operation_id: Literal['pristine-auction-categories'],
         params: PristineAuctionCategoriesParams = ...,
         *,
@@ -202898,6 +208397,18 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> PsaPriceGuideSetResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['psa-price-guide-sets'],
+        params: PsaPriceGuideSetsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> PsaPriceGuideSetsResponse: ...
     @overload
     def request(
         self,
@@ -203942,6 +209453,138 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> RedfinSimilarResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['reelshort-fandom-categories'],
+        params: ReelShortReelshortFandomCategoriesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ReelShortReelshortFandomCategoriesResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['reelshort-fandom-post'],
+        params: ReelShortReelshortFandomPostParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ReelShortReelshortFandomPostResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['reelshort-fandom-posts'],
+        params: ReelShortReelshortFandomPostsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ReelShortReelshortFandomPostsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['reelshort-home'],
+        params: ReelShortReelshortHomeParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ReelShortReelshortHomeResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['reelshort-movie'],
+        params: ReelShortReelshortMovieParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ReelShortReelshortMovieResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['reelshort-new-releases'],
+        params: ReelShortReelshortNewReleasesParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ReelShortReelshortNewReleasesResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['reelshort-search'],
+        params: ReelShortReelshortSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ReelShortReelshortSearchResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['reelshort-shelf'],
+        params: ReelShortReelshortShelfParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ReelShortReelshortShelfResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['reelshort-tag-books'],
+        params: ReelShortReelshortTagBooksParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ReelShortReelshortTagBooksResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['reelshort-tag-search'],
+        params: ReelShortReelshortTagSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ReelShortReelshortTagSearchResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['reelshort-tags'],
+        params: ReelShortReelshortTagsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ReelShortReelshortTagsResponse: ...
     @overload
     def request(
         self,
@@ -211625,6 +217268,114 @@ class CrawloraClient:
     @overload
     def request(
         self,
+        operation_id: Literal['tcgplayer-filters'],
+        params: TcgplayerFiltersParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TcgplayerFiltersResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['tcgplayer-listings'],
+        params: TcgplayerListingsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TcgplayerListingsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['tcgplayer-price-guide'],
+        params: TcgplayerPriceGuideParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TcgplayerPriceGuideResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['tcgplayer-price-history'],
+        params: TcgplayerPriceHistoryParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TcgplayerPriceHistoryResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['tcgplayer-product'],
+        params: TcgplayerProductParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TcgplayerProductResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['tcgplayer-product-lines'],
+        params: TcgplayerProductLinesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TcgplayerProductLinesResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['tcgplayer-sales'],
+        params: TcgplayerSalesParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TcgplayerSalesResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['tcgplayer-search'],
+        params: TcgplayerSearchParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TcgplayerSearchResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['tcgplayer-sets'],
+        params: TcgplayerSetsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TcgplayerSetsResponse: ...
+    @overload
+    def request(
+        self,
         operation_id: Literal['techcrunch-article'],
         params: TechCrunchTechcrunchArticleParams,
         *,
@@ -211742,6 +217493,66 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> TechRadarTechradarSectionsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['telegram-bot'],
+        params: TelegramBotParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TelegramBotResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['telegram-channel'],
+        params: TelegramChannelParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TelegramChannelResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['telegram-channel-posts'],
+        params: TelegramChannelPostsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TelegramChannelPostsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['telegram-group'],
+        params: TelegramGroupParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TelegramGroupResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['telegram-post'],
+        params: TelegramPostParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> TelegramPostResponse: ...
     @overload
     def request(
         self,
@@ -216569,6 +222380,66 @@ class CrawloraClient:
     @overload
     def request(
         self,
+        operation_id: Literal['wallapop-categories'],
+        params: WallapopCategoriesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> WallapopCategoriesResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['wallapop-filter-options'],
+        params: WallapopFilterOptionsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> WallapopFilterOptionsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['wallapop-filters'],
+        params: WallapopFiltersParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> WallapopFiltersResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['wallapop-item-detail'],
+        params: WallapopItemDetailParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> WallapopItemDetailResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['wallapop-search'],
+        params: WallapopSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> WallapopSearchResponse: ...
+    @overload
+    def request(
+        self,
         operation_id: Literal['walmart-product'],
         params: WalmartProductParams,
         *,
@@ -216662,6 +222533,138 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> WashingtonPostWapoSectionsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['wattpad-categories'],
+        params: WattpadCategoriesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> WattpadCategoriesResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['wattpad-languages'],
+        params: WattpadLanguagesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> WattpadLanguagesResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['wattpad-part'],
+        params: WattpadPartParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> WattpadPartResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['wattpad-part-comments'],
+        params: WattpadPartCommentsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> WattpadPartCommentsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['wattpad-search'],
+        params: WattpadSearchParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> WattpadSearchResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['wattpad-search-users'],
+        params: WattpadSearchUsersParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> WattpadSearchUsersResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['wattpad-story'],
+        params: WattpadStoryParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> WattpadStoryResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['wattpad-story-parts'],
+        params: WattpadStoryPartsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> WattpadStoryPartsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['wattpad-story-recommendations'],
+        params: WattpadStoryRecommendationsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> WattpadStoryRecommendationsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['wattpad-user'],
+        params: WattpadUserParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> WattpadUserResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['wattpad-user-stories'],
+        params: WattpadUserStoriesParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> WattpadUserStoriesResponse: ...
     @overload
     def request(
         self,
