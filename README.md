@@ -11,16 +11,17 @@ with generated type stubs for editor and type-checker support.
 - Reference: [operations](docs/operations.md) and [recipes](docs/recipes.md)
 
 ## Install
-
-Published on [PyPI](https://pypi.org/project/crawlora/). The current release is a
-prerelease (`1.41.0.dev1`), so install it with `--pre`:
+Published on [PyPI](https://pypi.org/project/crawlora/). Install the stable release:
 
 ```sh
-pip install --pre crawlora
+pip install crawlora
 ```
 
-(Git installs from beta tags also work, e.g.
-`pip install "git+https://github.com/Crawlora-org/crawlora-python-sdk.git@latest"`.)
+For a reproducible source install, use the matching release tag:
+
+```sh
+pip install "git+https://github.com/Crawlora-org/crawlora-python-sdk.git@v1.50.0"
+```
 
 ## API Key
 
@@ -183,5 +184,5 @@ from crawlora import CrawloraClient
 ```
 
 The package is published on [PyPI](https://pypi.org/project/crawlora/) as
-`crawlora` (a prerelease — `pip install --pre crawlora`). Git beta tags and the
+`crawlora` (the stable PyPI release). The matching Git release tag and the
 moving `latest` tag also work, as shown above.

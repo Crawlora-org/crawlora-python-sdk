@@ -6949,6 +6949,808 @@ ModelBlueskyTrendingTopicsResponseDoc = TypedDict('ModelBlueskyTrendingTopicsRes
     'msg': NotRequired[str],
 }, total=False)
 
+ModelBo3Achievement = TypedDict('ModelBo3Achievement', {
+    'date': NotRequired[str],
+    'title': NotRequired[str],
+    'tournament_id': NotRequired[int],
+    'tournament_name': NotRequired[str],
+    'tournament_slug': NotRequired[str],
+}, total=False)
+
+ModelBo3EarningPlayer = TypedDict('ModelBo3EarningPlayer', {
+    'id': NotRequired[int],
+    'is_coach': NotRequired[bool],
+    'nickname': NotRequired[str],
+    'six_month_avg_rating': NotRequired[float],
+    'slug': NotRequired[str],
+    'total_prize_usd': NotRequired[int],
+}, total=False)
+
+ModelBo3EconomyBaselineResponse = TypedDict('ModelBo3EconomyBaselineResponse', {
+    'cells': NotRequired[list[ModelBo3EconomyCell]],
+    'count': NotRequired[int],
+    'fetched_at': NotRequired[str],
+    'source_url': NotRequired[str],
+}, total=False)
+
+ModelBo3EconomyCell = TypedDict('ModelBo3EconomyCell', {
+    'enemy_level': NotRequired[Literal['-1', '0', '1', '2']],
+    'rounds': NotRequired[int],
+    'team_level': NotRequired[Literal['-1', '0', '1', '2']],
+    'win_rate': NotRequired[float],
+    'wins': NotRequired[int],
+}, total=False)
+
+ModelBo3FeedCategory = TypedDict('ModelBo3FeedCategory', {
+    'id': NotRequired[int],
+    'title': NotRequired[str],
+}, total=False)
+
+ModelBo3ForumCategoriesResponse = TypedDict('ModelBo3ForumCategoriesResponse', {
+    'categories': NotRequired[list[ModelBo3ForumCategory]],
+    'count': NotRequired[int],
+    'fetched_at': NotRequired[str],
+    'game': NotRequired[str],
+    'source_url': NotRequired[str],
+}, total=False)
+
+ModelBo3ForumCategory = TypedDict('ModelBo3ForumCategory', {
+    'id': NotRequired[int],
+    'slug': NotRequired[str],
+    'title': NotRequired[str],
+}, total=False)
+
+ModelBo3ForumFeedResponse = TypedDict('ModelBo3ForumFeedResponse', {
+    'category': NotRequired[int],
+    'count': NotRequired[int],
+    'fetched_at': NotRequired[str],
+    'game': NotRequired[str],
+    'has_more': NotRequired[bool],
+    'limit': NotRequired[int],
+    'offset': NotRequired[int],
+    'sort': NotRequired[Literal['activity', 'newest', 'comments', 'rating']],
+    'source_url': NotRequired[str],
+    'threads': NotRequired[list[ModelBo3ForumThread]],
+    'total': NotRequired[int],
+}, total=False)
+
+ModelBo3ForumThread = TypedDict('ModelBo3ForumThread', {
+    'author': NotRequired[ModelBo3PersonRef],
+    'category': NotRequired[str],
+    'category_id': NotRequired[int],
+    'comments': NotRequired[int],
+    'created_at': NotRequired[str],
+    'id': NotRequired[int],
+    'last_activity_at': NotRequired[str],
+    'pinned': NotRequired[bool],
+    'rating': NotRequired[int],
+    'slug': NotRequired[str],
+    'title': NotRequired[str],
+}, total=False)
+
+ModelBo3GameRow = TypedDict('ModelBo3GameRow', {
+    'begin_at': NotRequired[str],
+    'duration_seconds': NotRequired[float],
+    'id': NotRequired[int],
+    'loser_name': NotRequired[str],
+    'loser_score': NotRequired[int],
+    'map': NotRequired[str],
+    'number': NotRequired[int],
+    'rounds': NotRequired[list[ModelBo3RoundRow]],
+    'rounds_count': NotRequired[int],
+    'side_results': NotRequired[list[ModelBo3SideResult]],
+    'state': NotRequired[str],
+    'status': NotRequired[str],
+    'winner_name': NotRequired[str],
+    'winner_score': NotRequired[int],
+}, total=False)
+
+ModelBo3Insight = TypedDict('ModelBo3Insight', {
+    'facts': NotRequired[list[str]],
+    'team': NotRequired[str],
+}, total=False)
+
+ModelBo3LeaderboardResponse = TypedDict('ModelBo3LeaderboardResponse', {
+    'count': NotRequired[int],
+    'fetched_at': NotRequired[str],
+    'from': NotRequired[str],
+    'limit': NotRequired[int],
+    'min_games_count': NotRequired[int],
+    'next_offset': NotRequired[int],
+    'offset': NotRequired[int],
+    'order': NotRequired[Literal['desc', 'asc']],
+    'players': NotRequired[list[ModelBo3TopPlayer]],
+    'sort': NotRequired[Literal['rating', 'kd', 'kills', 'damage', 'assists', 'headshots', 'games', 'rounds']],
+    'source_url': NotRequired[str],
+    'tier': NotRequired[Literal['s', 'a', 'b', 'c', 'd']],
+    'to': NotRequired[str],
+}, total=False)
+
+ModelBo3Links = TypedDict('ModelBo3Links', {
+    'facebook': NotRequired[str],
+    'instagram': NotRequired[str],
+    'twitch': NotRequired[str],
+    'twitter': NotRequired[str],
+    'website': NotRequired[str],
+    'youtube': NotRequired[str],
+}, total=False)
+
+ModelBo3Mvprow = TypedDict('ModelBo3Mvprow', {
+    'article_url': NotRequired[str],
+    'game': NotRequired[str],
+    'id': NotRequired[int],
+    'player': NotRequired[ModelBo3PersonRef],
+    'team': NotRequired[ModelBo3TransferTeam],
+    'tournament': NotRequired[ModelBo3TournamentRef],
+    'type': NotRequired[str],
+}, total=False)
+
+ModelBo3MapRow = TypedDict('ModelBo3MapRow', {
+    'begin_at': NotRequired[str],
+    'loser_score': NotRequired[int],
+    'map': NotRequired[str],
+    'number': NotRequired[int],
+    'status': NotRequired[Literal['upcoming', 'current', 'finished']],
+    'winner_score': NotRequired[int],
+    'winner_team_id': NotRequired[int],
+    'winner_team_name': NotRequired[str],
+}, total=False)
+
+ModelBo3MatchGamesResponse = TypedDict('ModelBo3MatchGamesResponse', {
+    'count': NotRequired[int],
+    'fetched_at': NotRequired[str],
+    'games': NotRequired[list[ModelBo3GameRow]],
+    'match_id': NotRequired[int],
+    'source_url': NotRequired[str],
+}, total=False)
+
+ModelBo3MatchHistoryResponse = TypedDict('ModelBo3MatchHistoryResponse', {
+    'count': NotRequired[int],
+    'fetched_at': NotRequired[str],
+    'game': NotRequired[str],
+    'has_more': NotRequired[bool],
+    'limit': NotRequired[int],
+    'matches': NotRequired[list[ModelBo3MatchSummary]],
+    'offset': NotRequired[int],
+    'source_url': NotRequired[str],
+    'status': NotRequired[str],
+    'total': NotRequired[int],
+}, total=False)
+
+ModelBo3MatchInfo = TypedDict('ModelBo3MatchInfo', {
+    'best_of': NotRequired[int],
+    'end_time': NotRequired[str],
+    'event_type': NotRequired[Literal['lan', 'online']],
+    'fetched_at': NotRequired[str],
+    'game': NotRequired[str],
+    'id': NotRequired[int],
+    'insights': NotRequired[list[ModelBo3Insight]],
+    'live_coverage': NotRequired[bool],
+    'maps': NotRequired[list[ModelBo3MapRow]],
+    'prediction': NotRequired[ModelBo3Prediction],
+    'round': NotRequired[str],
+    'slug': NotRequired[str],
+    'source_url': NotRequired[str],
+    'stage': NotRequired[str],
+    'stars': NotRequired[int],
+    'start_time': NotRequired[str],
+    'status': NotRequired[Literal['upcoming', 'current', 'finished', 'defwin']],
+    'streams': NotRequired[list[ModelBo3Stream]],
+    'teams': NotRequired[list[ModelBo3Team]],
+    'tier': NotRequired[Literal['s', 'a', 'b', 'c', 'd']],
+    'tournament': NotRequired[ModelBo3TournamentRef],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelBo3MatchPlayerStats = TypedDict('ModelBo3MatchPlayerStats', {
+    'multikills': NotRequired[dict[str, int]],
+    'nickname': NotRequired[str],
+    'opponent': NotRequired[str],
+    'player_id': NotRequired[int],
+    'stats': NotRequired[dict[str, float]],
+    'team': NotRequired[str],
+    'win': NotRequired[bool],
+}, total=False)
+
+ModelBo3MatchPlayersResponse = TypedDict('ModelBo3MatchPlayersResponse', {
+    'count': NotRequired[int],
+    'fetched_at': NotRequired[str],
+    'players': NotRequired[list[ModelBo3MatchPlayerStats]],
+    'slug': NotRequired[str],
+    'source_url': NotRequired[str],
+}, total=False)
+
+ModelBo3MatchSummary = TypedDict('ModelBo3MatchSummary', {
+    'best_of': NotRequired[int],
+    'end_time': NotRequired[str],
+    'game': NotRequired[str],
+    'id': NotRequired[int],
+    'live_coverage': NotRequired[bool],
+    'maps': NotRequired[list[ModelBo3MapRow]],
+    'prediction': NotRequired[ModelBo3Prediction],
+    'slug': NotRequired[str],
+    'stars': NotRequired[int],
+    'start_time': NotRequired[str],
+    'status': NotRequired[Literal['upcoming', 'current', 'finished', 'defwin']],
+    'teams': NotRequired[list[ModelBo3Team]],
+    'tier': NotRequired[Literal['s', 'a', 'b', 'c', 'd']],
+    'tournament': NotRequired[ModelBo3TournamentRef],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelBo3NewsCategoriesResponse = TypedDict('ModelBo3NewsCategoriesResponse', {
+    'categories': NotRequired[list[ModelBo3FeedCategory]],
+    'count': NotRequired[int],
+    'fetched_at': NotRequired[str],
+    'source_url': NotRequired[str],
+}, total=False)
+
+ModelBo3NewsFeedResponse = TypedDict('ModelBo3NewsFeedResponse', {
+    'category': NotRequired[int],
+    'count': NotRequired[int],
+    'fetched_at': NotRequired[str],
+    'game': NotRequired[str],
+    'has_more': NotRequired[bool],
+    'items': NotRequired[list[ModelBo3NewsItem]],
+    'limit': NotRequired[int],
+    'offset': NotRequired[int],
+    'section': NotRequired[Literal['news', 'article', 'wiki', 'predictions']],
+    'source_url': NotRequired[str],
+    'total': NotRequired[int],
+}, total=False)
+
+ModelBo3NewsItem = TypedDict('ModelBo3NewsItem', {
+    'author': NotRequired[ModelBo3PersonRef],
+    'category': NotRequired[str],
+    'category_id': NotRequired[int],
+    'description': NotRequired[str],
+    'game': NotRequired[str],
+    'id': NotRequired[int],
+    'image_url': NotRequired[str],
+    'likes': NotRequired[int],
+    'pinned': NotRequired[bool],
+    'published_at': NotRequired[str],
+    'slug': NotRequired[str],
+    'tags': NotRequired[list[ModelBo3TagRef]],
+    'title': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelBo3PersonRef = TypedDict('ModelBo3PersonRef', {
+    'id': NotRequired[int],
+    'nickname': NotRequired[str],
+    'slug': NotRequired[str],
+}, total=False)
+
+ModelBo3PlayerInfo = TypedDict('ModelBo3PlayerInfo', {
+    'achievement_count': NotRequired[int],
+    'achievements': NotRequired[list[ModelBo3Achievement]],
+    'alternative_names': NotRequired[list[str]],
+    'birthday': NotRequired[str],
+    'country': NotRequired[str],
+    'country_code': NotRequired[str],
+    'fetched_at': NotRequired[str],
+    'first_name': NotRequired[str],
+    'game': NotRequired[str],
+    'id': NotRequired[int],
+    'image_url': NotRequired[str],
+    'is_coach': NotRequired[bool],
+    'joined_team_at': NotRequired[str],
+    'last_name': NotRequired[str],
+    'links': NotRequired[ModelBo3Links],
+    'nickname': NotRequired[str],
+    'role': NotRequired[str],
+    'six_month_avg_rating': NotRequired[float],
+    'slug': NotRequired[str],
+    'source_url': NotRequired[str],
+    'team': NotRequired[ModelBo3TeamRef],
+    'total_prize_usd': NotRequired[int],
+}, total=False)
+
+ModelBo3Prediction = TypedDict('ModelBo3Prediction', {
+    'team1_score': NotRequired[int],
+    'team2_score': NotRequired[int],
+    'winner_team_id': NotRequired[int],
+}, total=False)
+
+ModelBo3Prize = TypedDict('ModelBo3Prize', {
+    'place': NotRequired[str],
+    'points': NotRequired[int],
+    'prize_usd': NotRequired[int],
+    'team_id': NotRequired[int],
+}, total=False)
+
+ModelBo3RankedPlayer = TypedDict('ModelBo3RankedPlayer', {
+    'country_code': NotRequired[str],
+    'id': NotRequired[int],
+    'image_url': NotRequired[str],
+    'nickname': NotRequired[str],
+    'rating': NotRequired[float],
+    'slug': NotRequired[str],
+}, total=False)
+
+ModelBo3RankingRow = TypedDict('ModelBo3RankingRow', {
+    'country': NotRequired[str],
+    'country_code': NotRequired[str],
+    'logo_url': NotRequired[str],
+    'name': NotRequired[str],
+    'points': NotRequired[float],
+    'rank': NotRequired[int],
+    'rank_change': NotRequired[int],
+    'region': NotRequired[str],
+    'roster': NotRequired[list[ModelBo3RankedPlayer]],
+    'slug': NotRequired[str],
+    'team_id': NotRequired[int],
+}, total=False)
+
+ModelBo3RecentLine = TypedDict('ModelBo3RecentLine', {
+    'accuracy': NotRequired[float],
+    'assists': NotRequired[int],
+    'avg_kill_cost': NotRequired[float],
+    'damage': NotRequired[int],
+    'deaths': NotRequired[int],
+    'equipment_value': NotRequired[int],
+    'first_deaths': NotRequired[int],
+    'first_kills': NotRequired[int],
+    'headshot_ratio': NotRequired[float],
+    'headshots': NotRequired[int],
+    'hits': NotRequired[int],
+    'kills': NotRequired[int],
+    'money_saved': NotRequired[int],
+    'multikills': NotRequired[float],
+    'nickname': NotRequired[str],
+    'player_slug': NotRequired[str],
+    'rating': NotRequired[float],
+    'shots': NotRequired[int],
+    'team_slug': NotRequired[str],
+    'trade_deaths': NotRequired[int],
+    'trade_kills': NotRequired[int],
+}, total=False)
+
+ModelBo3RecentMap = TypedDict('ModelBo3RecentMap', {
+    'game_id': NotRequired[int],
+    'game_number': NotRequired[int],
+    'map': NotRequired[str],
+    'won': NotRequired[bool],
+}, total=False)
+
+ModelBo3RecentMatch = TypedDict('ModelBo3RecentMatch', {
+    'lines': NotRequired[list[ModelBo3RecentLine]],
+    'maps': NotRequired[list[ModelBo3RecentMap]],
+    'match_slug': NotRequired[str],
+    'opponent': NotRequired[ModelBo3TeamRef],
+    'rounds': NotRequired[int],
+    'started_at': NotRequired[str],
+    'tournament_slug': NotRequired[str],
+}, total=False)
+
+ModelBo3RecentMatchesResponse = TypedDict('ModelBo3RecentMatchesResponse', {
+    'count': NotRequired[int],
+    'fetched_at': NotRequired[str],
+    'matches': NotRequired[list[ModelBo3RecentMatch]],
+    'opponent': NotRequired[str],
+    'slug': NotRequired[str],
+    'source_url': NotRequired[str],
+    'subject': NotRequired[Literal['team', 'player']],
+    'tournament': NotRequired[str],
+}, total=False)
+
+ModelBo3RecordRow = TypedDict('ModelBo3RecordRow', {
+    'average': NotRequired[float],
+    'begin_at': NotRequired[str],
+    'country_code': NotRequired[str],
+    'detail': NotRequired[str],
+    'map': NotRequired[str],
+    'match_slug': NotRequired[str],
+    'opponents': NotRequired[list[str]],
+    'player': NotRequired[ModelBo3PersonRef],
+    'round_number': NotRequired[int],
+    'series': NotRequired[str],
+    'side': NotRequired[Literal['CT', 'T']],
+    'team_name': NotRequired[str],
+    'type': NotRequired[str],
+    'unit': NotRequired[str],
+    'value': NotRequired[float],
+}, total=False)
+
+ModelBo3RecordsFeedResponse = TypedDict('ModelBo3RecordsFeedResponse', {
+    'count': NotRequired[int],
+    'fetched_at': NotRequired[str],
+    'from': NotRequired[str],
+    'has_more': NotRequired[bool],
+    'items': NotRequired[list[ModelBo3RecordRow]],
+    'limit': NotRequired[int],
+    'offset': NotRequired[int],
+    'source_url': NotRequired[str],
+    'to': NotRequired[str],
+    'total': NotRequired[int],
+    'types': NotRequired[list[str]],
+}, total=False)
+
+ModelBo3RoundRow = TypedDict('ModelBo3RoundRow', {
+    'duration_seconds': NotRequired[float],
+    'end_reason': NotRequired[str],
+    'loser_score': NotRequired[int],
+    'number': NotRequired[int],
+    'winner_name': NotRequired[str],
+    'winner_score': NotRequired[int],
+    'winner_side': NotRequired[str],
+}, total=False)
+
+ModelBo3SideResult = TypedDict('ModelBo3SideResult', {
+    'loser_name': NotRequired[str],
+    'loser_score': NotRequired[int],
+    'loser_side': NotRequired[str],
+    'order': NotRequired[int],
+    'overtime': NotRequired[bool],
+    'winner_name': NotRequired[str],
+    'winner_score': NotRequired[int],
+    'winner_side': NotRequired[str],
+}, total=False)
+
+ModelBo3SquadPlayer = TypedDict('ModelBo3SquadPlayer', {
+    'first_name': NotRequired[str],
+    'id': NotRequired[int],
+    'image_url': NotRequired[str],
+    'is_coach': NotRequired[bool],
+    'is_standin': NotRequired[bool],
+    'last_name': NotRequired[str],
+    'nickname': NotRequired[str],
+    'slug': NotRequired[str],
+}, total=False)
+
+ModelBo3StageRow = TypedDict('ModelBo3StageRow', {
+    'end_date': NotRequired[str],
+    'format_type': NotRequired[str],
+    'hold': NotRequired[bool],
+    'id': NotRequired[int],
+    'promotion_team_count': NotRequired[int],
+    'sequence': NotRequired[int],
+    'start_date': NotRequired[str],
+    'title': NotRequired[str],
+}, total=False)
+
+ModelBo3StatsResponse = TypedDict('ModelBo3StatsResponse', {
+    'fetched_at': NotRequired[str],
+    'from': NotRequired[str],
+    'id': NotRequired[int],
+    'kind': NotRequired[str],
+    'name': NotRequired[str],
+    'rows': NotRequired[list[dict[str, Any]]],
+    'slug': NotRequired[str],
+    'source_url': NotRequired[str],
+    'stats': NotRequired[dict[str, float]],
+    'subject': NotRequired[Literal['team', 'player']],
+    'to': NotRequired[str],
+}, total=False)
+
+ModelBo3Stream = TypedDict('ModelBo3Stream', {
+    'language': NotRequired[str],
+    'name': NotRequired[str],
+    'official': NotRequired[bool],
+    'platform': NotRequired[Literal['twitch', 'youtube', 'kick', 'other']],
+    'url': NotRequired[str],
+    'viewer_count': NotRequired[int],
+}, total=False)
+
+ModelBo3TagRef = TypedDict('ModelBo3TagRef', {
+    'id': NotRequired[int],
+    'name': NotRequired[str],
+    'slug': NotRequired[str],
+}, total=False)
+
+ModelBo3Team = TypedDict('ModelBo3Team', {
+    'country': NotRequired[str],
+    'country_code': NotRequired[str],
+    'id': NotRequired[int],
+    'logo_url': NotRequired[str],
+    'name': NotRequired[str],
+    'rank': NotRequired[int],
+    'score': NotRequired[int],
+    'slug': NotRequired[str],
+    'winner': NotRequired[bool],
+}, total=False)
+
+ModelBo3TeamEarningsRow = TypedDict('ModelBo3TeamEarningsRow', {
+    'country': NotRequired[str],
+    'country_code': NotRequired[str],
+    'earnings_usd': NotRequired[int],
+    'logo_url': NotRequired[str],
+    'name': NotRequired[str],
+    'players': NotRequired[list[ModelBo3EarningPlayer]],
+    'position': NotRequired[int],
+    'region': NotRequired[str],
+    'slug': NotRequired[str],
+    'team_id': NotRequired[int],
+    'tournament_wins': NotRequired[int],
+}, total=False)
+
+ModelBo3TeamInfo = TypedDict('ModelBo3TeamInfo', {
+    'achievement_count': NotRequired[int],
+    'achievements': NotRequired[list[ModelBo3Achievement]],
+    'acronym': NotRequired[str],
+    'alternative_names': NotRequired[list[str]],
+    'country': NotRequired[str],
+    'country_code': NotRequired[str],
+    'established_date': NotRequired[str],
+    'fetched_at': NotRequired[str],
+    'game': NotRequired[str],
+    'id': NotRequired[int],
+    'links': NotRequired[ModelBo3Links],
+    'logo_url': NotRequired[str],
+    'name': NotRequired[str],
+    'rank': NotRequired[int],
+    'rank_change': NotRequired[int],
+    'region': NotRequired[str],
+    'roster': NotRequired[list[ModelBo3TeamMember]],
+    'six_month_earnings_usd': NotRequired[int],
+    'slug': NotRequired[str],
+    'source_url': NotRequired[str],
+}, total=False)
+
+ModelBo3TeamMember = TypedDict('ModelBo3TeamMember', {
+    'birthday': NotRequired[str],
+    'first_name': NotRequired[str],
+    'id': NotRequired[int],
+    'image_url': NotRequired[str],
+    'last_name': NotRequired[str],
+    'nickname': NotRequired[str],
+    'six_month_avg_rating': NotRequired[float],
+    'slug': NotRequired[str],
+}, total=False)
+
+ModelBo3TeamPrizeMoneyResponse = TypedDict('ModelBo3TeamPrizeMoneyResponse', {
+    'count': NotRequired[int],
+    'fetched_at': NotRequired[str],
+    'from': NotRequired[str],
+    'game': NotRequired[str],
+    'has_more': NotRequired[bool],
+    'limit': NotRequired[int],
+    'offset': NotRequired[int],
+    'source_url': NotRequired[str],
+    'teams': NotRequired[list[ModelBo3TeamEarningsRow]],
+    'to': NotRequired[str],
+    'total': NotRequired[int],
+}, total=False)
+
+ModelBo3TeamRankingDatesResponse = TypedDict('ModelBo3TeamRankingDatesResponse', {
+    'count': NotRequired[int],
+    'dates': NotRequired[list[str]],
+    'fetched_at': NotRequired[str],
+    'game': NotRequired[str],
+    'regions': NotRequired[list[str]],
+    'source_url': NotRequired[str],
+}, total=False)
+
+ModelBo3TeamRankingsResponse = TypedDict('ModelBo3TeamRankingsResponse', {
+    'count': NotRequired[int],
+    'fetched_at': NotRequired[str],
+    'game': NotRequired[str],
+    'official': NotRequired[bool],
+    'page': NotRequired[int],
+    'per_page': NotRequired[int],
+    'ranking_date': NotRequired[str],
+    'region': NotRequired[str],
+    'source': NotRequired[Literal['internal', 'valve_official']],
+    'source_url': NotRequired[str],
+    'teams': NotRequired[list[ModelBo3RankingRow]],
+    'total_pages': NotRequired[int],
+    'total_teams': NotRequired[int],
+}, total=False)
+
+ModelBo3TeamRef = TypedDict('ModelBo3TeamRef', {
+    'id': NotRequired[int],
+    'name': NotRequired[str],
+    'slug': NotRequired[str],
+}, total=False)
+
+ModelBo3TopPlayer = TypedDict('ModelBo3TopPlayer', {
+    'country_code': NotRequired[str],
+    'games': NotRequired[int],
+    'image_url': NotRequired[str],
+    'nickname': NotRequired[str],
+    'player_id': NotRequired[int],
+    'position': NotRequired[int],
+    'rounds': NotRequired[int],
+    'slug': NotRequired[str],
+    'stats': NotRequired[dict[str, float]],
+    'team_id': NotRequired[int],
+    'team_name': NotRequired[str],
+}, total=False)
+
+ModelBo3TournamentInfo = TypedDict('ModelBo3TournamentInfo', {
+    'city': NotRequired[str],
+    'country': NotRequired[str],
+    'description': NotRequired[str],
+    'end_date': NotRequired[str],
+    'event_type': NotRequired[Literal['lan', 'online']],
+    'fetched_at': NotRequired[str],
+    'game': NotRequired[str],
+    'id': NotRequired[int],
+    'image_url': NotRequired[str],
+    'name': NotRequired[str],
+    'prize_usd': NotRequired[int],
+    'prizes': NotRequired[list[ModelBo3Prize]],
+    'region': NotRequired[str],
+    'series': NotRequired[str],
+    'slug': NotRequired[str],
+    'source_url': NotRequired[str],
+    'stages': NotRequired[list[ModelBo3TournamentStage]],
+    'start_date': NotRequired[str],
+    'status': NotRequired[Literal['current', 'upcoming', 'finished']],
+    'teams': NotRequired[list[ModelBo3TournamentTeam]],
+    'tier': NotRequired[Literal['s', 'a', 'b', 'c', 'd']],
+}, total=False)
+
+ModelBo3TournamentListItem = TypedDict('ModelBo3TournamentListItem', {
+    'end_date': NotRequired[str],
+    'event_type': NotRequired[Literal['lan', 'online']],
+    'game': NotRequired[str],
+    'id': NotRequired[int],
+    'image_url': NotRequired[str],
+    'name': NotRequired[str],
+    'prize_usd': NotRequired[int],
+    'slug': NotRequired[str],
+    'start_date': NotRequired[str],
+    'status': NotRequired[Literal['current', 'upcoming', 'finished']],
+    'tier': NotRequired[Literal['s', 'a', 'b', 'c', 'd']],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelBo3TournamentListResponse = TypedDict('ModelBo3TournamentListResponse', {
+    'count': NotRequired[int],
+    'fetched_at': NotRequired[str],
+    'game': NotRequired[str],
+    'has_more': NotRequired[bool],
+    'limit': NotRequired[int],
+    'offset': NotRequired[int],
+    'source_url': NotRequired[str],
+    'total': NotRequired[int],
+    'tournaments': NotRequired[list[ModelBo3TournamentListItem]],
+}, total=False)
+
+ModelBo3TournamentMvpsResponse = TypedDict('ModelBo3TournamentMvpsResponse', {
+    'count': NotRequired[int],
+    'fetched_at': NotRequired[str],
+    'game': NotRequired[str],
+    'has_more': NotRequired[bool],
+    'limit': NotRequired[int],
+    'mvps': NotRequired[list[ModelBo3Mvprow]],
+    'offset': NotRequired[int],
+    'source_url': NotRequired[str],
+    'total': NotRequired[int],
+}, total=False)
+
+ModelBo3TournamentMapPoolResponse = TypedDict('ModelBo3TournamentMapPoolResponse', {
+    'count': NotRequired[int],
+    'fetched_at': NotRequired[str],
+    'maps': NotRequired[list[ModelBo3TournamentMapRow]],
+    'slug': NotRequired[str],
+    'source_url': NotRequired[str],
+}, total=False)
+
+ModelBo3TournamentMapRow = TypedDict('ModelBo3TournamentMapRow', {
+    'banned_maps': NotRequired[int],
+    'ct_round_wins': NotRequired[int],
+    'ct_win_percent': NotRequired[int],
+    'games': NotRequired[int],
+    'map': NotRequired[str],
+    'picked_maps': NotRequired[int],
+    'rounds': NotRequired[int],
+    't_round_wins': NotRequired[int],
+}, total=False)
+
+ModelBo3TournamentRef = TypedDict('ModelBo3TournamentRef', {
+    'id': NotRequired[int],
+    'name': NotRequired[str],
+    'prize_usd': NotRequired[int],
+    'slug': NotRequired[str],
+    'tier': NotRequired[Literal['s', 'a', 'b', 'c', 'd']],
+}, total=False)
+
+ModelBo3TournamentSquad = TypedDict('ModelBo3TournamentSquad', {
+    'logo_url': NotRequired[str],
+    'players': NotRequired[list[ModelBo3SquadPlayer]],
+    'team_id': NotRequired[int],
+    'team_name': NotRequired[str],
+    'team_slug': NotRequired[str],
+}, total=False)
+
+ModelBo3TournamentSquadsResponse = TypedDict('ModelBo3TournamentSquadsResponse', {
+    'count': NotRequired[int],
+    'fetched_at': NotRequired[str],
+    'slug': NotRequired[str],
+    'source_url': NotRequired[str],
+    'squads': NotRequired[list[ModelBo3TournamentSquad]],
+}, total=False)
+
+ModelBo3TournamentStage = TypedDict('ModelBo3TournamentStage', {
+    'end_date': NotRequired[str],
+    'format_type': NotRequired[str],
+    'id': NotRequired[int],
+    'sequence': NotRequired[int],
+    'start_date': NotRequired[str],
+    'status': NotRequired[str],
+    'title': NotRequired[str],
+}, total=False)
+
+ModelBo3TournamentStagesResponse = TypedDict('ModelBo3TournamentStagesResponse', {
+    'count': NotRequired[int],
+    'fetched_at': NotRequired[str],
+    'game': NotRequired[str],
+    'slug': NotRequired[str],
+    'source_url': NotRequired[str],
+    'stages': NotRequired[list[ModelBo3StageRow]],
+}, total=False)
+
+ModelBo3TournamentTeam = TypedDict('ModelBo3TournamentTeam', {
+    'logo_url': NotRequired[str],
+    'name': NotRequired[str],
+    'place': NotRequired[str],
+    'prize_usd': NotRequired[int],
+    'slug': NotRequired[str],
+    'team_id': NotRequired[int],
+}, total=False)
+
+ModelBo3TransferRow = TypedDict('ModelBo3TransferRow', {
+    'action': NotRequired[Literal['join', 'change', 'leave']],
+    'action_code': NotRequired[int],
+    'compensation': NotRequired[str],
+    'date': NotRequired[str],
+    'from': NotRequired[ModelBo3TransferTeam],
+    'game': NotRequired[str],
+    'id': NotRequired[int],
+    'is_coach': NotRequired[bool],
+    'nickname': NotRequired[str],
+    'player_id': NotRequired[int],
+    'player_slug': NotRequired[str],
+    'source_url': NotRequired[str],
+    'to': NotRequired[ModelBo3TransferTeam],
+}, total=False)
+
+ModelBo3TransferTeam = TypedDict('ModelBo3TransferTeam', {
+    'id': NotRequired[int],
+    'name': NotRequired[str],
+    'slug': NotRequired[str],
+}, total=False)
+
+ModelBo3TransfersResponse = TypedDict('ModelBo3TransfersResponse', {
+    'count': NotRequired[int],
+    'fetched_at': NotRequired[str],
+    'has_more': NotRequired[bool],
+    'limit': NotRequired[int],
+    'offset': NotRequired[int],
+    'source_url': NotRequired[str],
+    'total': NotRequired[int],
+    'transfers': NotRequired[list[ModelBo3TransferRow]],
+}, total=False)
+
+ModelBo3ValorantLeaderboardResponse = TypedDict('ModelBo3ValorantLeaderboardResponse', {
+    'count': NotRequired[int],
+    'fetched_at': NotRequired[str],
+    'from': NotRequired[str],
+    'has_more': NotRequired[bool],
+    'limit': NotRequired[int],
+    'min_games_count': NotRequired[int],
+    'offset': NotRequired[int],
+    'order': NotRequired[Literal['desc', 'asc']],
+    'players': NotRequired[list[ModelBo3ValorantPlayer]],
+    'sort': NotRequired[Literal['acs', 'kills', 'deaths', 'damage', 'assists', 'first_kills', 'clutches', 'first_duels', 'games', 'rounds']],
+    'source_url': NotRequired[str],
+    'to': NotRequired[str],
+    'total': NotRequired[int],
+}, total=False)
+
+ModelBo3ValorantPlayer = TypedDict('ModelBo3ValorantPlayer', {
+    'games': NotRequired[int],
+    'nickname': NotRequired[str],
+    'player_id': NotRequired[int],
+    'position': NotRequired[int],
+    'rounds': NotRequired[int],
+    'slug': NotRequired[str],
+    'stats': NotRequired[dict[str, float]],
+}, total=False)
+
 ModelBonhamsAuctionLotsResponse = TypedDict('ModelBonhamsAuctionLotsResponse', {
     'auction_id': NotRequired[str],
     'page': NotRequired[int],
@@ -30518,6 +31320,456 @@ ModelGoogleplaySuggestResponseDoc = TypedDict('ModelGoogleplaySuggestResponseDoc
     'msg': NotRequired[str],
 }, total=False)
 
+ModelGosugamersBattleRoyalePlayer = TypedDict('ModelGosugamersBattleRoyalePlayer', {
+    'country_code': NotRequired[str],
+    'id': NotRequired[str],
+    'name': NotRequired[str],
+    'slug': NotRequired[str],
+}, total=False)
+
+ModelGosugamersBattleRoyaleTeam = TypedDict('ModelGosugamersBattleRoyaleTeam', {
+    'country_code': NotRequired[str],
+    'id': NotRequired[str],
+    'kill_points': NotRequired[int],
+    'kills': NotRequired[int],
+    'name': NotRequired[str],
+    'placement': NotRequired[int],
+    'placement_points': NotRequired[int],
+    'players': NotRequired[list[ModelGosugamersBattleRoyalePlayer]],
+    'points_addition': NotRequired[int],
+    'points_deduction': NotRequired[int],
+    'slug': NotRequired[str],
+    'total_points': NotRequired[int],
+}, total=False)
+
+ModelGosugamersBroadcastTalent = TypedDict('ModelGosugamersBroadcastTalent', {
+    'country_code': NotRequired[str],
+    'country_name': NotRequired[str],
+    'game': NotRequired[str],
+    'id': NotRequired[str],
+    'image_url': NotRequired[str],
+    'language_code': NotRequired[str],
+    'name': NotRequired[str],
+    'roles': NotRequired[list[str]],
+    'slug': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelGosugamersEncountersResponse = TypedDict('ModelGosugamersEncountersResponse', {
+    'count': NotRequired[int],
+    'fetched_at': NotRequired[str],
+    'game': NotRequired[str],
+    'match_id': NotRequired[str],
+    'matches': NotRequired[list[ModelGosugamersMatchSummary]],
+    'source_url': NotRequired[str],
+    'team1_id': NotRequired[str],
+    'team2_id': NotRequired[str],
+}, total=False)
+
+ModelGosugamersGame = TypedDict('ModelGosugamersGame', {
+    'name': NotRequired[str],
+    'slug': NotRequired[Literal['dota2', 'counterstrike', 'lol', 'valorant', 'mobile-legends', 'pubg-mobile', 'wild-rift', 'free-fire', 'battlegrounds-mobile-india']],
+}, total=False)
+
+ModelGosugamersGameMap = TypedDict('ModelGosugamersGameMap', {
+    'id': NotRequired[str],
+    'image_url': NotRequired[str],
+    'name': NotRequired[str],
+}, total=False)
+
+ModelGosugamersGamePick = TypedDict('ModelGosugamersGamePick', {
+    'image_url': NotRequired[str],
+    'pick': NotRequired[str],
+    'player': NotRequired[ModelGosugamersGamePlayer],
+    'slot': NotRequired[int],
+    'type': NotRequired[int],
+}, total=False)
+
+ModelGosugamersGamePlayer = TypedDict('ModelGosugamersGamePlayer', {
+    'id': NotRequired[str],
+    'name': NotRequired[str],
+    'slug': NotRequired[str],
+}, total=False)
+
+ModelGosugamersGameRef = TypedDict('ModelGosugamersGameRef', {
+    'id': NotRequired[str],
+    'number': NotRequired[int],
+}, total=False)
+
+ModelGosugamersGameRound = TypedDict('ModelGosugamersGameRound', {
+    'overtime': NotRequired[bool],
+    'period': NotRequired[int],
+    'team1_score': NotRequired[int],
+    'team2_score': NotRequired[int],
+}, total=False)
+
+ModelGosugamersGameTeam = TypedDict('ModelGosugamersGameTeam', {
+    'first_pick': NotRequired[bool],
+    'id': NotRequired[str],
+    'lineup': NotRequired[list[ModelGosugamersGamePlayer]],
+    'logo_url': NotRequired[str],
+    'name': NotRequired[str],
+    'picks': NotRequired[list[ModelGosugamersGamePick]],
+    'placement': NotRequired[int],
+    'score': NotRequired[int],
+    'side': NotRequired[str],
+    'slug': NotRequired[str],
+    'winner': NotRequired[bool],
+}, total=False)
+
+ModelGosugamersGameVod = TypedDict('ModelGosugamersGameVod', {
+    'channel': NotRequired[str],
+    'host': NotRequired[int],
+    'thumb_url': NotRequired[str],
+    'title': NotRequired[str],
+    'video_id': NotRequired[str],
+}, total=False)
+
+ModelGosugamersGamesResponse = TypedDict('ModelGosugamersGamesResponse', {
+    'count': NotRequired[int],
+    'fetched_at': NotRequired[str],
+    'games': NotRequired[list[ModelGosugamersGame]],
+    'source_url': NotRequired[str],
+}, total=False)
+
+ModelGosugamersMatchDetail = TypedDict('ModelGosugamersMatchDetail', {
+    'best_of': NotRequired[int],
+    'fetched_at': NotRequired[str],
+    'finished': NotRequired[bool],
+    'game': NotRequired[str],
+    'game_numbers': NotRequired[list[int]],
+    'games': NotRequired[list[ModelGosugamersGameRef]],
+    'group': NotRequired[str],
+    'id': NotRequired[str],
+    'opponents': NotRequired[list[ModelGosugamersOpponent]],
+    'round': NotRequired[str],
+    'source_url': NotRequired[str],
+    'stage': NotRequired[str],
+    'start_time': NotRequired[str],
+    'streams': NotRequired[list[ModelGosugamersStream]],
+    'tournament': NotRequired[ModelGosugamersTournamentRef],
+    'url': NotRequired[str],
+    'venue': NotRequired[str],
+}, total=False)
+
+ModelGosugamersMatchGameResponse = TypedDict('ModelGosugamersMatchGameResponse', {
+    'battle_royale_teams': NotRequired[list[ModelGosugamersBattleRoyaleTeam]],
+    'best_of': NotRequired[int],
+    'fetched_at': NotRequired[str],
+    'game': NotRequired[str],
+    'id': NotRequired[str],
+    'map': NotRequired[ModelGosugamersGameMap],
+    'match_number': NotRequired[int],
+    'number': NotRequired[int],
+    'player_based': NotRequired[bool],
+    'round': NotRequired[str],
+    'rounds': NotRequired[list[ModelGosugamersGameRound]],
+    'source_url': NotRequired[str],
+    'start_time': NotRequired[str],
+    'teams': NotRequired[list[ModelGosugamersGameTeam]],
+    'vods': NotRequired[list[ModelGosugamersGameVod]],
+}, total=False)
+
+ModelGosugamersMatchListResponse = TypedDict('ModelGosugamersMatchListResponse', {
+    'count': NotRequired[int],
+    'fetched_at': NotRequired[str],
+    'game': NotRequired[str],
+    'matches': NotRequired[list[ModelGosugamersMatchSummary]],
+    'page': NotRequired[int],
+    'page_size': NotRequired[int],
+    'source_url': NotRequired[str],
+    'total_pages': NotRequired[int],
+    'total_rows': NotRequired[int],
+}, total=False)
+
+ModelGosugamersMatchSummary = TypedDict('ModelGosugamersMatchSummary', {
+    'finished': NotRequired[bool],
+    'game': NotRequired[str],
+    'group': NotRequired[str],
+    'id': NotRequired[str],
+    'match_number': NotRequired[int],
+    'round': NotRequired[str],
+    'stage': NotRequired[str],
+    'start_time': NotRequired[str],
+    'teams': NotRequired[list[ModelGosugamersTeam]],
+    'tournament': NotRequired[ModelGosugamersTournamentRef],
+    'url': NotRequired[str],
+    'venue': NotRequired[str],
+}, total=False)
+
+ModelGosugamersOpponent = TypedDict('ModelGosugamersOpponent', {
+    'country': NotRequired[str],
+    'country_code': NotRequired[str],
+    'id': NotRequired[str],
+    'logo_url': NotRequired[str],
+    'name': NotRequired[str],
+    'placement': NotRequired[int],
+    'score': NotRequired[int],
+    'slug': NotRequired[str],
+    'tag': NotRequired[str],
+    'winner': NotRequired[bool],
+    'world_ranking': NotRequired[int],
+}, total=False)
+
+ModelGosugamersParticipant = TypedDict('ModelGosugamersParticipant', {
+    'country_code': NotRequired[str],
+    'country_name': NotRequired[str],
+    'id': NotRequired[str],
+    'logo_url': NotRequired[str],
+    'name': NotRequired[str],
+    'ranking': NotRequired[int],
+    'slug': NotRequired[str],
+    'type': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelGosugamersPlayerDetail = TypedDict('ModelGosugamersPlayerDetail', {
+    'about': NotRequired[str],
+    'country': NotRequired[str],
+    'country_code': NotRequired[str],
+    'current_team': NotRequired[ModelGosugamersTeamStint],
+    'draws': NotRequired[int],
+    'earnings_usd': NotRequired[float],
+    'elo_rating': NotRequired[int],
+    'facebook': NotRequired[str],
+    'fetched_at': NotRequired[str],
+    'first_name': NotRequired[str],
+    'game': NotRequired[str],
+    'id': NotRequired[str],
+    'image_url': NotRequired[str],
+    'last_name': NotRequired[str],
+    'losses': NotRequired[int],
+    'name': NotRequired[str],
+    'previous_teams': NotRequired[list[ModelGosugamersTeamStint]],
+    'region': NotRequired[str],
+    'region_ranking': NotRequired[int],
+    'source_url': NotRequired[str],
+    'streak': NotRequired[int],
+    'twitter': NotRequired[str],
+    'url': NotRequired[str],
+    'win_rate_percent': NotRequired[int],
+    'wins': NotRequired[int],
+    'world_ranking': NotRequired[int],
+    'youtube': NotRequired[str],
+}, total=False)
+
+ModelGosugamersRankRegion = TypedDict('ModelGosugamersRankRegion', {
+    'id': NotRequired[int],
+    'name': NotRequired[str],
+}, total=False)
+
+ModelGosugamersRankedTeam = TypedDict('ModelGosugamersRankedTeam', {
+    'elo': NotRequired[float],
+    'id': NotRequired[str],
+    'logo_url': NotRequired[str],
+    'name': NotRequired[str],
+    'previous_rank': NotRequired[int],
+    'rank': NotRequired[int],
+    'rank_change': NotRequired[int],
+    'rank_change_name': NotRequired[str],
+    'slug': NotRequired[str],
+    'tag': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelGosugamersRankingsResponse = TypedDict('ModelGosugamersRankingsResponse', {
+    'count': NotRequired[int],
+    'fetched_at': NotRequired[str],
+    'game': NotRequired[str],
+    'page': NotRequired[int],
+    'page_size': NotRequired[int],
+    'q': NotRequired[str],
+    'region_id': NotRequired[int],
+    'regions': NotRequired[list[ModelGosugamersRankRegion]],
+    'source_url': NotRequired[str],
+    'teams': NotRequired[list[ModelGosugamersRankedTeam]],
+    'total_pages': NotRequired[int],
+    'total_rows': NotRequired[int],
+}, total=False)
+
+ModelGosugamersRosterPlayer = TypedDict('ModelGosugamersRosterPlayer', {
+    'country': NotRequired[str],
+    'country_code': NotRequired[str],
+    'id': NotRequired[str],
+    'joined_at': NotRequired[str],
+    'left_at': NotRequired[str],
+    'name': NotRequired[str],
+    'slug': NotRequired[str],
+}, total=False)
+
+ModelGosugamersStageGroup = TypedDict('ModelGosugamersStageGroup', {
+    'format': NotRequired[str],
+    'id': NotRequired[str],
+    'name': NotRequired[str],
+    'participant_count': NotRequired[int],
+    'participants': NotRequired[list[ModelGosugamersParticipant]],
+    'result_type': NotRequired[str],
+    'start_time': NotRequired[str],
+    'status': NotRequired[str],
+}, total=False)
+
+ModelGosugamersStageGroupsResponse = TypedDict('ModelGosugamersStageGroupsResponse', {
+    'count': NotRequired[int],
+    'fetched_at': NotRequired[str],
+    'groups': NotRequired[list[ModelGosugamersStageGroup]],
+    'source_url': NotRequired[str],
+    'stage_id': NotRequired[str],
+    'stage_name': NotRequired[str],
+    'tournament_id': NotRequired[str],
+}, total=False)
+
+ModelGosugamersStageInfo = TypedDict('ModelGosugamersStageInfo', {
+    'id': NotRequired[str],
+    'live': NotRequired[bool],
+    'name': NotRequired[str],
+    'order': NotRequired[int],
+    'status': NotRequired[str],
+}, total=False)
+
+ModelGosugamersStream = TypedDict('ModelGosugamersStream', {
+    'language': NotRequired[str],
+    'live': NotRequired[bool],
+    'platform_id': NotRequired[int],
+    'thumbnail_url': NotRequired[str],
+    'title': NotRequired[str],
+    'viewer_count': NotRequired[int],
+}, total=False)
+
+ModelGosugamersTeam = TypedDict('ModelGosugamersTeam', {
+    'id': NotRequired[str],
+    'logo_url': NotRequired[str],
+    'name': NotRequired[str],
+    'score': NotRequired[int],
+    'slug': NotRequired[str],
+    'tag': NotRequired[str],
+    'winner': NotRequired[bool],
+}, total=False)
+
+ModelGosugamersTeamDetail = TypedDict('ModelGosugamersTeamDetail', {
+    'about': NotRequired[str],
+    'country': NotRequired[str],
+    'country_code': NotRequired[str],
+    'draws': NotRequired[int],
+    'earnings_usd': NotRequired[float],
+    'elo_rating': NotRequired[int],
+    'facebook': NotRequired[str],
+    'fetched_at': NotRequired[str],
+    'game': NotRequired[str],
+    'id': NotRequired[str],
+    'logo_url': NotRequired[str],
+    'losses': NotRequired[int],
+    'name': NotRequired[str],
+    'region': NotRequired[str],
+    'region_ranking': NotRequired[int],
+    'roster': NotRequired[list[ModelGosugamersRosterPlayer]],
+    'slug': NotRequired[str],
+    'source_url': NotRequired[str],
+    'streak': NotRequired[int],
+    'tag': NotRequired[str],
+    'twitter': NotRequired[str],
+    'upcoming_matches': NotRequired[list[ModelGosugamersMatchSummary]],
+    'url': NotRequired[str],
+    'win_rate_percent': NotRequired[int],
+    'wins': NotRequired[int],
+    'world_ranking': NotRequired[int],
+    'youtube': NotRequired[str],
+}, total=False)
+
+ModelGosugamersTeamResultsResponse = TypedDict('ModelGosugamersTeamResultsResponse', {
+    'count': NotRequired[int],
+    'fetched_at': NotRequired[str],
+    'matches': NotRequired[list[ModelGosugamersMatchSummary]],
+    'page': NotRequired[int],
+    'page_size': NotRequired[int],
+    'source_url': NotRequired[str],
+    'team_id': NotRequired[str],
+    'total_pages': NotRequired[int],
+    'total_rows': NotRequired[int],
+}, total=False)
+
+ModelGosugamersTeamStint = TypedDict('ModelGosugamersTeamStint', {
+    'joined_at': NotRequired[str],
+    'left_at': NotRequired[str],
+    'name': NotRequired[str],
+    'position': NotRequired[str],
+    'slug': NotRequired[str],
+    'tag': NotRequired[str],
+    'team_id': NotRequired[str],
+}, total=False)
+
+ModelGosugamersTournamentDetail = TypedDict('ModelGosugamersTournamentDetail', {
+    'country': NotRequired[str],
+    'description': NotRequired[str],
+    'fetched_at': NotRequired[str],
+    'game': NotRequired[str],
+    'game_name': NotRequired[str],
+    'image_url': NotRequired[str],
+    'lan': NotRequired[bool],
+    'prize_pool_usd': NotRequired[float],
+    'source_url': NotRequired[str],
+    'sponsors': NotRequired[list[str]],
+    'stages': NotRequired[list[ModelGosugamersStageInfo]],
+    'start_time': NotRequired[str],
+    'status': NotRequired[str],
+    'tournament': NotRequired[ModelGosugamersTournamentRef],
+    'upcoming_matches': NotRequired[list[ModelGosugamersMatchSummary]],
+    'venue': NotRequired[str],
+}, total=False)
+
+ModelGosugamersTournamentParticipantsResponse = TypedDict('ModelGosugamersTournamentParticipantsResponse', {
+    'count': NotRequired[int],
+    'fetched_at': NotRequired[str],
+    'game': NotRequired[str],
+    'participants': NotRequired[list[ModelGosugamersParticipant]],
+    'source_url': NotRequired[str],
+    'tournament_id': NotRequired[str],
+}, total=False)
+
+ModelGosugamersTournamentRef = TypedDict('ModelGosugamersTournamentRef', {
+    'id': NotRequired[str],
+    'name': NotRequired[str],
+    'slug': NotRequired[str],
+}, total=False)
+
+ModelGosugamersTournamentRow = TypedDict('ModelGosugamersTournamentRow', {
+    'featured': NotRequired[bool],
+    'game': NotRequired[str],
+    'game_name': NotRequired[str],
+    'id': NotRequired[str],
+    'image_url': NotRequired[str],
+    'name': NotRequired[str],
+    'participant_count': NotRequired[int],
+    'prize_currency': NotRequired[str],
+    'prize_pool': NotRequired[float],
+    'prize_pool_usd': NotRequired[float],
+    'slug': NotRequired[str],
+    'start_time': NotRequired[str],
+    'status': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelGosugamersTournamentTalentsResponse = TypedDict('ModelGosugamersTournamentTalentsResponse', {
+    'count': NotRequired[int],
+    'fetched_at': NotRequired[str],
+    'source_url': NotRequired[str],
+    'talents': NotRequired[list[ModelGosugamersBroadcastTalent]],
+    'tournament_id': NotRequired[str],
+}, total=False)
+
+ModelGosugamersTournamentsResponse = TypedDict('ModelGosugamersTournamentsResponse', {
+    'count': NotRequired[int],
+    'fetched_at': NotRequired[str],
+    'game': NotRequired[str],
+    'page': NotRequired[int],
+    'page_size': NotRequired[int],
+    'q': NotRequired[str],
+    'source_url': NotRequired[str],
+    'state': NotRequired[Literal['all', 'ongoing', 'upcoming', 'past']],
+    'total_pages': NotRequired[int],
+    'total_rows': NotRequired[int],
+    'tournaments': NotRequired[list[ModelGosugamersTournamentRow]],
+}, total=False)
+
 ModelGqAuthorArticle = TypedDict('ModelGqAuthorArticle', {
     'image_url': NotRequired[str],
     'published_at': NotRequired[str],
@@ -38968,6 +40220,460 @@ ModelLivescoreSportsResponseDoc = TypedDict('ModelLivescoreSportsResponseDoc', {
     'msg': NotRequired[str],
 }, total=False)
 
+ModelLolesportsCompletedEventsResponse = TypedDict('ModelLolesportsCompletedEventsResponse', {
+    'count': NotRequired[int],
+    'events': NotRequired[list[ModelLolesportsEvent]],
+    'fetched_at': NotRequired[str],
+    'source_url': NotRequired[str],
+    'tournament_id': NotRequired[str],
+}, total=False)
+
+ModelLolesportsDetailsFrame = TypedDict('ModelLolesportsDetailsFrame', {
+    'participants': NotRequired[list[ModelLolesportsDetailsParticipant]],
+    'timestamp': NotRequired[str],
+}, total=False)
+
+ModelLolesportsDetailsParticipant = TypedDict('ModelLolesportsDetailsParticipant', {
+    'ability_power': NotRequired[int],
+    'armor': NotRequired[int],
+    'assists': NotRequired[int],
+    'attack_damage': NotRequired[int],
+    'attack_speed': NotRequired[int],
+    'champion_damage_share': NotRequired[float],
+    'creep_score': NotRequired[int],
+    'critical_chance': NotRequired[float],
+    'deaths': NotRequired[int],
+    'items': NotRequired[list[int]],
+    'kill_participation': NotRequired[float],
+    'kills': NotRequired[int],
+    'level': NotRequired[int],
+    'life_steal': NotRequired[int],
+    'magic_resistance': NotRequired[int],
+    'participant_id': NotRequired[int],
+    'rune_ids': NotRequired[list[int]],
+    'rune_style_id': NotRequired[int],
+    'rune_sub_style_id': NotRequired[int],
+    'skill_order': NotRequired[list[str]],
+    'tenacity': NotRequired[float],
+    'total_gold_earned': NotRequired[int],
+    'wards_destroyed': NotRequired[int],
+    'wards_placed': NotRequired[int],
+}, total=False)
+
+ModelLolesportsEvent = TypedDict('ModelLolesportsEvent', {
+    'block_name': NotRequired[str],
+    'games': NotRequired[list[ModelLolesportsGameVods]],
+    'league': NotRequired[ModelLolesportsEventLeague],
+    'match': NotRequired[ModelLolesportsMatch],
+    'start_time': NotRequired[str],
+    'state': NotRequired[Literal['unstarted', 'inProgress', 'completed']],
+    'type': NotRequired[str],
+}, total=False)
+
+ModelLolesportsEventDetailResponse = TypedDict('ModelLolesportsEventDetailResponse', {
+    'fetched_at': NotRequired[str],
+    'games': NotRequired[list[ModelLolesportsGame]],
+    'id': NotRequired[str],
+    'league': NotRequired[ModelLolesportsEventLeague],
+    'source_url': NotRequired[str],
+    'strategy': NotRequired[ModelLolesportsStrategy],
+    'streams': NotRequired[list[ModelLolesportsStream]],
+    'teams': NotRequired[list[ModelLolesportsTeam]],
+    'tournament_id': NotRequired[str],
+    'type': NotRequired[str],
+}, total=False)
+
+ModelLolesportsEventLeague = TypedDict('ModelLolesportsEventLeague', {
+    'id': NotRequired[str],
+    'name': NotRequired[str],
+    'slug': NotRequired[str],
+}, total=False)
+
+ModelLolesportsGprleague = TypedDict('ModelLolesportsGprleague', {
+    'id': NotRequired[str],
+    'name': NotRequired[str],
+    'slug': NotRequired[str],
+    'teams': NotRequired[int],
+}, total=False)
+
+ModelLolesportsGprpoint = TypedDict('ModelLolesportsGprpoint', {
+    'date': NotRequired[str],
+    'elo': NotRequired[int],
+    'rank': NotRequired[int],
+    'score': NotRequired[int],
+}, total=False)
+
+ModelLolesportsGprrecord = TypedDict('ModelLolesportsGprrecord', {
+    'losses': NotRequired[int],
+    'wins': NotRequired[int],
+}, total=False)
+
+ModelLolesportsGprresponse = TypedDict('ModelLolesportsGprresponse', {
+    'count': NotRequired[int],
+    'end_date': NotRequired[str],
+    'fetched_at': NotRequired[str],
+    'leagues': NotRequired[list[ModelLolesportsGprleague]],
+    'season': NotRequired[Literal['current', '2025', '2024']],
+    'seasons': NotRequired[list[ModelLolesportsGprseasonLink]],
+    'source_url': NotRequired[str],
+    'start_date': NotRequired[str],
+    'teams': NotRequired[list[ModelLolesportsGprteam]],
+    'total': NotRequired[int],
+}, total=False)
+
+ModelLolesportsGprseasonLink = TypedDict('ModelLolesportsGprseasonLink', {
+    'kind': NotRequired[Literal['current', 'worlds']],
+    'season': NotRequired[str],
+    'url': NotRequired[str],
+    'year': NotRequired[str],
+}, total=False)
+
+ModelLolesportsGprteam = TypedDict('ModelLolesportsGprteam', {
+    'average_opponent_gpr': NotRequired[int],
+    'date_calculated': NotRequired[str],
+    'elo': NotRequired[int],
+    'game_record': NotRequired[ModelLolesportsGprrecord],
+    'history': NotRequired[list[ModelLolesportsGprpoint]],
+    'match_record': NotRequired[ModelLolesportsGprrecord],
+    'previous_rank': NotRequired[int],
+    'previous_score': NotRequired[int],
+    'rank': NotRequired[int],
+    'rank_change': NotRequired[int],
+    'score': NotRequired[int],
+    'team': NotRequired[ModelLolesportsGprteamRef],
+    'tournaments': NotRequired[list[ModelLolesportsGprtournament]],
+}, total=False)
+
+ModelLolesportsGprteamRef = TypedDict('ModelLolesportsGprteamRef', {
+    'code': NotRequired[str],
+    'id': NotRequired[str],
+    'image_url': NotRequired[str],
+    'league': NotRequired[str],
+    'league_id': NotRequired[str],
+    'league_slug': NotRequired[str],
+    'name': NotRequired[str],
+    'slug': NotRequired[str],
+}, total=False)
+
+ModelLolesportsGprtournament = TypedDict('ModelLolesportsGprtournament', {
+    'end_time': NotRequired[str],
+    'id': NotRequired[str],
+    'league': NotRequired[str],
+    'losses': NotRequired[int],
+    'name': NotRequired[str],
+    'placement': NotRequired[int],
+    'region_slug': NotRequired[str],
+    'slug': NotRequired[str],
+    'start_time': NotRequired[str],
+    'state': NotRequired[str],
+    'wins': NotRequired[int],
+}, total=False)
+
+ModelLolesportsGame = TypedDict('ModelLolesportsGame', {
+    'id': NotRequired[str],
+    'number': NotRequired[int],
+    'sides': NotRequired[list[ModelLolesportsGameSide]],
+    'state': NotRequired[Literal['unneeded', 'unstarted', 'inProgress', 'completed']],
+    'vods': NotRequired[list[ModelLolesportsVod]],
+}, total=False)
+
+ModelLolesportsGameDetailsResponse = TypedDict('ModelLolesportsGameDetailsResponse', {
+    'count': NotRequired[int],
+    'fetched_at': NotRequired[str],
+    'frames': NotRequired[list[ModelLolesportsDetailsFrame]],
+    'game_id': NotRequired[str],
+    'source_url': NotRequired[str],
+}, total=False)
+
+ModelLolesportsGameSide = TypedDict('ModelLolesportsGameSide', {
+    'side': NotRequired[Literal['blue', 'red']],
+    'team_id': NotRequired[str],
+}, total=False)
+
+ModelLolesportsGameVods = TypedDict('ModelLolesportsGameVods', {
+    'id': NotRequired[str],
+    'vods': NotRequired[list[ModelLolesportsVod]],
+}, total=False)
+
+ModelLolesportsGameWindowResponse = TypedDict('ModelLolesportsGameWindowResponse', {
+    'blue': NotRequired[ModelLolesportsTeamMetadata],
+    'count': NotRequired[int],
+    'fetched_at': NotRequired[str],
+    'frames': NotRequired[list[ModelLolesportsWindowFrame]],
+    'game_id': NotRequired[str],
+    'match_id': NotRequired[str],
+    'patch': NotRequired[str],
+    'red': NotRequired[ModelLolesportsTeamMetadata],
+    'source_url': NotRequired[str],
+}, total=False)
+
+ModelLolesportsHomeLeague = TypedDict('ModelLolesportsHomeLeague', {
+    'name': NotRequired[str],
+    'region': NotRequired[str],
+}, total=False)
+
+ModelLolesportsLeague = TypedDict('ModelLolesportsLeague', {
+    'display_status': NotRequired[Literal['force_selected', 'selected', 'not_selected', 'hidden']],
+    'id': NotRequired[str],
+    'image_url': NotRequired[str],
+    'name': NotRequired[str],
+    'priority': NotRequired[int],
+    'region': NotRequired[str],
+    'slug': NotRequired[str],
+}, total=False)
+
+ModelLolesportsLeaguesResponse = TypedDict('ModelLolesportsLeaguesResponse', {
+    'count': NotRequired[int],
+    'fetched_at': NotRequired[str],
+    'leagues': NotRequired[list[ModelLolesportsLeague]],
+    'source_url': NotRequired[str],
+}, total=False)
+
+ModelLolesportsLiveResponse = TypedDict('ModelLolesportsLiveResponse', {
+    'count': NotRequired[int],
+    'events': NotRequired[list[ModelLolesportsEvent]],
+    'fetched_at': NotRequired[str],
+    'source_url': NotRequired[str],
+}, total=False)
+
+ModelLolesportsMatch = TypedDict('ModelLolesportsMatch', {
+    'flags': NotRequired[list[str]],
+    'id': NotRequired[str],
+    'strategy': NotRequired[ModelLolesportsStrategy],
+    'teams': NotRequired[list[ModelLolesportsTeam]],
+}, total=False)
+
+ModelLolesportsNewsArticle = TypedDict('ModelLolesportsNewsArticle', {
+    'authors': NotRequired[list[str]],
+    'description': NotRequired[str],
+    'external': NotRequired[bool],
+    'external_url': NotRequired[str],
+    'id': NotRequired[str],
+    'image_url': NotRequired[str],
+    'path': NotRequired[str],
+    'published_at': NotRequired[str],
+    'title': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelLolesportsNewsResponse = TypedDict('ModelLolesportsNewsResponse', {
+    'articles': NotRequired[list[ModelLolesportsNewsArticle]],
+    'count': NotRequired[int],
+    'fetched_at': NotRequired[str],
+    'hl': NotRequired[str],
+    'source_url': NotRequired[str],
+    'total': NotRequired[int],
+}, total=False)
+
+ModelLolesportsParticipantMetadata = TypedDict('ModelLolesportsParticipantMetadata', {
+    'champion_id': NotRequired[str],
+    'participant_id': NotRequired[int],
+    'player_id': NotRequired[str],
+    'role': NotRequired[Literal['top', 'jungle', 'mid', 'bottom', 'support']],
+    'summoner_name': NotRequired[str],
+}, total=False)
+
+ModelLolesportsPlayer = TypedDict('ModelLolesportsPlayer', {
+    'first_name': NotRequired[str],
+    'id': NotRequired[str],
+    'image_url': NotRequired[str],
+    'last_name': NotRequired[str],
+    'role': NotRequired[Literal['top', 'jungle', 'mid', 'bottom', 'support', 'none']],
+    'summoner_name': NotRequired[str],
+}, total=False)
+
+ModelLolesportsRanking = TypedDict('ModelLolesportsRanking', {
+    'ordinal': NotRequired[int],
+    'teams': NotRequired[list[ModelLolesportsTeam]],
+}, total=False)
+
+ModelLolesportsRecord = TypedDict('ModelLolesportsRecord', {
+    'losses': NotRequired[int],
+    'wins': NotRequired[int],
+}, total=False)
+
+ModelLolesportsScheduleResponse = TypedDict('ModelLolesportsScheduleResponse', {
+    'count': NotRequired[int],
+    'events': NotRequired[list[ModelLolesportsEvent]],
+    'fetched_at': NotRequired[str],
+    'newer_page_token': NotRequired[str],
+    'older_page_token': NotRequired[str],
+    'source_url': NotRequired[str],
+}, total=False)
+
+ModelLolesportsSeason = TypedDict('ModelLolesportsSeason', {
+    'end_time': NotRequired[str],
+    'id': NotRequired[str],
+    'name': NotRequired[str],
+    'slug': NotRequired[str],
+    'split_count': NotRequired[int],
+    'splits': NotRequired[list[ModelLolesportsSplit]],
+    'start_time': NotRequired[str],
+}, total=False)
+
+ModelLolesportsSeasonLeague = TypedDict('ModelLolesportsSeasonLeague', {
+    'id': NotRequired[str],
+    'image_url': NotRequired[str],
+    'name': NotRequired[str],
+}, total=False)
+
+ModelLolesportsSeasonsResponse = TypedDict('ModelLolesportsSeasonsResponse', {
+    'count': NotRequired[int],
+    'fetched_at': NotRequired[str],
+    'league_id': NotRequired[str],
+    'region': NotRequired[str],
+    'season_id': NotRequired[str],
+    'seasons': NotRequired[list[ModelLolesportsSeason]],
+    'source_url': NotRequired[str],
+}, total=False)
+
+ModelLolesportsSplit = TypedDict('ModelLolesportsSplit', {
+    'description': NotRequired[str],
+    'end_time': NotRequired[str],
+    'id': NotRequired[str],
+    'name': NotRequired[str],
+    'region': NotRequired[str],
+    'slug': NotRequired[str],
+    'start_time': NotRequired[str],
+    'tournaments': NotRequired[list[ModelLolesportsSplitTournament]],
+}, total=False)
+
+ModelLolesportsSplitTournament = TypedDict('ModelLolesportsSplitTournament', {
+    'id': NotRequired[str],
+    'league': NotRequired[ModelLolesportsSeasonLeague],
+    'name': NotRequired[str],
+}, total=False)
+
+ModelLolesportsStandingMatch = TypedDict('ModelLolesportsStandingMatch', {
+    'flags': NotRequired[list[str]],
+    'id': NotRequired[str],
+    'previous_match_ids': NotRequired[list[str]],
+    'state': NotRequired[str],
+    'teams': NotRequired[list[ModelLolesportsTeam]],
+}, total=False)
+
+ModelLolesportsStandingSection = TypedDict('ModelLolesportsStandingSection', {
+    'matches': NotRequired[list[ModelLolesportsStandingMatch]],
+    'name': NotRequired[str],
+    'rankings': NotRequired[list[ModelLolesportsRanking]],
+}, total=False)
+
+ModelLolesportsStandingStage = TypedDict('ModelLolesportsStandingStage', {
+    'id': NotRequired[str],
+    'name': NotRequired[str],
+    'sections': NotRequired[list[ModelLolesportsStandingSection]],
+    'slug': NotRequired[str],
+    'type': NotRequired[str],
+}, total=False)
+
+ModelLolesportsStandingsResponse = TypedDict('ModelLolesportsStandingsResponse', {
+    'fetched_at': NotRequired[str],
+    'source_url': NotRequired[str],
+    'stages': NotRequired[list[ModelLolesportsStandingStage]],
+    'tournament_id': NotRequired[str],
+}, total=False)
+
+ModelLolesportsStrategy = TypedDict('ModelLolesportsStrategy', {
+    'count': NotRequired[int],
+    'type': NotRequired[str],
+}, total=False)
+
+ModelLolesportsStream = TypedDict('ModelLolesportsStream', {
+    'locale': NotRequired[str],
+    'parameter': NotRequired[str],
+    'provider': NotRequired[str],
+}, total=False)
+
+ModelLolesportsTeam = TypedDict('ModelLolesportsTeam', {
+    'code': NotRequired[str],
+    'game_wins': NotRequired[int],
+    'id': NotRequired[str],
+    'image_url': NotRequired[str],
+    'name': NotRequired[str],
+    'outcome': NotRequired[Literal['win', 'loss']],
+    'record': NotRequired[ModelLolesportsRecord],
+    'slug': NotRequired[str],
+}, total=False)
+
+ModelLolesportsTeamDetail = TypedDict('ModelLolesportsTeamDetail', {
+    'code': NotRequired[str],
+    'home_league': NotRequired[ModelLolesportsHomeLeague],
+    'id': NotRequired[str],
+    'image_url': NotRequired[str],
+    'name': NotRequired[str],
+    'players': NotRequired[list[ModelLolesportsPlayer]],
+    'slug': NotRequired[str],
+    'status': NotRequired[Literal['active', 'archived']],
+}, total=False)
+
+ModelLolesportsTeamMetadata = TypedDict('ModelLolesportsTeamMetadata', {
+    'participants': NotRequired[list[ModelLolesportsParticipantMetadata]],
+    'team_id': NotRequired[str],
+}, total=False)
+
+ModelLolesportsTeamTotals = TypedDict('ModelLolesportsTeamTotals', {
+    'barons': NotRequired[int],
+    'dragons': NotRequired[list[str]],
+    'inhibitors': NotRequired[int],
+    'participants': NotRequired[list[ModelLolesportsWindowParticipant]],
+    'total_gold': NotRequired[int],
+    'total_kills': NotRequired[int],
+    'towers': NotRequired[int],
+}, total=False)
+
+ModelLolesportsTeamsResponse = TypedDict('ModelLolesportsTeamsResponse', {
+    'fetched_at': NotRequired[str],
+    'has_more': NotRequired[bool],
+    'limit': NotRequired[int],
+    'page': NotRequired[int],
+    'source_url': NotRequired[str],
+    'teams': NotRequired[list[ModelLolesportsTeamDetail]],
+    'total': NotRequired[int],
+}, total=False)
+
+ModelLolesportsTournament = TypedDict('ModelLolesportsTournament', {
+    'end_date': NotRequired[str],
+    'id': NotRequired[str],
+    'slug': NotRequired[str],
+    'start_date': NotRequired[str],
+}, total=False)
+
+ModelLolesportsTournamentsResponse = TypedDict('ModelLolesportsTournamentsResponse', {
+    'count': NotRequired[int],
+    'fetched_at': NotRequired[str],
+    'league_id': NotRequired[str],
+    'source_url': NotRequired[str],
+    'tournaments': NotRequired[list[ModelLolesportsTournament]],
+}, total=False)
+
+ModelLolesportsVod = TypedDict('ModelLolesportsVod', {
+    'end_millis': NotRequired[int],
+    'id': NotRequired[str],
+    'locale': NotRequired[str],
+    'parameter': NotRequired[str],
+    'provider': NotRequired[str],
+    'start_millis': NotRequired[int],
+}, total=False)
+
+ModelLolesportsWindowFrame = TypedDict('ModelLolesportsWindowFrame', {
+    'blue': NotRequired[ModelLolesportsTeamTotals],
+    'game_state': NotRequired[Literal['in_game', 'paused', 'finished']],
+    'red': NotRequired[ModelLolesportsTeamTotals],
+    'timestamp': NotRequired[str],
+}, total=False)
+
+ModelLolesportsWindowParticipant = TypedDict('ModelLolesportsWindowParticipant', {
+    'assists': NotRequired[int],
+    'creep_score': NotRequired[int],
+    'current_health': NotRequired[int],
+    'deaths': NotRequired[int],
+    'kills': NotRequired[int],
+    'level': NotRequired[int],
+    'max_health': NotRequired[int],
+    'participant_id': NotRequired[int],
+    'total_gold': NotRequired[int],
+}, total=False)
+
 ModelLululemonCategoriesResponse = TypedDict('ModelLululemonCategoriesResponse', {
     'categories': NotRequired[list[ModelLululemonCategoryEntry]],
     'count': NotRequired[int],
@@ -44175,6 +45881,551 @@ ModelOldnavyStoresResponseDoc = TypedDict('ModelOldnavyStoresResponseDoc', {
     'code': NotRequired[int],
     'data': NotRequired[ModelOldnavyStoreResponse],
     'msg': NotRequired[str],
+}, total=False)
+
+ModelOpendotaAbilitiesResponse = TypedDict('ModelOpendotaAbilitiesResponse', {
+    'abilities': NotRequired[list[ModelOpendotaAbilitySummary]],
+    'count': NotRequired[int],
+    'fetched_at': NotRequired[str],
+    'source_url': NotRequired[str],
+    'total': NotRequired[int],
+}, total=False)
+
+ModelOpendotaAbilitySummary = TypedDict('ModelOpendotaAbilitySummary', {
+    'behavior': NotRequired[list[str]],
+    'bkb_pierce': NotRequired[str],
+    'cooldown': NotRequired[str],
+    'damage_type': NotRequired[str],
+    'description': NotRequired[str],
+    'dispellable': NotRequired[str],
+    'innate': NotRequired[bool],
+    'key': NotRequired[str],
+    'mana_cost': NotRequired[str],
+    'name': NotRequired[str],
+    'target_team': NotRequired[str],
+    'target_type': NotRequired[str],
+}, total=False)
+
+ModelOpendotaBenchmark = TypedDict('ModelOpendotaBenchmark', {
+    'metric': NotRequired[str],
+    'points': NotRequired[list[ModelOpendotaBenchmarkPoint]],
+}, total=False)
+
+ModelOpendotaBenchmarkPoint = TypedDict('ModelOpendotaBenchmarkPoint', {
+    'percentile': NotRequired[float],
+    'value': NotRequired[float],
+}, total=False)
+
+ModelOpendotaBenchmarksResponse = TypedDict('ModelOpendotaBenchmarksResponse', {
+    'benchmarks': NotRequired[list[ModelOpendotaBenchmark]],
+    'count': NotRequired[int],
+    'fetched_at': NotRequired[str],
+    'hero_id': NotRequired[int],
+    'hero_name': NotRequired[str],
+    'source_url': NotRequired[str],
+}, total=False)
+
+ModelOpendotaConstantEntry = TypedDict('ModelOpendotaConstantEntry', {
+    'balanced': NotRequired[bool],
+    'date': NotRequired[str],
+    'id': NotRequired[str],
+    'name': NotRequired[str],
+    'value': NotRequired[int],
+}, total=False)
+
+ModelOpendotaConstantsResponse = TypedDict('ModelOpendotaConstantsResponse', {
+    'count': NotRequired[int],
+    'entries': NotRequired[list[ModelOpendotaConstantEntry]],
+    'fetched_at': NotRequired[str],
+    'resource': NotRequired[str],
+    'source_url': NotRequired[str],
+}, total=False)
+
+ModelOpendotaDistributionsResponse = TypedDict('ModelOpendotaDistributionsResponse', {
+    'count': NotRequired[int],
+    'fetched_at': NotRequired[str],
+    'ranks': NotRequired[list[ModelOpendotaRankTierRow]],
+    'source_url': NotRequired[str],
+    'total_players': NotRequired[int],
+}, total=False)
+
+ModelOpendotaDurationBin = TypedDict('ModelOpendotaDurationBin', {
+    'games': NotRequired[int],
+    'start_minute': NotRequired[int],
+    'win_rate_percent': NotRequired[float],
+    'wins': NotRequired[int],
+}, total=False)
+
+ModelOpendotaHero = TypedDict('ModelOpendotaHero', {
+    'attack_type': NotRequired[Literal['Melee', 'Ranged']],
+    'id': NotRequired[int],
+    'localized_name': NotRequired[str],
+    'name': NotRequired[str],
+    'primary_attr': NotRequired[Literal['agi', 'all', 'int', 'str']],
+}, total=False)
+
+ModelOpendotaHeroDurationsResponse = TypedDict('ModelOpendotaHeroDurationsResponse', {
+    'bins': NotRequired[list[ModelOpendotaDurationBin]],
+    'count': NotRequired[int],
+    'fetched_at': NotRequired[str],
+    'hero_id': NotRequired[int],
+    'source_url': NotRequired[str],
+}, total=False)
+
+ModelOpendotaHeroItemsResponse = TypedDict('ModelOpendotaHeroItemsResponse', {
+    'fetched_at': NotRequired[str],
+    'hero_id': NotRequired[int],
+    'phases': NotRequired[list[ModelOpendotaItemPhase]],
+    'source_url': NotRequired[str],
+}, total=False)
+
+ModelOpendotaHeroMatchupsResponse = TypedDict('ModelOpendotaHeroMatchupsResponse', {
+    'count': NotRequired[int],
+    'fetched_at': NotRequired[str],
+    'hero_id': NotRequired[int],
+    'matchups': NotRequired[list[ModelOpendotaHeroRecord]],
+    'source_url': NotRequired[str],
+}, total=False)
+
+ModelOpendotaHeroRecord = TypedDict('ModelOpendotaHeroRecord', {
+    'games': NotRequired[int],
+    'hero_id': NotRequired[int],
+    'localized_name': NotRequired[str],
+    'win_rate_percent': NotRequired[float],
+    'wins': NotRequired[int],
+}, total=False)
+
+ModelOpendotaHeroStat = TypedDict('ModelOpendotaHeroStat', {
+    'attack_range': NotRequired[int],
+    'attack_type': NotRequired[Literal['Melee', 'Ranged']],
+    'base_armor': NotRequired[float],
+    'base_attack_max': NotRequired[int],
+    'base_attack_min': NotRequired[int],
+    'base_health': NotRequired[int],
+    'base_mana': NotRequired[int],
+    'id': NotRequired[int],
+    'localized_name': NotRequired[str],
+    'move_speed': NotRequired[int],
+    'name': NotRequired[str],
+    'primary_attr': NotRequired[Literal['agi', 'all', 'int', 'str']],
+    'pro': NotRequired[ModelOpendotaPickWin],
+    'public': NotRequired[ModelOpendotaPickWin],
+    'rank_brackets': NotRequired[list[ModelOpendotaRankBracket]],
+    'roles': NotRequired[list[str]],
+    'turbo': NotRequired[ModelOpendotaPickWin],
+}, total=False)
+
+ModelOpendotaHeroStatsResponse = TypedDict('ModelOpendotaHeroStatsResponse', {
+    'count': NotRequired[int],
+    'fetched_at': NotRequired[str],
+    'heroes': NotRequired[list[ModelOpendotaHeroStat]],
+    'source_url': NotRequired[str],
+}, total=False)
+
+ModelOpendotaHeroesResponse = TypedDict('ModelOpendotaHeroesResponse', {
+    'count': NotRequired[int],
+    'fetched_at': NotRequired[str],
+    'heroes': NotRequired[list[ModelOpendotaHero]],
+    'source_url': NotRequired[str],
+}, total=False)
+
+ModelOpendotaItemAbility = TypedDict('ModelOpendotaItemAbility', {
+    'description': NotRequired[str],
+    'title': NotRequired[str],
+    'type': NotRequired[str],
+}, total=False)
+
+ModelOpendotaItemAttribute = TypedDict('ModelOpendotaItemAttribute', {
+    'key': NotRequired[str],
+    'value': NotRequired[str],
+}, total=False)
+
+ModelOpendotaItemCount = TypedDict('ModelOpendotaItemCount', {
+    'count': NotRequired[int],
+    'item_id': NotRequired[int],
+    'name': NotRequired[str],
+}, total=False)
+
+ModelOpendotaItemPhase = TypedDict('ModelOpendotaItemPhase', {
+    'items': NotRequired[list[ModelOpendotaItemCount]],
+    'phase': NotRequired[Literal['start_game', 'early_game', 'mid_game', 'late_game']],
+}, total=False)
+
+ModelOpendotaItemSummary = TypedDict('ModelOpendotaItemSummary', {
+    'abilities': NotRequired[list[ModelOpendotaItemAbility]],
+    'attributes': NotRequired[list[ModelOpendotaItemAttribute]],
+    'behavior': NotRequired[str],
+    'components': NotRequired[list[str]],
+    'cooldown': NotRequired[str],
+    'cost_gold': NotRequired[int],
+    'id': NotRequired[int],
+    'key': NotRequired[str],
+    'mana_cost': NotRequired[str],
+    'name': NotRequired[str],
+    'quality': NotRequired[str],
+}, total=False)
+
+ModelOpendotaItemsResponse = TypedDict('ModelOpendotaItemsResponse', {
+    'count': NotRequired[int],
+    'fetched_at': NotRequired[str],
+    'items': NotRequired[list[ModelOpendotaItemSummary]],
+    'qualities': NotRequired[list[str]],
+    'source_url': NotRequired[str],
+    'total': NotRequired[int],
+}, total=False)
+
+ModelOpendotaLeague = TypedDict('ModelOpendotaLeague', {
+    'banner': NotRequired[str],
+    'id': NotRequired[int],
+    'name': NotRequired[str],
+    'ticket': NotRequired[str],
+    'tier': NotRequired[str],
+}, total=False)
+
+ModelOpendotaLeagueDetailResponse = TypedDict('ModelOpendotaLeagueDetailResponse', {
+    'fetched_at': NotRequired[str],
+    'league': NotRequired[ModelOpendotaLeague],
+    'source_url': NotRequired[str],
+    'teams': NotRequired[list[ModelOpendotaTeam]],
+}, total=False)
+
+ModelOpendotaLeagueMatch = TypedDict('ModelOpendotaLeagueMatch', {
+    'dire_name': NotRequired[str],
+    'dire_score': NotRequired[int],
+    'dire_team_id': NotRequired[int],
+    'duration_seconds': NotRequired[int],
+    'league_id': NotRequired[int],
+    'match_id': NotRequired[int],
+    'radiant_name': NotRequired[str],
+    'radiant_score': NotRequired[int],
+    'radiant_team_id': NotRequired[int],
+    'radiant_win': NotRequired[bool],
+    'series_id': NotRequired[int],
+    'series_type': NotRequired[int],
+    'start_time': NotRequired[str],
+}, total=False)
+
+ModelOpendotaLeagueMatchIdsResponse = TypedDict('ModelOpendotaLeagueMatchIdsResponse', {
+    'count': NotRequired[int],
+    'fetched_at': NotRequired[str],
+    'league_id': NotRequired[int],
+    'match_ids': NotRequired[list[int]],
+    'source_url': NotRequired[str],
+}, total=False)
+
+ModelOpendotaLeagueMatchesResponse = TypedDict('ModelOpendotaLeagueMatchesResponse', {
+    'count': NotRequired[int],
+    'fetched_at': NotRequired[str],
+    'league_id': NotRequired[int],
+    'matches': NotRequired[list[ModelOpendotaLeagueMatch]],
+    'source_url': NotRequired[str],
+    'team_id': NotRequired[int],
+}, total=False)
+
+ModelOpendotaLeaguesResponse = TypedDict('ModelOpendotaLeaguesResponse', {
+    'count': NotRequired[int],
+    'fetched_at': NotRequired[str],
+    'leagues': NotRequired[list[ModelOpendotaLeague]],
+    'source_url': NotRequired[str],
+    'tier_filter': NotRequired[str],
+}, total=False)
+
+ModelOpendotaLiveMatch = TypedDict('ModelOpendotaLiveMatch', {
+    'delay_seconds': NotRequired[int],
+    'dire_name': NotRequired[str],
+    'dire_score': NotRequired[int],
+    'game_time_seconds': NotRequired[int],
+    'last_update_time': NotRequired[int],
+    'league_id': NotRequired[int],
+    'match_id': NotRequired[int],
+    'players': NotRequired[list[ModelOpendotaLivePlayer]],
+    'radiant_lead': NotRequired[int],
+    'radiant_name': NotRequired[str],
+    'radiant_score': NotRequired[int],
+    'spectators': NotRequired[int],
+}, total=False)
+
+ModelOpendotaLiveMatchesResponse = TypedDict('ModelOpendotaLiveMatchesResponse', {
+    'count': NotRequired[int],
+    'fetched_at': NotRequired[str],
+    'matches': NotRequired[list[ModelOpendotaLiveMatch]],
+    'source_url': NotRequired[str],
+}, total=False)
+
+ModelOpendotaLivePlayer = TypedDict('ModelOpendotaLivePlayer', {
+    'hero_id': NotRequired[int],
+    'name': NotRequired[str],
+    'team_code': NotRequired[Literal['0', '1']],
+    'team_slot': NotRequired[Literal['1', '2', '3', '4', '5']],
+}, total=False)
+
+ModelOpendotaMatchDetail = TypedDict('ModelOpendotaMatchDetail', {
+    'dire': NotRequired[ModelOpendotaMatchTeam],
+    'dire_score': NotRequired[int],
+    'duration_seconds': NotRequired[int],
+    'fetched_at': NotRequired[str],
+    'league_id': NotRequired[int],
+    'league_name': NotRequired[str],
+    'match_id': NotRequired[int],
+    'patch': NotRequired[int],
+    'players': NotRequired[list[ModelOpendotaMatchPlayer]],
+    'radiant': NotRequired[ModelOpendotaMatchTeam],
+    'radiant_score': NotRequired[int],
+    'radiant_win': NotRequired[bool],
+    'source_url': NotRequired[str],
+    'start_time': NotRequired[str],
+}, total=False)
+
+ModelOpendotaMatchPlayer = TypedDict('ModelOpendotaMatchPlayer', {
+    'assists': NotRequired[int],
+    'deaths': NotRequired[int],
+    'denies': NotRequired[int],
+    'gold_per_min': NotRequired[int],
+    'hero_damage': NotRequired[int],
+    'hero_id': NotRequired[int],
+    'is_radiant': NotRequired[bool],
+    'kills': NotRequired[int],
+    'last_hits': NotRequired[int],
+    'level': NotRequired[int],
+    'name': NotRequired[str],
+    'net_worth': NotRequired[int],
+    'tower_damage': NotRequired[int],
+    'xp_per_min': NotRequired[int],
+}, total=False)
+
+ModelOpendotaMatchTeam = TypedDict('ModelOpendotaMatchTeam', {
+    'id': NotRequired[int],
+    'logo_url': NotRequired[str],
+    'name': NotRequired[str],
+    'tag': NotRequired[str],
+}, total=False)
+
+ModelOpendotaPatchAbilityChange = TypedDict('ModelOpendotaPatchAbilityChange', {
+    'key': NotRequired[str],
+    'notes': NotRequired[list[str]],
+}, total=False)
+
+ModelOpendotaPatchHeroChange = TypedDict('ModelOpendotaPatchHeroChange', {
+    'abilities': NotRequired[list[ModelOpendotaPatchAbilityChange]],
+    'general': NotRequired[list[str]],
+    'hero_id': NotRequired[int],
+    'key': NotRequired[str],
+    'name': NotRequired[str],
+    'talents': NotRequired[list[str]],
+}, total=False)
+
+ModelOpendotaPatchIndexEntry = TypedDict('ModelOpendotaPatchIndexEntry', {
+    'heroes_changed': NotRequired[int],
+    'items_changed': NotRequired[int],
+    'patch': NotRequired[str],
+    'version': NotRequired[str],
+}, total=False)
+
+ModelOpendotaPatchItemChange = TypedDict('ModelOpendotaPatchItemChange', {
+    'key': NotRequired[str],
+    'notes': NotRequired[list[str]],
+}, total=False)
+
+ModelOpendotaPatchNotesResponse = TypedDict('ModelOpendotaPatchNotesResponse', {
+    'count': NotRequired[int],
+    'fetched_at': NotRequired[str],
+    'general': NotRequired[list[str]],
+    'heroes': NotRequired[list[ModelOpendotaPatchHeroChange]],
+    'items': NotRequired[list[ModelOpendotaPatchItemChange]],
+    'misc': NotRequired[list[str]],
+    'patch': NotRequired[str],
+    'patches': NotRequired[list[ModelOpendotaPatchIndexEntry]],
+    'source_url': NotRequired[str],
+    'version': NotRequired[str],
+}, total=False)
+
+ModelOpendotaPickWin = TypedDict('ModelOpendotaPickWin', {
+    'bans': NotRequired[int],
+    'picks': NotRequired[int],
+    'win_rate_percent': NotRequired[float],
+    'wins': NotRequired[int],
+}, total=False)
+
+ModelOpendotaProMatch = TypedDict('ModelOpendotaProMatch', {
+    'dire_name': NotRequired[str],
+    'dire_score': NotRequired[int],
+    'dire_team_id': NotRequired[int],
+    'duration_seconds': NotRequired[int],
+    'league_id': NotRequired[int],
+    'league_name': NotRequired[str],
+    'match_id': NotRequired[int],
+    'radiant_name': NotRequired[str],
+    'radiant_score': NotRequired[int],
+    'radiant_team_id': NotRequired[int],
+    'radiant_win': NotRequired[bool],
+    'series_id': NotRequired[int],
+    'start_time': NotRequired[str],
+    'version': NotRequired[int],
+}, total=False)
+
+ModelOpendotaProMatchesResponse = TypedDict('ModelOpendotaProMatchesResponse', {
+    'count': NotRequired[int],
+    'fetched_at': NotRequired[str],
+    'matches': NotRequired[list[ModelOpendotaProMatch]],
+    'next_less_than_match_id': NotRequired[int],
+    'source_url': NotRequired[str],
+}, total=False)
+
+ModelOpendotaProPlayer = TypedDict('ModelOpendotaProPlayer', {
+    'country_code': NotRequired[str],
+    'is_pro': NotRequired[bool],
+    'name': NotRequired[str],
+    'persona_name': NotRequired[str],
+    'team_id': NotRequired[int],
+    'team_name': NotRequired[str],
+    'team_tag': NotRequired[str],
+}, total=False)
+
+ModelOpendotaProPlayersResponse = TypedDict('ModelOpendotaProPlayersResponse', {
+    'count': NotRequired[int],
+    'fetched_at': NotRequired[str],
+    'limit': NotRequired[int],
+    'next_offset': NotRequired[int],
+    'offset': NotRequired[int],
+    'players': NotRequired[list[ModelOpendotaProPlayer]],
+    'q': NotRequired[str],
+    'source_url': NotRequired[str],
+    'team_id': NotRequired[int],
+    'total_count': NotRequired[int],
+}, total=False)
+
+ModelOpendotaRankBracket = TypedDict('ModelOpendotaRankBracket', {
+    'bracket': NotRequired[Literal['1', '2', '3', '4', '5', '6', '7', '8']],
+    'name': NotRequired[Literal['Herald', 'Guardian', 'Crusader', 'Archon', 'Legend', 'Ancient', 'Divine', 'Immortal']],
+    'picks': NotRequired[int],
+    'win_rate_percent': NotRequired[float],
+    'wins': NotRequired[int],
+}, total=False)
+
+ModelOpendotaRankTierRow = TypedDict('ModelOpendotaRankTierRow', {
+    'cumulative_percent': NotRequired[float],
+    'cumulative_players': NotRequired[int],
+    'medal': NotRequired[str],
+    'players': NotRequired[int],
+    'rank_tier': NotRequired[int],
+    'share_percent': NotRequired[float],
+    'stars': NotRequired[int],
+}, total=False)
+
+ModelOpendotaRecordRow = TypedDict('ModelOpendotaRecordRow', {
+    'hero_id': NotRequired[int],
+    'hero_name': NotRequired[str],
+    'match_id': NotRequired[int],
+    'rank': NotRequired[int],
+    'score': NotRequired[int],
+    'start_time': NotRequired[str],
+}, total=False)
+
+ModelOpendotaRecordsResponse = TypedDict('ModelOpendotaRecordsResponse', {
+    'count': NotRequired[int],
+    'fetched_at': NotRequired[str],
+    'field': NotRequired[str],
+    'rows': NotRequired[list[ModelOpendotaRecordRow]],
+    'source_url': NotRequired[str],
+}, total=False)
+
+ModelOpendotaScenarioRow = TypedDict('ModelOpendotaScenarioRow', {
+    'games': NotRequired[int],
+    'hero_id': NotRequired[int],
+    'hero_name': NotRequired[str],
+    'is_radiant': NotRequired[bool],
+    'item': NotRequired[str],
+    'lane_role': NotRequired[int],
+    'region_id': NotRequired[int],
+    'scenario': NotRequired[str],
+    'time_seconds': NotRequired[int],
+    'win_rate_percent': NotRequired[float],
+    'wins': NotRequired[int],
+}, total=False)
+
+ModelOpendotaScenariosResponse = TypedDict('ModelOpendotaScenariosResponse', {
+    'count': NotRequired[int],
+    'fetched_at': NotRequired[str],
+    'kind': NotRequired[Literal['item-timings', 'lane-roles', 'misc']],
+    'rows': NotRequired[list[ModelOpendotaScenarioRow]],
+    'source_url': NotRequired[str],
+    'timings': NotRequired[list[int]],
+    'total': NotRequired[int],
+}, total=False)
+
+ModelOpendotaTeam = TypedDict('ModelOpendotaTeam', {
+    'delta': NotRequired[float],
+    'id': NotRequired[int],
+    'last_match_id': NotRequired[int],
+    'last_match_time': NotRequired[str],
+    'logo_url': NotRequired[str],
+    'losses': NotRequired[int],
+    'name': NotRequired[str],
+    'rating': NotRequired[float],
+    'tag': NotRequired[str],
+    'wins': NotRequired[int],
+}, total=False)
+
+ModelOpendotaTeamHeroesResponse = TypedDict('ModelOpendotaTeamHeroesResponse', {
+    'count': NotRequired[int],
+    'fetched_at': NotRequired[str],
+    'heroes': NotRequired[list[ModelOpendotaHeroRecord]],
+    'source_url': NotRequired[str],
+    'team_id': NotRequired[int],
+}, total=False)
+
+ModelOpendotaTeamMatch = TypedDict('ModelOpendotaTeamMatch', {
+    'dire_score': NotRequired[int],
+    'duration_seconds': NotRequired[int],
+    'league_id': NotRequired[int],
+    'league_name': NotRequired[str],
+    'match_id': NotRequired[int],
+    'opposing_team_id': NotRequired[int],
+    'opposing_team_logo_url': NotRequired[str],
+    'opposing_team_name': NotRequired[str],
+    'radiant': NotRequired[bool],
+    'radiant_score': NotRequired[int],
+    'radiant_win': NotRequired[bool],
+    'start_time': NotRequired[str],
+    'team_win': NotRequired[bool],
+}, total=False)
+
+ModelOpendotaTeamMatchesResponse = TypedDict('ModelOpendotaTeamMatchesResponse', {
+    'count': NotRequired[int],
+    'fetched_at': NotRequired[str],
+    'matches': NotRequired[list[ModelOpendotaTeamMatch]],
+    'source_url': NotRequired[str],
+    'team_id': NotRequired[int],
+}, total=False)
+
+ModelOpendotaTeamPlayer = TypedDict('ModelOpendotaTeamPlayer', {
+    'games_played': NotRequired[int],
+    'is_current_team_member': NotRequired[bool],
+    'name': NotRequired[str],
+    'wins': NotRequired[int],
+}, total=False)
+
+ModelOpendotaTeamPlayersResponse = TypedDict('ModelOpendotaTeamPlayersResponse', {
+    'count': NotRequired[int],
+    'fetched_at': NotRequired[str],
+    'players': NotRequired[list[ModelOpendotaTeamPlayer]],
+    'source_url': NotRequired[str],
+    'team_id': NotRequired[int],
+}, total=False)
+
+ModelOpendotaTeamResponse = TypedDict('ModelOpendotaTeamResponse', {
+    'fetched_at': NotRequired[str],
+    'source_url': NotRequired[str],
+    'team': NotRequired[ModelOpendotaTeam],
+}, total=False)
+
+ModelOpendotaTeamsResponse = TypedDict('ModelOpendotaTeamsResponse', {
+    'count': NotRequired[int],
+    'fetched_at': NotRequired[str],
+    'next_page': NotRequired[int],
+    'page': NotRequired[int],
+    'source_url': NotRequired[str],
+    'teams': NotRequired[list[ModelOpendotaTeam]],
 }, total=False)
 
 ModelOpenseaAccount = TypedDict('ModelOpenseaAccount', {
@@ -52926,6 +55177,126 @@ ModelRedfinSimilarResponse = TypedDict('ModelRedfinSimilarResponse', {
     'results': NotRequired[list[ModelRedfinPropertyItem]],
 }, total=False)
 
+ModelRednoteChannel = TypedDict('ModelRednoteChannel', {
+    'id': NotRequired[str],
+    'name': NotRequired[str],
+}, total=False)
+
+ModelRednoteComment = TypedDict('ModelRednoteComment', {
+    'author': NotRequired[ModelRednoteCommentAuthor],
+    'comment_id': NotRequired[str],
+    'content': NotRequired[str],
+    'created_at': NotRequired[int],
+    'ip_location': NotRequired[str],
+    'like_count': NotRequired[int],
+    'sub_comment_count': NotRequired[int],
+    'sub_comments': NotRequired[list[ModelRednoteComment]],
+}, total=False)
+
+ModelRednoteCommentAuthor = TypedDict('ModelRednoteCommentAuthor', {
+    'avatar_url': NotRequired[str],
+    'nickname': NotRequired[str],
+    'user_id': NotRequired[str],
+}, total=False)
+
+ModelRednoteCommentsResponse = TypedDict('ModelRednoteCommentsResponse', {
+    'count': NotRequired[int],
+    'cursor': NotRequired[str],
+    'has_more': NotRequired[bool],
+    'items': NotRequired[list[ModelRednoteComment]],
+    'note_id': NotRequired[str],
+}, total=False)
+
+ModelRednoteExploreCard = TypedDict('ModelRednoteExploreCard', {
+    'author': NotRequired[ModelRednoteNoteAuthor],
+    'cover_url': NotRequired[str],
+    'liked_count': NotRequired[int],
+    'note_id': NotRequired[str],
+    'note_url': NotRequired[str],
+    'title': NotRequired[str],
+    'type': NotRequired[str],
+    'xsec_token': NotRequired[str],
+}, total=False)
+
+ModelRednoteExploreResponse = TypedDict('ModelRednoteExploreResponse', {
+    'channel_id': NotRequired[str],
+    'channels': NotRequired[list[ModelRednoteChannel]],
+    'count': NotRequired[int],
+    'items': NotRequired[list[ModelRednoteExploreCard]],
+}, total=False)
+
+ModelRednoteNoteAuthor = TypedDict('ModelRednoteNoteAuthor', {
+    'avatar_url': NotRequired[str],
+    'nickname': NotRequired[str],
+    'user_id': NotRequired[str],
+}, total=False)
+
+ModelRednoteNoteResponse = TypedDict('ModelRednoteNoteResponse', {
+    'author': NotRequired[ModelRednoteNoteAuthor],
+    'description': NotRequired[str],
+    'image_urls': NotRequired[list[str]],
+    'note_id': NotRequired[str],
+    'published_at': NotRequired[str],
+    'stats': NotRequired[ModelRednoteNoteStats],
+    'tags': NotRequired[list[ModelRednoteNoteTag]],
+    'title': NotRequired[str],
+    'type': NotRequired[str],
+    'url': NotRequired[str],
+    'video_duration_seconds': NotRequired[float],
+    'video_url': NotRequired[str],
+}, total=False)
+
+ModelRednoteNoteStats = TypedDict('ModelRednoteNoteStats', {
+    'collected_count': NotRequired[int],
+    'comment_count': NotRequired[int],
+    'liked_count': NotRequired[int],
+    'share_count': NotRequired[int],
+}, total=False)
+
+ModelRednoteNoteTag = TypedDict('ModelRednoteNoteTag', {
+    'id': NotRequired[str],
+    'name': NotRequired[str],
+}, total=False)
+
+ModelRednoteSuggestItem = TypedDict('ModelRednoteSuggestItem', {
+    'highlight_flags': NotRequired[list[bool]],
+    'search_type': NotRequired[str],
+    'text': NotRequired[str],
+    'type': NotRequired[str],
+}, total=False)
+
+ModelRednoteSuggestResponse = TypedDict('ModelRednoteSuggestResponse', {
+    'count': NotRequired[int],
+    'items': NotRequired[list[ModelRednoteSuggestItem]],
+    'keyword': NotRequired[str],
+    'search_cpl_id': NotRequired[str],
+    'word_request_id': NotRequired[str],
+}, total=False)
+
+ModelRednoteCommentsResponseDoc = TypedDict('ModelRednoteCommentsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelRednoteCommentsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelRednoteExploreResponseDoc = TypedDict('ModelRednoteExploreResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelRednoteExploreResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelRednoteNoteResponseDoc = TypedDict('ModelRednoteNoteResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelRednoteNoteResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelRednoteSuggestResponseDoc = TypedDict('ModelRednoteSuggestResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelRednoteSuggestResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
 ModelReelshortActor = TypedDict('ModelReelshortActor', {
     'imdb_url': NotRequired[str],
     'name': NotRequired[str],
@@ -58439,6 +60810,401 @@ ModelShopappSuggestionsResponseDoc = TypedDict('ModelShopappSuggestionsResponseD
 ModelShopappVariantsResponseDoc = TypedDict('ModelShopappVariantsResponseDoc', {
     'code': NotRequired[int],
     'data': NotRequired[ModelShopappVariantsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelShopeeBanner = TypedDict('ModelShopeeBanner', {
+    'banner_id': NotRequired[int],
+    'campaign_unit_id': NotRequired[int],
+    'end_time': NotRequired[int],
+    'image': NotRequired[str],
+    'slot_id': NotRequired[int],
+    'start_time': NotRequired[int],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelShopeeBannersResponse = TypedDict('ModelShopeeBannersResponse', {
+    'banners': NotRequired[list[ModelShopeeBanner]],
+    'ratio': NotRequired[float],
+    'region': NotRequired[str],
+    'slot': NotRequired[str],
+    'space_key': NotRequired[str],
+}, total=False)
+
+ModelShopeeCategoriesResponse = TypedDict('ModelShopeeCategoriesResponse', {
+    'categories': NotRequired[list[ModelShopeeCategoryNode]],
+    'region': NotRequired[str],
+    'total_roots': NotRequired[int],
+}, total=False)
+
+ModelShopeeCategoryDetail = TypedDict('ModelShopeeCategoryDetail', {
+    'category_id': NotRequired[int],
+    'display_names': NotRequired[list[ModelShopeeLocalizedName]],
+    'image': NotRequired[str],
+    'level': NotRequired[int],
+    'name': NotRequired[str],
+    'parent_category_ids': NotRequired[list[int]],
+}, total=False)
+
+ModelShopeeCategoryDetailResponse = TypedDict('ModelShopeeCategoryDetailResponse', {
+    'categories': NotRequired[list[ModelShopeeCategoryDetail]],
+    'catids': NotRequired[list[int]],
+    'region': NotRequired[str],
+}, total=False)
+
+ModelShopeeCategoryNode = TypedDict('ModelShopeeCategoryNode', {
+    'category_id': NotRequired[int],
+    'children': NotRequired[list[ModelShopeeCategoryNode]],
+    'display_name': NotRequired[str],
+    'image': NotRequired[str],
+    'level': NotRequired[int],
+    'name': NotRequired[str],
+    'parent_category_id': NotRequired[int],
+}, total=False)
+
+ModelShopeeFlashSaleItem = TypedDict('ModelShopeeFlashSaleItem', {
+    'category_ids': NotRequired[list[int]],
+    'discount': NotRequired[str],
+    'end_time': NotRequired[int],
+    'flash_sale_stock': NotRequired[int],
+    'historical_sold': NotRequired[int],
+    'image': NotRequired[str],
+    'item_id': NotRequired[int],
+    'name': NotRequired[str],
+    'official_shop': NotRequired[bool],
+    'price': NotRequired[float],
+    'price_before_discount': NotRequired[float],
+    'promo_name': NotRequired[str],
+    'rating': NotRequired[float],
+    'rating_count': NotRequired[int],
+    'shop_id': NotRequired[int],
+    'shopee_choice': NotRequired[bool],
+    'start_time': NotRequired[int],
+    'stock': NotRequired[int],
+    'tags': NotRequired[list[str]],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelShopeeFlashSaleResponse = TypedDict('ModelShopeeFlashSaleResponse', {
+    'items': NotRequired[list[ModelShopeeFlashSaleItem]],
+    'limit': NotRequired[int],
+    'offset': NotRequired[int],
+    'region': NotRequired[str],
+    'session': NotRequired[ModelShopeeFlashSaleSession],
+}, total=False)
+
+ModelShopeeFlashSaleSession = TypedDict('ModelShopeeFlashSaleSession', {
+    'end_time': NotRequired[int],
+    'promotion_id': NotRequired[int],
+    'start_time': NotRequired[int],
+    'status': NotRequired[int],
+}, total=False)
+
+ModelShopeeFooterBlock = TypedDict('ModelShopeeFooterBlock', {
+    'sections': NotRequired[list[ModelShopeeFooterSection]],
+}, total=False)
+
+ModelShopeeFooterLink = TypedDict('ModelShopeeFooterLink', {
+    'text': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelShopeeFooterMedia = TypedDict('ModelShopeeFooterMedia', {
+    'image': NotRequired[str],
+    'text': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelShopeeFooterQr = TypedDict('ModelShopeeFooterQr', {
+    'extra_images': NotRequired[list[ModelShopeeFooterMedia]],
+    'image': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelShopeeFooterResponse = TypedDict('ModelShopeeFooterResponse', {
+    'blocks': NotRequired[list[ModelShopeeFooterBlock]],
+    'layout_id': NotRequired[int],
+    'layout_name': NotRequired[str],
+    'mobile_blocks': NotRequired[list[ModelShopeeFooterBlock]],
+    'region': NotRequired[str],
+}, total=False)
+
+ModelShopeeFooterSection = TypedDict('ModelShopeeFooterSection', {
+    'images': NotRequired[list[ModelShopeeFooterMedia]],
+    'links': NotRequired[list[ModelShopeeFooterLink]],
+    'qr': NotRequired[ModelShopeeFooterQr],
+    'simple': NotRequired[ModelShopeeFooterSimple],
+    'social_media': NotRequired[list[ModelShopeeFooterMedia]],
+    'title': NotRequired[str],
+    'type': NotRequired[int],
+}, total=False)
+
+ModelShopeeFooterSimple = TypedDict('ModelShopeeFooterSimple', {
+    'image': NotRequired[str],
+    'text': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelShopeeHomeBanner = TypedDict('ModelShopeeHomeBanner', {
+    'image': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelShopeeHomeCampaign = TypedDict('ModelShopeeHomeCampaign', {
+    'image': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelShopeeHomeCategoriesResponse = TypedDict('ModelShopeeHomeCategoriesResponse', {
+    'categories': NotRequired[list[ModelShopeeHomeCategory]],
+    'region': NotRequired[str],
+    'total': NotRequired[int],
+}, total=False)
+
+ModelShopeeHomeCategory = TypedDict('ModelShopeeHomeCategory', {
+    'category_id': NotRequired[int],
+    'display_name': NotRequired[str],
+    'image': NotRequired[str],
+    'level': NotRequired[int],
+    'name': NotRequired[str],
+    'parent_category_id': NotRequired[int],
+}, total=False)
+
+ModelShopeeHomeLiveSession = TypedDict('ModelShopeeHomeLiveSession', {
+    'cover': NotRequired[str],
+    'session_id': NotRequired[int],
+    'shop_id': NotRequired[int],
+    'title': NotRequired[str],
+    'view_count': NotRequired[int],
+}, total=False)
+
+ModelShopeeHomeResponse = TypedDict('ModelShopeeHomeResponse', {
+    'banners': NotRequired[list[ModelShopeeHomeBanner]],
+    'campaigns': NotRequired[list[ModelShopeeHomeCampaign]],
+    'components': NotRequired[list[str]],
+    'flash_sale': NotRequired[list[ModelShopeeFlashSaleItem]],
+    'live_sessions': NotRequired[list[ModelShopeeHomeLiveSession]],
+    'prefills': NotRequired[list[str]],
+    'region': NotRequired[str],
+    'squares': NotRequired[list[ModelShopeeHomeSquare]],
+}, total=False)
+
+ModelShopeeHomeSquare = TypedDict('ModelShopeeHomeSquare', {
+    'image': NotRequired[str],
+    'title': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelShopeeLocalizedName = TypedDict('ModelShopeeLocalizedName', {
+    'is_default': NotRequired[bool],
+    'lang': NotRequired[str],
+    'value': NotRequired[str],
+}, total=False)
+
+ModelShopeeLocationFiltersResponse = TypedDict('ModelShopeeLocationFiltersResponse', {
+    'groups': NotRequired[list[ModelShopeeLocationGroup]],
+    'region': NotRequired[str],
+}, total=False)
+
+ModelShopeeLocationGroup = TypedDict('ModelShopeeLocationGroup', {
+    'group': NotRequired[str],
+    'group_name': NotRequired[str],
+    'location_tag_ids': NotRequired[list[str]],
+    'locations': NotRequired[list[str]],
+    'translated_group': NotRequired[str],
+    'translated_locations': NotRequired[list[str]],
+}, total=False)
+
+ModelShopeeMallCategoriesResponse = TypedDict('ModelShopeeMallCategoriesResponse', {
+    'categories': NotRequired[list[ModelShopeeMallCategory]],
+    'region': NotRequired[str],
+    'total': NotRequired[int],
+}, total=False)
+
+ModelShopeeMallCategory = TypedDict('ModelShopeeMallCategory', {
+    'category_id': NotRequired[int],
+    'image': NotRequired[str],
+    'name': NotRequired[str],
+}, total=False)
+
+ModelShopeeMallShop = TypedDict('ModelShopeeMallShop', {
+    'brand_name': NotRequired[str],
+    'ctime': NotRequired[int],
+    'logo': NotRequired[str],
+    'logo_pc': NotRequired[str],
+    'name': NotRequired[str],
+    'redirect_url': NotRequired[str],
+    'shop_id': NotRequired[int],
+    'shop_type': NotRequired[int],
+    'user_id': NotRequired[int],
+    'username': NotRequired[str],
+}, total=False)
+
+ModelShopeePrefillItem = TypedDict('ModelShopeePrefillItem', {
+    'hint': NotRequired[str],
+    'image': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelShopeePrefillsResponse = TypedDict('ModelShopeePrefillsResponse', {
+    'prefills': NotRequired[list[ModelShopeePrefillItem]],
+    'region': NotRequired[str],
+}, total=False)
+
+ModelShopeeSearchFilterGroup = TypedDict('ModelShopeeSearchFilterGroup', {
+    'display_name': NotRequired[str],
+    'dynamic': NotRequired[bool],
+    'name': NotRequired[str],
+    'options': NotRequired[list[ModelShopeeSearchFilterOption]],
+    'ui_type': NotRequired[int],
+}, total=False)
+
+ModelShopeeSearchFilterOption = TypedDict('ModelShopeeSearchFilterOption', {
+    'display_name': NotRequired[str],
+    'name': NotRequired[str],
+    'value': NotRequired[str],
+}, total=False)
+
+ModelShopeeSearchFiltersResponse = TypedDict('ModelShopeeSearchFiltersResponse', {
+    'category': NotRequired[str],
+    'groups': NotRequired[list[ModelShopeeSearchFilterGroup]],
+    'keyword': NotRequired[str],
+    'region': NotRequired[str],
+    'shortcuts': NotRequired[list[ModelShopeeSearchFilterOption]],
+}, total=False)
+
+ModelShopeeSearchHint = TypedDict('ModelShopeeSearchHint', {
+    'category_id': NotRequired[int],
+    'category_name': NotRequired[str],
+    'item_ids': NotRequired[list[int]],
+    'keyword': NotRequired[str],
+    'position': NotRequired[int],
+    'record_type': NotRequired[int],
+    'source_type': NotRequired[int],
+}, total=False)
+
+ModelShopeeSearchHintsResponse = TypedDict('ModelShopeeSearchHintsResponse', {
+    'algorithm': NotRequired[str],
+    'hints': NotRequired[list[ModelShopeeSearchHint]],
+    'keyword': NotRequired[str],
+    'region': NotRequired[str],
+    'search_keyword_type': NotRequired[int],
+    'version': NotRequired[int],
+}, total=False)
+
+ModelShopeeShopInfoResponse = TypedDict('ModelShopeeShopInfoResponse', {
+    'description': NotRequired[str],
+    'images': NotRequired[str],
+    'name': NotRequired[str],
+    'official_shop': NotRequired[bool],
+    'region': NotRequired[str],
+    'shop_id': NotRequired[int],
+    'shopee_verified': NotRequired[bool],
+    'status': NotRequired[int],
+    'user_id': NotRequired[int],
+}, total=False)
+
+ModelShopeeShopsResponse = TypedDict('ModelShopeeShopsResponse', {
+    'limit': NotRequired[int],
+    'offset': NotRequired[int],
+    'region': NotRequired[str],
+    'shops': NotRequired[list[ModelShopeeMallShop]],
+    'total': NotRequired[int],
+}, total=False)
+
+ModelShopeeSuggestResponse = TypedDict('ModelShopeeSuggestResponse', {
+    'keyword': NotRequired[str],
+    'region': NotRequired[str],
+    'suggestions': NotRequired[list[str]],
+}, total=False)
+
+ModelShopeeBannersResponseDoc = TypedDict('ModelShopeeBannersResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelShopeeBannersResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelShopeeCategoriesResponseDoc = TypedDict('ModelShopeeCategoriesResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelShopeeCategoriesResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelShopeeCategoryDetailResponseDoc = TypedDict('ModelShopeeCategoryDetailResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelShopeeCategoryDetailResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelShopeeFlashSaleResponseDoc = TypedDict('ModelShopeeFlashSaleResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelShopeeFlashSaleResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelShopeeFooterResponseDoc = TypedDict('ModelShopeeFooterResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelShopeeFooterResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelShopeeHomeCategoriesResponseDoc = TypedDict('ModelShopeeHomeCategoriesResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelShopeeHomeCategoriesResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelShopeeHomeResponseDoc = TypedDict('ModelShopeeHomeResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelShopeeHomeResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelShopeeLocationFiltersResponseDoc = TypedDict('ModelShopeeLocationFiltersResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelShopeeLocationFiltersResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelShopeeMallCategoriesResponseDoc = TypedDict('ModelShopeeMallCategoriesResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelShopeeMallCategoriesResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelShopeePrefillsResponseDoc = TypedDict('ModelShopeePrefillsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelShopeePrefillsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelShopeeSearchFiltersResponseDoc = TypedDict('ModelShopeeSearchFiltersResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelShopeeSearchFiltersResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelShopeeSearchHintsResponseDoc = TypedDict('ModelShopeeSearchHintsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelShopeeSearchHintsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelShopeeShopInfoResponseDoc = TypedDict('ModelShopeeShopInfoResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelShopeeShopInfoResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelShopeeShopsResponseDoc = TypedDict('ModelShopeeShopsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelShopeeShopsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelShopeeSuggestResponseDoc = TypedDict('ModelShopeeSuggestResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelShopeeSuggestResponse],
     'msg': NotRequired[str],
 }, total=False)
 
@@ -75216,6 +77982,702 @@ ModelVintedMemberResponseDoc = TypedDict('ModelVintedMemberResponseDoc', {
     'msg': NotRequired[str],
 }, total=False)
 
+ModelVlrAdvancedLine = TypedDict('ModelVlrAdvancedLine', {
+    'agent': NotRequired[str],
+    'clutches_1v1': NotRequired[int],
+    'clutches_1v2': NotRequired[int],
+    'clutches_1v3': NotRequired[int],
+    'clutches_1v4': NotRequired[int],
+    'clutches_1v5': NotRequired[int],
+    'defuses': NotRequired[int],
+    'econ_rating': NotRequired[int],
+    'multikills_2k': NotRequired[int],
+    'multikills_3k': NotRequired[int],
+    'multikills_4k': NotRequired[int],
+    'multikills_5k': NotRequired[int],
+    'plants': NotRequired[int],
+    'player': NotRequired[ModelVlrMatrixPlayer],
+}, total=False)
+
+ModelVlrAgentPick = TypedDict('ModelVlrAgentPick', {
+    'agent': NotRequired[str],
+    'percent': NotRequired[float],
+}, total=False)
+
+ModelVlrAgentUsage = TypedDict('ModelVlrAgentUsage', {
+    'acs': NotRequired[float],
+    'adr': NotRequired[float],
+    'agent': NotRequired[str],
+    'assists': NotRequired[int],
+    'assists_per_round': NotRequired[float],
+    'deaths': NotRequired[int],
+    'first_deaths': NotRequired[int],
+    'first_kills': NotRequired[int],
+    'first_kills_per_round': NotRequired[float],
+    'kast_percent': NotRequired[float],
+    'kd': NotRequired[float],
+    'kills': NotRequired[int],
+    'kills_per_round': NotRequired[float],
+    'rating': NotRequired[float],
+    'rounds': NotRequired[int],
+    'use': NotRequired[str],
+}, total=False)
+
+ModelVlrArticleDetail = TypedDict('ModelVlrArticleDetail', {
+    'author': NotRequired[str],
+    'external_links': NotRequired[list[str]],
+    'fetched_at': NotRequired[str],
+    'id': NotRequired[str],
+    'images': NotRequired[list[str]],
+    'paragraphs': NotRequired[list[str]],
+    'published_at': NotRequired[str],
+    'references': NotRequired[list[ModelVlrArticleRef]],
+    'source_url': NotRequired[str],
+    'text': NotRequired[str],
+    'title': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelVlrArticleRef = TypedDict('ModelVlrArticleRef', {
+    'id': NotRequired[str],
+    'name': NotRequired[str],
+    'slug': NotRequired[str],
+    'type': NotRequired[Literal['team', 'player', 'event']],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelVlrBuyBucket = TypedDict('ModelVlrBuyBucket', {
+    'buy': NotRequired[Literal['eco', 'half', 'full']],
+    'label': NotRequired[str],
+    'teams': NotRequired[list[ModelVlrBuyOutcome]],
+}, total=False)
+
+ModelVlrBuyOutcome = TypedDict('ModelVlrBuyOutcome', {
+    'team': NotRequired[str],
+    'vs_eco': NotRequired[ModelVlrRatio],
+    'vs_full': NotRequired[ModelVlrRatio],
+    'vs_half': NotRequired[ModelVlrRatio],
+}, total=False)
+
+ModelVlrCompositionMatch = TypedDict('ModelVlrCompositionMatch', {
+    'agents': NotRequired[list[str]],
+    'match_id': NotRequired[str],
+    'opponent': NotRequired[str],
+    'result': NotRequired[Literal['win', 'loss']],
+}, total=False)
+
+ModelVlrEconomyBlock = TypedDict('ModelVlrEconomyBlock', {
+    'buy_buckets': NotRequired[list[ModelVlrBuyBucket]],
+    'game_id': NotRequired[str],
+    'map': NotRequired[str],
+    'map_number': NotRequired[int],
+    'rounds': NotRequired[list[ModelVlrEconomyRound]],
+    'teams': NotRequired[list[ModelVlrTeamEconomy]],
+}, total=False)
+
+ModelVlrEconomyRound = TypedDict('ModelVlrEconomyRound', {
+    'pistol': NotRequired[bool],
+    'round': NotRequired[int],
+    'team1_bank_k': NotRequired[float],
+    'team1_buy': NotRequired[Literal['eco', 'half', 'full']],
+    'team1_loadout_k': NotRequired[float],
+    'team2_bank_k': NotRequired[float],
+    'team2_buy': NotRequired[Literal['eco', 'half', 'full']],
+    'team2_loadout_k': NotRequired[float],
+    'winner_side': NotRequired[Literal['attack', 'defense']],
+    'winner_team': NotRequired[str],
+}, total=False)
+
+ModelVlrEventAgentsResponse = TypedDict('ModelVlrEventAgentsResponse', {
+    'agents': NotRequired[list[str]],
+    'compositions': NotRequired[list[ModelVlrMapCompositions]],
+    'event_id': NotRequired[str],
+    'fetched_at': NotRequired[str],
+    'maps': NotRequired[list[ModelVlrMapAgentRow]],
+    'overall': NotRequired[ModelVlrMapAgentRow],
+    'source_url': NotRequired[str],
+}, total=False)
+
+ModelVlrEventDetail = TypedDict('ModelVlrEventDetail', {
+    'dates': NotRequired[str],
+    'fetched_at': NotRequired[str],
+    'id': NotRequired[str],
+    'image_url': NotRequired[str],
+    'location': NotRequired[str],
+    'name': NotRequired[str],
+    'prize': NotRequired[str],
+    'series': NotRequired[str],
+    'source_url': NotRequired[str],
+    'subtitle': NotRequired[str],
+    'teams': NotRequired[list[ModelVlrTeamRef]],
+}, total=False)
+
+ModelVlrEventMatchesResponse = TypedDict('ModelVlrEventMatchesResponse', {
+    'count': NotRequired[int],
+    'event_id': NotRequired[str],
+    'fetched_at': NotRequired[str],
+    'matches': NotRequired[list[ModelVlrMatchSummary]],
+    'source_url': NotRequired[str],
+}, total=False)
+
+ModelVlrEventRef = TypedDict('ModelVlrEventRef', {
+    'id': NotRequired[str],
+    'name': NotRequired[str],
+    'series': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelVlrEventStatsResponse = TypedDict('ModelVlrEventStatsResponse', {
+    'count': NotRequired[int],
+    'event_id': NotRequired[str],
+    'fetched_at': NotRequired[str],
+    'players': NotRequired[list[ModelVlrStatsRow]],
+    'side': NotRequired[Literal['all', 't', 'ct']],
+    'source_url': NotRequired[str],
+}, total=False)
+
+ModelVlrEventSummary = TypedDict('ModelVlrEventSummary', {
+    'country_code': NotRequired[str],
+    'dates': NotRequired[str],
+    'id': NotRequired[str],
+    'image_url': NotRequired[str],
+    'name': NotRequired[str],
+    'prize': NotRequired[str],
+    'status': NotRequired[Literal['upcoming', 'ongoing', 'completed']],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelVlrEventsResponse = TypedDict('ModelVlrEventsResponse', {
+    'count': NotRequired[int],
+    'events': NotRequired[list[ModelVlrEventSummary]],
+    'fetched_at': NotRequired[str],
+    'has_more': NotRequired[bool],
+    'page': NotRequired[int],
+    'region': NotRequired[str],
+    'source_url': NotRequired[str],
+    'tier': NotRequired[str],
+}, total=False)
+
+ModelVlrForumCategoriesResponse = TypedDict('ModelVlrForumCategoriesResponse', {
+    'categories': NotRequired[list[ModelVlrForumCategory]],
+    'count': NotRequired[int],
+    'fetched_at': NotRequired[str],
+    'source_url': NotRequired[str],
+}, total=False)
+
+ModelVlrForumCategory = TypedDict('ModelVlrForumCategory', {
+    'description': NotRequired[str],
+    'group': NotRequired[str],
+    'last_post_time': NotRequired[str],
+    'last_poster': NotRequired[str],
+    'last_thread_id': NotRequired[str],
+    'name': NotRequired[str],
+    'posts': NotRequired[int],
+    'slug': NotRequired[Literal['valorant-discussion', 'off-topic', 'site-feedback']],
+    'threads': NotRequired[int],
+}, total=False)
+
+ModelVlrForumThread = TypedDict('ModelVlrForumThread', {
+    'author': NotRequired[str],
+    'category': NotRequired[str],
+    'category_name': NotRequired[str],
+    'frags': NotRequired[int],
+    'id': NotRequired[str],
+    'last_active': NotRequired[str],
+    'last_poster': NotRequired[str],
+    'pinned': NotRequired[bool],
+    'posted': NotRequired[str],
+    'replies': NotRequired[int],
+    'title': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelVlrForumThreadsResponse = TypedDict('ModelVlrForumThreadsResponse', {
+    'category': NotRequired[str],
+    'count': NotRequired[int],
+    'fetched_at': NotRequired[str],
+    'has_more': NotRequired[bool],
+    'page': NotRequired[int],
+    'source_url': NotRequired[str],
+    'threads': NotRequired[list[ModelVlrForumThread]],
+}, total=False)
+
+ModelVlrH2Hmatch = TypedDict('ModelVlrH2Hmatch', {
+    'date': NotRequired[str],
+    'event': NotRequired[str],
+    'id': NotRequired[str],
+    'stage': NotRequired[str],
+    'team1_score': NotRequired[int],
+    'team2_score': NotRequired[int],
+    'url': NotRequired[str],
+    'winner': NotRequired[Literal['team1', 'team2']],
+}, total=False)
+
+ModelVlrHeadToHead = TypedDict('ModelVlrHeadToHead', {
+    'matches': NotRequired[list[ModelVlrH2Hmatch]],
+    'team1': NotRequired[str],
+    'team2': NotRequired[str],
+}, total=False)
+
+ModelVlrHistoryResponse = TypedDict('ModelVlrHistoryResponse', {
+    'count': NotRequired[int],
+    'fetched_at': NotRequired[str],
+    'has_more': NotRequired[bool],
+    'id': NotRequired[str],
+    'matches': NotRequired[list[ModelVlrTeamMatch]],
+    'page': NotRequired[int],
+    'source_url': NotRequired[str],
+}, total=False)
+
+ModelVlrKillMatrix = TypedDict('ModelVlrKillMatrix', {
+    'mode': NotRequired[Literal['overall', 'first_kills', 'op_kills']],
+    'rows': NotRequired[list[ModelVlrMatrixRow]],
+}, total=False)
+
+ModelVlrMapAgentRow = TypedDict('ModelVlrMapAgentRow', {
+    'attack_win_percent': NotRequired[float],
+    'defense_win_percent': NotRequired[float],
+    'games': NotRequired[int],
+    'map': NotRequired[str],
+    'pick_rates': NotRequired[list[ModelVlrAgentPick]],
+}, total=False)
+
+ModelVlrMapCompositions = TypedDict('ModelVlrMapCompositions', {
+    'map': NotRequired[str],
+    'teams': NotRequired[list[ModelVlrTeamComposition]],
+}, total=False)
+
+ModelVlrMapResult = TypedDict('ModelVlrMapResult', {
+    'duration': NotRequired[str],
+    'id': NotRequired[str],
+    'name': NotRequired[str],
+    'number': NotRequired[int],
+    'picked_by': NotRequired[str],
+    'players': NotRequired[list[ModelVlrPlayerLine]],
+    'teams': NotRequired[list[ModelVlrMapTeamResult]],
+}, total=False)
+
+ModelVlrMapSide = TypedDict('ModelVlrMapSide', {
+    'first_rounds': NotRequired[int],
+    'round_win_percent': NotRequired[float],
+    'rounds_lost': NotRequired[int],
+    'rounds_won': NotRequired[int],
+}, total=False)
+
+ModelVlrMapTeamResult = TypedDict('ModelVlrMapTeamResult', {
+    'name': NotRequired[str],
+    'rounds': NotRequired[ModelVlrRoundSplit],
+    'score': NotRequired[int],
+}, total=False)
+
+ModelVlrMatchDetail = TypedDict('ModelVlrMatchDetail', {
+    'all_maps_players': NotRequired[list[ModelVlrPlayerLine]],
+    'event': NotRequired[ModelVlrEventRef],
+    'fetched_at': NotRequired[str],
+    'format': NotRequired[str],
+    'head_to_head': NotRequired[ModelVlrHeadToHead],
+    'id': NotRequired[str],
+    'maps': NotRequired[list[ModelVlrMapResult]],
+    'note': NotRequired[str],
+    'past_matches': NotRequired[list[ModelVlrPastMatches]],
+    'source_url': NotRequired[str],
+    'start_time_utc': NotRequired[str],
+    'status': NotRequired[str],
+    'teams': NotRequired[list[ModelVlrTeamScore]],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelVlrMatchEconomy = TypedDict('ModelVlrMatchEconomy', {
+    'all_maps': NotRequired[ModelVlrEconomyBlock],
+    'available': NotRequired[bool],
+    'fetched_at': NotRequired[str],
+    'id': NotRequired[str],
+    'maps': NotRequired[list[ModelVlrEconomyBlock]],
+    'source_url': NotRequired[str],
+}, total=False)
+
+ModelVlrMatchListResponse = TypedDict('ModelVlrMatchListResponse', {
+    'count': NotRequired[int],
+    'fetched_at': NotRequired[str],
+    'has_more': NotRequired[bool],
+    'matches': NotRequired[list[ModelVlrMatchSummary]],
+    'page': NotRequired[int],
+    'source_url': NotRequired[str],
+}, total=False)
+
+ModelVlrMatchPerformance = TypedDict('ModelVlrMatchPerformance', {
+    'all_maps': NotRequired[ModelVlrPerformanceBlock],
+    'available': NotRequired[bool],
+    'fetched_at': NotRequired[str],
+    'id': NotRequired[str],
+    'maps': NotRequired[list[ModelVlrPerformanceBlock]],
+    'source_url': NotRequired[str],
+}, total=False)
+
+ModelVlrMatchRounds = TypedDict('ModelVlrMatchRounds', {
+    'available': NotRequired[bool],
+    'fetched_at': NotRequired[str],
+    'id': NotRequired[str],
+    'maps': NotRequired[list[ModelVlrRoundsBlock]],
+    'source_url': NotRequired[str],
+}, total=False)
+
+ModelVlrMatchSummary = TypedDict('ModelVlrMatchSummary', {
+    'date': NotRequired[str],
+    'eta': NotRequired[str],
+    'event': NotRequired[str],
+    'has_stats': NotRequired[bool],
+    'has_vods': NotRequired[bool],
+    'id': NotRequired[str],
+    'note': NotRequired[str],
+    'series': NotRequired[str],
+    'status': NotRequired[Literal['upcoming', 'live', 'completed']],
+    'teams': NotRequired[list[ModelVlrMatchTeam]],
+    'time_label': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelVlrMatchTeam = TypedDict('ModelVlrMatchTeam', {
+    'country_code': NotRequired[str],
+    'name': NotRequired[str],
+    'score': NotRequired[int],
+    'winner': NotRequired[bool],
+}, total=False)
+
+ModelVlrMatrixCell = TypedDict('ModelVlrMatrixCell', {
+    'deaths': NotRequired[int],
+    'diff': NotRequired[int],
+    'kills': NotRequired[int],
+    'opponent': NotRequired[ModelVlrMatrixPlayer],
+}, total=False)
+
+ModelVlrMatrixPlayer = TypedDict('ModelVlrMatrixPlayer', {
+    'name': NotRequired[str],
+    'team': NotRequired[str],
+}, total=False)
+
+ModelVlrMatrixRow = TypedDict('ModelVlrMatrixRow', {
+    'player': NotRequired[ModelVlrMatrixPlayer],
+    'vs': NotRequired[list[ModelVlrMatrixCell]],
+}, total=False)
+
+ModelVlrNewsItem = TypedDict('ModelVlrNewsItem', {
+    'author': NotRequired[str],
+    'country_code': NotRequired[str],
+    'date': NotRequired[str],
+    'description': NotRequired[str],
+    'id': NotRequired[str],
+    'title': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelVlrNewsResponse = TypedDict('ModelVlrNewsResponse', {
+    'count': NotRequired[int],
+    'fetched_at': NotRequired[str],
+    'has_more': NotRequired[bool],
+    'items': NotRequired[list[ModelVlrNewsItem]],
+    'page': NotRequired[int],
+    'source_url': NotRequired[str],
+}, total=False)
+
+ModelVlrPastMatch = TypedDict('ModelVlrPastMatch', {
+    'date': NotRequired[str],
+    'id': NotRequired[str],
+    'opponent': NotRequired[str],
+    'result': NotRequired[Literal['win', 'loss']],
+    'score': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelVlrPastMatches = TypedDict('ModelVlrPastMatches', {
+    'matches': NotRequired[list[ModelVlrPastMatch]],
+    'team': NotRequired[str],
+}, total=False)
+
+ModelVlrPerformanceBlock = TypedDict('ModelVlrPerformanceBlock', {
+    'advanced': NotRequired[list[ModelVlrAdvancedLine]],
+    'game_id': NotRequired[str],
+    'kill_matrices': NotRequired[list[ModelVlrKillMatrix]],
+    'map': NotRequired[str],
+    'map_number': NotRequired[int],
+}, total=False)
+
+ModelVlrPlayerDetail = TypedDict('ModelVlrPlayerDetail', {
+    'agent_stats': NotRequired[list[ModelVlrAgentUsage]],
+    'alias': NotRequired[str],
+    'country': NotRequired[str],
+    'country_code': NotRequired[str],
+    'current_teams': NotRequired[list[ModelVlrPlayerTeam]],
+    'fetched_at': NotRequired[str],
+    'id': NotRequired[str],
+    'image_url': NotRequired[str],
+    'links': NotRequired[list[str]],
+    'past_teams': NotRequired[list[ModelVlrPlayerTeam]],
+    'real_name': NotRequired[str],
+    'recent_matches': NotRequired[list[ModelVlrTeamMatch]],
+    'source_url': NotRequired[str],
+}, total=False)
+
+ModelVlrPlayerLine = TypedDict('ModelVlrPlayerLine', {
+    'acs': NotRequired[int],
+    'adr': NotRequired[float],
+    'agents': NotRequired[list[str]],
+    'assists': NotRequired[int],
+    'country_code': NotRequired[str],
+    'deaths': NotRequired[int],
+    'first_deaths': NotRequired[int],
+    'first_kills': NotRequired[int],
+    'fk_diff': NotRequired[int],
+    'headshot_percent': NotRequired[float],
+    'id': NotRequired[str],
+    'kast_percent': NotRequired[float],
+    'kd_diff': NotRequired[int],
+    'kills': NotRequired[int],
+    'name': NotRequired[str],
+    'rating': NotRequired[float],
+    'team': NotRequired[str],
+}, total=False)
+
+ModelVlrPlayerRef = TypedDict('ModelVlrPlayerRef', {
+    'country_code': NotRequired[str],
+    'id': NotRequired[str],
+    'name': NotRequired[str],
+    'team': NotRequired[str],
+}, total=False)
+
+ModelVlrPlayerTeam = TypedDict('ModelVlrPlayerTeam', {
+    'id': NotRequired[str],
+    'logo_url': NotRequired[str],
+    'name': NotRequired[str],
+    'period': NotRequired[str],
+    'tag': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelVlrRankingRow = TypedDict('ModelVlrRankingRow', {
+    'country': NotRequired[str],
+    'earnings': NotRequired[str],
+    'last_match_id': NotRequired[str],
+    'rank': NotRequired[int],
+    'rating': NotRequired[float],
+    'record': NotRequired[str],
+    'streak': NotRequired[str],
+    'team': NotRequired[ModelVlrTeamRef],
+}, total=False)
+
+ModelVlrRankingsResponse = TypedDict('ModelVlrRankingsResponse', {
+    'count': NotRequired[int],
+    'fetched_at': NotRequired[str],
+    'region': NotRequired[str],
+    'source_url': NotRequired[str],
+    'teams': NotRequired[list[ModelVlrRankingRow]],
+    'total': NotRequired[int],
+}, total=False)
+
+ModelVlrRatio = TypedDict('ModelVlrRatio', {
+    'played': NotRequired[int],
+    'won': NotRequired[int],
+}, total=False)
+
+ModelVlrRosterMember = TypedDict('ModelVlrRosterMember', {
+    'alias': NotRequired[str],
+    'country_code': NotRequired[str],
+    'id': NotRequired[str],
+    'image_url': NotRequired[str],
+    'real_name': NotRequired[str],
+    'role': NotRequired[Literal['player', 'captain', 'coach', 'manager', 'analyst', 'staff']],
+}, total=False)
+
+ModelVlrRoundEvent = TypedDict('ModelVlrRoundEvent', {
+    'player': NotRequired[str],
+    'player_team': NotRequired[str],
+    'time': NotRequired[str],
+    'type': NotRequired[Literal['kill', 'plant', 'defuse']],
+    'victim': NotRequired[str],
+    'weapon': NotRequired[str],
+}, total=False)
+
+ModelVlrRoundLoadout = TypedDict('ModelVlrRoundLoadout', {
+    'agent': NotRequired[str],
+    'armor': NotRequired[str],
+    'credits_left': NotRequired[int],
+    'player': NotRequired[str],
+    'spent': NotRequired[int],
+    'team': NotRequired[str],
+    'weapon': NotRequired[str],
+}, total=False)
+
+ModelVlrRoundLog = TypedDict('ModelVlrRoundLog', {
+    'attacking_team': NotRequired[str],
+    'events': NotRequired[list[ModelVlrRoundEvent]],
+    'loadouts': NotRequired[list[ModelVlrRoundLoadout]],
+    'round': NotRequired[int],
+    'score_after': NotRequired[ModelVlrRoundScore],
+    'spike_detonated': NotRequired[bool],
+    'winner_team': NotRequired[str],
+}, total=False)
+
+ModelVlrRoundScore = TypedDict('ModelVlrRoundScore', {
+    'team1': NotRequired[int],
+    'team2': NotRequired[int],
+}, total=False)
+
+ModelVlrRoundSplit = TypedDict('ModelVlrRoundSplit', {
+    'attack': NotRequired[int],
+    'defend': NotRequired[int],
+    'overtime': NotRequired[int],
+}, total=False)
+
+ModelVlrRoundsBlock = TypedDict('ModelVlrRoundsBlock', {
+    'game_id': NotRequired[str],
+    'map': NotRequired[str],
+    'map_number': NotRequired[int],
+    'rounds': NotRequired[list[ModelVlrRoundLog]],
+}, total=False)
+
+ModelVlrSearchCounts = TypedDict('ModelVlrSearchCounts', {
+    'events': NotRequired[int],
+    'players': NotRequired[int],
+    'teams': NotRequired[int],
+}, total=False)
+
+ModelVlrSearchResponse = TypedDict('ModelVlrSearchResponse', {
+    'count': NotRequired[int],
+    'counts': NotRequired[ModelVlrSearchCounts],
+    'fetched_at': NotRequired[str],
+    'query': NotRequired[str],
+    'results': NotRequired[list[ModelVlrSearchResult]],
+    'source_url': NotRequired[str],
+    'type': NotRequired[Literal['all', 'teams', 'events', 'players']],
+}, total=False)
+
+ModelVlrSearchResult = TypedDict('ModelVlrSearchResult', {
+    'date_range': NotRequired[str],
+    'description': NotRequired[str],
+    'id': NotRequired[str],
+    'image_url': NotRequired[str],
+    'inactive': NotRequired[bool],
+    'kind': NotRequired[Literal['team', 'event', 'player']],
+    'name': NotRequired[str],
+    'prize_pool': NotRequired[str],
+    'successor': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelVlrStatsResponse = TypedDict('ModelVlrStatsResponse', {
+    'count': NotRequired[int],
+    'fetched_at': NotRequired[str],
+    'has_more': NotRequired[bool],
+    'page': NotRequired[int],
+    'players': NotRequired[list[ModelVlrStatsRow]],
+    'source_url': NotRequired[str],
+}, total=False)
+
+ModelVlrStatsRow = TypedDict('ModelVlrStatsRow', {
+    'acs': NotRequired[float],
+    'adr': NotRequired[float],
+    'agent_usage': NotRequired[list[str]],
+    'agents': NotRequired[list[str]],
+    'assists': NotRequired[int],
+    'assists_per_round': NotRequired[float],
+    'clutch_percent': NotRequired[float],
+    'clutches_total': NotRequired[int],
+    'clutches_won': NotRequired[int],
+    'deaths': NotRequired[int],
+    'first_death_percent': NotRequired[float],
+    'first_deaths': NotRequired[int],
+    'first_kill_percent': NotRequired[float],
+    'first_kills': NotRequired[int],
+    'fk_fd_ratio': NotRequired[float],
+    'headshot_percent': NotRequired[float],
+    'kast_percent': NotRequired[float],
+    'kd': NotRequired[float],
+    'kills': NotRequired[int],
+    'kills_per_round': NotRequired[float],
+    'maps': NotRequired[int],
+    'max_kills': NotRequired[int],
+    'player': NotRequired[ModelVlrPlayerRef],
+    'rating': NotRequired[float],
+    'rounds': NotRequired[int],
+}, total=False)
+
+ModelVlrTeamComposition = TypedDict('ModelVlrTeamComposition', {
+    'agents_used': NotRequired[list[str]],
+    'matches': NotRequired[list[ModelVlrCompositionMatch]],
+    'team': NotRequired[str],
+    'team_id': NotRequired[str],
+}, total=False)
+
+ModelVlrTeamDetail = TypedDict('ModelVlrTeamDetail', {
+    'country': NotRequired[str],
+    'country_code': NotRequired[str],
+    'fetched_at': NotRequired[str],
+    'id': NotRequired[str],
+    'links': NotRequired[list[str]],
+    'logo_url': NotRequired[str],
+    'name': NotRequired[str],
+    'news': NotRequired[list[ModelVlrNewsItem]],
+    'recent_matches': NotRequired[list[ModelVlrTeamMatch]],
+    'roster': NotRequired[list[ModelVlrRosterMember]],
+    'source_url': NotRequired[str],
+    'tag': NotRequired[str],
+}, total=False)
+
+ModelVlrTeamEconomy = TypedDict('ModelVlrTeamEconomy', {
+    'bonus_rounds': NotRequired[ModelVlrRatio],
+    'pistol_conversion': NotRequired[ModelVlrRatio],
+    'pistol_rounds': NotRequired[ModelVlrRatio],
+    'team': NotRequired[str],
+}, total=False)
+
+ModelVlrTeamMapRow = TypedDict('ModelVlrTeamMapRow', {
+    'attack': NotRequired[ModelVlrMapSide],
+    'defense': NotRequired[ModelVlrMapSide],
+    'losses': NotRequired[int],
+    'map': NotRequired[str],
+    'played': NotRequired[int],
+    'win_percent': NotRequired[float],
+    'wins': NotRequired[int],
+}, total=False)
+
+ModelVlrTeamMapsResponse = TypedDict('ModelVlrTeamMapsResponse', {
+    'count': NotRequired[int],
+    'fetched_at': NotRequired[str],
+    'maps': NotRequired[list[ModelVlrTeamMapRow]],
+    'source_url': NotRequired[str],
+    'team_id': NotRequired[str],
+}, total=False)
+
+ModelVlrTeamMatch = TypedDict('ModelVlrTeamMatch', {
+    'date': NotRequired[str],
+    'event': NotRequired[str],
+    'id': NotRequired[str],
+    'opponent': NotRequired[str],
+    'result': NotRequired[Literal['win', 'loss']],
+    'score': NotRequired[str],
+    'stage': NotRequired[str],
+    'team': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelVlrTeamRef = TypedDict('ModelVlrTeamRef', {
+    'id': NotRequired[str],
+    'logo_url': NotRequired[str],
+    'name': NotRequired[str],
+    'tag': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelVlrTeamScore = TypedDict('ModelVlrTeamScore', {
+    'id': NotRequired[str],
+    'logo_url': NotRequired[str],
+    'name': NotRequired[str],
+    'score': NotRequired[int],
+    'tag': NotRequired[str],
+    'url': NotRequired[str],
+    'winner': NotRequired[bool],
+}, total=False)
+
 ModelVoxAuthorArticle = TypedDict('ModelVoxAuthorArticle', {
     'category': NotRequired[str],
     'excerpt': NotRequired[str],
@@ -78078,6 +81540,126 @@ ModelXdaAuthorResponse = TypedDict('ModelXdaAuthorResponse', {
     'social_links': NotRequired[list[ModelValnetAuthorSocialLink]],
     'title': NotRequired[str],
     'url': NotRequired[str],
+}, total=False)
+
+ModelXiaohongshuChannel = TypedDict('ModelXiaohongshuChannel', {
+    'id': NotRequired[str],
+    'name': NotRequired[str],
+}, total=False)
+
+ModelXiaohongshuComment = TypedDict('ModelXiaohongshuComment', {
+    'author': NotRequired[ModelXiaohongshuCommentAuthor],
+    'comment_id': NotRequired[str],
+    'content': NotRequired[str],
+    'created_at': NotRequired[int],
+    'ip_location': NotRequired[str],
+    'like_count': NotRequired[int],
+    'sub_comment_count': NotRequired[int],
+    'sub_comments': NotRequired[list[ModelXiaohongshuComment]],
+}, total=False)
+
+ModelXiaohongshuCommentAuthor = TypedDict('ModelXiaohongshuCommentAuthor', {
+    'avatar_url': NotRequired[str],
+    'nickname': NotRequired[str],
+    'user_id': NotRequired[str],
+}, total=False)
+
+ModelXiaohongshuCommentsResponse = TypedDict('ModelXiaohongshuCommentsResponse', {
+    'count': NotRequired[int],
+    'cursor': NotRequired[str],
+    'has_more': NotRequired[bool],
+    'items': NotRequired[list[ModelXiaohongshuComment]],
+    'note_id': NotRequired[str],
+}, total=False)
+
+ModelXiaohongshuExploreCard = TypedDict('ModelXiaohongshuExploreCard', {
+    'author': NotRequired[ModelXiaohongshuNoteAuthor],
+    'cover_url': NotRequired[str],
+    'liked_count': NotRequired[int],
+    'note_id': NotRequired[str],
+    'note_url': NotRequired[str],
+    'title': NotRequired[str],
+    'type': NotRequired[str],
+    'xsec_token': NotRequired[str],
+}, total=False)
+
+ModelXiaohongshuExploreResponse = TypedDict('ModelXiaohongshuExploreResponse', {
+    'channel_id': NotRequired[str],
+    'channels': NotRequired[list[ModelXiaohongshuChannel]],
+    'count': NotRequired[int],
+    'items': NotRequired[list[ModelXiaohongshuExploreCard]],
+}, total=False)
+
+ModelXiaohongshuNoteAuthor = TypedDict('ModelXiaohongshuNoteAuthor', {
+    'avatar_url': NotRequired[str],
+    'nickname': NotRequired[str],
+    'user_id': NotRequired[str],
+}, total=False)
+
+ModelXiaohongshuNoteResponse = TypedDict('ModelXiaohongshuNoteResponse', {
+    'author': NotRequired[ModelXiaohongshuNoteAuthor],
+    'description': NotRequired[str],
+    'image_urls': NotRequired[list[str]],
+    'note_id': NotRequired[str],
+    'published_at': NotRequired[str],
+    'stats': NotRequired[ModelXiaohongshuNoteStats],
+    'tags': NotRequired[list[ModelXiaohongshuNoteTag]],
+    'title': NotRequired[str],
+    'type': NotRequired[str],
+    'url': NotRequired[str],
+    'video_duration_seconds': NotRequired[int],
+    'video_url': NotRequired[str],
+}, total=False)
+
+ModelXiaohongshuNoteStats = TypedDict('ModelXiaohongshuNoteStats', {
+    'collected_count': NotRequired[int],
+    'comment_count': NotRequired[int],
+    'liked_count': NotRequired[int],
+    'share_count': NotRequired[int],
+}, total=False)
+
+ModelXiaohongshuNoteTag = TypedDict('ModelXiaohongshuNoteTag', {
+    'id': NotRequired[str],
+    'name': NotRequired[str],
+}, total=False)
+
+ModelXiaohongshuSuggestItem = TypedDict('ModelXiaohongshuSuggestItem', {
+    'highlight_flags': NotRequired[list[bool]],
+    'search_type': NotRequired[str],
+    'text': NotRequired[str],
+    'type': NotRequired[str],
+}, total=False)
+
+ModelXiaohongshuSuggestResponse = TypedDict('ModelXiaohongshuSuggestResponse', {
+    'count': NotRequired[int],
+    'items': NotRequired[list[ModelXiaohongshuSuggestItem]],
+    'keyword': NotRequired[str],
+    'search_cpl_id': NotRequired[str],
+    'word_request_id': NotRequired[str],
+}, total=False)
+
+ModelXiaohongshuCommentsResponseDoc = TypedDict('ModelXiaohongshuCommentsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelXiaohongshuCommentsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelXiaohongshuExploreResponseDoc = TypedDict('ModelXiaohongshuExploreResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelXiaohongshuExploreResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelXiaohongshuNoteResponseDoc = TypedDict('ModelXiaohongshuNoteResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelXiaohongshuNoteResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelXiaohongshuSuggestResponseDoc = TypedDict('ModelXiaohongshuSuggestResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelXiaohongshuSuggestResponse],
+    'msg': NotRequired[str],
 }, total=False)
 
 ModelYahooautosArticleResponse = TypedDict('ModelYahooautosArticleResponse', {
@@ -84592,6 +88174,302 @@ BlueskyTrendingTopicsParams = TypedDict('BlueskyTrendingTopicsParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
     '_headers': NotRequired[Mapping[str, str]],
+}, total=False)
+
+Bo3EconomyBaselineResponse = Any
+Bo3EconomyBaselineParams = TypedDict('Bo3EconomyBaselineParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+}, total=False)
+
+Bo3ForumResponse = Any
+Bo3ForumParams = TypedDict('Bo3ForumParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'game': NotRequired[Literal['cs2', 'valorant', 'lol', 'dota2', 'r6siege', 'mlbb']],
+    'category': NotRequired[int],
+    'sort': NotRequired[Literal['activity', 'newest', 'comments', 'rating']],
+    'offset': NotRequired[int],
+    'limit': NotRequired[int],
+}, total=False)
+
+Bo3ForumCategoriesResponse = Any
+Bo3ForumCategoriesParams = TypedDict('Bo3ForumCategoriesParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'game': NotRequired[Literal['cs2', 'valorant', 'lol', 'dota2', 'r6siege', 'mlbb']],
+}, total=False)
+
+Bo3MatchResponse = Any
+Bo3MatchParams = TypedDict('Bo3MatchParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'slug': Required[str],
+}, total=False)
+
+Bo3MatchGamesResponse = Any
+Bo3MatchGamesParams = TypedDict('Bo3MatchGamesParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'match_id': Required[int],
+}, total=False)
+
+Bo3MatchHistoryResponse = Any
+Bo3MatchHistoryParams = TypedDict('Bo3MatchHistoryParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'game': NotRequired[Literal['cs2', 'valorant', 'lol', 'dota2', 'r6siege', 'mlbb']],
+    'status': NotRequired[Literal['finished', 'defwin', 'upcoming', 'current']],
+    'tier': NotRequired[Literal['s', 'a', 'b', 'c', 'd']],
+    'from': NotRequired[str],
+    'to': NotRequired[str],
+    'sort': NotRequired[Literal['newest', 'oldest']],
+    'offset': NotRequired[int],
+    'limit': NotRequired[int],
+}, total=False)
+
+Bo3MatchPlayersResponse = Any
+Bo3MatchPlayersParams = TypedDict('Bo3MatchPlayersParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'slug': Required[str],
+}, total=False)
+
+Bo3NewsCategoriesResponse = Any
+Bo3NewsCategoriesParams = TypedDict('Bo3NewsCategoriesParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+}, total=False)
+
+Bo3NewsFeedResponse = Any
+Bo3NewsFeedParams = TypedDict('Bo3NewsFeedParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'game': NotRequired[Literal['cs2', 'valorant', 'lol', 'dota2', 'r6siege', 'mlbb']],
+    'section': NotRequired[Literal['news', 'article', 'wiki', 'predictions']],
+    'category': NotRequired[int],
+    'sort': NotRequired[Literal['newest', 'oldest']],
+    'offset': NotRequired[int],
+    'limit': NotRequired[int],
+}, total=False)
+
+Bo3PlayerResponse = Any
+Bo3PlayerParams = TypedDict('Bo3PlayerParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'slug': Required[str],
+    'game': NotRequired[Literal['cs2', 'valorant', 'lol', 'dota2', 'r6siege', 'mlbb']],
+}, total=False)
+
+Bo3PlayerLeaderboardResponse = Any
+Bo3PlayerLeaderboardParams = TypedDict('Bo3PlayerLeaderboardParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'from': NotRequired[str],
+    'to': NotRequired[str],
+    'tier': NotRequired[Literal['s', 'a', 'b', 'c', 'd']],
+    'sort': NotRequired[Literal['rating', 'kd', 'kills', 'damage', 'assists', 'headshots', 'games', 'rounds']],
+    'order': NotRequired[Literal['desc', 'asc']],
+    'offset': NotRequired[int],
+    'limit': NotRequired[int],
+}, total=False)
+
+Bo3PlayerRecentMatchesResponse = Any
+Bo3PlayerRecentMatchesParams = TypedDict('Bo3PlayerRecentMatchesParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'slug': Required[str],
+    'opponent': NotRequired[str],
+    'tournament': NotRequired[str],
+    'limit': NotRequired[int],
+}, total=False)
+
+Bo3PlayerStatsResponse = Any
+Bo3PlayerStatsParams = TypedDict('Bo3PlayerStatsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'slug': Required[str],
+    'kind': NotRequired[Literal['general', 'maps', 'accuracy']],
+    'from': NotRequired[str],
+    'to': NotRequired[str],
+}, total=False)
+
+Bo3RecordsResponse = Any
+Bo3RecordsParams = TypedDict('Bo3RecordsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'from': NotRequired[str],
+    'to': NotRequired[str],
+    'record_type': NotRequired[str],
+    'match': NotRequired[str],
+    'tournament': NotRequired[str],
+    'team': NotRequired[str],
+    'player': NotRequired[str],
+    'sort': NotRequired[Literal['newest', 'oldest']],
+    'offset': NotRequired[int],
+    'limit': NotRequired[int],
+}, total=False)
+
+Bo3TeamResponse = Any
+Bo3TeamParams = TypedDict('Bo3TeamParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'slug': Required[str],
+    'game': NotRequired[Literal['cs2', 'valorant', 'lol', 'dota2', 'r6siege', 'mlbb']],
+}, total=False)
+
+Bo3TeamPrizeMoneyResponse = Any
+Bo3TeamPrizeMoneyParams = TypedDict('Bo3TeamPrizeMoneyParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'game': NotRequired[Literal['cs2', 'valorant', 'lol', 'dota2', 'r6siege', 'mlbb']],
+    'from': NotRequired[str],
+    'to': NotRequired[str],
+    'offset': NotRequired[int],
+    'limit': NotRequired[int],
+}, total=False)
+
+Bo3TeamRankingDatesResponse = Any
+Bo3TeamRankingDatesParams = TypedDict('Bo3TeamRankingDatesParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'game': NotRequired[Literal['cs2', 'valorant', 'lol', 'dota2', 'r6siege', 'mlbb']],
+}, total=False)
+
+Bo3TeamRankingsResponse = Any
+Bo3TeamRankingsParams = TypedDict('Bo3TeamRankingsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'game': NotRequired[Literal['cs2', 'valorant', 'lol', 'dota2', 'r6siege', 'mlbb']],
+    'region': NotRequired[str],
+    'date': NotRequired[str],
+    'page': NotRequired[int],
+    'per_page': NotRequired[int],
+}, total=False)
+
+Bo3TeamRecentMatchesResponse = Any
+Bo3TeamRecentMatchesParams = TypedDict('Bo3TeamRecentMatchesParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'slug': Required[str],
+    'opponent': NotRequired[str],
+    'tournament': NotRequired[str],
+    'limit': NotRequired[int],
+}, total=False)
+
+Bo3TeamStatsResponse = Any
+Bo3TeamStatsParams = TypedDict('Bo3TeamStatsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'slug': Required[str],
+    'kind': NotRequired[Literal['general', 'advanced', 'accuracy', 'economy', 'map-pool']],
+    'from': NotRequired[str],
+    'to': NotRequired[str],
+}, total=False)
+
+Bo3TournamentResponse = Any
+Bo3TournamentParams = TypedDict('Bo3TournamentParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'slug': Required[str],
+    'game': NotRequired[Literal['cs2', 'valorant', 'lol', 'dota2', 'r6siege', 'mlbb']],
+}, total=False)
+
+Bo3TournamentMapPoolResponse = Any
+Bo3TournamentMapPoolParams = TypedDict('Bo3TournamentMapPoolParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'slug': Required[str],
+}, total=False)
+
+Bo3TournamentMvpsResponse = Any
+Bo3TournamentMvpsParams = TypedDict('Bo3TournamentMvpsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'game': NotRequired[Literal['cs2', 'valorant', 'lol', 'dota2', 'r6siege', 'mlbb']],
+    'offset': NotRequired[int],
+    'limit': NotRequired[int],
+}, total=False)
+
+Bo3TournamentSquadsResponse = Any
+Bo3TournamentSquadsParams = TypedDict('Bo3TournamentSquadsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'slug': Required[str],
+}, total=False)
+
+Bo3TournamentStagesResponse = Any
+Bo3TournamentStagesParams = TypedDict('Bo3TournamentStagesParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'game': NotRequired[Literal['cs2', 'valorant', 'lol', 'dota2', 'r6siege', 'mlbb']],
+    'slug': Required[str],
+}, total=False)
+
+Bo3TournamentsResponse = Any
+Bo3TournamentsParams = TypedDict('Bo3TournamentsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'game': NotRequired[Literal['cs2', 'valorant', 'lol', 'dota2', 'r6siege', 'mlbb']],
+    'status': NotRequired[Literal['current', 'upcoming', 'finished']],
+    'tier': NotRequired[Literal['s', 'a', 'b', 'c', 'd']],
+    'event_type': NotRequired[Literal['lan', 'online']],
+    'sort': NotRequired[Literal['newest', 'oldest', 'prize']],
+    'offset': NotRequired[int],
+    'limit': NotRequired[int],
+}, total=False)
+
+Bo3TransfersResponse = Any
+Bo3TransfersParams = TypedDict('Bo3TransfersParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'team_id': NotRequired[int],
+    'player_id': NotRequired[int],
+    'action': NotRequired[Literal['join', 'change', 'leave']],
+    'role': NotRequired[Literal['player', 'coach']],
+    'sort': NotRequired[Literal['newest', 'oldest']],
+    'offset': NotRequired[int],
+    'limit': NotRequired[int],
+}, total=False)
+
+Bo3ValorantLeaderboardResponse = Any
+Bo3ValorantLeaderboardParams = TypedDict('Bo3ValorantLeaderboardParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'from': NotRequired[str],
+    'to': NotRequired[str],
+    'sort': NotRequired[Literal['acs', 'kills', 'deaths', 'damage', 'assists', 'first_kills', 'clutches', 'first_duels', 'games', 'rounds']],
+    'order': NotRequired[Literal['desc', 'asc']],
+    'offset': NotRequired[int],
+    'limit': NotRequired[int],
 }, total=False)
 
 BonhamsAuctionSearchResponse = ModelBonhamsAuctionSearchResponseDoc
@@ -96108,6 +99986,149 @@ GooglePlaySuggestParams = TypedDict('GooglePlaySuggestParams', {
     'lang': NotRequired[str],
 }, total=False)
 
+GosuGamersGosugamersEncountersResponse = Any
+GosuGamersGosugamersEncountersParams = TypedDict('GosuGamersGosugamersEncountersParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'game': Required[Literal['dota2', 'counterstrike', 'lol', 'valorant', 'mobile-legends', 'pubg-mobile', 'wild-rift', 'free-fire', 'battlegrounds-mobile-india']],
+    'match_id': Required[str],
+    'team1_id': Required[str],
+    'team2_id': Required[str],
+}, total=False)
+
+GosuGamersGosugamersGamesResponse = Any
+GosuGamersGosugamersGamesParams = TypedDict('GosuGamersGosugamersGamesParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+}, total=False)
+
+GosuGamersGosugamersMatchResponse = Any
+GosuGamersGosugamersMatchParams = TypedDict('GosuGamersGosugamersMatchParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'game': Required[Literal['dota2', 'counterstrike', 'lol', 'valorant', 'mobile-legends', 'pubg-mobile', 'wild-rift', 'free-fire', 'battlegrounds-mobile-india']],
+    'tournament_id': Required[str],
+    'match_id': Required[str],
+}, total=False)
+
+GosuGamersGosugamersMatchGameResponse = Any
+GosuGamersGosugamersMatchGameParams = TypedDict('GosuGamersGosugamersMatchGameParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'game_id': Required[str],
+}, total=False)
+
+GosuGamersGosugamersMatchesResponse = Any
+GosuGamersGosugamersMatchesParams = TypedDict('GosuGamersGosugamersMatchesParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'game': NotRequired[Literal['dota2', 'counterstrike', 'lol', 'valorant', 'mobile-legends', 'pubg-mobile', 'wild-rift', 'free-fire', 'battlegrounds-mobile-india']],
+    'page': NotRequired[int],
+    'page_size': NotRequired[int],
+}, total=False)
+
+GosuGamersGosugamersPlayerResponse = Any
+GosuGamersGosugamersPlayerParams = TypedDict('GosuGamersGosugamersPlayerParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'game': Required[Literal['dota2', 'counterstrike', 'lol', 'valorant', 'mobile-legends', 'pubg-mobile', 'wild-rift', 'free-fire', 'battlegrounds-mobile-india']],
+    'player_id': Required[str],
+}, total=False)
+
+GosuGamersGosugamersRankingsResponse = Any
+GosuGamersGosugamersRankingsParams = TypedDict('GosuGamersGosugamersRankingsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'game': Required[Literal['dota2', 'counterstrike', 'lol', 'valorant', 'mobile-legends', 'pubg-mobile', 'wild-rift', 'free-fire', 'battlegrounds-mobile-india']],
+    'region_id': NotRequired[int],
+    'q': NotRequired[str],
+    'page': NotRequired[int],
+    'page_size': NotRequired[int],
+}, total=False)
+
+GosuGamersGosugamersResultsResponse = Any
+GosuGamersGosugamersResultsParams = TypedDict('GosuGamersGosugamersResultsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'game': NotRequired[Literal['dota2', 'counterstrike', 'lol', 'valorant', 'mobile-legends', 'pubg-mobile', 'wild-rift', 'free-fire', 'battlegrounds-mobile-india']],
+    'page': NotRequired[int],
+    'page_size': NotRequired[int],
+}, total=False)
+
+GosuGamersGosugamersStageGroupsResponse = Any
+GosuGamersGosugamersStageGroupsParams = TypedDict('GosuGamersGosugamersStageGroupsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'tournament_id': Required[str],
+    'stage_id': Required[str],
+}, total=False)
+
+GosuGamersGosugamersTeamResponse = Any
+GosuGamersGosugamersTeamParams = TypedDict('GosuGamersGosugamersTeamParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'game': Required[Literal['dota2', 'counterstrike', 'lol', 'valorant', 'mobile-legends', 'pubg-mobile', 'wild-rift', 'free-fire', 'battlegrounds-mobile-india']],
+    'team_id': Required[str],
+}, total=False)
+
+GosuGamersGosugamersTeamResultsResponse = Any
+GosuGamersGosugamersTeamResultsParams = TypedDict('GosuGamersGosugamersTeamResultsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'team_id': Required[str],
+    'page': NotRequired[int],
+    'page_size': NotRequired[int],
+}, total=False)
+
+GosuGamersGosugamersTournamentResponse = Any
+GosuGamersGosugamersTournamentParams = TypedDict('GosuGamersGosugamersTournamentParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'game': Required[Literal['dota2', 'counterstrike', 'lol', 'valorant', 'mobile-legends', 'pubg-mobile', 'wild-rift', 'free-fire', 'battlegrounds-mobile-india']],
+    'tournament_id': Required[str],
+}, total=False)
+
+GosuGamersGosugamersTournamentParticipantsResponse = Any
+GosuGamersGosugamersTournamentParticipantsParams = TypedDict('GosuGamersGosugamersTournamentParticipantsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'game': Required[Literal['dota2', 'counterstrike', 'lol', 'valorant', 'mobile-legends', 'pubg-mobile', 'wild-rift', 'free-fire', 'battlegrounds-mobile-india']],
+    'tournament_id': Required[str],
+}, total=False)
+
+GosuGamersGosugamersTournamentTalentsResponse = Any
+GosuGamersGosugamersTournamentTalentsParams = TypedDict('GosuGamersGosugamersTournamentTalentsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'tournament_id': Required[str],
+}, total=False)
+
+GosuGamersGosugamersTournamentsResponse = Any
+GosuGamersGosugamersTournamentsParams = TypedDict('GosuGamersGosugamersTournamentsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'game': NotRequired[Literal['dota2', 'counterstrike', 'lol', 'valorant', 'mobile-legends', 'pubg-mobile', 'wild-rift', 'free-fire', 'battlegrounds-mobile-india']],
+    'state': NotRequired[Literal['all', 'ongoing', 'upcoming', 'past']],
+    'q': NotRequired[str],
+    'page': NotRequired[int],
+    'page_size': NotRequired[int],
+}, total=False)
+
 GqArticleResponse = ModelPublicnewsArticleResponseDoc
 GqArticleParams = TypedDict('GqArticleParams', {
     '_response_type': NotRequired[ResponseType],
@@ -100432,6 +104453,131 @@ LiveScoreLivescoreTeamParams = TypedDict('LiveScoreLivescoreTeamParams', {
     'path': Required[str],
 }, total=False)
 
+LoLEsportsLolesportsCompletedEventsResponse = Any
+LoLEsportsLolesportsCompletedEventsParams = TypedDict('LoLEsportsLolesportsCompletedEventsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'hl': NotRequired[Literal['cs-CZ', 'de-DE', 'en-US', 'es-ES', 'es-MX', 'fr-FR', 'hu-HU', 'ja-JP', 'ko-KR', 'pl-PL', 'pt-BR', 'th-TH', 'tr-TR', 'vi-VN', 'zh-TW']],
+    'tournament_id': Required[str],
+}, total=False)
+
+LoLEsportsLolesportsEventResponse = Any
+LoLEsportsLolesportsEventParams = TypedDict('LoLEsportsLolesportsEventParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'hl': NotRequired[Literal['cs-CZ', 'de-DE', 'en-US', 'es-ES', 'es-MX', 'fr-FR', 'hu-HU', 'ja-JP', 'ko-KR', 'pl-PL', 'pt-BR', 'th-TH', 'tr-TR', 'vi-VN', 'zh-TW']],
+    'match_id': Required[str],
+}, total=False)
+
+LoLEsportsLolesportsGameDetailsResponse = Any
+LoLEsportsLolesportsGameDetailsParams = TypedDict('LoLEsportsLolesportsGameDetailsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'game_id': Required[str],
+    'starting_time': NotRequired[str],
+    'participant_ids': NotRequired[str],
+}, total=False)
+
+LoLEsportsLolesportsGameWindowResponse = Any
+LoLEsportsLolesportsGameWindowParams = TypedDict('LoLEsportsLolesportsGameWindowParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'game_id': Required[str],
+    'starting_time': NotRequired[str],
+}, total=False)
+
+LoLEsportsLolesportsGprResponse = Any
+LoLEsportsLolesportsGprParams = TypedDict('LoLEsportsLolesportsGprParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'season': NotRequired[Literal['current', '2025', '2024']],
+    'league': NotRequired[str],
+    'limit': NotRequired[int],
+    'history': NotRequired[bool],
+}, total=False)
+
+LoLEsportsLolesportsLeaguesResponse = Any
+LoLEsportsLolesportsLeaguesParams = TypedDict('LoLEsportsLolesportsLeaguesParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'hl': NotRequired[Literal['cs-CZ', 'de-DE', 'en-US', 'es-ES', 'es-MX', 'fr-FR', 'hu-HU', 'ja-JP', 'ko-KR', 'pl-PL', 'pt-BR', 'th-TH', 'tr-TR', 'vi-VN', 'zh-TW']],
+}, total=False)
+
+LoLEsportsLolesportsLiveResponse = Any
+LoLEsportsLolesportsLiveParams = TypedDict('LoLEsportsLolesportsLiveParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'hl': NotRequired[Literal['cs-CZ', 'de-DE', 'en-US', 'es-ES', 'es-MX', 'fr-FR', 'hu-HU', 'ja-JP', 'ko-KR', 'pl-PL', 'pt-BR', 'th-TH', 'tr-TR', 'vi-VN', 'zh-TW']],
+}, total=False)
+
+LoLEsportsLolesportsNewsResponse = Any
+LoLEsportsLolesportsNewsParams = TypedDict('LoLEsportsLolesportsNewsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'hl': NotRequired[Literal['cs-CZ', 'de-DE', 'el-GR', 'en-AU', 'en-GB', 'en-PH', 'en-SG', 'en-US', 'es-ES', 'es-MX', 'fr-FR', 'hu-HU', 'id-ID', 'it-IT', 'ja-JP', 'ko-KR', 'pl-PL', 'pt-BR', 'ro-RO', 'ru-RU', 'th-TH', 'tr-TR', 'vi-VN', 'zh-TW']],
+    'limit': NotRequired[int],
+}, total=False)
+
+LoLEsportsLolesportsScheduleResponse = Any
+LoLEsportsLolesportsScheduleParams = TypedDict('LoLEsportsLolesportsScheduleParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'hl': NotRequired[Literal['cs-CZ', 'de-DE', 'en-US', 'es-ES', 'es-MX', 'fr-FR', 'hu-HU', 'ja-JP', 'ko-KR', 'pl-PL', 'pt-BR', 'th-TH', 'tr-TR', 'vi-VN', 'zh-TW']],
+    'league_id': NotRequired[str],
+    'page_token': NotRequired[str],
+}, total=False)
+
+LoLEsportsLolesportsSeasonsResponse = Any
+LoLEsportsLolesportsSeasonsParams = TypedDict('LoLEsportsLolesportsSeasonsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'hl': NotRequired[Literal['cs-CZ', 'de-DE', 'en-US', 'es-ES', 'es-MX', 'fr-FR', 'hu-HU', 'ja-JP', 'ko-KR', 'pl-PL', 'pt-BR', 'th-TH', 'tr-TR', 'vi-VN', 'zh-TW']],
+    'season_id': NotRequired[str],
+    'region': NotRequired[str],
+    'league_id': NotRequired[str],
+}, total=False)
+
+LoLEsportsLolesportsStandingsResponse = Any
+LoLEsportsLolesportsStandingsParams = TypedDict('LoLEsportsLolesportsStandingsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'hl': NotRequired[Literal['cs-CZ', 'de-DE', 'en-US', 'es-ES', 'es-MX', 'fr-FR', 'hu-HU', 'ja-JP', 'ko-KR', 'pl-PL', 'pt-BR', 'th-TH', 'tr-TR', 'vi-VN', 'zh-TW']],
+    'tournament_id': Required[str],
+}, total=False)
+
+LoLEsportsLolesportsTeamsResponse = Any
+LoLEsportsLolesportsTeamsParams = TypedDict('LoLEsportsLolesportsTeamsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'hl': NotRequired[Literal['cs-CZ', 'de-DE', 'en-US', 'es-ES', 'es-MX', 'fr-FR', 'hu-HU', 'ja-JP', 'ko-KR', 'pl-PL', 'pt-BR', 'th-TH', 'tr-TR', 'vi-VN', 'zh-TW']],
+    'slug': NotRequired[str],
+    'q': NotRequired[str],
+    'status': NotRequired[Literal['active', 'archived']],
+    'page': NotRequired[int],
+    'limit': NotRequired[int],
+}, total=False)
+
+LoLEsportsLolesportsTournamentsResponse = Any
+LoLEsportsLolesportsTournamentsParams = TypedDict('LoLEsportsLolesportsTournamentsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'hl': NotRequired[Literal['cs-CZ', 'de-DE', 'en-US', 'es-ES', 'es-MX', 'fr-FR', 'hu-HU', 'ja-JP', 'ko-KR', 'pl-PL', 'pt-BR', 'th-TH', 'tr-TR', 'vi-VN', 'zh-TW']],
+    'league_id': Required[str],
+}, total=False)
+
 LululemonCategoriesResponse = ModelLululemonCategoriesResponseDoc
 LululemonCategoriesParams = TypedDict('LululemonCategoriesParams', {
     '_response_type': NotRequired[ResponseType],
@@ -103876,6 +108022,228 @@ OldNavyOldnavyStoresParams = TypedDict('OldNavyOldnavyStoresParams', {
     'lat': NotRequired[float],
     'lng': NotRequired[float],
     'brand': NotRequired[Literal['on', 'gap', 'br', 'at']],
+}, total=False)
+
+OpenDotaOpendotaAbilitiesResponse = Any
+OpenDotaOpendotaAbilitiesParams = TypedDict('OpenDotaOpendotaAbilitiesParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'q': NotRequired[str],
+    'limit': NotRequired[int],
+}, total=False)
+
+OpenDotaOpendotaBenchmarksResponse = Any
+OpenDotaOpendotaBenchmarksParams = TypedDict('OpenDotaOpendotaBenchmarksParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'hero_id': Required[int],
+}, total=False)
+
+OpenDotaOpendotaConstantsResponse = Any
+OpenDotaOpendotaConstantsParams = TypedDict('OpenDotaOpendotaConstantsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'resource': Required[Literal['game_mode', 'lobby_type', 'patch', 'region', 'cluster', 'item_ids', 'ability_ids', 'permanent_buffs', 'xp_level', 'countries', 'order_types', 'player_colors']],
+}, total=False)
+
+OpenDotaOpendotaHeroDurationsResponse = Any
+OpenDotaOpendotaHeroDurationsParams = TypedDict('OpenDotaOpendotaHeroDurationsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'hero_id': Required[int],
+}, total=False)
+
+OpenDotaOpendotaHeroItemsResponse = Any
+OpenDotaOpendotaHeroItemsParams = TypedDict('OpenDotaOpendotaHeroItemsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'hero_id': Required[int],
+}, total=False)
+
+OpenDotaOpendotaHeroMatchupsResponse = Any
+OpenDotaOpendotaHeroMatchupsParams = TypedDict('OpenDotaOpendotaHeroMatchupsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'hero_id': Required[int],
+}, total=False)
+
+OpenDotaOpendotaHeroStatsResponse = Any
+OpenDotaOpendotaHeroStatsParams = TypedDict('OpenDotaOpendotaHeroStatsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'primary_attr': NotRequired[Literal['agi', 'all', 'int', 'str']],
+    'attack_type': NotRequired[Literal['Melee', 'Ranged']],
+    'role': NotRequired[Literal['Carry', 'Disabler', 'Durable', 'Escape', 'Initiator', 'Nuker', 'Pusher', 'Support']],
+    'sort': NotRequired[Literal['id', 'name', 'pro_pick', 'pro_win', 'pro_ban', 'pro_win_rate', 'pub_pick', 'pub_win', 'pub_win_rate', 'turbo_pick', 'turbo_win_rate']],
+    'desc': NotRequired[bool],
+    'limit': NotRequired[int],
+}, total=False)
+
+OpenDotaOpendotaHeroesResponse = Any
+OpenDotaOpendotaHeroesParams = TypedDict('OpenDotaOpendotaHeroesParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+}, total=False)
+
+OpenDotaOpendotaItemsResponse = Any
+OpenDotaOpendotaItemsParams = TypedDict('OpenDotaOpendotaItemsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'q': NotRequired[str],
+    'quality': NotRequired[str],
+    'limit': NotRequired[int],
+}, total=False)
+
+OpenDotaOpendotaLeagueResponse = Any
+OpenDotaOpendotaLeagueParams = TypedDict('OpenDotaOpendotaLeagueParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'league_id': Required[int],
+}, total=False)
+
+OpenDotaOpendotaLeagueMatchIdsResponse = Any
+OpenDotaOpendotaLeagueMatchIdsParams = TypedDict('OpenDotaOpendotaLeagueMatchIdsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'league_id': Required[int],
+}, total=False)
+
+OpenDotaOpendotaLeagueMatchesResponse = Any
+OpenDotaOpendotaLeagueMatchesParams = TypedDict('OpenDotaOpendotaLeagueMatchesParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'league_id': Required[int],
+    'team_id': NotRequired[int],
+}, total=False)
+
+OpenDotaOpendotaLeaguesResponse = Any
+OpenDotaOpendotaLeaguesParams = TypedDict('OpenDotaOpendotaLeaguesParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'tier': NotRequired[Literal['amateur', 'excluded', 'premium', 'professional', 'unrated']],
+}, total=False)
+
+OpenDotaOpendotaLiveResponse = Any
+OpenDotaOpendotaLiveParams = TypedDict('OpenDotaOpendotaLiveParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+}, total=False)
+
+OpenDotaOpendotaMatchResponse = Any
+OpenDotaOpendotaMatchParams = TypedDict('OpenDotaOpendotaMatchParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': Required[int],
+}, total=False)
+
+OpenDotaOpendotaPatchNotesResponse = Any
+OpenDotaOpendotaPatchNotesParams = TypedDict('OpenDotaOpendotaPatchNotesParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'patch': NotRequired[str],
+}, total=False)
+
+OpenDotaOpendotaProMatchesResponse = Any
+OpenDotaOpendotaProMatchesParams = TypedDict('OpenDotaOpendotaProMatchesParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'less_than_match_id': NotRequired[int],
+}, total=False)
+
+OpenDotaOpendotaProPlayersResponse = Any
+OpenDotaOpendotaProPlayersParams = TypedDict('OpenDotaOpendotaProPlayersParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'team_id': NotRequired[int],
+    'q': NotRequired[str],
+    'limit': NotRequired[int],
+    'offset': NotRequired[int],
+}, total=False)
+
+OpenDotaOpendotaRankDistributionResponse = Any
+OpenDotaOpendotaRankDistributionParams = TypedDict('OpenDotaOpendotaRankDistributionParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+}, total=False)
+
+OpenDotaOpendotaRecordsResponse = Any
+OpenDotaOpendotaRecordsParams = TypedDict('OpenDotaOpendotaRecordsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'field': Required[Literal['kills', 'deaths', 'assists', 'last_hits', 'denies', 'gold_per_min', 'xp_per_min', 'hero_damage', 'tower_damage', 'hero_healing', 'duration']],
+}, total=False)
+
+OpenDotaOpendotaScenariosResponse = Any
+OpenDotaOpendotaScenariosParams = TypedDict('OpenDotaOpendotaScenariosParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'kind': Required[Literal['item-timings', 'lane-roles', 'misc']],
+    'hero_id': NotRequired[int],
+    'item': NotRequired[str],
+    'lane_role': NotRequired[int],
+    'scenario': NotRequired[Literal['courier_kill', 'first_blood', 'neg_chat_1min', 'pos_chat_1min']],
+    'limit': NotRequired[int],
+}, total=False)
+
+OpenDotaOpendotaTeamResponse = Any
+OpenDotaOpendotaTeamParams = TypedDict('OpenDotaOpendotaTeamParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'team_id': Required[int],
+}, total=False)
+
+OpenDotaOpendotaTeamHeroesResponse = Any
+OpenDotaOpendotaTeamHeroesParams = TypedDict('OpenDotaOpendotaTeamHeroesParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'team_id': Required[int],
+}, total=False)
+
+OpenDotaOpendotaTeamMatchesResponse = Any
+OpenDotaOpendotaTeamMatchesParams = TypedDict('OpenDotaOpendotaTeamMatchesParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'team_id': Required[int],
+}, total=False)
+
+OpenDotaOpendotaTeamPlayersResponse = Any
+OpenDotaOpendotaTeamPlayersParams = TypedDict('OpenDotaOpendotaTeamPlayersParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'team_id': Required[int],
+}, total=False)
+
+OpenDotaOpendotaTeamsResponse = Any
+OpenDotaOpendotaTeamsParams = TypedDict('OpenDotaOpendotaTeamsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'page': NotRequired[int],
 }, total=False)
 
 OpenSeaOpenseaActivityResponse = ModelOpenseaActivityResponseDoc
@@ -107505,6 +111873,41 @@ RedfinSimilarParams = TypedDict('RedfinSimilarParams', {
     'property_id': Required[str],
 }, total=False)
 
+RednoteExploreResponse = ModelRednoteExploreResponseDoc
+RednoteExploreParams = TypedDict('RednoteExploreParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'channel_id': NotRequired[str],
+}, total=False)
+
+RednoteNoteResponse = ModelRednoteNoteResponseDoc
+RednoteNoteParams = TypedDict('RednoteNoteParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'url': NotRequired[str],
+    'note_id': NotRequired[str],
+}, total=False)
+
+RednoteNoteCommentsResponse = ModelRednoteCommentsResponseDoc
+RednoteNoteCommentsParams = TypedDict('RednoteNoteCommentsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'url': NotRequired[str],
+    'note_id': NotRequired[str],
+    'cursor': NotRequired[str],
+}, total=False)
+
+RednoteSearchSuggestResponse = ModelRednoteSuggestResponseDoc
+RednoteSearchSuggestParams = TypedDict('RednoteSearchSuggestParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'keyword': Required[str],
+}, total=False)
+
 ReelShortReelshortFandomCategoriesResponse = ModelReelshortFandomCategoriesResponseDoc
 ReelShortReelshortFandomCategoriesParams = TypedDict('ReelShortReelshortFandomCategoriesParams', {
     '_response_type': NotRequired[ResponseType],
@@ -109587,6 +113990,139 @@ ShopAppSuggestionsParams = TypedDict('ShopAppSuggestionsParams', {
     '_headers': NotRequired[Mapping[str, str]],
     'query': Required[str],
     'limit': NotRequired[int],
+}, total=False)
+
+ShopeeBannersResponse = ModelShopeeBannersResponseDoc
+ShopeeBannersParams = TypedDict('ShopeeBannersParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'region': NotRequired[Literal['my', 'sg', 'id', 'th', 'vn', 'ph', 'tw', 'br', 'mx', 'co', 'cl']],
+    'slot': NotRequired[Literal['HOME_CAROUSEL_01', 'HOME_SKINNY_01', 'HOME_NUZ_CAROUSEL_01', 'HOME_FLOATING', 'HOME_POPUP_01', 'HOME_MALL_01']],
+    'space_key': NotRequired[str],
+}, total=False)
+
+ShopeeCategoriesResponse = ModelShopeeCategoriesResponseDoc
+ShopeeCategoriesParams = TypedDict('ShopeeCategoriesParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'region': NotRequired[Literal['my', 'sg', 'id', 'th', 'vn', 'ph', 'tw', 'br', 'mx', 'co', 'cl']],
+}, total=False)
+
+ShopeeCategoryDetailResponse = ModelShopeeCategoryDetailResponseDoc
+ShopeeCategoryDetailParams = TypedDict('ShopeeCategoryDetailParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'region': NotRequired[Literal['my', 'sg', 'id', 'th', 'vn', 'ph', 'tw', 'br', 'mx', 'co', 'cl']],
+    'catids': Required[str],
+}, total=False)
+
+ShopeeFlashSaleResponse = ModelShopeeFlashSaleResponseDoc
+ShopeeFlashSaleParams = TypedDict('ShopeeFlashSaleParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'region': NotRequired[Literal['my', 'sg', 'id', 'th', 'vn', 'ph', 'tw', 'br', 'mx', 'co', 'cl']],
+    'limit': NotRequired[int],
+    'offset': NotRequired[int],
+}, total=False)
+
+ShopeeFooterResponse = ModelShopeeFooterResponseDoc
+ShopeeFooterParams = TypedDict('ShopeeFooterParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'region': NotRequired[Literal['my', 'sg', 'id', 'th', 'vn', 'ph', 'tw', 'br', 'mx', 'co', 'cl']],
+}, total=False)
+
+ShopeeHomeResponse = ModelShopeeHomeResponseDoc
+ShopeeHomeParams = TypedDict('ShopeeHomeParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'region': NotRequired[Literal['my', 'sg', 'id', 'th', 'vn', 'ph', 'tw', 'br', 'mx', 'co', 'cl']],
+}, total=False)
+
+ShopeeHomeCategoriesResponse = ModelShopeeHomeCategoriesResponseDoc
+ShopeeHomeCategoriesParams = TypedDict('ShopeeHomeCategoriesParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'region': NotRequired[Literal['my', 'sg', 'id', 'th', 'vn', 'ph', 'tw', 'br', 'mx', 'co', 'cl']],
+}, total=False)
+
+ShopeeLocationFiltersResponse = ModelShopeeLocationFiltersResponseDoc
+ShopeeLocationFiltersParams = TypedDict('ShopeeLocationFiltersParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'region': NotRequired[Literal['my', 'sg', 'id', 'th', 'vn', 'ph', 'tw', 'br', 'mx', 'co', 'cl']],
+}, total=False)
+
+ShopeeMallCategoriesResponse = ModelShopeeMallCategoriesResponseDoc
+ShopeeMallCategoriesParams = TypedDict('ShopeeMallCategoriesParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'region': NotRequired[Literal['my', 'sg', 'id', 'th', 'vn', 'ph', 'tw', 'br', 'mx', 'co', 'cl']],
+}, total=False)
+
+ShopeePrefillsResponse = ModelShopeePrefillsResponseDoc
+ShopeePrefillsParams = TypedDict('ShopeePrefillsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'region': NotRequired[Literal['my', 'sg', 'id', 'th', 'vn', 'ph', 'tw', 'br', 'mx', 'co', 'cl']],
+}, total=False)
+
+ShopeeSearchFiltersResponse = ModelShopeeSearchFiltersResponseDoc
+ShopeeSearchFiltersParams = TypedDict('ShopeeSearchFiltersParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'region': NotRequired[Literal['my', 'sg', 'id', 'th', 'vn', 'ph', 'tw', 'br', 'mx', 'co', 'cl']],
+    'keyword': NotRequired[str],
+    'category': NotRequired[str],
+}, total=False)
+
+ShopeeSearchHintsResponse = ModelShopeeSearchHintsResponseDoc
+ShopeeSearchHintsParams = TypedDict('ShopeeSearchHintsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'region': NotRequired[Literal['my', 'sg', 'id', 'th', 'vn', 'ph', 'tw', 'br', 'mx', 'co', 'cl']],
+    'keyword': Required[str],
+    'version': NotRequired[int],
+}, total=False)
+
+ShopeeShopInfoResponse = ModelShopeeShopInfoResponseDoc
+ShopeeShopInfoParams = TypedDict('ShopeeShopInfoParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'region': NotRequired[Literal['my', 'sg', 'id', 'th', 'vn', 'ph', 'tw', 'br', 'mx', 'co', 'cl']],
+    'shop_id': Required[int],
+}, total=False)
+
+ShopeeShopsResponse = ModelShopeeShopsResponseDoc
+ShopeeShopsParams = TypedDict('ShopeeShopsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'region': NotRequired[Literal['my', 'sg', 'id', 'th', 'vn', 'ph', 'tw', 'br', 'mx', 'co', 'cl']],
+    'limit': NotRequired[int],
+    'offset': NotRequired[int],
+}, total=False)
+
+ShopeeSuggestResponse = ModelShopeeSuggestResponseDoc
+ShopeeSuggestParams = TypedDict('ShopeeSuggestParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'region': NotRequired[Literal['my', 'sg', 'id', 'th', 'vn', 'ph', 'tw', 'br', 'mx', 'co', 'cl']],
+    'keyword': Required[str],
 }, total=False)
 
 ShopifyCollectionsResponse = ModelShopifyCollectionsResponseDoc
@@ -117133,6 +121669,210 @@ VintedMemberParams = TypedDict('VintedMemberParams', {
     'id': Required[str],
 }, total=False)
 
+VlrEventResponse = Any
+VlrEventParams = TypedDict('VlrEventParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': Required[str],
+}, total=False)
+
+VlrEventAgentsResponse = Any
+VlrEventAgentsParams = TypedDict('VlrEventAgentsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': Required[str],
+}, total=False)
+
+VlrEventMatchesResponse = Any
+VlrEventMatchesParams = TypedDict('VlrEventMatchesParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': Required[str],
+}, total=False)
+
+VlrEventStatsResponse = Any
+VlrEventStatsParams = TypedDict('VlrEventStatsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': Required[str],
+    'side': NotRequired[Literal['all', 't', 'ct']],
+}, total=False)
+
+VlrEventsResponse = Any
+VlrEventsParams = TypedDict('VlrEventsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'tier': NotRequired[Literal['all', 'vct', 'vcl', 't3', 'gc', 'cg', 'off']],
+    'region': NotRequired[Literal['all', 'americas', 'emea', 'pacific', 'china']],
+    'page': NotRequired[int],
+}, total=False)
+
+VlrForumCategoriesResponse = Any
+VlrForumCategoriesParams = TypedDict('VlrForumCategoriesParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+}, total=False)
+
+VlrForumThreadsResponse = Any
+VlrForumThreadsParams = TypedDict('VlrForumThreadsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'category': NotRequired[Literal['valorant-discussion', 'off-topic', 'site-feedback']],
+    'page': NotRequired[int],
+}, total=False)
+
+VlrMatchResponse = Any
+VlrMatchParams = TypedDict('VlrMatchParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': Required[str],
+}, total=False)
+
+VlrMatchEconomyResponse = Any
+VlrMatchEconomyParams = TypedDict('VlrMatchEconomyParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': Required[str],
+}, total=False)
+
+VlrMatchPerformanceResponse = Any
+VlrMatchPerformanceParams = TypedDict('VlrMatchPerformanceParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': Required[str],
+}, total=False)
+
+VlrMatchRoundsResponse = Any
+VlrMatchRoundsParams = TypedDict('VlrMatchRoundsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': Required[str],
+}, total=False)
+
+VlrMatchesResponse = Any
+VlrMatchesParams = TypedDict('VlrMatchesParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'page': NotRequired[int],
+}, total=False)
+
+VlrNewsResponse = Any
+VlrNewsParams = TypedDict('VlrNewsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'page': NotRequired[int],
+}, total=False)
+
+VlrNewsArticleResponse = Any
+VlrNewsArticleParams = TypedDict('VlrNewsArticleParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': Required[str],
+}, total=False)
+
+VlrPlayerResponse = Any
+VlrPlayerParams = TypedDict('VlrPlayerParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': Required[str],
+}, total=False)
+
+VlrPlayerMatchesResponse = Any
+VlrPlayerMatchesParams = TypedDict('VlrPlayerMatchesParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': Required[str],
+    'page': NotRequired[int],
+}, total=False)
+
+VlrRankingsResponse = Any
+VlrRankingsParams = TypedDict('VlrRankingsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'region': NotRequired[Literal['north-america', 'europe', 'brazil', 'asia-pacific', 'korea', 'china', 'japan', 'la-s', 'la-n', 'oceania', 'mena', 'gc', 'collegiate']],
+    'limit': NotRequired[int],
+}, total=False)
+
+VlrResultsResponse = Any
+VlrResultsParams = TypedDict('VlrResultsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'page': NotRequired[int],
+}, total=False)
+
+VlrSearchResponse = Any
+VlrSearchParams = TypedDict('VlrSearchParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'q': Required[str],
+    'type': NotRequired[Literal['all', 'teams', 'events', 'players']],
+}, total=False)
+
+VlrStatsResponse = Any
+VlrStatsParams = TypedDict('VlrStatsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'tier': NotRequired[str],
+    'region': NotRequired[str],
+    'timespan': NotRequired[Literal['all', '30d', '60d', '90d', '2026', '2025', '2024', '2023', '2022', '2021', '2020']],
+    'side': NotRequired[Literal['all', 't', 'ct']],
+    'role': NotRequired[str],
+    'agent': NotRequired[str],
+    'map': NotRequired[str],
+    'min_rounds': NotRequired[int],
+    'from': NotRequired[str],
+    'to': NotRequired[str],
+    'min_rating': NotRequired[Literal['0', '1300', '1400', '1500', '1550', '1650', '1750', '1850']],
+    'sort': NotRequired[Literal['rating', 'maps', 'rnd', 'acs', 'kd', 'kast', 'adr', 'kpr', 'apr', 'fkfd', 'fkpr', 'fdpr', 'hsp', 'clp', 'cl', 'kmax', 'k', 'd', 'a', 'fk', 'fd']],
+    'dir': NotRequired[Literal['asc', 'desc']],
+    'page': NotRequired[int],
+}, total=False)
+
+VlrTeamResponse = Any
+VlrTeamParams = TypedDict('VlrTeamParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': Required[str],
+}, total=False)
+
+VlrTeamMapsResponse = Any
+VlrTeamMapsParams = TypedDict('VlrTeamMapsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': Required[str],
+}, total=False)
+
+VlrTeamMatchesResponse = Any
+VlrTeamMatchesParams = TypedDict('VlrTeamMatchesParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': Required[str],
+    'page': NotRequired[int],
+}, total=False)
+
 VoxArticleResponse = ModelPublicnewsArticleResponseDoc
 VoxArticleParams = TypedDict('VoxArticleParams', {
     '_response_type': NotRequired[ResponseType],
@@ -118159,6 +122899,43 @@ XdaSectionsParams = TypedDict('XdaSectionsParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
     '_headers': NotRequired[Mapping[str, str]],
+}, total=False)
+
+XiaohongshuExploreResponse = ModelXiaohongshuExploreResponseDoc
+XiaohongshuExploreParams = TypedDict('XiaohongshuExploreParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'channel_id': NotRequired[str],
+}, total=False)
+
+XiaohongshuNoteResponse = ModelXiaohongshuNoteResponseDoc
+XiaohongshuNoteParams = TypedDict('XiaohongshuNoteParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'url': NotRequired[str],
+    'note_id': NotRequired[str],
+    'xsec_token': NotRequired[str],
+}, total=False)
+
+XiaohongshuNoteCommentsResponse = ModelXiaohongshuCommentsResponseDoc
+XiaohongshuNoteCommentsParams = TypedDict('XiaohongshuNoteCommentsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'url': NotRequired[str],
+    'note_id': NotRequired[str],
+    'xsec_token': NotRequired[str],
+    'cursor': NotRequired[str],
+}, total=False)
+
+XiaohongshuSearchSuggestResponse = ModelXiaohongshuSuggestResponseDoc
+XiaohongshuSearchSuggestParams = TypedDict('XiaohongshuSearchSuggestParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'keyword': Required[str],
 }, total=False)
 
 YahooAutosArticleResponse = ModelYahooautosArticleResponseDoc
@@ -119980,6 +124757,36 @@ class BlueskyGroup:
     def search_actors(self, **params: Unpack[BlueskySearchActorsParams]) -> BlueskySearchActorsResponse: ...
     def trending_topics(self, **params: Unpack[BlueskyTrendingTopicsParams]) -> BlueskyTrendingTopicsResponse: ...
 
+class Bo3Group:
+    def economy_baseline(self, **params: Unpack[Bo3EconomyBaselineParams]) -> Bo3EconomyBaselineResponse: ...
+    def forum(self, **params: Unpack[Bo3ForumParams]) -> Bo3ForumResponse: ...
+    def forum_categories(self, **params: Unpack[Bo3ForumCategoriesParams]) -> Bo3ForumCategoriesResponse: ...
+    def match(self, **params: Unpack[Bo3MatchParams]) -> Bo3MatchResponse: ...
+    def match_games(self, **params: Unpack[Bo3MatchGamesParams]) -> Bo3MatchGamesResponse: ...
+    def match_history(self, **params: Unpack[Bo3MatchHistoryParams]) -> Bo3MatchHistoryResponse: ...
+    def match_players(self, **params: Unpack[Bo3MatchPlayersParams]) -> Bo3MatchPlayersResponse: ...
+    def news_categories(self, **params: Unpack[Bo3NewsCategoriesParams]) -> Bo3NewsCategoriesResponse: ...
+    def news_feed(self, **params: Unpack[Bo3NewsFeedParams]) -> Bo3NewsFeedResponse: ...
+    def player(self, **params: Unpack[Bo3PlayerParams]) -> Bo3PlayerResponse: ...
+    def player_leaderboard(self, **params: Unpack[Bo3PlayerLeaderboardParams]) -> Bo3PlayerLeaderboardResponse: ...
+    def player_recent_matches(self, **params: Unpack[Bo3PlayerRecentMatchesParams]) -> Bo3PlayerRecentMatchesResponse: ...
+    def player_stats(self, **params: Unpack[Bo3PlayerStatsParams]) -> Bo3PlayerStatsResponse: ...
+    def records(self, **params: Unpack[Bo3RecordsParams]) -> Bo3RecordsResponse: ...
+    def team(self, **params: Unpack[Bo3TeamParams]) -> Bo3TeamResponse: ...
+    def team_prize_money(self, **params: Unpack[Bo3TeamPrizeMoneyParams]) -> Bo3TeamPrizeMoneyResponse: ...
+    def team_ranking_dates(self, **params: Unpack[Bo3TeamRankingDatesParams]) -> Bo3TeamRankingDatesResponse: ...
+    def team_rankings(self, **params: Unpack[Bo3TeamRankingsParams]) -> Bo3TeamRankingsResponse: ...
+    def team_recent_matches(self, **params: Unpack[Bo3TeamRecentMatchesParams]) -> Bo3TeamRecentMatchesResponse: ...
+    def team_stats(self, **params: Unpack[Bo3TeamStatsParams]) -> Bo3TeamStatsResponse: ...
+    def tournament(self, **params: Unpack[Bo3TournamentParams]) -> Bo3TournamentResponse: ...
+    def tournament_map_pool(self, **params: Unpack[Bo3TournamentMapPoolParams]) -> Bo3TournamentMapPoolResponse: ...
+    def tournament_mvps(self, **params: Unpack[Bo3TournamentMvpsParams]) -> Bo3TournamentMvpsResponse: ...
+    def tournament_squads(self, **params: Unpack[Bo3TournamentSquadsParams]) -> Bo3TournamentSquadsResponse: ...
+    def tournament_stages(self, **params: Unpack[Bo3TournamentStagesParams]) -> Bo3TournamentStagesResponse: ...
+    def tournaments(self, **params: Unpack[Bo3TournamentsParams]) -> Bo3TournamentsResponse: ...
+    def transfers(self, **params: Unpack[Bo3TransfersParams]) -> Bo3TransfersResponse: ...
+    def valorant_leaderboard(self, **params: Unpack[Bo3ValorantLeaderboardParams]) -> Bo3ValorantLeaderboardResponse: ...
+
 class BonhamsGroup:
     def auction_search(self, **params: Unpack[BonhamsAuctionSearchParams]) -> BonhamsAuctionSearchResponse: ...
     def auction_detail(self, **params: Unpack[BonhamsAuctionDetailParams]) -> BonhamsAuctionDetailResponse: ...
@@ -121386,6 +126193,23 @@ class GooglePlayGroup:
     def similar(self, **params: Unpack[GooglePlaySimilarParams]) -> GooglePlaySimilarResponse: ...
     def suggest(self, **params: Unpack[GooglePlaySuggestParams]) -> GooglePlaySuggestResponse: ...
 
+class GosuGamersGroup:
+    def gosugamers_encounters(self, **params: Unpack[GosuGamersGosugamersEncountersParams]) -> GosuGamersGosugamersEncountersResponse: ...
+    def gosugamers_games(self, **params: Unpack[GosuGamersGosugamersGamesParams]) -> GosuGamersGosugamersGamesResponse: ...
+    def gosugamers_match(self, **params: Unpack[GosuGamersGosugamersMatchParams]) -> GosuGamersGosugamersMatchResponse: ...
+    def gosugamers_match_game(self, **params: Unpack[GosuGamersGosugamersMatchGameParams]) -> GosuGamersGosugamersMatchGameResponse: ...
+    def gosugamers_matches(self, **params: Unpack[GosuGamersGosugamersMatchesParams]) -> GosuGamersGosugamersMatchesResponse: ...
+    def gosugamers_player(self, **params: Unpack[GosuGamersGosugamersPlayerParams]) -> GosuGamersGosugamersPlayerResponse: ...
+    def gosugamers_rankings(self, **params: Unpack[GosuGamersGosugamersRankingsParams]) -> GosuGamersGosugamersRankingsResponse: ...
+    def gosugamers_results(self, **params: Unpack[GosuGamersGosugamersResultsParams]) -> GosuGamersGosugamersResultsResponse: ...
+    def gosugamers_stage_groups(self, **params: Unpack[GosuGamersGosugamersStageGroupsParams]) -> GosuGamersGosugamersStageGroupsResponse: ...
+    def gosugamers_team(self, **params: Unpack[GosuGamersGosugamersTeamParams]) -> GosuGamersGosugamersTeamResponse: ...
+    def gosugamers_team_results(self, **params: Unpack[GosuGamersGosugamersTeamResultsParams]) -> GosuGamersGosugamersTeamResultsResponse: ...
+    def gosugamers_tournament(self, **params: Unpack[GosuGamersGosugamersTournamentParams]) -> GosuGamersGosugamersTournamentResponse: ...
+    def gosugamers_tournament_participants(self, **params: Unpack[GosuGamersGosugamersTournamentParticipantsParams]) -> GosuGamersGosugamersTournamentParticipantsResponse: ...
+    def gosugamers_tournament_talents(self, **params: Unpack[GosuGamersGosugamersTournamentTalentsParams]) -> GosuGamersGosugamersTournamentTalentsResponse: ...
+    def gosugamers_tournaments(self, **params: Unpack[GosuGamersGosugamersTournamentsParams]) -> GosuGamersGosugamersTournamentsResponse: ...
+
 class GqGroup:
     def article(self, **params: Unpack[GqArticleParams]) -> GqArticleResponse: ...
     def author(self, **params: Unpack[GqAuthorParams]) -> GqAuthorResponse: ...
@@ -121983,6 +126807,21 @@ class LiveScoreGroup:
     def livescore_sports(self, **params: Unpack[LiveScoreLivescoreSportsParams]) -> LiveScoreLivescoreSportsResponse: ...
     def livescore_team(self, **params: Unpack[LiveScoreLivescoreTeamParams]) -> LiveScoreLivescoreTeamResponse: ...
 
+class LoLEsportsGroup:
+    def lolesports_completed_events(self, **params: Unpack[LoLEsportsLolesportsCompletedEventsParams]) -> LoLEsportsLolesportsCompletedEventsResponse: ...
+    def lolesports_event(self, **params: Unpack[LoLEsportsLolesportsEventParams]) -> LoLEsportsLolesportsEventResponse: ...
+    def lolesports_game_details(self, **params: Unpack[LoLEsportsLolesportsGameDetailsParams]) -> LoLEsportsLolesportsGameDetailsResponse: ...
+    def lolesports_game_window(self, **params: Unpack[LoLEsportsLolesportsGameWindowParams]) -> LoLEsportsLolesportsGameWindowResponse: ...
+    def lolesports_gpr(self, **params: Unpack[LoLEsportsLolesportsGprParams]) -> LoLEsportsLolesportsGprResponse: ...
+    def lolesports_leagues(self, **params: Unpack[LoLEsportsLolesportsLeaguesParams]) -> LoLEsportsLolesportsLeaguesResponse: ...
+    def lolesports_live(self, **params: Unpack[LoLEsportsLolesportsLiveParams]) -> LoLEsportsLolesportsLiveResponse: ...
+    def lolesports_news(self, **params: Unpack[LoLEsportsLolesportsNewsParams]) -> LoLEsportsLolesportsNewsResponse: ...
+    def lolesports_schedule(self, **params: Unpack[LoLEsportsLolesportsScheduleParams]) -> LoLEsportsLolesportsScheduleResponse: ...
+    def lolesports_seasons(self, **params: Unpack[LoLEsportsLolesportsSeasonsParams]) -> LoLEsportsLolesportsSeasonsResponse: ...
+    def lolesports_standings(self, **params: Unpack[LoLEsportsLolesportsStandingsParams]) -> LoLEsportsLolesportsStandingsResponse: ...
+    def lolesports_teams(self, **params: Unpack[LoLEsportsLolesportsTeamsParams]) -> LoLEsportsLolesportsTeamsResponse: ...
+    def lolesports_tournaments(self, **params: Unpack[LoLEsportsLolesportsTournamentsParams]) -> LoLEsportsLolesportsTournamentsResponse: ...
+
 class LululemonGroup:
     def categories(self, **params: Unpack[LululemonCategoriesParams]) -> LululemonCategoriesResponse: ...
     def category(self, **params: Unpack[LululemonCategoryParams]) -> LululemonCategoryResponse: ...
@@ -122424,6 +127263,34 @@ class OldNavyGroup:
     def oldnavy_product_reviews(self, **params: Unpack[OldNavyOldnavyProductReviewsParams]) -> OldNavyOldnavyProductReviewsResponse: ...
     def oldnavy_search(self, **params: Unpack[OldNavyOldnavySearchParams]) -> OldNavyOldnavySearchResponse: ...
     def oldnavy_stores(self, **params: Unpack[OldNavyOldnavyStoresParams]) -> OldNavyOldnavyStoresResponse: ...
+
+class OpenDotaGroup:
+    def opendota_abilities(self, **params: Unpack[OpenDotaOpendotaAbilitiesParams]) -> OpenDotaOpendotaAbilitiesResponse: ...
+    def opendota_benchmarks(self, **params: Unpack[OpenDotaOpendotaBenchmarksParams]) -> OpenDotaOpendotaBenchmarksResponse: ...
+    def opendota_constants(self, **params: Unpack[OpenDotaOpendotaConstantsParams]) -> OpenDotaOpendotaConstantsResponse: ...
+    def opendota_hero_durations(self, **params: Unpack[OpenDotaOpendotaHeroDurationsParams]) -> OpenDotaOpendotaHeroDurationsResponse: ...
+    def opendota_hero_items(self, **params: Unpack[OpenDotaOpendotaHeroItemsParams]) -> OpenDotaOpendotaHeroItemsResponse: ...
+    def opendota_hero_matchups(self, **params: Unpack[OpenDotaOpendotaHeroMatchupsParams]) -> OpenDotaOpendotaHeroMatchupsResponse: ...
+    def opendota_hero_stats(self, **params: Unpack[OpenDotaOpendotaHeroStatsParams]) -> OpenDotaOpendotaHeroStatsResponse: ...
+    def opendota_heroes(self, **params: Unpack[OpenDotaOpendotaHeroesParams]) -> OpenDotaOpendotaHeroesResponse: ...
+    def opendota_items(self, **params: Unpack[OpenDotaOpendotaItemsParams]) -> OpenDotaOpendotaItemsResponse: ...
+    def opendota_league(self, **params: Unpack[OpenDotaOpendotaLeagueParams]) -> OpenDotaOpendotaLeagueResponse: ...
+    def opendota_league_match_ids(self, **params: Unpack[OpenDotaOpendotaLeagueMatchIdsParams]) -> OpenDotaOpendotaLeagueMatchIdsResponse: ...
+    def opendota_league_matches(self, **params: Unpack[OpenDotaOpendotaLeagueMatchesParams]) -> OpenDotaOpendotaLeagueMatchesResponse: ...
+    def opendota_leagues(self, **params: Unpack[OpenDotaOpendotaLeaguesParams]) -> OpenDotaOpendotaLeaguesResponse: ...
+    def opendota_live(self, **params: Unpack[OpenDotaOpendotaLiveParams]) -> OpenDotaOpendotaLiveResponse: ...
+    def opendota_match(self, **params: Unpack[OpenDotaOpendotaMatchParams]) -> OpenDotaOpendotaMatchResponse: ...
+    def opendota_patch_notes(self, **params: Unpack[OpenDotaOpendotaPatchNotesParams]) -> OpenDotaOpendotaPatchNotesResponse: ...
+    def opendota_pro_matches(self, **params: Unpack[OpenDotaOpendotaProMatchesParams]) -> OpenDotaOpendotaProMatchesResponse: ...
+    def opendota_pro_players(self, **params: Unpack[OpenDotaOpendotaProPlayersParams]) -> OpenDotaOpendotaProPlayersResponse: ...
+    def opendota_rank_distribution(self, **params: Unpack[OpenDotaOpendotaRankDistributionParams]) -> OpenDotaOpendotaRankDistributionResponse: ...
+    def opendota_records(self, **params: Unpack[OpenDotaOpendotaRecordsParams]) -> OpenDotaOpendotaRecordsResponse: ...
+    def opendota_scenarios(self, **params: Unpack[OpenDotaOpendotaScenariosParams]) -> OpenDotaOpendotaScenariosResponse: ...
+    def opendota_team(self, **params: Unpack[OpenDotaOpendotaTeamParams]) -> OpenDotaOpendotaTeamResponse: ...
+    def opendota_team_heroes(self, **params: Unpack[OpenDotaOpendotaTeamHeroesParams]) -> OpenDotaOpendotaTeamHeroesResponse: ...
+    def opendota_team_matches(self, **params: Unpack[OpenDotaOpendotaTeamMatchesParams]) -> OpenDotaOpendotaTeamMatchesResponse: ...
+    def opendota_team_players(self, **params: Unpack[OpenDotaOpendotaTeamPlayersParams]) -> OpenDotaOpendotaTeamPlayersResponse: ...
+    def opendota_teams(self, **params: Unpack[OpenDotaOpendotaTeamsParams]) -> OpenDotaOpendotaTeamsResponse: ...
 
 class OpenSeaGroup:
     def opensea_activity(self, **params: Unpack[OpenSeaOpenseaActivityParams]) -> OpenSeaOpenseaActivityResponse: ...
@@ -122904,6 +127771,12 @@ class RedfinGroup:
     def search(self, **params: Unpack[RedfinSearchParams]) -> RedfinSearchResponse: ...
     def similar(self, **params: Unpack[RedfinSimilarParams]) -> RedfinSimilarResponse: ...
 
+class RednoteGroup:
+    def explore(self, **params: Unpack[RednoteExploreParams]) -> RednoteExploreResponse: ...
+    def note(self, **params: Unpack[RednoteNoteParams]) -> RednoteNoteResponse: ...
+    def note_comments(self, **params: Unpack[RednoteNoteCommentsParams]) -> RednoteNoteCommentsResponse: ...
+    def search_suggest(self, **params: Unpack[RednoteSearchSuggestParams]) -> RednoteSearchSuggestResponse: ...
+
 class ReelShortGroup:
     def reelshort_fandom_categories(self, **params: Unpack[ReelShortReelshortFandomCategoriesParams]) -> ReelShortReelshortFandomCategoriesResponse: ...
     def reelshort_fandom_post(self, **params: Unpack[ReelShortReelshortFandomPostParams]) -> ReelShortReelshortFandomPostResponse: ...
@@ -123195,6 +128068,23 @@ class ShopAppGroup:
     def shop_reviews(self, **params: Unpack[ShopAppShopReviewsParams]) -> ShopAppShopReviewsResponse: ...
     def shop_typeahead(self, **params: Unpack[ShopAppShopTypeaheadParams]) -> ShopAppShopTypeaheadResponse: ...
     def suggestions(self, **params: Unpack[ShopAppSuggestionsParams]) -> ShopAppSuggestionsResponse: ...
+
+class ShopeeGroup:
+    def banners(self, **params: Unpack[ShopeeBannersParams]) -> ShopeeBannersResponse: ...
+    def categories(self, **params: Unpack[ShopeeCategoriesParams]) -> ShopeeCategoriesResponse: ...
+    def category_detail(self, **params: Unpack[ShopeeCategoryDetailParams]) -> ShopeeCategoryDetailResponse: ...
+    def flash_sale(self, **params: Unpack[ShopeeFlashSaleParams]) -> ShopeeFlashSaleResponse: ...
+    def footer(self, **params: Unpack[ShopeeFooterParams]) -> ShopeeFooterResponse: ...
+    def home(self, **params: Unpack[ShopeeHomeParams]) -> ShopeeHomeResponse: ...
+    def home_categories(self, **params: Unpack[ShopeeHomeCategoriesParams]) -> ShopeeHomeCategoriesResponse: ...
+    def location_filters(self, **params: Unpack[ShopeeLocationFiltersParams]) -> ShopeeLocationFiltersResponse: ...
+    def mall_categories(self, **params: Unpack[ShopeeMallCategoriesParams]) -> ShopeeMallCategoriesResponse: ...
+    def prefills(self, **params: Unpack[ShopeePrefillsParams]) -> ShopeePrefillsResponse: ...
+    def search_filters(self, **params: Unpack[ShopeeSearchFiltersParams]) -> ShopeeSearchFiltersResponse: ...
+    def search_hints(self, **params: Unpack[ShopeeSearchHintsParams]) -> ShopeeSearchHintsResponse: ...
+    def shop_info(self, **params: Unpack[ShopeeShopInfoParams]) -> ShopeeShopInfoResponse: ...
+    def shops(self, **params: Unpack[ShopeeShopsParams]) -> ShopeeShopsResponse: ...
+    def suggest(self, **params: Unpack[ShopeeSuggestParams]) -> ShopeeSuggestResponse: ...
 
 class ShopifyGroup:
     def collections(self, **params: Unpack[ShopifyCollectionsParams]) -> ShopifyCollectionsResponse: ...
@@ -124209,6 +129099,31 @@ class VintedGroup:
     def item(self, **params: Unpack[VintedItemParams]) -> VintedItemResponse: ...
     def member(self, **params: Unpack[VintedMemberParams]) -> VintedMemberResponse: ...
 
+class VlrGroup:
+    def event(self, **params: Unpack[VlrEventParams]) -> VlrEventResponse: ...
+    def event_agents(self, **params: Unpack[VlrEventAgentsParams]) -> VlrEventAgentsResponse: ...
+    def event_matches(self, **params: Unpack[VlrEventMatchesParams]) -> VlrEventMatchesResponse: ...
+    def event_stats(self, **params: Unpack[VlrEventStatsParams]) -> VlrEventStatsResponse: ...
+    def events(self, **params: Unpack[VlrEventsParams]) -> VlrEventsResponse: ...
+    def forum_categories(self, **params: Unpack[VlrForumCategoriesParams]) -> VlrForumCategoriesResponse: ...
+    def forum_threads(self, **params: Unpack[VlrForumThreadsParams]) -> VlrForumThreadsResponse: ...
+    def match(self, **params: Unpack[VlrMatchParams]) -> VlrMatchResponse: ...
+    def match_economy(self, **params: Unpack[VlrMatchEconomyParams]) -> VlrMatchEconomyResponse: ...
+    def match_performance(self, **params: Unpack[VlrMatchPerformanceParams]) -> VlrMatchPerformanceResponse: ...
+    def match_rounds(self, **params: Unpack[VlrMatchRoundsParams]) -> VlrMatchRoundsResponse: ...
+    def matches(self, **params: Unpack[VlrMatchesParams]) -> VlrMatchesResponse: ...
+    def news(self, **params: Unpack[VlrNewsParams]) -> VlrNewsResponse: ...
+    def news_article(self, **params: Unpack[VlrNewsArticleParams]) -> VlrNewsArticleResponse: ...
+    def player(self, **params: Unpack[VlrPlayerParams]) -> VlrPlayerResponse: ...
+    def player_matches(self, **params: Unpack[VlrPlayerMatchesParams]) -> VlrPlayerMatchesResponse: ...
+    def rankings(self, **params: Unpack[VlrRankingsParams]) -> VlrRankingsResponse: ...
+    def results(self, **params: Unpack[VlrResultsParams]) -> VlrResultsResponse: ...
+    def search(self, **params: Unpack[VlrSearchParams]) -> VlrSearchResponse: ...
+    def stats(self, **params: Unpack[VlrStatsParams]) -> VlrStatsResponse: ...
+    def team(self, **params: Unpack[VlrTeamParams]) -> VlrTeamResponse: ...
+    def team_maps(self, **params: Unpack[VlrTeamMapsParams]) -> VlrTeamMapsResponse: ...
+    def team_matches(self, **params: Unpack[VlrTeamMatchesParams]) -> VlrTeamMatchesResponse: ...
+
 class VoxGroup:
     def article(self, **params: Unpack[VoxArticleParams]) -> VoxArticleResponse: ...
     def author(self, **params: Unpack[VoxAuthorParams]) -> VoxAuthorResponse: ...
@@ -124356,6 +129271,12 @@ class XdaGroup:
     def headlines(self, **params: Unpack[XdaHeadlinesParams]) -> XdaHeadlinesResponse: ...
     def news(self, **params: Unpack[XdaNewsParams]) -> XdaNewsResponse: ...
     def sections(self, **params: Unpack[XdaSectionsParams]) -> XdaSectionsResponse: ...
+
+class XiaohongshuGroup:
+    def explore(self, **params: Unpack[XiaohongshuExploreParams]) -> XiaohongshuExploreResponse: ...
+    def note(self, **params: Unpack[XiaohongshuNoteParams]) -> XiaohongshuNoteResponse: ...
+    def note_comments(self, **params: Unpack[XiaohongshuNoteCommentsParams]) -> XiaohongshuNoteCommentsResponse: ...
+    def search_suggest(self, **params: Unpack[XiaohongshuSearchSuggestParams]) -> XiaohongshuSearchSuggestResponse: ...
 
 class YahooAutosGroup:
     def article(self, **params: Unpack[YahooAutosArticleParams]) -> YahooAutosArticleResponse: ...
@@ -124887,6 +129808,34 @@ OperationId = Literal[
     'bluesky-profile',
     'bluesky-search-actors',
     'bluesky-trending-topics',
+    'bo3-economy-baseline',
+    'bo3-forum',
+    'bo3-forum-categories',
+    'bo3-match',
+    'bo3-match-games',
+    'bo3-match-history',
+    'bo3-match-players',
+    'bo3-news-categories',
+    'bo3-news-feed',
+    'bo3-player',
+    'bo3-player-leaderboard',
+    'bo3-player-recent-matches',
+    'bo3-player-stats',
+    'bo3-records',
+    'bo3-team',
+    'bo3-team-prize-money',
+    'bo3-team-ranking-dates',
+    'bo3-team-rankings',
+    'bo3-team-recent-matches',
+    'bo3-team-stats',
+    'bo3-tournament',
+    'bo3-tournament-map-pool',
+    'bo3-tournament-mvps',
+    'bo3-tournament-squads',
+    'bo3-tournament-stages',
+    'bo3-tournaments',
+    'bo3-transfers',
+    'bo3-valorant-leaderboard',
     'bonhams-auction-search',
     'bonhams-auction-detail',
     'bonhams-auction-lots',
@@ -126032,6 +130981,21 @@ OperationId = Literal[
     'googleplay-search',
     'googleplay-similar',
     'googleplay-suggest',
+    'gosugamers-encounters',
+    'gosugamers-games',
+    'gosugamers-match',
+    'gosugamers-match-game',
+    'gosugamers-matches',
+    'gosugamers-player',
+    'gosugamers-rankings',
+    'gosugamers-results',
+    'gosugamers-stage-groups',
+    'gosugamers-team',
+    'gosugamers-team-results',
+    'gosugamers-tournament',
+    'gosugamers-tournament-participants',
+    'gosugamers-tournament-talents',
+    'gosugamers-tournaments',
     'gq-article',
     'gq-author',
     'gq-headlines',
@@ -126505,6 +131469,19 @@ OperationId = Literal[
     'livescore-search',
     'livescore-sports',
     'livescore-team',
+    'lolesports-completed-events',
+    'lolesports-event',
+    'lolesports-game-details',
+    'lolesports-game-window',
+    'lolesports-gpr',
+    'lolesports-leagues',
+    'lolesports-live',
+    'lolesports-news',
+    'lolesports-schedule',
+    'lolesports-seasons',
+    'lolesports-standings',
+    'lolesports-teams',
+    'lolesports-tournaments',
     'lululemon-categories',
     'lululemon-category',
     'lululemon-outfit',
@@ -126847,6 +131824,32 @@ OperationId = Literal[
     'oldnavy-product-reviews',
     'oldnavy-search',
     'oldnavy-stores',
+    'opendota-abilities',
+    'opendota-benchmarks',
+    'opendota-constants',
+    'opendota-hero-durations',
+    'opendota-hero-items',
+    'opendota-hero-matchups',
+    'opendota-hero-stats',
+    'opendota-heroes',
+    'opendota-items',
+    'opendota-league',
+    'opendota-league-match-ids',
+    'opendota-league-matches',
+    'opendota-leagues',
+    'opendota-live',
+    'opendota-match',
+    'opendota-patch-notes',
+    'opendota-pro-matches',
+    'opendota-pro-players',
+    'opendota-rank-distribution',
+    'opendota-records',
+    'opendota-scenarios',
+    'opendota-team',
+    'opendota-team-heroes',
+    'opendota-team-matches',
+    'opendota-team-players',
+    'opendota-teams',
     'opensea-activity',
     'opensea-categories',
     'opensea-chains',
@@ -127240,6 +132243,10 @@ OperationId = Literal[
     'redfin-region-trends',
     'redfin-search',
     'redfin-similar',
+    'rednote-explore',
+    'rednote-note',
+    'rednote-note-comments',
+    'rednote-search-suggest',
     'reelshort-fandom-categories',
     'reelshort-fandom-post',
     'reelshort-fandom-posts',
@@ -127470,6 +132477,21 @@ OperationId = Literal[
     'shop-app-shop-reviews',
     'shop-app-shop-typeahead',
     'shop-app-suggestions',
+    'shopee-banners',
+    'shopee-categories',
+    'shopee-category-detail',
+    'shopee-flash-sale',
+    'shopee-footer',
+    'shopee-home',
+    'shopee-home-categories',
+    'shopee-location-filters',
+    'shopee-mall-categories',
+    'shopee-prefills',
+    'shopee-search-filters',
+    'shopee-search-hints',
+    'shopee-shop-info',
+    'shopee-shops',
+    'shopee-suggest',
     'shopify-collections',
     'shopify-collection-products',
     'shopify-pages',
@@ -128299,6 +133321,29 @@ OperationId = Literal[
     'vinted-category',
     'vinted-item',
     'vinted-member',
+    'vlr-event',
+    'vlr-event-agents',
+    'vlr-event-matches',
+    'vlr-event-stats',
+    'vlr-events',
+    'vlr-forum-categories',
+    'vlr-forum-threads',
+    'vlr-match',
+    'vlr-match-economy',
+    'vlr-match-performance',
+    'vlr-match-rounds',
+    'vlr-matches',
+    'vlr-news',
+    'vlr-news-article',
+    'vlr-player',
+    'vlr-player-matches',
+    'vlr-rankings',
+    'vlr-results',
+    'vlr-search',
+    'vlr-stats',
+    'vlr-team',
+    'vlr-team-maps',
+    'vlr-team-matches',
     'vox-article',
     'vox-author',
     'vox-headlines',
@@ -128414,6 +133459,10 @@ OperationId = Literal[
     'xda-headlines',
     'xda-news',
     'xda-sections',
+    'xiaohongshu-explore',
+    'xiaohongshu-note',
+    'xiaohongshu-note-comments',
+    'xiaohongshu-search-suggest',
     'yahoo-autos-article',
     'yahoo-autos-category',
     'yahoo-autos-home',
@@ -128622,6 +133671,7 @@ class CrawloraClient:
     bleacher_report: BleacherReportGroup
     bloomberg: BloombergGroup
     bluesky: BlueskyGroup
+    bo3: Bo3Group
     bonhams: BonhamsGroup
     booking: BookingGroup
     boots: BootsGroup
@@ -128748,6 +133798,7 @@ class CrawloraClient:
     google: GoogleGroup
     google_patents: GooglePatentsGroup
     google_play: GooglePlayGroup
+    gosu_gamers: GosuGamersGroup
     gq: GqGroup
     grailed: GrailedGroup
     greystar: GreystarGroup
@@ -128810,6 +133861,7 @@ class CrawloraClient:
     liverpool_echo: LiverpoolEchoGroup
     live_science: LiveScienceGroup
     live_score: LiveScoreGroup
+    lo_l_esports: LoLEsportsGroup
     lululemon: LululemonGroup
     mac_rumors: MacRumorsGroup
     macy_s: MacySGroup
@@ -128860,6 +133912,7 @@ class CrawloraClient:
     nz_herald: NzHeraldGroup
     oh_polly: OhPollyGroup
     old_navy: OldNavyGroup
+    open_dota: OpenDotaGroup
     open_sea: OpenSeaGroup
     open_table: OpenTableGroup
     otto: OttoGroup
@@ -128903,6 +133956,7 @@ class CrawloraClient:
     rebag: RebagGroup
     reddit: RedditGroup
     redfin: RedfinGroup
+    rednote: RednoteGroup
     reel_short: ReelShortGroup
     referrals: ReferralsGroup
     research_jobs: ResearchJobsGroup
@@ -128934,6 +133988,7 @@ class CrawloraClient:
     shake_shack: ShakeShackGroup
     shein: SheinGroup
     shop_app: ShopAppGroup
+    shopee: ShopeeGroup
     shopify: ShopifyGroup
     similar_web: SimilarWebGroup
     skims: SkimsGroup
@@ -129026,6 +134081,7 @@ class CrawloraClient:
     vestiaire: VestiaireGroup
     vice: ViceGroup
     vinted: VintedGroup
+    vlr: VlrGroup
     vox: VoxGroup
     vrbo: VrboGroup
     wales_online: WalesOnlineGroup
@@ -129047,6 +134103,7 @@ class CrawloraClient:
     x: XGroup
     xbox: XboxGroup
     xda: XdaGroup
+    xiaohongshu: XiaohongshuGroup
     yahoo_autos: YahooAutosGroup
     yahoo_entertainment: YahooEntertainmentGroup
     yahoo_finance: YahooFinanceGroup
@@ -133061,6 +138118,342 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> BlueskyTrendingTopicsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['bo3-economy-baseline'],
+        params: Bo3EconomyBaselineParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> Bo3EconomyBaselineResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['bo3-forum'],
+        params: Bo3ForumParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> Bo3ForumResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['bo3-forum-categories'],
+        params: Bo3ForumCategoriesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> Bo3ForumCategoriesResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['bo3-match'],
+        params: Bo3MatchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> Bo3MatchResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['bo3-match-games'],
+        params: Bo3MatchGamesParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> Bo3MatchGamesResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['bo3-match-history'],
+        params: Bo3MatchHistoryParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> Bo3MatchHistoryResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['bo3-match-players'],
+        params: Bo3MatchPlayersParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> Bo3MatchPlayersResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['bo3-news-categories'],
+        params: Bo3NewsCategoriesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> Bo3NewsCategoriesResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['bo3-news-feed'],
+        params: Bo3NewsFeedParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> Bo3NewsFeedResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['bo3-player'],
+        params: Bo3PlayerParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> Bo3PlayerResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['bo3-player-leaderboard'],
+        params: Bo3PlayerLeaderboardParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> Bo3PlayerLeaderboardResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['bo3-player-recent-matches'],
+        params: Bo3PlayerRecentMatchesParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> Bo3PlayerRecentMatchesResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['bo3-player-stats'],
+        params: Bo3PlayerStatsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> Bo3PlayerStatsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['bo3-records'],
+        params: Bo3RecordsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> Bo3RecordsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['bo3-team'],
+        params: Bo3TeamParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> Bo3TeamResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['bo3-team-prize-money'],
+        params: Bo3TeamPrizeMoneyParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> Bo3TeamPrizeMoneyResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['bo3-team-ranking-dates'],
+        params: Bo3TeamRankingDatesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> Bo3TeamRankingDatesResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['bo3-team-rankings'],
+        params: Bo3TeamRankingsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> Bo3TeamRankingsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['bo3-team-recent-matches'],
+        params: Bo3TeamRecentMatchesParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> Bo3TeamRecentMatchesResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['bo3-team-stats'],
+        params: Bo3TeamStatsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> Bo3TeamStatsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['bo3-tournament'],
+        params: Bo3TournamentParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> Bo3TournamentResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['bo3-tournament-map-pool'],
+        params: Bo3TournamentMapPoolParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> Bo3TournamentMapPoolResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['bo3-tournament-mvps'],
+        params: Bo3TournamentMvpsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> Bo3TournamentMvpsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['bo3-tournament-squads'],
+        params: Bo3TournamentSquadsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> Bo3TournamentSquadsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['bo3-tournament-stages'],
+        params: Bo3TournamentStagesParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> Bo3TournamentStagesResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['bo3-tournaments'],
+        params: Bo3TournamentsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> Bo3TournamentsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['bo3-transfers'],
+        params: Bo3TransfersParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> Bo3TransfersResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['bo3-valorant-leaderboard'],
+        params: Bo3ValorantLeaderboardParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> Bo3ValorantLeaderboardResponse: ...
     @overload
     def operation(
         self,
@@ -146804,6 +152197,186 @@ class CrawloraClient:
     @overload
     def operation(
         self,
+        operation_id: Literal['gosugamers-encounters'],
+        params: GosuGamersGosugamersEncountersParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> GosuGamersGosugamersEncountersResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['gosugamers-games'],
+        params: GosuGamersGosugamersGamesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> GosuGamersGosugamersGamesResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['gosugamers-match'],
+        params: GosuGamersGosugamersMatchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> GosuGamersGosugamersMatchResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['gosugamers-match-game'],
+        params: GosuGamersGosugamersMatchGameParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> GosuGamersGosugamersMatchGameResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['gosugamers-matches'],
+        params: GosuGamersGosugamersMatchesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> GosuGamersGosugamersMatchesResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['gosugamers-player'],
+        params: GosuGamersGosugamersPlayerParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> GosuGamersGosugamersPlayerResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['gosugamers-rankings'],
+        params: GosuGamersGosugamersRankingsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> GosuGamersGosugamersRankingsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['gosugamers-results'],
+        params: GosuGamersGosugamersResultsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> GosuGamersGosugamersResultsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['gosugamers-stage-groups'],
+        params: GosuGamersGosugamersStageGroupsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> GosuGamersGosugamersStageGroupsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['gosugamers-team'],
+        params: GosuGamersGosugamersTeamParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> GosuGamersGosugamersTeamResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['gosugamers-team-results'],
+        params: GosuGamersGosugamersTeamResultsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> GosuGamersGosugamersTeamResultsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['gosugamers-tournament'],
+        params: GosuGamersGosugamersTournamentParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> GosuGamersGosugamersTournamentResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['gosugamers-tournament-participants'],
+        params: GosuGamersGosugamersTournamentParticipantsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> GosuGamersGosugamersTournamentParticipantsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['gosugamers-tournament-talents'],
+        params: GosuGamersGosugamersTournamentTalentsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> GosuGamersGosugamersTournamentTalentsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['gosugamers-tournaments'],
+        params: GosuGamersGosugamersTournamentsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> GosuGamersGosugamersTournamentsResponse: ...
+    @overload
+    def operation(
+        self,
         operation_id: Literal['gq-article'],
         params: GqArticleParams,
         *,
@@ -152480,6 +158053,162 @@ class CrawloraClient:
     @overload
     def operation(
         self,
+        operation_id: Literal['lolesports-completed-events'],
+        params: LoLEsportsLolesportsCompletedEventsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> LoLEsportsLolesportsCompletedEventsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['lolesports-event'],
+        params: LoLEsportsLolesportsEventParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> LoLEsportsLolesportsEventResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['lolesports-game-details'],
+        params: LoLEsportsLolesportsGameDetailsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> LoLEsportsLolesportsGameDetailsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['lolesports-game-window'],
+        params: LoLEsportsLolesportsGameWindowParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> LoLEsportsLolesportsGameWindowResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['lolesports-gpr'],
+        params: LoLEsportsLolesportsGprParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> LoLEsportsLolesportsGprResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['lolesports-leagues'],
+        params: LoLEsportsLolesportsLeaguesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> LoLEsportsLolesportsLeaguesResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['lolesports-live'],
+        params: LoLEsportsLolesportsLiveParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> LoLEsportsLolesportsLiveResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['lolesports-news'],
+        params: LoLEsportsLolesportsNewsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> LoLEsportsLolesportsNewsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['lolesports-schedule'],
+        params: LoLEsportsLolesportsScheduleParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> LoLEsportsLolesportsScheduleResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['lolesports-seasons'],
+        params: LoLEsportsLolesportsSeasonsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> LoLEsportsLolesportsSeasonsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['lolesports-standings'],
+        params: LoLEsportsLolesportsStandingsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> LoLEsportsLolesportsStandingsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['lolesports-teams'],
+        params: LoLEsportsLolesportsTeamsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> LoLEsportsLolesportsTeamsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['lolesports-tournaments'],
+        params: LoLEsportsLolesportsTournamentsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> LoLEsportsLolesportsTournamentsResponse: ...
+    @overload
+    def operation(
+        self,
         operation_id: Literal['lululemon-categories'],
         params: LululemonCategoriesParams = ...,
         *,
@@ -156581,6 +162310,318 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> OldNavyOldnavyStoresResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['opendota-abilities'],
+        params: OpenDotaOpendotaAbilitiesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> OpenDotaOpendotaAbilitiesResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['opendota-benchmarks'],
+        params: OpenDotaOpendotaBenchmarksParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> OpenDotaOpendotaBenchmarksResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['opendota-constants'],
+        params: OpenDotaOpendotaConstantsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> OpenDotaOpendotaConstantsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['opendota-hero-durations'],
+        params: OpenDotaOpendotaHeroDurationsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> OpenDotaOpendotaHeroDurationsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['opendota-hero-items'],
+        params: OpenDotaOpendotaHeroItemsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> OpenDotaOpendotaHeroItemsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['opendota-hero-matchups'],
+        params: OpenDotaOpendotaHeroMatchupsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> OpenDotaOpendotaHeroMatchupsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['opendota-hero-stats'],
+        params: OpenDotaOpendotaHeroStatsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> OpenDotaOpendotaHeroStatsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['opendota-heroes'],
+        params: OpenDotaOpendotaHeroesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> OpenDotaOpendotaHeroesResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['opendota-items'],
+        params: OpenDotaOpendotaItemsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> OpenDotaOpendotaItemsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['opendota-league'],
+        params: OpenDotaOpendotaLeagueParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> OpenDotaOpendotaLeagueResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['opendota-league-match-ids'],
+        params: OpenDotaOpendotaLeagueMatchIdsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> OpenDotaOpendotaLeagueMatchIdsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['opendota-league-matches'],
+        params: OpenDotaOpendotaLeagueMatchesParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> OpenDotaOpendotaLeagueMatchesResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['opendota-leagues'],
+        params: OpenDotaOpendotaLeaguesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> OpenDotaOpendotaLeaguesResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['opendota-live'],
+        params: OpenDotaOpendotaLiveParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> OpenDotaOpendotaLiveResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['opendota-match'],
+        params: OpenDotaOpendotaMatchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> OpenDotaOpendotaMatchResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['opendota-patch-notes'],
+        params: OpenDotaOpendotaPatchNotesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> OpenDotaOpendotaPatchNotesResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['opendota-pro-matches'],
+        params: OpenDotaOpendotaProMatchesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> OpenDotaOpendotaProMatchesResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['opendota-pro-players'],
+        params: OpenDotaOpendotaProPlayersParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> OpenDotaOpendotaProPlayersResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['opendota-rank-distribution'],
+        params: OpenDotaOpendotaRankDistributionParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> OpenDotaOpendotaRankDistributionResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['opendota-records'],
+        params: OpenDotaOpendotaRecordsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> OpenDotaOpendotaRecordsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['opendota-scenarios'],
+        params: OpenDotaOpendotaScenariosParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> OpenDotaOpendotaScenariosResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['opendota-team'],
+        params: OpenDotaOpendotaTeamParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> OpenDotaOpendotaTeamResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['opendota-team-heroes'],
+        params: OpenDotaOpendotaTeamHeroesParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> OpenDotaOpendotaTeamHeroesResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['opendota-team-matches'],
+        params: OpenDotaOpendotaTeamMatchesParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> OpenDotaOpendotaTeamMatchesResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['opendota-team-players'],
+        params: OpenDotaOpendotaTeamPlayersParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> OpenDotaOpendotaTeamPlayersResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['opendota-teams'],
+        params: OpenDotaOpendotaTeamsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> OpenDotaOpendotaTeamsResponse: ...
     @overload
     def operation(
         self,
@@ -161300,6 +167341,54 @@ class CrawloraClient:
     @overload
     def operation(
         self,
+        operation_id: Literal['rednote-explore'],
+        params: RednoteExploreParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> RednoteExploreResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['rednote-note'],
+        params: RednoteNoteParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> RednoteNoteResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['rednote-note-comments'],
+        params: RednoteNoteCommentsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> RednoteNoteCommentsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['rednote-search-suggest'],
+        params: RednoteSearchSuggestParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> RednoteSearchSuggestResponse: ...
+    @overload
+    def operation(
+        self,
         operation_id: Literal['reelshort-fandom-categories'],
         params: ReelShortReelshortFandomCategoriesParams = ...,
         *,
@@ -164057,6 +170146,186 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> ShopAppSuggestionsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['shopee-banners'],
+        params: ShopeeBannersParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ShopeeBannersResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['shopee-categories'],
+        params: ShopeeCategoriesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ShopeeCategoriesResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['shopee-category-detail'],
+        params: ShopeeCategoryDetailParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ShopeeCategoryDetailResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['shopee-flash-sale'],
+        params: ShopeeFlashSaleParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ShopeeFlashSaleResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['shopee-footer'],
+        params: ShopeeFooterParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ShopeeFooterResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['shopee-home'],
+        params: ShopeeHomeParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ShopeeHomeResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['shopee-home-categories'],
+        params: ShopeeHomeCategoriesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ShopeeHomeCategoriesResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['shopee-location-filters'],
+        params: ShopeeLocationFiltersParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ShopeeLocationFiltersResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['shopee-mall-categories'],
+        params: ShopeeMallCategoriesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ShopeeMallCategoriesResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['shopee-prefills'],
+        params: ShopeePrefillsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ShopeePrefillsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['shopee-search-filters'],
+        params: ShopeeSearchFiltersParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ShopeeSearchFiltersResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['shopee-search-hints'],
+        params: ShopeeSearchHintsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ShopeeSearchHintsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['shopee-shop-info'],
+        params: ShopeeShopInfoParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ShopeeShopInfoResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['shopee-shops'],
+        params: ShopeeShopsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ShopeeShopsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['shopee-suggest'],
+        params: ShopeeSuggestParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ShopeeSuggestResponse: ...
     @overload
     def operation(
         self,
@@ -174008,6 +180277,282 @@ class CrawloraClient:
     @overload
     def operation(
         self,
+        operation_id: Literal['vlr-event'],
+        params: VlrEventParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> VlrEventResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['vlr-event-agents'],
+        params: VlrEventAgentsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> VlrEventAgentsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['vlr-event-matches'],
+        params: VlrEventMatchesParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> VlrEventMatchesResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['vlr-event-stats'],
+        params: VlrEventStatsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> VlrEventStatsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['vlr-events'],
+        params: VlrEventsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> VlrEventsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['vlr-forum-categories'],
+        params: VlrForumCategoriesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> VlrForumCategoriesResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['vlr-forum-threads'],
+        params: VlrForumThreadsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> VlrForumThreadsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['vlr-match'],
+        params: VlrMatchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> VlrMatchResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['vlr-match-economy'],
+        params: VlrMatchEconomyParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> VlrMatchEconomyResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['vlr-match-performance'],
+        params: VlrMatchPerformanceParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> VlrMatchPerformanceResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['vlr-match-rounds'],
+        params: VlrMatchRoundsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> VlrMatchRoundsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['vlr-matches'],
+        params: VlrMatchesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> VlrMatchesResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['vlr-news'],
+        params: VlrNewsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> VlrNewsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['vlr-news-article'],
+        params: VlrNewsArticleParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> VlrNewsArticleResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['vlr-player'],
+        params: VlrPlayerParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> VlrPlayerResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['vlr-player-matches'],
+        params: VlrPlayerMatchesParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> VlrPlayerMatchesResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['vlr-rankings'],
+        params: VlrRankingsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> VlrRankingsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['vlr-results'],
+        params: VlrResultsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> VlrResultsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['vlr-search'],
+        params: VlrSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> VlrSearchResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['vlr-stats'],
+        params: VlrStatsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> VlrStatsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['vlr-team'],
+        params: VlrTeamParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> VlrTeamResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['vlr-team-maps'],
+        params: VlrTeamMapsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> VlrTeamMapsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['vlr-team-matches'],
+        params: VlrTeamMatchesParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> VlrTeamMatchesResponse: ...
+    @overload
+    def operation(
+        self,
         operation_id: Literal['vox-article'],
         params: VoxArticleParams,
         *,
@@ -175385,6 +181930,54 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> XdaSectionsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['xiaohongshu-explore'],
+        params: XiaohongshuExploreParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> XiaohongshuExploreResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['xiaohongshu-note'],
+        params: XiaohongshuNoteParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> XiaohongshuNoteResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['xiaohongshu-note-comments'],
+        params: XiaohongshuNoteCommentsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> XiaohongshuNoteCommentsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['xiaohongshu-search-suggest'],
+        params: XiaohongshuSearchSuggestParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> XiaohongshuSearchSuggestResponse: ...
     @overload
     def operation(
         self,
@@ -181220,6 +187813,342 @@ class CrawloraClient:
     @overload
     def request(
         self,
+        operation_id: Literal['bo3-economy-baseline'],
+        params: Bo3EconomyBaselineParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> Bo3EconomyBaselineResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['bo3-forum'],
+        params: Bo3ForumParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> Bo3ForumResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['bo3-forum-categories'],
+        params: Bo3ForumCategoriesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> Bo3ForumCategoriesResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['bo3-match'],
+        params: Bo3MatchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> Bo3MatchResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['bo3-match-games'],
+        params: Bo3MatchGamesParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> Bo3MatchGamesResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['bo3-match-history'],
+        params: Bo3MatchHistoryParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> Bo3MatchHistoryResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['bo3-match-players'],
+        params: Bo3MatchPlayersParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> Bo3MatchPlayersResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['bo3-news-categories'],
+        params: Bo3NewsCategoriesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> Bo3NewsCategoriesResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['bo3-news-feed'],
+        params: Bo3NewsFeedParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> Bo3NewsFeedResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['bo3-player'],
+        params: Bo3PlayerParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> Bo3PlayerResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['bo3-player-leaderboard'],
+        params: Bo3PlayerLeaderboardParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> Bo3PlayerLeaderboardResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['bo3-player-recent-matches'],
+        params: Bo3PlayerRecentMatchesParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> Bo3PlayerRecentMatchesResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['bo3-player-stats'],
+        params: Bo3PlayerStatsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> Bo3PlayerStatsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['bo3-records'],
+        params: Bo3RecordsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> Bo3RecordsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['bo3-team'],
+        params: Bo3TeamParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> Bo3TeamResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['bo3-team-prize-money'],
+        params: Bo3TeamPrizeMoneyParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> Bo3TeamPrizeMoneyResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['bo3-team-ranking-dates'],
+        params: Bo3TeamRankingDatesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> Bo3TeamRankingDatesResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['bo3-team-rankings'],
+        params: Bo3TeamRankingsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> Bo3TeamRankingsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['bo3-team-recent-matches'],
+        params: Bo3TeamRecentMatchesParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> Bo3TeamRecentMatchesResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['bo3-team-stats'],
+        params: Bo3TeamStatsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> Bo3TeamStatsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['bo3-tournament'],
+        params: Bo3TournamentParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> Bo3TournamentResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['bo3-tournament-map-pool'],
+        params: Bo3TournamentMapPoolParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> Bo3TournamentMapPoolResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['bo3-tournament-mvps'],
+        params: Bo3TournamentMvpsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> Bo3TournamentMvpsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['bo3-tournament-squads'],
+        params: Bo3TournamentSquadsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> Bo3TournamentSquadsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['bo3-tournament-stages'],
+        params: Bo3TournamentStagesParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> Bo3TournamentStagesResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['bo3-tournaments'],
+        params: Bo3TournamentsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> Bo3TournamentsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['bo3-transfers'],
+        params: Bo3TransfersParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> Bo3TransfersResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['bo3-valorant-leaderboard'],
+        params: Bo3ValorantLeaderboardParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> Bo3ValorantLeaderboardResponse: ...
+    @overload
+    def request(
+        self,
         operation_id: Literal['bonhams-auction-search'],
         params: BonhamsAuctionSearchParams = ...,
         *,
@@ -194960,6 +201889,186 @@ class CrawloraClient:
     @overload
     def request(
         self,
+        operation_id: Literal['gosugamers-encounters'],
+        params: GosuGamersGosugamersEncountersParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> GosuGamersGosugamersEncountersResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['gosugamers-games'],
+        params: GosuGamersGosugamersGamesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> GosuGamersGosugamersGamesResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['gosugamers-match'],
+        params: GosuGamersGosugamersMatchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> GosuGamersGosugamersMatchResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['gosugamers-match-game'],
+        params: GosuGamersGosugamersMatchGameParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> GosuGamersGosugamersMatchGameResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['gosugamers-matches'],
+        params: GosuGamersGosugamersMatchesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> GosuGamersGosugamersMatchesResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['gosugamers-player'],
+        params: GosuGamersGosugamersPlayerParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> GosuGamersGosugamersPlayerResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['gosugamers-rankings'],
+        params: GosuGamersGosugamersRankingsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> GosuGamersGosugamersRankingsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['gosugamers-results'],
+        params: GosuGamersGosugamersResultsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> GosuGamersGosugamersResultsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['gosugamers-stage-groups'],
+        params: GosuGamersGosugamersStageGroupsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> GosuGamersGosugamersStageGroupsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['gosugamers-team'],
+        params: GosuGamersGosugamersTeamParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> GosuGamersGosugamersTeamResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['gosugamers-team-results'],
+        params: GosuGamersGosugamersTeamResultsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> GosuGamersGosugamersTeamResultsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['gosugamers-tournament'],
+        params: GosuGamersGosugamersTournamentParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> GosuGamersGosugamersTournamentResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['gosugamers-tournament-participants'],
+        params: GosuGamersGosugamersTournamentParticipantsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> GosuGamersGosugamersTournamentParticipantsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['gosugamers-tournament-talents'],
+        params: GosuGamersGosugamersTournamentTalentsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> GosuGamersGosugamersTournamentTalentsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['gosugamers-tournaments'],
+        params: GosuGamersGosugamersTournamentsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> GosuGamersGosugamersTournamentsResponse: ...
+    @overload
+    def request(
+        self,
         operation_id: Literal['gq-article'],
         params: GqArticleParams,
         *,
@@ -200636,6 +207745,162 @@ class CrawloraClient:
     @overload
     def request(
         self,
+        operation_id: Literal['lolesports-completed-events'],
+        params: LoLEsportsLolesportsCompletedEventsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> LoLEsportsLolesportsCompletedEventsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['lolesports-event'],
+        params: LoLEsportsLolesportsEventParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> LoLEsportsLolesportsEventResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['lolesports-game-details'],
+        params: LoLEsportsLolesportsGameDetailsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> LoLEsportsLolesportsGameDetailsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['lolesports-game-window'],
+        params: LoLEsportsLolesportsGameWindowParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> LoLEsportsLolesportsGameWindowResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['lolesports-gpr'],
+        params: LoLEsportsLolesportsGprParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> LoLEsportsLolesportsGprResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['lolesports-leagues'],
+        params: LoLEsportsLolesportsLeaguesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> LoLEsportsLolesportsLeaguesResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['lolesports-live'],
+        params: LoLEsportsLolesportsLiveParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> LoLEsportsLolesportsLiveResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['lolesports-news'],
+        params: LoLEsportsLolesportsNewsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> LoLEsportsLolesportsNewsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['lolesports-schedule'],
+        params: LoLEsportsLolesportsScheduleParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> LoLEsportsLolesportsScheduleResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['lolesports-seasons'],
+        params: LoLEsportsLolesportsSeasonsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> LoLEsportsLolesportsSeasonsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['lolesports-standings'],
+        params: LoLEsportsLolesportsStandingsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> LoLEsportsLolesportsStandingsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['lolesports-teams'],
+        params: LoLEsportsLolesportsTeamsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> LoLEsportsLolesportsTeamsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['lolesports-tournaments'],
+        params: LoLEsportsLolesportsTournamentsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> LoLEsportsLolesportsTournamentsResponse: ...
+    @overload
+    def request(
+        self,
         operation_id: Literal['lululemon-categories'],
         params: LululemonCategoriesParams = ...,
         *,
@@ -204737,6 +212002,318 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> OldNavyOldnavyStoresResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['opendota-abilities'],
+        params: OpenDotaOpendotaAbilitiesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> OpenDotaOpendotaAbilitiesResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['opendota-benchmarks'],
+        params: OpenDotaOpendotaBenchmarksParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> OpenDotaOpendotaBenchmarksResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['opendota-constants'],
+        params: OpenDotaOpendotaConstantsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> OpenDotaOpendotaConstantsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['opendota-hero-durations'],
+        params: OpenDotaOpendotaHeroDurationsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> OpenDotaOpendotaHeroDurationsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['opendota-hero-items'],
+        params: OpenDotaOpendotaHeroItemsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> OpenDotaOpendotaHeroItemsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['opendota-hero-matchups'],
+        params: OpenDotaOpendotaHeroMatchupsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> OpenDotaOpendotaHeroMatchupsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['opendota-hero-stats'],
+        params: OpenDotaOpendotaHeroStatsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> OpenDotaOpendotaHeroStatsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['opendota-heroes'],
+        params: OpenDotaOpendotaHeroesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> OpenDotaOpendotaHeroesResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['opendota-items'],
+        params: OpenDotaOpendotaItemsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> OpenDotaOpendotaItemsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['opendota-league'],
+        params: OpenDotaOpendotaLeagueParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> OpenDotaOpendotaLeagueResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['opendota-league-match-ids'],
+        params: OpenDotaOpendotaLeagueMatchIdsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> OpenDotaOpendotaLeagueMatchIdsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['opendota-league-matches'],
+        params: OpenDotaOpendotaLeagueMatchesParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> OpenDotaOpendotaLeagueMatchesResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['opendota-leagues'],
+        params: OpenDotaOpendotaLeaguesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> OpenDotaOpendotaLeaguesResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['opendota-live'],
+        params: OpenDotaOpendotaLiveParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> OpenDotaOpendotaLiveResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['opendota-match'],
+        params: OpenDotaOpendotaMatchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> OpenDotaOpendotaMatchResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['opendota-patch-notes'],
+        params: OpenDotaOpendotaPatchNotesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> OpenDotaOpendotaPatchNotesResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['opendota-pro-matches'],
+        params: OpenDotaOpendotaProMatchesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> OpenDotaOpendotaProMatchesResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['opendota-pro-players'],
+        params: OpenDotaOpendotaProPlayersParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> OpenDotaOpendotaProPlayersResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['opendota-rank-distribution'],
+        params: OpenDotaOpendotaRankDistributionParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> OpenDotaOpendotaRankDistributionResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['opendota-records'],
+        params: OpenDotaOpendotaRecordsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> OpenDotaOpendotaRecordsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['opendota-scenarios'],
+        params: OpenDotaOpendotaScenariosParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> OpenDotaOpendotaScenariosResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['opendota-team'],
+        params: OpenDotaOpendotaTeamParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> OpenDotaOpendotaTeamResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['opendota-team-heroes'],
+        params: OpenDotaOpendotaTeamHeroesParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> OpenDotaOpendotaTeamHeroesResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['opendota-team-matches'],
+        params: OpenDotaOpendotaTeamMatchesParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> OpenDotaOpendotaTeamMatchesResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['opendota-team-players'],
+        params: OpenDotaOpendotaTeamPlayersParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> OpenDotaOpendotaTeamPlayersResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['opendota-teams'],
+        params: OpenDotaOpendotaTeamsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> OpenDotaOpendotaTeamsResponse: ...
     @overload
     def request(
         self,
@@ -209456,6 +217033,54 @@ class CrawloraClient:
     @overload
     def request(
         self,
+        operation_id: Literal['rednote-explore'],
+        params: RednoteExploreParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> RednoteExploreResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['rednote-note'],
+        params: RednoteNoteParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> RednoteNoteResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['rednote-note-comments'],
+        params: RednoteNoteCommentsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> RednoteNoteCommentsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['rednote-search-suggest'],
+        params: RednoteSearchSuggestParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> RednoteSearchSuggestResponse: ...
+    @overload
+    def request(
+        self,
         operation_id: Literal['reelshort-fandom-categories'],
         params: ReelShortReelshortFandomCategoriesParams = ...,
         *,
@@ -212213,6 +219838,186 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> ShopAppSuggestionsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['shopee-banners'],
+        params: ShopeeBannersParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ShopeeBannersResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['shopee-categories'],
+        params: ShopeeCategoriesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ShopeeCategoriesResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['shopee-category-detail'],
+        params: ShopeeCategoryDetailParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ShopeeCategoryDetailResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['shopee-flash-sale'],
+        params: ShopeeFlashSaleParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ShopeeFlashSaleResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['shopee-footer'],
+        params: ShopeeFooterParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ShopeeFooterResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['shopee-home'],
+        params: ShopeeHomeParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ShopeeHomeResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['shopee-home-categories'],
+        params: ShopeeHomeCategoriesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ShopeeHomeCategoriesResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['shopee-location-filters'],
+        params: ShopeeLocationFiltersParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ShopeeLocationFiltersResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['shopee-mall-categories'],
+        params: ShopeeMallCategoriesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ShopeeMallCategoriesResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['shopee-prefills'],
+        params: ShopeePrefillsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ShopeePrefillsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['shopee-search-filters'],
+        params: ShopeeSearchFiltersParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ShopeeSearchFiltersResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['shopee-search-hints'],
+        params: ShopeeSearchHintsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ShopeeSearchHintsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['shopee-shop-info'],
+        params: ShopeeShopInfoParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ShopeeShopInfoResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['shopee-shops'],
+        params: ShopeeShopsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ShopeeShopsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['shopee-suggest'],
+        params: ShopeeSuggestParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> ShopeeSuggestResponse: ...
     @overload
     def request(
         self,
@@ -222164,6 +229969,282 @@ class CrawloraClient:
     @overload
     def request(
         self,
+        operation_id: Literal['vlr-event'],
+        params: VlrEventParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> VlrEventResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['vlr-event-agents'],
+        params: VlrEventAgentsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> VlrEventAgentsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['vlr-event-matches'],
+        params: VlrEventMatchesParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> VlrEventMatchesResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['vlr-event-stats'],
+        params: VlrEventStatsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> VlrEventStatsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['vlr-events'],
+        params: VlrEventsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> VlrEventsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['vlr-forum-categories'],
+        params: VlrForumCategoriesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> VlrForumCategoriesResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['vlr-forum-threads'],
+        params: VlrForumThreadsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> VlrForumThreadsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['vlr-match'],
+        params: VlrMatchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> VlrMatchResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['vlr-match-economy'],
+        params: VlrMatchEconomyParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> VlrMatchEconomyResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['vlr-match-performance'],
+        params: VlrMatchPerformanceParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> VlrMatchPerformanceResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['vlr-match-rounds'],
+        params: VlrMatchRoundsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> VlrMatchRoundsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['vlr-matches'],
+        params: VlrMatchesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> VlrMatchesResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['vlr-news'],
+        params: VlrNewsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> VlrNewsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['vlr-news-article'],
+        params: VlrNewsArticleParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> VlrNewsArticleResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['vlr-player'],
+        params: VlrPlayerParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> VlrPlayerResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['vlr-player-matches'],
+        params: VlrPlayerMatchesParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> VlrPlayerMatchesResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['vlr-rankings'],
+        params: VlrRankingsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> VlrRankingsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['vlr-results'],
+        params: VlrResultsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> VlrResultsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['vlr-search'],
+        params: VlrSearchParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> VlrSearchResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['vlr-stats'],
+        params: VlrStatsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> VlrStatsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['vlr-team'],
+        params: VlrTeamParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> VlrTeamResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['vlr-team-maps'],
+        params: VlrTeamMapsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> VlrTeamMapsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['vlr-team-matches'],
+        params: VlrTeamMatchesParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> VlrTeamMatchesResponse: ...
+    @overload
+    def request(
+        self,
         operation_id: Literal['vox-article'],
         params: VoxArticleParams,
         *,
@@ -223541,6 +231622,54 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> XdaSectionsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['xiaohongshu-explore'],
+        params: XiaohongshuExploreParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> XiaohongshuExploreResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['xiaohongshu-note'],
+        params: XiaohongshuNoteParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> XiaohongshuNoteResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['xiaohongshu-note-comments'],
+        params: XiaohongshuNoteCommentsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> XiaohongshuNoteCommentsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['xiaohongshu-search-suggest'],
+        params: XiaohongshuSearchSuggestParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> XiaohongshuSearchSuggestResponse: ...
     @overload
     def request(
         self,
