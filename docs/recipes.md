@@ -55,6 +55,29 @@ taxonomy = crawlora.request("boardgamegeek-taxonomy", {})
 navigation = crawlora.request("cricbuzz-navigation", {})
 ```
 
+## Epic Games, Hearthstone, NHL, and Serebii
+
+The contract now includes free-game promotions, card filters, NHL season discovery,
+and Pokémon GO event listings. See [`operations.md`](operations.md) for the full
+operation reference.
+
+```python
+promotions = crawlora.request("epicgames-free-promotions", {})
+filters = crawlora.request("hearthstone-filters", {})
+seasons = crawlora.request("nhl-seasons", {})
+events = crawlora.request("serebii-pokemongo-events", {"category": "events.shtml"})
+```
+
+## NBA and HLTV
+
+Use the new basketball catalog/standings endpoints alongside competitive Counter-Strike rankings.
+
+```python
+enums = crawlora.request("nba-enums", {})
+standings = crawlora.request("nba-standings", {})
+rankings = crawlora.request("hltv-rankings", {})
+```
+
 ## Company Job Searches
 
 Search public job listings directly from employer career sites:
