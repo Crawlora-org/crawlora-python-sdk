@@ -20,7 +20,7 @@ pip install crawlora
 For a reproducible source install, use the matching release tag:
 
 ```sh
-pip install "git+https://github.com/Crawlora-org/crawlora-python-sdk.git@v1.50.0"
+pip install "git+https://github.com/Crawlora-org/crawlora-python-sdk.git@v1.51.0"
 ```
 
 ## API Key
