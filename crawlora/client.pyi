@@ -22195,6 +22195,16 @@ ModelEonlineAuthorResponse = TypedDict('ModelEonlineAuthorResponse', {
     'url': NotRequired[str],
 }, total=False)
 
+ModelEpicgamesPromotionsResponse = TypedDict('ModelEpicgamesPromotionsResponse', {
+    'Catalog': NotRequired[dict[str, Any]],
+}, total=False)
+
+ModelEpicgamesFreePromotionsResponseDoc = TypedDict('ModelEpicgamesFreePromotionsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelEpicgamesPromotionsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
 ModelEsAirbnbDensityCell = TypedDict('ModelEsAirbnbDensityCell', {
     'geohash': NotRequired[str],
     'lat': NotRequired[float],
@@ -40125,6 +40135,43 @@ ModelHealthgradesSuggestionsResponseDoc = TypedDict('ModelHealthgradesSuggestion
     'data': NotRequired[ModelHealthgradesSuggestionResponse],
 }, total=False)
 
+ModelHearthstoneCardFiltersResponse = TypedDict('ModelHearthstoneCardFiltersResponse', {
+    'filters': NotRequired[dict[str, Any]],
+    'query_options': NotRequired[dict[str, list[str]]],
+    'sort_groups': NotRequired[list[str]],
+    'sort_mappings': NotRequired[list[ModelHearthstoneCardSortMapping]],
+    'sort_options': NotRequired[list[str]],
+    'sort_source_url': NotRequired[str],
+    'source_url': NotRequired[str],
+}, total=False)
+
+ModelHearthstoneCardSortMapping = TypedDict('ModelHearthstoneCardSortMapping', {
+    'label_key': NotRequired[str],
+    'order': NotRequired[str],
+    'slug': NotRequired[str],
+    'sort': NotRequired[str],
+}, total=False)
+
+ModelHearthstoneCardsResponse = dict[str, Any]
+
+ModelHearthstoneCardFiltersResponseDoc = TypedDict('ModelHearthstoneCardFiltersResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelHearthstoneCardFiltersResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelHearthstoneCardResponseDoc = TypedDict('ModelHearthstoneCardResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelHearthstoneCardsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelHearthstoneCardsListResponseDoc = TypedDict('ModelHearthstoneCardsListResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelHearthstoneCardsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
 ModelHermesCatalogueProduct = TypedDict('ModelHermesCatalogueProduct', {
     'last_modified': NotRequired[str],
     'product_id': NotRequired[str],
@@ -40404,6 +40451,12 @@ ModelHltvEvent = TypedDict('ModelHltvEvent', {
     'url': NotRequired[str],
 }, total=False)
 
+ModelHltvEventPlacement = TypedDict('ModelHltvEventPlacement', {
+    'placement': NotRequired[str],
+    'prize': NotRequired[str],
+    'team': NotRequired[ModelHltvTeamRef],
+}, total=False)
+
 ModelHltvEventRef = TypedDict('ModelHltvEventRef', {
     'id': NotRequired[int],
     'name': NotRequired[str],
@@ -40415,6 +40468,7 @@ ModelHltvEventResponse = TypedDict('ModelHltvEventResponse', {
     'id': NotRequired[int],
     'location': NotRequired[str],
     'name': NotRequired[str],
+    'placements': NotRequired[list[ModelHltvEventPlacement]],
     'prize_pool': NotRequired[str],
     'start_date': NotRequired[str],
     'status': NotRequired[str],
@@ -40522,6 +40576,16 @@ ModelHltvMatchesResponse = TypedDict('ModelHltvMatchesResponse', {
     'matches': NotRequired[list[ModelHltvMatch]],
 }, total=False)
 
+ModelHltvPlayerMatch = TypedDict('ModelHltvPlayerMatch', {
+    'event': NotRequired[str],
+    'match_id': NotRequired[int],
+    'opponent': NotRequired[str],
+    'result': NotRequired[str],
+    'score': NotRequired[list[int]],
+    'starts_at': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
 ModelHltvPlayerResponse = TypedDict('ModelHltvPlayerResponse', {
     'age': NotRequired[str],
     'country': NotRequired[str],
@@ -40529,8 +40593,10 @@ ModelHltvPlayerResponse = TypedDict('ModelHltvPlayerResponse', {
     'id': NotRequired[int],
     'nickname': NotRequired[str],
     'real_name': NotRequired[str],
+    'recent_matches': NotRequired[list[ModelHltvPlayerMatch]],
     'role_stats': NotRequired[list[ModelHltvPlayerRoleStat]],
     'team': NotRequired[ModelHltvTeamRef],
+    'upcoming_matches': NotRequired[list[ModelHltvPlayerMatch]],
     'url': NotRequired[str],
 }, total=False)
 
@@ -40612,6 +40678,16 @@ ModelHltvSearchResponse = TypedDict('ModelHltvSearchResponse', {
     'query': NotRequired[str],
 }, total=False)
 
+ModelHltvTeamMatch = TypedDict('ModelHltvTeamMatch', {
+    'date': NotRequired[str],
+    'event': NotRequired[ModelHltvEventRef],
+    'match_id': NotRequired[int],
+    'score': NotRequired[list[int]],
+    'teams': NotRequired[list[ModelHltvTeamRef]],
+    'url': NotRequired[str],
+    'winner': NotRequired[int],
+}, total=False)
+
 ModelHltvTeamRanking = TypedDict('ModelHltvTeamRanking', {
     'name': NotRequired[str],
     'rank': NotRequired[str],
@@ -40630,7 +40706,24 @@ ModelHltvTeamResponse = TypedDict('ModelHltvTeamResponse', {
     'logo_url': NotRequired[str],
     'name': NotRequired[str],
     'rankings': NotRequired[list[ModelHltvTeamRanking]],
+    'recent_results': NotRequired[list[ModelHltvTeamMatch]],
     'roster': NotRequired[list[ModelHltvRosterMember]],
+    'stats': NotRequired[ModelHltvTeamStatsSummary],
+    'upcoming_matches': NotRequired[list[ModelHltvTeamUpcomingMatch]],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelHltvTeamStatsSummary = TypedDict('ModelHltvTeamStatsSummary', {
+    'timespan': NotRequired[str],
+    'win_rate': NotRequired[str],
+    'win_streak': NotRequired[int],
+}, total=False)
+
+ModelHltvTeamUpcomingMatch = TypedDict('ModelHltvTeamUpcomingMatch', {
+    'event': NotRequired[ModelHltvEventRef],
+    'match_id': NotRequired[int],
+    'starts_at': NotRequired[str],
+    'teams': NotRequired[list[ModelHltvTeamRef]],
     'url': NotRequired[str],
 }, total=False)
 
@@ -53235,7 +53328,9 @@ ModelNbaDetailTeam = TypedDict('ModelNbaDetailTeam', {
 }, total=False)
 
 ModelNbaEnumsData = TypedDict('ModelNbaEnumsData', {
+    'ahead_behinds': NotRequired[list[str]],
     'blocked': NotRequired[list[str]],
+    'clutch_times': NotRequired[list[str]],
     'defense_categories': NotRequired[list[str]],
     'game_date_format': NotRequired[str],
     'league_ids': NotRequired[list[str]],
@@ -54519,6 +54614,30 @@ ModelNfhsTeam = TypedDict('ModelNfhsTeam', {
 ModelNfhsTournamentInfo = TypedDict('ModelNfhsTournamentInfo', {
     'tournament': NotRequired[Any],
     'tournament_game': NotRequired[Any],
+}, total=False)
+
+ModelNhlGamecenterResponse = dict[str, Any]
+
+ModelNhlScheduleResponse = dict[str, Any]
+
+ModelNhlStandingsResponse = dict[str, Any]
+
+ModelNhlGamecenterResponseDoc = TypedDict('ModelNhlGamecenterResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelNhlGamecenterResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelNhlScheduleResponseDoc = TypedDict('ModelNhlScheduleResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelNhlScheduleResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelNhlStandingsResponseDoc = TypedDict('ModelNhlStandingsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelNhlStandingsResponse],
+    'msg': NotRequired[str],
 }, total=False)
 
 ModelNikeAvailabilityResponse = TypedDict('ModelNikeAvailabilityResponse', {
@@ -70222,6 +70341,102 @@ ModelSephoraSuggestResponseDoc = TypedDict('ModelSephoraSuggestResponseDoc', {
     'code': NotRequired[int],
     'data': NotRequired[ModelSephoraSuggestResponse],
     'msg': NotRequired[str],
+}, total=False)
+
+ModelSerebiiEventCategoriesResponse = TypedDict('ModelSerebiiEventCategoriesResponse', {
+    'categories': NotRequired[list[ModelSerebiiEventCategory]],
+}, total=False)
+
+ModelSerebiiEventCategory = TypedDict('ModelSerebiiEventCategory', {
+    'category': NotRequired[str],
+    'name': NotRequired[str],
+    'source_url': NotRequired[str],
+}, total=False)
+
+ModelSerebiiEventOnlyMovesResponse = TypedDict('ModelSerebiiEventOnlyMovesResponse', {
+    'page_title': NotRequired[str],
+    'source_url': NotRequired[str],
+    'tables': NotRequired[list[ModelSerebiiNativeDataTable]],
+}, total=False)
+
+ModelSerebiiEventOnlyResearchResponse = TypedDict('ModelSerebiiEventOnlyResearchResponse', {
+    'page_title': NotRequired[str],
+    'source_url': NotRequired[str],
+    'table': NotRequired[ModelSerebiiNativeDataTable],
+}, total=False)
+
+ModelSerebiiEventRecord = TypedDict('ModelSerebiiEventRecord', {
+    'dates': NotRequired[str],
+    'duration': NotRequired[str],
+    'focus': NotRequired[str],
+    'location': NotRequired[str],
+    'name': NotRequired[str],
+    'source_links': NotRequired[list[ModelSerebiiSourceLink]],
+    'special_move': NotRequired[str],
+}, total=False)
+
+ModelSerebiiEventsResponse = TypedDict('ModelSerebiiEventsResponse', {
+    'category': NotRequired[ModelSerebiiEventCategory],
+    'records': NotRequired[list[ModelSerebiiEventRecord]],
+    'source_url': NotRequired[str],
+}, total=False)
+
+ModelSerebiiNativeDataCell = TypedDict('ModelSerebiiNativeDataCell', {
+    'column_span': NotRequired[int],
+    'links': NotRequired[list[ModelSerebiiSourceLink]],
+    'row_span': NotRequired[int],
+    'text': NotRequired[str],
+}, total=False)
+
+ModelSerebiiNativeDataRow = TypedDict('ModelSerebiiNativeDataRow', {
+    'cells': NotRequired[list[ModelSerebiiNativeDataCell]],
+}, total=False)
+
+ModelSerebiiNativeDataTable = TypedDict('ModelSerebiiNativeDataTable', {
+    'column_labels': NotRequired[list[str]],
+    'heading': NotRequired[str],
+    'rows': NotRequired[list[ModelSerebiiNativeDataRow]],
+}, total=False)
+
+ModelSerebiiNativeEventDetailResponse = TypedDict('ModelSerebiiNativeEventDetailResponse', {
+    'category': NotRequired[str],
+    'filename': NotRequired[str],
+    'overview': NotRequired[str],
+    'page_title': NotRequired[str],
+    'source_url': NotRequired[str],
+    'tables': NotRequired[list[ModelSerebiiNativeDataTable]],
+}, total=False)
+
+ModelSerebiiSourceLink = TypedDict('ModelSerebiiSourceLink', {
+    'column': NotRequired[str],
+    'text': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelSerebiiSpotlightHourRecord = TypedDict('ModelSerebiiSpotlightHourRecord', {
+    'date_label': NotRequired[str],
+    'extra_effects': NotRequired[str],
+    'pokemon_focus': NotRequired[str],
+    'pokemon_links': NotRequired[list[ModelSerebiiSourceLink]],
+}, total=False)
+
+ModelSerebiiSpotlightHoursResponse = TypedDict('ModelSerebiiSpotlightHoursResponse', {
+    'records': NotRequired[list[ModelSerebiiSpotlightHourRecord]],
+    'source_url': NotRequired[str],
+}, total=False)
+
+ModelSerebiiUnownEventRecord = TypedDict('ModelSerebiiUnownEventRecord', {
+    'available_letters': NotRequired[str],
+    'date': NotRequired[str],
+    'event': NotRequired[str],
+    'event_links': NotRequired[list[ModelSerebiiSourceLink]],
+    'locations': NotRequired[list[str]],
+    'restrictions': NotRequired[str],
+}, total=False)
+
+ModelSerebiiUnownEventsResponse = TypedDict('ModelSerebiiUnownEventsResponse', {
+    'records': NotRequired[list[ModelSerebiiUnownEventRecord]],
+    'source_url': NotRequired[str],
 }, total=False)
 
 ModelSevennewsauAuthorResponse = TypedDict('ModelSevennewsauAuthorResponse', {
@@ -108496,6 +108711,16 @@ ENewsEonlineSectionsParams = TypedDict('ENewsEonlineSectionsParams', {
     '_headers': NotRequired[Mapping[str, str]],
 }, total=False)
 
+EpicGamesStoreEpicgamesFreePromotionsResponse = ModelEpicgamesFreePromotionsResponseDoc
+EpicGamesStoreEpicgamesFreePromotionsParams = TypedDict('EpicGamesStoreEpicgamesFreePromotionsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'locale': NotRequired[str],
+    'country': NotRequired[str],
+    'allowCountries': NotRequired[str],
+}, total=False)
+
 EspnAthleteResponse = ModelEspnAthleteResponseDoc
 EspnAthleteParams = TypedDict('EspnAthleteParams', {
     '_response_type': NotRequired[ResponseType],
@@ -115603,6 +115828,63 @@ HealthgradesSpecialtiesParams = TypedDict('HealthgradesSpecialtiesParams', {
 
 HealthgradesTopSearchesResponse = ModelHealthgradesSuggestionsResponseDoc
 HealthgradesTopSearchesParams = TypedDict('HealthgradesTopSearchesParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+}, total=False)
+
+HearthstoneCardResponse = ModelHearthstoneCardResponseDoc
+HearthstoneCardParams = TypedDict('HearthstoneCardParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'id': Required[str],
+}, total=False)
+
+HearthstoneCardsResponse = ModelHearthstoneCardsListResponseDoc
+HearthstoneCardsParams = TypedDict('HearthstoneCardsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'page': NotRequired[int],
+    'pageSize': NotRequired[int],
+    'locale': NotRequired[str],
+    'class': NotRequired[str],
+    'set': NotRequired[str],
+    'sort': NotRequired[str],
+    'order': NotRequired[Literal['asc', 'desc']],
+    'gameMode': NotRequired[str],
+    'collectible': NotRequired[list[Literal['0', '1']]],
+    'textFilter': NotRequired[str],
+    'filterLocale': NotRequired[str],
+    'deckcode': NotRequired[str],
+    'cardSetId': NotRequired[list[int]],
+    'spellSchoolId': NotRequired[list[int]],
+    'rarityId': NotRequired[list[int]],
+    'cardTypeId': NotRequired[list[int]],
+    'manaCost': NotRequired[list[str]],
+    'attack': NotRequired[list[str]],
+    'health': NotRequired[list[str]],
+    'armor': NotRequired[list[str]],
+    'rarity': NotRequired[str],
+    'type': NotRequired[list[str]],
+    'bgCardType': NotRequired[str],
+    'keyword': NotRequired[str],
+    'minionType': NotRequired[str],
+    'deckFormat': NotRequired[str],
+    'tier': NotRequired[list[Literal['1', '2', '3', '4', '5', '6', '7']]],
+    'mercenaryRole': NotRequired[str],
+    'mercenaryFaction': NotRequired[str],
+    'viewMode': NotRequired[Literal['grid', 'table']],
+    'cardBackCategory': NotRequired[str],
+    'spellSchool': NotRequired[str],
+    'faction': NotRequired[str],
+    'bgGameMode': NotRequired[str],
+    'zilliaxMod': NotRequired[bool],
+}, total=False)
+
+HearthstoneFiltersResponse = ModelHearthstoneCardFiltersResponseDoc
+HearthstoneFiltersParams = TypedDict('HearthstoneFiltersParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
     '_headers': NotRequired[Mapping[str, str]],
@@ -123020,6 +123302,17 @@ NbaHustleStatsParams = TypedDict('NbaHustleStatsParams', {
     'game_id': Required[str],
 }, total=False)
 
+NbaHustleTeamResponse = Any
+NbaHustleTeamParams = TypedDict('NbaHustleTeamParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'league_id': NotRequired[Literal['00']],
+    'season': NotRequired[str],
+    'season_type': NotRequired[Literal['Regular Season', 'Playoffs', 'Pre Season', 'All Star']],
+    'per_mode': NotRequired[Literal['PerGame', 'Totals', 'Per36', 'Per48', 'Per100Possessions', 'MinutesPer', 'PerPossession']],
+}, total=False)
+
 NbaLeagueGameLogResponse = Any
 NbaLeagueGameLogParams = TypedDict('NbaLeagueGameLogParams', {
     '_response_type': NotRequired[ResponseType],
@@ -123051,6 +123344,17 @@ NbaNewsParams = TypedDict('NbaNewsParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
     '_headers': NotRequired[Mapping[str, str]],
+}, total=False)
+
+NbaOppPtShotResponse = Any
+NbaOppPtShotParams = TypedDict('NbaOppPtShotParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'league_id': NotRequired[Literal['00']],
+    'season': NotRequired[str],
+    'season_type': NotRequired[Literal['Regular Season', 'Playoffs', 'Pre Season', 'All Star']],
+    'per_mode': NotRequired[Literal['PerGame', 'Totals', 'Per36', 'Per48', 'Per100Possessions', 'MinutesPer', 'PerPossession']],
 }, total=False)
 
 NbaPlayByPlayResponse = Any
@@ -123092,6 +123396,21 @@ NbaPlayerCareerStatsParams = TypedDict('NbaPlayerCareerStatsParams', {
     'league_id': NotRequired[Literal['00']],
 }, total=False)
 
+NbaPlayerClutchResponse = Any
+NbaPlayerClutchParams = TypedDict('NbaPlayerClutchParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'league_id': NotRequired[Literal['00']],
+    'season': NotRequired[str],
+    'season_type': NotRequired[Literal['Regular Season', 'Playoffs', 'Pre Season', 'All Star']],
+    'per_mode': NotRequired[Literal['PerGame', 'Totals', 'Per36', 'Per48', 'Per100Possessions', 'MinutesPer', 'PerPossession']],
+    'measure_type': NotRequired[Literal['Base', 'Advanced', 'Misc', 'Scoring', 'Defense', 'Opponent']],
+    'clutch_time': NotRequired[Literal['Last 5 Minutes']],
+    'ahead_behind': NotRequired[Literal['Ahead or Behind']],
+    'point_diff': NotRequired[Literal['5']],
+}, total=False)
+
 NbaPlayerDashPtShotsResponse = Any
 NbaPlayerDashPtShotsParams = TypedDict('NbaPlayerDashPtShotsParams', {
     '_response_type': NotRequired[ResponseType],
@@ -123104,6 +123423,17 @@ NbaPlayerDashPtShotsParams = TypedDict('NbaPlayerDashPtShotsParams', {
     'per_mode': NotRequired[Literal['PerGame']],
 }, total=False)
 
+NbaPlayerGameLogsResponse = Any
+NbaPlayerGameLogsParams = TypedDict('NbaPlayerGameLogsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'league_id': NotRequired[Literal['00']],
+    'season': NotRequired[str],
+    'season_type': NotRequired[Literal['Regular Season', 'Playoffs', 'Pre Season', 'All Star']],
+    'player_id': Required[int],
+}, total=False)
+
 NbaPlayerInfoResponse = Any
 NbaPlayerInfoParams = TypedDict('NbaPlayerInfoParams', {
     '_response_type': NotRequired[ResponseType],
@@ -123111,6 +123441,26 @@ NbaPlayerInfoParams = TypedDict('NbaPlayerInfoParams', {
     '_headers': NotRequired[Mapping[str, str]],
     'player_id': Required[int],
     'league_id': NotRequired[Literal['00']],
+}, total=False)
+
+NbaPlayerProfileV2Response = Any
+NbaPlayerProfileV2Params = TypedDict('NbaPlayerProfileV2Params', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'player_id': Required[int],
+    'per_mode': NotRequired[Literal['PerGame', 'Totals', 'Per36', 'Per48', 'Per100Possessions', 'MinutesPer', 'PerPossession']],
+}, total=False)
+
+NbaPlayerPtShotResponse = Any
+NbaPlayerPtShotParams = TypedDict('NbaPlayerPtShotParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'league_id': NotRequired[Literal['00']],
+    'season': NotRequired[str],
+    'season_type': NotRequired[Literal['Regular Season', 'Playoffs', 'Pre Season', 'All Star']],
+    'per_mode': NotRequired[Literal['PerGame', 'Totals', 'Per36', 'Per48', 'Per100Possessions', 'MinutesPer', 'PerPossession']],
 }, total=False)
 
 NbaPlayerStatsResponse = Any
@@ -123123,6 +123473,18 @@ NbaPlayerStatsParams = TypedDict('NbaPlayerStatsParams', {
     'season_type': NotRequired[Literal['Regular Season', 'Playoffs', 'Pre Season', 'All Star']],
     'measure_type': NotRequired[Literal['Base', 'Advanced', 'Misc', 'Scoring', 'Defense', 'Opponent']],
     'per_mode': NotRequired[Literal['PerGame', 'Totals', 'Per36', 'Per48', 'Per100Possessions', 'MinutesPer', 'PerPossession']],
+}, total=False)
+
+NbaPlayerStreakFinderResponse = Any
+NbaPlayerStreakFinderParams = TypedDict('NbaPlayerStreakFinderParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'league_id': NotRequired[Literal['00']],
+    'season': NotRequired[str],
+    'season_type': NotRequired[Literal['Regular Season', 'Playoffs', 'Pre Season', 'All Star']],
+    'player_id': NotRequired[int],
+    'min_games': NotRequired[int],
 }, total=False)
 
 NbaPlayersResponse = Any
@@ -123203,6 +123565,30 @@ NbaSynergyPlayTypesParams = TypedDict('NbaSynergyPlayTypesParams', {
     'type_grouping': NotRequired[Literal['offensive']],
 }, total=False)
 
+NbaTeamDashPtPassResponse = Any
+NbaTeamDashPtPassParams = TypedDict('NbaTeamDashPtPassParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'league_id': NotRequired[Literal['00']],
+    'season': NotRequired[str],
+    'season_type': NotRequired[Literal['Regular Season', 'Playoffs', 'Pre Season', 'All Star']],
+    'per_mode': NotRequired[Literal['PerGame', 'Totals', 'Per36', 'Per48', 'Per100Possessions', 'MinutesPer', 'PerPossession']],
+    'team_id': Required[int],
+}, total=False)
+
+NbaTeamDashPtShotsResponse = Any
+NbaTeamDashPtShotsParams = TypedDict('NbaTeamDashPtShotsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'league_id': NotRequired[Literal['00']],
+    'season': NotRequired[str],
+    'season_type': NotRequired[Literal['Regular Season', 'Playoffs', 'Pre Season', 'All Star']],
+    'per_mode': NotRequired[Literal['PerGame', 'Totals', 'Per36', 'Per48', 'Per100Possessions', 'MinutesPer', 'PerPossession']],
+    'team_id': Required[int],
+}, total=False)
+
 NbaTeamDetailsResponse = Any
 NbaTeamDetailsParams = TypedDict('NbaTeamDetailsParams', {
     '_response_type': NotRequired[ResponseType],
@@ -123210,6 +123596,52 @@ NbaTeamDetailsParams = TypedDict('NbaTeamDetailsParams', {
     '_headers': NotRequired[Mapping[str, str]],
     'team_id': Required[int],
     'league_id': NotRequired[Literal['00']],
+}, total=False)
+
+NbaTeamGameLogsResponse = Any
+NbaTeamGameLogsParams = TypedDict('NbaTeamGameLogsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'league_id': NotRequired[Literal['00']],
+    'season': NotRequired[str],
+    'season_type': NotRequired[Literal['Regular Season', 'Playoffs', 'Pre Season', 'All Star']],
+    'team_id': Required[int],
+}, total=False)
+
+NbaTeamInfoCommonResponse = Any
+NbaTeamInfoCommonParams = TypedDict('NbaTeamInfoCommonParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'league_id': NotRequired[Literal['00']],
+    'season': NotRequired[str],
+    'season_type': NotRequired[Literal['Regular Season', 'Playoffs', 'Pre Season', 'All Star']],
+    'team_id': Required[int],
+}, total=False)
+
+NbaTeamOnOffResponse = Any
+NbaTeamOnOffParams = TypedDict('NbaTeamOnOffParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'league_id': NotRequired[Literal['00']],
+    'season': NotRequired[str],
+    'season_type': NotRequired[Literal['Regular Season', 'Playoffs', 'Pre Season', 'All Star']],
+    'per_mode': NotRequired[Literal['PerGame', 'Totals', 'Per36', 'Per48', 'Per100Possessions', 'MinutesPer', 'PerPossession']],
+    'measure_type': NotRequired[Literal['Base', 'Advanced', 'Misc', 'Scoring', 'Defense', 'Opponent']],
+    'team_id': Required[int],
+}, total=False)
+
+NbaTeamPtShotResponse = Any
+NbaTeamPtShotParams = TypedDict('NbaTeamPtShotParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'league_id': NotRequired[Literal['00']],
+    'season': NotRequired[str],
+    'season_type': NotRequired[Literal['Regular Season', 'Playoffs', 'Pre Season', 'All Star']],
+    'per_mode': NotRequired[Literal['PerGame', 'Totals', 'Per36', 'Per48', 'Per100Possessions', 'MinutesPer', 'PerPossession']],
 }, total=False)
 
 NbaTeamRosterResponse = Any
@@ -123258,6 +123690,14 @@ NbaTeamStatsLeadersParams = TypedDict('NbaTeamStatsLeadersParams', {
     'season_type': NotRequired[Literal['Regular Season', 'Playoffs', 'Pre Season', 'All Star']],
     'per_mode': NotRequired[Literal['PerGame', 'Totals', 'Per36', 'Per48', 'Per100Possessions', 'MinutesPer', 'PerPossession']],
     'scope': NotRequired[Literal['S']],
+}, total=False)
+
+NbaTeamYearsResponse = Any
+NbaTeamYearsParams = TypedDict('NbaTeamYearsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'league_id': NotRequired[Literal['00']],
 }, total=False)
 
 NbcNewsNbcArticleResponse = ModelNbcArticleResponseDoc
@@ -123866,6 +124306,45 @@ NfhsSuggestParams = TypedDict('NfhsSuggestParams', {
     'search_term': Required[str],
     'scope': NotRequired[str],
     'size': NotRequired[int],
+}, total=False)
+
+NhlGamecenterBoxscoreResponse = ModelNhlGamecenterResponseDoc
+NhlGamecenterBoxscoreParams = TypedDict('NhlGamecenterBoxscoreParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'game_id': Required[str],
+}, total=False)
+
+NhlGamecenterPlayByPlayResponse = ModelNhlGamecenterResponseDoc
+NhlGamecenterPlayByPlayParams = TypedDict('NhlGamecenterPlayByPlayParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'game_id': Required[str],
+}, total=False)
+
+NhlScheduleResponse = ModelNhlScheduleResponseDoc
+NhlScheduleParams = TypedDict('NhlScheduleParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'date': NotRequired[str],
+}, total=False)
+
+NhlSeasonsResponse = ModelAppResponse
+NhlSeasonsParams = TypedDict('NhlSeasonsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+}, total=False)
+
+NhlStandingsResponse = ModelNhlStandingsResponseDoc
+NhlStandingsParams = TypedDict('NhlStandingsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'date': NotRequired[str],
 }, total=False)
 
 NikeCategoriesResponse = ModelNikeCategoriesResponseDoc
@@ -130929,6 +131408,121 @@ SephoraSuggestParams = TypedDict('SephoraSuggestParams', {
     '_timeout': NotRequired[float],
     '_headers': NotRequired[Mapping[str, str]],
     'query': Required[str],
+}, total=False)
+
+SerebiiPokemongoEventDetailCommunityDayResponse = ModelSerebiiNativeEventDetailResponse
+SerebiiPokemongoEventDetailCommunityDayParams = TypedDict('SerebiiPokemongoEventDetailCommunityDayParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'filename': Required[str],
+}, total=False)
+
+SerebiiPokemongoEventCategoriesResponse = ModelSerebiiEventCategoriesResponse
+SerebiiPokemongoEventCategoriesParams = TypedDict('SerebiiPokemongoEventCategoriesParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+}, total=False)
+
+SerebiiPokemongoEventOnlyMovesResponse = ModelSerebiiEventOnlyMovesResponse
+SerebiiPokemongoEventOnlyMovesParams = TypedDict('SerebiiPokemongoEventOnlyMovesParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+}, total=False)
+
+SerebiiPokemongoEventOnlyResearchResponse = ModelSerebiiEventOnlyResearchResponse
+SerebiiPokemongoEventOnlyResearchParams = TypedDict('SerebiiPokemongoEventOnlyResearchParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+}, total=False)
+
+SerebiiPokemongoEventsResponse = ModelSerebiiEventsResponse
+SerebiiPokemongoEventsParams = TypedDict('SerebiiPokemongoEventsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'category': Required[Literal['events.shtml', 'reallifeevents.shtml', 'ticketevents.shtml', 'communityday.shtml', 'raidday.shtml', 'maxbattleday.shtml', 'incenseday.shtml', 'limitedresearchday.shtml', 'hatchday.shtml']],
+}, total=False)
+
+SerebiiPokemongoEventDetailGlobalResponse = ModelSerebiiNativeEventDetailResponse
+SerebiiPokemongoEventDetailGlobalParams = TypedDict('SerebiiPokemongoEventDetailGlobalParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'filename': Required[str],
+}, total=False)
+
+SerebiiPokemongoEventDetailHatchDayResponse = ModelSerebiiNativeEventDetailResponse
+SerebiiPokemongoEventDetailHatchDayParams = TypedDict('SerebiiPokemongoEventDetailHatchDayParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'filename': Required[str],
+}, total=False)
+
+SerebiiPokemongoEventDetailIncenseDayResponse = ModelSerebiiNativeEventDetailResponse
+SerebiiPokemongoEventDetailIncenseDayParams = TypedDict('SerebiiPokemongoEventDetailIncenseDayParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'filename': Required[str],
+}, total=False)
+
+SerebiiPokemongoEventDetailResearchDayResponse = ModelSerebiiNativeEventDetailResponse
+SerebiiPokemongoEventDetailResearchDayParams = TypedDict('SerebiiPokemongoEventDetailResearchDayParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'filename': Required[str],
+}, total=False)
+
+SerebiiPokemongoEventDetailMaxBattleDayResponse = ModelSerebiiNativeEventDetailResponse
+SerebiiPokemongoEventDetailMaxBattleDayParams = TypedDict('SerebiiPokemongoEventDetailMaxBattleDayParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'filename': Required[str],
+}, total=False)
+
+SerebiiPokemongoEventDetailRaidDayResponse = ModelSerebiiNativeEventDetailResponse
+SerebiiPokemongoEventDetailRaidDayParams = TypedDict('SerebiiPokemongoEventDetailRaidDayParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'filename': Required[str],
+}, total=False)
+
+SerebiiPokemongoEventDetailRealLifeResponse = ModelSerebiiNativeEventDetailResponse
+SerebiiPokemongoEventDetailRealLifeParams = TypedDict('SerebiiPokemongoEventDetailRealLifeParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'filename': Required[str],
+}, total=False)
+
+SerebiiPokemongoSpotlightHoursResponse = ModelSerebiiSpotlightHoursResponse
+SerebiiPokemongoSpotlightHoursParams = TypedDict('SerebiiPokemongoSpotlightHoursParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+}, total=False)
+
+SerebiiPokemongoEventDetailTicketResponse = ModelSerebiiNativeEventDetailResponse
+SerebiiPokemongoEventDetailTicketParams = TypedDict('SerebiiPokemongoEventDetailTicketParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'filename': Required[str],
+}, total=False)
+
+SerebiiPokemongoUnownEventsResponse = ModelSerebiiUnownEventsResponse
+SerebiiPokemongoUnownEventsParams = TypedDict('SerebiiPokemongoUnownEventsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
 }, total=False)
 
 SevenNewsAustraliaArticleResponse = ModelPublicnewsArticleResponseDoc
@@ -143777,6 +144371,9 @@ class ENewsGroup:
     def eonline_news(self, **params: Unpack[ENewsEonlineNewsParams]) -> ENewsEonlineNewsResponse: ...
     def eonline_sections(self, **params: Unpack[ENewsEonlineSectionsParams]) -> ENewsEonlineSectionsResponse: ...
 
+class EpicGamesStoreGroup:
+    def epicgames_free_promotions(self, **params: Unpack[EpicGamesStoreEpicgamesFreePromotionsParams]) -> EpicGamesStoreEpicgamesFreePromotionsResponse: ...
+
 class EspnGroup:
     def athlete(self, **params: Unpack[EspnAthleteParams]) -> EspnAthleteResponse: ...
     def game_summary(self, **params: Unpack[EspnGameSummaryParams]) -> EspnGameSummaryResponse: ...
@@ -144671,6 +145268,11 @@ class HealthgradesGroup:
     def physicians_search(self, **params: Unpack[HealthgradesPhysiciansSearchParams]) -> HealthgradesPhysiciansSearchResponse: ...
     def specialties(self, **params: Unpack[HealthgradesSpecialtiesParams]) -> HealthgradesSpecialtiesResponse: ...
     def top_searches(self, **params: Unpack[HealthgradesTopSearchesParams]) -> HealthgradesTopSearchesResponse: ...
+
+class HearthstoneGroup:
+    def card(self, **params: Unpack[HearthstoneCardParams]) -> HearthstoneCardResponse: ...
+    def cards(self, **params: Unpack[HearthstoneCardsParams]) -> HearthstoneCardsResponse: ...
+    def filters(self, **params: Unpack[HearthstoneFiltersParams]) -> HearthstoneFiltersResponse: ...
 
 class HermesGroup:
     def categories(self, **params: Unpack[HermesCategoriesParams]) -> HermesCategoriesResponse: ...
@@ -145619,16 +146221,23 @@ class NbaGroup:
     def games(self, **params: Unpack[NbaGamesParams]) -> NbaGamesResponse: ...
     def homepage_leaders(self, **params: Unpack[NbaHomepageLeadersParams]) -> NbaHomepageLeadersResponse: ...
     def hustle_stats(self, **params: Unpack[NbaHustleStatsParams]) -> NbaHustleStatsResponse: ...
+    def hustle_team(self, **params: Unpack[NbaHustleTeamParams]) -> NbaHustleTeamResponse: ...
     def league_game_log(self, **params: Unpack[NbaLeagueGameLogParams]) -> NbaLeagueGameLogResponse: ...
     def lineups(self, **params: Unpack[NbaLineupsParams]) -> NbaLineupsResponse: ...
     def news(self, **params: Unpack[NbaNewsParams]) -> NbaNewsResponse: ...
+    def opp_pt_shot(self, **params: Unpack[NbaOppPtShotParams]) -> NbaOppPtShotResponse: ...
     def play_by_play(self, **params: Unpack[NbaPlayByPlayParams]) -> NbaPlayByPlayResponse: ...
     def player_awards(self, **params: Unpack[NbaPlayerAwardsParams]) -> NbaPlayerAwardsResponse: ...
     def player_bio_stats(self, **params: Unpack[NbaPlayerBioStatsParams]) -> NbaPlayerBioStatsResponse: ...
     def player_career_stats(self, **params: Unpack[NbaPlayerCareerStatsParams]) -> NbaPlayerCareerStatsResponse: ...
+    def player_clutch(self, **params: Unpack[NbaPlayerClutchParams]) -> NbaPlayerClutchResponse: ...
     def player_dash_pt_shots(self, **params: Unpack[NbaPlayerDashPtShotsParams]) -> NbaPlayerDashPtShotsResponse: ...
+    def player_game_logs(self, **params: Unpack[NbaPlayerGameLogsParams]) -> NbaPlayerGameLogsResponse: ...
     def player_info(self, **params: Unpack[NbaPlayerInfoParams]) -> NbaPlayerInfoResponse: ...
+    def player_profile_v2(self, **params: Unpack[NbaPlayerProfileV2Params]) -> NbaPlayerProfileV2Response: ...
+    def player_pt_shot(self, **params: Unpack[NbaPlayerPtShotParams]) -> NbaPlayerPtShotResponse: ...
     def player_stats(self, **params: Unpack[NbaPlayerStatsParams]) -> NbaPlayerStatsResponse: ...
+    def player_streak_finder(self, **params: Unpack[NbaPlayerStreakFinderParams]) -> NbaPlayerStreakFinderResponse: ...
     def players(self, **params: Unpack[NbaPlayersParams]) -> NbaPlayersResponse: ...
     def playoff_picture(self, **params: Unpack[NbaPlayoffPictureParams]) -> NbaPlayoffPictureResponse: ...
     def pt_defend(self, **params: Unpack[NbaPtDefendParams]) -> NbaPtDefendResponse: ...
@@ -145636,11 +146245,18 @@ class NbaGroup:
     def scoreboard(self, **params: Unpack[NbaScoreboardParams]) -> NbaScoreboardResponse: ...
     def standings(self, **params: Unpack[NbaStandingsParams]) -> NbaStandingsResponse: ...
     def synergy_play_types(self, **params: Unpack[NbaSynergyPlayTypesParams]) -> NbaSynergyPlayTypesResponse: ...
+    def team_dash_pt_pass(self, **params: Unpack[NbaTeamDashPtPassParams]) -> NbaTeamDashPtPassResponse: ...
+    def team_dash_pt_shots(self, **params: Unpack[NbaTeamDashPtShotsParams]) -> NbaTeamDashPtShotsResponse: ...
     def team_details(self, **params: Unpack[NbaTeamDetailsParams]) -> NbaTeamDetailsResponse: ...
+    def team_game_logs(self, **params: Unpack[NbaTeamGameLogsParams]) -> NbaTeamGameLogsResponse: ...
+    def team_info_common(self, **params: Unpack[NbaTeamInfoCommonParams]) -> NbaTeamInfoCommonResponse: ...
+    def team_on_off(self, **params: Unpack[NbaTeamOnOffParams]) -> NbaTeamOnOffResponse: ...
+    def team_pt_shot(self, **params: Unpack[NbaTeamPtShotParams]) -> NbaTeamPtShotResponse: ...
     def team_roster(self, **params: Unpack[NbaTeamRosterParams]) -> NbaTeamRosterResponse: ...
     def team_shot_locations(self, **params: Unpack[NbaTeamShotLocationsParams]) -> NbaTeamShotLocationsResponse: ...
     def team_stats(self, **params: Unpack[NbaTeamStatsParams]) -> NbaTeamStatsResponse: ...
     def team_stats_leaders(self, **params: Unpack[NbaTeamStatsLeadersParams]) -> NbaTeamStatsLeadersResponse: ...
+    def team_years(self, **params: Unpack[NbaTeamYearsParams]) -> NbaTeamYearsResponse: ...
 
 class NbcNewsGroup:
     def nbc_article(self, **params: Unpack[NbcNewsNbcArticleParams]) -> NbcNewsNbcArticleResponse: ...
@@ -145732,6 +146348,13 @@ class NfhsGroup:
     def sports(self, **params: Unpack[NfhsSportsParams]) -> NfhsSportsResponse: ...
     def states(self, **params: Unpack[NfhsStatesParams]) -> NfhsStatesResponse: ...
     def suggest(self, **params: Unpack[NfhsSuggestParams]) -> NfhsSuggestResponse: ...
+
+class NhlGroup:
+    def gamecenter_boxscore(self, **params: Unpack[NhlGamecenterBoxscoreParams]) -> NhlGamecenterBoxscoreResponse: ...
+    def gamecenter_play_by_play(self, **params: Unpack[NhlGamecenterPlayByPlayParams]) -> NhlGamecenterPlayByPlayResponse: ...
+    def schedule(self, **params: Unpack[NhlScheduleParams]) -> NhlScheduleResponse: ...
+    def seasons(self, **params: Unpack[NhlSeasonsParams]) -> NhlSeasonsResponse: ...
+    def standings(self, **params: Unpack[NhlStandingsParams]) -> NhlStandingsResponse: ...
 
 class NikeGroup:
     def categories(self, **params: Unpack[NikeCategoriesParams]) -> NikeCategoriesResponse: ...
@@ -146671,6 +147294,23 @@ class SephoraGroup:
     def search(self, **params: Unpack[SephoraSearchParams]) -> SephoraSearchResponse: ...
     def stores(self, **params: Unpack[SephoraStoresParams]) -> SephoraStoresResponse: ...
     def suggest(self, **params: Unpack[SephoraSuggestParams]) -> SephoraSuggestResponse: ...
+
+class SerebiiGroup:
+    def pokemongo_event_detail_community_day(self, **params: Unpack[SerebiiPokemongoEventDetailCommunityDayParams]) -> SerebiiPokemongoEventDetailCommunityDayResponse: ...
+    def pokemongo_event_categories(self, **params: Unpack[SerebiiPokemongoEventCategoriesParams]) -> SerebiiPokemongoEventCategoriesResponse: ...
+    def pokemongo_event_only_moves(self, **params: Unpack[SerebiiPokemongoEventOnlyMovesParams]) -> SerebiiPokemongoEventOnlyMovesResponse: ...
+    def pokemongo_event_only_research(self, **params: Unpack[SerebiiPokemongoEventOnlyResearchParams]) -> SerebiiPokemongoEventOnlyResearchResponse: ...
+    def pokemongo_events(self, **params: Unpack[SerebiiPokemongoEventsParams]) -> SerebiiPokemongoEventsResponse: ...
+    def pokemongo_event_detail_global(self, **params: Unpack[SerebiiPokemongoEventDetailGlobalParams]) -> SerebiiPokemongoEventDetailGlobalResponse: ...
+    def pokemongo_event_detail_hatch_day(self, **params: Unpack[SerebiiPokemongoEventDetailHatchDayParams]) -> SerebiiPokemongoEventDetailHatchDayResponse: ...
+    def pokemongo_event_detail_incense_day(self, **params: Unpack[SerebiiPokemongoEventDetailIncenseDayParams]) -> SerebiiPokemongoEventDetailIncenseDayResponse: ...
+    def pokemongo_event_detail_research_day(self, **params: Unpack[SerebiiPokemongoEventDetailResearchDayParams]) -> SerebiiPokemongoEventDetailResearchDayResponse: ...
+    def pokemongo_event_detail_max_battle_day(self, **params: Unpack[SerebiiPokemongoEventDetailMaxBattleDayParams]) -> SerebiiPokemongoEventDetailMaxBattleDayResponse: ...
+    def pokemongo_event_detail_raid_day(self, **params: Unpack[SerebiiPokemongoEventDetailRaidDayParams]) -> SerebiiPokemongoEventDetailRaidDayResponse: ...
+    def pokemongo_event_detail_real_life(self, **params: Unpack[SerebiiPokemongoEventDetailRealLifeParams]) -> SerebiiPokemongoEventDetailRealLifeResponse: ...
+    def pokemongo_spotlight_hours(self, **params: Unpack[SerebiiPokemongoSpotlightHoursParams]) -> SerebiiPokemongoSpotlightHoursResponse: ...
+    def pokemongo_event_detail_ticket(self, **params: Unpack[SerebiiPokemongoEventDetailTicketParams]) -> SerebiiPokemongoEventDetailTicketResponse: ...
+    def pokemongo_unown_events(self, **params: Unpack[SerebiiPokemongoUnownEventsParams]) -> SerebiiPokemongoUnownEventsResponse: ...
 
 class SevenNewsAustraliaGroup:
     def article(self, **params: Unpack[SevenNewsAustraliaArticleParams]) -> SevenNewsAustraliaArticleResponse: ...
@@ -149307,6 +149947,7 @@ OperationId = Literal[
     'eonline-headlines',
     'eonline-news',
     'eonline-sections',
+    'epicgames-free-promotions',
     'espn-athlete',
     'espn-game-summary',
     'espn-news',
@@ -150067,6 +150708,9 @@ OperationId = Literal[
     'healthgrades-physicians-search',
     'healthgrades-specialties',
     'healthgrades-top-searches',
+    'hearthstone-card',
+    'hearthstone-cards',
+    'hearthstone-filters',
     'hermes-categories',
     'hermes-category',
     'hermes-product',
@@ -150833,16 +151477,23 @@ OperationId = Literal[
     'nba-games',
     'nba-homepage-leaders',
     'nba-hustle-stats',
+    'nba-hustle-team',
     'nba-league-game-log',
     'nba-lineups',
     'nba-news',
+    'nba-opp-pt-shot',
     'nba-play-by-play',
     'nba-player-awards',
     'nba-player-bio-stats',
     'nba-player-career-stats',
+    'nba-player-clutch',
     'nba-player-dash-pt-shots',
+    'nba-player-game-logs',
     'nba-player-info',
+    'nba-player-profile-v2',
+    'nba-player-pt-shot',
     'nba-player-stats',
+    'nba-player-streak-finder',
     'nba-players',
     'nba-playoff-picture',
     'nba-pt-defend',
@@ -150850,11 +151501,18 @@ OperationId = Literal[
     'nba-scoreboard',
     'nba-standings',
     'nba-synergy-play-types',
+    'nba-team-dash-pt-pass',
+    'nba-team-dash-pt-shots',
     'nba-team-details',
+    'nba-team-game-logs',
+    'nba-team-info-common',
+    'nba-team-on-off',
+    'nba-team-pt-shot',
     'nba-team-roster',
     'nba-team-shot-locations',
     'nba-team-stats',
     'nba-team-stats-leaders',
+    'nba-team-years',
     'nbc-article',
     'nbc-author',
     'nbc-headlines',
@@ -150926,6 +151584,11 @@ OperationId = Literal[
     'nfhs-sports',
     'nfhs-states',
     'nfhs-suggest',
+    'nhl-gamecenter-boxscore',
+    'nhl-gamecenter-play-by-play',
+    'nhl-schedule',
+    'nhl-seasons',
+    'nhl-standings',
     'nike-categories',
     'nike-product',
     'nike-product-availability',
@@ -151687,6 +152350,21 @@ OperationId = Literal[
     'sephora-search',
     'sephora-stores',
     'sephora-suggest',
+    'serebii-pokemongo-event-detail-community-day',
+    'serebii-pokemongo-event-categories',
+    'serebii-pokemongo-event-only-moves',
+    'serebii-pokemongo-event-only-research',
+    'serebii-pokemongo-events',
+    'serebii-pokemongo-event-detail-global',
+    'serebii-pokemongo-event-detail-hatch-day',
+    'serebii-pokemongo-event-detail-incense-day',
+    'serebii-pokemongo-event-detail-research-day',
+    'serebii-pokemongo-event-detail-max-battle-day',
+    'serebii-pokemongo-event-detail-raid-day',
+    'serebii-pokemongo-event-detail-real-life',
+    'serebii-pokemongo-spotlight-hours',
+    'serebii-pokemongo-event-detail-ticket',
+    'serebii-pokemongo-unown-events',
     'sevennewsau-article',
     'sevennewsau-author',
     'sevennewsau-headlines',
@@ -153088,6 +153766,7 @@ class CrawloraClient:
     economic_times: EconomicTimesGroup
     engadget: EngadgetGroup
     e_news: ENewsGroup
+    epic_games_store: EpicGamesStoreGroup
     espn: EspnGroup
     etsy: EtsyGroup
     euronews: EuronewsGroup
@@ -153156,6 +153835,7 @@ class CrawloraClient:
     gymshark: GymsharkGroup
     harvard_business_review: HarvardBusinessReviewGroup
     healthgrades: HealthgradesGroup
+    hearthstone: HearthstoneGroup
     hermes: HermesGroup
     hindustan_times: HindustanTimesGroup
     hltv: HltvGroup
@@ -153257,6 +153937,7 @@ class CrawloraClient:
     newsweek: NewsweekGroup
     the_new_yorker: TheNewYorkerGroup
     nfhs: NfhsGroup
+    nhl: NhlGroup
     nike: NikeGroup
     nine_to_five_google: NineToFiveGoogleGroup
     nine_to_five_mac: NineToFiveMacGroup
@@ -153346,6 +154027,7 @@ class CrawloraClient:
     seattle_times: SeattleTimesGroup
     sec_edgar: SecEdgarGroup
     sephora: SephoraGroup
+    serebii: SerebiiGroup
     seven_news_australia: SevenNewsAustraliaGroup
     sfgate: SfgateGroup
     shake_shack: ShakeShackGroup
@@ -166583,6 +167265,18 @@ class CrawloraClient:
     @overload
     def operation(
         self,
+        operation_id: Literal['epicgames-free-promotions'],
+        params: EpicGamesStoreEpicgamesFreePromotionsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> EpicGamesStoreEpicgamesFreePromotionsResponse: ...
+    @overload
+    def operation(
+        self,
         operation_id: Literal['espn-athlete'],
         params: EspnAthleteParams,
         *,
@@ -175700,6 +176394,42 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> HealthgradesTopSearchesResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['hearthstone-card'],
+        params: HearthstoneCardParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> HearthstoneCardResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['hearthstone-cards'],
+        params: HearthstoneCardsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> HearthstoneCardsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['hearthstone-filters'],
+        params: HearthstoneFiltersParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> HearthstoneFiltersResponse: ...
     @overload
     def operation(
         self,
@@ -184895,6 +185625,18 @@ class CrawloraClient:
     @overload
     def operation(
         self,
+        operation_id: Literal['nba-hustle-team'],
+        params: NbaHustleTeamParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> NbaHustleTeamResponse: ...
+    @overload
+    def operation(
+        self,
         operation_id: Literal['nba-league-game-log'],
         params: NbaLeagueGameLogParams = ...,
         *,
@@ -184928,6 +185670,18 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> NbaNewsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['nba-opp-pt-shot'],
+        params: NbaOppPtShotParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> NbaOppPtShotResponse: ...
     @overload
     def operation(
         self,
@@ -184979,6 +185733,18 @@ class CrawloraClient:
     @overload
     def operation(
         self,
+        operation_id: Literal['nba-player-clutch'],
+        params: NbaPlayerClutchParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> NbaPlayerClutchResponse: ...
+    @overload
+    def operation(
+        self,
         operation_id: Literal['nba-player-dash-pt-shots'],
         params: NbaPlayerDashPtShotsParams,
         *,
@@ -184988,6 +185754,18 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> NbaPlayerDashPtShotsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['nba-player-game-logs'],
+        params: NbaPlayerGameLogsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> NbaPlayerGameLogsResponse: ...
     @overload
     def operation(
         self,
@@ -185003,6 +185781,30 @@ class CrawloraClient:
     @overload
     def operation(
         self,
+        operation_id: Literal['nba-player-profile-v2'],
+        params: NbaPlayerProfileV2Params,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> NbaPlayerProfileV2Response: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['nba-player-pt-shot'],
+        params: NbaPlayerPtShotParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> NbaPlayerPtShotResponse: ...
+    @overload
+    def operation(
+        self,
         operation_id: Literal['nba-player-stats'],
         params: NbaPlayerStatsParams = ...,
         *,
@@ -185012,6 +185814,18 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> NbaPlayerStatsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['nba-player-streak-finder'],
+        params: NbaPlayerStreakFinderParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> NbaPlayerStreakFinderResponse: ...
     @overload
     def operation(
         self,
@@ -185099,6 +185913,30 @@ class CrawloraClient:
     @overload
     def operation(
         self,
+        operation_id: Literal['nba-team-dash-pt-pass'],
+        params: NbaTeamDashPtPassParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> NbaTeamDashPtPassResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['nba-team-dash-pt-shots'],
+        params: NbaTeamDashPtShotsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> NbaTeamDashPtShotsResponse: ...
+    @overload
+    def operation(
+        self,
         operation_id: Literal['nba-team-details'],
         params: NbaTeamDetailsParams,
         *,
@@ -185108,6 +185946,54 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> NbaTeamDetailsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['nba-team-game-logs'],
+        params: NbaTeamGameLogsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> NbaTeamGameLogsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['nba-team-info-common'],
+        params: NbaTeamInfoCommonParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> NbaTeamInfoCommonResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['nba-team-on-off'],
+        params: NbaTeamOnOffParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> NbaTeamOnOffResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['nba-team-pt-shot'],
+        params: NbaTeamPtShotParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> NbaTeamPtShotResponse: ...
     @overload
     def operation(
         self,
@@ -185156,6 +186042,18 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> NbaTeamStatsLeadersResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['nba-team-years'],
+        params: NbaTeamYearsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> NbaTeamYearsResponse: ...
     @overload
     def operation(
         self,
@@ -186008,6 +186906,66 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> NfhsSuggestResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['nhl-gamecenter-boxscore'],
+        params: NhlGamecenterBoxscoreParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> NhlGamecenterBoxscoreResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['nhl-gamecenter-play-by-play'],
+        params: NhlGamecenterPlayByPlayParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> NhlGamecenterPlayByPlayResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['nhl-schedule'],
+        params: NhlScheduleParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> NhlScheduleResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['nhl-seasons'],
+        params: NhlSeasonsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> NhlSeasonsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['nhl-standings'],
+        params: NhlStandingsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> NhlStandingsResponse: ...
     @overload
     def operation(
         self,
@@ -195140,6 +196098,186 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> SephoraSuggestResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['serebii-pokemongo-event-detail-community-day'],
+        params: SerebiiPokemongoEventDetailCommunityDayParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> SerebiiPokemongoEventDetailCommunityDayResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['serebii-pokemongo-event-categories'],
+        params: SerebiiPokemongoEventCategoriesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> SerebiiPokemongoEventCategoriesResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['serebii-pokemongo-event-only-moves'],
+        params: SerebiiPokemongoEventOnlyMovesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> SerebiiPokemongoEventOnlyMovesResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['serebii-pokemongo-event-only-research'],
+        params: SerebiiPokemongoEventOnlyResearchParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> SerebiiPokemongoEventOnlyResearchResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['serebii-pokemongo-events'],
+        params: SerebiiPokemongoEventsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> SerebiiPokemongoEventsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['serebii-pokemongo-event-detail-global'],
+        params: SerebiiPokemongoEventDetailGlobalParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> SerebiiPokemongoEventDetailGlobalResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['serebii-pokemongo-event-detail-hatch-day'],
+        params: SerebiiPokemongoEventDetailHatchDayParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> SerebiiPokemongoEventDetailHatchDayResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['serebii-pokemongo-event-detail-incense-day'],
+        params: SerebiiPokemongoEventDetailIncenseDayParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> SerebiiPokemongoEventDetailIncenseDayResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['serebii-pokemongo-event-detail-research-day'],
+        params: SerebiiPokemongoEventDetailResearchDayParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> SerebiiPokemongoEventDetailResearchDayResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['serebii-pokemongo-event-detail-max-battle-day'],
+        params: SerebiiPokemongoEventDetailMaxBattleDayParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> SerebiiPokemongoEventDetailMaxBattleDayResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['serebii-pokemongo-event-detail-raid-day'],
+        params: SerebiiPokemongoEventDetailRaidDayParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> SerebiiPokemongoEventDetailRaidDayResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['serebii-pokemongo-event-detail-real-life'],
+        params: SerebiiPokemongoEventDetailRealLifeParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> SerebiiPokemongoEventDetailRealLifeResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['serebii-pokemongo-spotlight-hours'],
+        params: SerebiiPokemongoSpotlightHoursParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> SerebiiPokemongoSpotlightHoursResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['serebii-pokemongo-event-detail-ticket'],
+        params: SerebiiPokemongoEventDetailTicketParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> SerebiiPokemongoEventDetailTicketResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['serebii-pokemongo-unown-events'],
+        params: SerebiiPokemongoUnownEventsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> SerebiiPokemongoUnownEventsResponse: ...
     @overload
     def operation(
         self,
@@ -223367,6 +224505,18 @@ class CrawloraClient:
     @overload
     def request(
         self,
+        operation_id: Literal['epicgames-free-promotions'],
+        params: EpicGamesStoreEpicgamesFreePromotionsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> EpicGamesStoreEpicgamesFreePromotionsResponse: ...
+    @overload
+    def request(
+        self,
         operation_id: Literal['espn-athlete'],
         params: EspnAthleteParams,
         *,
@@ -232484,6 +233634,42 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> HealthgradesTopSearchesResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['hearthstone-card'],
+        params: HearthstoneCardParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> HearthstoneCardResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['hearthstone-cards'],
+        params: HearthstoneCardsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> HearthstoneCardsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['hearthstone-filters'],
+        params: HearthstoneFiltersParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> HearthstoneFiltersResponse: ...
     @overload
     def request(
         self,
@@ -241679,6 +242865,18 @@ class CrawloraClient:
     @overload
     def request(
         self,
+        operation_id: Literal['nba-hustle-team'],
+        params: NbaHustleTeamParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> NbaHustleTeamResponse: ...
+    @overload
+    def request(
+        self,
         operation_id: Literal['nba-league-game-log'],
         params: NbaLeagueGameLogParams = ...,
         *,
@@ -241712,6 +242910,18 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> NbaNewsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['nba-opp-pt-shot'],
+        params: NbaOppPtShotParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> NbaOppPtShotResponse: ...
     @overload
     def request(
         self,
@@ -241763,6 +242973,18 @@ class CrawloraClient:
     @overload
     def request(
         self,
+        operation_id: Literal['nba-player-clutch'],
+        params: NbaPlayerClutchParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> NbaPlayerClutchResponse: ...
+    @overload
+    def request(
+        self,
         operation_id: Literal['nba-player-dash-pt-shots'],
         params: NbaPlayerDashPtShotsParams,
         *,
@@ -241772,6 +242994,18 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> NbaPlayerDashPtShotsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['nba-player-game-logs'],
+        params: NbaPlayerGameLogsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> NbaPlayerGameLogsResponse: ...
     @overload
     def request(
         self,
@@ -241787,6 +243021,30 @@ class CrawloraClient:
     @overload
     def request(
         self,
+        operation_id: Literal['nba-player-profile-v2'],
+        params: NbaPlayerProfileV2Params,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> NbaPlayerProfileV2Response: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['nba-player-pt-shot'],
+        params: NbaPlayerPtShotParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> NbaPlayerPtShotResponse: ...
+    @overload
+    def request(
+        self,
         operation_id: Literal['nba-player-stats'],
         params: NbaPlayerStatsParams = ...,
         *,
@@ -241796,6 +243054,18 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> NbaPlayerStatsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['nba-player-streak-finder'],
+        params: NbaPlayerStreakFinderParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> NbaPlayerStreakFinderResponse: ...
     @overload
     def request(
         self,
@@ -241883,6 +243153,30 @@ class CrawloraClient:
     @overload
     def request(
         self,
+        operation_id: Literal['nba-team-dash-pt-pass'],
+        params: NbaTeamDashPtPassParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> NbaTeamDashPtPassResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['nba-team-dash-pt-shots'],
+        params: NbaTeamDashPtShotsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> NbaTeamDashPtShotsResponse: ...
+    @overload
+    def request(
+        self,
         operation_id: Literal['nba-team-details'],
         params: NbaTeamDetailsParams,
         *,
@@ -241892,6 +243186,54 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> NbaTeamDetailsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['nba-team-game-logs'],
+        params: NbaTeamGameLogsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> NbaTeamGameLogsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['nba-team-info-common'],
+        params: NbaTeamInfoCommonParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> NbaTeamInfoCommonResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['nba-team-on-off'],
+        params: NbaTeamOnOffParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> NbaTeamOnOffResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['nba-team-pt-shot'],
+        params: NbaTeamPtShotParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> NbaTeamPtShotResponse: ...
     @overload
     def request(
         self,
@@ -241940,6 +243282,18 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> NbaTeamStatsLeadersResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['nba-team-years'],
+        params: NbaTeamYearsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> NbaTeamYearsResponse: ...
     @overload
     def request(
         self,
@@ -242792,6 +244146,66 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> NfhsSuggestResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['nhl-gamecenter-boxscore'],
+        params: NhlGamecenterBoxscoreParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> NhlGamecenterBoxscoreResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['nhl-gamecenter-play-by-play'],
+        params: NhlGamecenterPlayByPlayParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> NhlGamecenterPlayByPlayResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['nhl-schedule'],
+        params: NhlScheduleParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> NhlScheduleResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['nhl-seasons'],
+        params: NhlSeasonsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> NhlSeasonsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['nhl-standings'],
+        params: NhlStandingsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> NhlStandingsResponse: ...
     @overload
     def request(
         self,
@@ -251924,6 +253338,186 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> SephoraSuggestResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['serebii-pokemongo-event-detail-community-day'],
+        params: SerebiiPokemongoEventDetailCommunityDayParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> SerebiiPokemongoEventDetailCommunityDayResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['serebii-pokemongo-event-categories'],
+        params: SerebiiPokemongoEventCategoriesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> SerebiiPokemongoEventCategoriesResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['serebii-pokemongo-event-only-moves'],
+        params: SerebiiPokemongoEventOnlyMovesParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> SerebiiPokemongoEventOnlyMovesResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['serebii-pokemongo-event-only-research'],
+        params: SerebiiPokemongoEventOnlyResearchParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> SerebiiPokemongoEventOnlyResearchResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['serebii-pokemongo-events'],
+        params: SerebiiPokemongoEventsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> SerebiiPokemongoEventsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['serebii-pokemongo-event-detail-global'],
+        params: SerebiiPokemongoEventDetailGlobalParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> SerebiiPokemongoEventDetailGlobalResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['serebii-pokemongo-event-detail-hatch-day'],
+        params: SerebiiPokemongoEventDetailHatchDayParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> SerebiiPokemongoEventDetailHatchDayResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['serebii-pokemongo-event-detail-incense-day'],
+        params: SerebiiPokemongoEventDetailIncenseDayParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> SerebiiPokemongoEventDetailIncenseDayResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['serebii-pokemongo-event-detail-research-day'],
+        params: SerebiiPokemongoEventDetailResearchDayParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> SerebiiPokemongoEventDetailResearchDayResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['serebii-pokemongo-event-detail-max-battle-day'],
+        params: SerebiiPokemongoEventDetailMaxBattleDayParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> SerebiiPokemongoEventDetailMaxBattleDayResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['serebii-pokemongo-event-detail-raid-day'],
+        params: SerebiiPokemongoEventDetailRaidDayParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> SerebiiPokemongoEventDetailRaidDayResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['serebii-pokemongo-event-detail-real-life'],
+        params: SerebiiPokemongoEventDetailRealLifeParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> SerebiiPokemongoEventDetailRealLifeResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['serebii-pokemongo-spotlight-hours'],
+        params: SerebiiPokemongoSpotlightHoursParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> SerebiiPokemongoSpotlightHoursResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['serebii-pokemongo-event-detail-ticket'],
+        params: SerebiiPokemongoEventDetailTicketParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> SerebiiPokemongoEventDetailTicketResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['serebii-pokemongo-unown-events'],
+        params: SerebiiPokemongoUnownEventsParams = ...,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> SerebiiPokemongoUnownEventsResponse: ...
     @overload
     def request(
         self,
